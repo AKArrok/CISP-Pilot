@@ -5,3 +5,4 @@ __pycache__/
 server.log
 .pytest_cache/
 .zcode/
+node_modules/

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dataset_role": "开发集：允许用于错误分析和参数选择，不得作为最终泛化成绩",
+  "selection": "对非校准、非旧holdout的可用题按sha256(dev-v1:question_id)排序，每域前5题",
+  "sample_per_domain": 5,
+  "knowledge_tag_cases": [
+    {"domain":"业务连续性","question_id":"700题_b1_403","acceptable":["业务影响分析"]},
+    {"domain":"业务连续性","question_id":"51CTO_三套_70","acceptable":["恢复点目标（RPO）","恢复时间目标（RTO）","灾难备份存储技术"]},
+    {"domain":"业务连续性","question_id":"700题_b2_165","acceptable":["业务连续性计划"]},
+    {"domain":"业务连续性","question_id":"700题_b1_536","acceptable":["灾难恢复需求分析"]},
+    {"domain":"业务连续性","question_id":"700题_b2_79","acceptable":["灾难恢复演练"]},
+
+    {"domain":"信息安全保障","question_id":"51CTO_二套_91","acceptable":["信息保障技术框架（IATF）"]},
+    {"domain":"信息安全保障","question_id":"700题_b2_189","acceptable":["国家信息安全保障视角"]},
+    {"domain":"信息安全保障","question_id":"700题_b2_57","acceptable":["信息安全保障总体要求"]},
+    {"domain":"信息安全保障","question_id":"51CTO_五套_53","acceptable":["信息保障技术框架（IATF）"]},
+    {"domain":"信息安全保障","question_id":"700题_b2_140","acceptable":["信息安全保障总体要求"]},
+
+    {"domain":"信息安全支撑技术","question_id":"700题_b1_513","acceptable":["哈希函数"]},
+    {"domain":"信息安全支撑技术","expected_domain":"信息安全保障","question_id":"700题_b1_141","acceptable":["基于时间的PDR与PPDR模型"]},
+    {"domain":"信息安全支撑技术","question_id":"700题_b1_509","acceptable":["非对称密码算法"]},
+    {"domain":"信息安全支撑技术","question_id":"51CTO_六套_9","acceptable":["数字签名"]},
+    {"domain":"信息安全支撑技术","question_id":"51CTO_六套_15","acceptable":["IPSec密钥协商"]},
+
+    {"domain":"信息安全监管","expected_domain":"信息安全保障","question_id":"700题_b1_102","acceptable":["信息安全属性"]},
+    {"domain":"信息安全监管","question_id":"700题_b1_134","acceptable":["信息安全监管体制"]},
+    {"domain":"信息安全监管","expected_domain":"计算环境安全","question_id":"51CTO_五套_36","acceptable":["数据库事务日志"]},
+    {"domain":"信息安全监管","question_id":"51CTO_二套_87","acceptable":["我国标准分类"]},
+    {"domain":"信息安全监管","expected_domain":"信息安全保障","question_id":"51CTO_二套_2","acceptable":["信息安全属性"]},
+
+    {"domain":"信息安全管理","question_id":"51CTO_六套_77","acceptable":["ISO/IEC 27002控制领域"]},
+    {"domain":"信息安全管理","question_id":"700题_b1_224","acceptable":["信息安全风险管理基本过程"]},
+    {"domain":"信息安全管理","expected_domain":"信息安全评估","question_id":"700题_b2_60","acceptable":["资产识别"]},
+    {"domain":"信息安全管理","expected_domain":"信息安全评估","question_id":"51CTO_四套_42","acceptable":["风险分析"]},
+    {"domain":"信息安全管理","question_id":"700题_b1_501","acceptable":["人力资源安全"]},
+
+    {"domain":"信息安全评估","expected_domain":"安全工程与运营","question_id":"700题_b2_44","acceptable":["系统安全工程能力成熟度模型"]},
+    {"domain":"信息安全评估","question_id":"51CTO_四套_61","acceptable":["CC(信息技术安全评估通用标准)","CC(信息技术安全评估通用准则)"]},
+    {"domain":"信息安全评估","expected_domain":"软件安全开发","question_id":"700题_b2_213","acceptable":["渗透测试"]},
+    {"domain":"信息安全评估","expected_domain":"计算环境安全","question_id":"700题_b1_41","acceptable":["Web服务器访问控制"]},
+    {"domain":"信息安全评估","question_id":"51CTO_六套_74","acceptable":["风险评估常用方法-定量分析"]},
+
+    {"domain":"安全工程与运营","expected_domain":"软件安全开发","question_id":"700题_b2_180","acceptable":["威胁建模","理解STRIDE六类威胁"]},
+    {"domain":"安全工程与运营","question_id":"700题_b2_55","acceptable":["事件管理"]},
+    {"domain":"安全工程与运营","question_id":"700题_b1_522","acceptable":["入侵检测系统"]},
+    {"domain":"安全工程与运营","question_id":"51CTO_三套_75","acceptable":["SSE-CMM能力成熟度评价体系"]},
+    {"domain":"安全工程与运营","expected_domain":"软件安全开发","question_id":"700题_b1_296","acceptable":["软件安全开发生命周期"]},
+
+    {"domain":"物理与网络通信安全","expected_domain":"信息安全支撑技术","question_id":"51CTO_一套_18","acceptable":["数字签名"]},
+    {"domain":"物理与网络通信安全","question_id":"51CTO_三套_37","acceptable":["防火墙的主要技术-代理及NAT"]},
+    {"domain":"物理与网络通信安全","expected_domain":"安全工程与运营","question_id":"700题_b1_239","acceptable":["漏洞扫描"]},
+    {"domain":"物理与网络通信安全","question_id":"51CTO_二套_26","acceptable":["应用层防火墙"]},
+    {"domain":"物理与网络通信安全","question_id":"51CTO_二套_25","acceptable":["生成树协议（STP）"]},
+
+    {"domain":"计算环境安全","question_id":"51CTO_二套_54","acceptable":["访问控制"]},
+    {"domain":"计算环境安全","question_id":"700题_b2_38","acceptable":["口令攻击"]},
+    {"domain":"计算环境安全","question_id":"700题_b1_17","acceptable":["集中式访问控制"]},
+    {"domain":"计算环境安全","expected_domain":"信息安全管理","question_id":"51CTO_一套_71","acceptable":["职责分离"]},
+    {"domain":"计算环境安全","question_id":"51CTO_三套_25","acceptable":["强制访问控制模型"]},
+
+    {"domain":"软件安全开发","expected_domain":"安全工程与运营","question_id":"51CTO_四套_54","acceptable":["SSE-CMM保证过程"]},
+    {"domain":"软件安全开发","question_id":"51CTO_一套_55","acceptable":["软件测试","软件测试的基本概念"]},
+    {"domain":"软件安全开发","expected_domain":"计算环境安全","question_id":"700题_b2_117","acceptable":["恶意代码生存技术"]},
+    {"domain":"软件安全开发","question_id":"51CTO_六套_64","acceptable":["软件安全开发生命周期"]},
+    {"domain":"软件安全开发","expected_domain":"计算环境安全","question_id":"51CTO_五套_79","acceptable":["Cookie安全"]}
+  ]
+}

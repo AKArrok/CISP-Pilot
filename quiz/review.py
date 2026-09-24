@@ -16,7 +16,7 @@ from fsrs import Card, Rating, Scheduler, State
 from sqlalchemy import func, select
 
 from storage import db
-from storage.models import ReviewCard
+from storage.models import LearnerReviewCard
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ def _to_dt(ts: float) -> datetime:
     return datetime.fromtimestamp(ts, tz=timezone.utc)
 
 
-def _row_to_card(row: ReviewCard) -> Card:
+def _row_to_card(row: LearnerReviewCard) -> Card:
     return Card(
         state=State(row.state), step=row.step,
         stability=row.stability, difficulty=row.difficulty,
@@ -39,13 +39,13 @@ def _row_to_card(row: ReviewCard) -> Card:
     )
 
 
-def update_card(question_id: str, domain: str | None, correct: bool,
+def update_card(thread_id: str, question_id: str, domain: str | None, correct: bool,
                 now: float | None = None) -> None:
     """作答后更新（或新建）该题的 FSRS 复习卡。"""
     now = now if now is not None else time.time()
     rating = RATING_BY_CORRECT[bool(correct)]
     with db.session() as s:
-        row = s.get(ReviewCard, question_id)
+        row = s.get(LearnerReviewCard, (thread_id, question_id))
         card = _row_to_card(row) if row else Card()
         try:
             card, _log = _scheduler.review_card(card, rating, _to_dt(now))
@@ -53,9 +53,11 @@ def update_card(question_id: str, domain: str | None, correct: bool,
             logger.exception("FSRS 调度失败（question_id=%s）", question_id)
             return
         if row is None:
-            row = ReviewCard(question_id=question_id, domain=domain,
-                             state=0, step=None, stability=0.0, difficulty=0.0,
-                             due=now, last_review=None, reps=0, lapses=0)
+            row = LearnerReviewCard(
+                thread_id=thread_id, question_id=question_id, domain=domain,
+                state=0, step=None, stability=0.0, difficulty=0.0,
+                due=now, last_review=None, reps=0, lapses=0,
+            )
             s.add(row)
         row.domain = domain or row.domain
         row.state = int(card.state)
@@ -69,27 +71,37 @@ def update_card(question_id: str, domain: str | None, correct: bool,
         s.commit()
 
 
-def due_rows(domain: str | None = None, limit: int = 50) -> list[ReviewCard]:
+def due_rows(
+    thread_id: str, domain: str | None = None, limit: int = 50,
+) -> list[LearnerReviewCard]:
     """到期复习卡（due <= now），按最久未复习优先。"""
     now = time.time()
     with db.session() as s:
-        stmt = (select(ReviewCard)
-                .where(ReviewCard.due <= now)
-                .order_by(ReviewCard.due.asc())
+        stmt = (select(LearnerReviewCard)
+                .where(LearnerReviewCard.thread_id == thread_id,
+                       LearnerReviewCard.due <= now)
+                .order_by(LearnerReviewCard.due.asc())
                 .limit(limit))
         if domain:
-            stmt = stmt.where(ReviewCard.domain == domain)
+            stmt = stmt.where(LearnerReviewCard.domain == domain)
         return list(s.scalars(stmt).all())
 
 
-def due_count(domain: str | None = None) -> int:
+def due_count(thread_id: str, domain: str | None = None) -> int:
     with db.session() as s:
-        stmt = select(func.count()).select_from(ReviewCard).where(ReviewCard.due <= time.time())
+        stmt = select(func.count()).select_from(LearnerReviewCard).where(
+            LearnerReviewCard.thread_id == thread_id,
+            LearnerReviewCard.due <= time.time(),
+        )
         if domain:
-            stmt = stmt.where(ReviewCard.domain == domain)
+            stmt = stmt.where(LearnerReviewCard.domain == domain)
         return s.scalar(stmt) or 0
 
 
-def card_count() -> int:
+def card_count(thread_id: str) -> int:
     with db.session() as s:
-        return s.scalar(select(func.count()).select_from(ReviewCard)) or 0
+        return s.scalar(
+            select(func.count()).select_from(LearnerReviewCard).where(
+                LearnerReviewCard.thread_id == thread_id
+            )
+        ) or 0

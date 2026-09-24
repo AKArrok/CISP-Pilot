@@ -48,14 +48,14 @@ async def generate_variants(cases: list[dict], per_domain: int) -> list[dict]:
     for case in cases:
         by_domain.setdefault(case["primary_domain"], []).append(case)
     sampled = []
-    for domain, items in sorted(by_domain.items()):
+    for _domain, items in sorted(by_domain.items()):
         sampled.extend(items[:per_domain])
 
     simple = get_simple_llm()
     out = []
     for case in sampled:
         prompt = "把下面这个问题改写成三种问法变体，保持考点与答案不变，只改问法。\n"
-        for key, desc in STYLES.items():
+        for _key, desc in STYLES.items():
             prompt += f"- {desc}\n"
         prompt += f"\n原问题: {case['question']}"
         try:

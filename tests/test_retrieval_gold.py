@@ -1,5 +1,8 @@
 """知识点级 retrieval gold 数据集的离线完整性测试。"""
 import json
+import os
+
+import pytest
 
 import config
 from tests.eval_retrieval_gold import GOLD_PATH, matches_evidence, validate_gold
@@ -12,6 +15,10 @@ def _load(path):
         return json.load(fp)
 
 
+@pytest.mark.skipif(
+    not os.path.exists(config.KB_CHUNKS_PATH),
+    reason="当前 checkout 不含真实课件切片资产",
+)
 def test_gold_has_balanced_domain_coverage_and_resolvable_evidence():
     summary = validate_gold(_load(GOLD_PATH), _load(config.KB_CHUNKS_PATH))
 
@@ -21,6 +28,10 @@ def test_gold_has_balanced_domain_coverage_and_resolvable_evidence():
     assert len(summary["query_types"]) >= 5
 
 
+@pytest.mark.skipif(
+    not os.path.exists(config.KB_CHUNKS_PATH),
+    reason="当前 checkout 不含真实课件切片资产",
+)
 def test_holdout_has_no_question_overlap_and_resolvable_evidence():
     gold = _load(GOLD_PATH)
     holdout = _load(HOLDOUT_PATH)

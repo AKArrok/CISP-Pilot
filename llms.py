@@ -1,9 +1,11 @@
 """LLM and embedding instances — OpenAI-compatible protocol layer (no Pinecone/Tavily/local models)."""
 import hashlib
+import httpx
 import json
 import logging
 import os
 import random
+import tempfile
 import threading
 import time
 from typing import List, Type, TypeVar
@@ -18,6 +20,33 @@ from openai import APIError, APITimeoutError, RateLimitError
 import config
 
 T = TypeVar("T", bound=BaseModel)
+
+def _write_json_atomically(path: str, payload) -> None:
+    """Write JSON via a unique sibling file; retry transient Windows replace locks."""
+    directory = os.path.dirname(path) or "."
+    os.makedirs(directory, exist_ok=True)
+    descriptor, tmp_path = tempfile.mkstemp(
+        prefix=f".{os.path.basename(path)}.",
+        suffix=".tmp",
+        dir=directory,
+    )
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as fp:
+            json.dump(payload, fp)
+        for attempt in range(4):
+            try:
+                os.replace(tmp_path, path)
+                return
+            except PermissionError:
+                if attempt == 3:
+                    raise
+                time.sleep(0.02 * (2 ** attempt))
+    finally:
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                logging.warning("无法清理缓存临时文件: %s", tmp_path)
 
 # ══════════════════════════════════════════════════════════════════════
 # LLM Factory
@@ -271,11 +300,8 @@ class DashScopeEmbeddings(Embeddings):
 
     def _save_cache(self) -> None:
         # 多进程并发下 last-write-wins：丢条目只是下次重新计费一次，不影响正确性。
-        tmp_path = config.EMBEDDING_CACHE_PATH + ".tmp"
-        os.makedirs(os.path.dirname(config.EMBEDDING_CACHE_PATH), exist_ok=True)
-        with open(tmp_path, "w", encoding="utf-8") as fp:
-            json.dump(self._cache, fp)
-        os.replace(tmp_path, config.EMBEDDING_CACHE_PATH)
+        _write_json_atomically(config.EMBEDDING_CACHE_PATH, self._cache)
+
 
     @property
     def active_model(self) -> str:
@@ -369,7 +395,6 @@ class DashScopeReranker:
             )
         if not base_url:
             raise EnvironmentError("DASHSCOPE_RERANK_BASE_URL is required")
-        import httpx
 
         self.model = model
         self._client = httpx.Client(timeout=30.0)
@@ -407,11 +432,8 @@ class DashScopeReranker:
 
     def _save_cache(self) -> None:
         # 多进程并发下 last-write-wins：丢条目只是下次多计费一次，不影响正确性。
-        tmp_path = config.RERANK_CACHE_PATH + ".tmp"
-        os.makedirs(os.path.dirname(config.RERANK_CACHE_PATH), exist_ok=True)
-        with open(tmp_path, "w", encoding="utf-8") as fp:
-            json.dump(self._cache, fp)
-        os.replace(tmp_path, config.RERANK_CACHE_PATH)
+        _write_json_atomically(config.RERANK_CACHE_PATH, self._cache)
+
 
     @property
     def model_identity(self) -> str:

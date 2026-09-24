@@ -83,3 +83,25 @@ def test_cache_key_differs_by_model(embedder):
     assert other_calls  # 换模型必须缓存未命中重新请求
     assert vector == [9.0, 9.0, 9.0, 9.0]
     assert len(calls) == 1
+
+def test_transient_replace_lock_is_retried(embedder, monkeypatch):
+    import os
+    import llms
+
+    emb, _, cache_path = embedder
+    real_replace = os.replace
+    attempts = []
+
+    def flaky_replace(source, destination):
+        attempts.append((source, destination))
+        if len(attempts) < 3:
+            raise PermissionError("simulated Windows file lock")
+        real_replace(source, destination)
+
+    monkeypatch.setattr(llms.os, "replace", flaky_replace)
+
+    emb.embed_query("需要重试的缓存")
+
+    assert len(attempts) == 3
+    with open(cache_path, encoding="utf-8") as fp:
+        assert len(json.load(fp)) == 1

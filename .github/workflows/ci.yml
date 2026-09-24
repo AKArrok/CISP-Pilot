@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -14,23 +15,21 @@ jobs:
         with:
           python-version: "3.13"
 
-      # 静态检查（pyflakes/bugbear/async 反模式）
       - name: Lint
         run: |
           pip install ruff
           ruff check .
 
-      # 单元测试（fixtures 层不依赖本地 data/ 与 API key）
-      - name: Install test deps
-        run: pip install python-dotenv pydantic jieba
+      # 不安装 sentence-transformers/torch：离线测试不会加载本地模型。
+      - name: Install offline test dependencies
+        run: >-
+          pip install pytest httpx python-dotenv pydantic jieba numpy scipy
+          scikit-learn sqlalchemy alembic pymysql fastapi fsrs langgraph pymupdf
+          langchain-openai
 
-      - name: Unit tests
-        run: python -m pytest tests/test_parsers.py tests/test_grader.py tests/test_memory.py -q
-
-      # 模块可导入冒烟（缺数据/缺 key 时的失败要给出明确信息而不是 ImportError）
-      - name: Import smoke
-        run: |
-          python -c "import config; import domains"
-          python -c "from data_ingest import manifest"
-          python -c "from quiz import store, stats"
-          python -c "from agents import memory"
+      - name: Offline regression
+        env:
+          CISP_DB_PATH: ${{ runner.temp }}/cisp-ci.db
+          DATABASE_URL: ""
+          MYSQL_PASSWORD: ""
+        run: python -B tests/run_ci_suite.py

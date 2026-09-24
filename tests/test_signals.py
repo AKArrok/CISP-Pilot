@@ -20,6 +20,11 @@ def tmp_db(tmp_path):
     engine.dispose()
 
 
+class _DomainBank:
+    def domains(self):
+        return ["业务连续性", "信息安全管理"]
+
+
 def _seed_signals():
     from storage import repos
 
@@ -32,9 +37,53 @@ def test_signal_rows_aggregate(tmp_db):
     _seed_signals()
     from storage import repos
 
-    rows = {d: (n, last) for d, n, last in repos.signal_rows()}
+    rows = {d: (n, last) for d, n, last in repos.signal_rows("t1")}
     assert rows["业务连续性"][0] == 3
     assert rows["业务连续性"][1] > 0
+
+
+def test_attempts_and_signals_are_isolated_by_thread(tmp_db):
+    from quiz import stats, store
+    from storage import repos
+
+    for index in range(3):
+        store.record_attempt(
+            "learner-a", f"qa-{index}", "test", "业务连续性",
+            "题目", "A", False,
+        )
+        store.record_attempt(
+            "learner-b", f"qb-{index}", "test", "业务连续性",
+            "题目", "B", True,
+        )
+    repos.record_question_signal("learner-a", "RTO？", "业务连续性", "knowledge")
+
+    profile_a = stats.domain_profiles("learner-a")["业务连续性"]
+    profile_b = stats.domain_profiles("learner-b")["业务连续性"]
+    assert profile_a["correct"] == 0 and profile_a["weak"] is True
+    assert profile_b["correct"] == 3 and profile_b["weak"] is False
+    assert profile_a["asks"] == 1
+    assert profile_b["asks"] == 0
+
+
+def test_summary_exposes_thread_scoped_knowledge_point_profile(tmp_db):
+    from quiz.stats import summary
+    from storage import db, repos
+    from storage.models import KnowledgePoint
+
+    with db.session() as session:
+        session.add(KnowledgePoint(
+            id="kp-profile", domain="信息安全管理", name="风险处理",
+            status="active", evidence_count=1, question_count=1,
+        ))
+        session.commit()
+    repos.update_learner_knowledge_states("learner-kp", ["kp-profile"], False)
+    repos.update_learner_knowledge_states("learner-kp", ["kp-profile"], False)
+
+    output = summary("learner-kp")
+    assert output["knowledge_points"][0]["name"] == "风险处理"
+    assert output["knowledge_points"][0]["weak"] is True
+    assert output["weak_knowledge_points"] == ["kp-profile"]
+    assert summary("other-learner")["knowledge_points"] == []
 
 
 def test_profiles_fuse_ask_signal(tmp_db, monkeypatch):
@@ -42,8 +91,8 @@ def test_profiles_fuse_ask_signal(tmp_db, monkeypatch):
     _seed_signals()
     import quiz.stats as stats
 
-    monkeypatch.setattr(stats.repos, "attempt_rows", lambda: [])  # 无答题记录
-    profiles = stats.domain_profiles()
+    monkeypatch.setattr(stats.repos, "attempt_rows", lambda _thread_id: [])
+    profiles = stats.domain_profiles("t1")
     p = profiles["业务连续性"]
     assert p["attempts"] == 0
     assert p["asks"] == 3
@@ -54,14 +103,14 @@ def test_profiles_fuse_ask_signal(tmp_db, monkeypatch):
 def test_ask_signal_boosts_weak_mode_weight(tmp_db, monkeypatch):
     """高频提问未验证的域，在 weak 抽题权重里相对其他无记录域有加成。"""
     _seed_signals()
-    from quiz.selector import QuestionBank, domain_weights
+    from quiz.selector import domain_weights
 
     # attempt_rows 置空，让所有域都是"无记录"基线
     import quiz.stats as stats
-    monkeypatch.setattr(stats.repos, "attempt_rows", lambda: [])
+    monkeypatch.setattr(stats.repos, "attempt_rows", lambda _thread_id: [])
 
-    bank = QuestionBank.get()
-    weights = domain_weights(bank, None)
+    bank = _DomainBank()
+    weights = domain_weights(bank, None, thread_id="t1")
     # 业务连续性因提问信号 ×1.5，其他无记录域保持 0.5 → 归一化后比值仍 1.5
     others = [w for d, w in weights.items()
               if d != "业务连续性" and d in stats.config_domains()]
@@ -77,10 +126,10 @@ def test_ask_signal_ignored_below_threshold(tmp_db, monkeypatch):
 
     repos.record_question_signal("t1", "什么是 RTO？", "业务连续性", "knowledge")
     import quiz.stats as stats
-    monkeypatch.setattr(stats.repos, "attempt_rows", lambda: [])
+    monkeypatch.setattr(stats.repos, "attempt_rows", lambda _thread_id: [])
 
-    from quiz.selector import QuestionBank, domain_weights
-    weights = domain_weights(QuestionBank.get(), None)
+    from quiz.selector import domain_weights
+    weights = domain_weights(_DomainBank(), None, thread_id="t1")
     others = [w for d, w in weights.items()
               if d != "业务连续性" and d in stats.config_domains()]
     ratio = weights["业务连续性"] / (sum(others) / len(others))

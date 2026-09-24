@@ -14,7 +14,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import config
-from quiz.store import STATS_CACHE_KEY
+from quiz.store import stats_cache_key
 from storage import cache, repos
 
 
@@ -47,7 +47,7 @@ def _elo_expected(rating: float, opponent: float) -> float:
     return 1.0 / (1.0 + 10.0 ** (-(rating - opponent) / 400.0))
 
 
-def domain_profiles(now: float | None = None) -> dict[str, dict]:
+def domain_profiles(thread_id: str, now: float | None = None) -> dict[str, dict]:
     """{域: 画像}，由 attempts 实时聚合（融合问答侧提问信号）。
 
     画像含 Beta 后验参数、Elo、遗忘曲线指标；asks 为该域的提问次数
@@ -56,9 +56,9 @@ def domain_profiles(now: float | None = None) -> dict[str, dict]:
     now = now if now is not None else time.time()
     # rows: (domain, correct, answered_at) 按时间排序
     rows = sorted(
-        repos.attempt_rows(), key=lambda r: r[2]  # answered_at
+        repos.attempt_rows(thread_id), key=lambda r: r[2]  # answered_at
     )
-    ask_rows = {d: (n, last) for d, n, last in repos.signal_rows()}
+    ask_rows = {d: (n, last) for d, n, last in repos.signal_rows(thread_id)}
     by_domain: dict[str, dict] = {}
 
     for domain, correct, answered_at in rows:
@@ -85,7 +85,7 @@ def domain_profiles(now: float | None = None) -> dict[str, dict]:
     profiles: dict[str, dict] = {}
     # 只有提问、还没答过题的域也建画像（attempts=0，供"高频提问未验证"提示与抽题加权）
     ask_only = {d: v for d, v in ask_rows.items() if d not in by_domain and d in set(config_domains())}
-    for d, (n, _last) in ask_only.items():
+    for d, (_n, _last) in ask_only.items():
         by_domain[d] = {
             "attempts": 0, "correct": 0, "wrong": 0,
             "last_answered_at": 0.0, "streak": 0, "max_streak": 0,
@@ -123,24 +123,63 @@ def config_domains() -> list[str]:
     return DOMAINS
 
 
-def weak_domains() -> list[str]:
+def weak_domains(thread_id: str) -> list[str]:
     return sorted(
-        d for d, p in domain_profiles().items() if p["weak"]
+        d for d, p in domain_profiles(thread_id).items() if p["weak"]
     )
 
 
-def review_due_domains() -> list[str]:
+def review_due_domains(thread_id: str) -> list[str]:
     return sorted(
-        d for d, p in domain_profiles().items()
+        d for d, p in domain_profiles(thread_id).items()
         if not p["insufficient"] and p["due_for_review"]
     )
 
 
-def summary() -> dict:
-    cached = cache.get_json(STATS_CACHE_KEY)
+def _knowledge_point_profiles(thread_id: str) -> list[dict]:
+    states = repos.learner_knowledge_states(thread_id)
+    points = {
+        point["id"]: point
+        for point in repos.load_knowledge_points([
+            state["knowledge_point_id"] for state in states
+        ])
+    } if states else {}
+    rows = []
+    for state in states:
+        point = points.get(state["knowledge_point_id"], {})
+        a, b = state["beta_a"], state["beta_b"]
+        p_below = float(_beta_p_below(a, b, config.MASTERY_WEAK_THRESHOLD))
+        rows.append({
+            "id": state["knowledge_point_id"],
+            "name": point.get("name", state["knowledge_point_id"]),
+            "domain": point.get("domain"),
+            "attempts": state["attempts"],
+            "correct": state["correct"],
+            "mastery": round(_beta_mean(a, b), 4),
+            "confidence": round(float(_confidence(a, b)), 4),
+            "p_below_threshold": round(p_below, 4),
+            "weak": bool(
+                state["attempts"] >= 2 and p_below > config.MASTERY_WEAK_PROB
+            ),
+            "insufficient": state["attempts"] < 2,
+            "last_seen": state["last_seen"],
+            # learner state 只能由 confirmed 归因产生；字段显式化，避免把
+            # 掌握度 confidence 与题目归因可信度混在一起。
+            "attribution_status": "confirmed",
+            "attribution_evidence_count": None,
+            "attribution_reason": "知识点归因已确认",
+        })
+    return sorted(rows, key=lambda row: (
+        not row["weak"], row["mastery"], -row["attempts"], row["name"]
+    ))
+
+
+def summary(thread_id: str) -> dict:
+    cache_key = stats_cache_key(thread_id)
+    cached = cache.get_json(cache_key)
     if cached is not None:
         return cached
-    profiles = domain_profiles()
+    profiles = domain_profiles(thread_id)
     domains_detail = [
         {
             "domain": d,
@@ -162,18 +201,60 @@ def summary() -> dict:
     ]
     total_attempts = sum(p["attempts"] for p in profiles.values())
     total_correct = sum(p["correct"] for p in profiles.values())
-    weak = weak_domains()
+    weak = weak_domains(thread_id)
+    point_profiles = _knowledge_point_profiles(thread_id)
+    system_attribution_rows = repos.question_attribution_rows()
+    attribution_rows = repos.apply_thread_attribution_corrections(
+        [dict(row) for row in system_attribution_rows], thread_id,
+    )
+    attribution_counts = {status: 0 for status in ("confirmed", "probable", "unverified")}
+    for row in system_attribution_rows:
+        status = row["attribution_status"]
+        if status in attribution_counts:
+            attribution_counts[status] += 1
+    try:
+        pending_calibrations = repos.pending_calibrations(thread_id)
+        correction_counts = repos.attribution_correction_channel_counts(thread_id)
+        calibration_counts = repos.calibration_status_counts(thread_id)
+    except Exception:
+        pending_calibrations = []
+        correction_counts = {
+            "events": 0,
+            "profile_replays": 0,
+            "calibration_replacements": 0,
+            "calibrations_retracted": 0,
+        }
+        calibration_counts = {
+            "pending": 0, "confirmed": 0, "retracted": 0, "inconclusive": 0,
+        }
     try:
         from quiz import review
-        due_cards = review.due_count()
+        due_cards = review.due_count(thread_id)
     except Exception:
         due_cards = 0
     result = {
+        "profile_scope": {
+            "type": "thread",
+            "thread_id": thread_id,
+            "legacy_global_history_included": False,
+        },
         "total_attempts": total_attempts,
         "total_accuracy": round(total_correct / total_attempts, 4) if total_attempts else None,
         "domains": domains_detail,
+        "knowledge_points": point_profiles,
+        "attributions": attribution_rows,
+        "attribution_status_counts": attribution_counts,
+        "attribution_evidence_channels": {
+            "system_candidates": attribution_counts,
+            "user_corrections": correction_counts,
+            "calibration_outcomes": calibration_counts,
+        },
+        "pending_calibrations": pending_calibrations,
         "weak_domains": weak,
-        "review_due_domains": review_due_domains(),
+        "weak_knowledge_points": [
+            point["id"] for point in point_profiles if point["weak"]
+        ],
+        "review_due_domains": review_due_domains(thread_id),
         "ask_unverified_domains": sorted(
             d for d, p in profiles.items() if p["ask_unverified"]),
         "review_due_cards": due_cards,
@@ -181,12 +262,18 @@ def summary() -> dict:
             "type": "beta_elo_forgetting_fsrs",
             "half_life_days": config.MASTERY_HALF_LIFE_DAYS,
             "weak_prob": config.MASTERY_WEAK_PROB,
+            "knowledge_point_evidence": "primary_tags_only",
+            "attribution_status_meaning": {
+                "confirmed": "题目到知识点证据足够强，可进入长期画像",
+                "probable": "推测归因，仅进入待校准队列，不改变长期画像",
+                "unverified": "证据冲突/不足，仅保留审计，不改变长期画像",
+            },
         },
     }
-    cache.set_json(STATS_CACHE_KEY, result, ttl=config.STATS_CACHE_TTL)
+    cache.set_json(cache_key, result, ttl=config.STATS_CACHE_TTL)
     return result
 
 
 if __name__ == "__main__":
     import json
-    print(json.dumps(summary(), ensure_ascii=False, indent=1))
+    print(json.dumps(summary("default"), ensure_ascii=False, indent=1))

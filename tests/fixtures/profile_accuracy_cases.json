@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "dataset_role": "人工审校覆盖后的校准集回归；不得用于声称新题泛化准确率",
+  "sampling_seed": 20260912,
+  "attempt_budgets": [4, 8, 12, 20],
+  "simulation_seeds": 200,
+  "weak_max": 0.45,
+  "strong_min": 0.75,
+  "quality_gates": {
+    "inference_12_f1_min": 0.90,
+    "inference_12_exact_profile_min": 0.75,
+    "primary_tag_accuracy_min": 0.85,
+    "parse_contamination_max": 0.05
+  },
+  "personas": [
+    {
+      "id": "dual_technical_weakness",
+      "abilities": {
+        "业务连续性": 0.85,
+        "信息安全保障": 0.65,
+        "信息安全支撑技术": 0.25,
+        "信息安全监管": 0.80,
+        "信息安全管理": 0.65,
+        "信息安全评估": 0.65,
+        "安全工程与运营": 0.65,
+        "物理与网络通信安全": 0.35,
+        "计算环境安全": 0.85,
+        "软件安全开发": 0.65
+      }
+    },
+    {
+      "id": "uniformly_strong",
+      "abilities": {
+        "业务连续性": 0.80,
+        "信息安全保障": 0.80,
+        "信息安全支撑技术": 0.80,
+        "信息安全监管": 0.80,
+        "信息安全管理": 0.80,
+        "信息安全评估": 0.80,
+        "安全工程与运营": 0.80,
+        "物理与网络通信安全": 0.80,
+        "计算环境安全": 0.80,
+        "软件安全开发": 0.80
+      }
+    },
+    {
+      "id": "management_and_process_weakness",
+      "abilities": {
+        "业务连续性": 0.40,
+        "信息安全保障": 0.75,
+        "信息安全支撑技术": 0.75,
+        "信息安全监管": 0.75,
+        "信息安全管理": 0.30,
+        "信息安全评估": 0.40,
+        "安全工程与运营": 0.75,
+        "物理与网络通信安全": 0.75,
+        "计算环境安全": 0.75,
+        "软件安全开发": 0.75
+      }
+    },
+    {
+      "id": "single_severe_weakness",
+      "abilities": {
+        "业务连续性": 0.90,
+        "信息安全保障": 0.90,
+        "信息安全支撑技术": 0.90,
+        "信息安全监管": 0.90,
+        "信息安全管理": 0.90,
+        "信息安全评估": 0.90,
+        "安全工程与运营": 0.10,
+        "物理与网络通信安全": 0.90,
+        "计算环境安全": 0.90,
+        "软件安全开发": 0.90
+      }
+    }
+  ],
+  "knowledge_tag_cases": [
+    {"question_id": "51CTO_一套_80", "predicted": "灾难恢复策略实现", "acceptable": ["灾难恢复策略实现"], "scorable": true},
+    {"question_id": "700题_b1_83", "predicted": "灾难恢复策略实现", "acceptable": ["灾难恢复策略实现"], "scorable": true},
+    {"question_id": "700题_b1_378", "predicted": "业务连续性管理基础", "acceptable": ["业务连续性管理基础"], "scorable": true},
+    {"question_id": "700题_b2_81", "predicted": "业务影响分析", "acceptable": ["业务影响分析"], "scorable": true},
+
+    {"question_id": "51CTO_一套_1", "predicted": "信息安全保障基础", "acceptable": ["信息安全保障基础"], "scorable": true},
+    {"question_id": "700题_b2_133", "predicted": "信息安全保障总体要求", "acceptable": ["信息安全保障总体要求"], "scorable": true},
+    {"question_id": "700题_b1_339", "predicted": "信息保障技术框架（IATF）", "acceptable": ["信息保障技术框架（IATF）"], "scorable": true},
+    {"question_id": "51CTO_三套_3", "predicted": "信息保障技术框架（IATF）", "acceptable": ["信息保障技术框架（IATF）"], "scorable": true},
+
+    {"question_id": "51CTO_五套_60", "predicted": "PKI基础", "acceptable": ["PKI基础"], "scorable": true},
+    {"question_id": "51CTO_二套_17", "predicted": "非对称密码算法", "acceptable": ["非对称密码算法"], "scorable": true},
+    {"question_id": "700题_b1_545", "predicted": "非对称密码算法", "acceptable": ["非对称密码算法"], "scorable": true},
+    {"question_id": "700题_b1_5", "predicted": "密码系统的安全性", "acceptable": ["密码系统的安全性"], "scorable": true},
+
+    {"question_id": "700题_b2_67", "predicted": "全国信息安全标准化技术委员会", "acceptable": ["全国信息安全标准化技术委员会"], "scorable": true},
+    {"question_id": "51CTO_二套_94", "predicted": "信息安全标准化", "acceptable": ["信息安全标准化"], "scorable": true},
+    {"question_id": "700题_b1_335", "predicted": "等级保护工作流程", "acceptable": ["建设整改", "等级保护工作流程"], "scorable": true},
+    {"question_id": "700题_b2_190", "predicted": "国家网络应急体系", "acceptable": ["国家网络应急体系"], "scorable": true},
+
+    {"question_id": "700题_b2_155", "predicted": "风险评估", "acceptable": ["风险评估", "风险评估准备"], "scorable": true},
+    {"question_id": "700题_b2_152", "predicted": "风险评估", "acceptable": ["风险评估", "风险评估准备"], "scorable": true},
+    {"question_id": "51CTO_一套_68", "predicted": "风险评估", "acceptable": ["风险评估"], "scorable": true},
+    {"question_id": "700题_b2_125", "predicted": "ISMS的PDCA模型", "acceptable": ["ISMS的PDCA模型"], "scorable": true},
+
+    {"question_id": "700题_b2_148", "predicted": "自评估与检查评估", "acceptable": ["评估流程", "自评估与检查评估"], "scorable": true},
+    {"question_id": "51CTO_四套_46", "predicted": "风险分析", "acceptable": ["风险分析"], "scorable": true},
+    {"question_id": "700题_b2_147", "predicted": "风险评估工具", "acceptable": ["风险评估工具"], "scorable": true},
+    {"question_id": "700题_b2_217", "predicted": "资产识别", "acceptable": ["资产识别"], "scorable": true},
+
+    {"question_id": "51CTO_二套_65", "predicted": "事件管理", "acceptable": ["事件管理", "信息安全应急响应"], "scorable": true},
+    {"question_id": "700题_b1_292", "predicted": "系统安全工程能力成熟度模型", "acceptable": ["系统安全工程能力成熟度模型"], "scorable": true},
+    {"question_id": "700题_b2_73", "predicted": "事件管理", "acceptable": ["事件管理", "信息安全应急响应"], "scorable": true},
+    {"question_id": "700题_b2_202", "predicted": "SSE-CMM工程过程", "acceptable": ["SSE-CMM工程过程", "系统安全工程"], "scorable": true},
+
+    {"question_id": "51CTO_六套_60", "predicted": "DNS安全", "acceptable": ["DNS安全"], "scorable": true},
+    {"question_id": "51CTO_四套_70", "predicted": "TCP/IP网络接口层", "acceptable": ["TCP/IP网络接口层"], "scorable": true},
+    {"question_id": "700题_b2_39", "predicted": "TCP/IP数据封装", "acceptable": ["TCP/IP数据封装"], "scorable": true},
+    {"question_id": "51CTO_六套_61", "predicted": "IP欺骗", "acceptable": ["IP欺骗"], "scorable": true},
+
+    {"question_id": "51CTO_三套_31", "predicted": "访问控制", "acceptable": ["访问控制"], "scorable": true},
+    {"question_id": "700题_b1_408", "predicted": "访问控制", "acceptable": ["访问控制", "访问许可"], "scorable": true},
+    {"question_id": "51CTO_二套_9", "predicted": "访问控制", "acceptable": ["访问控制"], "scorable": true},
+    {"question_id": "700题_b1_38", "predicted": "数据库访问控制", "acceptable": ["访问控制", "数据库访问控制"], "scorable": true},
+
+    {"question_id": "700题_b1_60", "predicted": "SDL", "acceptable": ["SDL"], "scorable": true},
+    {"question_id": "51CTO_三套_55", "predicted": "安全需求分析", "acceptable": ["安全需求分析"], "scorable": true},
+    {"question_id": "51CTO_五套_44", "predicted": "降低攻击面策略", "acceptable": ["降低攻击面策略"], "scorable": true},
+    {"question_id": "700题_b1_171", "predicted": "SDL", "acceptable": ["安全需求分析", "SDL"], "scorable": true}
+  ]
+}

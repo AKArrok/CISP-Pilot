@@ -80,5 +80,5 @@ def test_fixed_chunks_have_char_overlap_and_no_parent_hierarchy():
 
     assert len(chunks) >= 5
     assert all(c["parent_id"] == c["id"] for c in chunks)  # 自身即父，检索不去重
-    for a, b in zip(chunks, chunks[1:]):
+    for a, b in zip(chunks, chunks[1:], strict=False):
         assert a["text"][-15:] in b["text"] or b["text"][-15:] in a["text"]  # 有字符重叠

@@ -1,6 +1,8 @@
 """记忆层单测 — 独立临时向量文件与缓存，不碰真实数据。"""
 import sys
 
+import pytest
+
 sys.path.insert(0, ".")
 
 
@@ -61,3 +63,20 @@ def test_search_long_memory_returns_thread_match(tmp_path, monkeypatch):
     hits = mem.search_long_memory("RTO", thread_id="t1", top_k=1)
     assert hits
     assert hits[0]["thread_id"] == "t1"
+
+
+def test_dimension_change_preserves_existing_memory(tmp_path, monkeypatch):
+    mem = _fresh_memory(tmp_path, monkeypatch)
+    embeddings = iter([
+        ([1.0, 0.0, 0.0], "model-v1"),
+        ([1.0, 0.0], "model-v2"),
+    ])
+    monkeypatch.setattr(mem, "_embed_text", lambda _text: next(embeddings))
+
+    mem.save_round("existing-thread", "旧问题", "旧回答", "knowledge")
+    with pytest.raises(ValueError, match="维度不一致"):
+        mem.save_round("new-thread", "新问题", "新回答", "knowledge")
+
+    history = mem.load_history("existing-thread")
+    assert [item["content"] for item in history] == ["旧问题", "旧回答"]
+    assert mem.load_history("new-thread") == []

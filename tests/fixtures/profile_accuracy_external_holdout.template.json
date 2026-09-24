@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "dataset_role": "外部来源、双人盲审、从未用于开发的最终验收集",
+  "source": {
+    "kind": "external",
+    "name": "",
+    "url": "",
+    "license_or_permission": "",
+    "permission_evidence_url": "",
+    "content_sha256": "",
+    "acquired_at": ""
+  },
+  "reviewers": [
+    {"reviewer_id":"","reviewed_at":"","blinded_to_predictions":true,"blinded_to_other_reviewer":true,"did_not_access_development_sets":true},
+    {"reviewer_id":"","reviewed_at":"","blinded_to_predictions":true,"blinded_to_other_reviewer":true,"did_not_access_development_sets":true}
+  ],
+  "adjudication": {"adjudicator_id":"","adjudicated_at":"","method":""},
+  "frozen_cases_sha256": "",
+  "quality_gates": {
+    "primary_tag_coverage_min": 0.80,
+    "primary_tag_accuracy_min": 0.80,
+    "review_label_overlap_min": 0.80
+  },
+  "questions": []
+}

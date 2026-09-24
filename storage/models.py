@@ -58,6 +58,34 @@ class Attempt(Base):
     answered_at: Mapped[float] = mapped_column(Float)
 
 
+class LearnerAttempt(Base):
+    """Thread-scoped answer evidence used by learner profiles."""
+    __tablename__ = "learner_attempts"
+
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),
+                                    primary_key=True, autoincrement=True)
+    thread_id: Mapped[str] = mapped_column(String(64), index=True)
+    question_id: Mapped[str] = mapped_column(String(64), index=True)
+    question_source: Mapped[str] = mapped_column(String(64))
+    domain: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
+    stem: Mapped[str | None] = mapped_column(Text, nullable=True)
+    choice: Mapped[str] = mapped_column(String(8))
+    correct: Mapped[bool] = mapped_column(Boolean)
+    answered_at: Mapped[float] = mapped_column(Float)
+    attribution_status: Mapped[str] = mapped_column(
+        String(16), default="confirmed", server_default="confirmed", index=True
+    )
+    profile_applied: Mapped[bool] = mapped_column(
+        Boolean, default=True, server_default="1", index=True
+    )
+    calibration_id: Mapped[int | None] = mapped_column(
+        BigInteger().with_variant(Integer, "sqlite"), nullable=True, index=True
+    )
+    attribution_point_id: Mapped[str | None] = mapped_column(
+        String(64), nullable=True, index=True
+    )
+
+
 class ReviewCard(Base):
     """题目级 FSRS 复习卡（每道答过的题一张，答错/答对驱动 DSR 状态更新）。
 
@@ -77,6 +105,23 @@ class ReviewCard(Base):
     lapses: Mapped[int] = mapped_column(Integer, default=0)
 
 
+class LearnerReviewCard(Base):
+    """Thread-scoped FSRS review card."""
+    __tablename__ = "learner_review_cards"
+
+    thread_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    question_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    domain: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
+    state: Mapped[int] = mapped_column(Integer, default=0)
+    step: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    stability: Mapped[float] = mapped_column(Float, default=0.0)
+    difficulty: Mapped[float] = mapped_column(Float, default=0.0)
+    due: Mapped[float] = mapped_column(Float, index=True)
+    last_review: Mapped[float | None] = mapped_column(Float, nullable=True)
+    reps: Mapped[int] = mapped_column(Integer, default=0)
+    lapses: Mapped[int] = mapped_column(Integer, default=0)
+
+
 class QuestionSignal(Base):
     """问答侧薄弱信号：用户在知识问答中提问的知识域（画像融合用）。
 
@@ -91,6 +136,141 @@ class QuestionSignal(Base):
     domain: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
     intent: Mapped[str | None] = mapped_column(String(32), nullable=True)
     created_at: Mapped[float] = mapped_column(Float)
+
+
+class DiagnosticSession(Base):
+    """Recoverable onboarding diagnostic session."""
+    __tablename__ = "diagnostic_sessions"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    thread_id: Mapped[str] = mapped_column(String(64), index=True)
+    status: Mapped[str] = mapped_column(String(16), default="active", index=True)
+    selected_domains: Mapped[str] = mapped_column(Text, default="[]")
+    self_report: Mapped[str] = mapped_column(Text, default="{}")
+    question_ids: Mapped[str] = mapped_column(Text, default="[]")
+    responses: Mapped[str] = mapped_column(Text, default="[]")
+    max_questions: Mapped[int] = mapped_column(Integer, default=12)
+    created_at: Mapped[float] = mapped_column(Float)
+    updated_at: Mapped[float] = mapped_column(Float)
+
+
+class DiagnosticEvent(Base):
+    """Auditable diagnostic event."""
+    __tablename__ = "diagnostic_events"
+
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),
+                                    primary_key=True, autoincrement=True)
+    session_id: Mapped[str] = mapped_column(String(36), index=True)
+    event_type: Mapped[str] = mapped_column(String(32), index=True)
+    payload: Mapped[str] = mapped_column(Text, default="{}")
+    created_at: Mapped[float] = mapped_column(Float)
+
+
+class KnowledgePoint(Base):
+    """Reviewable knowledge-point candidate."""
+    __tablename__ = "knowledge_points"
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    domain: Mapped[str] = mapped_column(String(32), index=True)
+    name: Mapped[str] = mapped_column(String(200), index=True)
+    parent_name: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    evidence_count: Mapped[int] = mapped_column(Integer, default=0)
+    question_count: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(16), default="candidate", index=True)
+
+
+class QuestionKnowledgePoint(Base):
+    """Many-to-many question and knowledge-point tag."""
+    __tablename__ = "question_knowledge_points"
+
+    question_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    knowledge_point_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    confidence: Mapped[float] = mapped_column(Float, default=0.0)
+    is_primary: Mapped[bool] = mapped_column(Boolean, default=False)
+    tag_source: Mapped[str] = mapped_column(String(16), default="heuristic")
+
+
+class QuestionAttribution(Base):
+    """Conservative current attribution snapshot."""
+    __tablename__ = "question_attributions"
+
+    question_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    candidate_point_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    candidate_domain: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
+    attribution_status: Mapped[str] = mapped_column(String(16), index=True)
+    agreement_count: Mapped[int] = mapped_column(Integer, default=0)
+    evidence_json: Mapped[str] = mapped_column(Text, default="{}")
+    reason: Mapped[str] = mapped_column(Text, default="")
+    classifier_version: Mapped[str] = mapped_column(String(64), default="")
+    created_at: Mapped[float] = mapped_column(Float)
+    updated_at: Mapped[float] = mapped_column(Float)
+
+
+class QuestionAttributionEvent(Base):
+    """Immutable attribution write event."""
+    __tablename__ = "question_attribution_events"
+
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),
+                                    primary_key=True, autoincrement=True)
+    question_id: Mapped[str] = mapped_column(String(64), index=True)
+    attribution_status: Mapped[str] = mapped_column(String(16), index=True)
+    payload: Mapped[str] = mapped_column(Text, default="{}")
+    classifier_version: Mapped[str] = mapped_column(String(64), default="")
+    created_at: Mapped[float] = mapped_column(Float)
+
+
+class QuestionAttributionCorrection(Base):
+    """Append-only, thread-scoped user correction event."""
+    __tablename__ = "question_attribution_corrections"
+
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),
+                                    primary_key=True, autoincrement=True)
+    thread_id: Mapped[str] = mapped_column(String(64), index=True)
+    question_id: Mapped[str] = mapped_column(String(64), index=True)
+    corrected_point_id: Mapped[str] = mapped_column(String(64), index=True)
+    corrected_domain: Mapped[str] = mapped_column(String(32), index=True)
+    previous_point_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    previous_status: Mapped[str] = mapped_column(String(16))
+    reason: Mapped[str] = mapped_column(Text, default="")
+    replayed_attempts: Mapped[int] = mapped_column(Integer, default=0)
+    retracted_calibrations: Mapped[int] = mapped_column(Integer, default=0)
+    replacement_calibration_id: Mapped[int | None] = mapped_column(
+        BigInteger().with_variant(Integer, "sqlite"), nullable=True
+    )
+    created_at: Mapped[float] = mapped_column(Float)
+
+
+class CalibrationHypothesis(Base):
+    """Thread-scoped calibration queue for probable attributions."""
+    __tablename__ = "calibration_hypotheses"
+
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),
+                                    primary_key=True, autoincrement=True)
+    thread_id: Mapped[str] = mapped_column(String(64), index=True)
+    knowledge_point_id: Mapped[str] = mapped_column(String(64), index=True)
+    trigger_question_id: Mapped[str] = mapped_column(String(64))
+    trigger_correct: Mapped[bool] = mapped_column(Boolean)
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    evidence_json: Mapped[str] = mapped_column(Text, default="[]")
+    calibration_reason: Mapped[str] = mapped_column(Text, default="")
+    presentation_count: Mapped[int] = mapped_column(Integer, default=0)
+    last_presented_at: Mapped[float | None] = mapped_column(Float, nullable=True)
+    created_at: Mapped[float] = mapped_column(Float)
+    updated_at: Mapped[float] = mapped_column(Float)
+
+
+class LearnerKnowledgeState(Base):
+    """Thread-scoped knowledge mastery snapshot."""
+    __tablename__ = "learner_knowledge_states"
+
+    thread_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    knowledge_point_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    beta_a: Mapped[float] = mapped_column(Float, default=1.0)
+    beta_b: Mapped[float] = mapped_column(Float, default=1.0)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    correct: Mapped[int] = mapped_column(Integer, default=0)
+    last_seen: Mapped[float] = mapped_column(Float)
 
 
 class Conversation(Base):

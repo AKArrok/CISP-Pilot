@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source": {
+    "kind": "external",
+    "name": "",
+    "url": "",
+    "license_or_permission": "",
+    "permission_evidence_url": "",
+    "content_sha256": "",
+    "acquired_at": ""
+  },
+  "questions": []
+}

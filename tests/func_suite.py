@@ -60,14 +60,19 @@ done = [e for e in e if e.get("type") == "done"]
 check("同问题第二线程命中缓存", bool(done) and done[0].get("cached") is True, f"tokens={t}")
 
 print("── A3 刷题闭环 ──")
-q1 = post_json("/quiz/next", {"mode": "random"})
+quiz_thread = "func-quiz"
+q1 = post_json("/quiz/next", {"mode": "random", "thread_id": quiz_thread})
 check("抽题含题干选项且无答案泄露", "answer" not in q1 and len(q1.get("options", {})) >= 2, q1["id"])
-r1 = post_json("/quiz/answer", {"question_id": q1["id"], "choice": "A"})
+r1 = post_json("/quiz/answer", {
+    "question_id": q1["id"], "choice": "A", "thread_id": quiz_thread,
+})
 check("判分返回对错+解析+关联课件", set(r1) >= {"correct", "answer", "analysis", "related_chunks"},
       f"correct={r1['correct']} related={len(r1['related_chunks'])}")
-q2 = post_json("/quiz/next", {"mode": "weak"})
+q2 = post_json("/quiz/next", {"mode": "weak", "thread_id": quiz_thread})
 check("薄弱强化抽题", bool(q2.get("id")), q2.get("domain", ""))
-s = json.loads(urllib.request.urlopen(BASE + "/api/stats", timeout=60).read())
+s = json.loads(urllib.request.urlopen(
+    BASE + f"/api/stats?thread_id={quiz_thread}", timeout=60,
+).read())
 check("答题后画像更新", s["total_attempts"] >= 1)
 
 print("── A4 AI 生成题（真实 LLM）──")
@@ -76,12 +81,16 @@ check("AI 生成题结构完整且已入库", bool(g and g["answer"] in "ABCD" a
 
 print("── A5 边界输入 ──")
 try:
-    post_json("/quiz/answer", {"question_id": "no_such", "choice": "A"})
+    post_json("/quiz/answer", {
+        "question_id": "no_such", "choice": "A", "thread_id": quiz_thread,
+    })
     check("不存在题目返回 4xx", False)
 except urllib.error.HTTPError as e:
     check("不存在题目返回 404", e.code == 404)
 try:
-    post_json("/quiz/answer", {"question_id": q1["id"], "choice": "Z9"})
+    post_json("/quiz/answer", {
+        "question_id": q1["id"], "choice": "Z9", "thread_id": quiz_thread,
+    })
     check("非法选项不崩溃", True)
 except urllib.error.HTTPError as e:
     check("非法选项不崩溃(4xx)", 400 <= e.code < 500)

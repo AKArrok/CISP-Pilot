@@ -18,6 +18,7 @@ import asyncio
 import json
 import re
 import sys
+from pathlib import Path
 from statistics import mean
 
 sys.path.insert(0, ".")
@@ -25,7 +26,6 @@ sys.path.insert(0, ".")
 from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field
 
-import config
 from tests.eval_retrieval_gold import load_json
 
 HOLDOUT_PATH = "tests/fixtures/retrieval_holdout.json"
@@ -171,8 +171,12 @@ async def main() -> None:
         "citation_hits_gold_rate": round(
             mean(1.0 if d["citation_stats"]["hits_gold"] else 0.0 for d in with_cites), 3) if with_cites else None,
     }
-    with open(args.output, "w", encoding="utf-8") as fp:
-        json.dump({"summary": summary, "details": details}, fp, ensure_ascii=False, indent=2)
+    report = json.dumps(
+        {"summary": summary, "details": details},
+        ensure_ascii=False,
+        indent=2,
+    )
+    await asyncio.to_thread(Path(args.output).write_text, report, encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"报告: {args.output}")
 

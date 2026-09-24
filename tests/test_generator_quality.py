@@ -91,6 +91,9 @@ def _patch_generation(monkeypatch, verify_valid: bool):
     import quiz.generator as g
 
     calls = {"inserted": []}
+    monkeypatch.setattr(
+        g.QuestionBank, "get", classmethod(lambda cls: FakeBank([])),
+    )
 
     def fake_invoke(llm, output_class, messages):
         if output_class.__name__ == "GeneratedQuestion":

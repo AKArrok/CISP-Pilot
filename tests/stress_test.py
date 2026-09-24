@@ -40,12 +40,14 @@ def chat_tokens(body, timeout=600):
 
 
 def quiz_round(mode, timeout=120):
+    thread_id = f"stress-{mode}"
     req = urllib.request.Request(BASE + "/quiz/next",
-                                 data=json.dumps({"mode": mode}).encode("utf-8"),
+                                 data=json.dumps({"mode": mode, "thread_id": thread_id}).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     q = json.loads(urllib.request.urlopen(req, timeout=timeout).read())
     req2 = urllib.request.Request(BASE + "/quiz/answer",
-                                  data=json.dumps({"question_id": q["id"], "choice": "A"}).encode("utf-8"),
+                                  data=json.dumps({"question_id": q["id"], "choice": "A",
+                                                   "thread_id": thread_id}).encode("utf-8"),
                                   headers={"Content-Type": "application/json"})
     r = json.loads(urllib.request.urlopen(req2, timeout=timeout).read())
     return f"{q['domain']} correct={r['correct']}"

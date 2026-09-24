@@ -88,8 +88,9 @@ async def quiz_hint(state: AgentState) -> dict:
     try:
         from quiz import review
         from quiz.stats import weak_domains
-        weak = weak_domains()
-        due_cards = review.due_count()
+        thread_id = state.get("thread_id", "default")
+        weak = weak_domains(thread_id)
+        due_cards = review.due_count(thread_id)
         tips = []
         if weak:
             tips.append(f"当前薄弱域：{'、'.join(weak[:3])}")
@@ -117,11 +118,10 @@ def _persist_sync(state: AgentState) -> None:
     # 提问信号：用户问了什么域 → question_signals 表，供画像融合（"哪里不会问哪里"）
     if state.get("intent") == "knowledge":
         try:
-            from storage import cache, repos
+            from storage import repos
             repos.record_question_signal(
                 state.get("thread_id", "default"), state["question"],
                 state.get("domain"), "knowledge")
-            cache.delete_keys("stats:summary")  # 信号入画像，失效统计缓存
         except Exception:
             logger.exception("提问信号写入失败（不影响回答）")
 

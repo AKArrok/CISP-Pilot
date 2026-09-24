@@ -11,6 +11,7 @@ from __future__ import annotations
 import asyncio
 import json
 import sys
+from pathlib import Path
 
 sys.path.insert(0, ".")
 
@@ -53,7 +54,7 @@ async def main() -> None:
     rows, fails = [], []
     for index, (q1, q2, evidence) in enumerate(PAIRS, 1):
         thread = f"mt-eval-{index}"
-        r1 = await run(q1, thread_id=thread)
+        await run(q1, thread_id=thread)
         r2 = await run(q2, thread_id=thread)
         rewritten = r2.get("search_query", q2)
         ctx_pages = [(c["source"], c["page"]) for c in r2.get("contexts", [])][:5]
@@ -70,8 +71,12 @@ async def main() -> None:
 
     summary = {"pairs": len(PAIRS), "hit_rate": round(
         sum(1 for r in rows if r["hit"]) / len(rows), 3), "failures": fails}
-    with open(REPORT_PATH, "w", encoding="utf-8") as fp:
-        json.dump({"summary": summary, "rows": rows}, fp, ensure_ascii=False, indent=2)
+    report = json.dumps(
+        {"summary": summary, "rows": rows},
+        ensure_ascii=False,
+        indent=2,
+    )
+    await asyncio.to_thread(Path(REPORT_PATH).write_text, report, encoding="utf-8")
     print(json.dumps({"pairs": summary["pairs"], "hit_rate": summary["hit_rate"]},
                      ensure_ascii=False))
     for f in fails:

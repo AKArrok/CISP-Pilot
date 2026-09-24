@@ -101,7 +101,7 @@ class HybridRetriever:
         var_fp = hashlib.md5(json.dumps(variants, ensure_ascii=False).encode()).hexdigest()[:8]
         cache_payload = (
             f"{query}|{retrieval_query}|{top_k}|{domain}|ctx{ctx_fp}|var{var_fp}|"
-            f"dense{0 if self._dense_degraded else 1}|"
+            f"dense{int(config.ENABLE_DENSE_RETRIEVAL and not self._dense_degraded)}|"
             f"d{config.DENSE_K}|s{config.SPARSE_K}|rrf{config.RRF_K}|"
             f"feature{config.ENABLE_FEATURE_RERANKING}|"
             f"learned{config.ENABLE_LEARNED_RANKING}:{config.LEARNED_RANKER_QUERY_TYPES}:{config.LEARNED_RANKER_PATH}|"
@@ -114,9 +114,18 @@ class HybridRetriever:
             return cached
         # 逐查询跑召回核心；多变体时 RRF 融合（原查询权重加倍），
         # 单查询路径不做融合，保持既有打分语义零扰动。
-        pool_lists = [self._core_retrieval(retrieval_query, domain, self._dense_degraded)]
+        degraded_at_start = self._dense_degraded
+        pool_lists = [self._core_retrieval(
+            retrieval_query,
+            domain,
+            not config.ENABLE_DENSE_RETRIEVAL or self._dense_degraded,
+        )]
         for variant in variants:
-            pool_lists.append(self._core_retrieval(variant, domain, self._dense_degraded))
+            pool_lists.append(self._core_retrieval(
+                variant,
+                domain,
+                not config.ENABLE_DENSE_RETRIEVAL or self._dense_degraded,
+            ))
         full = pool_lists[0] if len(pool_lists) == 1 else _merge_pools(pool_lists, k=config.RRF_K)
         # 同一 Parent 的多个 Child 只保留召回排名最高者，避免重复上下文挤占 top-k。
         unique_parents = []
@@ -148,7 +157,9 @@ class HybridRetriever:
             from retrieval.reranker import rerank
             full = rerank(query, full[:config.RERANK_TOP_K], top_k)
         results = full[:top_k]
-        cache.set_json(cache_key, results, ttl=config.RETRIEVAL_CACHE_TTL)
+        # 首次 dense 故障发生在 cache key 计算之后；不要把 BM25 结果写进 dense key。
+        if self._dense_degraded == degraded_at_start:
+            cache.set_json(cache_key, results, ttl=config.RETRIEVAL_CACHE_TTL)
         return results
 
     def _core_retrieval(self, retrieval_query: str, domain: str | None,

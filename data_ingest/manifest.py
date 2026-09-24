@@ -16,7 +16,7 @@ MANIFEST_PATH = os.path.join(config.DATA_DIR, "manifest.json")
 
 # structured_v1 只新增可选字段，legacy JSON 仍可读取，保持向后兼容。
 KB_SCHEMA_VERSION = 1
-QUESTIONS_SCHEMA_VERSION = 1
+QUESTIONS_SCHEMA_VERSION = 2
 
 
 def read_manifest() -> dict:

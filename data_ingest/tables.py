@@ -51,7 +51,8 @@ def is_meaningful_table(rows: list[list[str | None]]) -> bool:
 
 def char_coverage(rows: list[list[str | None]], region_text: str) -> float:
     """抽取单元格对 bbox 区域原文字的字符覆盖率，防止 find_tables 静默丢字。"""
-    normalize = lambda s: re.sub(r"\s+", "", s or "")
+    def normalize(value: str | None) -> str:
+        return re.sub(r"\s+", "", value or "")
     cells_text = normalize("".join(cell or "" for row in rows for cell in row))
     return len(cells_text) / max(len(normalize(region_text)), 1)
 

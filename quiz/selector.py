@@ -38,9 +38,11 @@ class QuestionBank:
     def get_by_id(self, question_id: str) -> dict | None:
         return next((q for q in self._questions if q["id"] == question_id), None)
 
-    def available(self, domain: str | None = None) -> list[dict]:
+    def available(
+        self, domain: str | None = None, *, thread_id: str = "default",
+    ) -> list[dict]:
         """可出题目：有效（题干/选项/答案齐全）、非重复题；默认排除已答对的题。"""
-        done_correct = store.attempted_ids(correct_only=True)
+        done_correct = store.attempted_ids(thread_id, correct_only=True)
         pool = [
             q for q in self._questions
             if q["answer"] and not q.get("needs_review") and not q.get("dup_of")
@@ -60,13 +62,15 @@ class QuestionBank:
         return [q for q in self._questions if q.get("domain") == domain]
 
 
-def domain_weights(bank: QuestionBank, domain: str | None) -> dict[str, float]:
+def domain_weights(
+    bank: QuestionBank, domain: str | None, *, thread_id: str = "default",
+) -> dict[str, float]:
     """weak 模式: 权重 = Elo 缺口 + 薄弱加成 + 复习到期加成 + 提问信号加成。"""
     from quiz.stats import domain_profiles
     from storage import repos
 
-    profiles = domain_profiles()
-    asks = {d: n for d, n, _ in repos.signal_rows()}
+    profiles = domain_profiles(thread_id)
+    asks = {d: n for d, n, _ in repos.signal_rows(thread_id)}
     domains = [d for d in bank.domains() if (not domain or d == domain)]
     weights = {}
     for d in domains:
@@ -90,35 +94,42 @@ def domain_weights(bank: QuestionBank, domain: str | None) -> dict[str, float]:
     return {d: w / total for d, w in weights.items()}
 
 
-def _pick_due_card(bank: QuestionBank, domain: str | None) -> dict | None:
+def _pick_due_card(
+    bank: QuestionBank, domain: str | None, thread_id: str,
+) -> dict | None:
     """FSRS 到期复习卡优先：最久未复习的到期题先练。无到期卡返回 None。"""
     if not config.ENABLE_FSRS_REVIEW:
         return None
     try:
         from quiz import review
-        due_ids = [r.question_id for r in review.due_rows(domain, limit=20)]
+        due_ids = [
+            row.question_id
+            for row in review.due_rows(thread_id, domain, limit=20)
+        ]
     except Exception:
         return None
     if not due_ids:
         return None
-    by_id = {q["id"]: q for q in bank.available(domain)}
+    by_id = {q["id"]: q for q in bank.available(domain, thread_id=thread_id)}
     candidates = [by_id[qid] for qid in due_ids if qid in by_id]
     return random.choice(candidates) if candidates else None
 
 
-def next_question(mode: str = "random", domain: str | None = None) -> dict | None:
+def next_question(
+    mode: str = "random", domain: str | None = None, *, thread_id: str = "default",
+) -> dict | None:
     """抽一道题。weak 模式先消耗 FSRS 到期复习卡，无到期卡再按薄弱加权抽域、域内均匀抽题。"""
     bank = QuestionBank.get()
     if mode == "weak":
-        due = _pick_due_card(bank, domain)
+        due = _pick_due_card(bank, domain, thread_id)
         if due is not None:
             return due
-        weights = domain_weights(bank, domain)
+        weights = domain_weights(bank, domain, thread_id=thread_id)
         if not weights:
             return None
         domains, probs = list(weights.keys()), list(weights.values())
         picked_domain = random.choices(domains, weights=probs, k=1)[0]
-        pool = bank.available(picked_domain)
+        pool = bank.available(picked_domain, thread_id=thread_id)
     else:
-        pool = bank.available(domain)
+        pool = bank.available(domain, thread_id=thread_id)
     return random.choice(pool) if pool else None

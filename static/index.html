@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISP 备考助手</title>
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <header>
@@ -15,6 +16,10 @@
   </nav>
 </header>
 
+<div id="service-status" class="service-status hidden" role="alert">
+  <span id="service-status-message"></span>
+  <button id="service-retry" type="button">重新检查</button>
+</div>
 <!-- ═══════════ 问答页签 ═══════════ -->
 <main id="chat-panel">
   <div id="chat-history"></div>
@@ -32,11 +37,41 @@
       <select id="quiz-mode">
         <option value="random">随机练习</option>
         <option value="weak">薄弱强化</option>
+        <option value="diagnostic">入门诊断</option>
       </select>
     </label>
     <label>知识域
       <select id="quiz-domain"><option value="">全部</option></select>
     </label>
+    <div id="diagnostic-form" class="hidden">
+      <label>自评薄弱方向（可多选）
+        <select id="diagnostic-domains" multiple size="3"></select>
+      </label>
+      <label>目标
+        <input id="diagnostic-goal" type="text" placeholder="如：考试冲刺">
+      </label>
+      <label>每日分钟
+        <input id="diagnostic-minutes" type="number" min="5" max="720" value="30">
+      </label>
+      <label>学习情况（可选）
+        <textarea id="diagnostic-experience" rows="2" maxlength="1000"
+                  placeholder="如：看过一遍，但风险评估和安全工程常混淆"></textarea>
+      </label>
+      <label>答题信心
+        <select id="diagnostic-confidence">
+          <option value="0">没把握</option>
+          <option value="1" selected>有点把握</option>
+          <option value="2">比较确定</option>
+          <option value="3">非常确定</option>
+        </select>
+      </label>
+      <label>选择理由（可选）
+        <textarea id="diagnostic-reason" rows="2" maxlength="1000"
+                  placeholder="说说你依据的规则，便于识别概念混淆"></textarea>
+      </label>
+      <button id="diagnostic-start">开始诊断</button>
+      <span id="diagnostic-hint" class="muted-text">自评只作为先验，系统会用校准题验证。</span>
+    </div>
     <button id="quiz-next">出一题</button>
   </section>
 
@@ -45,6 +80,7 @@
       <span id="q-domain" class="badge"></span>
       <span id="q-source" class="badge muted"></span>
     </div>
+    <div id="q-calibration" class="calibration-note hidden"></div>
     <div id="q-stem"></div>
     <div id="q-options"></div>
     <div id="q-feedback" class="hidden">
@@ -61,13 +97,46 @@
   <section id="quiz-stats" class="card">
     <h3>📊 薄弱点画像</h3>
     <div id="stats-summary"></div>
+    <div id="attribution-observability" class="feedback-observability" aria-live="polite">
+      <div class="feedback-observability-title">
+        <strong>纠错反馈观察</strong>
+        <span>运行反馈，不是准确率</span>
+      </div>
+      <div id="attribution-observability-summary">正在读取纠错反馈…</div>
+      <div id="attribution-observability-domains" class="muted-text"></div>
+    </div>
+    <button id="diagnostic-chat" class="hidden">💬 进入针对性对话</button>
     <table id="stats-table">
       <thead><tr><th>知识域</th><th>答题数</th><th>提问</th><th>掌握度</th><th>置信度</th><th>状态</th></tr></thead>
       <tbody></tbody>
     </table>
+    <div id="knowledge-point-profile" class="hidden">
+      <h4>知识点证据</h4>
+      <table id="knowledge-point-table">
+        <thead><tr><th>知识点</th><th>知识域</th><th>答题数</th><th>掌握度</th><th>置信度</th><th>状态</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="attribution-profile" class="hidden">
+      <h4>题目归因审计</h4>
+      <p class="attribution-review-note">按题目 ID 稳定分页；题号按子串筛选，可能匹配多道题；纠错结果仅作用于当前线程。</p>
+      <form id="attribution-review-filter" class="attribution-review-filter">
+        <label class="visually-hidden" for="attribution-review-query">筛选题目 ID</label>
+        <input id="attribution-review-query" type="search" maxlength="64"
+               placeholder="筛选题目 ID，例如 700题_b2_180" autocomplete="off">
+        <button type="submit">筛选</button>
+        <button id="attribution-review-clear" type="button" class="secondary">清除</button>
+      </form>
+      <p id="attribution-review-status" class="attribution-review-status" role="status" aria-live="polite"></p>
+      <table id="attribution-table">
+        <thead><tr><th>题目</th><th>候选知识点</th><th>知识域</th><th>归因状态</th><th>证据/原因</th><th>操作</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <button id="attribution-load-more" class="attribution-load-more hidden" type="button">加载更多题目</button>
+    </div>
   </section>
 </main>
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>

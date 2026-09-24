@@ -22,8 +22,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 from domains import DOMAINS, classify_domain_by_keywords, normalize_for_match
 
-NUM_RE = re.compile(r"^\s*(\d{1,3})\s*[.．、\\]\s*")
-OPT_RE = re.compile(r"^\s*([A-F])\s*[.．、]\s*(.*)$", re.S)
+NUM_RE = re.compile(
+    r"^\s*(\d{1,3})(?:\s*[.．、\\:：]\s*|\s*[-—]{1,}\s*|\s+(?=\S)|"
+    r"(?=[\u4e00-\u9fffA-Za-z“《]))"
+)
+OPT_RE = re.compile(
+    r"^\s*([A-F])(?:\s*[.．、:：]\s*|\s+(?=\S)|(?=[\u4e00-\u9fff“《]))(.*)$",
+    re.S,
+)
 OPT_CELL_RE = re.compile(r"^\s*[A-F]\s*[.．、]\s*")   # 700题PDF 选项单元格自带字母前缀
 ANSWER_RE = re.compile(r"\s*([A-D]{1,4})\s*$")
 KNOWN_RE = re.compile(r"^\s*(知识点|解析|考点|答案)\s*[：:]")
@@ -45,6 +51,21 @@ def new_question(source: str, num: int) -> dict:
 
 def clean(text: str) -> str:
     return re.sub(r"[ \t\u3000]+", " ", text or "").strip()
+
+
+def _looks_like_question(text: str) -> bool:
+    return bool(re.search(r"[?？]|(?:以下|下列|哪一|哪种|是否|说法).{0,30}[：:]?", text))
+
+
+def _embedded_next_number(question: dict) -> bool:
+    """检测被拼进题干的下一题题号，避免“选项齐全”掩盖解析污染。"""
+    next_num = int(question.get("num", 0)) + 1
+    body = re.sub(r"^\s*\d{1,3}\s*[.．、\\:：]?\s*", "", question.get("stem", ""), count=1)
+    return bool(re.search(
+        rf"(?<!\d){next_num}(?!\d)(?:\s*[.．、,，:：]\s*|"
+        rf"\s+(?=[\u4e00-\u9fff])|(?=[\u4e00-\u9fff]))",
+        body,
+    ))
 
 
 # ────────────────────────────────────────────────────────────────────────
@@ -101,9 +122,17 @@ def split_banks(questions: list[dict]) -> list[dict]:
     out = []
     bank = 1
     prev_num = 0
-    for q in questions:
+    for index, q in enumerate(questions):
         if q["num"] < prev_num:
-            bank += 1
+            if q["num"] <= 5 and prev_num >= 100:
+                bank += 1
+            else:
+                q["needs_review"] = True
+                q["sequence_conflict"] = {"previous_num": prev_num, "parsed_num": q["num"]}
+                q["source"] = f"700题_b{bank}"
+                q["id"] = f"700题_b{bank}_unsequenced_{index}_{q['num']}"
+                out.append(q)
+                continue
         prev_num = q["num"]
         q["source"] = f"700题_b{bank}"
         q["id"] = f"700题_b{bank}_{q['num']}"
@@ -167,6 +196,117 @@ def merge_analysis(bank2: list[dict], cisp216: list[dict]) -> None:
 # 3. 51CTO 六套 docx（答案跟在题干末尾）
 # ────────────────────────────────────────────────────────────────────────
 
+KEY_LINE_RE = re.compile(r"^\s*(\d{1,3})\s*[\.、,，:：]?\s*([A-Da-d])\s*$")
+KEY_COMPACT_RE = re.compile(r"^\s*(?:\d{1,3}\s*[A-Da-d]\s*){2,}$")
+TIME_RE = re.compile(r"^\s*\d{1,2}\s*[:：]\s*\d{2}\b")
+INLINE_OPTION_RE = re.compile(r"(?:^|\s)([A-D])\s*[.．、:：]\s*")
+
+
+def _inline_options(text: str) -> dict[str, str]:
+    matches = list(INLINE_OPTION_RE.finditer(text))
+    if len(matches) < 2:
+        return {}
+    result = {}
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        result[match.group(1)] = clean(text[match.end():end])
+    return result
+
+
+def _parse_51cto_paragraphs(source: str, paragraphs: list[str]) -> tuple[list[dict], list[dict]]:
+    """解析单套 51CTO 段落；宽容输入格式，但把推断编号和异常结构隔离。"""
+    questions: list[dict] = []
+    failures: list[dict] = []
+    key_map: dict[int, str] = {}
+    cur = None
+    last_option: str | None = None
+
+    for raw in paragraphs:
+        text = clean(raw)
+        if not text:
+            continue
+        key_match = KEY_LINE_RE.match(text)
+        if key_match:
+            key_map[int(key_match.group(1))] = key_match.group(2).upper()
+            continue
+        if KEY_COMPACT_RE.match(text):
+            for num, answer in re.findall(r"(\d{1,3})\s*([A-Da-d])", text):
+                key_map[int(num)] = answer.upper()
+            continue
+        if cur is not None and re.fullmatch(r"\d{1,3}", text):
+            failures.append({
+                "source": f"{source}_{text}", "reason": "answer_key_missing",
+            })
+            continue
+
+        option_match = OPT_RE.match(text)
+        if option_match and cur is not None:
+            inline = _inline_options(text)
+            if inline:
+                cur["options"].update(inline)
+                last_option = next(reversed(inline))
+                continue
+            last_option = option_match.group(1)
+            cur["options"][last_option] = clean(option_match.group(2))
+            continue
+
+        number_match = None if TIME_RE.match(text) else NUM_RE.match(text)
+        if number_match:
+            parsed_num = int(number_match.group(1))
+            if cur is not None and parsed_num <= cur["num"] and len(cur["options"]) < 2:
+                # 题干内的“1、…2、…”枚举项，不是题库编号。
+                cur["stem"] += " " + text
+                continue
+            num = parsed_num
+            inferred = False
+            if cur is not None and parsed_num <= cur["num"]:
+                # 原始题库偶有错写题号。按位置补连续编号，但必须进入人工复核。
+                num = cur["num"] + 1
+                inferred = True
+            cur = new_question(source, num)
+            cur["stem"] = text
+            if inferred:
+                cur["needs_review"] = True
+                cur["original_num"] = parsed_num
+                failures.append({
+                    "source": cur["id"], "reason": "out_of_sequence_number",
+                    "original_num": parsed_num, "inferred_num": num,
+                })
+            questions.append(cur)
+            last_option = None
+            continue
+
+        if cur is not None and len(cur["options"]) >= 2 and _looks_like_question(text):
+            # 上一题已经完整，当前段又明显是新题但没有题号；保留并隔离，禁止继续粘连。
+            cur = new_question(source, cur["num"] + 1)
+            cur["stem"] = text
+            cur["needs_review"] = True
+            cur["number_inferred"] = True
+            questions.append(cur)
+            failures.append({
+                "source": cur["id"], "reason": "question_number_inferred",
+                "stem": text[:80],
+            })
+            last_option = None
+            continue
+
+        if cur is None:
+            failures.append({"source": source, "reason": "orphan_paragraph", "raw": text[:120]})
+        elif last_option is not None:
+            cur["options"][last_option] += text
+        else:
+            cur["stem"] += text
+
+    extract_inline_answers(questions)
+    for question in questions:
+        if not question["answer"] and question["num"] in key_map:
+            question["answer"] = key_map[question["num"]]
+            if not question.get("number_inferred") and "original_num" not in question:
+                question["needs_review"] = False
+    failures.extend(failures_of_incomplete(questions, source))
+    return questions, failures
+
+
 def parse_51cto_sets() -> tuple[list[dict], list[dict]]:
     """51CTO 六套题，答案有三种形态:
     - 一/二套: 答案字母紧跟题干末尾（'...：C'）
@@ -180,68 +320,14 @@ def parse_51cto_sets() -> tuple[list[dict], list[dict]]:
     )
     import docx
 
-    key_line_re = re.compile(r"^\s*(\d{1,3})\s*[\t\.、,，:： ]\s*([A-D]{1,4})\s*$")
-    key_compact_re = re.compile(r"^\s*(?:\d{1,3}[A-D]{1,4}){2,}\s*$")
-
-    def parse_compact(text: str) -> dict[int, str]:
-        keys = {}
-        for num, ans in re.findall(r"(\d{1,3})([A-D]{1,4})", text):
-            keys[int(num)] = ans
-        return keys
-
     for fname in files:
         set_name = re.search(r"(一|二|三|四|五|六)套题", fname)
         source = f"51CTO_{set_name.group(1)}套" if set_name else fname
         doc = docx.Document(os.path.join(config.EXAM_DIR, fname))
-        cur = None
-        key_map: dict[int, str] = {}
-        for p in doc.paragraphs:
-            text = clean(p.text)
-            if not text:
-                continue
-            # 答案对照表行 / 压缩答案串
-            km = key_line_re.match(text)
-            if km and (cur is None or len(cur["options"]) >= 2):
-                key_map[int(km.group(1))] = km.group(2)
-                continue
-            if key_compact_re.match(text):
-                key_map.update(parse_compact(text))
-                continue
-            om = OPT_RE.match(text)
-            if om and cur is not None:
-                cur["options"][om.group(1)] = clean(om.group(2))
-                continue
-            nm = NUM_RE.match(text)
-            if nm and (cur is None or len(cur["options"]) >= 2):
-                cur = new_question(source, int(nm.group(1)))
-                cur["stem"] = text
-                questions.append(cur)
-                continue
-            if cur is not None:
-                cur["stem"] += text  # 题干续行
-        # 回填答案: 先题干内联，再对照表/压缩串（回填成功时清掉待复核标记）
-        extract_inline_answers([q for q in questions if q["source"] == source])
-        for q in questions:
-            if q["source"] == source and not q["answer"] and q["num"] in key_map:
-                q["answer"] = key_map[q["num"]]
-                q["needs_review"] = False
-        # 重号清理：题干内 "2.xxx" 续行可能被误判成新题产生重复 id，
-        # 保留先出现者（通常更完整），后出现者的题干并入前者并删除
-        seen_nums: dict[int, dict] = {}
-        drop: set[int] = set()
-        for idx, q in enumerate(questions):
-            if q["source"] != source:
-                continue
-            first = seen_nums.get(q["num"])
-            if first is None:
-                seen_nums[q["num"]] = q
-            else:
-                first["stem"] += q["stem"]
-                drop.add(idx)
-        if drop:
-            print(f"  [{source}] 清理重号题 {len(drop)} 条")
-            questions = [q for i, q in enumerate(questions) if i not in drop]
-        failures.extend(failures_of_incomplete(questions, source))
+        parsed, source_failures = _parse_51cto_paragraphs(
+            source, [paragraph.text for paragraph in doc.paragraphs])
+        questions.extend(parsed)
+        failures.extend(source_failures)
     return questions, failures
 
 
@@ -272,6 +358,23 @@ def extract_inline_answers(questions: list[dict]) -> None:
 # ────────────────────────────────────────────────────────────────────────
 # 4. 去重 / 打标 / 自检
 # ────────────────────────────────────────────────────────────────────────
+
+def quarantine_structural_failures(questions: list[dict]) -> list[dict]:
+    """隔离仍含下一题题号或异常超长题干的记录。"""
+    failures = []
+    for question in questions:
+        sequence_conflict = question.get("sequence_conflict")
+        if not (sequence_conflict or _embedded_next_number(question)
+                or len(question.get("stem", "")) > 1000):
+            continue
+        question["needs_review"] = True
+        failures.append({
+            "source": question["id"],
+            "reason": "sequence_conflict" if sequence_conflict
+            else "embedded_question_or_oversized_stem",
+            "stem": question.get("stem", "")[:120],
+        })
+    return failures
 
 def dedupe(questions: list[dict]) -> tuple[list[dict], int]:
     """跨来源按题干前缀去重：后出现的重复题标记 dup_of（保留先出现的，其来源题库优先级更高）。"""
@@ -396,7 +499,8 @@ def main() -> None:
     all_questions.extend(set_qs)
     failures.extend(set_failures)
 
-    # 4) 去重 → 打标 → 自检
+    # 4) 结构隔离 → 去重 → 打标 → 自检
+    failures.extend(quarantine_structural_failures(all_questions))
     all_questions, dups = dedupe(all_questions)
     classify_domains(all_questions, use_llm=args.llm_classify)
     stats = self_check(all_questions)

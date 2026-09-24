@@ -10,7 +10,8 @@ import os
 import threading
 from urllib.parse import quote_plus
 
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, inspect, text
+from sqlalchemy.schema import CreateColumn
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import QueuePool
 
@@ -22,6 +23,8 @@ _engine = None
 _SessionLocal = None
 _backend = None  # "mysql" | "sqlite"
 _lock = threading.RLock()  # RLock: create_all -> get_engine -> _init 同线程重入
+
+SCHEMA_HEAD = "f1a2b3c4d5e6"
 
 
 def _mysql_url() -> str:
@@ -53,8 +56,18 @@ def _init() -> tuple:
         if _engine is not None:
             return _engine, _SessionLocal, _backend
 
-        mysql_url = config.MYSQL_URL_OVERRIDE or _mysql_url()
-        if os.getenv("MYSQL_PASSWORD") or config.MYSQL_URL_OVERRIDE:
+        explicit_url = config.MYSQL_URL_OVERRIDE.strip()
+        if explicit_url.startswith("sqlite:"):
+            _engine = create_engine(
+                explicit_url, connect_args={"check_same_thread": False}
+            )
+            _backend = "sqlite"
+            logger.info("存储后端: SQLite（DATABASE_URL）")
+            _SessionLocal = sessionmaker(bind=_engine, expire_on_commit=False)
+            return _engine, _SessionLocal, _backend
+
+        mysql_url = explicit_url or _mysql_url()
+        if os.getenv("MYSQL_PASSWORD") or explicit_url:
             try:
                 _create_database_if_missing(mysql_url)
                 _engine = create_engine(
@@ -68,7 +81,10 @@ def _init() -> tuple:
                 _SessionLocal = sessionmaker(bind=_engine, expire_on_commit=False)
                 return _engine, _SessionLocal, _backend
             except Exception:
-                logger.warning("MySQL 连接失败，降级 SQLite: %s", str(os.getenv("MYSQL_PASSWORD", "")) and "凭据已配置但不正确或服务不可达")
+                logger.warning(
+                    "MySQL 连接失败，降级 SQLite: %s",
+                    bool(os.getenv("MYSQL_PASSWORD", "")),
+                )
 
         sqlite_url = f"sqlite:///{config.DB_PATH}"
         _engine = create_engine(sqlite_url, connect_args={"check_same_thread": False})
@@ -89,6 +105,25 @@ def get_engine():
 def session() -> Session:
     return _init()[1]()
 
+def schema_status() -> dict:
+    """Read-only migration status for readiness and deployment audits."""
+    engine = get_engine()
+    revisions: list[str] = []
+    if "alembic_version" in inspect(engine).get_table_names():
+        with engine.connect() as connection:
+            revisions = sorted(
+                row[0]
+                for row in connection.execute(
+                    text("select version_num from alembic_version")
+                )
+            )
+    return {
+        "database_backend": backend(),
+        "expected_revision": SCHEMA_HEAD,
+        "current_revisions": revisions,
+        "migration_current": revisions == [SCHEMA_HEAD],
+    }
+
 
 def create_all() -> None:
     """建表（幂等）。并发首调加锁串行化——MySQL 上并发 CREATE/反射会互等元数据锁。"""
@@ -97,17 +132,45 @@ def create_all() -> None:
         if _schema_ready:
             return
         from storage.models import Base
-        Base.metadata.create_all(get_engine())
+        engine = get_engine()
+        Base.metadata.create_all(engine)
+        _ensure_additive_columns(engine, Base)
         _schema_ready = True
 
 
 _schema_ready = False
 
 
+def _ensure_additive_columns(engine, base) -> None:
+    """补齐 ``create_all`` 无法修改的列，覆盖半迁移旧库边界。
+
+    Alembic 仍是正式迁移入口；这里仅做启动时幂等兼容，避免旧 SQLite
+    数据库在迁移尚未执行时因 ORM 查询新列而直接不可用。
+    """
+    table_name = "learner_attempts"
+    inspector = inspect(engine)
+    if table_name not in inspector.get_table_names():
+        return
+    existing = {column["name"] for column in inspector.get_columns(table_name)}
+    table = base.metadata.tables[table_name]
+    missing = [column for column in table.columns if column.name not in existing]
+    preparer = engine.dialect.identifier_preparer
+    quoted_table = preparer.quote(table_name)
+    with engine.begin() as connection:
+        for column in missing:
+            definition = str(CreateColumn(column).compile(dialect=engine.dialect))
+            connection.execute(text(f"ALTER TABLE {quoted_table} ADD COLUMN {definition}"))
+        # ``create_all`` does not create indexes for a table that already
+        # exists.  Keep the compatibility path aligned with the ORM metadata.
+        for index in table.indexes:
+            index.create(connection, checkfirst=True)
+
+
 def override_engine(engine) -> None:
     """测试钩子：替换全局引擎/会话工厂为指定实例。"""
-    global _engine, _SessionLocal, _backend
+    global _engine, _SessionLocal, _backend, _schema_ready
     with _lock:
         _engine = engine
         _SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
         _backend = "sqlite"
+        _schema_ready = False

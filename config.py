@@ -2,7 +2,8 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+# 容器、CI 和测试显式传入的进程环境优先于本地 .env。
+load_dotenv(override=False)
 
 # ── LLM 通用配置（OpenAI 兼容协议）──
 LLM_API_KEY  = os.getenv("LLM_API_KEY")
@@ -75,10 +76,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 KB_CHUNKS_PATH = os.path.join(DATA_DIR, "kb_chunks.json")
 QUESTIONS_PATH = os.path.join(DATA_DIR, "questions.json")
+KNOWLEDGE_TAXONOMY_PATH = os.path.join(DATA_DIR, "knowledge_taxonomy.json")
+QUESTION_TAGS_PATH = os.path.join(DATA_DIR, "question_knowledge_tags.json")
+QUESTION_ATTRIBUTIONS_PATH = os.path.join(DATA_DIR, "question_attributions.json")
 PARSE_FAILURES_PATH = os.path.join(DATA_DIR, "parse_failures.json")
 VECTORS_PATH = os.path.join(DATA_DIR, "vectors.npz")
 MEMORY_VECTORS_PATH = os.path.join(DATA_DIR, "memory_vectors.npz")
-DB_PATH = os.path.join(DATA_DIR, "cisp_qa.db")
+DB_PATH = os.getenv("CISP_DB_PATH", os.path.join(DATA_DIR, "cisp_qa.db"))
 
 # ── 存储层（MySQL 主后端 + SQLite 降级；Redis 缓存可选）──
 MYSQL_URL_OVERRIDE = os.getenv("DATABASE_URL", "")   # 例: mysql+pymysql://user:pwd@127.0.0.1/cisp_qa?charset=utf8mb4
@@ -137,6 +141,8 @@ DASHSCOPE_RERANK_MODEL = os.getenv("DASHSCOPE_RERANK_MODEL", "qwen3.7-text-reran
 DASHSCOPE_RERANK_REQUEST_INTERVAL = float(os.getenv("DASHSCOPE_RERANK_REQUEST_INTERVAL", "0.2"))
 DASHSCOPE_RERANK_MAX_RETRIES = int(os.getenv("DASHSCOPE_RERANK_MAX_RETRIES", "2"))
 DASHSCOPE_RERANK_MAX_BACKOFF = float(os.getenv("DASHSCOPE_RERANK_MAX_BACKOFF", "8"))
+# 显式关闭 dense 时直接使用 BM25，不记录为运行时降级。
+ENABLE_DENSE_RETRIEVAL = os.getenv("ENABLE_DENSE_RETRIEVAL", "true").lower() == "true"
 # dense 召回不可用（embedding 额度耗尽/网络故障）时降级为 BM25 兜底召回，避免查询直接报错。
 ALLOW_DENSE_DEGRADATION = os.getenv("ALLOW_DENSE_DEGRADATION", "true").lower() == "true"
 DENSE_DEGRADED_SPARSE_K = int(os.getenv("DENSE_DEGRADED_SPARSE_K", "60"))
@@ -178,6 +184,37 @@ ASK_WEIGHT_BONUS = float(os.getenv("ASK_WEIGHT_BONUS", "1.5"))
 # FSRS 复习到期卡优先：weak 抽题时先消耗到期复习卡（0 关闭）
 ENABLE_FSRS_REVIEW = os.getenv("ENABLE_FSRS_REVIEW", "true").lower() == "true"
 
+# ── 保守题目归因 ──
+# 这些阈值只能用开发集适配；classifier_version 随规则变化显式递增。
+ATTRIBUTION_CLASSIFIER_VERSION = os.getenv(
+    "ATTRIBUTION_CLASSIFIER_VERSION", "conservative-attribution-v3"
+)
+ATTRIBUTION_DENSE_TOP_K = int(os.getenv("ATTRIBUTION_DENSE_TOP_K", "5"))
+ATTRIBUTION_DENSE_MIN_SCORE = float(os.getenv("ATTRIBUTION_DENSE_MIN_SCORE", "0.45"))
+ATTRIBUTION_DENSE_MIN_MARGIN = float(os.getenv("ATTRIBUTION_DENSE_MIN_MARGIN", "0.03"))
+ATTRIBUTION_TFIDF_TOP_K = int(os.getenv("ATTRIBUTION_TFIDF_TOP_K", "5"))
+ATTRIBUTION_TFIDF_MIN_SCORE = float(os.getenv("ATTRIBUTION_TFIDF_MIN_SCORE", "0.08"))
+ATTRIBUTION_TFIDF_MIN_MARGIN = float(os.getenv("ATTRIBUTION_TFIDF_MIN_MARGIN", "0.02"))
+ATTRIBUTION_EXACT_STRONG_SCORE = float(os.getenv("ATTRIBUTION_EXACT_STRONG_SCORE", "0.95"))
+ATTRIBUTION_EXACT_MIN_MARGIN = float(os.getenv("ATTRIBUTION_EXACT_MIN_MARGIN", "0.02"))
+ATTRIBUTION_EXACT_STEM_SCORE = float(os.getenv("ATTRIBUTION_EXACT_STEM_SCORE", "0.88"))
+ATTRIBUTION_EXACT_CORRECT_OPTION_SCORE = float(
+    os.getenv("ATTRIBUTION_EXACT_CORRECT_OPTION_SCORE", "0.95")
+)
+ATTRIBUTION_EXACT_ANALYSIS_SCORE = float(
+    os.getenv("ATTRIBUTION_EXACT_ANALYSIS_SCORE", "0.82")
+)
+ATTRIBUTION_CALIBRATION_MIN_EVIDENCE = int(
+    os.getenv("ATTRIBUTION_CALIBRATION_MIN_EVIDENCE", "2")
+)
+
+# ── probable 弱点校准 ──
+ENABLE_CALIBRATION = os.getenv("ENABLE_CALIBRATION", "true").lower() == "true"
+# 首次 pending 假设可立即给一道可靠题；后续校准机会至少间隔 N 次画像作答。
+CALIBRATION_MIN_ATTEMPT_GAP = int(os.getenv("CALIBRATION_MIN_ATTEMPT_GAP", "1"))
+CALIBRATION_MAX_INSERTIONS = int(os.getenv("CALIBRATION_MAX_INSERTIONS", "2"))
+CALIBRATION_MAX_PENDING = int(os.getenv("CALIBRATION_MAX_PENDING", "3"))
+
 # ── AI 出题质量 ──
 # 生成后自校验（第二个 LLM 验证答案可由资料推出/干扰项互斥/题干无歧义），不过则标 needs_review
 QUIZ_VERIFY_ENABLED = os.getenv("QUIZ_VERIFY_ENABLED", "true").lower() == "true"
@@ -201,16 +238,23 @@ def validate() -> None:
     missing = [k for k, v in {
         "LLM_API_KEY": LLM_API_KEY,
     }.items() if not v]
-    if EMBEDDING_BACKEND == "dashscope" and not DASHSCOPE_API_KEY:
+    if (ENABLE_DENSE_RETRIEVAL
+            and EMBEDDING_BACKEND == "dashscope" and not DASHSCOPE_API_KEY):
         missing.append("DASHSCOPE_API_KEY")
-    if EMBEDDING_BACKEND == "dashscope" and not DASHSCOPE_EMBEDDING_BASE_URL:
+    if (ENABLE_DENSE_RETRIEVAL
+            and EMBEDDING_BACKEND == "dashscope"
+            and not DASHSCOPE_EMBEDDING_BASE_URL):
         missing.append("DASHSCOPE_WORKSPACE_ID or DASHSCOPE_EMBEDDING_BASE_URL")
-    if EMBEDDING_BACKEND == "ark" and not ARK_EMBEDDING_API_KEY:
+    if (ENABLE_DENSE_RETRIEVAL
+            and EMBEDDING_BACKEND == "ark" and not ARK_EMBEDDING_API_KEY):
         missing.append("ARK_EMBEDDING_API_KEY")
     if missing:
         raise EnvironmentError(f"Missing env vars: {missing}. Fill the required keys into .env")
-    if EMBEDDING_BACKEND == "ark" and ARK_EMBEDDING_MODEL != "doubao-embedding-vision":
+    if (ENABLE_DENSE_RETRIEVAL
+            and EMBEDDING_BACKEND == "ark"
+            and ARK_EMBEDDING_MODEL != "doubao-embedding-vision"):
         raise ValueError("Ark Coding Plan embedding model must be doubao-embedding-vision")
-    if (EMBEDDING_BACKEND == "dashscope"
+    if (ENABLE_DENSE_RETRIEVAL
+            and EMBEDDING_BACKEND == "dashscope"
             and DASHSCOPE_EMBEDDING_DIMENSIONS not in {256, 512, 768, 1024, 1536, 2048, 2560}):
         raise ValueError("qwen3.7-text-embedding dimensions must be 256/512/768/1024/1536/2048/2560")

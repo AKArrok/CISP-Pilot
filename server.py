@@ -4,12 +4,13 @@
 """
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
 import json
 import logging
 import time
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from langchain_core.messages import AIMessage, HumanMessage
@@ -20,24 +21,33 @@ from storage import cache
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-app = FastAPI(title="CISP 备考问答机器人")
 
-
-@app.on_event("startup")
 def warmup() -> None:
     """启动预热：建表一次、预载本地模型——避免首个请求承受建表/模型加载风暴。"""
     from storage import db
+
     db.create_all()
     import quiz  # noqa: F401  触发 quiz 包初始化（含 init_db）
+
     if config.EMBEDDING_BACKEND == "local":
         from llms import get_embeddings
+
         get_embeddings()  # 预载 embedding 模型
         if config.ENABLE_RERANKING:
             from retrieval.reranker import _get_encoder
+
             _get_encoder()  # 预载精排模型
         get_embeddings().embed_query("预热")  # 消除首次前向的惰性初始化
     logging.info("预热完成")
 
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    warmup()
+    yield
+
+
+app = FastAPI(title="CISP 备考问答机器人", lifespan=lifespan)
 
 # ── 问答（SSE 流式）────────────────────────────────────────────────────
 
@@ -105,7 +115,8 @@ async def chat_stream(req: ChatRequest):
                 if intent and intent_seen is None:
                     intent_seen = intent
                     stamps["route_ms"] = round((now - t0) * 1000, 1)
-                yield sse({"type": "intent", "intent": intent})
+                if intent:
+                    yield sse({"type": "intent", "intent": intent})
             elif kind == "on_chain_end" and node == "retrieve":
                 out = ev["data"]["output"]
                 contexts = out.get("contexts", []) if isinstance(out, dict) else []
@@ -154,11 +165,34 @@ class QuizNextRequest(BaseModel):
     mode: str = "random"          # random | weak
     domain: str | None = None
     anchor_question_id: str | None = None   # 以该题（通常是刚答错的）为锚点定向生成同类题
+    thread_id: str = Field(min_length=1, max_length=64)
 
 
 class QuizAnswerRequest(BaseModel):
     question_id: str
-    choice: str
+    choice: str = Field(min_length=1, max_length=4, pattern=r"^[A-Da-d]+$")
+    thread_id: str = Field(min_length=1, max_length=64)
+
+
+class AttributionCorrectionRequest(BaseModel):
+    thread_id: str = Field(min_length=1, max_length=64)
+    corrected_point_id: str = Field(min_length=1, max_length=64)
+    reason: str = Field(default="", max_length=2000)
+
+
+class DiagnosticStartRequest(BaseModel):
+    """自评只缩小诊断范围，不能直接把所选域标成薄弱。"""
+    thread_id: str = Field(min_length=1, max_length=64)
+    selected_domains: list[str] = Field(min_length=1, max_length=4)
+    self_report: dict = Field(default_factory=dict)
+    max_questions: int = Field(default=12, ge=6, le=20)
+
+
+class DiagnosticAnswerRequest(BaseModel):
+    question_id: str = Field(min_length=1, max_length=64)
+    choice: str = Field(min_length=1, max_length=4, pattern=r"^[A-Da-d]+$")
+    confidence: int | None = Field(default=None, ge=0, le=3)
+    reason: str | None = Field(default=None, max_length=1000)
 
 
 @app.post("/quiz/next")
@@ -166,7 +200,8 @@ def quiz_next(req: QuizNextRequest):
     from quiz import get_next_question
     try:
         return get_next_question(mode=req.mode, domain=req.domain,
-                                 anchor_question_id=req.anchor_question_id)
+                                 anchor_question_id=req.anchor_question_id,
+                                 thread_id=req.thread_id)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
 
@@ -175,15 +210,152 @@ def quiz_next(req: QuizNextRequest):
 def quiz_answer(req: QuizAnswerRequest):
     from quiz import submit_answer
     try:
-        return submit_answer(req.question_id, req.choice)
+        return submit_answer(req.question_id, req.choice, req.thread_id)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e)) from e
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+# ── 入门诊断 ────────────────────────────────────────────────────────────
+
+@app.post("/diagnostic/start")
+def diagnostic_start(req: DiagnosticStartRequest):
+    from quiz.diagnosis import start_session
+    try:
+        return start_session(req.thread_id, req.selected_domains,
+                             req.self_report, req.max_questions)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+@app.get("/diagnostic/{session_id}/next")
+def diagnostic_next(session_id: str):
+    from quiz.diagnosis import next_question
+    try:
+        return next_question(session_id)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e)) from e
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+@app.post("/diagnostic/{session_id}/answer")
+def diagnostic_answer(session_id: str, req: DiagnosticAnswerRequest):
+    from quiz.diagnosis import answer
+    try:
+        return answer(session_id, req.question_id, req.choice,
+                     req.confidence, req.reason)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e)) from e
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+
+@app.get("/diagnostic/{session_id}/report")
+def diagnostic_report(session_id: str):
+    from quiz.diagnosis import report
+    try:
+        return report(session_id)
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
 
 
 @app.get("/api/stats")
-def api_stats():
+def api_stats(thread_id: str):
     from quiz import get_stats
-    return get_stats()
+    return get_stats(thread_id)
+
+
+@app.get("/api/attributions")
+def api_attributions(status: str | None = None, limit: int = Query(default=100, ge=1, le=500)):
+    """题目归因审计概览；status 只筛选 confirmed/probable/unverified。"""
+    if status is not None and status not in {"confirmed", "probable", "unverified"}:
+        raise HTTPException(status_code=422, detail="无效的归因状态")
+    from storage import repos
+    return repos.question_attribution_rows(limit=limit, status=status)
+
+
+@app.get("/api/attribution-review")
+def api_attribution_review(
+    thread_id: str = Query(min_length=1, max_length=64),
+    limit: int = Query(default=30, ge=1, le=100),
+    after_question_id: str | None = Query(default=None, min_length=1, max_length=64),
+    question_id: str | None = Query(default=None, max_length=64),
+):
+    """按稳定题号游标分页的纠错审阅列表，应用指定线程的有效纠错。"""
+    from storage import repos
+
+    page = repos.attribution_review_page(
+        thread_id,
+        limit=limit,
+        after_question_id=after_question_id,
+        question_id_query=(question_id or "").strip() or None,
+    )
+    if page["items"]:
+        from quiz.selector import QuestionBank
+
+        bank = QuestionBank.get()
+        for item in page["items"]:
+            question = bank.get_by_id(item["question_id"])
+            item["question_stem"] = question.get("stem") if question else None
+            item["question_options"] = question.get("options", {}) if question else {}
+    return page
+
+
+@app.post("/api/attributions/{question_id}/correction")
+def api_attribution_correction(question_id: str, req: AttributionCorrectionRequest):
+    from quiz.selector import QuestionBank
+    from storage import repos
+
+    if QuestionBank.get().get_by_id(question_id) is None:
+        raise HTTPException(status_code=404, detail="Question not found")
+    try:
+        return repos.record_attribution_correction(
+            req.thread_id, question_id, req.corrected_point_id, req.reason,
+        )
+    except repos.AttributionCorrectionConflict as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+@app.get("/api/attribution-corrections")
+def api_attribution_corrections(
+    thread_id: str = Query(min_length=1, max_length=64),
+    limit: int = Query(default=100, ge=1, le=500),
+    before_id: int | None = Query(default=None, gt=0),
+):
+    """线程级不可变纠错事件；before_id 用于按事件 ID 倒序完整导出。"""
+    from storage import repos
+
+    return repos.attribution_corrections(
+        thread_id,
+        limit=limit,
+        before_id=before_id,
+    )
+
+
+@app.get("/api/attribution-observability")
+def api_attribution_observability(
+    thread_id: str = Query(min_length=1, max_length=64),
+    since: float | None = Query(default=None, ge=0),
+):
+    """线程级纠错聚合，仅用于灰度运行观测，不是准确率指标。"""
+    from storage import repos
+
+    return repos.attribution_correction_observability(thread_id, since=since)
+
+
+@app.get("/api/knowledge-points")
+def api_knowledge_points(status: str = "active"):
+    if status not in {"active", "candidate"}:
+        raise HTTPException(status_code=422, detail="Invalid knowledge-point status")
+    from storage import repos
+    return [
+        point for point in repos.load_knowledge_points()
+        if point["status"] == status
+    ]
 
 
 @app.get("/api/domains")
@@ -212,6 +384,59 @@ def api_metrics():
     from agents.metrics import summary
     return summary()
 
+
+@app.get("/api/document")
+def api_document(source: str = Query(min_length=1), page: int = Query(ge=1)):
+    """返回知识库引用的原始课件。
+
+    前端将页码附在 URL fragment（``#page=N``）中；PDF 查看器会据此直接定位。
+    ``page`` 仍作为查询参数校验，避免前端生成的无效链接悄悄失效。
+    """
+    from document_library import find_document
+
+    path = find_document(source)
+    if path is None:
+        raise HTTPException(
+            status_code=404,
+            detail="未找到原始资料。请检查 CISP_COURSE_DIR / CISP_EXAM_DIR 是否指向导入知识库时使用的目录。",
+        )
+
+    media_type = "application/pdf" if path.suffix.lower() == ".pdf" else (
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    )
+    return FileResponse(path, media_type=media_type, filename=path.name,
+                        content_disposition_type="inline")
+
+
+@app.get("/api/health")
+def health():
+    return {"status": "ok"}
+
+
+@app.get("/api/ready")
+def readiness():
+    from data_ingest.manifest import validate_index
+    from storage import db
+
+    schema = db.schema_status()
+    try:
+        validate_index()
+        assets = {"ready": True, "error": None}
+    except Exception as exc:
+        assets = {"ready": False, "error": str(exc)}
+    ready = schema["migration_current"] and assets["ready"]
+    if ready:
+        status = "ready"
+    elif not schema["migration_current"]:
+        status = "migration_required"
+    else:
+        status = "assets_invalid"
+    payload = {
+        "status": status,
+        "schema": schema,
+        "assets": assets,
+    }
+    return JSONResponse(payload, status_code=200 if ready else 503)
 
 # ── 静态面板 ────────────────────────────────────────────────────────────
 

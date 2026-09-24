@@ -108,7 +108,6 @@ def _ordered_steps_bonus(query: str, text: str) -> float:
 
 def _constraint_coverage_bonus(query: str, title: str, text: str) -> float:
     """奖励候选页覆盖题干要求的关键约束，而不是只命中泛概念。"""
-    text_upper = text.upper()
     combined = f"{title}\n{text}"
     bonus = 0.0
 
@@ -197,9 +196,9 @@ def _acronym_expansions(query: str) -> list[str]:
 
 def _multi_entity_text_bonus(query_acronyms: set[str], text: str) -> float:
     """多实体比较题：正文覆盖的实体越多越像对比汇总页，单实体页不加成。"""
+    text_upper = text.upper()
     if len(query_acronyms) < 2:
         return 0.0
-    text_upper = text.upper()
     hits = sum(acronym.upper() in text_upper for acronym in query_acronyms)
     if hits < 2:
         return 0.0

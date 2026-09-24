@@ -116,7 +116,11 @@ def save_round(thread_id: str, question: str, answer: str, intent: str) -> None:
         elif vectors.shape[1] == arr.shape[1]:
             vectors = np.vstack([vectors, arr])
         else:
-            vectors, metadata = arr, []
+            raise ValueError(
+                "长期记忆向量维度不一致："
+                f"existing={vectors.shape[1]}, new={arr.shape[1]}；"
+                "已保留原存储，未写入当前轮次"
+            )
         metadata.append(row)
         _save_store(vectors, metadata)
 

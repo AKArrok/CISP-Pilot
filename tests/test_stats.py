@@ -61,9 +61,10 @@ def _fake_attempts(now: float) -> list[tuple[str, int, float]]:
 def test_domain_profiles_full_shape(monkeypatch):
     now = 1_800_000_000.0
     monkeypatch.setattr(
-        "quiz.stats.repos.attempt_rows", lambda: _fake_attempts(now)
+        "quiz.stats.repos.attempt_rows", lambda _thread_id: _fake_attempts(now)
     )
-    profiles = domain_profiles(now=now)
+    monkeypatch.setattr("quiz.stats.repos.signal_rows", lambda _thread_id: [])
+    profiles = domain_profiles("thread-stats", now=now)
 
     # 薄弱域：连续答错 3 次，后验概率高 → weak
     weak = profiles["薄弱域"]

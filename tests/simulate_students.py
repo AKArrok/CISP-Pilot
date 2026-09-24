@@ -60,12 +60,12 @@ def simulate_student(name: str, truth: dict[str, float], attempts_per_domain: in
             q = random.choice(pool)
             correct = random.random() < p_correct
             at = now - (attempts_per_domain - k) * 86400 * random.uniform(0.8, 1.2)
-            record_attempt(q["id"], q.get("source", "真题"), domain,
+            record_attempt(name, q["id"], q.get("source", "真题"), domain,
                            q.get("stem", "")[:100], "A", correct)
-            review.update_card(q["id"], domain, correct, now=at)
+            review.update_card(name, q["id"], domain, correct, now=at)
 
-    profiles = stats.domain_profiles()
-    observed_weak = stats.weak_domains()
+    profiles = stats.domain_profiles(name)
+    observed_weak = stats.weak_domains(name)
     # 只把显著低于薄弱阈值的域作为预期弱域（贴近 0.6 阈值的域受小样本波动支配）
     expected_weak = sorted(d for d, p in truth.items() if p < 0.5)
     expected_strong = sorted(d for d, p in truth.items() if p >= 0.8)
@@ -78,7 +78,7 @@ def simulate_student(name: str, truth: dict[str, float], attempts_per_domain: in
     ) if expected_strong and expected_weak else True
 
     # 薄弱强化权重：弱域权重应显著高于强域
-    weights = domain_weights(bank, None)
+    weights = domain_weights(bank, None, thread_id=name)
     weight_ratio_ok = all(
         weights.get(w, 0) > weights.get(s, 1) * 1.5
         for s in expected_strong for w in expected_weak
@@ -103,32 +103,40 @@ def simulate_student(name: str, truth: dict[str, float], attempts_per_domain: in
 def simulate_fsrs() -> dict:
     """FSRS 调度行为：答错建卡短间隔到期；连续答对间隔拉长；到期队列按最久优先。"""
     from quiz import review
+    from storage import db
+    from storage.models import LearnerReviewCard
+
+    def due_at(question_id: str) -> float | None:
+        with db.session() as session:
+            row = session.get(LearnerReviewCard, (thread_id, question_id))
+            return row.due if row else None
 
     now = time.time()
     # 答错 1 次 → 短间隔到期，出现在到期队列
-    review.update_card("sim-wrong", "信息安全管理", correct=False, now=now - 7200)
-    due_ids = [r.question_id for r in review.due_rows(limit=2000)]
+    thread_id = "simulation-fsrs"
+    review.update_card(thread_id, "sim-wrong", "信息安全管理", correct=False, now=now - 7200)
+    due_ids = [r.question_id for r in review.due_rows(thread_id, limit=2000)]
     wrong_due = "sim-wrong" in due_ids
 
     # 连续答对：due 应单调推后
-    review.update_card("sim-good", "信息安全管理", correct=False, now=now - 86400 * 3)
-    review.update_card("sim-good", "信息安全管理", correct=True, now=now - 86400 * 2)
-    first_gap = next((r.due - (now - 86400 * 2) for r in review.due_rows(limit=2000)
-                      if r.question_id == "sim-good"), None)
-    review.update_card("sim-good", "信息安全管理", correct=True, now=now - 86400)
-    second_gap = next((r.due - (now - 86400) for r in review.due_rows(limit=2000)
-                       if r.question_id == "sim-good"), None)
+    review.update_card(thread_id, "sim-good", "信息安全管理", correct=False, now=now - 86400 * 3)
+    review.update_card(thread_id, "sim-good", "信息安全管理", correct=True, now=now - 86400 * 2)
+    first_due = due_at("sim-good")
+    first_gap = first_due - (now - 86400 * 2) if first_due is not None else None
+    review.update_card(thread_id, "sim-good", "信息安全管理", correct=True, now=now - 86400)
+    second_due = due_at("sim-good")
+    second_gap = second_due - (now - 86400) if second_due is not None else None
     gaps_grow = (first_gap is not None and second_gap is not None
                  and second_gap > first_gap)
 
     # 最久未复习优先
-    review.update_card("sim-old", "计算环境安全", correct=False, now=now - 86400 * 5)
-    order = [r.question_id for r in review.due_rows(limit=2000)]
+    review.update_card(thread_id, "sim-old", "计算环境安全", correct=False, now=now - 86400 * 5)
+    order = [r.question_id for r in review.due_rows(thread_id, limit=2000)]
     order_ok = ("sim-old" in order and "sim-wrong" in order
                 and order.index("sim-old") < order.index("sim-wrong"))
 
     return {"wrong_creates_due_card": wrong_due, "intervals_grow": gaps_grow,
-            "most_overdue_first": order_ok, "due_count": review.due_count()}
+            "most_overdue_first": order_ok, "due_count": review.due_count(thread_id)}
 
 
 def main() -> None:

@@ -25,6 +25,12 @@ def import_json() -> None:
     n_c = repos.upsert_chunks(chunks)
     print(f"questions 表: 累计 {repos.count_questions()} 条（本次扫描 {n_q}）")
     print(f"kb_chunks 表: 累计 {repos.count_chunks()} 条（本次扫描 {n_c}）")
+    if os.path.exists(config.QUESTION_ATTRIBUTIONS_PATH):
+        with open(config.QUESTION_ATTRIBUTIONS_PATH, encoding="utf-8") as fp:
+            attributions = json.load(fp)
+        for result in attributions:
+            repos.upsert_question_attribution(result)
+        print(f"question_attributions 表: 本次导入 {len(attributions)} 条")
 
 
 def import_legacy(legacy_path: str) -> None:
