@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "batch_execution_completed; new_case_source_reviews_pending",
+  "status": "steps_1_to_4_development_scope_completed; independent_evaluation_pending",
   "plan_steps": {
     "1": "AT-2 same-question real regression accepted by AI source reinspection",
     "2": "Frozen batch runner and receipts implemented; semantics stays pending",
@@ -10,10 +10,12 @@
   "provider_calls": 66,
   "remaining_authorized_calls": 0,
   "cost_usd_conservative": 0.0528381,
-  "next_action": "Review 32 new answers against frozen source, adjudicate 3 citation-score disagreements, calibrate proposed judge clarification before new live run",
+  "next_action": "Do not reuse 32 development questions as independent holdout. Prepare new independent-material path and calibrate proposed grader citation clarification before next paid round; next product integration is plan step 6.",
   "verification": "3 new tests passed; Ruff passed; no full project regression",
   "protected_hashes": {
     "data\\cisp_qa.db": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
     "data\\kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4"
-  }
+  },
+  "ai_source_reviews_completed": 33,
+  "scoring_disagreements_adjudicated": 3
 }

@@ -1,0 +1,499 @@
+[
+  {
+    "id": "at2-regression",
+    "answer_and_contexts_sha256": "c0f1d281ef7baf47ca781b313fb3813f66e664129940f64926058fbf173e8d14",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-01",
+    "answer_and_contexts_sha256": "4665002784d2b6024136076973d73d69ca77c6a73f5097b670a0d5cca984db82",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-02",
+    "answer_and_contexts_sha256": "bdec1b692bbab453a73c347979a24cbb5a0c07f5513479c6e1f5a0f668356b44",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-03",
+    "answer_and_contexts_sha256": "1116fa86eef9ed54b861a16a30f45b7ae67fa253089adec9558145852983a310",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-04",
+    "answer_and_contexts_sha256": "20eddf6d9c4ad25bd3d3b389f32d1f5d69e3fc7a78b5a3a444454c669f281859",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-05",
+    "answer_and_contexts_sha256": "7f51e235e14ca50c801575a8b5974948fb8c20b0ae395757d88f016cb87cd3fc",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_and_contexts_sha256": "a26aa35790d99dce0f9eca628b2bb0d4affe5e24cf946bb7213820d82f597a12",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-07",
+    "answer_and_contexts_sha256": "9675ade13e07068259e418c967f7df1656d28bf65626e3a39020a382244c87e8",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ac-8-new-08",
+    "answer_and_contexts_sha256": "56f8ad7ca3e2b6a0a77776282ccc194f7dcd62bb90081319d4f304db5e352aa4",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-01",
+    "answer_and_contexts_sha256": "e82f4265094c4ca28ef97a4c80c87d5feea8e4d1d21f5dadf2e6ca0d1ad7f762",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_and_contexts_sha256": "3f05419761710fe8b30fcb1b55998d237a888fd2dd7926b93067b07b976a23a2",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": [
+      "AT-2 new-02 translates literacy training as 读写能力 in part of the answer; prefer 安全与隐私素养培训 in final product."
+    ]
+  },
+  {
+    "id": "at-2-new-03",
+    "answer_and_contexts_sha256": "58fb9cc13f8bb114f82930d37a228927b9c4ff2166407dc927c6ae25cb89a806",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": true,
+    "adjudication": "Control locator plus actual [资料1] is valid under original structured-source contract; no per-sentence repetition or invented page required. Raw judge score retained.",
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-04",
+    "answer_and_contexts_sha256": "19badf9aa1c5500da1215480d02b280c7e90fd990a1168b6336d277bd975290a",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-05",
+    "answer_and_contexts_sha256": "baa0606198ec82cd89be8c7e6d9768ba053db398b764100e52a86e5953508b9a",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-06",
+    "answer_and_contexts_sha256": "46759fcdeab3849185662a8831713b36d96eda1776c04dd81b2ef92f049898be",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-07",
+    "answer_and_contexts_sha256": "a8c22cf6c885e66a0d8a4042b4bcf6dc9dd8ea681b743317f38d44e1ad6fe8b7",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "at-2-new-08",
+    "answer_and_contexts_sha256": "e3d91f603b0ee8d0cd86abe7027a2414259e1406abb470929b0d49f23d5eb1c0",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-01",
+    "answer_and_contexts_sha256": "3ffef1faead2af33768e24089a1f01e7c943dc765b7d56f07ef4831e10888d34",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-02",
+    "answer_and_contexts_sha256": "b4895df012fdea246cb9385a57fe6e38cca004053eacfea3afd3377241f700af",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-03",
+    "answer_and_contexts_sha256": "b6a6ee57a220812e2e025f88642bd740a5ccdd6ba47117d001b750fd2e1a0915",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-04",
+    "answer_and_contexts_sha256": "338b401d8585206887061991581c5e5caf10744a3747dc458db19b554d2aa9e2",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-05",
+    "answer_and_contexts_sha256": "a6c97f0bd9aae2f0acd1548a06ec6775eb32ed31e5ad55d982306436903e35c4",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": true,
+    "adjudication": "Control locator plus actual [资料1] is valid under original structured-source contract; no per-sentence repetition or invented page required. Raw judge score retained.",
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-06",
+    "answer_and_contexts_sha256": "165922596966c9de36d6880a965ffe70566de4628ddf3aacca57354a90e86fc9",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_and_contexts_sha256": "c6d60c36731f5269ece382e7f4f4814df9e9ef3adade7f9af38c820ef719bc33",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "cp-9-new-08",
+    "answer_and_contexts_sha256": "c3dd906c0fa047d7f5cc182c939579f19ca7dd25ee273fe53cde600bfa392402",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-01",
+    "answer_and_contexts_sha256": "a6667d2eec115e50c11de55b856c54b350354f0d9c1f041352b957def82d4661",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-02",
+    "answer_and_contexts_sha256": "4bbd5c1f9d7d50f40e5eba3390a86cd71f36b9df06ca7cea84f446e8e05eef20",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": true,
+    "adjudication": "Control locator plus actual [资料1] is valid under original structured-source contract; no per-sentence repetition or invented page required. Raw judge score retained.",
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-03",
+    "answer_and_contexts_sha256": "331c7e5b86bc03240d57d4559a6f9e3db71a184039e984bb68badf3b78b61366",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-04",
+    "answer_and_contexts_sha256": "e89ec870dbb5f243b1936a36149ceacae38816782a492659209ffef741514297",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-05",
+    "answer_and_contexts_sha256": "18461382df7233e31ee026adf62426652acec9612f6e88d4186896be83d0c255",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-06",
+    "answer_and_contexts_sha256": "6b7513aef1b39aaccb8f56777496f2275f530380b502e22d50928ad241da5ef6",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-07",
+    "answer_and_contexts_sha256": "9982760d7f7b30199891cee505c388811b377a429b612815572bd5eafd2b67ba",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  },
+  {
+    "id": "ca-8-new-08",
+    "answer_and_contexts_sha256": "646946a49ce0b9e7f810f86bbb9dc8b0e526f7221ecb2910d8f83cb87f921133",
+    "reviewer": "Codex AI source inspection; not independent human",
+    "source_support": "accepted_for_development_preflight",
+    "citation_support": "accepted",
+    "reason": "Read complete answer against frozen control statement, guidance and original parameter labels. Main conclusion, conditional scope, unassigned parameters and listed actions supported. General supplementation is labelled and not used as source evidence.",
+    "judge_disagreement": false,
+    "adjudication": null,
+    "limitations": [
+      "AI-authored questions and AI source review; semantic overlap with history not excluded",
+      "Only four controls, not production corpus"
+    ],
+    "wording_notes": []
+  }
+]

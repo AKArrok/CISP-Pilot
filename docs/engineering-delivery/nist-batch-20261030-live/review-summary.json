@@ -1,0 +1,11 @@
+{
+  "questions": 33,
+  "ai_source_review_acceptances": 33,
+  "independent_human_review": false,
+  "citation_judge_disagreements_adjudicated": 3,
+  "raw_judge_scores_modified": false,
+  "scope": "Frozen answers only; not independent accuracy or new grader calibration",
+  "terminology_followup": "Prefer 安全与隐私素养培训 over literal 读写能力培训; no real retest of this wording change",
+  "provider_calls": 66,
+  "remaining_authorized_calls": 0
+}
