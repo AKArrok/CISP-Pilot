@@ -1,0 +1,640 @@
+{
+  "summary": {
+    "executed": 33,
+    "grade_schema_valid": 33,
+    "citation_structure_valid": 33,
+    "semantic_acceptance": "pending_bound_source_review_except_at2_regression",
+    "at2_source_review": {
+      "decision": "accepted",
+      "reviewer": "Codex AI original source inspection, not independent human",
+      "reason": "Correctly limits missing evidence to examination frequency and explicitly preserves training frequency and mandatory actions",
+      "answer_sha256": "21962da1c6287958e8658c44e5357cb46dabbd10d6734efb2b435b7e1ebee245"
+    },
+    "judge_disagreements": [
+      "at-2-new-03",
+      "cp-9-new-05",
+      "ca-8-new-02"
+    ]
+  },
+  "cases": [
+    {
+      "id": "at2-regression",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确拒答了无法由控制文本证明考试频率的问题，并完整、准确地归纳了AT-2控制中资料实际支持的内容；所有关键主张均有资料1依据，引用编号与原文对应，参数定义与对象范围核对无误。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-01",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "type": "json_object",
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确回答了登录告知应在授予访问权限之前显示，并完整覆盖了ac-8_smt.a、b、c.1及gdn的适用范围与参数待定说明；所有主张均有资料1原文支持，引用编号与所引内容对应正确，未发现无依据的赋值或范围扩大。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-02",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确回答了警告横幅何时可从屏幕消失：用户确认使用条件并采取明确动作登录或进一步访问系统之后。完整覆盖ac-8_smt.b的保留要求，并正确补充显示时机、公开系统条件、仅适用于人机登录界面及二次通知由组织风险评估决定等要点；未赋值参数也正确标注待定。所有主张均有资料1原文支持，引用定位与原文一致，无捏造。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-03",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确回答了问题：不存在人机界面时不需要系统使用告知，并准确引用了资料1中ac-8_gdn的原文。展开说明中的附加内容（告知实现方式、二次告知基于风险评估、显示时机与内容）均有资料依据，参数待定说明也符合资料中未赋值的情况。引用出处正确指向资料1。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-04",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确回答了问题：公开访问系统的告知需要说明授权用途，并准确引用ac-8_smt.c.3。展开说明中的各项主张均可在资料1中找到依据，参数未赋值、通知仅用于人机界面等细节也与原文一致，引用编号与内容对应。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-05",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确回答了问题：多语言用户需要考虑但非强制，并完整覆盖了资料1中ac-8_gdn关于多语言的相关说明，同时正确区分了强制动作与可考虑事项，未引入无依据内容。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-06",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答完整覆盖了问题核心：明确二次告知是基于风险评估由组织考虑的事项而非强制，并准确区分了强制动作、适用范围和配套考虑；所有主张均可在资料1中找到对应原文支持，引用定位正确且未捏造参数值。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-07",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定不允许在用户确认前隐藏警告横幅，完整覆盖ac-8_smt.a、ac-8_smt.b、ac-8_smt.c及指南中的适用例外，并正确区分参数未赋值与强制动作，未将局部资料缺口扩大为全局结论。所有主张均有资料1原文支持，引用定位准确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ac-8-new-08",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定资料未规定每五分钟弹出，并完整覆盖AC-8的展示时机、内容、保留要求、公开系统附加要求、实施说明及参数未赋值情况；所有主张均可由资料1支持，引用定位与原文一致，未发现无依据的附加主张。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-01",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确指出安全与隐私培训对象包括承包商，并引用资料1的at-2_smt.a原文支持；对at-2_gdn的概括准确；对未赋值参数的说明与资料一致，未将待定参数误作可选或自行赋值。引用编号与主张对应，无捏造。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-02",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确区分了'工作环境作为确定培训内容的考虑因素'与'内容更新的强制触发事件'，并正确指出资料未将远程工作环境变化列为强制调整要求；同时正确说明参数待定不等于动作可选，且未把局部缺口扩大为全局不存在。所有主张均有资料依据，引用编号与原文对应。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-03",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 1
+        },
+        "reason": "回答完整列举了资料1中五种提升安全意识的具体手段，并正确说明参数待定及动作强制性，主要主张均有资料依据；但引用支持不足：回答末尾仅给出笼统出处，未在具体主张处标注引用编号或页码，且未明确对应到资料1的[at-2_gdn]段落，导致引用与主张的对应关系不清晰。",
+        "deductions": [
+          {
+            "dimension": "citation_support",
+            "reason": "回答仅在末尾给出笼统出处，未在列举手段、参数说明等具体主张处标注引用编号或页码，引用支持不充分。",
+            "answer_quote": "【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】",
+            "source_ref": 1,
+            "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events."
+          }
+        ]
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-04",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确回答了后续培训可采用简短临时专题形式，并完整覆盖了资料中的相关支持信息（包括频次义务、系统变更/事件触发培训、教训纳入等），所有主张均有资料依据，引用与原文一致，未发现无依据的推断或错误。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-05",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判断适用法规变化可能触发培训内容更新，并完整覆盖资料中相关事件列举、强制更新动作、参数待定说明及易混淆参数区分；所有主张均有资料1原文支持，引用定位与内容一致。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-06",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答直接回答“需要”，并引用资料1指南中关于培训内容涉及个人身份信息处理的原文，主张与来源一致；补充说明对强制动作和参数待定的描述也准确，未将资料2的备份要求混为培训要求。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-07",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判断培训并非只能使用海报一种方式，完整覆盖了参数待定、示例列举、培训与意识区分等要点，且所有主张均有资料1原文支持，引用定位准确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "at-2-new-08",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定资料不要求九十分，完整覆盖培训对象、时机、知识测试、后续频率、内容更新及参数待定状态，并明确区分测试措施与分数阈值；所有主张均有资料1原文支持，引用编号与内容对应，未发现无依据的赋值或范围扩大。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-01",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确列出系统级信息中的软件类别（操作系统软件、中间件、应用软件），并正确补充系统状态信息和许可证；对用户级信息的定义和备份频次参数未赋值的说明均与资料1一致，且明确标注出处为资料1，引用支持充分。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-02",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确、完整地区分了用户级信息与系统级信息：系统级信息按资料列举，用户级信息采用排除式定义；并正确说明资料未正面列举用户级信息。对备份动作与参数含义的补充说明均与资料1一致，未超出资料范围。引用标注指向资料1，且所引内容可在资料1原文中找到对应依据。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-03",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确给出数字签名和密码散列两种机制，完整覆盖问题；两项主张均直接得到资料1原文支持，并正确区分传输保护与完整性保护；出处标注与资料1对应，引用内容与原文一致。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-04",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确指出MP-5和SC-8两个控制编号，并准确引用资料1中CP-9指导说明的原文依据；对数字签名和加密哈希的区分也符合原文，未出现无依据扩展。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-05",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 1
+        },
+        "reason": "回答完整覆盖了资料中关于备份计划除应急计划外还需考虑的其他组织要求、法律政策约束及咨询隐私官和法律顾问的内容，并正确补充了参数定义和关联控制信息；主要主张均有资料依据，但引用仅标注了资料整体出处，未对具体主张给出可核验的逐条引用位置，引用支持度不足。",
+        "deductions": [
+          {
+            "dimension": "citation_support",
+            "reason": "回答仅在末尾给出资料整体出处，未对各项具体主张提供可核验的逐条引用（如页码或段落定位），引用支持不充分。",
+            "answer_quote": "【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+            "source_ref": 1,
+            "source_quote": "System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements."
+          }
+        ]
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-06",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确识别了资料1中关于个人健康信息备份要求的咨询对象（机构首席隐私官和法律顾问），并正确指出相关参数待定，未将咨询动作视为可选。所有主张均有资料1原文支持，引用标注正确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-07",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定CP-9未指定只能购买某一家公司的备份软件，完整覆盖四个强制动作、指导说明和参数定义，并说明资料缺口；所有主张均有资料1原文支持，引用标注与来源一致。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "cp-9-new-08",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定不允许跳过隐私相关系统文档备份，完整覆盖强制动作、参数性质（频次而非可选）、对象范围与频次参数区分，并引用资料1的cp-9语句和指南作为依据，所有主张均有原文支持，引用与来源对应正确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-01",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确覆盖了资料中渗透测试与自动漏洞扫描的区别：超越自动扫描、由具备技能经验的人员团队实施、更深入分析、复制对手行动等；并正确说明资料未定义自动漏洞扫描。所有主张均有资料1依据，引用定位正确，参数说明也符合原文。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-02",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 1
+        },
+        "reason": "回答准确覆盖了资料中关于渗透测试团队可证明能力的要求（技能与经验，含网络、操作系统和/或应用层安全技术专长），并正确说明资料未给出具体证书或独立性等级；主要主张均有资料依据。但回答末尾以【出处】形式给出文献定位，未使用资料1的引用编号或页码，且展开说明中的转述和参数说明未逐项标注来源，引用支持不足。",
+        "deductions": [
+          {
+            "dimension": "citation_support",
+            "reason": "回答仅在末尾给出文献定位，未对具体主张标注资料1的引用编号或页码，展开说明中的转述和参数说明缺乏逐项引用支持。",
+            "answer_quote": "【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】",
+            "source_ref": 1,
+            "source_quote": "[ca-8_gdn] Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries. Penetration testing goes beyond automated vulnerability scanning and is conducted by agents and teams with demonstrable skills and experience that include technical expertise in network, operating system, and/or application level security."
+          }
+        ]
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-03",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确覆盖资料中关于时间、资源、技能作为渗透测试约束条件的内容，并正确指出资料未进一步说明具体影响机制；对参数定义、技能要求等细节的引用与资料一致，未出现无依据扩展或混淆。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-04",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答完整覆盖问题要点：指出资料将IPv4→IPv6迁移作为渗透测试重要性的示例，并准确归纳渗透测试的定义、目的、约束和与漏洞扫描的区别；参数状态说明也符合资料未赋值的事实。所有主张均可在资料1中找到依据，引用定位正确，无捏造。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-05",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答直接回应问题，明确给出肯定结论并引用资料1原文支持；对渗透测试定义、标准方法及参数待定的说明均与资料一致，未超出资料范围，引用标注正确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-06",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确指出风险评估指导渗透测试人员所需独立程度，并正确说明资料未给出具体分级；主张与资料1原文一致，引用出处正确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-07",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确判定资料未规定渗透测试持续七天，并准确归纳了控制项ca-8的频次参数、系统/组件参数、约束条件及强制动作，未将参数待定误解为动作可选，也未把局部缺口扩大为全局不存在。所有主张均有资料1原文支持，引用定位正确。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    },
+    {
+      "id": "ca-8-new-08",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答直接回应问题，结论正确：资料1明确说明渗透测试可在内部或外部进行，并非只能从外部实施。回答对渗透测试定义、目的、标准方法、交战规则、信息暴露风险及风险评估指导独立性等展开说明，均可在资料1中找到依据；对两个待赋值参数（频率、系统或系统组件）的说明也与资料1的参数定义一致，且正确指出参数待定不表示动作可选。引用标注指向资料1 ca-8，与所引内容对应。",
+        "deductions": []
+      },
+      "grade_schema_valid": true
+    }
+  ]
+}

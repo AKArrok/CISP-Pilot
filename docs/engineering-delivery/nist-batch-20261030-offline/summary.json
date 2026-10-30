@@ -1,0 +1,21 @@
+{
+  "cases": 32,
+  "retrieval": {
+    "bilingual": {
+      "top1": 32,
+      "top4": 32
+    },
+    "source_only": {
+      "top1": 1,
+      "top4": 1
+    },
+    "source_plus_alias": {
+      "top1": 32,
+      "top4": 32
+    }
+  },
+  "selected_arm": "bilingual",
+  "provider_calls": 0,
+  "cost_usd_conservative": 0,
+  "semantic_acceptance": "pending_source_review"
+}

@@ -1,0 +1,28 @@
+{
+  "role": "AI-authored development only; not independent holdout",
+  "novelty": "exact normalized disjoint from two specified available historical packets only; semantic overlap and other history not excluded",
+  "cases": 32,
+  "controls": 4,
+  "frozen_sha256": {
+    "cases.json": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+    "chunks.json": "674ca46e3d36bab80977d5c7121963342acdb6a59cacc963ca540538b8cde321",
+    "prompts.json": "d32de360c22bc6c89b4072831caec1a99b0fe984243773e81563964b7f501972",
+    "at2-regression.json": "2924d4a014d05d553f756d4051070d941da1cf8b635a93910144188bdba85ae4"
+  },
+  "paid_proposal": {
+    "calls": 66,
+    "answer_calls": 33,
+    "judge_calls": 33,
+    "budget_usd": 0.6,
+    "scope": "unchanged AT-2 regression plus 32 new NIST development questions; selected retrieval candidate only",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "acceptance": {
+    "at2": "no denial of training frequency; correctly refuse fixed annual exam question count",
+    "retrieval": "compare source-only vs existing bilingual vs source-plus-alias; retain all failures, no threshold changes",
+    "semantics": "all cases retained; full scores require separate bound source review; no automatic semantic pass"
+  }
+}

@@ -1,0 +1,5 @@
+jieba==0.42.1
+openai==3.17.0
+python-dotenv==1.2.3
+tiktoken==0.14.0
+truststore==0.10.4
