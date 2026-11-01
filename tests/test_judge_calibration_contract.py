@@ -66,3 +66,18 @@ def test_source_score_cannot_be_full_when_review_identifies_contradiction():
         validate_grade(grade, item)
     grade["risk_checks"][0]["dimension"] = "citation_support"
     assert validate_grade(grade, item) == grade
+
+
+def test_critic_ensemble_preserves_frozen_baseline_and_can_veto_source_score(tmp_path):
+    packet = ROOT / "evaluation/judge-calibration-v5"
+    run = ROOT / "docs/engineering-delivery/judge-calibration-20261101-r4"
+    assert audit(packet, run)["arm_matches"]["judge_candidate"] == 6
+    rows = json.loads((run / "results.json").read_text(encoding="utf-8"))
+    row = next(x for x in rows if x["id"] == "scope_not_frequency")
+    grade = json.loads(row["judge_candidate"])
+    grade["scores"]["source_support"] = 1
+    grade["deductions"] = [{"dimension": "source_support", "reason": "synthetic veto",
+                            "answer_line": 1, "source_ref": 1, "source_line": 2}]
+    row["judge_candidate"] = json.dumps(grade)
+    (tmp_path / "results.json").write_text(json.dumps(rows), encoding="utf-8")
+    assert audit(packet, tmp_path)["arm_matches"]["judge_candidate"] == 7

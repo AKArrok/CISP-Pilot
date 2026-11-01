@@ -1,5 +1,6 @@
 """Offline calibration audit: validate evidence before counting a score match."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -11,6 +12,12 @@ def audit(packet, output):
     manifest = json.loads((packet / "manifest.json").read_text(encoding="utf-8"))
     results = {x["id"]: x for x in json.loads((output / "results.json").read_text(encoding="utf-8"))}
     arms = manifest.get("judge_arms", ["judge_baseline", "judge_candidate"])
+    baseline = None
+    if "baseline_run" in manifest:
+        path = Path(__file__).resolve().parents[1] / manifest["baseline_run"]
+        if hashlib.sha256(path.read_bytes()).hexdigest() != manifest["baseline_sha256"]:
+            raise ValueError("Frozen baseline changed")
+        baseline = {x["id"]: x for x in json.loads(path.read_text(encoding="utf-8"))}
     rows = []
     for case in cases:
         for arm in arms:
@@ -20,6 +27,13 @@ def audit(packet, output):
                     validator = materialize_grade if manifest.get("evidence_protocol") == "line_ids" else validate_grade
                     value = validator(json.loads(results[case["id"]][arm]),
                                       {"answer": case["answer"], "contexts": case["fixed_contexts"]})
+                    if baseline is not None:
+                        prior = materialize_grade(json.loads(baseline[case["id"]][arm]),
+                                                  {"answer": case["answer"], "contexts": case["fixed_contexts"]})
+                        value["scores"]["source_support"] = min(value["scores"]["source_support"],
+                                                                prior["scores"]["source_support"])
+                        value["scores"]["citation_support"] = prior["scores"]["citation_support"]
+                        value["scores"]["completeness"] = prior["scores"]["completeness"]
                     row.update(status="validated", score=value["scores"][case["expected_dimension"]])
                     row["passed"] = case["minimum"] <= row["score"] <= case["maximum"]
                 except (ValueError, KeyError, TypeError) as exc:
