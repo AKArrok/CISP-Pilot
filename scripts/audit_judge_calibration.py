@@ -10,14 +10,21 @@ from scripts.answer_grade_contract import materialize_grade, validate_grade
 def audit(packet, output):
     cases = json.loads((packet / "cases.json").read_text(encoding="utf-8"))
     manifest = json.loads((packet / "manifest.json").read_text(encoding="utf-8"))
-    results = {x["id"]: x for x in json.loads((output / "results.json").read_text(encoding="utf-8"))}
+    raw_results = json.loads((output / "results.json").read_text(encoding="utf-8"))
+    results = {x["id"]: x for x in raw_results}
+    case_ids = {case["id"] for case in cases}
+    if len(case_ids) != len(cases) or len(results) != len(raw_results) or set(results) - case_ids:
+        raise ValueError("Duplicate or unknown calibration case IDs")
     arms = manifest.get("judge_arms", ["judge_baseline", "judge_candidate"])
     baseline = None
     if "baseline_run" in manifest:
         path = Path(__file__).resolve().parents[1] / manifest["baseline_run"]
         if hashlib.sha256(path.read_bytes()).hexdigest() != manifest["baseline_sha256"]:
             raise ValueError("Frozen baseline changed")
-        baseline = {x["id"]: x for x in json.loads(path.read_text(encoding="utf-8"))}
+        raw_baseline = json.loads(path.read_text(encoding="utf-8"))
+        baseline = {x["id"]: x for x in raw_baseline}
+        if len(baseline) != len(raw_baseline) or set(baseline) != case_ids:
+            raise ValueError("Duplicate or unknown baseline case IDs")
     rows = []
     for case in cases:
         for arm in arms:

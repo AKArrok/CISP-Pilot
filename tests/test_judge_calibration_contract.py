@@ -81,3 +81,16 @@ def test_critic_ensemble_preserves_frozen_baseline_and_can_veto_source_score(tmp
     row["judge_candidate"] = json.dumps(grade)
     (tmp_path / "results.json").write_text(json.dumps(rows), encoding="utf-8")
     assert audit(packet, tmp_path)["arm_matches"]["judge_candidate"] == 7
+
+
+def test_duplicate_or_unknown_results_cannot_be_silently_overwritten(tmp_path):
+    packet = ROOT / "evaluation/judge-calibration-v5"
+    original = ROOT / "docs/engineering-delivery/judge-calibration-20261101-r5/results.json"
+    rows = json.loads(original.read_text(encoding="utf-8"))
+    (tmp_path / "results.json").write_text(json.dumps(rows + [rows[0]]), encoding="utf-8")
+    with pytest.raises(ValueError, match="Duplicate or unknown"):
+        audit(packet, tmp_path)
+    rows[0]["id"] = "unknown"
+    (tmp_path / "results.json").write_text(json.dumps(rows), encoding="utf-8")
+    with pytest.raises(ValueError, match="Duplicate or unknown"):
+        audit(packet, tmp_path)
