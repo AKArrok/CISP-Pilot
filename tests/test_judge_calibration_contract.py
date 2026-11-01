@@ -54,3 +54,15 @@ def test_line_ids_preserve_original_markdown_and_json_bytes():
     value["deductions"][0]["source_line"] = True
     with pytest.raises(ValueError, match="source line"):
         materialize_grade(value, item)
+
+
+def test_source_score_cannot_be_full_when_review_identifies_contradiction():
+    item = {"answer": "A is required.", "contexts": [{"text": "A is prohibited."}]}
+    grade = {"scores": {"completeness": 2, "source_support": 2, "citation_support": 2},
+             "reason": "test", "deductions": [], "risk_checks": [{"answer_quote": item["answer"],
+             "source_quote": item["contexts"][0]["text"], "verdict": "contradicted",
+             "dimension": "source_support"}]}
+    with pytest.raises(ValueError, match="risk verdict conflicts"):
+        validate_grade(grade, item)
+    grade["risk_checks"][0]["dimension"] = "citation_support"
+    assert validate_grade(grade, item) == grade

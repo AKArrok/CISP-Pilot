@@ -72,6 +72,9 @@ def validate_grade(value, item):
     for risk in risks:
         if risk.get("verdict") not in ("supported", "unsupported", "contradicted"):
             raise ValueError("Invalid risk verdict")
+        if (risk.get("dimension") == "source_support" and risk["verdict"] == "contradicted"
+                and value["scores"]["source_support"] == 2):
+            raise ValueError("risk verdict conflicts with full source score")
         quote = risk.get("answer_quote")
         if not isinstance(quote, str) or not quote or quote not in item["answer"]:
             raise ValueError("Invented risk answer quote")
