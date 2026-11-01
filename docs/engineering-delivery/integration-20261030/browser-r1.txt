@@ -1,0 +1,33 @@
+知识点候选: 580，建议首批审校: 316，题目标签: 813
+审校结果: active=305，rejected=11，candidate=264
+归因状态: confirmed=12，probable=323，unverified=1025
+数据库知识点: 580
+数据库题目标签: 813
+数据库题目归因: 1360
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+2026-10-30 16:32:26,602 INFO 存储后端: sqlite
+2026-10-30 16:32:26,639 INFO 预热完成
+2026-10-30 16:32:36,185 WARNING Redis 不可达，缓存降级为进程内存（功能不受影响，仅无跨进程共享）
+readiness browser e2e passed: unavailable disables, ready requires login
+2026-10-30 16:33:02,021 INFO   检索层就绪: 1077 向量块 / 1077 BM25 文档
+profile browser e2e passed: domain=信息安全保障, diagnostic=6, regular=1, calibration=1
+{"status":"passed","row":"q-ui\n查看题干和选项\n\t\n知识点 B\nkp-b\n\tdomain-b\t已确认\t用户纠错；用户确认考点\t再次纠正","screenshot":"C:\\Users\\ASUS\\AppData\\Local\\Temp\\cisp-attribution-correction.png"}
+attribution correction live e2e passed: question=51CTO_一套_1, search_matches=12, from=kp_5747db18f3fe45c4423d, to=kp_2596bf1cf11b4b320c84
+auth isolation browser e2e passed: ownership, logout, expiry, shared tabs, focus recheck
+submission retry browser e2e passed: stable payload, fresh practice, account isolation
+diagnostic retry browser e2e passed: stable retries, new starts, account isolation
+diagnostic restore browser e2e passed: explicit restore, frozen reports, pagination, stale-response isolation
+chat restore browser e2e passed: SQL history rendering, save errors, missing done, account isolation
+trace browser protocol mock passed: success/error, receipts, unknown cost, recovery, 404, identity/thread/logout isolation, safe text
+structured sources browser passed: PDF, distinct controls, safe links and escaped text; mocked HTTP protocol

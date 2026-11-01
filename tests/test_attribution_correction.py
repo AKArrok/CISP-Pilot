@@ -1,6 +1,7 @@
 import pytest
-from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
+
+from http_auth_helpers import authenticated_http, isolated_database
 
 
 @pytest.fixture()
@@ -14,96 +15,97 @@ def correction_db(tmp_path, monkeypatch):
         connect_args={"check_same_thread": False},
     )
     Base.metadata.create_all(engine)
-    db.override_engine(engine)
-    with db.session() as session:
-        session.add_all(
-            [
-                KnowledgePoint(id="kp-a", domain="domain-a", name="A", status="active"),
-                KnowledgePoint(id="kp-b", domain="domain-b", name="B", status="active"),
-                KnowledgePoint(id="kp-c", domain="domain-c", name="C", status="candidate"),
-            ]
-        )
-        session.add_all(
-            [
-                QuestionAttribution(
-                    question_id="probable-q",
-                    candidate_point_id="kp-a",
-                    candidate_domain="domain-a",
-                    attribution_status="probable",
-                    agreement_count=1,
-                    evidence_json="{}",
-                    reason="candidate",
-                    classifier_version="test",
-                    created_at=1,
-                    updated_at=2,
-                ),
-                QuestionAttribution(
-                    question_id="confirmed-q",
-                    candidate_point_id="kp-a",
-                    candidate_domain="domain-a",
-                    attribution_status="confirmed",
-                    agreement_count=3,
-                    evidence_json="{}",
-                    reason="confirmed",
-                    classifier_version="test",
-                    created_at=1,
-                    updated_at=1,
-                ),
-            ]
-        )
-        session.commit()
+    with isolated_database(engine, ready=True):
+        with db.session() as session:
+            session.add_all(
+                [
+                    KnowledgePoint(id="kp-a", domain="domain-a", name="A", status="active"),
+                    KnowledgePoint(id="kp-b", domain="domain-b", name="B", status="active"),
+                    KnowledgePoint(id="kp-c", domain="domain-c", name="C", status="candidate"),
+                ]
+            )
+            session.add_all(
+                [
+                    QuestionAttribution(
+                        question_id="probable-q",
+                        candidate_point_id="kp-a",
+                        candidate_domain="domain-a",
+                        attribution_status="probable",
+                        agreement_count=1,
+                        evidence_json="{}",
+                        reason="candidate",
+                        classifier_version="test",
+                        created_at=1,
+                        updated_at=2,
+                    ),
+                    QuestionAttribution(
+                        question_id="confirmed-q",
+                        candidate_point_id="kp-a",
+                        candidate_domain="domain-a",
+                        attribution_status="confirmed",
+                        agreement_count=3,
+                        evidence_json="{}",
+                        reason="confirmed",
+                        classifier_version="test",
+                        created_at=1,
+                        updated_at=1,
+                    ),
+                ]
+            )
+            session.commit()
 
-    questions = [
-        {
-            "id": "probable-q",
-            "source": "test",
-            "domain": "domain-a",
-            "stem": "probable",
-            "options": {"A": "wrong", "B": "right"},
-            "answer": "B",
-            "analysis": "x",
-        },
-        {
-            "id": "confirmed-q",
-            "source": "test",
-            "domain": "domain-a",
-            "stem": "confirmed",
-            "options": {"A": "wrong", "B": "right"},
-            "answer": "B",
-            "analysis": "x",
-        },
-    ]
+        questions = [
+            {
+                "id": "probable-q",
+                "source": "test",
+                "domain": "domain-a",
+                "stem": "probable",
+                "options": {"A": "wrong", "B": "right"},
+                "answer": "B",
+                "analysis": "x",
+            },
+            {
+                "id": "confirmed-q",
+                "source": "test",
+                "domain": "domain-a",
+                "stem": "confirmed",
+                "options": {"A": "wrong", "B": "right"},
+                "answer": "B",
+                "analysis": "x",
+            },
+        ]
 
-    class FakeBank:
-        def get_by_id(self, question_id):
-            return next((q for q in questions if q["id"] == question_id), None)
+        class FakeBank:
+            def get_by_id(self, question_id):
+                return next((q for q in questions if q["id"] == question_id), None)
 
-        def all(self, domain=None):
-            return [q for q in questions if domain is None or q["domain"] == domain]
+            def all(self, domain=None):
+                return [q for q in questions if domain is None or q["domain"] == domain]
 
-        def available(self, domain=None, *, thread_id="default"):
-            return self.all(domain)
+            def available(self, domain=None, *, thread_id="default"):
+                return self.all(domain)
 
-    import quiz
+        import quiz
 
-    monkeypatch.setattr(quiz.QuestionBank, "get", classmethod(lambda cls: FakeBank()))
-    monkeypatch.setattr("quiz.grader.related_chunks", lambda question: [])
-    yield engine
+        monkeypatch.setattr(quiz.QuestionBank, "get", classmethod(lambda cls: FakeBank()))
+        monkeypatch.setattr("quiz.grader.related_chunks", lambda question: [])
+        from server import app
+
+        yield authenticated_http(app)
     engine.dispose()
 
 
 def test_user_correction_is_scoped_and_replaces_pending_calibration(correction_db):
     import quiz
-    from server import app
     from storage import repos
 
-    thread = "learner-a"
+    thread = correction_db.own_thread("learner-a")
     quiz.submit_answer("probable-q", "A", thread_id=thread)
     original = repos.pending_calibrations(thread)
     assert len(original) == 1
     assert original[0]["knowledge_point_id"] == "kp-a"
 
-    response = TestClient(app).post(
+    response = correction_db.client.post(
         "/api/attributions/probable-q/correction",
         json={
             "thread_id": thread,
@@ -127,7 +129,7 @@ def test_user_correction_is_scoped_and_replaces_pending_calibration(correction_d
     assert len(pending) == 1
     assert pending[0]["knowledge_point_id"] == "kp-b"
     stats = (
-        TestClient(app)
+        correction_db.client
         .get(
             "/api/stats",
             params={"thread_id": thread},
@@ -154,10 +156,9 @@ def test_user_correction_is_scoped_and_replaces_pending_calibration(correction_d
 
 def test_correction_reuses_existing_pending_for_target_point(correction_db):
     import quiz
-    from server import app
     from storage import repos
 
-    thread = "learner-replacement-reuse"
+    thread = correction_db.own_thread("learner-replacement-reuse")
     existing = repos.create_calibration_hypothesis(
         thread,
         "kp-b",
@@ -167,7 +168,7 @@ def test_correction_reuses_existing_pending_for_target_point(correction_db):
     )
     quiz.submit_answer("probable-q", "A", thread_id=thread)
 
-    response = TestClient(app).post(
+    response = correction_db.client.post(
         "/api/attributions/probable-q/correction",
         json={"thread_id": thread, "corrected_point_id": "kp-b"},
     )
@@ -188,17 +189,16 @@ def test_correction_reuses_existing_pending_for_target_point(correction_db):
 
 def test_applied_correction_replays_exact_evidence_and_is_reversible(correction_db):
     import quiz
-    from server import app
     from storage import repos
 
-    thread = "learner-applied"
+    thread = correction_db.own_thread("learner-applied")
     quiz.submit_answer("confirmed-q", "A", thread_id=thread)
     before = repos.learner_knowledge_states(thread)
     assert [(row["knowledge_point_id"], row["attempts"], row["correct"]) for row in before] == [
         ("kp-a", 1, 0)
     ]
 
-    client = TestClient(app)
+    client = correction_db.client
     response = client.post(
         "/api/attributions/confirmed-q/correction",
         json={"thread_id": thread, "corrected_point_id": "kp-b"},
@@ -239,12 +239,11 @@ def test_applied_correction_replays_exact_evidence_and_is_reversible(correction_
 
 def test_correction_to_current_base_target_is_noop(correction_db):
     import quiz
-    from server import app
     from storage import repos
 
-    thread = "learner-correction-noop"
+    thread = correction_db.own_thread("learner-correction-noop")
     quiz.submit_answer("confirmed-q", "A", thread_id=thread)
-    response = TestClient(app).post(
+    response = correction_db.client.post(
         "/api/attributions/confirmed-q/correction",
         json={
             "thread_id": thread,
@@ -267,12 +266,11 @@ def test_correction_to_current_base_target_is_noop(correction_db):
 
 def test_same_target_correction_retry_is_idempotent(correction_db):
     import quiz
-    from server import app
     from storage import repos
 
-    thread = "learner-correction-retry"
+    thread = correction_db.own_thread("learner-correction-retry")
     quiz.submit_answer("confirmed-q", "A", thread_id=thread)
-    client = TestClient(app)
+    client = correction_db.client
     first = client.post(
         "/api/attributions/confirmed-q/correction",
         json={
@@ -306,10 +304,10 @@ def test_same_target_correction_retry_is_idempotent(correction_db):
 
 def test_legacy_applied_evidence_without_point_ledger_is_rejected(correction_db):
     from quiz import store
-    from server import app
     from storage import repos
 
-    thread = "learner-legacy"
+    thread = correction_db.own_thread("learner-legacy")
+    correction_db.own_thread("other")
     store.record_attempt(
         thread,
         "confirmed-q",
@@ -322,7 +320,25 @@ def test_legacy_applied_evidence_without_point_ledger_is_rejected(correction_db)
         profile_applied=True,
     )
     repos.update_learner_knowledge_states(thread, ["kp-a"], False)
-    response = TestClient(app).post(
+    client = correction_db.client
+    stats = client.get("/api/stats", params={"thread_id": thread})
+    assert stats.status_code == 200
+    assert stats.json()["legacy_applied_attempts_without_point"] == 1
+    review = client.get("/api/attribution-review", params={"thread_id": thread})
+    assert review.status_code == 200
+    assert next(
+        item for item in review.json()["items"] if item["question_id"] == "confirmed-q"
+    )["legacy_applied_attempts_without_point"] == 1
+    other_thread = client.get("/api/attribution-review", params={"thread_id": "other"})
+    assert client.get("/api/stats", params={"thread_id": "other"}).json()[
+        "legacy_applied_attempts_without_point"
+    ] == 0
+    assert all(
+        item["legacy_applied_attempts_without_point"] == 0
+        for item in other_thread.json()["items"]
+    )
+
+    response = client.post(
         "/api/attributions/confirmed-q/correction",
         json={"thread_id": thread, "corrected_point_id": "kp-b"},
     )
@@ -331,16 +347,15 @@ def test_legacy_applied_evidence_without_point_ledger_is_rejected(correction_db)
 
 
 def test_active_knowledge_point_endpoint_excludes_candidates(correction_db):
-    from server import app
 
-    response = TestClient(app).get(
+    response = correction_db.client.get(
         "/api/knowledge-points",
         params={"status": "active"},
     )
     assert response.status_code == 200
     assert [row["id"] for row in response.json()] == ["kp-a", "kp-b"]
     assert (
-        TestClient(app)
+        correction_db.client
         .get(
             "/api/knowledge-points",
             params={"status": "invalid"},
@@ -351,9 +366,8 @@ def test_active_knowledge_point_endpoint_excludes_candidates(correction_db):
 
 
 def test_attribution_status_filter_runs_before_limit(correction_db):
-    from server import app
 
-    response = TestClient(app).get(
+    response = correction_db.client.get(
         "/api/attributions",
         params={"status": "confirmed", "limit": 1},
     )
@@ -362,9 +376,11 @@ def test_attribution_status_filter_runs_before_limit(correction_db):
 
 
 def test_attribution_review_cursor_pages_overlay_only_current_thread(correction_db):
-    from server import app
     from storage import db
     from storage.models import QuestionAttributionCorrection
+
+    correction_db.own_thread("review-thread-a")
+    correction_db.own_thread("review-thread-b")
 
     with db.session() as session:
         session.add_all([
@@ -397,7 +413,7 @@ def test_attribution_review_cursor_pages_overlay_only_current_thread(correction_
         ])
         session.commit()
 
-    client = TestClient(app)
+    client = correction_db.client
     first = client.get(
         "/api/attribution-review",
         params={"thread_id": "review-thread-a", "limit": 1},
@@ -443,9 +459,11 @@ def test_attribution_review_cursor_pages_overlay_only_current_thread(correction_
 
 
 def test_correction_audit_api_is_thread_scoped_and_cursor_paginated(correction_db):
-    from server import app
     from storage import db
     from storage.models import QuestionAttributionCorrection
+
+    correction_db.own_thread("audit-a")
+    correction_db.own_thread("audit-b")
 
     with db.session() as session:
         for index in range(3):
@@ -481,7 +499,7 @@ def test_correction_audit_api_is_thread_scoped_and_cursor_paginated(correction_d
         )
         session.commit()
 
-    client = TestClient(app)
+    client = correction_db.client
     first = client.get(
         "/api/attribution-corrections",
         params={"thread_id": "audit-a", "limit": 2},
@@ -515,11 +533,10 @@ def test_correction_audit_api_is_thread_scoped_and_cursor_paginated(correction_d
 
 
 def test_profile_summary_keeps_latest_correction_beyond_recent_500(correction_db):
-    from server import app
     from storage import db
     from storage.models import QuestionAttributionCorrection
 
-    thread = "correction-over-500"
+    thread = correction_db.own_thread("correction-over-500")
     with db.session() as session:
         session.add(
             QuestionAttributionCorrection(
@@ -573,7 +590,7 @@ def test_profile_summary_keeps_latest_correction_beyond_recent_500(correction_db
         )
         session.commit()
 
-    response = TestClient(app).get("/api/stats", params={"thread_id": thread})
+    response = correction_db.client.get("/api/stats", params={"thread_id": thread})
     assert response.status_code == 200
     visible = next(
         row for row in response.json()["attributions"]
@@ -584,9 +601,11 @@ def test_profile_summary_keeps_latest_correction_beyond_recent_500(correction_db
 
 
 def test_correction_observability_is_scoped_windowed_and_not_accuracy(correction_db):
-    from server import app
     from storage import db
     from storage.models import QuestionAttributionCorrection
+
+    correction_db.own_thread("observe-a")
+    correction_db.own_thread("observe-b")
 
     rows = [
         QuestionAttributionCorrection(
@@ -647,7 +666,7 @@ def test_correction_observability_is_scoped_windowed_and_not_accuracy(correction
         session.commit()
         latest_visible_id = rows[2].id
 
-    client = TestClient(app)
+    client = correction_db.client
     response = client.get(
         "/api/attribution-observability",
         params={"thread_id": "observe-a"},
@@ -728,11 +747,10 @@ def test_correction_observability_is_scoped_windowed_and_not_accuracy(correction
 def test_observability_reports_thread_scoped_calibration_ledger_anomalies(
     correction_db,
 ):
-    from server import app
     from storage import db
     from storage.models import CalibrationHypothesis, LearnerAttempt
 
-    thread = "observe-integrity"
+    thread = correction_db.own_thread("observe-integrity")
     with db.session() as session:
         confirmed = CalibrationHypothesis(
             thread_id=thread,
@@ -796,7 +814,7 @@ def test_observability_reports_thread_scoped_calibration_ledger_anomalies(
         )
         session.commit()
 
-    client = TestClient(app)
+    client = correction_db.client
     result = client.get(
         "/api/attribution-observability",
         params={"thread_id": thread, "since": 999},

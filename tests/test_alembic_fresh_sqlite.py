@@ -4,6 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+from storage.db import SCHEMA_HEAD
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -57,7 +58,7 @@ def test_alembic_head_builds_fresh_sqlite_schema(tmp_path):
 
     from storage.models import Base
 
-    assert revision == "f1a2b3c4d5e6"
+    assert revision == SCHEMA_HEAD
     assert tables - {"alembic_version"} == set(Base.metadata.tables)
     assert "question_attribution_corrections" in tables
     assert "attribution_point_id" in attempt_columns
@@ -126,7 +127,7 @@ def test_alembic_upgrade_preserves_existing_attribution_rows(tmp_path):
             "select version_num from alembic_version"
         ).fetchone()[0]
 
-    assert revision == "f1a2b3c4d5e6"
+    assert revision == SCHEMA_HEAD
     assert attempt == (
         "thread-before-upgrade", "question-before-upgrade", "安全工程", 1, None,
     )
@@ -153,4 +154,4 @@ def test_database_url_sqlite_is_the_authoritative_migration_target(tmp_path):
         revision = connection.execute(
             "select version_num from alembic_version"
         ).fetchone()[0]
-    assert revision == "f1a2b3c4d5e6"
+    assert revision == SCHEMA_HEAD

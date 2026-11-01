@@ -2,6 +2,7 @@
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const { registerAndCreateThread } = require("./browser_auth.cjs");
 const playwrightModule = process.env.CISP_PLAYWRIGHT_MODULE || process.argv[2] || "playwright";
 const { chromium } = require(playwrightModule);
 
@@ -20,16 +21,18 @@ async function main() {
   const failedResponses = [];
   page.on("pageerror", error => pageErrors.push(error.message));
   page.on("console", message => {
-    if (message.type() === "error") consoleErrors.push(message.text());
+    if (message.type() === "error" && !message.text().includes("401 (Unauthorized)"))
+      consoleErrors.push(message.text());
   });
   page.on("response", response => {
-    if (response.status() >= 400) {
+    if (response.status() >= 400 && !response.url().endsWith("/api/auth/me")) {
       failedResponses.push(`${response.status()} ${response.url()}`);
     }
   });
 
   try {
     await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await registerAndCreateThread(page);
     await page.locator("#tab-quiz").click();
     await page.locator("#quiz-mode").selectOption("diagnostic");
     await page.locator("#diagnostic-form").waitFor({ state: "visible" });
@@ -85,11 +88,12 @@ async function main() {
     const confirmedStatus = await page.evaluate(async questionId => {
       const response = await fetch("/quiz/answer", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json", "X-CSRF-Token": csrfToken},
         body: JSON.stringify({
           question_id: questionId,
           choice: "A",
-          thread_id: window.localStorage.getItem("cisp-thread-id"),
+          thread_id: threadId,
+          submission_id: crypto.randomUUID(),
         }),
       });
       return response.status;
@@ -141,14 +145,15 @@ async function main() {
     const calibrationTrigger = await page.evaluate(async ({ questionId, choice, threadId }) => {
       const response = await fetch("/quiz/answer", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question_id: questionId, choice, thread_id: threadId }),
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
+        body: JSON.stringify({ question_id: questionId, choice, thread_id: threadId,
+          submission_id: crypto.randomUUID() }),
       });
       return { status: response.status, payload: await response.json() };
     }, {
       questionId: calibrationSeed.row.question_id,
       choice: wrongChoice,
-      threadId: await page.evaluate(() => window.localStorage.getItem("cisp-thread-id")),
+      threadId: await page.evaluate(() => threadId),
     });
     assert.equal(calibrationTrigger.status, 200);
     assert.equal(calibrationTrigger.payload.correct, false);

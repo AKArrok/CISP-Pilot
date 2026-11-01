@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
-from scripts.answer_grade_contract import validate_grade
+from scripts.answer_grade_contract import materialize_grade, validate_grade
 
 
 def audit(packet, output):
@@ -17,8 +17,9 @@ def audit(packet, output):
             row = {"id": case["id"], "arm": arm, "status": "not_completed", "passed": False}
             if case["id"] in results and arm in results[case["id"]]:
                 try:
-                    value = validate_grade(json.loads(results[case["id"]][arm]),
-                                           {"answer": case["answer"], "contexts": case["fixed_contexts"]})
+                    validator = materialize_grade if manifest.get("evidence_protocol") == "line_ids" else validate_grade
+                    value = validator(json.loads(results[case["id"]][arm]),
+                                      {"answer": case["answer"], "contexts": case["fixed_contexts"]})
                     row.update(status="validated", score=value["scores"][case["expected_dimension"]])
                     row["passed"] = case["minimum"] <= row["score"] <= case["maximum"]
                 except (ValueError, KeyError, TypeError) as exc:

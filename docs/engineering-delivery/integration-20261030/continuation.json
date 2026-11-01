@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-01",
+  "steps": {
+    "5": "not accepted: v1 candidate6/8; v2 strict3/8 partial503; v3 strict5/8; v4 line-ID protocol6/8, still two semantic false positives. Do not auto-accept judge scores.",
+    "6": "completed isolated manifest/vector-load/BM25/full HTTP graph+followup+SQL+ownership; external model transport mocked, dense disabled",
+    "7": "local checks passed: full snapshot747/3skip; later34 targeted; 11browser; release Docker/restart; SQLite restore; clean exported CI292/13skip. Final remote CI pending."
+  },
+  "paid_attempts_this_phase": 37,
+  "observed_responses": 36,
+  "known_usage_estimate_usd": 0.0308049,
+  "total_provider_cost_usd": null,
+  "cost_unknown_reason": "one provider503 with no usage",
+  "next_action": "Verify final runtime push/remote CI; preserve all calibration failures. Further paid judge experiments need a new frozen scope and authorization; no further dispatch on consumed locks.",
+  "latest_report": "docs/62-审阅校准与结构化来源集成.md"
+}

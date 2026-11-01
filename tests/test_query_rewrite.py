@@ -8,8 +8,8 @@ def test_gold_baseline_retrieval_defaults():
     assert config.RRF_K == 20
     assert config.ENABLE_QUERY_REWRITE
     assert config.ENABLE_FEATURE_RERANKING
-    # 精排默认开启：pointwise 精排与特征序加权融合（α=0.5）双集 +2.5pp（docs/05 §3.1.4）。
-    assert config.ENABLE_RERANKING
+    # 外部精排当前不可用，用户选择默认仅用 embedding + 本地检索排序。
+    assert not config.ENABLE_RERANKING
     assert config.RERANK_BACKEND == "dashscope"
     assert config.RERANK_FUSION == "alpha"
     assert config.RERANK_FUSION_ALPHA == 0.5

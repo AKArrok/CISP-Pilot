@@ -1,0 +1,38 @@
+test	Offline regression	﻿2026-11-01T08:34:33.1915163Z ##[group]Run python -B tests/run_ci_suite.py
+test	Offline regression	2026-11-01T08:34:33.1915613Z ^[[36;1mpython -B tests/run_ci_suite.py^[[0m
+test	Offline regression	2026-11-01T08:34:33.1945651Z shell: /usr/bin/bash -e {0}
+test	Offline regression	2026-11-01T08:34:33.1945901Z env:
+test	Offline regression	2026-11-01T08:34:33.1946170Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+test	Offline regression	2026-11-01T08:34:33.1946627Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+test	Offline regression	2026-11-01T08:34:33.1947062Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+test	Offline regression	2026-11-01T08:34:33.1947450Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+test	Offline regression	2026-11-01T08:34:33.1947828Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+test	Offline regression	2026-11-01T08:34:33.1948206Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+test	Offline regression	2026-11-01T08:34:33.1948580Z   CISP_DB_PATH: /home/runner/work/_temp/cisp-ci.db
+test	Offline regression	2026-11-01T08:34:33.1948870Z   DATABASE_URL: 
+test	Offline regression	2026-11-01T08:34:33.1949070Z   MYSQL_PASSWORD: 
+test	Offline regression	2026-11-01T08:34:33.1949570Z ##[endgroup]
+test	Offline regression	2026-11-01T08:34:45.5655839Z ...................................................................s.s.. [ 30%]
+test	Offline regression	2026-11-01T08:34:46.7369893Z ............................................F.....sss..s..ss............ [ 61%]
+test	Offline regression	2026-11-01T08:34:48.4736315Z .......................................ss...ss.......................... [ 91%]
+test	Offline regression	2026-11-01T08:34:48.8216625Z .........s..........                                                     [100%]
+test	Offline regression	2026-11-01T08:34:48.8217486Z =================================== FAILURES ===================================
+test	Offline regression	2026-11-01T08:34:48.8218229Z ___ test_frozen_packet_has_32_unique_development_questions_and_exact_sources ___
+test	Offline regression	2026-11-01T08:34:48.8218737Z 
+test	Offline regression	2026-11-01T08:34:48.8219079Z     def test_frozen_packet_has_32_unique_development_questions_and_exact_sources():
+test	Offline regression	2026-11-01T08:34:48.8220039Z         manifest = load(PACKET / "manifest.json")
+test	Offline regression	2026-11-01T08:34:48.8221168Z         for filename, digest in manifest["frozen_sha256"].items():
+test	Offline regression	2026-11-01T08:34:48.8221872Z >           assert hashlib.sha256((PACKET / filename).read_bytes()).hexdigest() == digest
+test	Offline regression	2026-11-01T08:34:48.8222779Z E           AssertionError: assert 'e3aa679d3c05...b9219f2001f69' == 'ca5b5e62770a...5cf99599e8cdc'
+test	Offline regression	2026-11-01T08:34:48.8223456Z E             
+test	Offline regression	2026-11-01T08:34:48.8223945Z E             - ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc
+test	Offline regression	2026-11-01T08:34:48.8224711Z E             + e3aa679d3c05756af8f14295cee98b2bd154bf4db181d6a58c2b9219f2001f69
+test	Offline regression	2026-11-01T08:34:48.8225161Z 
+test	Offline regression	2026-11-01T08:34:48.8225324Z tests/test_nist_batch.py:13: AssertionError
+test	Offline regression	2026-11-01T08:34:48.8225833Z =========================== short test summary info ============================
+test	Offline regression	2026-11-01T08:34:48.8227263Z FAILED tests/test_nist_batch.py::test_frozen_packet_has_32_unique_development_questions_and_exact_sources - AssertionError: assert 'e3aa679d3c05...b9219f2001f69' == 'ca5b5e62770a...5cf99599e8cdc'
+test	Offline regression	2026-11-01T08:34:48.8228484Z   
+test	Offline regression	2026-11-01T08:34:48.8228913Z   - ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc
+test	Offline regression	2026-11-01T08:34:48.8229834Z   + e3aa679d3c05756af8f14295cee98b2bd154bf4db181d6a58c2b9219f2001f69
+test	Offline regression	2026-11-01T08:34:48.8230431Z 1 failed, 222 passed, 13 skipped in 13.18s
+test	Offline regression	2026-11-01T08:34:49.4775843Z ##[error]Process completed with exit code 1.

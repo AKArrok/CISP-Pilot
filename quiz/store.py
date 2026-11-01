@@ -1,4 +1,4 @@
-"""答题记录与 AI 题存储 — 已迁移到 storage ORM（MySQL 主后端 / SQLite 降级）。
+"""答题记录与 AI 题存储 — 使用 storage ORM（MySQL 或 SQLite 显式选择）。
 
 AI 生成题与真题统一存 questions 表（source='AI生成'）；
 历史函数签名保持不变，调用方（quiz/__init__、grader、selector）无需感知后端。
@@ -12,6 +12,7 @@ from sqlalchemy import select
 
 from storage import cache, db
 from storage.models import LearnerAttempt, Question
+from storage.submissions import thread_transaction
 
 STATS_CACHE_KEY = "stats:summary"
 
@@ -51,8 +52,9 @@ def record_attempt(thread_id: str, question_id: str, question_source: str,
                    attribution_status: str = "confirmed",
                    profile_applied: bool = True,
                    calibration_id: int | None = None,
-                   attribution_point_id: str | None = None) -> int | None:
-    with db.session() as s:
+                   attribution_point_id: str | None = None,
+                   *, session=None) -> int | None:
+    with thread_transaction(thread_id, session=session) as s:
         row = LearnerAttempt(
             thread_id=thread_id, question_id=question_id,
             question_source=question_source, domain=domain, stem=stem[:500],
@@ -63,9 +65,10 @@ def record_attempt(thread_id: str, question_id: str, question_source: str,
             attribution_point_id=attribution_point_id,
         )
         s.add(row)
-        s.commit()
+        s.flush()
         attempt_id = row.id
-    cache.delete_keys(stats_cache_key(thread_id))
+    if session is None:
+        cache.delete_keys(stats_cache_key(thread_id))
     return attempt_id
 
 

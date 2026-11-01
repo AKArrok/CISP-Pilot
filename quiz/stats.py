@@ -238,6 +238,9 @@ def summary(thread_id: str) -> dict:
             "thread_id": thread_id,
             "legacy_global_history_included": False,
         },
+        "legacy_applied_attempts_without_point": sum(
+            repos.legacy_applied_attempt_counts(thread_id).values()
+        ),
         "total_attempts": total_attempts,
         "total_accuracy": round(total_correct / total_attempts, 4) if total_attempts else None,
         "domains": domains_detail,

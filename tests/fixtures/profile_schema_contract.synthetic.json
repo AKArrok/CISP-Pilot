@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "dataset_role": "synthetic_profile_schema_contract",
+  "sampling_seed": 1,
+  "attempt_budgets": [4, 8, 12, 20],
+  "simulation_seeds": 1,
+  "weak_max": 0.3,
+  "strong_min": 0.7,
+  "quality_gates": {
+    "inference_12_f1_min": 0.8,
+    "inference_12_exact_profile_min": 0.5,
+    "primary_tag_accuracy_min": 0.85,
+    "parse_contamination_max": 0.0
+  },
+  "provenance": {
+    "description": "AI-authored engineering schema examples only; no real people, course content, or real exam questions; not quality evaluation evidence. Domain names from domains.py are labels only. Thresholds are schema examples, not measured results.",
+    "human_reviewed": false,
+    "quality_evaluation_allowed": false,
+    "flag_scope": "These provenance flags are declarations only, not runtime safety enforcement.",
+    "data_license_proposal": "MIT data only; pending owner/publication confirmation"
+  },
+  "personas": [
+    {
+      "id": "profile-contract-persona-01",
+      "abilities": {
+        "信息安全保障": 0.2,
+        "信息安全监管": 0.2,
+        "信息安全支撑技术": 0.2,
+        "物理与网络通信安全": 0.2,
+        "计算环境安全": 0.2,
+        "软件安全开发": 0.2,
+        "信息安全评估": 0.2,
+        "安全工程与运营": 0.2,
+        "业务连续性": 0.2,
+        "信息安全管理": 0.2
+      }
+    },
+    {
+      "id": "profile-contract-persona-02",
+      "abilities": {
+        "信息安全保障": 0.8,
+        "信息安全监管": 0.8,
+        "信息安全支撑技术": 0.8,
+        "物理与网络通信安全": 0.8,
+        "计算环境安全": 0.8,
+        "软件安全开发": 0.8,
+        "信息安全评估": 0.8,
+        "安全工程与运营": 0.8,
+        "业务连续性": 0.8,
+        "信息安全管理": 0.8
+      }
+    },
+    {
+      "id": "profile-contract-persona-03",
+      "abilities": {
+        "信息安全保障": 0.2,
+        "信息安全监管": 0.8,
+        "信息安全支撑技术": 0.2,
+        "物理与网络通信安全": 0.8,
+        "计算环境安全": 0.2,
+        "软件安全开发": 0.8,
+        "信息安全评估": 0.2,
+        "安全工程与运营": 0.8,
+        "业务连续性": 0.2,
+        "信息安全管理": 0.8
+      }
+    },
+    {
+      "id": "profile-contract-persona-04",
+      "abilities": {
+        "信息安全保障": 0.8,
+        "信息安全监管": 0.2,
+        "信息安全支撑技术": 0.8,
+        "物理与网络通信安全": 0.2,
+        "计算环境安全": 0.8,
+        "软件安全开发": 0.2,
+        "信息安全评估": 0.8,
+        "安全工程与运营": 0.2,
+        "业务连续性": 0.8,
+        "信息安全管理": 0.2
+      }
+    }
+  ],
+  "knowledge_tag_cases": [
+    {"question_id": "profile-contract-question-01", "acceptable": ["profile-contract-label-01"], "predicted": "profile-contract-label-01", "scorable": false},
+    {"question_id": "profile-contract-question-02", "acceptable": ["profile-contract-label-02"], "predicted": "profile-contract-label-02", "scorable": false},
+    {"question_id": "profile-contract-question-03", "acceptable": ["profile-contract-label-03"], "predicted": "profile-contract-label-03", "scorable": false},
+    {"question_id": "profile-contract-question-04", "acceptable": ["profile-contract-label-04"], "predicted": "profile-contract-label-04", "scorable": false},
+    {"question_id": "profile-contract-question-05", "acceptable": ["profile-contract-label-05"], "predicted": "profile-contract-label-05", "scorable": false},
+    {"question_id": "profile-contract-question-06", "acceptable": ["profile-contract-label-06"], "predicted": "profile-contract-label-06", "scorable": false},
+    {"question_id": "profile-contract-question-07", "acceptable": ["profile-contract-label-07"], "predicted": "profile-contract-label-07", "scorable": false},
+    {"question_id": "profile-contract-question-08", "acceptable": ["profile-contract-label-08"], "predicted": "profile-contract-label-08", "scorable": false},
+    {"question_id": "profile-contract-question-09", "acceptable": ["profile-contract-label-09"], "predicted": "profile-contract-label-09", "scorable": false},
+    {"question_id": "profile-contract-question-10", "acceptable": ["profile-contract-label-10"], "predicted": "profile-contract-label-10", "scorable": false},
+    {"question_id": "profile-contract-question-11", "acceptable": ["profile-contract-label-11"], "predicted": "profile-contract-label-11", "scorable": false},
+    {"question_id": "profile-contract-question-12", "acceptable": ["profile-contract-label-12"], "predicted": "profile-contract-label-12", "scorable": false},
+    {"question_id": "profile-contract-question-13", "acceptable": ["profile-contract-label-13"], "predicted": "profile-contract-label-13", "scorable": false},
+    {"question_id": "profile-contract-question-14", "acceptable": ["profile-contract-label-14"], "predicted": "profile-contract-label-14", "scorable": false},
+    {"question_id": "profile-contract-question-15", "acceptable": ["profile-contract-label-15"], "predicted": "profile-contract-label-15", "scorable": false},
+    {"question_id": "profile-contract-question-16", "acceptable": ["profile-contract-label-16"], "predicted": "profile-contract-label-16", "scorable": false},
+    {"question_id": "profile-contract-question-17", "acceptable": ["profile-contract-label-17"], "predicted": "profile-contract-label-17", "scorable": false},
+    {"question_id": "profile-contract-question-18", "acceptable": ["profile-contract-label-18"], "predicted": "profile-contract-label-18", "scorable": false},
+    {"question_id": "profile-contract-question-19", "acceptable": ["profile-contract-label-19"], "predicted": "profile-contract-label-19", "scorable": false},
+    {"question_id": "profile-contract-question-20", "acceptable": ["profile-contract-label-20"], "predicted": "profile-contract-label-20", "scorable": false},
+    {"question_id": "profile-contract-question-21", "acceptable": ["profile-contract-label-21"], "predicted": "profile-contract-label-21", "scorable": false},
+    {"question_id": "profile-contract-question-22", "acceptable": ["profile-contract-label-22"], "predicted": "profile-contract-label-22", "scorable": false},
+    {"question_id": "profile-contract-question-23", "acceptable": ["profile-contract-label-23"], "predicted": "profile-contract-label-23", "scorable": false},
+    {"question_id": "profile-contract-question-24", "acceptable": ["profile-contract-label-24"], "predicted": "profile-contract-label-24", "scorable": false},
+    {"question_id": "profile-contract-question-25", "acceptable": ["profile-contract-label-25"], "predicted": "profile-contract-label-25", "scorable": false},
+    {"question_id": "profile-contract-question-26", "acceptable": ["profile-contract-label-26"], "predicted": "profile-contract-label-26", "scorable": false},
+    {"question_id": "profile-contract-question-27", "acceptable": ["profile-contract-label-27"], "predicted": "profile-contract-label-27", "scorable": false},
+    {"question_id": "profile-contract-question-28", "acceptable": ["profile-contract-label-28"], "predicted": "profile-contract-label-28", "scorable": false},
+    {"question_id": "profile-contract-question-29", "acceptable": ["profile-contract-label-29"], "predicted": "profile-contract-label-29", "scorable": false},
+    {"question_id": "profile-contract-question-30", "acceptable": ["profile-contract-label-30"], "predicted": "profile-contract-label-30", "scorable": false},
+    {"question_id": "profile-contract-question-31", "acceptable": ["profile-contract-label-31"], "predicted": "profile-contract-label-31", "scorable": false},
+    {"question_id": "profile-contract-question-32", "acceptable": ["profile-contract-label-32"], "predicted": "profile-contract-label-32", "scorable": false},
+    {"question_id": "profile-contract-question-33", "acceptable": ["profile-contract-label-33"], "predicted": "profile-contract-label-33", "scorable": false},
+    {"question_id": "profile-contract-question-34", "acceptable": ["profile-contract-label-34"], "predicted": "profile-contract-label-34", "scorable": false},
+    {"question_id": "profile-contract-question-35", "acceptable": ["profile-contract-label-35"], "predicted": "profile-contract-label-35", "scorable": false},
+    {"question_id": "profile-contract-question-36", "acceptable": ["profile-contract-label-36"], "predicted": "profile-contract-label-36", "scorable": false},
+    {"question_id": "profile-contract-question-37", "acceptable": ["profile-contract-label-37"], "predicted": "profile-contract-label-37", "scorable": false},
+    {"question_id": "profile-contract-question-38", "acceptable": ["profile-contract-label-38"], "predicted": "profile-contract-label-38", "scorable": false},
+    {"question_id": "profile-contract-question-39", "acceptable": ["profile-contract-label-39"], "predicted": "profile-contract-label-39", "scorable": false},
+    {"question_id": "profile-contract-question-40", "acceptable": ["profile-contract-label-40"], "predicted": "profile-contract-label-40", "scorable": false}
+  ]
+}

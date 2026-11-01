@@ -1,13 +1,13 @@
-"""记忆层：短期上下文缓存 + 长期向量记忆。
+"""SQL 已提交对话 + 可选短期缓存和长期向量记忆。
 
-短期记忆保存最近几轮消息到 storage.cache；Redis 可用时跨进程共享，不可用时
-自动降级为进程内存。长期记忆把每轮对话嵌入到独立本地向量文件，元数据保存
-thread_id、原文与时间，避免和课件知识库向量混用。
+历史和续聊上下文来自 SQL。缓存与独立本地向量文件在提交后尽力更新，
+向量元数据包含 thread_id，避免与课件知识库及其他线程混用。
 """
 from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import threading
 import time
@@ -34,6 +34,9 @@ def _round_text(question: str, answer: str, intent: str) -> str:
 
 def _fallback_embed(text: str, dim: int = 256) -> list[float]:
     """无 embedding 配置时的测试/降级向量，保证记忆接口仍可用。"""
+    from agents.budget import current_budget
+    if current_budget.get() is not None:
+        current_budget.get().reserve("local_embedding")
     vec = np.zeros(dim, dtype=np.float32)
     for token in text:
         digest = hashlib.md5(token.encode("utf-8")).digest()
@@ -43,12 +46,15 @@ def _fallback_embed(text: str, dim: int = 256) -> list[float]:
 
 
 def _embed_text(text: str) -> tuple[list[float], str]:
+    from agents.budget import BudgetExceeded
     try:
         from llms import get_embeddings
 
         emb = get_embeddings()
         model = getattr(emb, "model_identity", getattr(emb, "model", "embedding"))
         return emb.embed_query(text), model
+    except BudgetExceeded:
+        raise
     except Exception:
         return _fallback_embed(text), "fallback-hash"
 
@@ -85,17 +91,39 @@ def save_short_context(thread_id: str, question: str, answer: str, intent: str) 
 
 
 def load_short_context(thread_id: str, limit: int | None = None) -> list[dict]:
-    rows = cache.get_json(_short_key(thread_id)) or []
-    if limit:
-        rows = rows[-limit:]
-    return rows
+    from storage.conversations import load_history
+
+    return load_history(thread_id, limit=limit or config.MEMORY_MAX_ROUNDS * 2)
 
 
 def save_round(thread_id: str, question: str, answer: str, intent: str) -> None:
-    """一轮对话写入短期缓存，并追加到长期向量记忆。"""
-    save_short_context(thread_id, question, answer, intent)
+    """先提交成对 SQL 对话，再尽力更新可选缓存和向量。"""
+    from storage.conversations import save_round as save_sql_round
+
+    save_sql_round(thread_id, question, answer, intent)
+    from agents.tracing import observe
+
+    observe("conversation_commit", "confirmed")
+    from agents.budget import current_budget
+    for stage, operation in (("short_memory_cache", lambda: cache.set_json(
+        _short_key(thread_id), load_short_context(thread_id), ttl=config.SHORT_MEMORY_TTL),
+        ), ("long_memory_write", lambda: _save_vector_round(thread_id, question, answer, intent))):
+        try:
+            if current_budget.get() is not None:
+                current_budget.get().check()
+            operation()
+            observe(stage, "completed")
+        except Exception:
+            observe(stage, "degraded")
+            logging.getLogger(__name__).warning("Conversation committed; optional memory update failed", exc_info=True)
+
+
+def _save_vector_round(thread_id: str, question: str, answer: str, intent: str) -> None:
     text = _round_text(question, answer, intent)
     vector, model = _embed_text(text)
+    from agents.budget import current_budget
+    if current_budget.get() is not None:
+        current_budget.get().check()
     now = time.time()
     row = {
         "id": hashlib.md5(f"{thread_id}:{now}:{text}".encode("utf-8")).hexdigest(),
@@ -122,6 +150,8 @@ def save_round(thread_id: str, question: str, answer: str, intent: str) -> None:
                 "已保留原存储，未写入当前轮次"
             )
         metadata.append(row)
+        if current_budget.get() is not None:
+            current_budget.get().check()
         _save_store(vectors, metadata)
 
 
@@ -153,26 +183,10 @@ def search_long_memory(query: str, thread_id: str | None = None,
 
 
 def load_history(thread_id: str, limit: int = 50) -> list[dict]:
-    """从长期向量记忆元数据恢复某会话历史消息。"""
-    with _lock:
-        _vectors, metadata = _load_store()
-    rows = [m for m in metadata if m.get("thread_id") == thread_id]
-    rows = sorted(rows, key=lambda r: r.get("created_at", 0))
-    history = []
-    for r in rows:
-        history.append({
-            "role": "user",
-            "content": r.get("question", ""),
-            "intent": None,
-            "created_at": r.get("created_at"),
-        })
-        history.append({
-            "role": "assistant",
-            "content": r.get("answer", ""),
-            "intent": r.get("intent"),
-            "created_at": r.get("created_at"),
-        })
-    return history[-limit:]
+    """只返回 SQL 中已经提交的会话消息。"""
+    from storage.conversations import load_history as load_sql_history
+
+    return load_sql_history(thread_id, limit)
 
 
 def list_threads(limit: int = 20) -> list[dict]:

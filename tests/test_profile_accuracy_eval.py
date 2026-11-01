@@ -6,19 +6,56 @@ import pytest
 
 
 CASES = Path("tests/fixtures/profile_accuracy_cases.json")
+SYNTHETIC_SCHEMA = Path("tests/fixtures/profile_schema_contract.synthetic.json")
 CURRENT_TAG_ARTIFACTS = all(Path(path).exists() for path in (
     "data/knowledge_taxonomy.json",
     "data/question_knowledge_tags.json",
 ))
 
 
-def test_profile_accuracy_fixture_has_stratified_coverage():
-    cases = json.loads(CASES.read_text("utf-8"))
+def test_profile_schema_fixture_has_synthetic_contract():
+    from domains import DOMAINS
+
+    cases = json.loads(SYNTHETIC_SCHEMA.read_text("utf-8"))
     assert cases["attempt_budgets"] == [4, 8, 12, 20]
-    assert "校准集回归" in cases["dataset_role"]
+    assert cases["dataset_role"] == "synthetic_profile_schema_contract"
     assert len(cases["personas"]) >= 4
     assert len(cases["knowledge_tag_cases"]) == 40
     assert cases["quality_gates"]["primary_tag_accuracy_min"] == 0.85
+    assert cases["provenance"]["human_reviewed"] is False
+    assert cases["provenance"]["quality_evaluation_allowed"] is False
+    for persona in cases["personas"]:
+        assert persona["id"].startswith("profile-contract-persona-")
+        assert set(persona["abilities"]) == set(DOMAINS)
+        assert set(persona["abilities"].values()) <= {0.2, 0.8}
+    for case in cases["knowledge_tag_cases"]:
+        assert case["question_id"].startswith("profile-contract-question-")
+        assert case["acceptable"]
+        assert all(label.startswith("profile-contract-label-") for label in case["acceptable"])
+        assert case["predicted"].startswith("profile-contract-label-")
+        assert case["scorable"] is False
+
+
+def test_profile_accuracy_cli_does_not_fallback_to_synthetic(monkeypatch, tmp_path):
+    import sys
+    from tests import eval_profile_accuracy
+
+    assert eval_profile_accuracy.DEFAULT_CASES == eval_profile_accuracy.ROOT / CASES
+    assert eval_profile_accuracy.DEFAULT_CASES != SYNTHETIC_SCHEMA.resolve()
+    missing_cases = tmp_path / "missing-profile-accuracy-cases.json"
+    report = tmp_path / "profile-report.json"
+    monkeypatch.setattr(eval_profile_accuracy, "DEFAULT_CASES", missing_cases)
+    monkeypatch.setattr(sys, "argv", ["eval_profile_accuracy.py", "--output", str(report)])
+
+    def unexpected_evaluation(*args, **kwargs):
+        pytest.fail("Missing real cases must fail before evaluation or synthetic fallback")
+
+    monkeypatch.setattr(eval_profile_accuracy, "evaluate_inference", unexpected_evaluation)
+    monkeypatch.setattr(eval_profile_accuracy, "evaluate_knowledge_tags", unexpected_evaluation)
+    with pytest.raises(FileNotFoundError) as error:
+        eval_profile_accuracy.main()
+    assert error.value.filename == str(missing_cases)
+    assert not report.exists()
 
 
 def test_profile_prediction_uses_production_thresholds():
@@ -39,6 +76,11 @@ def test_current_primary_tags_are_present_in_benchmark():
     from tests.eval_profile_accuracy import evaluate_knowledge_tags
 
     cases = json.loads(CASES.read_text("utf-8"))
+    assert cases["attempt_budgets"] == [4, 8, 12, 20]
+    assert "校准集回归" in cases["dataset_role"]
+    assert len(cases["personas"]) >= 4
+    assert len(cases["knowledge_tag_cases"]) == 40
+    assert cases["quality_gates"]["primary_tag_accuracy_min"] == 0.85
     result = evaluate_knowledge_tags(cases)
     assert result["missing_current_predictions"] == []
     assert result["primary_tag_accuracy"] >= cases["quality_gates"]["primary_tag_accuracy_min"]

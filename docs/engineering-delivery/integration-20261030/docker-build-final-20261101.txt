@@ -1,0 +1,71 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.15kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 726B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 40.41kB 0.0s done
+#4 DONE 0.0s
+
+#5 [ 1/13] FROM docker.io/library/python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3
+#5 resolve docker.io/library/python:3.11.15-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3 0.0s done
+#5 DONE 0.1s
+
+#6 [ 2/13] WORKDIR /app
+#6 CACHED
+
+#7 [ 3/13] COPY requirements-build.lock.txt requirements-runtime.lock.txt ./
+#7 CACHED
+
+#8 [ 4/13] RUN python -m pip install --no-cache-dir --require-hashes -r requirements-build.lock.txt     && python -m pip install --no-cache-dir --no-build-isolation --require-hashes -r requirements-runtime.lock.txt
+#8 CACHED
+
+#9 [ 5/13] COPY config.py domains.py document_library.py llms.py server.py alembic.ini ./
+#9 DONE 0.1s
+
+#10 [ 6/13] COPY agents/ ./agents/
+#10 DONE 0.1s
+
+#11 [ 7/13] COPY quiz/ ./quiz/
+#11 DONE 0.1s
+
+#12 [ 8/13] COPY retrieval/ ./retrieval/
+#12 DONE 0.1s
+
+#13 [ 9/13] COPY storage/ ./storage/
+#13 DONE 0.1s
+
+#14 [10/13] COPY data_ingest/ ./data_ingest/
+#14 DONE 0.1s
+
+#15 [11/13] COPY alembic/ ./alembic/
+#15 DONE 0.1s
+
+#16 [12/13] COPY static/ ./static/
+#16 DONE 0.1s
+
+#17 [13/13] COPY scripts/audit_db_readiness.py scripts/build_taxonomy.py scripts/import_to_db.py scripts/prepare_demo.py ./scripts/
+#17 DONE 0.1s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 0.5s done
+#18 exporting manifest sha256:e63757280de57a4e40a3cfbf0b2dd0aa82be3d24f83e6eb2817754007f88957e 0.0s done
+#18 exporting config sha256:a9594dbde13accaab39e85ebf14a5897e9963b520a3584b44a58864ff5478944 0.0s done
+#18 exporting attestation manifest sha256:30361fe9544a6f35a5d359c9a0eb264b6e443e6267430a1ea4793746022bea27 0.0s done
+#18 exporting manifest list sha256:46ae75ac91ff0a3cbb7a87bff3d990aaaa1514620faafb24e3216594e9069b9a 0.0s done
+#18 naming to docker.io/library/cisp-integration:20261101-final
+#18 naming to docker.io/library/cisp-integration:20261101-final done
+#18 unpacking to docker.io/library/cisp-integration:20261101-final
+#18 unpacking to docker.io/library/cisp-integration:20261101-final 0.2s done
+#18 DONE 0.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/41jec8toq6fleipstx9n41kvk

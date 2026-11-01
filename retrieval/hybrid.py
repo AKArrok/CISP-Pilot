@@ -10,6 +10,7 @@ import os
 import threading
 
 import config
+from agents.tracing import observe
 from retrieval.query_rewrite import rewrite_query
 
 
@@ -111,7 +112,9 @@ class HybridRetriever:
         from storage import cache
         cached = cache.get_json(cache_key)
         if cached is not None:
+            observe("retrieval_cache", "hit")
             return cached
+        observe("retrieval_cache", "miss")
         # 逐查询跑召回核心；多变体时 RRF 融合（原查询权重加倍），
         # 单查询路径不做融合，保持既有打分语义零扰动。
         degraded_at_start = self._dense_degraded
@@ -155,11 +158,24 @@ class HybridRetriever:
         # 精排：用 Child 检索文本评分，最终返回完整 Parent 文本。
         if config.ENABLE_RERANKING:
             from retrieval.reranker import rerank
-            full = rerank(query, full[:config.RERANK_TOP_K], top_k)
+            observe("retrieval_rerank", "started")
+            try:
+                full = rerank(query, full[:config.RERANK_TOP_K], top_k)
+            except Exception:
+                observe("retrieval_rerank", "failed")
+                raise
+            # This observes the wrapper return, including its existing fallback.
+            observe("retrieval_rerank", "completed")
+        else:
+            observe("retrieval_rerank", "disabled")
         results = full[:top_k]
         # 首次 dense 故障发生在 cache key 计算之后；不要把 BM25 结果写进 dense key。
         if self._dense_degraded == degraded_at_start:
+            # set_json has no backend receipt; this is not a durable-write claim.
+            observe("retrieval_cache_write", "attempted")
             cache.set_json(cache_key, results, ttl=config.RETRIEVAL_CACHE_TTL)
+        else:
+            observe("retrieval_cache_write", "skipped_degradation")
         return results
 
     def _core_retrieval(self, retrieval_query: str, domain: str | None,
@@ -168,15 +184,23 @@ class HybridRetriever:
         from llms import get_embeddings
 
         query_vec = None
+        if degraded:
+            observe("retrieval_dense", "disabled_by_config" if not config.ENABLE_DENSE_RETRIEVAL
+                    else "previously_degraded")
         if not degraded:
+            observe("retrieval_dense", "started")
             try:
                 query_vec = get_embeddings().embed_query(retrieval_query)
             except Exception:
                 if not config.ALLOW_DENSE_DEGRADATION:
+                    observe("retrieval_dense", "strict_failure")
                     raise
                 self._dense_degraded = True
+                observe("retrieval_dense", "embedding_failed_degraded")
                 logging.exception("dense 召回不可用，本进程降级为 BM25 兜底召回（%s 条）",
                                   config.DENSE_DEGRADED_SPARSE_K)
+            else:
+                observe("retrieval_dense", "completed")
         if query_vec is not None:
             dense = self._vector.search(query_vec, config.DENSE_K)
             dense_scores = {item["id"]: item["score"] for item in dense}

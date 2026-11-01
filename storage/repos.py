@@ -5,12 +5,16 @@ from __future__ import annotations
 import json
 import logging
 import time
+from contextlib import contextmanager
+from datetime import datetime, timezone
+from uuid import uuid4
 
-from sqlalchemy import case, func, or_, select, text, update
+from sqlalchemy import case, func, or_, select, update
 
 import config
 
 from storage import cache, db
+from storage.submissions import thread_transaction
 from storage.models import (
     DiagnosticEvent,
     DiagnosticSession,
@@ -26,9 +30,134 @@ from storage.models import (
     QuestionAttributionEvent,
     QuestionKnowledgePoint,
     QuestionSignal,
+    Thread,
+    User,
+    WebSession,
 )
 
 logger = logging.getLogger(__name__)
+
+
+# ── 身份与线程所有权 ────────────────────────────────────────────────────
+
+
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
+
+def _user_dict(row: User) -> dict:
+    return {
+        "id": row.id,
+        "username": row.username,
+        "password_hash": row.password_hash,
+        "created_at": row.created_at,
+    }
+
+
+def _thread_dict(row: Thread) -> dict:
+    return {
+        "id": row.id,
+        "owner_user_id": row.owner_user_id,
+        "created_at": row.created_at,
+    }
+
+
+def create_user(username: str, password_hash: str) -> dict:
+    with db.session() as s:
+        row = User(
+            id=str(uuid4()), username=username, password_hash=password_hash,
+            created_at=_utcnow(),
+        )
+        s.add(row)
+        s.commit()
+        return _user_dict(row)
+
+
+def get_user(user_id: str) -> dict | None:
+    with db.session() as s:
+        row = s.get(User, user_id)
+        return _user_dict(row) if row is not None else None
+
+
+def get_user_by_username(username: str) -> dict | None:
+    with db.session() as s:
+        row = s.scalar(select(User).where(User.username == username))
+        return _user_dict(row) if row is not None else None
+
+
+def create_web_session(user_id: str, token_hash: str, expires_at: datetime) -> dict:
+    with db.session() as s:
+        if s.get(User, user_id) is None:
+            raise ValueError("unknown user")
+        row = WebSession(
+            id=str(uuid4()), token_hash=token_hash, user_id=user_id,
+            expires_at=expires_at, revoked_at=None,
+        )
+        s.add(row)
+        s.commit()
+        return {
+            "id": row.id, "user_id": row.user_id,
+            "expires_at": row.expires_at, "revoked_at": row.revoked_at,
+        }
+
+
+def get_active_session_user(token_hash: str, now: datetime | None = None) -> dict | None:
+    now = now if now is not None else _utcnow()
+    with db.session() as s:
+        row = s.scalar(
+            select(User).join(WebSession, WebSession.user_id == User.id).where(
+                WebSession.token_hash == token_hash,
+                WebSession.expires_at > now,
+                WebSession.revoked_at.is_(None),
+            )
+        )
+        return _user_dict(row) if row is not None else None
+
+
+def revoke_web_session(token_hash: str, now: datetime | None = None) -> bool:
+    now = now if now is not None else _utcnow()
+    with db.session() as s:
+        result = s.execute(
+            update(WebSession)
+            .where(WebSession.token_hash == token_hash, WebSession.revoked_at.is_(None))
+            .values(revoked_at=now)
+        )
+        s.commit()
+        return result.rowcount == 1
+
+
+def create_thread(owner_user_id: str) -> dict:
+    with db.session() as s:
+        if s.get(User, owner_user_id) is None:
+            raise ValueError("unknown user")
+        row = Thread(id=str(uuid4()), owner_user_id=owner_user_id, created_at=_utcnow())
+        s.add(row)
+        s.commit()
+        return _thread_dict(row)
+
+
+def get_thread_owner(thread_id: str) -> str | None:
+    with db.session() as s:
+        return s.scalar(select(Thread.owner_user_id).where(Thread.id == thread_id))
+
+
+def get_diagnostic_owner(session_id: str) -> str | None:
+    """Only return ownership; never load a diagnosis payload before authorization."""
+    with db.session() as s:
+        return s.scalar(
+            select(Thread.owner_user_id)
+            .join(DiagnosticSession, DiagnosticSession.thread_id == Thread.id)
+            .where(DiagnosticSession.id == session_id)
+        )
+
+
+def list_user_threads(owner_user_id: str) -> list[dict]:
+    with db.session() as s:
+        rows = s.scalars(
+            select(Thread).where(Thread.owner_user_id == owner_user_id)
+            .order_by(Thread.created_at.desc(), Thread.id.desc())
+        ).all()
+        return [_thread_dict(row) for row in rows]
 
 
 # ── 题库 ────────────────────────────────────────────────────────────────
@@ -242,7 +371,7 @@ def recent_wrong_attempts(thread_id: str, domain: str, limit: int = 5) -> list[d
 def record_question_signal(
     thread_id: str, question: str, domain: str | None, intent: str | None
 ) -> None:
-    with db.session() as s:
+    with thread_transaction(thread_id) as s:
         s.add(
             QuestionSignal(
                 thread_id=thread_id,
@@ -252,7 +381,7 @@ def record_question_signal(
                 created_at=time.time(),
             )
         )
-        s.commit()
+        s.flush()
     cache.delete_keys(f"stats:summary:{thread_id}")
 
 
@@ -281,8 +410,9 @@ def create_diagnostic_session(
     self_report: str,
     max_questions: int,
     now: float,
+    *, session=None,
 ) -> None:
-    with db.session() as s:
+    with thread_transaction(thread_id, session=session) as s:
         s.add(
             DiagnosticSession(
                 id=session_id,
@@ -297,11 +427,11 @@ def create_diagnostic_session(
                 updated_at=now,
             )
         )
-        s.commit()
+        s.flush()
 
 
-def get_diagnostic_session(session_id: str) -> dict | None:
-    with db.session() as s:
+def get_diagnostic_session(session_id: str, *, session=None) -> dict | None:
+    with db.session_scope(session) as s:
         row = s.get(DiagnosticSession, session_id)
         if row is None:
             return None
@@ -313,6 +443,7 @@ def get_diagnostic_session(session_id: str) -> dict | None:
             "self_report": row.self_report,
             "question_ids": row.question_ids,
             "responses": row.responses,
+            "report_json": row.report_json,
             "max_questions": row.max_questions,
             "created_at": row.created_at,
             "updated_at": row.updated_at,
@@ -325,9 +456,13 @@ def update_diagnostic_session(
     status: str | None = None,
     question_ids: str | None = None,
     responses: str | None = None,
+    report_json: str | None = None,
     now: float | None = None,
+    session=None,
 ) -> None:
-    with db.session() as s:
+    with _thread_row_transaction(DiagnosticSession, session_id, session=session) as s:
+        if s is None:
+            return
         row = s.get(DiagnosticSession, session_id)
         if row is None:
             return
@@ -337,14 +472,19 @@ def update_diagnostic_session(
             row.question_ids = question_ids
         if responses is not None:
             row.responses = responses
+        if report_json is not None:
+            row.report_json = report_json
         row.updated_at = now if now is not None else time.time()
-        s.commit()
+        s.flush()
 
 
 def record_diagnostic_event(
-    session_id: str, event_type: str, payload: str, now: float | None = None
+    session_id: str, event_type: str, payload: str, now: float | None = None,
+    *, session=None,
 ) -> None:
-    with db.session() as s:
+    with _thread_row_transaction(DiagnosticSession, session_id, session=session) as s:
+        if s is None:
+            return
         s.add(
             DiagnosticEvent(
                 session_id=session_id,
@@ -353,7 +493,7 @@ def record_diagnostic_event(
                 created_at=now or time.time(),
             )
         )
-        s.commit()
+        s.flush()
 
 
 # ── 知识点候选与题目多标签 ──────────────────────────────────────────────
@@ -486,10 +626,10 @@ def primary_question_domain(question_id: str) -> str | None:
         return s.scalar(stmt)
 
 
-def question_knowledge_points_bulk(question_ids: list[str]) -> dict[str, list[dict]]:
+def question_knowledge_points_bulk(question_ids: list[str], *, session=None) -> dict[str, list[dict]]:
     if not question_ids:
         return {}
-    with db.session() as s:
+    with db.session_scope(session) as s:
         rows = s.scalars(
             select(QuestionKnowledgePoint)
             .outerjoin(
@@ -516,8 +656,8 @@ def question_knowledge_points_bulk(question_ids: list[str]) -> dict[str, list[di
     return result
 
 
-def load_knowledge_points(point_ids: list[str] | None = None) -> list[dict]:
-    with db.session() as s:
+def load_knowledge_points(point_ids: list[str] | None = None, *, session=None) -> list[dict]:
+    with db.session_scope(session) as s:
         stmt = select(KnowledgePoint)
         if point_ids:
             stmt = stmt.where(KnowledgePoint.id.in_(point_ids))
@@ -590,15 +730,15 @@ def upsert_question_attribution(result: dict, now: float | None = None) -> None:
         s.commit()
 
 
-def question_attribution(question_id: str) -> dict | None:
+def question_attribution(question_id: str, *, session=None) -> dict | None:
     """返回归因快照；旧库/尚未导入快照时用已有标签做保守兼容。"""
-    with db.session() as s:
+    with db.session_scope(session) as s:
         row = s.get(QuestionAttribution, question_id)
     if row is not None:
         evidence = _loads_json(row.evidence_json, {})
         candidate = None
         if row.candidate_point_id:
-            points = load_knowledge_points([row.candidate_point_id])
+            points = load_knowledge_points([row.candidate_point_id], session=session)
             point = points[0] if points else {}
             candidate = {
                 "knowledge_point_id": row.candidate_point_id,
@@ -619,7 +759,7 @@ def question_attribution(question_id: str) -> dict | None:
             "evidence": evidence,
             "updated_at": row.updated_at,
         }
-    return _legacy_tag_attribution(question_id)
+    return _legacy_tag_attribution(question_id, session=session)
 
 
 def _loads_json(value: str | None, default):
@@ -630,9 +770,9 @@ def _loads_json(value: str | None, default):
         return default
 
 
-def _legacy_tag_attribution(question_id: str) -> dict | None:
+def _legacy_tag_attribution(question_id: str, *, session=None) -> dict | None:
     """仅兼容旧数据：人工/测试标签可确认，启发式标签只能 probable。"""
-    with db.session() as s:
+    with db.session_scope(session) as s:
         rows = s.execute(
             select(QuestionKnowledgePoint, KnowledgePoint)
             .join(KnowledgePoint, KnowledgePoint.id == QuestionKnowledgePoint.knowledge_point_id)
@@ -773,8 +913,8 @@ def _correction_dict(row: QuestionAttributionCorrection) -> dict:
     }
 
 
-def latest_attribution_correction(thread_id: str, question_id: str) -> dict | None:
-    with db.session() as s:
+def latest_attribution_correction(thread_id: str, question_id: str, *, session=None) -> dict | None:
+    with db.session_scope(session) as s:
         row = s.scalars(
             select(QuestionAttributionCorrection)
             .where(
@@ -851,6 +991,28 @@ def apply_thread_attribution_corrections(rows: list[dict], thread_id: str) -> li
     return rows
 
 
+def legacy_applied_attempt_counts(
+    thread_id: str,
+    question_ids: list[str] | None = None,
+) -> dict[str, int]:
+    """Count applied attempts without the exact point ledger, per question."""
+    if question_ids is not None and not question_ids:
+        return {}
+    statement = (
+        select(LearnerAttempt.question_id, func.count())
+        .where(
+            LearnerAttempt.thread_id == thread_id,
+            LearnerAttempt.profile_applied.is_(True),
+            LearnerAttempt.attribution_point_id.is_(None),
+        )
+        .group_by(LearnerAttempt.question_id)
+    )
+    if question_ids is not None:
+        statement = statement.where(LearnerAttempt.question_id.in_(question_ids))
+    with db.session() as session:
+        return {question_id: int(count) for question_id, count in session.execute(statement)}
+
+
 def attribution_review_page(
     thread_id: str,
     *,
@@ -882,6 +1044,9 @@ def attribution_review_page(
     items = [_question_attribution_dict(row) for row in rows[:limit]]
     items = apply_thread_attribution_corrections(items, thread_id)
     if items:
+        legacy_counts = legacy_applied_attempt_counts(
+            thread_id, [item["question_id"] for item in items],
+        )
         point_ids = {
             item["candidate_point_id"] for item in items if item["candidate_point_id"]
         }
@@ -891,6 +1056,9 @@ def attribution_review_page(
         } if point_ids else {}
         for item in items:
             item["candidate_point_name"] = point_names.get(item["candidate_point_id"])
+            item["legacy_applied_attempts_without_point"] = legacy_counts.get(
+                item["question_id"], 0,
+            )
     return {
         "items": items,
         "total": total,
@@ -1110,12 +1278,12 @@ def attribution_correction_observability(
     }
 
 
-def effective_question_attribution(thread_id: str, question_id: str) -> dict | None:
-    base = question_attribution(question_id)
-    correction = latest_attribution_correction(thread_id, question_id)
+def effective_question_attribution(thread_id: str, question_id: str, *, session=None) -> dict | None:
+    base = question_attribution(question_id, session=session)
+    correction = latest_attribution_correction(thread_id, question_id, session=session)
     if correction is None:
         return base
-    point = load_knowledge_points([correction["corrected_point_id"]])
+    point = load_knowledge_points([correction["corrected_point_id"]], session=session)
     point = point[0] if point else {}
     return {
         "question_id": question_id,
@@ -1218,17 +1386,8 @@ def _reassign_applied_attempts(
     return len(moved)
 
 
-def _begin_serialized_write(session) -> None:
-    if db.backend() == "sqlite":
-        session.execute(text("BEGIN IMMEDIATE"))
-
-
-def _lock_calibration_point(session, point_id: str) -> KnowledgePoint:
-    """Serialize pending creation on SQLite and MySQL using one point anchor."""
-    _begin_serialized_write(session)
-    point = session.scalars(
-        select(KnowledgePoint).where(KnowledgePoint.id == point_id).with_for_update()
-    ).first()
+def _calibration_point(session, point_id: str) -> KnowledgePoint:
+    point = session.get(KnowledgePoint, point_id)
     if point is None:
         raise ValueError("knowledge_point_id must reference an existing knowledge point")
     return point
@@ -1240,19 +1399,18 @@ def record_attribution_correction(
     corrected_point_id: str,
     reason: str = "",
     now: float | None = None,
+    *, session=None,
 ) -> dict:
     now = now if now is not None else time.time()
-    with db.session() as s:
-        point = _lock_calibration_point(s, corrected_point_id)
+    with thread_transaction(thread_id, session=session) as s:
+        point = _calibration_point(s, corrected_point_id)
         if point.status != "active":
             raise ValueError("corrected_point_id must reference an active knowledge point")
 
-        # Serialize corrections for the same source question. This makes the latest
-        # correction and previous-point ledger authoritative under concurrent writes.
+        # The thread anchor protects the private ledger; source attribution is read-only.
         base_row = s.scalars(
             select(QuestionAttribution)
             .where(QuestionAttribution.question_id == question_id)
-            .with_for_update()
         ).first()
         latest_correction = s.scalars(
             select(QuestionAttributionCorrection)
@@ -1387,11 +1545,10 @@ def record_attribution_correction(
         row.replayed_attempts = replayed_attempts
         row.retracted_calibrations = len(pending)
         row.replacement_calibration_id = replacement.id if replacement is not None else None
-        s.commit()
-        s.refresh(row)
         result = _correction_dict(row)
         result["deduplicated"] = False
-    cache.delete_keys(f"stats:summary:{thread_id}")
+    if session is None:
+        cache.delete_keys(f"stats:summary:{thread_id}")
     return result
 
 
@@ -1420,14 +1577,14 @@ def confirmed_question_ids_for_point(point_id: str) -> set[str]:
 # ── pending calibration queue ─────────────────────────────────────────────
 
 
-def _calibration_dict(row: CalibrationHypothesis) -> dict:
+def _calibration_dict(row: CalibrationHypothesis, *, session=None) -> dict:
     raw_evidence = _loads_json(row.evidence_json, [])
     evidence = [
         {key: value for key, value in item.items() if key != "attempt_id"} for item in raw_evidence
     ]
     answered = [item for item in evidence if item.get("correct") is not None]
     outcomes = [bool(item["correct"]) for item in answered]
-    point = load_knowledge_points([row.knowledge_point_id])
+    point = load_knowledge_points([row.knowledge_point_id], session=session)
     point = point[0] if point else {}
     return {
         "id": row.id,
@@ -1459,10 +1616,11 @@ def create_calibration_hypothesis(
     trigger_correct: bool,
     calibration_reason: str,
     now: float | None = None,
+    *, session=None,
 ) -> dict:
     now = now if now is not None else time.time()
-    with db.session() as s:
-        _lock_calibration_point(s, knowledge_point_id)
+    with thread_transaction(thread_id, session=session) as s:
+        _calibration_point(s, knowledge_point_id)
         existing = s.scalars(
             select(CalibrationHypothesis)
             .where(
@@ -1473,7 +1631,7 @@ def create_calibration_hypothesis(
             .order_by(CalibrationHypothesis.created_at.desc())
         ).first()
         if existing is not None:
-            return _calibration_dict(existing)
+            return _calibration_dict(existing, session=s)
         row = CalibrationHypothesis(
             thread_id=thread_id,
             knowledge_point_id=knowledge_point_id,
@@ -1488,9 +1646,8 @@ def create_calibration_hypothesis(
             updated_at=now,
         )
         s.add(row)
-        s.commit()
-        s.refresh(row)
-        return _calibration_dict(row)
+        s.flush()
+        return _calibration_dict(row, session=s)
 
 
 def calibration_status_counts(thread_id: str) -> dict[str, int]:
@@ -1507,17 +1664,41 @@ def calibration_status_counts(thread_id: str) -> dict[str, int]:
     return counts
 
 
+@contextmanager
+def _thread_row_transaction(model, row_id, *, session=None):
+    # End the locating read before waiting on Thread. Under MySQL REPEATABLE READ
+    # the write session must establish its snapshot only after acquiring the anchor.
+    if (
+        session is not None
+        and session.info.get("thread_lock_transaction") is session.get_transaction()
+        and session.info.get("locked_threads")
+    ):
+        thread_id = session.scalar(
+            select(model.thread_id).where(model.id == row_id)
+        )
+    else:
+        with db.session() as reader:
+            thread_id = reader.scalar(
+                select(model.thread_id).where(model.id == row_id)
+            )
+    if thread_id is None:
+        yield None
+        return
+    with thread_transaction(thread_id, session=session) as writer:
+        yield writer
+
+
 def _lock_calibration_hypothesis(session, hypothesis_id: int):
-    _begin_serialized_write(session)
     return session.scalars(
         select(CalibrationHypothesis)
         .where(CalibrationHypothesis.id == hypothesis_id)
         .with_for_update()
+        .execution_options(populate_existing=True)
     ).first()
 
 
-def pending_calibrations(thread_id: str, limit: int = 20) -> list[dict]:
-    with db.session() as s:
+def pending_calibrations(thread_id: str, limit: int = 20, *, session=None) -> list[dict]:
+    with db.session_scope(session) as s:
         rows = s.scalars(
             select(CalibrationHypothesis)
             .where(
@@ -1527,11 +1708,11 @@ def pending_calibrations(thread_id: str, limit: int = 20) -> list[dict]:
             .order_by(CalibrationHypothesis.created_at.asc())
             .limit(limit)
         ).all()
-    return [_calibration_dict(row) for row in rows]
+    return [_calibration_dict(row, session=session) for row in rows]
 
 
-def calibration_for_question(thread_id: str, question_id: str) -> dict | None:
-    for row in pending_calibrations(thread_id, limit=100):
+def calibration_for_question(thread_id: str, question_id: str, *, session=None) -> dict | None:
+    for row in pending_calibrations(thread_id, limit=100, session=session):
         if any(item.get("question_id") == question_id for item in row["evidence"]):
             return row
     return None
@@ -1541,12 +1722,15 @@ def mark_calibration_presented(
     hypothesis_id: int,
     question_id: str,
     now: float | None = None,
+    *, session=None,
 ) -> dict | None:
     now = now if now is not None else time.time()
-    with db.session() as s:
+    with _thread_row_transaction(CalibrationHypothesis, hypothesis_id, session=session) as s:
+        if s is None:
+            return None
         row = _lock_calibration_hypothesis(s, hypothesis_id)
         if row is None or row.status != "pending":
-            return _calibration_dict(row) if row else None
+            return _calibration_dict(row, session=s) if row else None
         evidence = _loads_json(row.evidence_json, [])
         outstanding = next(
             (item.get("question_id") for item in evidence if item.get("correct") is None),
@@ -1565,8 +1749,8 @@ def mark_calibration_presented(
             row.presentation_count += 1
             row.last_presented_at = now
             row.updated_at = now
-            s.commit()
-        result = _calibration_dict(row)
+            s.flush()
+        result = _calibration_dict(row, session=s)
         result["_presented_question_id"] = assigned_question_id
         return result
 
@@ -1577,12 +1761,15 @@ def record_calibration_evidence(
     correct: bool,
     attempt_id: int | None = None,
     now: float | None = None,
+    *, session=None,
 ) -> dict | None:
     now = now if now is not None else time.time()
-    with db.session() as s:
+    with _thread_row_transaction(CalibrationHypothesis, hypothesis_id, session=session) as s:
+        if s is None:
+            return None
         row = _lock_calibration_hypothesis(s, hypothesis_id)
         if row is None or row.status != "pending":
-            return _calibration_dict(row) if row else None
+            return _calibration_dict(row, session=s) if row else None
         evidence = _loads_json(row.evidence_json, [])
         item = next((item for item in evidence if item.get("question_id") == question_id), None)
         if item is None:
@@ -1599,30 +1786,32 @@ def record_calibration_evidence(
             item["attempt_id"] = attempt_id
         row.evidence_json = json.dumps(evidence, ensure_ascii=False, sort_keys=True)
         row.updated_at = now
-        s.commit()
-        return _calibration_dict(row)
+        s.flush()
+        return _calibration_dict(row, session=s)
 
 
-def resolve_calibration(hypothesis_id: int, status: str, now: float | None = None) -> dict | None:
+def resolve_calibration(hypothesis_id: int, status: str, now: float | None = None, *, session=None) -> dict | None:
     allowed = {"retracted", "pending", "inconclusive"}
     if status == "confirmed":
         raise ValueError("confirmed 必须通过原子证据确认流程写入")
     if status not in allowed:
         raise ValueError("校准状态必须是 retracted/pending/inconclusive")
     thread_id = None
-    with db.session() as s:
-        row = s.get(CalibrationHypothesis, hypothesis_id)
+    with _thread_row_transaction(CalibrationHypothesis, hypothesis_id, session=session) as s:
+        if s is None:
+            return None
+        row = _lock_calibration_hypothesis(s, hypothesis_id)
         if row is None:
             return None
         transitioned = row.status == "pending" and row.status != status
         if transitioned:
             row.status = status
             row.updated_at = now if now is not None else time.time()
-            s.commit()
-        result = _calibration_dict(row)
+            s.flush()
+        result = _calibration_dict(row, session=s)
         result["_transitioned"] = transitioned
         thread_id = row.thread_id
-    if transitioned:
+    if transitioned and session is None:
         cache.delete_keys(f"stats:summary:{thread_id}")
     return result
 
@@ -1630,30 +1819,25 @@ def resolve_calibration(hypothesis_id: int, status: str, now: float | None = Non
 def confirm_calibration_evidence(
     hypothesis_id: int,
     now: float | None = None,
+    *, session=None,
 ) -> dict | None:
     """原子地认领每题首条证据、更新知识状态并确认校准。"""
     now = now if now is not None else time.time()
     thread_id = None
-    with db.session() as s:
-        claim = s.execute(
-            update(CalibrationHypothesis)
-            .where(
-                CalibrationHypothesis.id == hypothesis_id,
-                CalibrationHypothesis.status == "pending",
-            )
-            .values(status="confirmed", updated_at=now)
-        )
-        if int(claim.rowcount or 0) != 1:
-            s.rollback()
-            row = s.get(CalibrationHypothesis, hypothesis_id)
-            if row is None:
-                return None
-            result = _calibration_dict(row)
+    with _thread_row_transaction(CalibrationHypothesis, hypothesis_id, session=session) as s:
+        if s is None:
+            return None
+        row = _lock_calibration_hypothesis(s, hypothesis_id)
+        if row is None:
+            return None
+        if row.status != "pending":
+            result = _calibration_dict(row, session=s)
             result["_transitioned"] = False
             result["_applied_question_ids"] = []
             return result
 
-        row = s.get(CalibrationHypothesis, hypothesis_id)
+        row.status = "confirmed"
+        row.updated_at = now
         evidence = [
             item for item in _loads_json(row.evidence_json, []) if item.get("correct") is not None
         ]
@@ -1724,11 +1908,12 @@ def confirm_calibration_evidence(
                 float(item.get("answered_at") or now),
             )
         thread_id = row.thread_id
-        s.commit()
-        result = _calibration_dict(row)
+        s.flush()
+        result = _calibration_dict(row, session=s)
         result["_transitioned"] = True
         result["_applied_question_ids"] = sorted(question_ids)
-    cache.delete_keys(f"stats:summary:{thread_id}")
+    if session is None:
+        cache.delete_keys(f"stats:summary:{thread_id}")
     return result
 
 
@@ -1803,13 +1988,14 @@ def _increment_learner_knowledge_state(
 
 
 def update_learner_knowledge_states(
-    thread_id: str, point_ids: list[str], correct: bool, now: float | None = None
+    thread_id: str, point_ids: list[str], correct: bool, now: float | None = None,
+    *, session=None,
 ) -> None:
     """将一次题目结果写入所有关联知识点；主/次标签都获得同一条证据。"""
     if not point_ids:
         return
     now = now or time.time()
-    with db.session() as s:
+    with thread_transaction(thread_id, session=session) as s:
         for point_id in set(point_ids):
             _increment_learner_knowledge_state(
                 s,
@@ -1818,12 +2004,13 @@ def update_learner_knowledge_states(
                 correct,
                 now,
             )
-        s.commit()
-    cache.delete_keys(f"stats:summary:{thread_id}")
+        s.flush()
+    if session is None:
+        cache.delete_keys(f"stats:summary:{thread_id}")
 
 
-def learner_knowledge_states(thread_id: str, point_ids: list[str] | None = None) -> list[dict]:
-    with db.session() as s:
+def learner_knowledge_states(thread_id: str, point_ids: list[str] | None = None, *, session=None) -> list[dict]:
+    with db.session_scope(session) as s:
         stmt = select(LearnerKnowledgeState).where(LearnerKnowledgeState.thread_id == thread_id)
         if point_ids:
             stmt = stmt.where(LearnerKnowledgeState.knowledge_point_id.in_(point_ids))

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "scope_not_frequency",
+    "estimated_input_tokens": 1604
+  },
+  {
+    "id": "mandatory_actions_not_unique",
+    "estimated_input_tokens": 2225
+  },
+  {
+    "id": "at-2-new-03-valid-locator",
+    "estimated_input_tokens": 3164
+  },
+  {
+    "id": "cp-9-new-05-valid-locator",
+    "estimated_input_tokens": 2026
+  },
+  {
+    "id": "ca-8-new-02-valid-locator",
+    "estimated_input_tokens": 1748
+  },
+  {
+    "id": "wrong_locator",
+    "estimated_input_tokens": 2272
+  },
+  {
+    "id": "empty_answer",
+    "estimated_input_tokens": 1937
+  },
+  {
+    "id": "valid_exam_frequency_refusal",
+    "estimated_input_tokens": 2445
+  }
+]

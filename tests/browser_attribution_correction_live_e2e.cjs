@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const { registerAndCreateThread } = require("./browser_auth.cjs");
 const playwrightModule = process.env.CISP_PLAYWRIGHT_MODULE || process.argv[2] || "playwright";
 const { chromium } = require(playwrightModule);
 
@@ -18,19 +19,21 @@ async function main() {
   const reviewResponses = [];
   page.on("pageerror", error => pageErrors.push(error.message));
   page.on("console", message => {
-    if (message.type() === "error") consoleErrors.push(message.text());
+    if (message.type() === "error" && !message.text().includes("401 (Unauthorized)"))
+      consoleErrors.push(message.text());
   });
   page.on("response", response => {
     if (response.url().includes("/api/attribution-review")) {
       reviewResponses.push(response.json().catch(() => null));
     }
-    if (response.status() >= 400) {
+    if (response.status() >= 400 && !response.url().endsWith("/api/auth/me")) {
       failedResponses.push(response.status() + " " + response.url());
     }
   });
 
   try {
     await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await registerAndCreateThread(page);
     await page.locator("#tab-quiz").click();
     await page.getByText(/已加载 30 \/ \d+ 道题/).waitFor({ timeout: 10_000 });
     const firstReview = await reviewResponses.at(-1);

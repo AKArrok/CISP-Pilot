@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const { registerAndCreateThread } = require("./browser_auth.cjs");
 const playwrightModule = process.env.CISP_PLAYWRIGHT_MODULE || process.argv[2] || "playwright";
 const { chromium } = require(playwrightModule);
 
@@ -16,17 +17,13 @@ async function main() {
   const pageErrors = [];
   let domainRequests = 0;
   let statsRequests = 0;
-  let readinessPayload = {
-    status: "migration_required",
-    schema: { expected_revision: "f1a2b3c4d5e6", current_revisions: [] },
-    assets: { ready: true, error: null },
-  };
+  let ready = false;
   page.on("pageerror", error => pageErrors.push(error.message));
 
   await page.route("**/api/ready", route => route.fulfill({
-    status: 503,
+    status: ready ? 200 : 503,
     contentType: "application/json",
-    body: JSON.stringify(readinessPayload),
+    body: JSON.stringify({ status: ready ? "ready" : "unavailable" }),
   }));
   await page.route("**/api/domains", route => {
     domainRequests += 1;
@@ -41,29 +38,26 @@ async function main() {
     await page.goto(baseUrl, { waitUntil: "networkidle" });
     const banner = page.locator("#service-status");
     await banner.waitFor({ state: "visible" });
-    assert.match(await banner.innerText(), /数据库迁移尚未到 f1a2b3c4d5e6/);
+    assert.match(await banner.innerText(), /系统尚未就绪/);
     assert.equal(await page.locator("#chat-send").isDisabled(), true);
     assert.equal(await page.locator("#quiz-next").isDisabled(), true);
     assert.equal(domainRequests, 0, "未就绪时不得加载知识域");
     assert.equal(statsRequests, 0, "未就绪时不得加载画像");
 
-    readinessPayload = {
-      status: "assets_invalid",
-      schema: {
-        expected_revision: "f1a2b3c4d5e6",
-        current_revisions: ["f1a2b3c4d5e6"],
-      },
-      assets: { ready: false, error: "manifest mismatch" },
-    };
-    await page.reload({ waitUntil: "networkidle" });
-    await banner.waitFor({ state: "visible" });
-    assert.match(await banner.innerText(), /题库或索引与清单不一致/);
+    ready = true;
+    await page.locator("#service-retry").click();
+    await banner.waitFor({ state: "hidden" });
+    await page.locator("#auth-register").waitFor({ state: "visible" });
+    assert.equal(await page.locator("#auth-register").isDisabled(), false);
     assert.equal(await page.locator("#chat-send").isDisabled(), true);
     assert.equal(await page.locator("#quiz-next").isDisabled(), true);
-    assert.equal(domainRequests, 0, "资产失效时不得加载知识域");
-    assert.equal(statsRequests, 0, "资产失效时不得加载画像");
+    assert.equal(domainRequests, 0, "未登录时不得加载知识域");
+    assert.equal(statsRequests, 0, "未登录时不得加载画像");
+    await registerAndCreateThread(page);
+    await page.waitForFunction(() => document.querySelector("#chat-send")?.disabled === false);
+    assert.ok(domainRequests >= 1, "选择本人线程后应加载知识域");
     assert.deepEqual(pageErrors, []);
-    console.log("readiness browser e2e passed: migration and asset failures disable application");
+    console.log("readiness browser e2e passed: unavailable disables, ready requires login");
   } finally {
     await browser.close();
   }

@@ -6,13 +6,12 @@
 
 from __future__ import annotations
 
-import logging
 import time
+import logging
 
 import config
-from storage import repos
-
-logger = logging.getLogger(__name__)
+from storage import cache, repos
+from storage.submissions import thread_transaction
 
 
 def _progress(hypothesis: dict) -> dict:
@@ -130,39 +129,48 @@ def record_answer(
     question_id: str,
     correct: bool,
     attempt_id: int | None = None,
+    *, session=None,
 ) -> dict | None:
     """记录校准证据；两条不同题且结果一致才解决假设。"""
-    hypothesis = repos.calibration_for_question(thread_id, question_id)
-    if hypothesis is None:
-        return None
-    updated = repos.record_calibration_evidence(
-        hypothesis["id"],
-        question_id,
-        correct,
-        attempt_id=attempt_id,
-        now=time.time(),
-    )
-    if updated is None:
-        return None
-    answered = updated["answered_evidence"]
-    distinct_question_ids = {item.get("question_id") for item in answered}
-    if (
-        len(distinct_question_ids) >= config.ATTRIBUTION_CALIBRATION_MIN_EVIDENCE
-        and updated["consistent_evidence_count"] >= config.ATTRIBUTION_CALIBRATION_MIN_EVIDENCE
-    ):
-        resolved = repos.confirm_calibration_evidence(
-            updated["id"],
+    with thread_transaction(thread_id, session=session) as transaction:
+        hypothesis = repos.calibration_for_question(thread_id, question_id, session=transaction)
+        if hypothesis is None:
+            return None
+        updated = repos.record_calibration_evidence(
+            hypothesis["id"],
+            question_id,
+            correct,
+            attempt_id=attempt_id,
             now=time.time(),
+            session=transaction,
         )
-        if resolved is not None:
-            updated = resolved
-            if resolved.get("_transitioned"):
-                _update_confirmed_review_cards(thread_id, resolved)
-    updated["calibration_progress"] = _progress(updated)
+        if updated is None:
+            return None
+        answered = updated["answered_evidence"]
+        distinct_question_ids = {item.get("question_id") for item in answered}
+        if (
+            len(distinct_question_ids) >= config.ATTRIBUTION_CALIBRATION_MIN_EVIDENCE
+            and updated["consistent_evidence_count"] >= config.ATTRIBUTION_CALIBRATION_MIN_EVIDENCE
+        ):
+            resolved = repos.confirm_calibration_evidence(
+                updated["id"],
+                now=time.time(),
+                session=transaction,
+            )
+            if resolved is not None:
+                updated = resolved
+                if resolved.get("_transitioned"):
+                    _update_confirmed_review_cards(thread_id, resolved, session=transaction)
+        updated["calibration_progress"] = _progress(updated)
+    if session is None:
+        try:
+            cache.delete_keys(f"stats:summary:{thread_id}")
+        except Exception:
+            logging.getLogger(__name__).warning("Calibration committed; summary cache invalidation failed", exc_info=True)
     return updated
 
 
-def _update_confirmed_review_cards(thread_id: str, hypothesis: dict) -> None:
+def _update_confirmed_review_cards(thread_id: str, hypothesis: dict, *, session=None) -> None:
     """为本次原子确认的新证据更新题目级复习卡。"""
     applied_ids = set(hypothesis.get("_applied_question_ids", []))
     from quiz import review
@@ -171,18 +179,12 @@ def _update_confirmed_review_cards(thread_id: str, hypothesis: dict) -> None:
         question = item["question_id"]
         if question not in applied_ids:
             continue
-        domain = repos.question_attribution(question)
-        try:
-            review.update_card(
-                thread_id,
-                question,
-                domain.get("candidate_domain") if domain else None,
-                bool(item["correct"]),
-                now=item.get("answered_at"),
-            )
-        except Exception:
-            logger.exception(
-                "校准画像已提交，但 FSRS 复习卡更新失败: thread=%s question=%s",
-                thread_id,
-                question,
-            )
+        domain = repos.question_attribution(question, session=session)
+        review.update_card(
+            thread_id,
+            question,
+            domain.get("candidate_domain") if domain else None,
+            bool(item["correct"]),
+            now=item.get("answered_at"),
+            session=session,
+        )

@@ -13,7 +13,7 @@ SIMPLE_LLM_MODEL = os.getenv("SIMPLE_LLM_MODEL", "deepseek-v4-flash")
 
 # ── Embeddings ────────────────────────────────────────────────────────
 EMBEDDING_BACKEND = os.getenv("EMBEDDING_BACKEND", "dashscope")
-# 百炼 Model Studio：qwen3.7-text-embedding 走 OpenAI 兼容接口。
+# 百炼 Model Studio：qwen3.7-text-embedding-flash 走 OpenAI 兼容接口。
 # 若未直接配置完整 URL，则由 Workspace ID 和 region 组装。
 DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
 DASHSCOPE_WORKSPACE_ID = os.getenv("DASHSCOPE_WORKSPACE_ID", "")
@@ -26,7 +26,7 @@ DASHSCOPE_EMBEDDING_BASE_URL = os.getenv(
     "DASHSCOPE_EMBEDDING_BASE_URL", _DASHSCOPE_DEFAULT_BASE_URL
 )
 DASHSCOPE_EMBEDDING_MODEL = os.getenv(
-    "DASHSCOPE_EMBEDDING_MODEL", "qwen3.7-text-embedding"
+    "DASHSCOPE_EMBEDDING_MODEL", "qwen3.7-text-embedding-flash"
 )
 DASHSCOPE_EMBEDDING_DIMENSIONS = int(os.getenv("DASHSCOPE_EMBEDDING_DIMENSIONS", "1024"))
 DASHSCOPE_EMBEDDING_REQUEST_INTERVAL = float(
@@ -125,12 +125,12 @@ TABLE_MAX_COLS = int(os.getenv("TABLE_MAX_COLS", "10"))        # 更宽的"表�
 TABLE_MAX_CELLS = int(os.getenv("TABLE_MAX_CELLS", "100"))     # 大而稀疏的基本是整页图形
 TABLE_MIN_CHAR_COVERAGE = float(os.getenv("TABLE_MIN_CHAR_COVERAGE", "0.75"))
 TABLE_CONTEXT_MAX_CHARS = int(os.getenv("TABLE_CONTEXT_MAX_CHARS", "60"))  # 表题/引导语截断长度
-# 精排（交叉编码重排序）：默认开启。qwen3.7-text-rerank 为 pointwise 逐对打分，
+# 精排（交叉编码重排序）：可选，默认关闭。qwen3.7-text-rerank 为 pointwise 逐对打分，
 # 直接替换顺序会压掉"要素更全"的枚举/定义答案页（docs/05 §3.1.2/3.1.3 实测 -2.5pp）；
 # 与特征序做加权融合后双集 +2.5pp（§3.1.4 离线重放扫参，α∈[0.3,0.6] 均为平台期）。
 # "replace"=纯精排序（对照口径）；后端 "dashscope"=API（独立计费）/"local"=bge 交叉编码器；
 # 失败自动降级 RRF 顺序。BM25 降级召回场景精排收益最大（+11.25pp）。
-ENABLE_RERANKING = os.getenv("ENABLE_RERANKING", "true").lower() == "true"
+ENABLE_RERANKING = os.getenv("ENABLE_RERANKING", "false").lower() == "true"
 RERANK_BACKEND = os.getenv("RERANK_BACKEND", "dashscope")
 RERANK_FUSION = os.getenv("RERANK_FUSION", "alpha")
 RERANK_FUSION_ALPHA = float(os.getenv("RERANK_FUSION_ALPHA", "0.5"))
@@ -163,6 +163,9 @@ LEARNED_RANKER_QUERY_TYPES = os.getenv("LEARNED_RANKER_QUERY_TYPES", "process")
 # 门限用 gold 集与离题问题集校准（见 docs/05 §3.3）；关闭后拒答完全依赖回答 prompt 规则 1。
 ENABLE_RELEVANCE_GATE = os.getenv("ENABLE_RELEVANCE_GATE", "true").lower() == "true"
 RELEVANCE_FLOOR = float(os.getenv("RELEVANCE_FLOOR", "0.45"))
+
+# ── 复杂问答证据子代理实验（默认关闭）──
+ENABLE_EVIDENCE_SUBAGENT = os.getenv("ENABLE_EVIDENCE_SUBAGENT", "false").lower() == "true"
 
 # ── 出题 ──
 QUIZ_AI_MIN_BANK = int(os.getenv("QUIZ_AI_MIN_BANK", "5"))   # 域内未做题少于该数时允许 AI 补题
@@ -223,15 +226,23 @@ QUIZ_DUP_SIMILARITY = float(os.getenv("QUIZ_DUP_SIMILARITY", "0.85"))
 
 # ── 多轮记忆 ──
 MEMORY_MAX_ROUNDS = int(os.getenv("MEMORY_MAX_ROUNDS", "5"))
+CHAT_MAX_CALLS = int(os.getenv("CHAT_MAX_CALLS", "12"))
+CHAT_MAX_ATTEMPTS_PER_CALL = int(os.getenv("CHAT_MAX_ATTEMPTS_PER_CALL", "2"))
+CHAT_MAX_OUTPUT_TOKENS = int(os.getenv("CHAT_MAX_OUTPUT_TOKENS", "1024"))
+CHAT_TIMEOUT_SECONDS = float(os.getenv("CHAT_TIMEOUT_SECONDS", "60"))
 SHORT_MEMORY_TTL = int(os.getenv("SHORT_MEMORY_TTL", "7200"))
 LONG_MEMORY_TOP_K = int(os.getenv("LONG_MEMORY_TOP_K", "3"))
 
 # ── 原始资料路径（只读）──
 COURSE_DIR = os.getenv(
     "CISP_COURSE_DIR",
-    r"D:\Users\ASUS\Desktop\学习资料\网安\#5021 CISP注册信息安全专业人员-东方瑞通网站课程资料",
+    os.path.join(DATA_DIR, "raw", "courses"),
 )
-EXAM_DIR = os.getenv("CISP_EXAM_DIR", r"D:\Users\ASUS\Desktop\学习资料\网安\CSIP试题")
+EXAM_DIR = os.getenv("CISP_EXAM_DIR", os.path.join(DATA_DIR, "raw", "exams"))
+
+
+# Browser origin is explicit; never derive trusted origins from request Host headers.
+CISP_PUBLIC_ORIGIN = os.getenv("CISP_PUBLIC_ORIGIN", "http://127.0.0.1:9528").rstrip("/")
 
 
 def validate() -> None:

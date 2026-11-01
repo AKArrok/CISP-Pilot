@@ -1,0 +1,36 @@
+INFO:     172.17.0.1:51092 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51092 - "GET /api/ready HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51092 - "POST /api/auth/register HTTP/1.1" 201 Created
+INFO:     172.17.0.1:51092 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51092 - "POST /api/threads HTTP/1.1" 201 Created
+INFO:     172.17.0.1:51108 - "POST /api/auth/register HTTP/1.1" 201 Created
+INFO:     172.17.0.1:51108 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51108 - "POST /api/threads HTTP/1.1" 201 Created
+INFO:     172.17.0.1:51092 - "POST /quiz/answer HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51092 - "POST /quiz/answer HTTP/1.1" 200 OK
+INFO:     172.17.0.1:51092 - "POST /quiz/answer HTTP/1.1" 409 Conflict
+INFO:     172.17.0.1:51108 - "GET /api/stats?thread_id=c9df7e8f-7aba-4bef-9832-96a04f52b880 HTTP/1.1" 404 Not Found
+INFO:     172.17.0.1:51108 - "POST /quiz/answer HTTP/1.1" 404 Not Found
+INFO:     172.17.0.1:51108 - "GET /api/stats?thread_id=3434b2bf-5fa2-4abb-8b06-ae84022a200e HTTP/1.1" 200 OK
+INFO:     172.17.0.1:37692 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:37692 - "GET /api/ready HTTP/1.1" 200 OK
+INFO:     172.17.0.1:37692 - "POST /quiz/answer HTTP/1.1" 200 OK
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+2026-11-01 08:46:47,207 INFO 存储后端: sqlite
+2026-11-01 08:46:47,244 INFO 预热完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9528 (Press CTRL+C to quit)
+2026-11-01 08:46:47,832 WARNING Redis 不可达，缓存降级为进程内存（功能不受影响，仅无跨进程共享）
+2026-11-01 08:46:50,595 INFO   检索层就绪: 10 向量块 / 10 BM25 文档
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+2026-11-01 08:46:53,883 INFO 存储后端: sqlite
+2026-11-01 08:46:53,907 INFO 预热完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9528 (Press CTRL+C to quit)
+2026-11-01 08:46:54,455 WARNING Redis 不可达，缓存降级为进程内存（功能不受影响，仅无跨进程共享）

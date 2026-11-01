@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import logging
 
+from sqlalchemy.exc import SQLAlchemyError
+
 from quiz import store
 
 logger = logging.getLogger(__name__)
@@ -33,6 +35,7 @@ def grade(
     profile_applied: bool = True,
     calibration_id: int | None = None,
     attribution_point_id: str | None = None,
+    session=None,
 ) -> dict:
     """判分并保存原始证据。
 
@@ -57,14 +60,20 @@ def grade(
         profile_applied=profile_applied,
         calibration_id=calibration_id,
         attribution_point_id=attribution_point_id,
+        session=session,
     )
     if profile_applied:
         try:
             from quiz import review
             review.update_card(
                 thread_id, question["id"], profile_domain or question.get("domain"), correct,
+                session=session,
             )
+        except SQLAlchemyError:
+            raise
         except Exception:
+            if session is not None:
+                raise
             logger.exception("FSRS 复习卡更新失败（不影响判分）")
     return {
         "correct": correct,

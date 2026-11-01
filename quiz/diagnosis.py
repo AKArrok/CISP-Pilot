@@ -7,13 +7,19 @@
 from __future__ import annotations
 
 import json
+import logging
+import re
 import time
 import uuid
 
 from domains import DOMAINS
-from quiz.grader import grade
+from quiz.grader import grade, validate_choice
 from quiz.selector import QuestionBank
-from storage import repos
+from storage import cache, db, repos
+from storage.models import DiagnosticAnswerReceipt, DiagnosticStartReceipt
+from storage.submissions import SubmissionConflict, answer_transaction
+
+logger = logging.getLogger(__name__)
 
 MIN_QUESTIONS = 6
 DEFAULT_MAX_QUESTIONS = 12
@@ -29,8 +35,8 @@ def _loads(value: str, default):
         return default
 
 
-def _session(session_id: str) -> dict:
-    row = repos.get_diagnostic_session(session_id)
+def _session(session_id: str, *, sql_session=None) -> dict:
+    row = repos.get_diagnostic_session(session_id, session=sql_session)
     if row is None:
         raise KeyError(f"诊断会话不存在: {session_id}")
     row["selected_domains"] = _loads(row["selected_domains"], [])
@@ -54,7 +60,8 @@ def _valid_domains(domains: list[str]) -> list[str]:
 
 def start_session(thread_id: str, selected_domains: list[str],
                   self_report: dict | None = None,
-                  max_questions: int = DEFAULT_MAX_QUESTIONS) -> dict:
+                  max_questions: int = DEFAULT_MAX_QUESTIONS,
+                  *, start_id: str | None = None) -> dict:
     """创建诊断会话；自评只作为先验保存，不直接判定薄弱。"""
     domains = _valid_domains(selected_domains)
     if not domains:
@@ -85,23 +92,71 @@ def start_session(thread_id: str, selected_domains: list[str],
             and (report.get("domain_status") or {}).get(d)
         },
     }
-    session_id = str(uuid.uuid4())
-    now = time.time()
-    repos.create_diagnostic_session(
-        session_id, thread_id, json.dumps(domains, ensure_ascii=False),
-        json.dumps(clean_report, ensure_ascii=False), max_questions, now,
+    start_id = str(uuid.uuid4()) if start_id is None else start_id
+    if (not isinstance(start_id, str) or len(start_id) > 128
+            or re.fullmatch(r"[A-Za-z0-9_-]+", start_id) is None):
+        raise ValueError("start_id must contain 1-128 ASCII letters, digits, underscores or hyphens")
+    payload = _json({"selected_domains": domains, "self_report": clean_report,
+                     "max_questions": max_questions})
+    with answer_transaction(thread_id) as sql_session:
+        receipt = sql_session.get(DiagnosticStartReceipt, (thread_id, start_id))
+        if receipt is not None:
+            return _replay(receipt, payload)
+        session_id = str(uuid.uuid4())
+        now = time.time()
+        repos.create_diagnostic_session(
+            session_id, thread_id, _json(domains), _json(clean_report), max_questions, now,
+            session=sql_session,
+        )
+        repos.record_diagnostic_event(session_id, "started", _json({
+            "selected_domains": domains, "self_report": clean_report,
+        }), now, session=sql_session)
+        result = {
+            "session_id": session_id,
+            "status": "active",
+            "selected_domains": domains,
+            "self_report": clean_report,
+            "min_questions": MIN_QUESTIONS,
+            "max_questions": max_questions,
+        }
+        sql_session.add(DiagnosticStartReceipt(
+            thread_id=thread_id, start_id=start_id, payload_json=payload,
+            result_json=_json(result), created_at=now,
+        ))
+    return result
+
+
+def _json(value) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True)
+
+
+def _replay(receipt, payload: str) -> dict:
+    if receipt.payload_json != payload:
+        raise SubmissionConflict("Diagnostic receipt was already used with a different payload")
+    return json.loads(receipt.result_json)
+
+
+def _invalidate_stats(thread_id: str) -> None:
+    try:
+        cache.delete_keys(f"stats:summary:{thread_id}")
+    except Exception:
+        logger.exception("诊断已提交，统计缓存清理失败: thread=%s", thread_id)
+
+
+def _complete(session: dict, sql_session) -> dict:
+    """Freeze the report and transition event together with the final answer."""
+    if session["status"] == "completed":
+        return report(session["id"], sql_session=sql_session)
+    session["status"] = "completed"
+    result = _build_report(session, sql_session=sql_session)
+    repos.update_diagnostic_session(
+        session["id"], status="completed", report_json=_json(result), session=sql_session,
     )
-    repos.record_diagnostic_event(session_id, "started", json.dumps({
-        "selected_domains": domains, "self_report": clean_report,
-    }, ensure_ascii=False), now)
-    return {
-        "session_id": session_id,
-        "status": "active",
-        "selected_domains": domains,
-        "self_report": clean_report,
-        "min_questions": MIN_QUESTIONS,
-        "max_questions": max_questions,
-    }
+    repos.record_diagnostic_event(
+        session["id"], "completed", _json({"answered": len(session["responses"])}),
+        session=sql_session,
+    )
+    return result
 
 
 def _responses_by_domain(responses: list[dict]) -> dict[str, list[dict]]:
@@ -151,19 +206,18 @@ def _candidate_pool(bank: QuestionBank, domain: str | None = None) -> list[dict]
             and not q.get("dup_of")]
 
 
-def _select_question(candidates: list[dict], session: dict) -> dict:
+def _select_question(candidates: list[dict], session: dict, *, sql_session=None) -> dict:
     """优先覆盖尚未测过的知识点；没有标签时退化为稳定题序。"""
     if not candidates:
         raise ValueError("没有可选题目")
-    try:
-        tags = repos.question_knowledge_points_bulk([q["id"] for q in candidates])
-        seen = {
-            point_id
-            for response in session["responses"]
-            for point_id in response.get("knowledge_points", [])
-        }
-    except Exception:
-        tags, seen = {}, set()
+    tags = repos.question_knowledge_points_bulk(
+        [q["id"] for q in candidates], session=sql_session,
+    )
+    seen = {
+        point_id
+        for response in session["responses"]
+        for point_id in response.get("knowledge_points", [])
+    }
 
     def score(question: dict) -> tuple[int, int, str]:
         question_tags = tags.get(question["id"], [])
@@ -192,7 +246,7 @@ def _choose_domain(session: dict, bank: QuestionBank) -> str | None:
 
     # 先保证每个焦点域至少有两道题，再按后验不确定性和自评加权。
     counts = {d: len(by_domain.get(d, [])) for d in pool_domains}
-    if not want_control:
+    if not want_control and all(d in selected for d in pool_domains):
         unrepresented = [d for d in pool_domains if counts[d] == 0]
         if unrepresented:
             return min(unrepresented, key=selected.index)
@@ -214,27 +268,33 @@ def _choose_domain(session: dict, bank: QuestionBank) -> str | None:
 
 
 def next_question(session_id: str) -> dict:
+    """Serialize presentation and completion using the learner's thread anchor."""
+    located = _session(session_id)
+    with answer_transaction(located["thread_id"]) as sql_session:
+        return _next_question(session_id, sql_session)
+
+
+def _next_question(session_id: str, sql_session) -> dict:
     """返回当前未作答题，或按诊断状态选择下一题。"""
-    session = _session(session_id)
+    session = _session(session_id, sql_session=sql_session)
     if session["status"] == "completed":
-        return {"session_id": session_id, "status": "completed", "report": report(session_id)}
+        return {"session_id": session_id, "status": "completed", "report": report(session_id, sql_session=sql_session)}
 
     # 重试 GET 时返回同一道题，避免用户刷新页面导致题目跳跃。
     answered_ids = {r.get("question_id") for r in session["responses"]}
     if session["question_ids"] and session["question_ids"][-1] not in answered_ids:
         q = QuestionBank.get().get_by_id(session["question_ids"][-1])
-        if q:
-            return _public_question(session, q)
+        if q is None:
+            raise KeyError("Presented diagnostic question is unavailable")
+        return _public_question(session, q)
 
     if len(session["responses"]) >= session["max_questions"]:
-        repos.update_diagnostic_session(session_id, status="completed")
-        return {"session_id": session_id, "status": "completed", "report": report(session_id)}
+        return {"session_id": session_id, "status": "completed", "report": _complete(session, sql_session)}
 
     bank = QuestionBank.get()
     domain = _choose_domain(session, bank)
     if domain is None:
-        repos.update_diagnostic_session(session_id, status="completed")
-        return {"session_id": session_id, "status": "completed", "report": report(session_id)}
+        return {"session_id": session_id, "status": "completed", "report": _complete(session, sql_session)}
     tested_ids = set(session["question_ids"])
     candidates = [q for q in _candidate_pool(bank, domain) if q["id"] not in tested_ids]
     if not candidates:
@@ -244,18 +304,17 @@ def next_question(session_id: str) -> dict:
             if q.get("id") not in tested_ids
         ]
         if not fallback:
-            repos.update_diagnostic_session(session_id, status="completed")
-            return {"session_id": session_id, "status": "completed", "report": report(session_id)}
-        question = _select_question(fallback, session)
+            return {"session_id": session_id, "status": "completed", "report": _complete(session, sql_session)}
+        question = _select_question(fallback, session, sql_session=sql_session)
     else:
-        question = _select_question(candidates, session)
+        question = _select_question(candidates, session, sql_session=sql_session)
     session["question_ids"].append(question["id"])
     repos.update_diagnostic_session(
-        session_id, question_ids=json.dumps(session["question_ids"], ensure_ascii=False))
+        session_id, question_ids=_json(session["question_ids"]), session=sql_session)
     repos.record_diagnostic_event(session_id, "question_selected", json.dumps({
         "question_id": question["id"], "domain": question.get("domain", domain),
         "response_count": len(session["responses"]),
-    }, ensure_ascii=False))
+    }, ensure_ascii=False), session=sql_session)
     return _public_question(session, question)
 
 
@@ -280,8 +339,35 @@ def _public_question(session: dict, question: dict) -> dict:
 
 def answer(session_id: str, question_id: str, choice: str,
            confidence: int | None = None, reason: str | None = None) -> dict:
+    """Commit the entire diagnostic answer once; exact retries replay its receipt."""
+    choice = validate_choice(choice)
+    confidence = max(0, min(3, int(confidence))) if confidence is not None else None
+    reason = str(reason or "")[:1000]
+    payload = _json({"choice": choice, "confidence": confidence, "reason": reason})
+    located = _session(session_id)
+    with db.session() as sql_session:
+        receipt = sql_session.get(DiagnosticAnswerReceipt, (session_id, question_id))
+    if receipt is not None:
+        result = _replay(receipt, payload)
+    else:
+        with answer_transaction(located["thread_id"]) as sql_session:
+            receipt = sql_session.get(DiagnosticAnswerReceipt, (session_id, question_id))
+            if receipt is not None:
+                result = _replay(receipt, payload)
+            else:
+                result = _answer(session_id, question_id, choice, confidence, reason, sql_session)
+                sql_session.add(DiagnosticAnswerReceipt(
+                    session_id=session_id, question_id=question_id, payload_json=payload,
+                    result_json=_json(result), created_at=time.time(),
+                ))
+    _invalidate_stats(located["thread_id"])
+    return result
+
+
+def _answer(session_id: str, question_id: str, choice: str,
+            confidence: int | None, reason: str, sql_session) -> dict:
     """判分并保存诊断证据；confidence 为用户自报信心，不参与正确性判定。"""
-    session = _session(session_id)
+    session = _session(session_id, sql_session=sql_session)
     if session["status"] != "active":
         raise ValueError("诊断会话已结束")
     if not session["question_ids"] or session["question_ids"][-1] != question_id:
@@ -291,7 +377,7 @@ def answer(session_id: str, question_id: str, choice: str,
     question = QuestionBank.get().get_by_id(question_id)
     if question is None:
         raise KeyError(f"题目不存在: {question_id}")
-    attribution = repos.effective_question_attribution(session["thread_id"], question_id)
+    attribution = repos.effective_question_attribution(session["thread_id"], question_id, session=sql_session)
     point_id = attribution.get("candidate_point_id") if attribution else None
     point_ids = [point_id] if (
         point_id and attribution.get("attribution_status") == "confirmed"
@@ -308,18 +394,19 @@ def answer(session_id: str, question_id: str, choice: str,
         # 通过 QuestionAttribution 的 confirmed 状态才可写入。
         attribution_status="confirmed",
         profile_applied=True,
-        attribution_point_id=point_id,
+        attribution_point_id=point_id if point_ids else None,
+        session=sql_session,
     )
     repos.update_learner_knowledge_states(
-        session["thread_id"], point_ids, bool(result["correct"])
+        session["thread_id"], point_ids, bool(result["correct"]), session=sql_session
     )
     response = {
         "question_id": question_id,
         "domain": profile_domain,
         "choice": choice,
         "correct": bool(result["correct"]),
-        "confidence": max(0, min(3, int(confidence))) if confidence is not None else None,
-        "reason": str(reason or "")[:1000],
+        "confidence": confidence,
+        "reason": reason,
         "knowledge_points": point_ids,
         "answered_at": time.time(),
     }
@@ -327,10 +414,10 @@ def answer(session_id: str, question_id: str, choice: str,
     done = len(session["responses"]) >= session["max_questions"] or _should_stop(session)
     repos.update_diagnostic_session(
         session_id,
-        status="completed" if done else "active",
-        responses=json.dumps(session["responses"], ensure_ascii=False),
+        responses=_json(session["responses"]),
+        session=sql_session,
     )
-    repos.record_diagnostic_event(session_id, "answered", json.dumps(response, ensure_ascii=False))
+    repos.record_diagnostic_event(session_id, "answered", _json(response), session=sql_session)
     payload = {
         "session_id": session_id,
         "status": "completed" if done else "active",
@@ -342,7 +429,7 @@ def answer(session_id: str, question_id: str, choice: str,
                      "max_questions": session["max_questions"]},
     }
     if done:
-        payload["report"] = report(session_id)
+        payload["report"] = _complete(session, sql_session)
     return payload
 
 
@@ -357,8 +444,14 @@ def _should_stop(session: dict) -> bool:
                for d in session["selected_domains"])
 
 
-def report(session_id: str) -> dict:
-    session = _session(session_id)
+def report(session_id: str, *, sql_session=None) -> dict:
+    session = _session(session_id, sql_session=sql_session)
+    if session.get("report_json") is not None:
+        return json.loads(session["report_json"])
+    return _build_report(session, sql_session=sql_session)
+
+
+def _build_report(session: dict, *, sql_session=None) -> dict:
     observed_domains = set(r.get("domain") for r in session["responses"] if r.get("domain"))
     domains = list(dict.fromkeys(session["selected_domains"] + sorted(observed_domains)))
     domain_rows = [_domain_stats(session["responses"], d) for d in domains]
@@ -367,10 +460,10 @@ def report(session_id: str) -> dict:
         for response in session["responses"]
         for point_id in response.get("knowledge_points", [])
     })
-    point_names = {p["id"]: p for p in repos.load_knowledge_points(point_ids)} if point_ids else {}
+    point_names = {p["id"]: p for p in repos.load_knowledge_points(point_ids, session=sql_session)} if point_ids else {}
     historical_states = {
         row["knowledge_point_id"]: row
-        for row in repos.learner_knowledge_states(session["thread_id"], point_ids)
+        for row in repos.learner_knowledge_states(session["thread_id"], point_ids, session=sql_session)
     } if point_ids else {}
     point_rows = []
     for point_id in point_ids:

@@ -17,6 +17,7 @@ from sqlalchemy import func, select
 
 from storage import db
 from storage.models import LearnerReviewCard
+from storage.submissions import thread_transaction
 
 logger = logging.getLogger(__name__)
 
@@ -40,16 +41,18 @@ def _row_to_card(row: LearnerReviewCard) -> Card:
 
 
 def update_card(thread_id: str, question_id: str, domain: str | None, correct: bool,
-                now: float | None = None) -> None:
+                now: float | None = None, *, session=None) -> None:
     """作答后更新（或新建）该题的 FSRS 复习卡。"""
     now = now if now is not None else time.time()
     rating = RATING_BY_CORRECT[bool(correct)]
-    with db.session() as s:
+    with thread_transaction(thread_id, session=session) as s:
         row = s.get(LearnerReviewCard, (thread_id, question_id))
         card = _row_to_card(row) if row else Card()
         try:
             card, _log = _scheduler.review_card(card, rating, _to_dt(now))
         except Exception:
+            if session is not None:
+                raise
             logger.exception("FSRS 调度失败（question_id=%s）", question_id)
             return
         if row is None:
@@ -68,7 +71,7 @@ def update_card(thread_id: str, question_id: str, domain: str | None, correct: b
         row.last_review = card.last_review.timestamp() if card.last_review else now
         row.reps += 1
         row.lapses += 0 if correct else 1
-        s.commit()
+        s.flush()
 
 
 def due_rows(

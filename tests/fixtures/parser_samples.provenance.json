@@ -1,0 +1,51 @@
+{
+  "schema_version": "parser-samples-v1",
+  "source_marker": "原创合成解析结构样本",
+  "creation_method": "AI-authored original synthetic structure data created in this task",
+  "content_scope": "Toy literal rules about colors, numbers, cards, boxes and tables; domain names are reused as labels only.",
+  "exclusions": [
+    "No real courseware or exam questions",
+    "No CISP knowledge-quality claim",
+    "Not human labels",
+    "Not retrieval evaluation data",
+    "Not real-document extraction output"
+  ],
+  "kind_semantics": "pptx and courseware are synthetic structure field values only; no extractor was run.",
+  "data_license_proposal": "MIT data only; pending owner/publication confirmation",
+  "counts": {
+    "questions": 24,
+    "chunks": 20,
+    "domains": 10,
+    "chunk_kinds": {
+      "pptx": 7,
+      "courseware": 13
+    }
+  },
+  "schemas": {
+    "questions": [
+      "analysis",
+      "answer",
+      "domain",
+      "id",
+      "needs_review",
+      "num",
+      "options",
+      "source",
+      "stem"
+    ],
+    "chunks": [
+      "domain",
+      "id",
+      "kind",
+      "page",
+      "source",
+      "text"
+    ]
+  },
+  "boundary_categories": [
+    "multiple_answer_letters",
+    "empty_answer",
+    "review_unresolved_domain",
+    "review_missing_answer_option"
+  ]
+}

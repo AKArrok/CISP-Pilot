@@ -25,6 +25,21 @@ header h1 { font-size: 20px; }
 }
 .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 .hidden { display: none !important; }
+.account-panel { margin: 0 0 14px; }
+#auth-form, #account-session {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+#auth-form label, #account-session label { font-size: 13px; color: var(--muted); }
+#auth-form input, #thread-select {
+  max-width: 190px; min-width: 0; padding: 7px 8px;
+  border: 1px solid var(--border); border-radius: 6px;
+}
+#account-panel button {
+  padding: 7px 12px; border: 1px solid var(--primary);
+  border-radius: 6px; background: var(--primary); color: white; cursor: pointer;
+}
+#account-panel button:disabled { opacity: .5; cursor: wait; }
+#auth-status { min-height: 18px; margin-top: 6px; color: var(--muted); font-size: 12px; }
 .service-status {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   margin-bottom: 14px; padding: 12px 14px; border: 1px solid #d1242f;
@@ -66,6 +81,18 @@ header h1 { font-size: 20px; }
   border: none; border-radius: 8px; cursor: pointer; font-size: 15px;
 }
 #chat-send:disabled { opacity: .5; cursor: wait; }
+.request-trace {
+  margin-top: 10px; padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: 8px; background: var(--card); font-size: 12px; line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.request-trace summary { cursor: pointer; color: var(--primary); font-weight: 600; }
+.request-trace p { margin-top: 6px; white-space: pre-wrap; }
+.request-trace button {
+  margin-top: 8px; padding: 5px 10px; border: 1px solid var(--border);
+  border-radius: 6px; background: var(--bg); color: var(--text); cursor: pointer;
+}
+.request-trace button:disabled { opacity: .5; cursor: wait; }
 
 /* ── 刷题 ── */
 .quiz-controls { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
@@ -211,6 +238,8 @@ header h1 { font-size: 20px; }
   padding: 6px 10px; border: 1px solid var(--primary); border-radius: 6px;
   background: #f0f5ff; color: var(--primary); cursor: pointer;
 }
+.correction-open:disabled { border-color: var(--border); color: var(--muted); cursor: not-allowed; }
+.attribution-legacy-note { display: block; margin-top: 4px; color: var(--muted); overflow-wrap: anywhere; }
 .correction-status { font-size: 12px; color: var(--muted); }
 .user-correction { color: var(--primary); font-weight: 700; }
 

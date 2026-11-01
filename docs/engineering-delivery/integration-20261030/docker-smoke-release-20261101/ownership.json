@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "stage": "prepare_synthetic_data",
+  "image": "cisp-integration:20261101-release",
+  "data_dir": "D:\\Users\\ASUS\\Desktop\\\u5b66\u4e60\u8d44\u6599\\\u4ee3\u7801\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-data-release-20261101",
+  "evidence_dir": "D:\\Users\\ASUS\\Desktop\\\u5b66\u4e60\u8d44\u6599\\\u4ee3\u7801\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-smoke-release-20261101",
+  "synthetic_demo": true,
+  "human_reviewed": false,
+  "retrieval_mode": "sparse",
+  "model_quality_verified": false,
+  "default_dense_configuration_verified": false,
+  "container_name": "cisp-smoke-311eb29edb93eb10",
+  "ownership_label": "cisp.engineering.smoke",
+  "ownership_token": "e3bfcd444edb992cd899fff41b98b39cc60c9d2faae0b7b08e1257c70a7fee97"
+}

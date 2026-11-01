@@ -151,10 +151,11 @@ def test_anchor_query_uses_wrong_stem(monkeypatch):
     monkeypatch.setattr(g, "get_answer_llm", lambda temperature=0.5: FakeLLM())
 
     def fail_gen(llm, output_class, messages):
+        captured["prompt"] = messages[-1].content
         raise RuntimeError("stop")
 
     monkeypatch.setattr(g, "invoke_structured", fail_gen)
-    anchor = {"stem": "RTO 和 RPO 的区别是什么？", "wrong_choice": "A",
+    anchor = {"stem": "RTO 和 RPO 的区别是什么？", "wrong_choice": "PRIVATE-WRONG-CHOICE",
               "answer": "B", "analysis": "RTO 关注恢复时间"}
     try:
         g.generate_question("业务连续性", anchor=anchor)
@@ -162,3 +163,5 @@ def test_anchor_query_uses_wrong_stem(monkeypatch):
         pass
     assert "RTO 和 RPO" in captured["query"]
     assert captured["query"].startswith("业务连续性")
+    assert "PRIVATE-WRONG-CHOICE" not in captured["prompt"]
+    assert "用户刚做错" not in captured["prompt"]

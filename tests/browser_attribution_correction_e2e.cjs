@@ -3,6 +3,7 @@
 const assert = require("node:assert/strict");
 const os = require("node:os");
 const path = require("node:path");
+const { registerAndCreateThread } = require("./browser_auth.cjs");
 const playwrightModule = process.env.CISP_PLAYWRIGHT_MODULE || process.argv[2] || "playwright";
 const { chromium } = require(playwrightModule);
 
@@ -30,6 +31,7 @@ function statsPayload() {
   return {
     total_attempts: 1,
     total_accuracy: 0,
+    legacy_applied_attempts_without_point: 2,
     domains: [],
     knowledge_points: [],
     attributions: [item],
@@ -94,6 +96,7 @@ function reviewItem(questionId, pointId, domain, status, reason) {
     attribution_status: corrected ? "confirmed" : status,
     status: corrected ? "confirmed" : status,
     evidence_count: 2,
+    legacy_applied_attempts_without_point: questionId === "q-next" ? 2 : 0,
     reason: corrected ? "用户确认考点" : reason,
     ...(corrected ? { source: "user_correction" } : {}),
   };
@@ -108,6 +111,11 @@ async function main() {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const consoleErrors = [];
   const pageErrors = [];
+  const unexpectedUnauthorized = [];
+  page.on("response", response => {
+    if (response.status() === 401 && !response.url().endsWith("/api/auth/me"))
+      unexpectedUnauthorized.push(response.url());
+  });
   page.on("console", message => {
     if (message.type() === "error") consoleErrors.push(message.text());
   });
@@ -179,6 +187,7 @@ async function main() {
   }));
   await page.route("**/api/attributions/*/correction", async route => {
     const payload = route.request().postDataJSON();
+    assert.ok(route.request().headers()["x-csrf-token"], "纠错请求必须附带 CSRF token");
     if (state.corrected && !state.dedupReturned) {
       state.dedupReturned = true;
       state.dedupPost = payload;
@@ -224,6 +233,7 @@ async function main() {
 
   try {
     await page.goto(baseUrl + "/", { waitUntil: "networkidle" });
+    const createdThreadId = await registerAndCreateThread(page);
     await page.locator("#tab-quiz").click();
     await page.getByText("当前线程尚无纠错反馈。").waitFor();
     await page.getByText(/校准账本完整性正常/).waitFor();
@@ -236,6 +246,12 @@ async function main() {
       ),
       ["q-ui", "q-next"],
     );
+    const legacyRow = page.locator("#attribution-table tbody tr").nth(1);
+    assert.equal(await legacyRow.locator(".correction-open").isDisabled(), true);
+    assert.match(await legacyRow.locator(".attribution-legacy-note").innerText(),
+      /历史已入画像作答 2 条缺精确归因/);
+    assert.match(await page.locator("#stats-summary").innerText(),
+      /历史已入画像作答 2 条缺精确归因/);
     await page.locator("#attribution-review-query").fill("q-ui");
     await page.getByRole("button", { name: "筛选", exact: true }).click();
     await page.getByText("已加载 1 / 1 道题").waitFor();
@@ -272,7 +288,7 @@ async function main() {
     assert.match(rowText, /用户纠错/);
     assert.equal(state.post.corrected_point_id, "kp-b");
     assert.equal(state.post.reason, "用户确认考点");
-    assert.match(state.post.thread_id, /^web-/);
+    assert.equal(state.post.thread_id, createdThreadId);
     await page.getByText(/反馈 1 次，涉及 1 道题/).waitFor();
     const observationText = await page.locator("#attribution-observability").innerText();
     assert.match(observationText, /画像重放 1 次/);
@@ -330,17 +346,29 @@ async function main() {
     await page.getByText("纠错失败：旧证据缺少精确账本").waitFor();
     assert.equal(state.failurePost.corrected_point_id, "kp-b");
     assert.deepEqual(pageErrors, []);
+    assert.deepEqual(unexpectedUnauthorized, [], "业务请求不应出现未预期的 401");
     assert.ok(
       consoleErrors.some(message => message.includes("409 (Conflict)")),
       "预期失败请求应保留 409 控制台证据",
     );
     assert.deepEqual(
-      consoleErrors.filter(message => !message.includes("409 (Conflict)")),
+      consoleErrors.filter(message => !message.includes("409 (Conflict)")
+        && !message.includes("401 (Unauthorized)")),
       [],
     );
 
     const screenshot = path.join(os.tmpdir(), "cisp-attribution-correction.png");
     await page.screenshot({ path: screenshot, fullPage: true });
+    await page.locator("#auth-logout").click();
+    await page.locator("#auth-register").waitFor({ state: "visible" });
+    assert.equal(await page.locator("#attribution-table tbody tr").count(), 0);
+    assert.equal(await page.locator("#stats-summary").innerText(), "");
+    const secondThreadId = await registerAndCreateThread(page);
+    assert.notEqual(secondThreadId, createdThreadId);
+    assert.equal(await page.locator(`#thread-select option[value="${createdThreadId}"]`).count(), 0,
+      "新账号线程列表不得包含上一账号线程");
+    assert.equal(await page.locator("#attribution-table tbody tr").count(), 0,
+      "切换账号后不得保留上一账号的纠错列表");
     console.log(JSON.stringify({ status: "passed", row: rowText, screenshot }));
   } finally {
     await browser.close();

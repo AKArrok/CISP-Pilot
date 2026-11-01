@@ -30,8 +30,7 @@ def _wait_until_ready(url: str, process: subprocess.Popen, timeout: float = 30.0
 
 
 def main() -> int:
-    browser_host = os.getenv("CISP_BROWSER_HOST", "127.0.0.1")
-    browser_url = f"http://{browser_host}:{PORT}"
+    browser_url = f"http://127.0.0.1:{PORT}"
     node = os.getenv("CISP_NODE", "node")
     playwright_module = os.getenv("CISP_PLAYWRIGHT_MODULE", "playwright")
     browser_executable = os.getenv("PLAYWRIGHT_EXECUTABLE_PATH", "")
@@ -41,6 +40,7 @@ def main() -> int:
         env["CISP_DB_PATH"] = str(Path(temp_dir) / "e2e.db")
         env["DATABASE_URL"] = ""
         env["MYSQL_PASSWORD"] = ""
+        env["CISP_PUBLIC_ORIGIN"] = browser_url
         # 用测试的是画像闭环，不应让远程 embedding / rerank 额度和网络
         # 成为结果变量。未支持的后端会立即触发已有的 BM25 降级路径。
         env["EMBEDDING_BACKEND"] = "dashscope"
@@ -76,7 +76,7 @@ def main() -> int:
         if after != before:
             raise RuntimeError("隔离浏览器 E2E 不得改写归因构建产物")
         server = subprocess.Popen(
-            [sys.executable, "-m", "uvicorn", "server:app", "--host", "0.0.0.0",
+            [sys.executable, "-m", "uvicorn", "server:app", "--host", "127.0.0.1",
              "--port", str(PORT), "--log-level", "warning"],
             cwd=ROOT,
             env=env,
@@ -88,6 +88,13 @@ def main() -> int:
                 "tests/browser_diagnostic_e2e.cjs",
                 "tests/browser_attribution_correction_e2e.cjs",
                 "tests/browser_attribution_correction_live_e2e.cjs",
+                "tests/browser_auth_isolation_e2e.cjs",
+                "tests/browser_submission_retry_e2e.cjs",
+                "tests/browser_diagnostic_retry_e2e.cjs",
+                "tests/browser_diagnostic_restore_e2e.cjs",
+                "tests/browser_chat_restore_e2e.cjs",
+                "tests/browser_trace_e2e.cjs",
+                "tests/browser_structured_sources_e2e.cjs",
             ):
                 completed = subprocess.run(
                     [node, script, playwright_module, browser_executable, browser_url],

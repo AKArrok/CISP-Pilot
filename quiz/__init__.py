@@ -2,17 +2,19 @@
 from __future__ import annotations
 
 import logging
+import json
+import re
+import time
+from uuid import uuid4
 
-from quiz import store
+from sqlalchemy.exc import SQLAlchemyError
+
 from quiz.selector import next_question, QuestionBank
 from quiz.grader import grade
 from quiz.stats import summary
 import config
 
 logger = logging.getLogger(__name__)
-
-store.init_db()
-
 
 def get_next_question(mode: str = "random", domain: str | None = None,
                       anchor_question_id: str | None = None,
@@ -28,6 +30,8 @@ def get_next_question(mode: str = "random", domain: str | None = None,
             try:
                 from quiz import review
                 calibration_allowed = not bool(review.due_rows(thread_id, domain, limit=1))
+            except SQLAlchemyError:
+                raise
             except Exception:
                 calibration_allowed = True
         try:
@@ -40,6 +44,8 @@ def get_next_question(mode: str = "random", domain: str | None = None,
             )
             if selected is not None:
                 q, calibration_meta = selected
+        except SQLAlchemyError:
+            raise
         except Exception:
             # 校准是旁路能力；数据库/旧库异常不应让普通刷题不可用。
             logger.exception("校准题调度失败，回退普通抽题")
@@ -52,6 +58,8 @@ def get_next_question(mode: str = "random", domain: str | None = None,
                 from quiz.generator import _anchor_from_question, generate_question
                 q = generate_question(anchor_q["domain"],
                                       anchor=_anchor_from_question(anchor_q, wrong_choice))
+            except SQLAlchemyError:
+                raise
             except Exception:
                 logger.exception("锚点定向出题失败，回退常规抽题")
     if q is None:
@@ -64,6 +72,8 @@ def get_next_question(mode: str = "random", domain: str | None = None,
             try:
                 from quiz.generator import generate_question
                 generated = generate_question(domain)
+            except SQLAlchemyError:
+                raise
             except Exception:
                 generated = None
             if generated:
@@ -92,23 +102,71 @@ def _last_wrong_choice(thread_id: str, question_id: str) -> str | None:
     try:
         from storage import repos
         return repos.last_wrong_choice(thread_id, question_id)
+    except SQLAlchemyError:
+        raise
     except Exception:
         return None
 
 
-def submit_answer(question_id: str, choice: str, thread_id: str = "default") -> dict:
-    """作答判分。真题从内存题库取，AI 题从 SQLite 取。"""
-    question = QuestionBank.get().get_by_id(question_id)
-    if question is None:
-        raise KeyError(f"题目不存在: {question_id}")
-    from storage import repos
-    attribution = None
-    calibration_hypothesis = None
+def submit_answer(
+    question_id: str, choice: str, thread_id: str = "default",
+    submission_id: str | None = None,
+) -> dict:
+    """Commit one practice and its receipt; internal callers may omit the key."""
+    from quiz.grader import related_chunks, validate_choice
+    from quiz.store import stats_cache_key
+    from storage import cache, db
+    from storage.models import AnswerSubmission
+    from storage.submissions import SubmissionConflict, answer_transaction
+
+    choice = validate_choice(choice)
+    submission_id = str(uuid4()) if submission_id is None else submission_id
+    if (not isinstance(submission_id, str) or len(submission_id) > 128
+            or re.fullmatch(r"[A-Za-z0-9_-]+", submission_id) is None):
+        raise ValueError("submission_id must contain 1-128 ASCII letters, digits, underscores or hyphens")
+    with db.session() as session:
+        receipt = session.get(AnswerSubmission, (thread_id, submission_id))
+    if receipt is not None:
+        if receipt.question_id != question_id or receipt.choice != choice:
+            raise SubmissionConflict("submission_id was already used for another answer")
+        response = json.loads(receipt.result_json)
+    else:
+        question = QuestionBank.get().get_by_id(question_id)
+        if question is None:
+            raise KeyError(f"题目不存在: {question_id}")
+        # Optional retrieval may call an embedding provider. Prepare it without
+        # a write lock; a concurrent receipt is checked again before any write.
+        related = related_chunks(question)
+        with answer_transaction(thread_id) as session:
+            receipt = session.get(AnswerSubmission, (thread_id, submission_id))
+            if receipt is not None:
+                if receipt.question_id != question_id or receipt.choice != choice:
+                    raise SubmissionConflict("submission_id was already used for another answer")
+                response = json.loads(receipt.result_json)
+            else:
+                response = _apply_answer(
+                    question_id, choice, thread_id, session, question=question, related=related,
+                )
+                session.add(AnswerSubmission(
+                    thread_id=thread_id, submission_id=submission_id,
+                    question_id=question_id, choice=choice,
+                    result_json=json.dumps(response, ensure_ascii=False, sort_keys=True),
+                    created_at=time.time(),
+                ))
     try:
-        attribution = repos.effective_question_attribution(thread_id, question_id)
-        calibration_hypothesis = repos.calibration_for_question(thread_id, question_id)
+        cache.delete_keys(stats_cache_key(thread_id))
     except Exception:
-        logger.exception("题目归因读取失败，按未验证证据处理")
+        logger.exception("作答已提交，统计缓存清理失败: thread=%s", thread_id)
+    return response
+
+
+def _apply_answer(
+    question_id: str, choice: str, thread_id: str, session, *, question: dict, related: list,
+) -> dict:
+    """作答判分。真题从内存题库取，AI 题从 SQLite 取。"""
+    from storage import repos
+    attribution = repos.effective_question_attribution(thread_id, question_id, session=session)
+    calibration_hypothesis = repos.calibration_for_question(thread_id, question_id, session=session)
     attribution_status = (
         attribution.get("attribution_status") if attribution else "unverified"
     )
@@ -121,15 +179,16 @@ def submit_answer(question_id: str, choice: str, thread_id: str = "default") -> 
     # 校准题本身的标签已 confirmed，但证据在假设解决前暂存，避免一题改变画像。
     profile_applied = attribution_status == "confirmed" and calibration_hypothesis is None
     result = grade(
-        question, choice, thread_id=thread_id, profile_domain=profile_domain,
+        question, choice, include_related=False, thread_id=thread_id, profile_domain=profile_domain,
         attribution_status=attribution_status,
         profile_applied=profile_applied,
         calibration_id=calibration_hypothesis["id"] if calibration_hypothesis else None,
         attribution_point_id=point_id if attribution_status == "confirmed" else None,
+        session=session,
     )
     if point_ids and calibration_hypothesis is None:
         repos.update_learner_knowledge_states(
-            thread_id, point_ids, bool(result["correct"])
+            thread_id, point_ids, bool(result["correct"]), session=session
         )
     elif calibration_hypothesis is not None:
         from quiz import calibration
@@ -138,6 +197,7 @@ def submit_answer(question_id: str, choice: str, thread_id: str = "default") -> 
             question_id,
             bool(result["correct"]),
             attempt_id=result.get("attempt_id"),
+            session=session,
         )
     else:
         calibration_result = None
@@ -152,6 +212,7 @@ def submit_answer(question_id: str, choice: str, thread_id: str = "default") -> 
                 knowledge_point_id=point_id,
                 trigger_question_id=question_id,
                 trigger_correct=bool(result["correct"]),
+                session=session,
                 calibration_reason=(
                     f"题目归因待校准：{attribution.get('reason', '推测中的知识点弱点')}"
                 ),
@@ -165,7 +226,7 @@ def submit_answer(question_id: str, choice: str, thread_id: str = "default") -> 
                 "source": c["source"], "page": c["page"],
                 "domain": c["domain"], "text": c["text"][:300],
             }
-            for c in result["related_chunks"]
+            for c in related
         ],
     }
     response["attribution_status"] = attribution_status

@@ -1,5 +1,7 @@
 """LLM and embedding instances — OpenAI-compatible protocol layer (no Pinecone/Tavily/local models)."""
 import hashlib
+import asyncio
+from contextvars import ContextVar
 import httpx
 import json
 import logging
@@ -8,6 +10,7 @@ import random
 import tempfile
 import threading
 import time
+from urllib.parse import urlsplit
 from typing import List, Type, TypeVar
 
 from openai import OpenAI
@@ -15,9 +18,57 @@ from langchain_openai import ChatOpenAI
 from langchain_core.embeddings import Embeddings
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from pydantic import BaseModel
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception
 from openai import APIError, APITimeoutError, RateLimitError
 import config
+from agents.budget import current_budget
+from agents.usage import check_output_budget
+
+_structured_attempts = ContextVar("structured_attempts", default=None)
+
+
+def _budget_sleep(seconds):
+    budget = current_budget.get()
+    if budget is not None:
+        budget.check()
+        seconds = min(seconds, budget.remaining_seconds)
+    time.sleep(seconds)
+    if budget is not None:
+        budget.check()
+
+
+def _budget_client(client, kind):
+    budget = current_budget.get()
+    if budget is None:
+        return client
+    budget.reserve(kind)
+    return client.with_options(max_retries=0, timeout=min(config.EMBEDDING_CLIENT_TIMEOUT, budget.remaining_seconds))
+
+
+def _attempt_limit(attempts):
+    budget = current_budget.get()
+    return min(attempts, budget.max_attempts_per_call) if budget is not None else attempts
+
+
+def _start_service(kind, backend, model):
+    from agents.tracing import current_trace
+    from langchain_core.runnables.config import ensure_config
+    trace = current_trace.get()
+    call = trace.start_service_call(kind, backend, model, (ensure_config().get("metadata") or {}).get("langgraph_node")) if trace is not None else None
+    return trace, call
+
+
+def _embedding_request(client, backend, **kwargs):
+    trace, call = _start_service("embedding", backend, kwargs["model"])
+    try:
+        response = client.embeddings.create(**kwargs)
+    except BaseException:
+        if trace is not None:
+            trace.finish_service_call(call, "failed")
+        raise
+    if trace is not None:
+        trace.finish_service_call(call, "completed", response)
+    return response
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -56,9 +107,39 @@ _answer_llm: ChatOpenAI | None = None
 _simple_llm: ChatOpenAI | None = None
 
 
+def _deepseek_options(overrides: dict) -> dict:
+    """Apply the approved Flash/non-thinking policy and preserve max_tokens."""
+    if urlsplit(str(overrides.get("base_url", config.LLM_BASE_URL))).hostname == "api.deepseek.com":
+        overrides["model"] = "deepseek-flash"
+        body = dict(overrides.get("extra_body") or {})
+        body["thinking"] = {"type": "disabled"}
+        overrides["extra_body"] = body
+    if "max_tokens" not in overrides:
+        return overrides
+    limit = overrides.pop("max_tokens")
+    extra_body = dict(overrides.pop("extra_body", None) or {})
+    if "max_tokens" in extra_body:
+        raise ValueError("max_tokens must be specified only once")
+    extra_body["max_tokens"] = limit
+    overrides["extra_body"] = extra_body
+    return overrides
+
+
 def get_answer_llm(**overrides) -> ChatOpenAI:
     global _answer_llm
+    budget = current_budget.get()
+    if budget is not None:
+        budget.check()
+        overrides["max_tokens"] = min(overrides.get("max_tokens", budget.max_output_tokens), budget.max_output_tokens)
+        overrides["max_retries"] = 0
+        overrides["request_timeout"] = min(overrides.get("request_timeout", 60), budget.remaining_seconds)
+        overrides = _deepseek_options(overrides)
+        return ChatOpenAI(base_url=overrides.pop("base_url", config.LLM_BASE_URL),
+                          api_key=overrides.pop("api_key", config.LLM_API_KEY),
+                          model=overrides.pop("model", config.LLM_MODEL),
+                          temperature=overrides.pop("temperature", 0.3), **overrides)
     if _answer_llm is None or overrides:
+        overrides = _deepseek_options(overrides)
         kwargs = dict(
             base_url=overrides.pop("base_url", config.LLM_BASE_URL),
             api_key=overrides.pop("api_key", config.LLM_API_KEY),
@@ -74,7 +155,19 @@ def get_answer_llm(**overrides) -> ChatOpenAI:
 
 def get_simple_llm(**overrides) -> ChatOpenAI:
     global _simple_llm
+    budget = current_budget.get()
+    if budget is not None:
+        budget.check()
+        overrides["max_tokens"] = min(overrides.get("max_tokens", budget.max_output_tokens), budget.max_output_tokens)
+        overrides["max_retries"] = 0
+        overrides["request_timeout"] = min(overrides.get("request_timeout", 45), budget.remaining_seconds)
+        overrides = _deepseek_options(overrides)
+        return ChatOpenAI(base_url=overrides.pop("base_url", config.LLM_BASE_URL),
+                          api_key=overrides.pop("api_key", config.LLM_API_KEY),
+                          model=overrides.pop("model", config.SIMPLE_LLM_MODEL),
+                          temperature=overrides.pop("temperature", 0.2), **overrides)
     if _simple_llm is None or overrides:
+        overrides = _deepseek_options(overrides)
         kwargs = dict(
             base_url=overrides.pop("base_url", config.LLM_BASE_URL),
             api_key=overrides.pop("api_key", config.LLM_API_KEY),
@@ -101,25 +194,96 @@ def reset_llms() -> None:
 _RETRYABLE = (APIError, APITimeoutError, RateLimitError)
 
 
+def _retryable_error(exc):
+    if not isinstance(exc, _RETRYABLE):
+        return False
+    status = getattr(exc, "status_code", None)
+    return status is None or status == 429 or status >= 500
+
+
 def _make_retry(max_attempts: int = 3):
+    budget = current_budget.get()
+    if budget is not None:
+        max_attempts = min(max_attempts, budget.max_attempts_per_call)
     return retry(
         stop=stop_after_attempt(max_attempts),
         wait=wait_exponential(multiplier=1, min=1, max=10),
-        retry=retry_if_exception_type(_RETRYABLE),
+        retry=retry_if_exception(_retryable_error),
         reraise=True,
     )
 
 
 def llm_invoke_with_retry(llm: ChatOpenAI, messages: list[BaseMessage],
                           max_retries: int = 3) -> BaseMessage:
-    return _make_retry(max_retries)(llm.invoke)(messages)
+    @_make_retry(max_retries)
+    def _call():
+        return _observed_invoke(llm, messages)
+    return _call()
+
+
+def _trace_call(llm):
+    from agents.tracing import current_trace, ModelReceiptCallback
+    from langchain_core.runnables.config import ensure_config
+
+    budget = current_budget.get()
+    if budget is not None:
+        attempts = _structured_attempts.get()
+        if attempts is not None:
+            if attempts["used"] >= budget.max_attempts_per_call:
+                budget.cancel("attempt_limit")
+                budget.check()
+            attempts["used"] += 1
+        budget.reserve("chat")
+
+    trace = current_trace.get()
+    if trace is None:
+        return None, None, {}
+    requested = getattr(llm, "model_name", None)
+    candidate = llm
+    for _ in range(3):
+        if requested is not None:
+            break
+        candidate = getattr(candidate, "first", None) or getattr(candidate, "bound", None)
+        requested = getattr(candidate, "model_name", None)
+    call = trace.start_model_call(requested, (ensure_config().get("metadata") or {}).get("langgraph_node"))
+    return trace, call, {"config": {"callbacks": [ModelReceiptCallback(trace, call)]}}
+
+
+def _observed_invoke(llm, messages):
+    trace, call, kwargs = _trace_call(llm)
+    try:
+        result = llm.invoke(messages, **kwargs)
+    except BaseException as exc:
+        if trace is not None:
+            trace.finish_model_call(call, "cancelled" if isinstance(exc, (asyncio.CancelledError, GeneratorExit)) else "failed")
+        raise
+    if isinstance(result, BaseMessage):
+        check_output_budget(result)
+    if trace is not None:
+        trace.finish_model_call(call, "completed", result if isinstance(result, BaseMessage) else None)
+    if current_budget.get() is not None:
+        current_budget.get().check()
+    return result
 
 
 async def llm_ainvoke_with_retry(llm: ChatOpenAI, messages: list[BaseMessage],
                                  max_retries: int = 3) -> BaseMessage:
     @_make_retry(max_retries)
     async def _call():
-        return await llm.ainvoke(messages)
+        trace, call, kwargs = _trace_call(llm)
+        try:
+            result = await llm.ainvoke(messages, **kwargs)
+        except BaseException as exc:
+            if trace is not None:
+                trace.finish_model_call(call, "cancelled" if isinstance(exc, (asyncio.CancelledError, GeneratorExit)) else "failed")
+            raise
+        if isinstance(result, BaseMessage):
+            check_output_budget(result)
+        if trace is not None:
+            trace.finish_model_call(call, "completed", result if isinstance(result, BaseMessage) else None)
+        if current_budget.get() is not None:
+            current_budget.get().check()
+        return result
     return await _call()
 
 
@@ -130,12 +294,24 @@ async def llm_ainvoke_with_retry(llm: ChatOpenAI, messages: list[BaseMessage],
 def invoke_structured(llm: ChatOpenAI, output_class: Type[T],
                       messages: list[BaseMessage],
                       max_retries: int = 3) -> T:
+    token = _structured_attempts.set({"used": 0}) if current_budget.get() is not None else None
     try:
-        structured_llm = llm.with_structured_output(output_class)
+        return _invoke_structured(llm, output_class, messages, max_retries)
+    finally:
+        if token is not None:
+            _structured_attempts.reset(token)
+
+
+def _invoke_structured(llm, output_class, messages, max_retries):
+    try:
+        options = {"method": "function_calling"} if str(getattr(llm, "model_name", "")).startswith("deepseek-") else {}
+        structured_llm = llm.with_structured_output(output_class, **options)
         return llm_invoke_with_retry(structured_llm, messages, max_retries=max_retries)
     except Exception as e:
         err_str = str(e).lower()
         if "response_format" in err_str or "unavailable" in err_str:
+            from agents.tracing import observe
+            observe("structured_output", "json_fallback")
             logging.info("  [降级] with_structured_output 不可用，改用 JSON 模式")
             return _json_fallback_invoke(llm, output_class, messages, max_retries)
         raise
@@ -210,26 +386,27 @@ class ArkCodingEmbeddings(Embeddings):
         elapsed = time.monotonic() - self._last_request_at
         remaining = self.request_interval - elapsed
         if remaining > 0:
-            time.sleep(remaining)
+            _budget_sleep(remaining)
 
     def _create_embeddings(self, batch: List[str]):
-        for attempt in range(self.max_retries + 1):
+        for attempt in range(_attempt_limit(self.max_retries + 1)):
             self._wait_for_request_slot()
+            client = _budget_client(self.client, "embedding")
             try:
-                return self.client.embeddings.create(
+                return _embedding_request(client, "ark",
                     model=self.model,
                     input=batch,
                     dimensions=self.dimension,
                     encoding_format="float",
                 )
             except Exception as exc:
-                if not self._is_rate_limit_error(exc) or attempt >= self.max_retries:
+                if not self._is_rate_limit_error(exc) or attempt + 1 >= _attempt_limit(self.max_retries + 1):
                     raise
                 delay = min(max(self.request_interval, 2 ** attempt), self.max_backoff)
                 delay += random.uniform(0, 0.5)
                 logging.warning("Ark embedding 触发限流，%.1f 秒后重试 (%d/%d)",
                                 delay, attempt + 1, self.max_retries)
-                time.sleep(delay)
+                _budget_sleep(delay)
             finally:
                 self._last_request_at = time.monotonic()
 
@@ -314,13 +491,14 @@ class DashScopeEmbeddings(Embeddings):
     def _wait_for_request_slot(self) -> None:
         remaining = self.request_interval - (time.monotonic() - self._last_request_at)
         if remaining > 0:
-            time.sleep(remaining)
+            _budget_sleep(remaining)
 
     def _create_embeddings(self, batch: List[str]):
-        for attempt in range(self.max_retries + 1):
+        for attempt in range(_attempt_limit(self.max_retries + 1)):
             self._wait_for_request_slot()
+            client = _budget_client(self.client, "embedding")
             try:
-                return self.client.embeddings.create(
+                return _embedding_request(client, "dashscope",
                     model=self.model,
                     input=batch,
                     dimensions=self.dimension,
@@ -329,13 +507,13 @@ class DashScopeEmbeddings(Embeddings):
             except Exception as exc:
                 status_code = getattr(exc, "status_code", None)
                 retryable = status_code == 429 or status_code is None
-                if not retryable or attempt >= self.max_retries:
+                if not retryable or attempt + 1 >= _attempt_limit(self.max_retries + 1):
                     raise
                 delay = min(max(self.request_interval, 2 ** attempt), self.max_backoff)
                 delay += random.uniform(0, 0.5)
                 logging.warning("DashScope embedding 请求失败，%.1f 秒后重试 (%d/%d)",
                                 delay, attempt + 1, self.max_retries)
-                time.sleep(delay)
+                _budget_sleep(delay)
             finally:
                 self._last_request_at = time.monotonic()
 
@@ -359,6 +537,8 @@ class DashScopeEmbeddings(Embeddings):
                     continue
             missing.append(index)
         if missing:
+            from agents.tracing import observe
+            observe("embedding_cache", "disabled" if cache is None else "partial_hit" if len(missing) < len(texts) else "miss")
             batch_texts = [texts[index] for index in missing]
             new_vectors: List[List[float]] = []
             # qwen3.7-text-embedding 的文本列表单次最多 20 条。
@@ -371,6 +551,9 @@ class DashScopeEmbeddings(Embeddings):
                     cache[self._cache_key(texts[index])] = vector
             if cache is not None:
                 self._save_cache()
+        else:
+            from agents.tracing import observe
+            observe("embedding_cache", "hit")
         return vectors  # type: ignore[return-value]
 
     def embed_query(self, text: str, target_dim: int | None = None) -> List[float]:
@@ -442,7 +625,7 @@ class DashScopeReranker:
     def _wait_for_request_slot(self) -> None:
         remaining = self.request_interval - (time.monotonic() - self._last_request_at)
         if remaining > 0:
-            time.sleep(remaining)
+            _budget_sleep(remaining)
 
     def _post(self, query: str, documents: List[str], top_n: int) -> dict:
         payload = {
@@ -451,20 +634,38 @@ class DashScopeReranker:
             "parameters": {"top_n": min(top_n, len(documents)),
                            "return_documents": False},
         }
-        for attempt in range(self.max_retries + 1):
+        for attempt in range(_attempt_limit(self.max_retries + 1)):
             self._wait_for_request_slot()
+            budget = current_budget.get()
+            request_kwargs = {}
+            if budget is not None:
+                budget.reserve("rerank")
+                request_kwargs["timeout"] = min(30, budget.remaining_seconds)
+            trace, call = _start_service("rerank", "dashscope", self.model)
             try:
-                response = self._client.post(self._url, json=payload, headers=self._headers)
+                response = self._client.post(self._url, json=payload, headers=self._headers, **request_kwargs)
             except httpx.HTTPError:
+                if trace is not None:
+                    trace.finish_service_call(call, "failed")
                 status_code = None
                 error_body = ""
             else:
                 status_code = response.status_code
                 if status_code == 200:
-                    return response.json()
+                    try:
+                        payload = response.json()
+                    except ValueError:
+                        if trace is not None:
+                            trace.finish_service_call(call, "failed")
+                        raise
+                    if trace is not None:
+                        trace.finish_service_call(call, "completed", payload)
+                    return payload
+                if trace is not None:
+                    trace.finish_service_call(call, "failed")
                 error_body = response.text[:300]
             retryable = status_code is None or status_code == 429
-            if not retryable or attempt >= self.max_retries:
+            if not retryable or attempt + 1 >= _attempt_limit(self.max_retries + 1):
                 raise RuntimeError(
                     f"DashScope rerank 请求失败 status={status_code}: {error_body}"
                 )
@@ -472,7 +673,7 @@ class DashScopeReranker:
             delay += random.uniform(0, 0.5)
             logging.warning("DashScope rerank 请求失败，%.1f 秒后重试 (%d/%d)",
                             delay, attempt + 1, self.max_retries)
-            time.sleep(delay)
+            _budget_sleep(delay)
         raise RuntimeError("DashScope rerank 请求失败：重试次数耗尽")
 
     @staticmethod
@@ -501,6 +702,8 @@ class DashScopeReranker:
                     continue
             missing.append(index)
         if missing:
+            from agents.tracing import observe
+            observe("rerank_cache", "disabled" if cache is None else "partial_hit" if len(missing) < len(documents) else "miss")
             batch_documents = [documents[index] for index in missing]
             payload = self._post(query, batch_documents, len(batch_documents))
             self._last_request_at = time.monotonic()
@@ -511,6 +714,9 @@ class DashScopeReranker:
                     cache[self._cache_key(query, documents[index])] = score
             if cache is not None:
                 self._save_cache()
+        else:
+            from agents.tracing import observe
+            observe("rerank_cache", "hit" if documents else "skipped_empty")
         return scores  # type: ignore[return-value]
 
 
@@ -551,6 +757,8 @@ class LocalEmbeddings(Embeddings):
         logging.info("加载本地 Embedding 模型: %s (device=%s) ...", model_name, device)
         self._model = SentenceTransformer(model_name, device=device)
         self.model = model_name
+        if current_budget.get() is not None:
+            current_budget.get().reserve("local_embedding")
         self.dimension = len(self._model.encode("test", normalize_embeddings=True))
 
     @property
@@ -562,12 +770,16 @@ class LocalEmbeddings(Embeddings):
         return f"local:{self.model}:{self.dimension}"
 
     def embed_documents(self, texts: List[str], target_dim: int | None = None) -> List[List[float]]:
+        if current_budget.get() is not None:
+            current_budget.get().reserve("local_embedding")
         vecs = self._model.encode(texts, normalize_embeddings=True,
                                   show_progress_bar=len(texts) > 50)
         return [v.tolist() for v in vecs]
 
     def embed_query(self, text: str, target_dim: int | None = None) -> List[float]:
         # Qwen3-Embedding 用 query 前缀提升检索质量
+        if current_budget.get() is not None:
+            current_budget.get().reserve("local_embedding")
         v = self._model.encode(text, prompt_name="query", normalize_embeddings=True)
         return v.tolist()
 

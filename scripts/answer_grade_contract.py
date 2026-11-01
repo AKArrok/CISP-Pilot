@@ -1,5 +1,43 @@
 """Pure offline validation of score dimensions and literal evidence quotes."""
+from copy import deepcopy
+
 DIMENSIONS = ("completeness", "source_support", "citation_support")
+
+
+def line_payload(item):
+    """Number original lines without changing their content or exposing labels."""
+    def numbered(text):
+        return [{"line": i, "text": line} for i, line in enumerate(text.splitlines(), 1)]
+    return {"question": item["question"], "answer_lines": numbered(item["answer"]),
+            "contexts": [{"source_ref": i, "source": c["source"], "locator": c.get("locator"), "page": c.get("page"),
+                          "lines": numbered(c["text"])} for i, c in enumerate(item["contexts"], 1)]}
+
+
+def materialize_grade(value, item):
+    """Resolve model-selected line IDs locally; the model never rewrites quotes."""
+    result = deepcopy(value)
+    for field in ("deductions", "risk_checks"):
+        for entry in result.get(field, []):
+            if "answer_quote" in entry or "source_quote" in entry:
+                raise ValueError("Quotes must be resolved by the host")
+            answer_line, source_ref, source_line = entry.pop("answer_line"), entry["source_ref"], entry.pop("source_line")
+            answer_lines = item["answer"].splitlines()
+            if answer_line is None and field == "deductions" and entry.get("dimension") == "completeness":
+                entry["answer_quote"] = ""
+            elif type(answer_line) is int and 1 <= answer_line <= len(answer_lines):
+                entry["answer_quote"] = answer_lines[answer_line-1]
+            else:
+                raise ValueError("Invalid answer line")
+            if type(source_ref) is not int or not 1 <= source_ref <= len(item["contexts"]):
+                raise ValueError("Invalid source reference")
+            source_lines = item["contexts"][source_ref-1]["text"].splitlines()
+            if source_line is None:
+                entry["source_quote"] = "none_found"
+            elif type(source_line) is int and 1 <= source_line <= len(source_lines) and source_lines[source_line-1].strip():
+                entry["source_quote"] = source_lines[source_line-1]
+            else:
+                raise ValueError("Invalid source line")
+    return validate_grade(result, item)
 
 
 def validate_grade(value, item):

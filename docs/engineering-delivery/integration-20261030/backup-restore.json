@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "scope": "synthetic SQLite backup and restored copy; not default database or cloud recovery",
+  "tables": {
+    "alembic_version": {
+      "rows": 1,
+      "sha256": "4276ab6e606586cc0c767984c2e3434d8c7245d3ecd3dc20a0a8906736e90bc8"
+    },
+    "answer_submissions": {
+      "rows": 1,
+      "sha256": "eda886b4a5168cacdf560d7b3c3a528d7b91d5f296b5d509805c02ddf43f4f31"
+    },
+    "attempts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "calibration_hypotheses": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "conversations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "diagnostic_answer_receipts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "diagnostic_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "diagnostic_sessions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "diagnostic_start_receipts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "kb_chunks": {
+      "rows": 10,
+      "sha256": "bb42cd625aab72fb5d9ae14912afa8832ae8eb52701e1ae2ecc4f704c15604a9"
+    },
+    "knowledge_points": {
+      "rows": 10,
+      "sha256": "f6f1ea9d84bdb6ab03ec98e63b01b054612a41514f7311e920c2331df67f0b3e"
+    },
+    "learner_attempts": {
+      "rows": 1,
+      "sha256": "e81d34fa86e26c3e730a06ac251eb9e7fbed91323a92693ba8e134fcc7fc97fe"
+    },
+    "learner_knowledge_states": {
+      "rows": 1,
+      "sha256": "97bf159b8287dc0e836316fe5f53eea95a0ac33608d59afc4719b5ba7bd3215f"
+    },
+    "learner_review_cards": {
+      "rows": 1,
+      "sha256": "c425f05269c1d730372d651b99312c39b87add2d1c8fec667f542f8196dd2301"
+    },
+    "metrics": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "question_attribution_corrections": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "question_attribution_events": {
+      "rows": 20,
+      "sha256": "9442f67be17ecc99e97f90d91251cad235cdf466201cc9cab2ae29fc22f0fe8c"
+    },
+    "question_attributions": {
+      "rows": 20,
+      "sha256": "f0711aeff1285a9c7e902dc39433a0752aa6544b4359011628ea1b8af723f303"
+    },
+    "question_knowledge_points": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "question_signals": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "questions": {
+      "rows": 20,
+      "sha256": "369ba10d47dcdd16be88a183fe593c770a21485ea4fc4ad9abd8114aae7e6a9a"
+    },
+    "request_traces": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "review_cards": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "threads": {
+      "rows": 2,
+      "sha256": "147b82666229842087c202fe804f6773d31227729a0cc383569fed3363c641b5"
+    },
+    "users": {
+      "rows": 2,
+      "sha256": "6913431137f232426c9b29cc1fea60c58fa47cfde113a2276053031045625715"
+    },
+    "web_sessions": {
+      "rows": 2,
+      "sha256": "b46f7a761bdcc76558d9b525da4e22e157db7b5263975c8e275d310385557db7"
+    }
+  },
+  "original_unchanged": true
+}

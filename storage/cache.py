@@ -18,6 +18,7 @@ _client = None
 _live = False  # True = 真 Redis；False = 内存降级
 _mem_store: dict[str, tuple[float, bytes]] = {}
 _lock = threading.Lock()
+_counter_lock = threading.Lock()
 
 
 def _init():
@@ -111,7 +112,16 @@ def is_live() -> bool:
 def rate_limit(key: str, limit: int, window_seconds: int = 60) -> tuple[bool, int]:
     """固定窗口限流：返回 (是否放行, 窗口内已计数)。"""
     client = _init()
-    n = client.incr(key)
-    if n == 1:
-        client.expire(key, window_seconds)
+    if isinstance(client, _MemClient):
+        with _counter_lock:
+            n = client.incr(key)
+            if n == 1:
+                client.expire(key, window_seconds)
+    else:
+        # One Redis operation keeps increment and initial expiry atomic across workers.
+        n = int(client.eval(
+            "local n = redis.call('INCR', KEYS[1]); "
+            "if n == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end; return n",
+            1, key, window_seconds,
+        ))
     return n <= limit, n

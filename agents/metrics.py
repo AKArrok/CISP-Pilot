@@ -6,7 +6,8 @@ import time
 from sqlalchemy import select
 
 from storage import db
-from storage.models import Metric
+from storage.models import Metric, Thread
+from agents.usage import USAGE_SCOPE, token_count
 
 
 def record(thread_id: str, question: str, intent: str | None,
@@ -17,7 +18,7 @@ def record(thread_id: str, question: str, intent: str | None,
         s.add(Metric(thread_id=thread_id, question=question[:300], intent=intent,
                      route_ms=route_ms, retrieval_ms=retrieval_ms,
                      first_token_ms=first_token_ms, total_ms=total_ms,
-                     prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                     prompt_tokens=token_count(prompt_tokens), completion_tokens=token_count(completion_tokens),
                      created_at=time.time()))
         s.commit()
 
@@ -30,14 +31,16 @@ def _percentile(values: list[float], p: float) -> float | None:
     return round(values[idx], 1)
 
 
-def summary(limit: int = 500) -> dict:
+def summary(limit: int = 500, *, owner_user_id: str | None = None) -> dict:
     with db.session() as s:
-        rows = s.execute(
-            select(Metric.intent, Metric.route_ms, Metric.retrieval_ms,
+        stmt = select(Metric.intent, Metric.route_ms, Metric.retrieval_ms,
                    Metric.first_token_ms, Metric.total_ms,
                    Metric.prompt_tokens, Metric.completion_tokens)
-            .order_by(Metric.id.desc()).limit(limit)
-        ).all()
+        if owner_user_id is not None:
+            stmt = stmt.join(Thread, Thread.id == Metric.thread_id).where(
+                Thread.owner_user_id == owner_user_id,
+            )
+        rows = s.execute(stmt.order_by(Metric.id.desc()).limit(limit)).all()
     n = len(rows)
     if n == 0:
         return {"total_requests": 0}
@@ -56,6 +59,12 @@ def summary(limit: int = 500) -> dict:
         "p95_total_ms": _percentile(cols["total_ms"], 0.95),
         "avg_route_ms": round(sum(cols["route_ms"]) / max(len(cols["route_ms"]), 1), 1),
         "avg_retrieval_ms": round(sum(cols["retrieval_ms"]) / max(len(cols["retrieval_ms"]), 1), 1),
-        "total_prompt_tokens": sum(cols["prompt_tokens"]),
-        "total_completion_tokens": sum(cols["completion_tokens"]),
+        "usage_scope": USAGE_SCOPE,
+        "billing_cost": None,
+        "observed_prompt_tokens": sum(cols["prompt_tokens"]) if cols["prompt_tokens"] else None,
+        "observed_completion_tokens": sum(cols["completion_tokens"]) if cols["completion_tokens"] else None,
+        "prompt_usage_known_requests": len(cols["prompt_tokens"]),
+        "completion_usage_known_requests": len(cols["completion_tokens"]),
+        "total_prompt_tokens": sum(cols["prompt_tokens"]) if len(cols["prompt_tokens"]) == n else None,
+        "total_completion_tokens": sum(cols["completion_tokens"]) if len(cols["completion_tokens"]) == n else None,
     }

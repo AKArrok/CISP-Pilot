@@ -1,0 +1,54 @@
+[
+  {
+    "path": "evaluation/judge-calibration-v1/cases.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v1/chunks.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v1/prompts.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v2/cases.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v2/chunks.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v2/prompts.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v3/cases.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v3/chunks.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/judge-calibration-v3/prompts.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/nist-development-v1/cases.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/nist-development-v1/chunks.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/nist-development-v1/prompts.json",
+    "index_sha256_matches_frozen": true
+  },
+  {
+    "path": "evaluation/nist-development-v1/at2-regression.json",
+    "index_sha256_matches_frozen": true
+  }
+]

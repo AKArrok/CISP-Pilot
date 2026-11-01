@@ -13,6 +13,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from retrieval.bm25 import BM25Index  # noqa: E402
+from scripts.answer_grade_contract import line_payload  # noqa: E402
 
 
 def write(path, value):
@@ -121,9 +122,11 @@ def main():
                 row["answer"] = case["answer"]
             context = "\n".join(f'[资料{i+1}]《{c["source"]}》定位【{c["locator"]}】\n{c["text"]}' for i, c in enumerate(contexts))
             for stage in (manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge")):
+                content = context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
+                if manifest.get("evidence_protocol") == "line_ids":
+                    content = json.dumps(line_payload(row), ensure_ascii=False)
                 messages = [{"role": "system", "content": prompts[stage + "_system"]},
-                            {"role": "user", "content": context + "\n问题：" + case["question"] +
-                             ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")}]
+                            {"role": "user", "content": content}]
                 estimate = sum(len(encoding.encode(m["content"])) for m in messages)
                 if estimate > 5000 or summary["provider_calls"] >= max_calls or summary["cost_usd_conservative"] + .008 > budget:
                     raise RuntimeError("Input or budget limit; no automatic retry")

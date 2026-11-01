@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "stage": "complete",
+  "image": "cisp-integration:20261101-release",
+  "data_dir": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-data-release-20261101",
+  "evidence_dir": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-smoke-release-20261101",
+  "synthetic_demo": true,
+  "human_reviewed": false,
+  "retrieval_mode": "sparse",
+  "model_quality_verified": false,
+  "default_dense_configuration_verified": false,
+  "container_name": "cisp-smoke-311eb29edb93eb10",
+  "ownership_label": "cisp.engineering.smoke",
+  "ownership_token": "e3bfcd444edb992cd899fff41b98b39cc60c9d2faae0b7b08e1257c70a7fee97",
+  "container_id": "24de38994af795510a535d52b48623abc7c13be3f7434f83ed761e700d6f9d53",
+  "origin": "http://127.0.0.1:62003",
+  "http_version": "HTTP/1.1",
+  "counts": {
+    "users": 2,
+    "learner_attempts": 1
+  },
+  "integrity": "ok",
+  "container_restart_verified": true,
+  "docker_image_verified": true,
+  "receipt_sha256": "61aa440ab40fde11e5667fc909898bbc9d56bf5681b28669b44c7f4ce632553c",
+  "cleanup_pending": false,
+  "container_removed": true
+}

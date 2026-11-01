@@ -51,7 +51,7 @@ def _active_chunk_count() -> int:
         return len(json.load(fp))
 
 
-def validate_index() -> None:
+def validate_index(*, active_question_count: int | None = None) -> None:
     """启动自检：四件数据资产齐全且相互一致，否则给出明确的修复指令。"""
     problems = []
     if not os.path.exists(config.KB_CHUNKS_PATH):
@@ -68,7 +68,10 @@ def validate_index() -> None:
         problems.append("缺 data/manifest.json → 重跑三个 data_ingest 脚本")
     else:
         n_chunks = _active_chunk_count()
-        n_questions = _active_question_count()
+        n_questions = (
+            _active_question_count()
+            if active_question_count is None else active_question_count
+        )
         meta = json.load(open(config.VECTORS_PATH + ".meta.json", encoding="utf-8"))
         if manifest.get("chunk_count") != n_chunks:
             problems.append(

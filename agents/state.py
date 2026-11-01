@@ -25,6 +25,8 @@ class AgentState(TypedDict):
     query_variants: list[str]
     # 检索到的知识块
     contexts: list[dict]
+    # 实验证据子代理报告；每轮检索重置，模型缺口判断不等于人工验收。
+    evidence_report: dict | None
     # 从长期向量记忆召回的历史对话片段
     memories: list[dict]
     # 最终回答

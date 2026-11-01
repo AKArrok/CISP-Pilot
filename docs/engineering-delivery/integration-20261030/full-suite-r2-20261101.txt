@@ -1,0 +1,141 @@
+知识点候选: 580，建议首批审校: 316，题目标签: 813
+审校结果: active=305，rejected=11，candidate=264
+归因状态: confirmed=12，probable=323，unverified=1025
+数据库知识点: 580
+数据库题目标签: 813
+数据库题目归因: 1360
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+============================= test session starts =============================
+platform win32 -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\Users\ASUS\Desktop\学习资料\代码\CISP
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1, langsmith-0.14.0
+collected 750 items
+
+tests\test_alembic_fresh_sqlite.py ...                                   [  0%]
+tests\test_answer_abstention_trace.py ..                                 [  0%]
+tests\test_answer_evidence_policy.py ...                                 [  1%]
+tests\test_answer_submission_migration.py ....                           [  1%]
+tests\test_answer_transaction.py ...............................         [  5%]
+tests\test_answer_workflow.py ...                                        [  6%]
+tests\test_attribution_correction.py .............                       [  7%]
+tests\test_attribution_eval.py ...........                               [  9%]
+tests\test_auth_service.py ....                                          [  9%]
+tests\test_bm25_numerals.py ........                                     [ 10%]
+tests\test_budget_integration.py ...............                         [ 12%]
+tests\test_calibration_profile.py ............                           [ 14%]
+tests\test_chat_service_restart.py .                                     [ 14%]
+tests\test_chat_sql_recovery.py .....                                    [ 15%]
+tests\test_chunking.py ......                                            [ 16%]
+tests\test_complex_rag_probe.py .......                                  [ 17%]
+tests\test_config_dense.py ..                                            [ 17%]
+tests\test_config_source_paths.py ..                                     [ 17%]
+tests\test_conservative_attribution.py ........                          [ 18%]
+tests\test_context_selection_replay.py ......                            [ 19%]
+tests\test_db_readiness_audit.py .....                                   [ 20%]
+tests\test_deepseek_structured_method.py ...                             [ 20%]
+tests\test_dense_taxonomy.py .......                                     [ 21%]
+tests\test_diagnosis.py ..........                                       [ 22%]
+tests\test_diagnostic_receipt_migration.py ....                          [ 23%]
+tests\test_diagnostic_transaction.py ...............................     [ 27%]
+tests\test_docker_runtime_smoke.py ...........                           [ 28%]
+tests\test_embedding_cache.py .....                                      [ 29%]
+tests\test_eval_flash_small.py ..                                        [ 29%]
+tests\test_evidence_subagent.py .................                        [ 32%]
+tests\test_external_holdout_workflow.py ...                              [ 32%]
+tests\test_external_qa_preflight.py ...                                  [ 32%]
+tests\test_flash_answer_audit.py ...                                     [ 33%]
+tests\test_generator_quality.py .........                                [ 34%]
+tests\test_grader.py ......                                              [ 35%]
+tests\test_http_diagnostic_restore.py ...                                [ 35%]
+tests\test_http_diagnostic_transaction.py ..                             [ 36%]
+tests\test_http_identity.py .......                                      [ 36%]
+tests\test_http_submission.py ...                                        [ 37%]
+tests\test_identity_storage.py ......                                    [ 38%]
+tests\test_learning_ranker.py .......                                    [ 39%]
+tests\test_linux_browser_smoke.py ss                                     [ 39%]
+tests\test_llm_nonretryable.py .........                                 [ 40%]
+tests\test_llm_token_limit.py ...                                        [ 40%]
+tests\test_memory.py ......                                              [ 41%]
+tests\test_model_trace.py ...........                                    [ 43%]
+tests\test_nist_batch.py ....                                            [ 43%]
+tests\test_parsers.py ......                                             [ 44%]
+tests\test_prepare_demo.py ......s.                                      [ 45%]
+tests\test_profile_accuracy_eval.py ......                               [ 46%]
+tests\test_profile_holdout_eval.py ..                                    [ 46%]
+tests\test_profile_isolation_api.py ..                                   [ 46%]
+tests\test_query_rewrite.py .....                                        [ 47%]
+tests\test_question_parser_integrity.py ........                         [ 48%]
+tests\test_quiz_storage_failure.py ........                              [ 49%]
+tests\test_rag_answer_comparison.py ...........                          [ 51%]
+tests\test_rag_answer_review.py ........                                 [ 52%]
+tests\test_rag_development.py .......                                    [ 53%]
+tests\test_rag_harness_history.py ..................................     [ 57%]
+tests\test_rank_features.py ..................                           [ 60%]
+tests\test_readiness.py .....                                            [ 60%]
+tests\test_relevance_gate.py .....                                       [ 61%]
+tests\test_request_budget.py ........................................... [ 67%]
+........                                                                 [ 68%]
+tests\test_request_trace_http.py .........                               [ 69%]
+tests\test_request_trace_migration.py ..........                         [ 70%]
+tests\test_rerank_cache.py ....                                          [ 71%]
+tests\test_reranker_backend.py .........                                 [ 72%]
+tests\test_retrieval_gold.py ...                                         [ 72%]
+tests\test_retrieval_trace.py ...........                                [ 74%]
+tests\test_review.py ......                                              [ 75%]
+tests\test_server_lifespan.py ....                                       [ 75%]
+tests\test_service_receipts.py ........................................  [ 81%]
+tests\test_service_trace_http.py ..                                      [ 81%]
+tests\test_signals.py ......                                             [ 82%]
+tests\test_source_locator_budget.py ...                                  [ 82%]
+tests\test_source_locator_http.py .                                      [ 82%]
+tests\test_source_locators.py ....                                       [ 83%]
+tests\test_source_review_gate.py .......                                 [ 84%]
+tests\test_stats.py .......                                              [ 85%]
+tests\test_storage_database_url.py ...............                       [ 87%]
+tests\test_structured_source_graph_http.py .                             [ 87%]
+tests\test_supplemental_nist.py ....                                     [ 87%]
+tests\test_table_chunking.py ..............                              [ 89%]
+tests\test_taxonomy.py ..........                                        [ 90%]
+tests\test_thread_transaction_locking.py ....................            [ 93%]
+tests\test_trace_process_recovery.py ..                                  [ 93%]
+tests\test_trace_recovery.py .................                           [ 96%]
+tests\test_usage_receipts.py ................                            [ 98%]
+tests\test_write_readiness_gate.py .............                         [100%]
+
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_external_holdout_workflow.py::test_external_double_blind_packets_can_be_frozen_after_adjudication
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\_pytest\threadexception.py:58: PytestUnhandledThreadExceptionWarning: Exception in thread Thread-98 (_readerthread)
+  
+  Traceback (most recent call last):
+    File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+      self.run()
+    File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 982, in run
+      self._target(*self._args, **self._kwargs)
+    File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 1599, in _readerthread
+      buffer.append(fh.read())
+                    ^^^^^^^^^
+  UnicodeDecodeError: 'gbk' codec can't decode byte 0x85 in position 8: illegal multibyte sequence
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnhandledThreadExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========== 747 passed, 3 skipped, 2 warnings in 684.57s (0:11:24) ============

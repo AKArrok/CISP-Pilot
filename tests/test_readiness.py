@@ -2,10 +2,10 @@ from pathlib import Path
 
 from alembic.config import Config as AlembicConfig
 from alembic.script import ScriptDirectory
-from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 
 import server
+from http_auth_helpers import authenticated_http, isolated_database
 from storage import db
 from storage.models import Base
 
@@ -59,8 +59,13 @@ def test_readiness_rejects_schema_without_alembic_revision(tmp_path, monkeypatch
     monkeypatch.setattr(db, "backend", lambda: "sqlite")
     monkeypatch.setattr("data_ingest.manifest.validate_index", lambda: None)
 
-    response = TestClient(server.app).get("/api/ready")
+    with isolated_database(engine):
+        client = authenticated_http(server.app).client
+        public = client.get("/api/ready")
+        response = client.get("/api/readiness")
 
+    assert public.status_code == 503
+    assert public.json() == {"status": "unavailable"}
     assert response.status_code == 503
     assert response.json()["status"] == "migration_required"
     assert response.json()["schema"]["current_revisions"] == []
@@ -72,8 +77,13 @@ def test_readiness_accepts_current_schema_and_assets(tmp_path, monkeypatch):
     monkeypatch.setattr(db, "backend", lambda: "sqlite")
     monkeypatch.setattr("data_ingest.manifest.validate_index", lambda: None)
 
-    response = TestClient(server.app).get("/api/ready")
+    with isolated_database(engine):
+        client = authenticated_http(server.app).client
+        public = client.get("/api/ready")
+        response = client.get("/api/readiness")
 
+    assert public.status_code == 200
+    assert public.json() == {"status": "ready"}
     assert response.status_code == 200
     assert response.json()["status"] == "ready"
     assert response.json()["assets"]["ready"] is True
@@ -91,8 +101,13 @@ def test_readiness_rejects_invalid_assets_after_current_migration(
 
     monkeypatch.setattr("data_ingest.manifest.validate_index", reject_assets)
 
-    response = TestClient(server.app).get("/api/ready")
+    with isolated_database(engine):
+        client = authenticated_http(server.app).client
+        public = client.get("/api/ready")
+        response = client.get("/api/readiness")
 
+    assert public.status_code == 503
+    assert public.json() == {"status": "unavailable"}
     assert response.status_code == 503
     assert response.json()["status"] == "assets_invalid"
     assert response.json()["schema"]["migration_current"] is True

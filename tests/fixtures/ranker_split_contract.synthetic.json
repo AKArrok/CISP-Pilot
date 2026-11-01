@@ -1,0 +1,417 @@
+{
+  "cases": [
+    {
+      "id": "ranker-contract-01-01",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-02",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-03",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-04",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-05",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-06",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-07",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-01-08",
+      "primary_domain": "信息安全保障"
+    },
+    {
+      "id": "ranker-contract-02-01",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-02",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-03",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-04",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-05",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-06",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-07",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-02-08",
+      "primary_domain": "信息安全监管"
+    },
+    {
+      "id": "ranker-contract-03-01",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-02",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-03",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-04",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-05",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-06",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-07",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-03-08",
+      "primary_domain": "信息安全支撑技术"
+    },
+    {
+      "id": "ranker-contract-04-01",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-02",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-03",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-04",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-05",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-06",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-07",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-04-08",
+      "primary_domain": "物理与网络通信安全"
+    },
+    {
+      "id": "ranker-contract-05-01",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-02",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-03",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-04",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-05",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-06",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-07",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-05-08",
+      "primary_domain": "计算环境安全"
+    },
+    {
+      "id": "ranker-contract-06-01",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-02",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-03",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-04",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-05",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-06",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-07",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-06-08",
+      "primary_domain": "软件安全开发"
+    },
+    {
+      "id": "ranker-contract-07-01",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-02",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-03",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-04",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-05",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-06",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-07",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-07-08",
+      "primary_domain": "信息安全评估"
+    },
+    {
+      "id": "ranker-contract-08-01",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-02",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-03",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-04",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-05",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-06",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-07",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-08-08",
+      "primary_domain": "安全工程与运营"
+    },
+    {
+      "id": "ranker-contract-09-01",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-02",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-03",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-04",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-05",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-06",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-07",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-09-08",
+      "primary_domain": "业务连续性"
+    },
+    {
+      "id": "ranker-contract-10-01",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-02",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-03",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-04",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-05",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-06",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-07",
+      "primary_domain": "信息安全管理"
+    },
+    {
+      "id": "ranker-contract-10-08",
+      "primary_domain": "信息安全管理"
+    }
+  ],
+  "train": [
+    "ranker-contract-01-01",
+    "ranker-contract-01-02",
+    "ranker-contract-01-03",
+    "ranker-contract-01-04",
+    "ranker-contract-01-05",
+    "ranker-contract-01-06",
+    "ranker-contract-02-01",
+    "ranker-contract-02-02",
+    "ranker-contract-02-03",
+    "ranker-contract-02-04",
+    "ranker-contract-02-05",
+    "ranker-contract-02-06",
+    "ranker-contract-03-01",
+    "ranker-contract-03-02",
+    "ranker-contract-03-03",
+    "ranker-contract-03-04",
+    "ranker-contract-03-05",
+    "ranker-contract-03-06",
+    "ranker-contract-04-01",
+    "ranker-contract-04-02",
+    "ranker-contract-04-03",
+    "ranker-contract-04-04",
+    "ranker-contract-04-05",
+    "ranker-contract-04-06",
+    "ranker-contract-05-01",
+    "ranker-contract-05-02",
+    "ranker-contract-05-03",
+    "ranker-contract-05-04",
+    "ranker-contract-05-05",
+    "ranker-contract-05-06",
+    "ranker-contract-06-01",
+    "ranker-contract-06-02",
+    "ranker-contract-06-03",
+    "ranker-contract-06-04",
+    "ranker-contract-06-05",
+    "ranker-contract-06-06",
+    "ranker-contract-07-01",
+    "ranker-contract-07-02",
+    "ranker-contract-07-03",
+    "ranker-contract-07-04",
+    "ranker-contract-07-05",
+    "ranker-contract-07-06",
+    "ranker-contract-08-01",
+    "ranker-contract-08-02",
+    "ranker-contract-08-03",
+    "ranker-contract-08-04",
+    "ranker-contract-08-05",
+    "ranker-contract-08-06",
+    "ranker-contract-09-01",
+    "ranker-contract-09-02",
+    "ranker-contract-09-03",
+    "ranker-contract-09-04",
+    "ranker-contract-09-05",
+    "ranker-contract-09-06",
+    "ranker-contract-10-01",
+    "ranker-contract-10-02",
+    "ranker-contract-10-03",
+    "ranker-contract-10-04",
+    "ranker-contract-10-05",
+    "ranker-contract-10-06"
+  ],
+  "dev": [
+    "ranker-contract-01-07",
+    "ranker-contract-01-08",
+    "ranker-contract-02-07",
+    "ranker-contract-02-08",
+    "ranker-contract-03-07",
+    "ranker-contract-03-08",
+    "ranker-contract-04-07",
+    "ranker-contract-04-08",
+    "ranker-contract-05-07",
+    "ranker-contract-05-08",
+    "ranker-contract-06-07",
+    "ranker-contract-06-08",
+    "ranker-contract-07-07",
+    "ranker-contract-07-08",
+    "ranker-contract-08-07",
+    "ranker-contract-08-08",
+    "ranker-contract-09-07",
+    "ranker-contract-09-08",
+    "ranker-contract-10-07",
+    "ranker-contract-10-08"
+  ],
+  "provenance": {
+    "source": "AI engineer authored fictional algorithm schema",
+    "purpose": "load_split algorithm contract only; DOMAINS values are labels only",
+    "human_gold": false,
+    "retrieval_quality_evidence": false,
+    "runtime_claims": "Provenance declarations are non-runtime metadata, not algorithm validation.",
+    "data_boundary": "Created from scratch; contains no real query, evidence, gold ID, holdout, split or profile data.",
+    "license": "MIT data-only proposal pending owner confirmation; no repository-wide licensing claim."
+  }
+}

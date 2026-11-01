@@ -7,12 +7,54 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import BigInteger, Boolean, DateTime, Float, Integer, String, Text, func
+from sqlalchemy import BigInteger, Boolean, DateTime, Float, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
     pass
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    username: Mapped[str] = mapped_column(String(255), unique=True)
+    password_hash: Mapped[str] = mapped_column(String(512))
+    created_at: Mapped[datetime] = mapped_column(DateTime)
+
+
+class WebSession(Base):
+    __tablename__ = "web_sessions"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    user_id: Mapped[str] = mapped_column(String(36), ForeignKey("users.id"), index=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
+class Thread(Base):
+    __tablename__ = "threads"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    owner_user_id: Mapped[str] = mapped_column(String(36), ForeignKey("users.id"), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime)
+
+
+class RequestTrace(Base):
+    """Bounded request observations; ownership is resolved through Thread."""
+    __tablename__ = "request_traces"
+
+    request_id: Mapped[str] = mapped_column(
+        String(36).with_variant(String(36, collation="utf8mb4_bin"), "mysql"),
+        primary_key=True,
+    )
+    thread_id: Mapped[str] = mapped_column(String(36), ForeignKey("threads.id"), index=True)
+    status: Mapped[str] = mapped_column(String(16))
+    trace_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[float] = mapped_column(Float)
+    updated_at: Mapped[float] = mapped_column(Float)
 
 
 class Question(Base):
@@ -56,6 +98,21 @@ class Attempt(Base):
     choice: Mapped[str] = mapped_column(String(8))
     correct: Mapped[bool] = mapped_column(Boolean)
     answered_at: Mapped[float] = mapped_column(Float)
+
+
+class AnswerSubmission(Base):
+    """Committed answer receipt; the thread/key pair identifies one practice."""
+    __tablename__ = "answer_submissions"
+
+    thread_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    submission_id: Mapped[str] = mapped_column(
+        String(128).with_variant(String(128, collation="utf8mb4_bin"), "mysql"),
+        primary_key=True,
+    )
+    question_id: Mapped[str] = mapped_column(String(64))
+    choice: Mapped[str] = mapped_column(String(8))
+    result_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[float] = mapped_column(Float)
 
 
 class LearnerAttempt(Base):
@@ -149,9 +206,38 @@ class DiagnosticSession(Base):
     self_report: Mapped[str] = mapped_column(Text, default="{}")
     question_ids: Mapped[str] = mapped_column(Text, default="[]")
     responses: Mapped[str] = mapped_column(Text, default="[]")
+    report_json: Mapped[str | None] = mapped_column(Text, nullable=True)
     max_questions: Mapped[int] = mapped_column(Integer, default=12)
     created_at: Mapped[float] = mapped_column(Float)
     updated_at: Mapped[float] = mapped_column(Float)
+
+
+class DiagnosticStartReceipt(Base):
+    """A stable start key creates exactly one diagnostic for its thread."""
+    __tablename__ = "diagnostic_start_receipts"
+
+    thread_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    start_id: Mapped[str] = mapped_column(
+        String(128).with_variant(String(128, collation="utf8mb4_bin"), "mysql"),
+        primary_key=True,
+    )
+    payload_json: Mapped[str] = mapped_column(Text)
+    result_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[float] = mapped_column(Float)
+
+
+class DiagnosticAnswerReceipt(Base):
+    """Each diagnostic question accepts one complete answer payload."""
+    __tablename__ = "diagnostic_answer_receipts"
+
+    session_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    question_id: Mapped[str] = mapped_column(
+        String(64).with_variant(String(64, collation="utf8mb4_bin"), "mysql"),
+        primary_key=True,
+    )
+    payload_json: Mapped[str] = mapped_column(Text)
+    result_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[float] = mapped_column(Float)
 
 
 class DiagnosticEvent(Base):
@@ -274,7 +360,7 @@ class LearnerKnowledgeState(Base):
 
 
 class Conversation(Base):
-    """旧版对话表：保留给历史迁移/兼容，当前长期记忆走向量文件。"""
+    """已提交的对话历史；新轮次的 user/assistant 成对写入。"""
     __tablename__ = "conversations"
 
     id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer, "sqlite"),

@@ -1,0 +1,22 @@
+# Offline CI direct dependencies, matched to the verified Windows Python 3.11 snapshot.
+# Resolve transitive dependencies for Linux with:
+# uv pip compile --python-version 3.11 --python-platform x86_64-unknown-linux-gnu --generate-hashes --constraints requirements-windows-py311.lock.txt requirements-ci.in -o requirements-ci.lock.txt
+alembic==1.20.0
+fastapi==0.141.1
+fsrs==6.3.2
+httpx==0.28.1
+jieba==0.42.1
+langchain-core==1.6.3
+langchain-openai==1.6.2
+langgraph==1.2.11
+numpy==2.4.6
+pydantic==2.13.5
+pymupdf==1.28.2
+pymysql==1.2.3
+pytest==9.1.1
+python-dotenv==1.2.3
+ruff==0.16.0
+scikit-learn==1.9.1
+scipy==1.17.1
+sqlalchemy==2.0.54
+uvicorn==0.53.0

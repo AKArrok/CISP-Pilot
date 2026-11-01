@@ -1,0 +1,13 @@
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+{"ok": true, "stage": "complete", "image": "cisp-integration:20261101", "data_dir": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-data-20261101", "evidence_dir": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\docs\\engineering-delivery\\integration-20261030\\docker-smoke-20261101", "synthetic_demo": true, "human_reviewed": false, "retrieval_mode": "sparse", "model_quality_verified": false, "default_dense_configuration_verified": false, "container_name": "cisp-smoke-1eb71bf121ef465e", "ownership_label": "cisp.engineering.smoke", "ownership_token": "55fcd533eb8ddeeb0389079c77b926ec0b1b411be8187fbbde30a93d386d5fc3", "container_id": "1351aede63176bd2b473e2a4f8d5190c8a7e51a54e249c09e7703d8f4fe5ab2a", "origin": "http://127.0.0.1:59194", "http_version": "HTTP/1.1", "counts": {"users": 2, "learner_attempts": 1}, "integrity": "ok", "container_restart_verified": true, "docker_image_verified": true, "receipt_sha256": "61aa440ab40fde11e5667fc909898bbc9d56bf5681b28669b44c7f4ce632553c", "cleanup_pending": false, "container_removed": true}

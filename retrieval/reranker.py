@@ -13,6 +13,7 @@ import logging
 import threading
 
 import config
+from agents.tracing import observe
 
 _lock = threading.Lock()
 _predict_gate = threading.Semaphore(1)  # CPU 重排序串行化，避免并发互相拖垮
@@ -55,6 +56,9 @@ def _rerank_local(query: str, candidates: list[dict]) -> list[float] | None:
         return None
     pairs = [[query, _candidate_text(c)] for c in candidates]
     with _predict_gate:
+        from agents.budget import current_budget
+        if current_budget.get() is not None:
+            current_budget.get().reserve("local_rerank")
         scores = encoder.predict(pairs, show_progress_bar=False)
     return [float(s) for s in scores]
 
@@ -82,8 +86,10 @@ def rerank(query: str, candidates: list[dict], top_k: int) -> list[dict]:
     RERANK_FUSION_ALPHA 与特征名次加权融合，replace 为纯精排序。
     """
     if not candidates:
+        observe("rerank_backend", "skipped_no_candidates")
         return []
     if len(candidates) == 1:
+        observe("rerank_backend", "skipped_single_candidate")
         return candidates[:top_k]
     try:
         if config.RERANK_BACKEND == "dashscope":
@@ -91,10 +97,13 @@ def rerank(query: str, candidates: list[dict], top_k: int) -> list[dict]:
         else:
             scores = _rerank_local(query, candidates)
     except Exception:
+        observe("rerank_backend", "failed_degraded")
         logging.exception("精排失败，降级为 RRF 顺序")
         return candidates[:top_k]
     if scores is None or len(scores) != len(candidates):
+        observe("rerank_backend", "unavailable_or_invalid_scores_degraded")
         return candidates[:top_k]
+    observe("rerank_backend", "scores_received")
     if config.RERANK_FUSION == "alpha":
         order = _fuse_order(scores, len(scores), config.RERANK_FUSION_ALPHA)
     else:

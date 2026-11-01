@@ -232,7 +232,7 @@ def test_calibration_confirmation_rolls_back_as_one_transaction(
     assert state["attempts"] == 2 and state["correct"] == 0
 
 
-def test_review_card_failure_does_not_undo_confirmed_profile(
+def test_review_card_failure_rolls_back_entire_confirmation(
     calibration_db,
     monkeypatch,
 ):
@@ -244,13 +244,20 @@ def test_review_card_failure_does_not_undo_confirmed_profile(
     quiz.get_next_question(thread_id=thread)
     quiz.submit_answer("cal-1", "A", thread_id=thread)
     quiz.get_next_question(thread_id=thread)
+    before = repos.pending_calibrations(thread)[0]
+    original_update = quiz.review.update_card
 
     def fail_review_update(*args, **kwargs):
         raise RuntimeError("injected review-card failure")
 
     monkeypatch.setattr("quiz.review.update_card", fail_review_update)
-    result = quiz.submit_answer("cal-2", "A", thread_id=thread)
-
+    with pytest.raises(RuntimeError, match="injected review-card failure"):
+        quiz.submit_answer("cal-2", "A", thread_id=thread, submission_id="failed-confirmation")
+    assert repos.pending_calibrations(thread)[0] == before
+    assert repos.profile_attempt_count(thread) == 0
+    assert repos.learner_knowledge_states(thread, ["kp-risk"]) == []
+    monkeypatch.setattr("quiz.review.update_card", original_update)
+    result = quiz.submit_answer("cal-2", "A", thread_id=thread, submission_id="failed-confirmation")
     assert result["calibration_progress"]["status"] == "confirmed"
     assert repos.profile_attempt_count(thread) == 2
     state = repos.learner_knowledge_states(thread, ["kp-risk"])[0]
@@ -336,7 +343,7 @@ def test_concurrent_calibration_presentations_reuse_one_outstanding_question(
     assert pending[0]["evidence"][0]["correct"] is None
 
 
-def test_concurrent_conflicting_answers_keep_exact_first_attempt(calibration_db, monkeypatch):
+def test_concurrent_conflicting_answers_keep_exact_first_attempt(calibration_db):
     from concurrent.futures import ThreadPoolExecutor
     from threading import Barrier
 
@@ -350,18 +357,14 @@ def test_concurrent_conflicting_answers_keep_exact_first_attempt(calibration_db,
     assert quiz.get_next_question(thread_id=thread)["id"] == "cal-1"
     calibration_id = repos.pending_calibrations(thread)[0]["id"]
     barrier = Barrier(2)
-    original_grade = quiz.grade
-
-    def synchronized_grade(question, choice, **kwargs):
-        result = original_grade(question, choice, **kwargs)
+    def submit(choice):
         barrier.wait(timeout=5)
-        return result
+        return quiz.submit_answer("cal-1", choice, thread_id=thread)
 
-    monkeypatch.setattr(quiz, "grade", synchronized_grade)
     with ThreadPoolExecutor(max_workers=2) as pool:
         answers = list(
             pool.map(
-                lambda choice: quiz.submit_answer("cal-1", choice, thread_id=thread),
+                submit,
                 ["A", "B"],
             )
         )
@@ -389,7 +392,6 @@ def test_concurrent_conflicting_answers_keep_exact_first_attempt(calibration_db,
     assert len(attempts) == 2
     assert not any(row.profile_applied for row in attempts)
 
-    monkeypatch.setattr(quiz, "grade", original_grade)
     assert quiz.get_next_question(thread_id=thread)["id"] == "cal-2"
     winning_attempt_id = winning_attempt.id
     choice = "B" if cal_1_evidence["correct"] else "A"

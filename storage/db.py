@@ -1,13 +1,14 @@
 """引擎与会话工厂 — DATABASE_URL 驱动（仿 Dify 的 12-factor 配置方式）。
 
-- 主后端: mysql+pymysql（utf8mb4），库不存在时自动 CREATE DATABASE
-- 降级:   MySQL 连接失败时回退 SQLite（沿用原 data/cisp_qa.db），仅告警不崩溃
+- 显式配置数据库时连接失败直接报错，建库由部署/迁移负责。
+- 无数据库配置时使用 SQLite（沿用原 data/cisp_qa.db）。
 """
 from __future__ import annotations
 
 import logging
 import os
 import threading
+from contextlib import contextmanager
 from urllib.parse import quote_plus
 
 from sqlalchemy import create_engine, inspect, text
@@ -24,7 +25,7 @@ _SessionLocal = None
 _backend = None  # "mysql" | "sqlite"
 _lock = threading.RLock()  # RLock: create_all -> get_engine -> _init 同线程重入
 
-SCHEMA_HEAD = "f1a2b3c4d5e6"
+SCHEMA_HEAD = "d5e6f7a8b9c0"
 
 
 def _mysql_url() -> str:
@@ -36,20 +37,6 @@ def _mysql_url() -> str:
     return f"mysql+pymysql://{user}:{password}@{host}:{port}/{name}?charset=utf8mb4"
 
 
-def _create_database_if_missing(url: str) -> None:
-    """连接不含库名的 URL，CREATE DATABASE IF NOT EXISTS。"""
-    base = url.rsplit("/", 1)[0]
-    name = url.rsplit("/", 1)[1].split("?")[0]
-    server_engine = create_engine(base + "/", pool_pre_ping=True)
-    with server_engine.connect() as conn:
-        conn.execute(text(
-            f"CREATE DATABASE IF NOT EXISTS `{name}` "
-            "DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
-        ))
-        conn.commit()
-    server_engine.dispose()
-
-
 def _init() -> tuple:
     global _engine, _SessionLocal, _backend
     with _lock:
@@ -57,40 +44,32 @@ def _init() -> tuple:
             return _engine, _SessionLocal, _backend
 
         explicit_url = config.MYSQL_URL_OVERRIDE.strip()
-        if explicit_url.startswith("sqlite:"):
-            _engine = create_engine(
-                explicit_url, connect_args={"check_same_thread": False}
-            )
-            _backend = "sqlite"
-            logger.info("存储后端: SQLite（DATABASE_URL）")
-            _SessionLocal = sessionmaker(bind=_engine, expire_on_commit=False)
-            return _engine, _SessionLocal, _backend
-
-        mysql_url = explicit_url or _mysql_url()
-        if os.getenv("MYSQL_PASSWORD") or explicit_url:
-            try:
-                _create_database_if_missing(mysql_url)
-                _engine = create_engine(
-                    mysql_url, pool_pre_ping=True, poolclass=QueuePool,
+        candidate = None
+        try:
+            if explicit_url.startswith("sqlite:"):
+                candidate = create_engine(
+                    explicit_url, connect_args={"check_same_thread": False}
+                )
+                selected_backend = "sqlite"
+            elif os.getenv("MYSQL_PASSWORD") or explicit_url:
+                candidate = create_engine(
+                    explicit_url or _mysql_url(), pool_pre_ping=True, poolclass=QueuePool,
                     pool_size=5, pool_recycle=1800,
                 )
-                with _engine.connect():
+                with candidate.connect():
                     pass  # 真连一次才算数
-                _backend = "mysql"
-                logger.info("存储后端: MySQL (%s)", mysql_url.rsplit("@", 1)[1])
-                _SessionLocal = sessionmaker(bind=_engine, expire_on_commit=False)
-                return _engine, _SessionLocal, _backend
-            except Exception:
-                logger.warning(
-                    "MySQL 连接失败，降级 SQLite: %s",
-                    bool(os.getenv("MYSQL_PASSWORD", "")),
+                selected_backend = "mysql"
+            else:
+                candidate = create_engine(
+                    f"sqlite:///{config.DB_PATH}", connect_args={"check_same_thread": False}
                 )
-
-        sqlite_url = f"sqlite:///{config.DB_PATH}"
-        _engine = create_engine(sqlite_url, connect_args={"check_same_thread": False})
-        _backend = "sqlite"
-        logger.info("存储后端: SQLite (%s)", config.DB_PATH)
-        _SessionLocal = sessionmaker(bind=_engine, expire_on_commit=False)
+                selected_backend = "sqlite"
+            session_factory = sessionmaker(bind=candidate, expire_on_commit=False)
+            _engine, _SessionLocal, _backend = candidate, session_factory, selected_backend
+        finally:
+            if candidate is not None and candidate is not _engine:
+                candidate.dispose()
+        logger.info("存储后端: %s", _backend)
         return _engine, _SessionLocal, _backend
 
 
@@ -104,6 +83,16 @@ def get_engine():
 
 def session() -> Session:
     return _init()[1]()
+
+
+@contextmanager
+def session_scope(existing: Session | None = None):
+    """Reuse an explicit caller transaction, or own a standalone session."""
+    if existing is not None:
+        yield existing
+    else:
+        with session() as owned:
+            yield owned
 
 def schema_status() -> dict:
     """Read-only migration status for readiness and deployment audits."""
@@ -144,8 +133,8 @@ _schema_ready = False
 def _ensure_additive_columns(engine, base) -> None:
     """补齐 ``create_all`` 无法修改的列，覆盖半迁移旧库边界。
 
-    Alembic 仍是正式迁移入口；这里仅做启动时幂等兼容，避免旧 SQLite
-    数据库在迁移尚未执行时因 ORM 查询新列而直接不可用。
+    Alembic 是正式服务迁移入口；此兼容路径仅供显式导入和临时库初始化，
+    服务启动不会调用 create_all 或在旧库上补列。
     """
     table_name = "learner_attempts"
     inspector = inspect(engine)

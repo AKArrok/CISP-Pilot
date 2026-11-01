@@ -76,6 +76,7 @@ def test_external_double_blind_packets_can_be_frozen_after_adjudication(tmp_path
         ],
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
     assert generated.returncode == 0, generated.stderr
     adjudication = json.loads(adjudication_path.read_text("utf-8"))

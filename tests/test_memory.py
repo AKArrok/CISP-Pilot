@@ -3,6 +3,19 @@ import sys
 
 import pytest
 
+
+@pytest.fixture(autouse=True)
+def memory_database(tmp_path):
+    from sqlalchemy import create_engine
+    from storage.models import Base
+    from http_auth_helpers import isolated_database
+
+    engine = create_engine(f"sqlite:///{tmp_path / 'memory.db'}")
+    Base.metadata.create_all(engine)
+    with isolated_database(engine):
+        yield
+    engine.dispose()
+
 sys.path.insert(0, ".")
 
 
@@ -11,6 +24,7 @@ def _fresh_memory(tmp_path, monkeypatch):
     import config
     import agents.memory  # noqa: F401  确保模块已加载
     monkeypatch.setattr(config, "MEMORY_VECTORS_PATH", str(tmp_path / "memory_vectors.npz"))
+    monkeypatch.setattr(agents.memory, "_embed_text", lambda text: (agents.memory._fallback_embed(text), "test-hash"))
     from storage import cache
     monkeypatch.setattr(cache, "_mem_store", {}, raising=False)
     monkeypatch.setattr(cache, "_client", cache._MemClient(), raising=False)
@@ -74,9 +88,9 @@ def test_dimension_change_preserves_existing_memory(tmp_path, monkeypatch):
     monkeypatch.setattr(mem, "_embed_text", lambda _text: next(embeddings))
 
     mem.save_round("existing-thread", "旧问题", "旧回答", "knowledge")
-    with pytest.raises(ValueError, match="维度不一致"):
-        mem.save_round("new-thread", "新问题", "新回答", "knowledge")
+    mem.save_round("new-thread", "新问题", "新回答", "knowledge")
 
     history = mem.load_history("existing-thread")
     assert [item["content"] for item in history] == ["旧问题", "旧回答"]
-    assert mem.load_history("new-thread") == []
+    assert [item["content"] for item in mem.load_history("new-thread")] == ["新问题", "新回答"]
+    assert [item["thread_id"] for item in mem._load_store()[1]] == ["existing-thread"]

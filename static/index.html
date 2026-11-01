@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISP 备考助手</title>
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <header>
@@ -16,6 +16,22 @@
   </nav>
 </header>
 
+<section id="account-panel" class="account-panel card">
+  <form id="auth-form">
+    <label>用户名 <input id="auth-username" autocomplete="username" minlength="3" maxlength="64" required></label>
+    <label>密码 <input id="auth-password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required></label>
+    <button id="auth-login" type="submit">登录</button>
+    <button id="auth-register" type="button">注册并登录</button>
+  </form>
+  <div id="account-session" class="hidden">
+    <span id="account-name"></span>
+    <label>我的线程 <select id="thread-select"></select></label>
+    <button id="thread-create" type="button">新建线程</button>
+    <button id="auth-logout" type="button">退出登录</button>
+  </div>
+  <p id="auth-status" role="status" aria-live="polite"></p>
+</section>
+
 <div id="service-status" class="service-status hidden" role="alert">
   <span id="service-status-message"></span>
   <button id="service-retry" type="button">重新检查</button>
@@ -23,6 +39,12 @@
 <!-- ═══════════ 问答页签 ═══════════ -->
 <main id="chat-panel">
   <div id="chat-history"></div>
+  <details id="request-trace" class="request-trace hidden">
+    <summary>当前请求详情</summary>
+    <p id="request-trace-status" role="status" aria-live="polite"></p>
+    <button id="request-trace-refresh" type="button">刷新详情</button>
+    <div id="request-trace-content"></div>
+  </details>
   <div class="chat-input-bar">
     <input id="chat-input" type="text" placeholder="输入问题，如：什么是深度防御？"
            autocomplete="off">
@@ -70,7 +92,17 @@
                   placeholder="说说你依据的规则，便于识别概念混淆"></textarea>
       </label>
       <button id="diagnostic-start">开始诊断</button>
+      <button id="diagnostic-next" type="button" class="hidden">重试诊断出题</button>
       <span id="diagnostic-hint" class="muted-text">自评只作为先验，系统会用校准题验证。</span>
+      <div>
+        <label>本线程的诊断记录
+          <select id="diagnostic-list"><option value="">请选择诊断</option></select>
+        </label>
+        <button id="diagnostic-open" type="button" disabled>选择诊断</button>
+        <button id="diagnostic-list-retry" type="button" class="hidden">重试读取诊断记录</button>
+        <button id="diagnostic-list-more" type="button" class="hidden">加载更早诊断</button>
+        <span id="diagnostic-list-status" class="muted-text" aria-live="polite"></span>
+      </div>
     </div>
     <button id="quiz-next">出一题</button>
   </section>
@@ -137,6 +169,6 @@
   </section>
 </main>
 
-<script src="app.js?v=12"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>

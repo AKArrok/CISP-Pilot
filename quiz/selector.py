@@ -1,6 +1,8 @@
 """抽题：random（均匀）/ weak（薄弱域 1-正确率 加权）。"""
 from __future__ import annotations
 
+from sqlalchemy.exc import SQLAlchemyError
+
 import json
 import random
 
@@ -106,6 +108,8 @@ def _pick_due_card(
             row.question_id
             for row in review.due_rows(thread_id, domain, limit=20)
         ]
+    except SQLAlchemyError:
+        raise
     except Exception:
         return None
     if not due_ids:
