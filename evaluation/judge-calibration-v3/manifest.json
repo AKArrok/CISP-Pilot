@@ -1,0 +1,23 @@
+{
+  "mode": "judge_calibration",
+  "role": "seen AI calibration, not independent test",
+  "frozen_sha256": {
+    "cases.json": "619a810db429d68a961ebc18220761148bdd8eb06d87a54143bd5f42f4287b67",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "prompts.json": "825472f4c788d4d0f72b4806864cbf4f9168e61ce21e3f2fe9c695a34f5670e4"
+  },
+  "paid_proposal": {
+    "calls": 8,
+    "budget_usd": 0.08,
+    "scope": "Same frozen eight answers, candidate-only risk-check retest, no answer generation",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "acceptance": "Candidate must satisfy all 8 frozen dimension ranges; preserve baseline and failures, no label changes",
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "status": "prepared_not_authorized_not_executed; provider503 and unknown usage require fresh decision"
+}

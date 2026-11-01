@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "id": "scope_not_frequency",
+      "schema_valid": true,
+      "range_matches": true
+    },
+    {
+      "id": "mandatory_actions_not_unique",
+      "schema_valid": true,
+      "range_matches": true
+    },
+    {
+      "id": "at-2-new-03-valid-locator",
+      "schema_valid": true,
+      "range_matches": true
+    },
+    {
+      "id": "cp-9-new-05-valid-locator",
+      "schema_valid": true,
+      "range_matches": true
+    }
+  ],
+  "execution_status": [
+    {
+      "id": "scope_not_frequency",
+      "status": "completed"
+    },
+    {
+      "id": "mandatory_actions_not_unique",
+      "status": "completed"
+    },
+    {
+      "id": "at-2-new-03-valid-locator",
+      "status": "completed"
+    },
+    {
+      "id": "cp-9-new-05-valid-locator",
+      "status": "completed"
+    },
+    {
+      "id": "ca-8-new-02-valid-locator",
+      "status": "failed_503_unknown_usage"
+    },
+    {
+      "id": "wrong_locator",
+      "status": "not_started_after_external_failure"
+    },
+    {
+      "id": "empty_answer",
+      "status": "not_started_after_external_failure"
+    },
+    {
+      "id": "valid_exam_frequency_refusal",
+      "status": "not_started_after_external_failure"
+    }
+  ],
+  "passed": false,
+  "stop_reason": "Provider503; unknown usage prevents additional dispatch",
+  "raw_error": {
+    "http_status": 503,
+    "type": "service_unavailable_error",
+    "request_id": "b03262ed-055a-4c82-84c3-bee714e24c3c"
+  }
+}

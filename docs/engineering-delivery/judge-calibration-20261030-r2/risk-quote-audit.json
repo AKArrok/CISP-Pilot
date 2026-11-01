@@ -1,0 +1,42 @@
+[
+  {
+    "id": "scope_not_frequency",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "scope_not_frequency",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "mandatory_actions_not_unique",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "mandatory_actions_not_unique",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "at-2-new-03-valid-locator",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "at-2-new-03-valid-locator",
+    "answer_quote_valid": true,
+    "source_quote_valid": false
+  },
+  {
+    "id": "cp-9-new-05-valid-locator",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  },
+  {
+    "id": "cp-9-new-05-valid-locator",
+    "answer_quote_valid": true,
+    "source_quote_valid": true
+  }
+]

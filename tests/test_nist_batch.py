@@ -1,7 +1,7 @@
 import hashlib
 from pathlib import Path
 
-from scripts.eval_nist_batch import load, retrieve
+from scripts.eval_nist_batch import load, record_failure, retrieve
 
 
 PACKET = Path(__file__).resolve().parents[1] / "evaluation/nist-development-v1"
@@ -29,3 +29,14 @@ def test_retrieval_comparison_keeps_all_arms_and_cases():
 def test_unrelated_query_does_not_gain_supplement_hits():
     rows = retrieve([{"id": "negative", "question": "TCP拥塞窗口慢启动", "target_control": None}], load(PACKET / "chunks.json"))
     assert all(not row["locators"] for row in rows)
+
+
+def test_unknown_charge_stops_with_failed_and_unstarted_cases_retained(tmp_path):
+    summary = {"cost_usd_conservative": .01, "cost_unknown": True, "provider_calls": 2}
+    work = [{"id": value} for value in ["completed", "failed", "unstarted"]]
+    record_failure(tmp_path, summary, work, [work[0]], "failed", RuntimeError("private-provider-details"))
+    assert load(tmp_path / "summary.json")["cost_usd_conservative"] is None
+    assert summary["known_cost_lower_bound_usd"] == .01
+    assert [row["status"] for row in load(tmp_path / "execution-status.json")] == [
+        "completed", "failed", "not_started_after_failure"]
+    assert "private-provider-details" not in (tmp_path / "failure.json").read_text()

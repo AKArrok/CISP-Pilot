@@ -1,0 +1,62 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "id": "scope_not_frequency",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "mandatory_actions_not_unique",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "at-2-new-03-valid-locator",
+      "arm": "judge_candidate",
+      "status": "invalid_evidence_or_schema",
+      "passed": false,
+      "error_type": "ValueError"
+    },
+    {
+      "id": "cp-9-new-05-valid-locator",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "ca-8-new-02-valid-locator",
+      "arm": "judge_candidate",
+      "status": "not_completed",
+      "passed": false
+    },
+    {
+      "id": "wrong_locator",
+      "arm": "judge_candidate",
+      "status": "not_completed",
+      "passed": false
+    },
+    {
+      "id": "empty_answer",
+      "arm": "judge_candidate",
+      "status": "not_completed",
+      "passed": false
+    },
+    {
+      "id": "valid_exam_frequency_refusal",
+      "arm": "judge_candidate",
+      "status": "not_completed",
+      "passed": false
+    }
+  ],
+  "arm_matches": {
+    "judge_candidate": 3
+  },
+  "independent_human_review": false,
+  "provider_calls": 0
+}

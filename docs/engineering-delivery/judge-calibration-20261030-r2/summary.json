@@ -1,0 +1,10 @@
+{
+  "cases": 8,
+  "retrieval": {},
+  "selected_arm": null,
+  "provider_calls": 5,
+  "cost_usd_conservative": 0.0045057,
+  "semantic_acceptance": "pending_source_review",
+  "cost_unknown": true,
+  "stop_reason": "InternalServerError"
+}

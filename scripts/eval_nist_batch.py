@@ -23,6 +23,21 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def record_failure(output, summary, work, completed, current, error):
+    summary["stop_reason"] = type(error).__name__
+    summary["known_cost_lower_bound_usd"] = summary["cost_usd_conservative"]
+    if summary.get("cost_unknown"):
+        summary["cost_usd_conservative"] = None
+    done = {item["id"] for item in completed}
+    statuses = [{"id": item["id"], "status": "completed" if item["id"] in done else
+                 "failed" if item["id"] == current else "not_started_after_failure"} for item in work]
+    write(output / "execution-status.json", statuses)
+    write(output / "failure.json", {"id": current, "error_type": type(error).__name__,
+                                   "http_status": getattr(error, "status_code", None),
+                                   "request_id": getattr(error, "request_id", None)})
+    write(output / "summary.json", summary)
+
+
 def retrieve(cases, chunks):
     arms = {"source_only": [{k: v for k, v in c.items() if k != "embedding_text"} for c in chunks],
             "bilingual": chunks,
@@ -53,13 +68,14 @@ def main():
     cases, chunks = load(args.packet / "cases.json"), load(args.packet / "chunks.json")
     args.output.mkdir(parents=True, exist_ok=False)
     (args.output / "executor.py").write_bytes(Path(__file__).read_bytes())
-    rows = retrieve(cases, chunks)
+    calibration = manifest.get("mode") == "judge_calibration"
+    rows = [] if calibration else retrieve(cases, chunks)
     write(args.output / "retrieval.json", rows)
     metrics = {arm: {"top1": sum(r["target_rank"] == 1 for r in rows if r["arm"] == arm),
                      "top4": sum(r["target_rank"] is not None for r in rows if r["arm"] == arm)}
                for arm in sorted({r["arm"] for r in rows})}
     # Maximize top1 then top4; prefer the established bilingual index on ties.
-    selected = max(metrics, key=lambda a: (metrics[a]["top1"], metrics[a]["top4"], a == "bilingual"))
+    selected = max(metrics, key=lambda a: (metrics[a]["top1"], metrics[a]["top4"], a == "bilingual")) if metrics else None
     summary = {"cases": len(cases), "retrieval": metrics, "selected_arm": selected,
                "provider_calls": 0, "cost_usd_conservative": 0, "semantic_acceptance": "pending_source_review"}
     write(args.output / "summary.json", summary)
@@ -67,7 +83,8 @@ def main():
         print(json.dumps(summary))
         return
     authorization = load(args.packet / "authorization.json")
-    if authorization != {"max_calls": 66, "budget_usd": .60,
+    max_calls, budget = manifest["paid_proposal"]["calls"], manifest["paid_proposal"]["budget_usd"]
+    if authorization != {"max_calls": max_calls, "budget_usd": budget,
                           "manifest_sha256": hashlib.sha256((args.packet / "manifest.json").read_bytes()).hexdigest()}:
         raise ValueError("Authorization mismatch")
     with (args.packet / "dispatch.lock").open("x", encoding="utf-8") as stream:
@@ -85,8 +102,11 @@ def main():
     client = OpenAI(api_key=os.environ.get("LLM_API_KEY") or env.get("LLM_API_KEY"), base_url=base, max_retries=0)
     encoding = tiktoken.get_encoding("cl100k_base")
     prompts = load(args.packet / "prompts.json")
-    regression = load(args.packet / "at2-regression.json")
-    work = [{"id": "at2-regression", "question": regression["question"], "fixed_contexts": regression["contexts"]}] + cases
+    if calibration:
+        work = cases
+    else:
+        regression = load(args.packet / "at2-regression.json")
+        work = [{"id": "at2-regression", "question": regression["question"], "fixed_contexts": regression["contexts"]}] + cases
     outputs = []
     try:
         for case in work:
@@ -97,19 +117,22 @@ def main():
                 match = next(r for r in rows if r["arm"] == selected and r["id"] == case["id"])
                 contexts = [next(c for c in chunks if c["locator"] == loc) for loc in match["locators"][:2]]
             row["contexts"] = [{k: c[k] for k in ("source", "locator", "source_url", "text")} for c in contexts]
+            if calibration:
+                row["answer"] = case["answer"]
             context = "\n".join(f'[资料{i+1}]《{c["source"]}》定位【{c["locator"]}】\n{c["text"]}' for i, c in enumerate(contexts))
-            for stage in ("answer", "judge"):
+            for stage in (manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge")):
                 messages = [{"role": "system", "content": prompts[stage + "_system"]},
                             {"role": "user", "content": context + "\n问题：" + case["question"] +
-                             ("\n待审回答：" + row["answer"] if stage == "judge" else "")}]
+                             ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")}]
                 estimate = sum(len(encoding.encode(m["content"])) for m in messages)
-                if estimate > 5000 or summary["provider_calls"] >= 66 or summary["cost_usd_conservative"] + .008 > .60:
+                if estimate > 5000 or summary["provider_calls"] >= max_calls or summary["cost_usd_conservative"] + .008 > budget:
                     raise RuntimeError("Input or budget limit; no automatic retry")
                 summary["provider_calls"] += 1
+                summary["cost_unknown"] = True
                 started = time.monotonic()
                 response = client.chat.completions.create(model="deepseek-flash", messages=messages,
                     max_tokens=1024, temperature=0, timeout=60, extra_body={"thinking": {"type": "disabled"}},
-                    **({"response_format": {"type": "json_object"}} if stage == "judge" else {}))
+                    **({"response_format": {"type": "json_object"}} if stage.startswith("judge") else {}))
                 receipt = {"id": case["id"], "stage": stage, "response": response.model_dump(),
                            "elapsed_seconds": time.monotonic()-started}
                 with (args.output / "receipts.jsonl").open("a", encoding="utf-8") as stream:
@@ -119,6 +142,9 @@ def main():
                     summary["cost_unknown"] = True
                     raise RuntimeError("Unknown usage")
                 summary["cost_usd_conservative"] += (usage.prompt_tokens*.3 + usage.completion_tokens*1.2)/1e6
+                summary["cost_unknown"] = False
+                if usage.prompt_tokens > 6000 or usage.completion_tokens > 1024 or summary["cost_usd_conservative"] > budget:
+                    raise RuntimeError("Actual input, output or cost exceeded bound")
                 choice = response.choices[0]
                 if choice.finish_reason != "stop" or getattr(choice.message, "reasoning_content", None):
                     raise RuntimeError("Truncation or unexpected thinking; stop batch")
@@ -130,8 +156,7 @@ def main():
             write(args.output / "summary.json", summary)
             print(case["id"] + ": completed", flush=True)
     except Exception as exc:
-        summary["stop_reason"] = type(exc).__name__
-        write(args.output / "summary.json", summary)
+        record_failure(args.output, summary, work, outputs, case["id"], exc)
         raise
     summary["completed"] = len(outputs)
     write(args.output / "summary.json", summary)
