@@ -123,3 +123,18 @@ def test_historical_v5_remains_five_of_eight():
                    ROOT / "docs/engineering-delivery/judge-calibration-20261101-r5")
     assert result["arm_matches"]["judge_candidate"] == 5
     assert result["passed"] is False
+
+
+def test_empty_calibration_cannot_pass(tmp_path):
+    packet = tmp_path / "packet"
+    packet.mkdir()
+    (packet / "cases.json").write_text("[]", encoding="utf-8")
+    (packet / "manifest.json").write_text('{"judge_arms": ["judge_candidate"]}', encoding="utf-8")
+    (tmp_path / "results.json").write_text("[]", encoding="utf-8")
+    with pytest.raises(ValueError, match="requires cases and judge arms"):
+        audit(packet, tmp_path)
+
+    (packet / "cases.json").write_text('[{"id": "one"}]', encoding="utf-8")
+    (packet / "manifest.json").write_text('{"judge_arms": []}', encoding="utf-8")
+    with pytest.raises(ValueError, match="requires cases and judge arms"):
+        audit(packet, tmp_path)

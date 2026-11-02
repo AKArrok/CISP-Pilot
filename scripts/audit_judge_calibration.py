@@ -16,6 +16,8 @@ def audit(packet, output):
     if len(case_ids) != len(cases) or len(results) != len(raw_results) or set(results) - case_ids:
         raise ValueError("Duplicate or unknown calibration case IDs")
     arms = manifest.get("judge_arms", ["judge_baseline", "judge_candidate"])
+    if not cases or not arms:
+        raise ValueError("Calibration requires cases and judge arms")
     baseline = None
     if "baseline_run" in manifest:
         path = Path(__file__).resolve().parents[1] / manifest["baseline_run"]
