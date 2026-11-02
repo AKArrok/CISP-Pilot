@@ -1,0 +1,11 @@
+{
+  "cases": 8,
+  "retrieval": {},
+  "selected_arm": null,
+  "provider_calls": 4,
+  "cost_usd_conservative": 0.0053571,
+  "semantic_acceptance": "pending_source_review",
+  "cost_unknown": false,
+  "stop_reason": "RuntimeError",
+  "known_cost_lower_bound_usd": 0.0053571
+}

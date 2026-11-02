@@ -1,0 +1,16 @@
+{
+  "status": "frozen_before_dispatch",
+  "method": "two independent repetitions of v9 candidate; unchanged eight cases and rubric; each run separately must score 8/8",
+  "packets": [
+    {
+      "packet": "evaluation/judge-calibration-v10a",
+      "manifest_sha256": "e6b32d42646f1803a1fd98c797978c58d5cb7477275f457063fbc04195cd40e6"
+    },
+    {
+      "packet": "evaluation/judge-calibration-v10b",
+      "manifest_sha256": "dda839a2613981b3a6f11986f315ff2b31313cb787d9340a92b26b40cacc444c"
+    }
+  ],
+  "calls": 16,
+  "budget_usd": 0.16
+}

@@ -1,0 +1,29 @@
+{
+  "mode": "judge_calibration",
+  "role": "seen AI calibration, not independent test",
+  "frozen_sha256": {
+    "cases.json": "a6ff5d212dc1cb4e8762b0b1a5bf77e3d5eb9853189e3a3fafa89264a1c79016",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "prompts.json": "06cf237ae30e4040f1962aca7e7f6698bc65318daa73cac50938b7820f2e5980",
+    "baseline-results.json": "2a3c732978da23efc783ed59f2760f79d166c939fdd81ac3c4fb79190fcc863a"
+  },
+  "paid_proposal": {
+    "calls": 8,
+    "budget_usd": 0.08,
+    "scope": "Same frozen eight answers, candidate-only risk-check retest, no answer generation",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "acceptance": "Candidate must satisfy all 8 frozen dimension ranges; preserve baseline and failures, no label changes",
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "status": "prepared_not_authorized_not_executed",
+  "evidence_protocol": "line_ids",
+  "baseline_run": "evaluation/judge-calibration-v10b/baseline-results.json",
+  "baseline_sha256": "2a3c732978da23efc783ed59f2760f79d166c939fdd81ac3c4fb79190fcc863a",
+  "method": "same v7 source and cases, require independent verification of every parameter in grouped claims",
+  "allow_absent_source": true
+}

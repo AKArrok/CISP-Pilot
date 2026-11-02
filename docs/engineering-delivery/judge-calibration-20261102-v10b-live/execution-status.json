@@ -1,0 +1,34 @@
+[
+  {
+    "id": "scope_not_frequency",
+    "status": "completed"
+  },
+  {
+    "id": "mandatory_actions_not_unique",
+    "status": "completed"
+  },
+  {
+    "id": "at-2-new-03-valid-locator",
+    "status": "completed"
+  },
+  {
+    "id": "cp-9-new-05-valid-locator",
+    "status": "failed"
+  },
+  {
+    "id": "ca-8-new-02-valid-locator",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "wrong_locator",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "empty_answer",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "valid_exam_frequency_refusal",
+    "status": "not_started_after_failure"
+  }
+]

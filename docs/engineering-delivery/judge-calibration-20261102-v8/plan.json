@@ -1,0 +1,22 @@
+{
+  "status": "frozen_before_dispatch",
+  "packets": [
+    {
+      "packet": "evaluation/judge-calibration-v8a",
+      "manifest_sha256": "667cd7bc3eb9308d5179d4b6fa3d1c7ab3f1638423854e3c8511d1229934c73e"
+    },
+    {
+      "packet": "evaluation/judge-calibration-v8b",
+      "manifest_sha256": "3192ac9738c5026eabd96387a407ad9584f44ef6450342df43fbbcb49ed3a5f9"
+    }
+  ],
+  "audit_sha256": "7e43e0f7f6c58d2d25d5a01773a842df3b9dad87f8801f631a6d76e79e3f50ee",
+  "acceptance": "both validated; retain v4 primary completeness/citation; minimum of both critic source scores and v4 primary; all 8 meet unchanged labels",
+  "calls": 16,
+  "batch_budget_usd": 0.16,
+  "overall_user_budget_usd": 3,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "retries": 0,
+  "note": "Repeat of seen AI-development calibration, not independent gold"
+}
