@@ -1,0 +1,12 @@
+{
+  "target": "local isolated git archive at 72a2699, synthetic data, SQLite, deterministic fake chat graph nodes",
+  "load_tool": "Locust",
+  "stages": [{"users": 1, "seconds": 20}, {"users": 4, "seconds": 20}, {"users": 8, "seconds": 20}],
+  "spawn_per_second": 2,
+  "task_weights": {"chat_stream": 3, "quiz_round": 1},
+  "user_wait_seconds": [1, 2],
+  "success": "HTTP success plus SSE done/no error; quiz question and answer response fields present",
+  "metrics": "request count, failures, throughput, response-time percentiles and latency; setup requests separately labeled",
+  "limitations": "synthetic chat and data; no live external LLM, dense retrieval or production capacity conclusion",
+  "real_model_calls": 0
+}
