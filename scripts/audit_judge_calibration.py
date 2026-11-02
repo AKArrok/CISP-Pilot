@@ -10,6 +10,9 @@ from scripts.answer_grade_contract import materialize_grade, validate_grade
 def audit(packet, output):
     cases = json.loads((packet / "cases.json").read_text(encoding="utf-8"))
     manifest = json.loads((packet / "manifest.json").read_text(encoding="utf-8"))
+    for name, digest in manifest.get("frozen_sha256", {}).items():
+        if hashlib.sha256((packet / name).read_bytes()).hexdigest() != digest:
+            raise ValueError("Frozen input changed")
     raw_results = json.loads((output / "results.json").read_text(encoding="utf-8"))
     results = {x["id"]: x for x in raw_results}
     case_ids = {case["id"] for case in cases}

@@ -138,3 +138,12 @@ def test_empty_calibration_cannot_pass(tmp_path):
     (packet / "manifest.json").write_text('{"judge_arms": []}', encoding="utf-8")
     with pytest.raises(ValueError, match="requires cases and judge arms"):
         audit(packet, tmp_path)
+
+
+def test_audit_rejects_changed_frozen_cases(tmp_path):
+    packet = tmp_path / "packet"
+    packet.mkdir()
+    (packet / "cases.json").write_text("[]", encoding="utf-8")
+    (packet / "manifest.json").write_text('{"frozen_sha256": {"cases.json": "wrong"}}', encoding="utf-8")
+    with pytest.raises(ValueError, match="Frozen input changed"):
+        audit(packet, tmp_path)
