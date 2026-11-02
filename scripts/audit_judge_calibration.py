@@ -32,8 +32,10 @@ def audit(packet, output):
             if case["id"] in results and arm in results[case["id"]]:
                 try:
                     validator = materialize_grade if manifest.get("evidence_protocol") == "line_ids" else validate_grade
-                    value = validator(json.loads(results[case["id"]][arm]),
-                                      {"answer": case["answer"], "contexts": case["fixed_contexts"]})
+                    item = {"answer": case["answer"], "contexts": case["fixed_contexts"]}
+                    value = (validator(json.loads(results[case["id"]][arm]), item, allow_absent_source=True)
+                             if manifest.get("allow_absent_source") and validator is materialize_grade
+                             else validator(json.loads(results[case["id"]][arm]), item))
                     if baseline is not None:
                         prior = materialize_grade(json.loads(baseline[case["id"]][arm]),
                                                   {"answer": case["answer"], "contexts": case["fixed_contexts"]})

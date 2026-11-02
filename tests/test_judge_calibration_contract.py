@@ -94,3 +94,32 @@ def test_duplicate_or_unknown_results_cannot_be_silently_overwritten(tmp_path):
     (tmp_path / "results.json").write_text(json.dumps(rows), encoding="utf-8")
     with pytest.raises(ValueError, match="Duplicate or unknown"):
         audit(packet, tmp_path)
+
+
+def test_absent_source_is_allowed_only_in_explicit_new_protocol():
+    item = {"answer": "未回答。", "contexts": [{"text": "原文"}]}
+    grade = {"scores": {"completeness": 0, "source_support": 2, "citation_support": 2},
+             "reason": "未回答", "deductions": [{"dimension": "completeness", "reason": "未回答",
+             "answer_line": 1, "source_ref": None, "source_line": None}]}
+    with pytest.raises(ValueError, match="source reference"):
+        materialize_grade(grade, item)
+    assert materialize_grade(grade, item, allow_absent_source=True)["deductions"][0]["source_quote"] == "none_found"
+    grade["deductions"][0]["source_line"] = 1
+    with pytest.raises(ValueError, match="source reference"):
+        materialize_grade(grade, item, allow_absent_source=True)
+
+
+def test_absent_source_cannot_support_a_claim():
+    item = {"answer": "A", "contexts": [{"text": "B"}]}
+    grade = {"scores": {"completeness": 2, "source_support": 2, "citation_support": 2},
+             "reason": "test", "deductions": [], "risk_checks": [{"answer_line": 1,
+             "source_ref": None, "source_line": None, "verdict": "supported"}]}
+    with pytest.raises(ValueError):
+        materialize_grade(grade, item, allow_absent_source=True)
+
+
+def test_historical_v5_remains_five_of_eight():
+    result = audit(ROOT / "evaluation/judge-calibration-v5",
+                   ROOT / "docs/engineering-delivery/judge-calibration-20261101-r5")
+    assert result["arm_matches"]["judge_candidate"] == 5
+    assert result["passed"] is False

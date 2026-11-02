@@ -13,7 +13,7 @@ def line_payload(item):
                           "lines": numbered(c["text"])} for i, c in enumerate(item["contexts"], 1)]}
 
 
-def materialize_grade(value, item):
+def materialize_grade(value, item, *, allow_absent_source=False):
     """Resolve model-selected line IDs locally; the model never rewrites quotes."""
     result = deepcopy(value)
     for field in ("deductions", "risk_checks"):
@@ -28,6 +28,9 @@ def materialize_grade(value, item):
                 entry["answer_quote"] = answer_lines[answer_line-1]
             else:
                 raise ValueError("Invalid answer line")
+            if allow_absent_source and source_ref is None and source_line is None:
+                entry["source_quote"] = "none_found"
+                continue
             if type(source_ref) is not int or not 1 <= source_ref <= len(item["contexts"]):
                 raise ValueError("Invalid source reference")
             source_lines = item["contexts"][source_ref-1]["text"].splitlines()
