@@ -1,0 +1,24 @@
+{
+  "mode": "judge_calibration",
+  "role": "seen AI calibration, not independent human gold",
+  "frozen_sha256": {
+    "cases.json": "02e81f721d64ab9d76fe589071cc1f6a78729bd0e7dfc898c59d1649ab52feb2",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "prompts.json": "f5baffb631531d410837fc6e442ad7072b06e83154e89aeaecc8f0a15936e45e"
+  },
+  "paid_proposal": {
+    "calls": 12,
+    "budget_usd": 0.12,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "acceptance": "candidate meets unchanged original8 dimension ranges plus4 frozen source-support ranges; keep failures and original scores",
+  "claim_focus": true
+}

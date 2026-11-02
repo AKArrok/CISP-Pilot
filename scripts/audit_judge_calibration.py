@@ -43,7 +43,8 @@ def audit(packet, output):
                              else validator(json.loads(results[case["id"]][arm]), item))
                     if baseline is not None:
                         prior = materialize_grade(json.loads(baseline[case["id"]][arm]),
-                                                  {"answer": case["answer"], "contexts": case["fixed_contexts"]})
+                                                  {"answer": case["answer"], "contexts": case["fixed_contexts"]},
+                                                  allow_absent_source=manifest.get("allow_absent_source", False))
                         value["scores"]["source_support"] = min(value["scores"]["source_support"],
                                                                 prior["scores"]["source_support"])
                         value["scores"]["citation_support"] = prior["scores"]["citation_support"]

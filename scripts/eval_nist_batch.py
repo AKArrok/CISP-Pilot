@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import time
 from urllib.parse import urlsplit
@@ -26,7 +27,14 @@ def load(path):
 
 def request_content(stage, case, row, context, manifest):
     if stage.startswith("judge") and manifest.get("evidence_protocol") == "line_ids":
-        return json.dumps(line_payload(row), ensure_ascii=False)
+        payload = line_payload(row)
+        if manifest.get("claim_focus"):
+            payload["focus_claims"] = [line for line in payload["answer_lines"]
+                                       if re.search(r"即使|自行|禁止|不得|只有|唯一", line["text"])]
+            if manifest.get("claim_only"):
+                payload["answer_lines"] = payload["focus_claims"] or payload["answer_lines"]
+                payload.pop("question")
+        return json.dumps(payload, ensure_ascii=False)
     return context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
 
 

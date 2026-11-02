@@ -1,0 +1,179 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "id": "scope_not_frequency",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "scope_not_frequency",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "mandatory_actions_not_unique",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "mandatory_actions_not_unique",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "at-2-new-03-valid-locator",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "at-2-new-03-valid-locator",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "cp-9-new-05-valid-locator",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "cp-9-new-05-valid-locator",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "ca-8-new-02-valid-locator",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "ca-8-new-02-valid-locator",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "wrong_locator",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "wrong_locator",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "empty_answer",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "empty_answer",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "valid_exam_frequency_refusal",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "valid_exam_frequency_refusal",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "permission-error",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "permission-error",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "permission-fixed",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "permission-fixed",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "conditional-error",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "conditional-error",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "conditional-fixed",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "conditional-fixed",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    }
+  ],
+  "arm_matches": {
+    "judge_baseline": 10,
+    "judge_candidate": 10
+  },
+  "independent_human_review": false,
+  "provider_calls": 0
+}

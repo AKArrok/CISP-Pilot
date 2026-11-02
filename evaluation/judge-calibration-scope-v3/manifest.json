@@ -1,0 +1,29 @@
+{
+  "mode": "judge_calibration",
+  "role": "seen AI calibration, not independent human gold",
+  "frozen_sha256": {
+    "cases.json": "02e81f721d64ab9d76fe589071cc1f6a78729bd0e7dfc898c59d1649ab52feb2",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "prompts.json": "359c0fa20f1ada30d0cc5c66f47a1334c490dc935954607c1385ed42be1c491c",
+    "baseline-results.json": "5cac289894aa74c8311451431f5da26db897f3fbf4fc99c4e37aa614d2a81fc5"
+  },
+  "paid_proposal": {
+    "calls": 12,
+    "budget_usd": 0.12,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "acceptance": "candidate meets unchanged original8 dimension ranges plus4 frozen source-support ranges; keep failures and original scores",
+  "claim_focus": true,
+  "claim_only": true,
+  "baseline_run": "evaluation/judge-calibration-scope-v3/baseline-results.json",
+  "baseline_sha256": "5cac289894aa74c8311451431f5da26db897f3fbf4fc99c4e37aa614d2a81fc5",
+  "method": "frozen full primary from scope-v1 plus isolated lexical-risk claim critic; min source, primary completeness/citation; all evidence valid"
+}

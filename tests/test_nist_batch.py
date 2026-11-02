@@ -19,6 +19,21 @@ def test_line_evidence_protocol_does_not_require_answer_before_generation():
     assert "hidden label" not in content
 
 
+def test_claim_focus_keeps_original_lines_and_does_not_supply_verdicts():
+    import json
+    row = {"question": "question", "answer": "普通描述\n即使前提不成立仍须执行\n不能自行起草",
+           "contexts": [{"source": "NIST", "text": "source"}]}
+    payload = json.loads(request_content("judge", {"question": "question", "label": "hidden"}, row, "",
+                                        {"evidence_protocol": "line_ids", "claim_focus": True}))
+    assert payload["focus_claims"] == payload["answer_lines"][1:]
+    assert all(set(line) == {"line", "text"} for line in payload["focus_claims"])
+    isolated = json.loads(request_content("judge", {"question": "question"}, row, "",
+                                         {"evidence_protocol": "line_ids", "claim_focus": True, "claim_only": True}))
+    assert "question" not in isolated
+    assert isolated["answer_lines"] == payload["focus_claims"]
+    assert isolated["contexts"] == payload["contexts"]
+
+
 def test_frozen_packet_has_32_unique_development_questions_and_exact_sources():
     manifest = load(PACKET / "manifest.json")
     for filename, digest in manifest["frozen_sha256"].items():

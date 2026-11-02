@@ -125,6 +125,15 @@ def test_historical_v5_remains_five_of_eight():
     assert result["passed"] is False
 
 
+def test_opted_in_null_source_protocol_also_applies_to_frozen_primary():
+    result = audit(ROOT / "evaluation/judge-calibration-scope-v3",
+                   ROOT / "docs/engineering-delivery/judge-calibration-scope-20261102-live")
+    empty = next(row for row in result["checks"] if row["id"] == "empty_answer")
+    assert empty["status"] == "validated"
+    assert empty["score"] == 0
+    assert result["arm_matches"]["judge_candidate"] == 10
+
+
 def test_empty_calibration_cannot_pass(tmp_path):
     packet = tmp_path / "packet"
     packet.mkdir()
