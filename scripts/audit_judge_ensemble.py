@@ -12,7 +12,7 @@ def ensemble(packet_a, run_a, packet_b, run_b):
         raise ValueError("Ensemble case inputs differ")
     manifests = [json.loads((packet / "manifest.json").read_text(encoding="utf-8"))
                  for packet in (packet_a, packet_b)]
-    for packet, manifest in zip((packet_a, packet_b), manifests):
+    for packet, manifest in zip((packet_a, packet_b), manifests, strict=True):
         for name, digest in manifest["frozen_sha256"].items():
             if hashlib.sha256((packet / name).read_bytes()).hexdigest() != digest:
                 raise ValueError("Frozen input changed")
@@ -24,7 +24,7 @@ def ensemble(packet_a, run_a, packet_b, run_b):
     if len(a) != len(cases) or len(b) != len(cases):
         raise ValueError("Ensemble must have exactly one result per case and critic")
     rows = []
-    for case, left, right in zip(cases, a, b):
+    for case, left, right in zip(cases, a, b, strict=True):
         if left["id"] != case["id"] or right["id"] != case["id"]:
             raise ValueError("Ensemble result order differs")
         valid = left["status"] == right["status"] == "validated"
