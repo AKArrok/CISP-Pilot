@@ -1,14 +1,26 @@
 """Isolated CISP HTTP load test; the server must use synthetic data and fake nodes."""
 import json
+import os
 import uuid
+from pathlib import Path
 
 from locust import HttpUser, between, task
 
 
 class Learner(HttpUser):
-    wait_time = between(1, 2)
+    wait_time = between(float(os.getenv("CISP_LOAD_WAIT_MIN", "1")),
+                        float(os.getenv("CISP_LOAD_WAIT_MAX", "2")))
 
     def on_start(self):
+        pool = os.getenv("CISP_LOAD_SESSIONS")
+        if pool:
+            if not hasattr(self.environment, "cisp_sessions"):
+                self.environment.cisp_sessions = json.loads(Path(pool).read_text(encoding="utf-8"))
+            session = self.environment.cisp_sessions.pop()
+            self.client.cookies.set("cisp_session", session["session_token"])
+            self.headers = {"Origin": self.host, "X-CSRF-Token": session["csrf_token"]}
+            self.thread_id = session["thread_id"]
+            return
         credentials = {"username": "load-" + uuid.uuid4().hex, "password": uuid.uuid4().hex}
         headers = {"Origin": self.host}
         r = self.client.post("/api/auth/register", json=credentials, headers=headers, name="setup/register")

@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "answers": 13,
+    "mean_answer_chars": 1041.5384615384614,
+    "mean_answer_seconds": 4.004846153846861,
+    "calls": 26,
+    "cost_estimate_usd": 0.0250995,
+    "source_review_flagged": 1
+  },
+  "candidate": {
+    "answers": 13,
+    "mean_answer_chars": 1012.8461538461538,
+    "mean_answer_seconds": 3.826923076922517,
+    "calls": 26,
+    "cost_estimate_usd": 0.0251649,
+    "source_review_flagged": 1
+  },
+  "v3": {
+    "answers": 13,
+    "mean_answer_chars": 680.8461538461538,
+    "mean_answer_seconds": 3.0516923076922047,
+    "calls": 26,
+    "cost_estimate_usd": 0.0214746,
+    "source_review_flagged": 0
+  },
+  "budget": {
+    "user_total_usd": 3,
+    "previous_known_estimate_usd": 0.079422,
+    "current_experiment_calls": 78,
+    "current_experiment_known_estimate_usd": 0.071739,
+    "all_known_estimate_usd": 0.151161,
+    "all_calls": 160,
+    "historical_unknown503": "outside this newly authorized budget ledger; unchanged unknown historical charge"
+  }
+}

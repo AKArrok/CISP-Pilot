@@ -1,10 +1,22 @@
 import hashlib
 from pathlib import Path
 
-from scripts.eval_nist_batch import load, record_failure, retrieve
+from scripts.eval_nist_batch import load, record_failure, request_content, retrieve
 
 
 PACKET = Path(__file__).resolve().parents[1] / "evaluation/nist-development-v1"
+
+
+def test_line_evidence_protocol_does_not_require_answer_before_generation():
+    import json
+    case = {"question": "question", "reference_answer": "hidden label"}
+    row = {"question": "question", "contexts": [{"text": "source", "source": "NIST"}]}
+    manifest = {"evidence_protocol": "line_ids"}
+    assert request_content("answer", case, row, "public source", manifest) == "public source\n问题：question"
+    row["answer"] = "generated answer"
+    content = request_content("judge", case, row, "public source", manifest)
+    assert json.loads(content)["answer_lines"] == [{"line": 1, "text": "generated answer"}]
+    assert "hidden label" not in content
 
 
 def test_frozen_packet_has_32_unique_development_questions_and_exact_sources():

@@ -1,0 +1,194 @@
+[
+  {
+    "arm": "baseline",
+    "id": "at2-regression",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-01",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-02",
+    "origin": "Codex source review, not independent human gold",
+    "status": "source_support_issue",
+    "original_judge_preserved": true,
+    "answer_quote": "[ac-8_gdn] 要求组织就隐私信息内容咨询隐私办公室，并由总法律顾问办公室（或组织等效机构）对警告横幅内容进行法律审查和批准。因此横幅文字不是技术部门可自行拟定的。",
+    "source_ref": 1,
+    "source_quote": "[ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.",
+    "issue": "Review/approval requirement does not establish a prohibition on technical staff drafting content",
+    "source_support_ai_review": 1
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-03",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-04",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-05",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-06",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-07",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-08",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-09",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-10",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-11",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "baseline",
+    "id": "quality-new-12",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "at2-regression",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-01",
+    "origin": "Codex source review, not independent human gold",
+    "status": "source_support_issue",
+    "original_judge_preserved": true,
+    "answer_quote": "- 资料还提到：组织可基于风险评估，考虑在初始网络登录后访问应用或其他系统资源时是否需要**次级系统使用通知**。也就是说，即使主登录界面不适用，是否增加次级通知仍属于基于风险的判断，而不是自动照搬登录横幅。",
+    "source_ref": 1,
+    "source_quote": "[ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.",
+    "issue": "Secondary-notice guidance is conditional on initial network logon; answer extends it to no-human-login premise",
+    "source_support_ai_review": 1
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-02",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-03",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-04",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-05",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-06",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-07",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-08",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-09",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-10",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-11",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  },
+  {
+    "arm": "candidate",
+    "id": "quality-new-12",
+    "origin": "Codex source review, not independent human gold",
+    "status": "accepted_development_review",
+    "original_judge_preserved": true
+  }
+]

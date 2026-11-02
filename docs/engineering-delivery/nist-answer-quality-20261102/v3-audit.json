@@ -1,0 +1,435 @@
+{
+  "checks": [
+    {
+      "id": "at2-regression",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 229,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确拒答，指出资料仅涉及培训控制，无考试或命题信息，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "不能。资料1是 NIST SP 800-53 中 AT-2（素养培训与意识）的控制条文，内容只涉及培训对象、频次参数、意识提升手段、内容更新和将事件教训纳入培训等要求，没有任何关于考试、出题数量或“每年必考三题”的表述。",
+            "source_quote": "[at-2_smt.a] Provide security and privacy literacy training to system users (including managers, senior executives, and contractors):"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "具体缺口：本次检索到的资料中没有考试大纲、命题规则或历年考情统计，因此无法据此证明该知识点每年必考三题，也不能据此推断其考试频率或出题趋势。",
+            "source_quote": "[at-2_gdn] Organizations provide basic and advanced levels of literacy training to system users, including measures to test the knowledge level of users. Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework). The content includes an understanding of the need for security and privacy as well as actions by users to maintain security and personal privacy and to respond to suspected incidents. The content addresses the need for operations security and the handling of personally identifiable information."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-01",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 636,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "结论正确，依据与原文一致，参数角色与强制动作区分清楚，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 若系统存在面向人的登录入口，则 ac-8 的强制动作仍然适用：在授予访问前显示通知（内容按 ac-08_odp.01 待组织定义），并保持消息/横幅直到用户确认使用条件并采取明确动作登录或进一步访问；对公开可访问系统还有 ac-8_smt.c 的附加要求（显示信息的条件按 ac-08_odp.02 待组织定义等）。",
+            "source_quote": "[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the system that provides privacy and security notices consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines and state that:"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 若系统存在面向人的登录入口，则 ac-8 的强制动作仍然适用：在授予访问前显示通知（内容按 ac-08_odp.01 待组织定义），并保持消息/横幅直到用户确认使用条件并采取明确动作登录或进一步访问；对公开可访问系统还有 ac-8_smt.c 的附加要求（显示信息的条件按 ac-08_odp.02 待组织定义等）。",
+            "source_quote": "[ac-8_smt.c.1] Display system use information {{ insert: param, ac-08_odp.02 }} , before granting further access to the publicly accessible system;"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-02",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 945,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确区分公共访问系统与一般横幅要求，参数归类准确，强制动作与排他性表述均与原文一致。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**易混淆点**：`ac-08_odp.01` 与 `ac-08_odp.02` 都是待组织赋值的参数（分别为通知消息/横幅、公共访问系统的使用条件），不是可直接套用的固定文字；参数待定不等于相关动作可选，显示通知、保留至确认、公共系统三项内容等均为必须执行的动作。",
+            "source_quote": "[{\"id\": \"ac-08_odp.01\", \"label\": \"system use notification\", \"guidelines\": [{\"prose\": \"system use notification message or banner to be displayed by the system to users before granting access to the system is defined;\"}]}, {\"id\": \"ac-08_odp.02\", \"label\": \"conditions\", \"guidelines\": [{\"prose\": \"conditions for system use to be displayed by the system before granting further access are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "3. **因此，不能直接宣称“同意一切监控”**：对公共访问系统，资料明确要求监控、记录、审计的引用须与“一般禁止这些活动”的隐私安排相协调，而不是笼统地让用户同意一切监控。此外，指南部分要求组织就隐私信息征询隐私办公室意见，并由总法律顾问或组织等效机构对警告横幅内容进行法律审查和批准。",
+            "source_quote": "[ac-8_smt.c.2] Display references, if any, to monitoring, recording, or auditing that are consistent with privacy accommodations for such systems that generally prohibit those activities; and"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-03",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 331,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确拒答，多语言与参数未赋值说明均有依据，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "需注意：资料中“显示何种系统使用通知”和“在何种条件下显示”分别对应待组织确定的参数 ac-08_odp.01、ac-08_odp.02，本次资料未给出其取值；但这不影响上述关于多语言显示的结论。",
+            "source_quote": "[{\"id\": \"ac-08_odp.01\", \"label\": \"system use notification\", \"guidelines\": [{\"prose\": \"system use notification message or banner to be displayed by the system to users before granting access to the system is defined;\"}]}, {\"id\": \"ac-08_odp.02\", \"label\": \"conditions\", \"guidelines\": [{\"prose\": \"conditions for system use to be displayed by the system before granting further access are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "依据资料，系统使用通知可通过登录前显示的消息或警告横幅实现；组织可基于自身需求和系统用户的人口特征，考虑以多种语言显示通知消息或横幅。资料同时要求就隐私信息咨询隐私办公室，并由总法律顾问办公室或组织等效机构对警告横幅内容进行法律审查和批准——这些是审查、咨询与批准要求，并不构成对语言种类的限制或禁止。",
+            "source_quote": "[ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-04",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 858,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "培训内容、参与人员及参数区分均与原文一致，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**易混淆点：** 培训频率（at-2_prm_1）与触发培训的事件（at-2_prm_2）是两个不同参数，前者是频次、后者是事件，不能混用；资料中这些参数均未赋值，属待组织确定状态，但“开展培训”这一动作本身是强制要求。",
+            "source_quote": "[{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}, {\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}, {\"id\": \"at-02_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.03\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require security literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.04\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require privacy literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}, {\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}, {\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **培训时点（与参与要求相关）：** 新用户初始培训时开展，此后按组织定义的频率（at-2_prm_1，待组织确定）开展；系统变更要求时或发生组织定义的事件（at-2_prm_2，待组织确定）后开展。初始培训之后的素养培训至少按适用法律、指令、法规和政策一致的最低频率进行，可通过一次或多次短期临时课程满足。",
+            "source_quote": "[at-2_smt.a.1] As part of initial training for new users and {{ insert: param, at-2_prm_1 }} thereafter; and"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-05",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 610,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "结论正确，引用at-2_smt.d支持内外部事件纳入培训；参数归类与强制动作区分准确。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 需注意区分：**纳入经验教训是必须执行的动作**；而\"更新内容的频率\"（at-02_odp.06）和\"触发更新的事件\"（at-02_odp.07）是待组织确定的参数，资料未赋值，参数含义以资料中的定义为准。",
+            "source_quote": "[at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 不要把\"内部或外部\"误读为\"仅内部\"；也不要把待定参数（频率、事件清单）当作可选项——动作本身是强制的，只是具体取值由组织确定。",
+            "source_quote": "[at-2_smt.d] Incorporate lessons learned from internal or external security incidents or breaches into literacy training and awareness techniques."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-06",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 874,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "完整回答AT-2安排并正确拒答CISP题数；参数归类与原文一致，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**易混淆点**：at-2_prm_1、at-02_odp.01/02/06 是“频率”参数，at-2_prm_2、at-02_odp.03/04/07 是“事件”参数，at-02_odp.05 是“意识技术手段”参数；这些参数均待组织确定，但“按确定后的频率/事件执行培训与更新”这一动作本身是强制的。",
+            "source_quote": "[{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}, {\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}, {\"id\": \"at-02_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.03\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require security literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.04\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require privacy literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}, {\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}, {\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**CISP 考试题数**：本次检索到的资料不足以回答这一部分，具体缺口是资料1仅涉及 NIST SP 800-53 的 AT-2 控制，未包含 CISP 考试题量信息。",
+            "source_quote": "Literacy Training and Awareness"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-07",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 1025,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "结论正确，执行方内外可选及独立性由风险评估指导均有原文支持，参数归类正确，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**待定参数说明：** 资料中 ca-08_odp.01（frequency，渗透测试频次）和 ca-08_odp.02（system(s) or system components，实施渗透测试的系统或系统组件）均为待组织确定的参数，资料未赋值；参数待定不影响“须开展渗透测试”这一动作要求。",
+            "source_quote": "[{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **独立性由风险评估决定。** 资料指出“Risk assessments guide the decisions on the level of independence required for the personnel conducting penetration testing”，即由**风险评估**指导决定渗透测试人员所需的独立性水平。资料只说明风险评估起指导作用，未给出独立性等级的具体划分或判定标准。",
+            "source_quote": "Organizations can use the results of vulnerability analyses to support penetration testing activities. Penetration testing can be conducted internally or externally on the hardware, software, or firmware components of a system and can exercise both physical and technical controls. A standard method for penetration testing includes a pretest analysis based on full knowledge of the system, pretest identification of potential vulnerabilities based on the pretest analysis, and testing designed to determine the exploitability of vulnerabilities. All parties agree to the rules of engagement before commencing penetration testing scenarios. Organizations correlate the rules of engagement for the penetration tests with the tools, techniques, and procedures that are anticipated to be employed by adversaries. Penetration testing may result in the exposure of information that is protected by laws or regulations, to individuals conducting the testing. Rules of engagement, contracts, or other appropriate mechanisms can be used to communicate expectations for how to protect this information. Risk assessments guide the decisions on the level of independence required for the personnel conducting penetration testing."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-08",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 658,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确否定，并准确区分渗透测试与自动扫描，参数归类与强制动作均符合原文。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **控制要求本身是待赋值参数**：CA-8 要求按 `ca-08_odp.01`（频次）对 `ca-08_odp.02`（系统或系统组件）开展渗透测试；这两个参数的具体取值待组织确定，但“开展渗透测试”这一动作是必须执行的，不能因参数待定而省略。",
+            "source_quote": "[{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **控制要求本身是待赋值参数**：CA-8 要求按 `ca-08_odp.01`（频次）对 `ca-08_odp.02`（系统或系统组件）开展渗透测试；这两个参数的具体取值待组织确定，但“开展渗透测试”这一动作是必须执行的，不能因参数待定而省略。",
+            "source_quote": "[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-09",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 545,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确指出两参数定义相反，频次与范围归类准确，并说明未赋值不等于动作可选。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "不能。按资料中的参数定义，两者恰好相反：ca-08_odp.01 是“frequency”（渗透测试的频次），ca-08_odp.02 是“system(s) or system components”（实施渗透测试的系统或系统组件，即范围）。把 ca-08_odp.02 当作年度测试次数、把 ca-08_odp.01 当作测试范围，属于把频次参数与对象范围参数对调，不符合资料定义。",
+            "source_quote": "[{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 两个参数在本次提取中均未赋值，具体频次和具体系统/组件范围都处于“待组织确定”的状态；参数值待定并不表示“开展渗透测试”这一动作可选。",
+            "source_quote": "[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-10",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 731,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确否定排他性主张，完整列出CP-9四项动作，参数归类与来源label一致，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不能。** 只备份应用软件和许可证，远未覆盖 CP-9 的全部备份与保护动作。应用软件和许可证只是系统级信息的一部分，CP-9 还要求备份用户级信息、系统文档，并对备份信息本身实施保护。",
+            "source_quote": "[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**关于参数：** `cp-09_odp.01` 是“系统组件”范围参数，`cp-09_odp.02`、`cp-09_odp.03`、`cp-09_odp.04` 是三个“频率”参数，资料均未赋值，需由组织确定。参数待定不表示相应备份动作可以省略。",
+            "source_quote": "[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-11",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 693,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确区分对象与频率，四项动作均须执行，参数未赋值不等于可选，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**结论：不是。参数未赋值只表示“对象范围/频次待组织确定”，并不使备份动作变成可选；cp-9 的四项备份动作仍是必须执行的。** 需要区分：cp-09_odp.01 是对象范围参数（system components，即对哪些系统组件中的用户级信息做备份），cp-09_odp.02、cp-09_odp.03、cp-09_odp.04 是频率参数（分别对应三类备份的频次）。",
+            "source_quote": "[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "易混淆点：odp.01 的标签是“system components”，属对象范围参数，不是频次；odp.02–04 的标签均为“frequency”，且其定义要求频次与恢复时间目标、恢复点目标保持一致。",
+            "source_quote": "[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quality-new-12",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 716,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确指出CP-9未给恢复演练步骤和每月周期，参数归类准确，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **注意参数区分：** cp-09_odp.01 是“系统组件”（对象范围），不是频次参数；三个频次参数分别对应三类备份对象，不能混用。",
+            "source_quote": "[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**记忆点：** CP-9 的强制动作是“实施备份”和“保护备份信息的机密性、完整性、可用性”；频次是待组织赋值的参数，参数值待定不等于可以不执行备份动作。",
+            "source_quote": "[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information."
+          }
+        ]
+      }
+    }
+  ],
+  "semantic_acceptance": "requires_separate_source_review",
+  "independent_human_gold": false
+}

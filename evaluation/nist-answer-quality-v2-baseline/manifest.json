@@ -1,0 +1,21 @@
+{
+  "role": "new AI-authored development questions, same 4 seen sources; not independent human gold",
+  "arm": "baseline",
+  "frozen_sha256": {
+    "cases.json": "d76c84075e4ea1b62973e5176e33fb0e21615c816090ca498314efa00c30dfb1",
+    "chunks.json": "674ca46e3d36bab80977d5c7121963342acdb6a59cacc963ca540538b8cde321",
+    "prompts.json": "d79363049297601e6c14468efb85461106451a30bea65bb00e2e968056c3fd67",
+    "at2-regression.json": "2924d4a014d05d553f756d4051070d941da1cf8b635a93910144188bdba85ae4"
+  },
+  "paid_proposal": {
+    "calls": 26,
+    "budget_usd": 0.26,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "acceptance": "preserve all answers/failures; source-bound review against reference criteria; candidate terminology correct and no new correctness/citation/refusal regression; no automatic human-gold claim"
+}

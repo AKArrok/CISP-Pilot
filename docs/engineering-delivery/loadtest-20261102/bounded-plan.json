@@ -1,0 +1,19 @@
+{
+  "status": "frozen_before_dispatch",
+  "server_fixture_sha256": "e44a2d6ae3f1a2157f107833c2704c06ab5ce554298176095243859de08009fd",
+  "scenario_sha256": "4baa0e82070715953c518f3ca036f1e7d0eb2ee6b47973208d81fb344fc3f620",
+  "users": 8,
+  "seconds": 60,
+  "spawn_rate": 2,
+  "wait_seconds": [
+    2,
+    3
+  ],
+  "chat_weight": 3,
+  "quiz_weight": 1,
+  "target": "http://127.0.0.1:19628",
+  "database": "load-clean.db synthetic only",
+  "acceptance": "zero recorded business HTTP/SSE errors; answer length constant; paired persisted messages; unchanged default database hash",
+  "model_calls": 0,
+  "change_from_failure": "fixed bounded fake reply, fresh synthetic database and preauthenticated sessions; retain prior failure as invalid growing-fixture load"
+}

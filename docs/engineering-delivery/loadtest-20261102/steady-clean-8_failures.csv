@@ -1,0 +1,3 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,quiz/answer,CatchResponseError('invalid quiz answer HTTP 503'),1,2026-11-02T14:46:40Z,2026-11-02T14:46:40Z
+POST,chat/SSE,CatchResponseError('SSE missing done or contains error'),1,2026-11-02T14:46:41Z,2026-11-02T14:46:41Z

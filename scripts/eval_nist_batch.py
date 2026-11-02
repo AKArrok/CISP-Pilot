@@ -24,6 +24,12 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def request_content(stage, case, row, context, manifest):
+    if stage.startswith("judge") and manifest.get("evidence_protocol") == "line_ids":
+        return json.dumps(line_payload(row), ensure_ascii=False)
+    return context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
+
+
 def record_failure(output, summary, work, completed, current, error):
     summary["stop_reason"] = type(error).__name__
     summary["known_cost_lower_bound_usd"] = summary["cost_usd_conservative"]
@@ -122,9 +128,7 @@ def main():
                 row["answer"] = case["answer"]
             context = "\n".join(f'[资料{i+1}]《{c["source"]}》定位【{c["locator"]}】\n{c["text"]}' for i, c in enumerate(contexts))
             for stage in (manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge")):
-                content = context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
-                if manifest.get("evidence_protocol") == "line_ids":
-                    content = json.dumps(line_payload(row), ensure_ascii=False)
+                content = request_content(stage, case, row, context, manifest)
                 messages = [{"role": "system", "content": prompts[stage + "_system"]},
                             {"role": "user", "content": content}]
                 estimate = sum(len(encoding.encode(m["content"])) for m in messages)

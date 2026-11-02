@@ -1,0 +1,145 @@
+[
+  {
+    "id": "at2-regression",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "82e0d250d3067bc666dd8c82dd7a2be0f58b6bda2b140c988e23404e489b8816",
+    "context_sha256": [
+      "5a69d6c27dfb7a520f713094679aeca14ecdf936037636f3673158ff25d14a84"
+    ],
+    "criteria": "limit refusal to unsupported exam frequency, preserve actual training frequency",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-01",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "c20ac8883f08d59b9164ea4c7b6cb28956a1ca073feecc167c339c8aa6078200",
+    "context_sha256": [
+      "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    ],
+    "criteria": "说明没有人类界面时不要求通知；不外推免除其他控制",
+    "notes": "new01 retains initial-network-logon premise for secondary notice; new02 no ban on technical authorship"
+  },
+  {
+    "id": "quality-new-02",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "54b58c9725853b1bf5a86482d75b5306d35a1d8240fa6177828cb85005f531a3",
+    "context_sha256": [
+      "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    ],
+    "criteria": "区分公开系统隐私约束；不把监控同意无限扩大",
+    "notes": "new01 retains initial-network-logon premise for secondary notice; new02 no ban on technical authorship"
+  },
+  {
+    "id": "quality-new-03",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "247b3da35b358793292a3e1e91da6b81b9d5236d4149a582d7fbebbfa57cc060",
+    "context_sha256": [
+      "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    ],
+    "criteria": "拒绝唯一英语前提；说明可根据组织需求与用户群体使用多语言",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-04",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "d4dca5538513a03c67c7f6c325df47ca2ea59ac322eda30f070aba1bafbaa98e",
+    "context_sha256": [
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "criteria": "安全与隐私素养；包含用户经理高管承包商；不得解释为基础识字读写培训",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-05",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "ad12edb5bd0642fd1cfdb6a7c61dbb7dd233eb06991911eda4d6d3bc033a6607",
+    "context_sha256": [
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "criteria": "内部外部安全事件及泄露经验均纳入；否定只能内部",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-06",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "a743dfbc5c4b8aeac38c538ee1447b322a10fae6bc277680bc1f02403f2a389d",
+    "context_sha256": [
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "criteria": "回答初始后续和事件培训；明确考试题数无证据；不得拒绝全部",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-07",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "6ccb2151e066620d5f66308394a80ae40a4938c6b3875d2340a2e1b3dc62c16d",
+    "context_sha256": [
+      "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    ],
+    "criteria": "可内部外部；风险评估指导独立性程度；不得声称必须全部第三方",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-08",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "05f7db7208e4a217b5514425b1bc36c754c5a13123ec8a6c63f829a73ab28762",
+    "context_sha256": [
+      "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    ],
+    "criteria": "渗透超出自动扫描；需验证可利用性；不得等同",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-09",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "42950503f4ca1d5e743381d40736942cdb6bd3cfb3e5738fc751e6aa83550990",
+    "context_sha256": [
+      "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    ],
+    "criteria": "纠正01频率02对象范围；不得赋具体年度次数",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-10",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "e85c2fd074b5728920afff064f4b475b26c1cf13b49ec04720339878382b1a9e",
+    "context_sha256": [
+      "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    ],
+    "criteria": "系统级不足以覆盖用户级系统文档与CIA保护",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-11",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "0c230ac7a789b6b0bdca5e1e324cd70a433e5e21f7fa3cdd0643da19dceecc68",
+    "context_sha256": [
+      "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    ],
+    "criteria": "不意味着可选；01对象范围02/03/04频率；不得编造取值",
+    "notes": ""
+  },
+  {
+    "id": "quality-new-12",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI, not independent human gold",
+    "answer_sha256": "f63d8eb0c7c6ba7a738826f6a78f2d8438838b3f7fa43d34fec4204d4d844eac",
+    "context_sha256": [
+      "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    ],
+    "criteria": "限制资料缺口；可说明备份要求但不编造演练步骤或周期",
+    "notes": ""
+  }
+]

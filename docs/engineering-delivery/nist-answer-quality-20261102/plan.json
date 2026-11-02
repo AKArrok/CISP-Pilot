@@ -1,0 +1,12 @@
+{
+  "total_user_budget_usd": 3,
+  "prior_known_estimate_usd": 0.079422,
+  "new_batch_calls": 52,
+  "new_batch_cap_usd": 0.52,
+  "method": "12 new source-bound AI development questions plus old AT2 regression per arm, frozen same contexts and judge; baseline current production answer prompt vs glossary addition only; no human gold",
+  "status": "frozen_before_dispatch",
+  "packets": {
+    "baseline": "c6d1cc9edb7c19084c8e2091f1063ea25d128d3320821e8fd577bcec9ce0264b",
+    "candidate": "ede96465f40a7b26d07100de7f1f0b16915fc5474e18c00214d1903c23ea02d2"
+  }
+}

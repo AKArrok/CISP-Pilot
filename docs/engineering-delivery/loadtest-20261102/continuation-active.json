@@ -1,0 +1,17 @@
+{
+  "status": "completed_bounded_fixture_scope",
+  "goal": "fix SQLite lock under steady authenticated mixed load",
+  "evidence": "steady-clean-8-console.txt and failures.csv: quiz answer503 and SSE incomplete; server traceback sqlite3.OperationalError database is locked at storage/submissions.py lock_thread BEGIN IMMEDIATE during persist",
+  "setup": "8 preauthenticated synthetic sessions; 60s,2-3second waits; checkout72a2699; no model calls",
+  "prior": "steady-8 overlaps scrypt benchmark and is not clean baseline",
+  "next": "quality followup at docs/engineering-delivery/nist-answer-quality-20261102/continuation.md; calibrate two judge misses and expand public-source quality tests",
+  "database_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "root_cause_evidence": {
+    "fixture": "local_chat_recovery_server reply concatenates all prior assistant contents recursively",
+    "database_bytes": 1506140160,
+    "conversation_rows": 424,
+    "max_message_chars": 148494327,
+    "sum_message_chars": 693943496
+  },
+  "results": "bounded8:238requests0errors124pairedrounds57receipts; production SQLite not patched based on growing fixture"
+}
