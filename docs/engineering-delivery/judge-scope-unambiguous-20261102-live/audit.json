@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "draft-ban",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "draft-ban",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "review-only",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "review-only",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "no-human-must-notify",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "no-human-must-notify",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "conditional-notice",
+      "arm": "judge_baseline",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "conditional-notice",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    }
+  ],
+  "arm_matches": {
+    "judge_baseline": 4,
+    "judge_candidate": 4
+  },
+  "independent_human_review": false,
+  "provider_calls": 0
+}

@@ -1,0 +1,24 @@
+{
+  "mode": "judge_calibration",
+  "role": "new synthetic diagnostic; does not replace disputed original12 labels or results",
+  "judge_arms": [
+    "judge_baseline",
+    "judge_candidate"
+  ],
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "paid_proposal": {
+    "calls": 8,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "frozen_sha256": {
+    "cases.json": "38b87eae2c1e3a4287453a13541ae7c5b15769adc01f16d00ffc4f5255ed1e65",
+    "chunks.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "prompts.json": "e82c5bbc12407374a103470c60c008f9e1421925b0de886f82a04ad585d09d42"
+  },
+  "acceptance": "all four source ranges checked separately; original12 remains10/12"
+}
