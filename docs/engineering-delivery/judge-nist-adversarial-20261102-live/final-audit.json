@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "param_scope_valid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "param_swap_invalid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "multiple_actions_valid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "only_backup_invalid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "frequency_value_invalid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 0
+    },
+    {
+      "id": "frequency_unspecified_valid",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    }
+  ],
+  "arm_matches": {
+    "judge_candidate": 6
+  },
+  "independent_human_review": false,
+  "provider_calls": 0
+}

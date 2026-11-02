@@ -1,0 +1,25 @@
+{
+  "mode": "judge_calibration",
+  "role": "new synthetic development adversarial cases; not independent human gold",
+  "frozen_sha256": {
+    "cases.json": "da0584b460f93dc6be019e9b6abc1ae257b6075a856c17820de0de88622b54f1",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "prompts.json": "5342e35e97cca5a1101ff7ab5eb11cfc7958e6d6e64b5342ca1a65ac61dfe4ad"
+  },
+  "paid_proposal": {
+    "calls": 6,
+    "budget_usd": 0.06,
+    "scope": "six new synthetic public-NIST adversarial answers, one judge each",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "acceptance": "all six source support ranges; retain failures",
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "status": "prepared_not_authorized_not_executed",
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true
+}

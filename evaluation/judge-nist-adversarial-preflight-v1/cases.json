@@ -1,0 +1,104 @@
+[
+  {
+    "id": "param_scope_valid",
+    "question": "cp-9 中系统组件参数代表什么？",
+    "answer": "cp-09_odp.01 指定备份用户级信息涉及的系统组件，其余 cp-09_odp.02、03、04 是备份频率参数。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 2,
+    "maximum": 2,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  },
+  {
+    "id": "param_swap_invalid",
+    "question": "系统级信息的备份频率由哪个参数表示？",
+    "answer": "cp-09_odp.01 是系统级信息的备份频率参数，cp-09_odp.03 则指定系统组件。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 0,
+    "maximum": 1,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  },
+  {
+    "id": "multiple_actions_valid",
+    "question": "保护信息是否是 CP-9 规定的唯一行动？",
+    "answer": "不是。CP-9 还要求备份用户级信息、系统级信息和系统文档；频率由组织定义。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 2,
+    "maximum": 2,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  },
+  {
+    "id": "only_backup_invalid",
+    "question": "用户级信息是否是 CP-9 唯一要求备份的内容？",
+    "answer": "是，CP-9 只要求备份用户级信息，其他备份不属于该控制的要求。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 0,
+    "maximum": 1,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  },
+  {
+    "id": "frequency_value_invalid",
+    "question": "CP-9 是否指定每周执行一次系统级备份？",
+    "answer": "是，CP-9 明确规定系统级信息必须每周备份一次。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 0,
+    "maximum": 1,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  },
+  {
+    "id": "frequency_unspecified_valid",
+    "question": "原文是否给出系统文档备份周期的具体数值？",
+    "answer": "没有。系统文档备份频率使用组织定义的参数，资料未给出具体数值。\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "fixed_contexts": [
+      {
+        "source": "NIST SP 800-53 5.2.0 OSCAL",
+        "locator": "cp-9",
+        "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n[cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n[cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n[{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]"
+      }
+    ],
+    "expected_dimension": "source_support",
+    "minimum": 2,
+    "maximum": 2,
+    "label_origin": "Codex AI source-based synthetic development preflight, not human gold"
+  }
+]
