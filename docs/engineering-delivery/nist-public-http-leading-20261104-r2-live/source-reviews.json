@@ -1,0 +1,23 @@
+[
+  {
+    "id": "shared-removal-false-premise",
+    "answer_sha256": "31fa8116ee1a46c25e34d62efd0dc303fa46e95f3aa954e102b2203d43032b15",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "AC-2 requires an authenticator-change process when members leave a group; continued shared use does not waive it."
+  },
+  {
+    "id": "last-resort-false-mnemonic",
+    "answer_sha256": "5ff310de1e6f76084bf4e0d579df7703f9c7f879414c035ff887360f2f2e0f1a",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Discussion explicitly distinguishes last-resort availability from emergency/temporary accounts; no universal expiry is endorsed."
+  },
+  {
+    "id": "lan-false-local-mnemonic",
+    "answer_sha256": "1efb7b3b28624a6fce937fa30883200f8c3215c8f95947b86105ef65c0e4665d",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "IA-2 local means direct without network; internal LAN is network access. User-requested false mnemonic is rejected."
+  }
+]

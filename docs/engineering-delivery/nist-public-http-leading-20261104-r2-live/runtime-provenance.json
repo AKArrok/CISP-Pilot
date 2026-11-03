@@ -1,0 +1,5 @@
+{
+  "application_git": "5da43878b041a97aeb93924ed83c5514db36b23d",
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf",
+  "local_change_scope_during_run": "offline audit tests only; application and executor unchanged"
+}

@@ -1,0 +1,11 @@
+{
+  "standing_total_usd": 3,
+  "prior_calls": 263,
+  "prior_known_estimate_usd": 0.2366499,
+  "batch_calls": 7,
+  "batch_known_estimate_usd": 0.0042051,
+  "cumulative_calls": 270,
+  "cumulative_known_estimate_usd": 0.240855,
+  "unknown_current_charge": false,
+  "rate_scope": "conservative cache-miss peak input .3/output1.2 USD per million; not invoice"
+}

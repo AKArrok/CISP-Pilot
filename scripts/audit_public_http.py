@@ -2,8 +2,10 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
+from agents.sources import source_preview
 from scripts.audit_flash_answers import citation_checks
 
 
@@ -18,6 +20,7 @@ def audit(packet, run):
     if hashlib.sha256((run / "executor.py").read_bytes()).hexdigest() != manifest["executor_sha256"]:
         raise ValueError("Executed script snapshot changed")
     cases, rows = read(packet / "cases.json"), read(run / "results.json")
+    frozen_previews = [source_preview(chunk) for chunk in read(packet / "chunks.json")]
     if not cases or len({case["id"] for case in cases}) != len(cases):
         raise ValueError("HTTP audit requires nonempty unique cases")
     indexed = {row["id"]: row for row in rows}
@@ -40,6 +43,7 @@ def audit(packet, run):
                       "durable_trace": trace["status"] == "completed"
                       and trace["trace"]["conversation_commit"] == "confirmed",
                       "no_degraded_stage": not any("degraded" in event["outcome"] for event in observations)}
+            detail["frozen_source_previews"] = all(context in frozen_previews for context in contexts)
             if case["target_locator"] is None:
                 detail["scoped_abstention"] = not contexts and bool(answer) and any(
                     event["stage"] == "answer" and event["outcome"] == "abstained_no_context" for event in observations)
@@ -55,12 +59,19 @@ def audit(packet, run):
     receipts = [json.loads(line) for line in (run / "receipts.jsonl").read_text(encoding="utf-8").splitlines()]
     valid_usage = all(type(receipt.get("usage", {}).get(key)) is int and receipt["usage"][key] >= 0
                       for receipt in receipts for key in ("prompt_tokens", "completion_tokens"))
+    bounded_usage = valid_usage and all(receipt["usage"]["prompt_tokens"] <= 5500
+                                        and receipt["usage"]["completion_tokens"] <= manifest["max_output_tokens"]
+                                        for receipt in receipts)
+    recomputed_cost = sum((receipt["usage"]["prompt_tokens"] * .3
+                           + receipt["usage"]["completion_tokens"] * 1.2) / 1e6
+                          for receipt in receipts) if valid_usage else None
     receipt_ids = [receipt["run_id"] for receipt in receipts]
     observed_stages = [call.get("stage") for row in rows for call in row["trace"]["trace"]["model_calls"]]
     matching_receipts = len(set(receipt_ids)) == len(receipt_ids) and observed_stages == [r["stage"] for r in receipts]
-    budget_ok = (not summary["cost_unknown"] and not summary["stopped"] and valid_usage
+    budget_ok = (not summary["cost_unknown"] and not summary["stopped"] and bounded_usage
                  and matching_receipts
                  and len(receipts) == summary["dispatch_attempts"] <= manifest["max_calls"]
+                 and math.isclose(summary["known_cost_estimate_usd"], recomputed_cost, rel_tol=1e-9, abs_tol=1e-12)
                  and summary["known_cost_estimate_usd"] <= manifest["budget_usd"])
     unchanged = database["before"] == database["after"] and database["unchanged"]
     return {"passed": all(row["passed"] for row in checks) and budget_ok and unchanged,
