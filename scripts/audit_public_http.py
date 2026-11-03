@@ -66,10 +66,19 @@ def audit(packet, run):
                            + receipt["usage"]["completion_tokens"] * 1.2) / 1e6
                           for receipt in receipts) if valid_usage else None
     receipt_ids = [receipt["run_id"] for receipt in receipts]
-    observed_stages = [call.get("stage") for row in rows for call in row["trace"]["trace"]["model_calls"]]
-    matching_receipts = len(set(receipt_ids)) == len(receipt_ids) and observed_stages == [r["stage"] for r in receipts]
+    observed_calls = [call for row in rows for call in row["trace"]["trace"]["model_calls"]]
+    matching_receipts = (len(set(receipt_ids)) == len(receipt_ids)
+                         and len(observed_calls) == len(receipts)
+                         and all(call.get("stage") == receipt["stage"] and call["usage"] == receipt["usage"]
+                                 for call, receipt in zip(observed_calls, receipts, strict=True)))
+    streamed_answers = ["".join(event.get("content", "") for event in row["events"] if event["type"] == "token")
+                        for row in rows if any(call.get("stage") == "answer"
+                                               for call in row["trace"]["trace"]["model_calls"])]
+    provider_answers = [receipt["response"]["generations"][0][0]["message"]["content"]
+                        for receipt in receipts if receipt["stage"] == "answer"]
+    answers_match = streamed_answers == provider_answers
     budget_ok = (not summary["cost_unknown"] and not summary["stopped"] and bounded_usage
-                 and matching_receipts
+                 and matching_receipts and answers_match
                  and len(receipts) == summary["dispatch_attempts"] <= manifest["max_calls"]
                  and math.isclose(summary["known_cost_estimate_usd"], recomputed_cost, rel_tol=1e-9, abs_tol=1e-12)
                  and summary["known_cost_estimate_usd"] <= manifest["budget_usd"])

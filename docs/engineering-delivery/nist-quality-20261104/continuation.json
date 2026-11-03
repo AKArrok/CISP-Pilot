@@ -1,19 +1,21 @@
 {
   "status": "in_progress",
-  "latest_runtime_commit": "5da4387",
+  "latest_runtime_commit": "fe32743",
   "answer_quality": {
     "new_controls": "12 new plus AT2 regression, source-review13/13; AI development only",
-    "http": "3 baseline, 3 topic-switch, 3 leading-question outputs source-reviewed accepted; different frozen scenarios, not pooled generalization"
+    "http": "3 baseline, 3 topic-switch, 3 leading-question outputs source-reviewed accepted; different frozen scenarios, not pooled generalization",
+    "missing_parameters": "3/3 source-reviewed AI development; supports partial answer and rejects fabricated universal numeric deadlines",
+    "thread_isolation": "interleaved4/4 source reviewed; SQL per-request restore; no cross-user or process-restart claim"
   },
   "judge_calibration": "original disputed12 remains10/12; independent human gold missing",
-  "audit_hardening": "four reproduced gaps fixed; 28 targeted tests and Ruff pass; all three saved HTTP runs pass current audit",
+  "audit_hardening": "six negative evidence cases now rejected; five saved scenario audits checked by parametrized tests",
   "budget": {
     "approved_total_usd": 3,
-    "dispatch_attempts": 270,
-    "known_estimate_usd": 0.240855,
+    "dispatch_attempts": 286,
+    "known_estimate_usd": 0.2494395,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "same-topic missing-parameter evidence and durable SQL history restoration through actual application, freeze first",
+  "next": "natural Chinese queries without explicit control IDs, frozen same8-doc corpus",
   "git": "check newest exact-head CI; do not reuse historical green result"
 }

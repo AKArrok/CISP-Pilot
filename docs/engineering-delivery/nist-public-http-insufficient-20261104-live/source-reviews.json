@@ -1,0 +1,23 @@
+[
+  {
+    "id": "backup-fixed-frequency",
+    "answer_sha256": "01afa418afba7763314f1b86cd419eb75481934a06b02b1458f9bcf5dfd3143e",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "All three backup types and mandatory protection retained; ODP01 scope distinguished from ODP02-04 frequencies; no universal24h invented."
+  },
+  {
+    "id": "audit-fixed-report-time",
+    "answer_sha256": "690744118fa2555998aec050fef27f334e6d2bb6b447832f899d02d1ff900a16",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Review frequency/activity criteria/report recipients remain organization-defined; mandatory actions retained; no1hour or unique report role invented."
+  },
+  {
+    "id": "incident-fixed-recovery-time",
+    "answer_sha256": "a45b7f6a78f4bfac0109a6890f2ffde8157730457606a443c5700171b921f999",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Five phases retained and absent2hour deadline scoped to retrieved material; generic BIA supplement explicitly marked, not used as NIST source evidence."
+  }
+]

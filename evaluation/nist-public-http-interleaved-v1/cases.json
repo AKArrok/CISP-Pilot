@@ -1,0 +1,30 @@
+[
+  {
+    "id": "thread-a-incident",
+    "thread_group": "incident",
+    "question": "IR-4 的事件处理能力应覆盖哪些阶段？",
+    "target_locator": "ir-4",
+    "criteria": "IR4 five phases; preserve threadA incident context."
+  },
+  {
+    "id": "thread-b-network",
+    "thread_group": "network",
+    "question": "IA-2 中，本地访问与网络访问有什么区别？",
+    "target_locator": "ia-2",
+    "criteria": "ThreadB network/local definitions without incident text; local direct no network; LAN network."
+  },
+  {
+    "id": "thread-a-referent",
+    "thread_group": "incident",
+    "question": "这些活动需要与哪类规划活动协同？",
+    "target_locator": "ir-4",
+    "criteria": "Resolve these activities using threadA incident handling despite newer threadB network turn; coordinate contingency planning, not network identity."
+  },
+  {
+    "id": "thread-b-referent",
+    "thread_group": "network",
+    "question": "那经内部局域网的这种访问，应该归到哪一类？",
+    "target_locator": "ia-2",
+    "criteria": "Resolve using threadB access definitions despite newer threadA incident turn; internalLAN network not local; no incident stage answer."
+  }
+]

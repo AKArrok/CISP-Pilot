@@ -1,0 +1,30 @@
+[
+  {
+    "id": "thread-a-incident",
+    "answer_sha256": "53e3fe9f7a7f5f7e0ac117026799820b768f4bee2726bb5d66c3bc25b5950744",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Incident phases correctly covered."
+  },
+  {
+    "id": "thread-b-network",
+    "answer_sha256": "eb9f4b0238b532e61891c70e4ef9491d741054516bf65e568770bff8f115a3d4",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Local/network/remote distinctions accurately supported by IA2."
+  },
+  {
+    "id": "thread-a-referent",
+    "answer_sha256": "090ecaa5c4a6f7cbcd482e55dfb57d8aa561d9a549462229e0e8bd6a9ab8362a",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "ThreadA resolves incident referent to contingency planning despite intervening threadB."
+  },
+  {
+    "id": "thread-b-referent",
+    "answer_sha256": "42e2e74410c23756e409d44c5c6b814ad4a293bd3832df5455f8cc6b5476a5b5",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "ThreadB resolves access referent to LAN network access despite intervening threadA."
+  }
+]

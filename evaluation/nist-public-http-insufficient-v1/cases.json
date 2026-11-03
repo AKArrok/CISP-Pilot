@@ -1,0 +1,23 @@
+[
+  {
+    "id": "backup-fixed-frequency",
+    "thread_group": "backup",
+    "question": "CP-9 要备份哪些信息？每一类是否都由 NIST 统一规定为每24小时备份一次？请区分资料确定的要求和没有给出数值的部分。",
+    "target_locator": "cp-9",
+    "criteria": "Answer user/system/security-privacy documentation backup scope and organization-defined frequencies, not all uniformly24hours; scope parameter not universal number. Seen CP9 topic development regression, not novel independent question."
+  },
+  {
+    "id": "audit-fixed-report-time",
+    "thread_group": "audit",
+    "question": "AU-6 对审计记录审阅分析和发现问题后的报告分别有什么要求？资料是否规定所有组织都必须在1小时内向同一个固定岗位报告？",
+    "target_locator": "au-6",
+    "criteria": "Review/analyze at organization-defined frequency for inappropriate/unusual activity and impacts; report to organization-defined personnel/roles. No invented universal1hour or single job; do not globally refuse supported portion."
+  },
+  {
+    "id": "incident-fixed-recovery-time",
+    "thread_group": "incident",
+    "question": "IR-4 的事件处理必须覆盖哪些阶段？这份资料有没有为所有组织规定统一的2小时恢复时限？",
+    "target_locator": "ir-4",
+    "criteria": "All5incident phases including preparation/detection-analysis/containment/eradication/recovery; no invented universal2hour recovery deadline; locally qualify absent number without refusing supported phases."
+  }
+]

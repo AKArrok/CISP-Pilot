@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "shared-account",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "account-followup",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true,
+        "rewrite_observed": true
+      }
+    },
+    {
+      "id": "unrelated-dns",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "scoped_abstention": true
+      }
+    }
+  ],
+  "budget_receipts_valid": true,
+  "default_database_unchanged": true,
+  "semantic_source_review": "required separately",
+  "independent_human_gold": false
+}
