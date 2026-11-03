@@ -1,0 +1,23 @@
+[
+  {
+    "id": "shared-account",
+    "reviewer": "Codex AI source review, not independent human gold",
+    "answer_sha256": "e64e93ce47f783944c14f49a727eecc83d9696834de69a05c901db532c1a6ec9",
+    "status": "accepted_development_review",
+    "notes": "Preserves conditional deployed shared/group authenticator change and no blanket shared-account prohibition"
+  },
+  {
+    "id": "account-followup",
+    "reviewer": "Codex AI source review, not independent human gold",
+    "answer_sha256": "a7dbe8807da4a7f08f398993103f229c5cb7926157b2df52e1aee3ba287f4394",
+    "status": "accepted_development_review",
+    "notes": "Retains AC2 topic and last-resort account distinction; no universal automatic expiry"
+  },
+  {
+    "id": "unrelated-dns",
+    "reviewer": "Codex AI source review, not independent human gold",
+    "answer_sha256": "87bb8c2c4024fa269a70c7b032f62d4b826df4038b0369dc6d6b05c402834b29",
+    "status": "accepted_development_review",
+    "notes": "No contexts; no answer-model dispatch; scoped no-context refusal"
+  }
+]

@@ -2,3 +2,5 @@
 # bytes on Windows and Linux rather than normalizing line endings during add.
 evaluation/**/*.json -text whitespace=cr-at-eol
 evaluation/**/NIST-LICENSE.md -text whitespace=cr-at-eol
+scripts/evaluate_public_http.py -text whitespace=cr-at-eol
+docs/engineering-delivery/nist-public-http-*/executor.py -text whitespace=cr-at-eol

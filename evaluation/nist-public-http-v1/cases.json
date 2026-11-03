@@ -1,0 +1,23 @@
+[
+  {
+    "id": "shared-account",
+    "thread_group": "accounts",
+    "question": "AC-2 中共享账号成员退出后应怎样处理认证器？共享账号是不是一律禁止？",
+    "target_locator": "ac-2",
+    "criteria": "not blanket prohibited; change shared/group authenticator when member leaves"
+  },
+  {
+    "id": "account-followup",
+    "thread_group": "accounts",
+    "question": "那么不常用的兜底账号也要统一设到期自动禁用吗？",
+    "target_locator": "ac-2",
+    "criteria": "followup retains account topic; infrequently used last-resort accounts distinct from temporary/emergency; no blanket expiry disable"
+  },
+  {
+    "id": "unrelated-dns",
+    "thread_group": "negative",
+    "question": "DNS 递归解析的具体报文交互过程是什么？",
+    "target_locator": null,
+    "criteria": "no relevant source, abstain without inventing DNS source"
+  }
+]

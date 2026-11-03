@@ -1,0 +1,9 @@
+{
+  "application_git_commit": "597badad782084e67070a8402f794210d931ffde",
+  "executor_source": "executor.py retained snapshot, hash bound by frozen manifest",
+  "runtime_dataset": "new isolated synthetic SQL and public NIST JSON; quiz fixtures not evaluation answers",
+  "real_provider": "https://api.deepseek.com",
+  "model_alias": "deepseek-flash",
+  "http_transport": "ASGI TestClient in process, not network deployment",
+  "source_review": "Codex AI, no independent human gold"
+}

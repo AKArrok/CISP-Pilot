@@ -1,0 +1,9 @@
+{
+  "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "verified_date": "2026-11-04",
+  "model_alias": "deepseek-flash",
+  "units": "USD per million tokens",
+  "peak_cache_miss_input": 0.3,
+  "peak_output": 1.2,
+  "policy": "all inputs treated as peak cache misses for conservative estimates; not actual billed total"
+}
