@@ -38,6 +38,21 @@ def request_content(stage, case, row, context, manifest):
     return context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
 
 
+def select_retrieval_arm(metrics, configured=None):
+    if configured is not None:
+        if configured not in metrics:
+            raise ValueError("Unknown frozen retrieval arm")
+        return configured
+    return max(metrics, key=lambda a: (metrics[a]["top1"], metrics[a]["top4"], a == "bilingual")) if metrics else None
+
+
+def input_token_limit(manifest):
+    limit = manifest.get("max_estimated_input_tokens", 5000)
+    if type(limit) is not int or not 1 <= limit <= 5500:
+        raise ValueError("Estimated input limit must be an integer from 1 to 5500")
+    return limit
+
+
 def record_failure(output, summary, work, completed, current, error):
     summary["stop_reason"] = type(error).__name__
     summary["known_cost_lower_bound_usd"] = summary["cost_usd_conservative"]
@@ -77,6 +92,7 @@ def main():
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     manifest = load(args.packet / "manifest.json")
+    max_input_tokens = input_token_limit(manifest)
     for name, digest in manifest["frozen_sha256"].items():
         if hashlib.sha256((args.packet / name).read_bytes()).hexdigest() != digest:
             raise ValueError("Frozen input changed")
@@ -90,7 +106,7 @@ def main():
                      "top4": sum(r["target_rank"] is not None for r in rows if r["arm"] == arm)}
                for arm in sorted({r["arm"] for r in rows})}
     # Maximize top1 then top4; prefer the established bilingual index on ties.
-    selected = max(metrics, key=lambda a: (metrics[a]["top1"], metrics[a]["top4"], a == "bilingual")) if metrics else None
+    selected = select_retrieval_arm(metrics, manifest.get("retrieval_arm"))
     summary = {"cases": len(cases), "retrieval": metrics, "selected_arm": selected,
                "provider_calls": 0, "cost_usd_conservative": 0, "semantic_acceptance": "pending_source_review"}
     write(args.output / "summary.json", summary)
@@ -140,7 +156,7 @@ def main():
                 messages = [{"role": "system", "content": prompts[stage + "_system"]},
                             {"role": "user", "content": content}]
                 estimate = sum(len(encoding.encode(m["content"])) for m in messages)
-                if estimate > 5000 or summary["provider_calls"] >= max_calls or summary["cost_usd_conservative"] + .008 > budget:
+                if estimate > max_input_tokens or summary["provider_calls"] >= max_calls or summary["cost_usd_conservative"] + .008 > budget:
                     raise RuntimeError("Input or budget limit; no automatic retry")
                 summary["provider_calls"] += 1
                 summary["cost_unknown"] = True

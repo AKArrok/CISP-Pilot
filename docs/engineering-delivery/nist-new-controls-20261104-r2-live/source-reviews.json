@@ -1,0 +1,204 @@
+[
+  {
+    "id": "at2-regression",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "e71bdcb1ac15741ca81b47146cacef3384e6d630fc816f38f18c1aa3185cf738",
+    "context_sha256": [
+      "5a69d6c27dfb7a520f713094679aeca14ecdf936037636f3673158ff25d14a84"
+    ],
+    "context_locators": [
+      "at-2"
+    ],
+    "criteria": "Refuse unsupported exam-frequency claim while preserving actual training frequency",
+    "notes": ""
+  },
+  {
+    "id": "new-control-01",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "d3c535626616a61c10959884b77565a888a7be3b3a40e1d1f6537b785dd31f0d",
+    "context_sha256": [
+      "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+      "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1"
+    ],
+    "context_locators": [
+      "ac-2",
+      "ia-2"
+    ],
+    "criteria": "不能把may wish to prohibit当作一律禁止；已部署共享或组账号时成员退出应更改认证器",
+    "notes": ""
+  },
+  {
+    "id": "new-control-02",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "e46246946edb767cc33e8570ef5d72219f6a295c50693d9f6ec2369ad558c736",
+    "context_sha256": [
+      "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+      "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    ],
+    "context_locators": [
+      "ac-2",
+      "ca-8"
+    ],
+    "criteria": "临时紧急短期；紧急可能绕过正常授权；不常用兜底不同且不受自动停用或移除日期影响，不说全部相同",
+    "notes": "Minor duplicated wording in stop/deactivate phrase; does not change source meaning"
+  },
+  {
+    "id": "new-control-03",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "232c10c02196a611ae9c33f4c15459673fe1345f7759d9c0ab64c961a8810ec4",
+    "context_sha256": [
+      "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "context_locators": [
+      "ac-2",
+      "at-2"
+    ],
+    "criteria": "通知时间和额外接收者及审批角色是未赋值参数，不填24小时或固定主管；区分时间角色与动作",
+    "notes": ""
+  },
+  {
+    "id": "new-control-04",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "26a0dd873863d682e4007c5ca0db2d3826e17ea368d2cdb4661cc66f21af9f5c",
+    "context_sha256": [
+      "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16",
+      "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1"
+    ],
+    "context_locators": [
+      "au-6",
+      "ac-2"
+    ],
+    "criteria": "风险变化应调整审查分析报告水平；频率范围深度可按新信息组织需求调整，不虚构固定周期",
+    "notes": ""
+  },
+  {
+    "id": "new-control-05",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "de035199f71a70860fb1a95950b61fa2a060b45340dd8a21c6663a56a2d8db85",
+    "context_sha256": [
+      "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16",
+      "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1"
+    ],
+    "context_locators": [
+      "au-6",
+      "ia-2"
+    ],
+    "criteria": "可以由获此授权的其他组织执行，不能泛化为任意外部人员",
+    "notes": ""
+  },
+  {
+    "id": "new-control-06",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "18123a5fba39baceba5f5b02b431bbc651dc82c6fa3a48681d46b03bc6adaeea",
+    "context_sha256": [
+      "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16"
+    ],
+    "context_locators": [
+      "au-6"
+    ],
+    "criteria": "分别审查频次、关注异常活动类型和报告接收者；准确照原参数定义，不混类",
+    "notes": ""
+  },
+  {
+    "id": "new-control-07",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "cf3d1cddc8d7c1e384bff1950dc435db81eb9b7bdb481f2b469dd7def8d0f645",
+    "context_sha256": [
+      "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1",
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "context_locators": [
+      "ia-2",
+      "at-2"
+    ],
+    "criteria": "包括被组织视为等同员工的人员，如承包商和客座研究人员；不把所有外部人员都当组织用户",
+    "notes": ""
+  },
+  {
+    "id": "new-control-08",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "807d9571e7a084ca0184600f9e73968a46cbbb8d06130d8efb64fdad8f894a7f",
+    "context_sha256": [
+      "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1",
+      "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    ],
+    "context_locators": [
+      "ia-2",
+      "ac-8"
+    ],
+    "criteria": "本地直接连接不用网络；局域网仍网络访问；远程经外部网络，是网络访问的一类",
+    "notes": ""
+  },
+  {
+    "id": "new-control-09",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "82f23faa040fd211133effbb1bf1b891d6b5a3fe40d229a5405e7b95cf544433",
+    "context_sha256": [
+      "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1"
+    ],
+    "context_locators": [
+      "ia-2"
+    ],
+    "criteria": "VPN可视为内部网络仅针对传输保密完整性保护，不推出身份认证豁免；不删除原文明确其他例外",
+    "notes": ""
+  },
+  {
+    "id": "new-control-10",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "dd2c196110beaab327daa4415e0bbb99a3bd873309ec483694dbc3de6e9c9329",
+    "context_sha256": [
+      "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "context_locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "criteria": "含准备检测分析遏制根除恢复，与应急计划活动协同",
+    "notes": ""
+  },
+  {
+    "id": "new-control-11",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "5a7508a7dae0f634ee3a69020d76f8d2906f37fcc3ad7b8bfbe3e56b14b70584",
+    "context_sha256": [
+      "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "context_locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "criteria": "持续处理教训纳入响应流程培训测试并实施变化，不只存档",
+    "notes": ""
+  },
+  {
+    "id": "new-control-12",
+    "status": "accepted_development_source_review",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "answer_sha256": "dc475f95cd10bccb3299fb8ceba25f34758c004b11897a75762503ba373d7b9e",
+    "context_sha256": [
+      "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+      "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    ],
+    "context_locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "criteria": "可包括假冒硬件和恶意代码；有效处置涉及多实体含采购法务，不声称每一事件必须所有列举部门全参加",
+    "notes": ""
+  }
+]

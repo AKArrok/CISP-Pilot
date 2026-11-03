@@ -1,0 +1,12 @@
+{
+  "url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+  "commit": "f0de6d8d8c059d374f15e0ae07508d82e370fc1d",
+  "retrieved_date": "2026-10-29",
+  "sha256": "64ca6b4161de51ab6af098a7d101d326f14c95e1abf721396cd8a049e8115eeb",
+  "bytes": 10448237,
+  "status": 200,
+  "final_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+  "pdf_download": "failed_tls_eof_no_pdf_saved",
+  "license_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/LICENSE.md",
+  "license_sha256": "9f0ddd1ed71f691bb483965a7c46e1315ab6cc28dac0426d4c3d27108aafde13"
+}

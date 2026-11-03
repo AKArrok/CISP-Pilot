@@ -1,0 +1,24 @@
+{
+  "cases": 12,
+  "retrieval": {
+    "bilingual": {
+      "top1": 12,
+      "top4": 12
+    },
+    "source_only": {
+      "top1": 4,
+      "top4": 4
+    },
+    "source_plus_alias": {
+      "top1": 12,
+      "top4": 12
+    }
+  },
+  "selected_arm": "bilingual",
+  "provider_calls": 7,
+  "cost_usd_conservative": 0.008013,
+  "semantic_acceptance": "pending_source_review",
+  "cost_unknown": false,
+  "stop_reason": "RuntimeError",
+  "known_cost_lower_bound_usd": 0.008013
+}

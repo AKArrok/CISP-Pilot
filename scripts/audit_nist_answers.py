@@ -1,4 +1,4 @@
-"""Audit frozen fixed-context answer runs; semantic acceptance needs source review."""
+"""Audit frozen answer inputs; semantic acceptance needs separate source review."""
 import argparse
 import hashlib
 import json
@@ -6,6 +6,7 @@ from pathlib import Path
 
 from scripts.answer_grade_contract import materialize_grade
 from scripts.audit_flash_answers import citation_checks
+from scripts.eval_nist_batch import retrieve, select_retrieval_arm
 
 
 def audit(packet, run):
@@ -20,6 +21,19 @@ def audit(packet, run):
     regression = read(packet / "at2-regression.json")
     expected = [{"id": "at2-regression", "question": regression["question"],
                  "fixed_contexts": regression["contexts"]}] + cases
+    if any("fixed_contexts" not in case for case in cases):
+        chunks = read(packet / "chunks.json")
+        retrieval = retrieve(cases, chunks)
+        arms = {row["arm"] for row in retrieval}
+        metrics = {arm: {"top1": sum(r["target_rank"] == 1 for r in retrieval if r["arm"] == arm),
+                         "top4": sum(r["target_rank"] is not None for r in retrieval if r["arm"] == arm)}
+                   for arm in sorted(arms)}
+        selected = select_retrieval_arm(metrics, manifest.get("retrieval_arm"))
+        for case in cases:
+            if "fixed_contexts" not in case:
+                hit = next(r for r in retrieval if r["arm"] == selected and r["id"] == case["id"])
+                case["fixed_contexts"] = [next(c for c in chunks if c["locator"] == loc)
+                                          for loc in hit["locators"][:2]]
     if len({case["id"] for case in expected}) != len(expected):
         raise ValueError("Duplicate input IDs")
     raw = read(run / "results.json")

@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "id": "at2-regression",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 416,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确拒答，指出资料仅涉培训控制，无考试命题、题量或频率证据，并区分培训频次与考试频率。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "记忆点：AT-2 中的 `at-2_prm_1`、`at-2_prm_2`、`at-02_odp.05`、`at-02_odp.06`、`at-02_odp.07` 均为待组织确定的参数，参数值待定不等于相关动作可选。",
+            "source_quote": "[at-2_smt.a.1] As part of initial training for new users and {{ insert: param, at-2_prm_1 }} thereafter; and"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "需要区分的是：资料中确实出现了“频次”表述，但那是培训实施频次要求（如后续素养培训至少按适用法律、指令、法规和政策所要求的最低频率开展），属于组织培训动作的参数，与考试出题频率无关，不能混用。",
+            "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-01",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 745,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确说明共享账号非一律禁止，并准确引用AC-2 k项要求成员退出后更改共享认证器；参数归类与来源一致。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **相关参数状态。** 与账号管理相关的多项参数（如组和角色成员资格的先决条件与准则、账号属性、审批人员或角色、通知对象、各通知时限、账号审查频率等）在资料中均未赋值，须由组织确定；其中 ac-02_odp.10 是“审查频率”参数，ac-02_odp.06/07/08 是“通知时限”参数，二者含义不同，不能混用。",
+            "source_quote": "[{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}, {\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}, {\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}, {\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}, {\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}, {\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}, {\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}, {\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}, {\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}, {\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**结论：不是一律禁止。** AC-2 要求组织“定义并记录允许使用和明确禁止使用的账号类型”，共享账号属于组织可自行决定是否禁止的类型之一；成员退出后，则必须建立并实施在个人被移出组时更改共享或组认证器的流程。",
+            "source_quote": "[ac-2_smt.k] Establish and implement a process for changing shared or group account authenticators (if deployed) when individuals are removed from the group; and"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-02",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 491,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确区分三类账号，兜底账号不受自动停用约束，引用定位准确。",
+        "deductions": [],
+        "risk_checks": []
+      }
+    },
+    {
+      "id": "new-control-03",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-04",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-05",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-06",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-07",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-08",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-09",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-10",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-11",
+      "status": "not_completed"
+    },
+    {
+      "id": "new-control-12",
+      "status": "not_completed"
+    }
+  ],
+  "semantic_acceptance": "requires_separate_source_review",
+  "independent_human_gold": false
+}

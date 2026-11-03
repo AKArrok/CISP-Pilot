@@ -1,3 +1,4 @@
 # Frozen evaluation JSON is authenticated by raw-byte SHA-256. Preserve original
 # bytes on Windows and Linux rather than normalizing line endings during add.
 evaluation/**/*.json -text whitespace=cr-at-eol
+evaluation/**/NIST-LICENSE.md -text whitespace=cr-at-eol

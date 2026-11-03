@@ -1,0 +1,371 @@
+[
+  {
+    "id": "new-control-01",
+    "arm": "source_only",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "ia-2",
+      "ac-8",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-02",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-03",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-04",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-05",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-06",
+    "arm": "source_only",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ac-2",
+      "at-2",
+      "cp-9"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-07",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-08",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.014999999999417923
+  },
+  {
+    "id": "new-control-09",
+    "arm": "source_only",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "ac-2",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-10",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-11",
+    "arm": "source_only",
+    "target_rank": 1,
+    "locators": [
+      "ir-4"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-12",
+    "arm": "source_only",
+    "target_rank": null,
+    "locators": [],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-01",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "ia-2",
+      "ac-8",
+      "ir-4"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-02",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "ca-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-03",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "at-2",
+      "cp-9",
+      "ac-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-04",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ac-2",
+      "ac-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-05",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ia-2",
+      "ac-2",
+      "ac-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-06",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "au-6"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-07",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "at-2",
+      "au-6",
+      "ac-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-08",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "ac-8",
+      "au-6",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-09",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ia-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-10",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2",
+      "cp-9"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-11",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2",
+      "ca-8",
+      "au-6"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-12",
+    "arm": "bilingual",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-01",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "ia-2",
+      "ac-8",
+      "ir-4"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-02",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "ca-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-03",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ac-2",
+      "at-2",
+      "cp-9",
+      "ac-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-04",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ac-8",
+      "ac-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-05",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ia-2",
+      "ac-8",
+      "ir-4"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-06",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "au-6",
+      "ac-2",
+      "at-2",
+      "cp-9"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-07",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "at-2",
+      "au-6",
+      "cp-9"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-08",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "ac-8",
+      "au-6",
+      "ca-8"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-09",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ia-2",
+      "ac-2",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-10",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2",
+      "cp-9"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-11",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2",
+      "ca-8",
+      "au-6"
+    ],
+    "elapsed_seconds": 0.0
+  },
+  {
+    "id": "new-control-12",
+    "arm": "source_plus_alias",
+    "target_rank": 1,
+    "locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "elapsed_seconds": 0.014999999999417923
+  }
+]

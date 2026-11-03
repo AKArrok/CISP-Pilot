@@ -1,0 +1,37 @@
+{
+  "role": "AI authored new-control development preflight; same pinned public catalog; not independent human test",
+  "retrieval_arm": "bilingual",
+  "source_controls": [
+    "ac-2",
+    "au-6",
+    "ia-2",
+    "ir-4"
+  ],
+  "distractor_controls": [
+    "ac-8",
+    "at-2",
+    "ca-8",
+    "cp-9"
+  ],
+  "context_selection": "actual frozen bilingual BM25 top2, no oracle target context",
+  "frozen_sha256": {
+    "cases.json": "10384b741fc47cc2d45d125aed82d751b5a54ed08f86713bca9bc75c52076ed4",
+    "chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "negative-probes.json": "f4467a971bf170a064060cd8a739686cf1f6dda97eaea6f090826b9c207eb1b0",
+    "prompts.json": "2e5a0f8b2f193fbb9961bb1ca3ab15bccf120bdfcb868125b6daa3f15ed95128",
+    "at2-regression.json": "2924d4a014d05d553f756d4051070d941da1cf8b635a93910144188bdba85ae4",
+    "source-receipt.json": "6959235c0f3b4547d5f2dae2ea62e4afc12e2f4cfda2fe18a4a7a015adcd58f5",
+    "NIST-LICENSE.md": "9f0ddd1ed71f691bb483965a7c46e1315ab6cc28dac0426d4c3d27108aafde13"
+  },
+  "paid_proposal": {
+    "calls": 26,
+    "budget_usd": 0.26,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "acceptance": "freeze all inputs first; target top1 all12 and irrelevant queries no hits; answers complete, source-supported, valid citations and scoped abstention by separately bound AI source review; preserve failures and human-gold gap"
+}

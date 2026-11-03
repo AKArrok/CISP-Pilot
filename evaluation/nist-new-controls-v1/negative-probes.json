@@ -1,0 +1,22 @@
+[
+  {
+    "id": "0",
+    "question": "TLS 1.3 握手密钥协商",
+    "target_control": null
+  },
+  {
+    "id": "1",
+    "question": "DNS 递归解析过程",
+    "target_control": null
+  },
+  {
+    "id": "2",
+    "question": "AES 密钥长度",
+    "target_control": null
+  },
+  {
+    "id": "3",
+    "question": "SQL 参数化防注入",
+    "target_control": null
+  }
+]

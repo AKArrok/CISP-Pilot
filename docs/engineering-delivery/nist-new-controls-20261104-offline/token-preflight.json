@@ -1,0 +1,108 @@
+[
+  {
+    "id": "new-control-01",
+    "locators": [
+      "ac-2",
+      "ia-2"
+    ],
+    "answer_input_tokens": 3110,
+    "judge_with_1024_token_answer_estimate": 4713
+  },
+  {
+    "id": "new-control-02",
+    "locators": [
+      "ac-2",
+      "ca-8"
+    ],
+    "answer_input_tokens": 3240,
+    "judge_with_1024_token_answer_estimate": 4846
+  },
+  {
+    "id": "new-control-03",
+    "locators": [
+      "ac-2",
+      "at-2"
+    ],
+    "answer_input_tokens": 3624,
+    "judge_with_1024_token_answer_estimate": 5306
+  },
+  {
+    "id": "new-control-04",
+    "locators": [
+      "au-6",
+      "ac-2"
+    ],
+    "answer_input_tokens": 3194,
+    "judge_with_1024_token_answer_estimate": 4800
+  },
+  {
+    "id": "new-control-05",
+    "locators": [
+      "au-6",
+      "ia-2"
+    ],
+    "answer_input_tokens": 2113,
+    "judge_with_1024_token_answer_estimate": 3470
+  },
+  {
+    "id": "new-control-06",
+    "locators": [
+      "au-6"
+    ],
+    "answer_input_tokens": 1684,
+    "judge_with_1024_token_answer_estimate": 2952
+  },
+  {
+    "id": "new-control-07",
+    "locators": [
+      "ia-2",
+      "at-2"
+    ],
+    "answer_input_tokens": 2541,
+    "judge_with_1024_token_answer_estimate": 3974
+  },
+  {
+    "id": "new-control-08",
+    "locators": [
+      "ia-2",
+      "ac-8"
+    ],
+    "answer_input_tokens": 2212,
+    "judge_with_1024_token_answer_estimate": 3634
+  },
+  {
+    "id": "new-control-09",
+    "locators": [
+      "ia-2"
+    ],
+    "answer_input_tokens": 1614,
+    "judge_with_1024_token_answer_estimate": 2879
+  },
+  {
+    "id": "new-control-10",
+    "locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "answer_input_tokens": 2535,
+    "judge_with_1024_token_answer_estimate": 3952
+  },
+  {
+    "id": "new-control-11",
+    "locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "answer_input_tokens": 2530,
+    "judge_with_1024_token_answer_estimate": 3947
+  },
+  {
+    "id": "new-control-12",
+    "locators": [
+      "ir-4",
+      "at-2"
+    ],
+    "answer_input_tokens": 2533,
+    "judge_with_1024_token_answer_estimate": 3950
+  }
+]

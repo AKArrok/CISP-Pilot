@@ -1,0 +1,429 @@
+{
+  "checks": [
+    {
+      "id": "at2-regression",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 416,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确拒答，指出资料仅涉培训控制，无考试命题、题量或频率证据，并区分培训频次与考试频率。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "记忆点：AT-2 中的 `at-2_prm_1`、`at-2_prm_2`、`at-02_odp.05`、`at-02_odp.06`、`at-02_odp.07` 均为待组织确定的参数，参数值待定不等于相关动作可选。",
+            "source_quote": "[at-2_smt.a.1] As part of initial training for new users and {{ insert: param, at-2_prm_1 }} thereafter; and"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "记忆点：AT-2 中的 `at-2_prm_1`、`at-2_prm_2`、`at-02_odp.05`、`at-02_odp.06`、`at-02_odp.07` 均为待组织确定的参数，参数值待定不等于相关动作可选。",
+            "source_quote": "[at-2_smt.b] Employ the following techniques to increase the security and privacy awareness of system users {{ insert: param, at-02_odp.05 }};"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-01",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 602,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "结论正确，共享账号非一律禁止，退出后须更改认证器；参数未赋值说明无误，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**结论：不是一律禁止。** AC-2 要求组织“定义并记录允许使用和明确禁止使用的账号类型”，共享账号属于组织可自行决定是否禁止的类型之一，并非控制项本身一律禁止。成员退出后，组织必须建立并实施相应流程，在个人被移出组时更改共享或组账号的认证器。",
+            "source_quote": "[ac-2_smt.k] Establish and implement a process for changing shared or group account authenticators (if deployed) when individuals are removed from the group; and"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **相关待定参数**：组和角色成员资格的“前提条件和标准”（ac-02_odp.01）在资料中未赋值，需由组织确定；这不影响上述“更改认证器”动作的强制性。",
+            "source_quote": "[{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}, {\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}, {\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}, {\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}, {\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}, {\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}, {\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}, {\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}, {\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}, {\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-02",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 487,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确区分三类账号，兜底账号不受自动停用约束，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不能。** 资料明确把紧急账号、临时账号与“不常用账号（含本地登录的兜底账号）”区分开：前两类面向短期使用，后者保持可用且**不受自动停用或删除日期约束**。因此不能用同一条“到期自动停用”规则概括这三类账号。",
+            "source_quote": "Temporary and emergency accounts are intended for short-term use. Organizations establish temporary accounts as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. Organizations establish emergency accounts in response to crisis situations and with the need for rapid account activation. Therefore, emergency account activation may bypass normal account authorization processes. Emergency and temporary accounts are not to be confused with infrequently used accounts, including local logon accounts used for special tasks or when network resources are unavailable (may also be known as accounts of last resort). Such accounts remain available and are not subject to automatic disabling or removal dates. Conditions for disabling or deactivating accounts include when shared/group, emergency, or temporary accounts are no longer required and when individuals are transferred or terminated. Changing shared/group authenticators when members leave the group is intended to ensure that former group members do not retain access to the shared or group account. Some types of system accounts may require specialized training."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "另外，资料列出的停用或停用条件包括：共享/组、紧急或临时账号不再需要时，以及人员调离或离职时。这进一步说明“到期自动停用”并非覆盖上述所有账号类型的统一规则。",
+            "source_quote": "Temporary and emergency accounts are intended for short-term use. Organizations establish temporary accounts as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. Organizations establish emergency accounts in response to crisis situations and with the need for rapid account activation. Therefore, emergency account activation may bypass normal account authorization processes. Emergency and temporary accounts are not to be confused with infrequently used accounts, including local logon accounts used for special tasks or when network resources are unavailable (may also be known as accounts of last resort). Such accounts remain available and are not subject to automatic disabling or removal dates. Conditions for disabling or deactivating accounts include when shared/group, emergency, or temporary accounts are no longer required and when individuals are transferred or terminated. Changing shared/group authenticators when members leave the group is intended to ensure that former group members do not retain access to the shared or group account. Some types of system accounts may require specialized training."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-03",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 826,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确指出24小时与安全主管均为待组织赋值参数，并区分审批针对账户创建请求，未将参数待定误作动作可选。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **通知时限**：AC-2 要求“在用户终止或调动时，于〔ac-02_odp.07〕内通知账户管理员和〔ac-02_odp.05〕”。ac-02_odp.07 的定义是“time period（时间期限）”，资料未赋值，须由组织确定；不能把“24小时”当作资料规定。",
+            "source_quote": "[ac-2_smt.h.2] {{ insert: param, ac-02_odp.07 }} when users are terminated or transferred; and"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **审批人**：AC-2 要求账户创建请求须经〔ac-02_odp.03〕批准。ac-02_odp.03 的定义是“personnel or roles（人员或角色）”，资料未指定为安全主管，须由组织确定。另外，该审批要求针对的是“创建账户的请求”，资料并未规定离职场景本身需要“安全主管审批”。",
+            "source_quote": "[ac-2_smt.e] Require approvals by {{ insert: param, ac-02_odp.03 }} for requests to create accounts;"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-04",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 463,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确否定维持原频率深度，准确区分频率参数与风险变化调整动作，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 需注意区分：`au-06_odp.01` 是\"审查和分析系统审计记录的频率\"参数，资料未赋值，属待组织确定；它不等于\"风险变化时调整级别\"这一动作本身。",
+            "source_quote": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- 报告发现的对象（`au-06_odp.03`，人员或角色）同样待组织定义，与本问题无直接关系，仅作区分提示。",
+            "source_quote": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-05",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 533,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确说明可由获授权其他组织执行，并准确区分频次与对象范围参数，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **待组织确定的参数**：审查分析的**频次**（au-06_odp.01）、需关注的**不当或异常活动**定义（au-06_odp.02）、接收发现的**人员或角色**（au-06_odp.03）均未赋值，须由组织定义。其中 au-06_odp.01 是频次参数，au-06_odp.03 是对象范围参数，二者含义不同，不能混用。",
+            "source_quote": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **仍需执行的动作**：审查分析、向指定对象报告发现、在风险变化时调整审查分析报告的级别，这些动作本身并未被取消；只是执行主体可能变为获授权的其他组织。",
+            "source_quote": "[au-6_gdn] Audit record review, analysis, and reporting covers information security- and privacy-related logging performed by organizations, including logging that results from the monitoring of account usage, remote access, wireless connectivity, mobile device connection, configuration settings, system component inventory, use of maintenance tools and non-local maintenance, physical access, temperature and humidity, equipment delivery and removal, communications at system interfaces, and use of mobile code or Voice over Internet Protocol (VoIP). Findings can be reported to organizational entities that include the incident response team, help desk, and security or privacy offices. If organizations are prohibited from reviewing and analyzing audit records or unable to conduct such activities, the review or analysis may be carried out by other organizations granted such authority. The frequency, scope, and/or depth of the audit record review, analysis, and reporting may be adjusted to meet organizational needs based on new information received."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-06",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 441,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "正确否定三者均为报告频率，并准确区分三个参数含义，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "不是。三个参数含义不同，只有 au-06_odp.01 与“频率”有关，且它是**审计记录审查分析的频率**，不是“报告发送频率”。",
+            "source_quote": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **au-06_odp.03**：label 为 personnel or roles，指接收审查分析结果的“人员或角色”（待组织定义），属于对象范围参数，不是频率参数。",
+            "source_quote": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-07",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 361,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确否定排他性，准确引用IA-2定义与IA-8区分，出处定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不是。** 按资料，组织用户包括员工，也包括组织认为具有与员工同等身份的人员，例如承包商和客座研究人员。",
+            "source_quote": "[ia-2_gdn] Organizations can satisfy the identification and authentication requirements by complying with the requirements in [HSPD 12](#f16e438e-7114-4144-bfe2-2dfcad8cb2d0) . Organizational users include employees or individuals who organizations consider to have an equivalent status to employees (e.g., contractors and guest researchers). Unique identification and authentication of users applies to all accesses other than those that are explicitly identified in [AC-14](#ac-14) and that occur through the authorized use of group authenticators without individual authentication. Since processes execute on behalf of groups and roles, organizations may require unique identification of individuals in group accounts or for detailed accountability of individual activity."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "易混淆点：IA-2 针对的是“组织用户”；非组织用户的标识和认证要求由 IA-8 描述，不能把两者混为一谈。",
+            "source_quote": "The use of encrypted virtual private networks for network connections between organization-controlled endpoints and non-organization-controlled endpoints may be treated as internal networks with respect to protecting the confidentiality and integrity of information traversing the network. Identification and authentication requirements for non-organizational users are described in [IA-8](#ia-8)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-08",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 352,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答准确区分本地、网络与远程访问，定义与资料一致，引用定位正确。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不能。** 按资料定义，本地访问是“不使用网络、通过直接连接”取得的访问；经组织内部局域网访问属于网络访问，不是本地访问。远程访问是网络访问的一种，指涉及通过外部网络通信的网络访问。",
+            "source_quote": "Organizations employ passwords, physical authenticators, or biometrics to authenticate user identities or, in the case of multi-factor authentication, some combination thereof. Access to organizational systems is defined as either local access or network access. Local access is any access to organizational systems by users or processes acting on behalf of users, where access is obtained through direct connections without the use of networks. Network access is access to organizational systems by users (or processes acting on behalf of users) where access is obtained through network connections (i.e., nonlocal accesses). Remote access is a type of network access that involves communication through external networks. Internal networks include local area networks and wide area networks."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **远程访问**：网络访问的子类，特征是通信经过**外部网络**。",
+            "source_quote": "Organizations employ passwords, physical authenticators, or biometrics to authenticate user identities or, in the case of multi-factor authentication, some combination thereof. Access to organizational systems is defined as either local access or network access. Local access is any access to organizational systems by users or processes acting on behalf of users, where access is obtained through direct connections without the use of networks. Network access is access to organizational systems by users (or processes acting on behalf of users) where access is obtained through network connections (i.e., nonlocal accesses). Remote access is a type of network access that involves communication through external networks. Internal networks include local area networks and wide area networks."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-09",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 439,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确拒答，准确引用IA-2唯一标识认证要求及例外，VPN仅涉机密性完整性，未误称唯一强制动作。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不能。** IA-2 只规定：组织控制的端点与非组织控制的端点之间使用加密 VPN 连接时，就保护穿越网络的信息的机密性和完整性而言，**可以视为内部网络**。这是对网络性质的认定，不是对唯一身份标识和认证要求的豁免。IA-2 要求对组织用户进行唯一标识和认证，并将该唯一标识与代表这些用户行事的进程关联；资料明确说，唯一标识和认证适用于除 AC-14 明确列出的访问以及通过经授权使用组认证器且无个人认证的访问之外的所有访问。加密 VPN 不在这些例外之列。",
+            "source_quote": "The use of encrypted virtual private networks for network connections between organization-controlled endpoints and non-organization-controlled endpoints may be treated as internal networks with respect to protecting the confidentiality and integrity of information traversing the network. Identification and authentication requirements for non-organizational users are described in [IA-8](#ia-8)."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "- **IA-2 的例外**：资料只提到 AC-14 明确列出的访问、经授权使用组认证器且无个人认证的访问；不能把 VPN 加入例外。",
+            "source_quote": "[ia-2_gdn] Organizations can satisfy the identification and authentication requirements by complying with the requirements in [HSPD 12](#f16e438e-7114-4144-bfe2-2dfcad8cb2d0) . Organizational users include employees or individuals who organizations consider to have an equivalent status to employees (e.g., contractors and guest researchers). Unique identification and authentication of users applies to all accesses other than those that are explicitly identified in [AC-14](#ac-14) and that occur through the authorized use of group authenticators without individual authentication. Since processes execute on behalf of groups and roles, organizations may require unique identification of individuals in group accounts or for detailed accountability of individual activity."
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-10",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 535,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答完整覆盖检测恢复不足及应急规划协同，各实质主张均有原文依据，引用定位准确。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**不够。** 事件处置能力必须覆盖准备、检测与分析、遏制、消除、恢复全过程，并且要与**应急规划（contingency planning）活动**协同。",
+            "source_quote": "[ir-4_smt.b] Coordinate incident handling activities with contingency planning activities;"
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**易混淆点**：协同对象是“应急规划活动”，不是事件响应计划本身——后者是事件处置能力须保持一致的对象（[ir-4_smt.a]），两者不要混为一谈。",
+            "source_quote": "[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incident response plan and includes preparation, detection and analysis, containment, eradication, and recovery;"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-11",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 2,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 632,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "结论正确，IR-4经验教训回灌与变更义务有据，参数待定未误判为可选，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 2,
+            "verdict": "supported",
+            "answer_quote": "- 资料2 的指南还指出，评估或审计发现、安全事件或违规等情形可能触发培训与意识内容的更新；但更新频率、触发事件等参数在资料中均为待组织确定的占位参数（如 at-02_odp.06、at-02_odp.07），资料未赋予具体值。参数待定只说明具体频次或事件由组织定义，并不表示“纳入经验教训并实施变更”这一动作可以省略。",
+            "source_quote": "[{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}, {\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}, {\"id\": \"at-02_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.03\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require security literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.04\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require privacy literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}, {\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}, {\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-control-12",
+      "status": "validated",
+      "citation_structure": {
+        "parsed_citations": 1,
+        "errors": [],
+        "semantic_citation_support": "not_scored"
+      },
+      "answer_chars": 529,
+      "grade": {
+        "scores": {
+          "completeness": 2,
+          "source_support": 2,
+          "citation_support": 2
+        },
+        "reason": "回答正确否定两个排他性前提，范围与协同主体均与资料一致，引用定位有效。",
+        "deductions": [],
+        "risk_checks": [
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "**结论：不是。** 按资料，疑似供应链事件包括“在组织系统或系统组件中插入假冒硬件或恶意代码”，并不限于恶意代码；事件处置协同涉及的主体中包含采购部门，资料未把采购、法务排除在外，也未表述为“完全无需参与”。",
+            "source_quote": "[ir-4_gdn] Organizations recognize that incident response capabilities are dependent on the capabilities of organizational systems and the mission and business processes being supported by those systems. Organizations consider incident response as part of the definition, design, and development of mission and business processes and systems. Incident-related information can be obtained from a variety of sources, including audit monitoring, physical access monitoring, and network monitoring; user or administrator reports; and reported supply chain events. An effective incident handling capability includes coordination among many organizational entities (e.g., mission or business owners, system owners, authorizing officials, human resources offices, physical security offices, personnel security offices, legal departments, risk executive [function], operations personnel, procurement offices). Suspected security incidents include the receipt of suspicious email communications that can contain malicious code. Suspected supply chain incidents include the insertion of counterfeit hardware or malicious code into organizational systems or system components. For federal agencies, an incident that involves personally identifiable information is considered a breach. A breach results in unauthorized disclosure, the loss of control, unauthorized acquisition, compromise, or a similar occurrence where a person other than an authorized user accesses or potentially accesses personally identifiable information or an authorized user accesses or potentially accesses such information for other than authorized purposes."
+          },
+          {
+            "source_ref": 1,
+            "verdict": "supported",
+            "answer_quote": "资料指出，有效的事件处置能力需要许多组织实体之间协同，列举的实体包括任务或业务负责人、系统负责人、授权官员、人力资源部门、物理安全部门、人员安全部门、法务部门、风险执行（职能）、运维人员和采购部门等。资料没有说采购和法务“完全无需参与”，相反把二者列入协同实体示例中。需注意，这是对协同范围的说明，资料并未就采购或法务规定具体的强制动作或权限分工。",
+            "source_quote": "[ir-4_gdn] Organizations recognize that incident response capabilities are dependent on the capabilities of organizational systems and the mission and business processes being supported by those systems. Organizations consider incident response as part of the definition, design, and development of mission and business processes and systems. Incident-related information can be obtained from a variety of sources, including audit monitoring, physical access monitoring, and network monitoring; user or administrator reports; and reported supply chain events. An effective incident handling capability includes coordination among many organizational entities (e.g., mission or business owners, system owners, authorizing officials, human resources offices, physical security offices, personnel security offices, legal departments, risk executive [function], operations personnel, procurement offices). Suspected security incidents include the receipt of suspicious email communications that can contain malicious code. Suspected supply chain incidents include the insertion of counterfeit hardware or malicious code into organizational systems or system components. For federal agencies, an incident that involves personally identifiable information is considered a breach. A breach results in unauthorized disclosure, the loss of control, unauthorized acquisition, compromise, or a similar occurrence where a person other than an authorized user accesses or potentially accesses personally identifiable information or an authorized user accesses or potentially accesses such information for other than authorized purposes."
+          }
+        ]
+      }
+    }
+  ],
+  "semantic_acceptance": "requires_separate_source_review",
+  "independent_human_gold": false
+}

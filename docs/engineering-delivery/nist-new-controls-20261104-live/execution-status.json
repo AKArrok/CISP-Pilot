@@ -1,0 +1,54 @@
+[
+  {
+    "id": "at2-regression",
+    "status": "completed"
+  },
+  {
+    "id": "new-control-01",
+    "status": "completed"
+  },
+  {
+    "id": "new-control-02",
+    "status": "completed"
+  },
+  {
+    "id": "new-control-03",
+    "status": "failed"
+  },
+  {
+    "id": "new-control-04",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-05",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-06",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-07",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-08",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-09",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-10",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-11",
+    "status": "not_started_after_failure"
+  },
+  {
+    "id": "new-control-12",
+    "status": "not_started_after_failure"
+  }
+]

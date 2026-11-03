@@ -1,0 +1,86 @@
+[
+  {
+    "id": "new-control-01",
+    "question": "共享账号在 AC-2 中是否一律禁止，成员退出后应如何处理共享认证器？",
+    "target_control": "ac-2",
+    "reference_criteria": "不能把may wish to prohibit当作一律禁止；已部署共享或组账号时成员退出应更改认证器",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-02",
+    "question": "临时账号、紧急账号和不常用的兜底账号是否可以用同一到期自动停用规则概括？",
+    "target_control": "ac-2",
+    "reference_criteria": "临时紧急短期；紧急可能绕过正常授权；不常用兜底不同且不受自动停用或移除日期影响，不说全部相同",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-03",
+    "question": "员工离职后能否直接按该资料写成24小时内通知安全主管并由他审批？",
+    "target_control": "ac-2",
+    "reference_criteria": "通知时间和额外接收者及审批角色是未赋值参数，不填24小时或固定主管；区分时间角色与动作",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-04",
+    "question": "风险因可信情报变化时，审计审查是否仍只能维持原定频率和深度？",
+    "target_control": "au-6",
+    "reference_criteria": "风险变化应调整审查分析报告水平；频率范围深度可按新信息组织需求调整，不虚构固定周期",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-05",
+    "question": "某组织无权审查审计日志，是否意味着日志永远不能由其他组织分析？",
+    "target_control": "au-6",
+    "reference_criteria": "可以由获此授权的其他组织执行，不能泛化为任意外部人员",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-06",
+    "question": "au-06_odp.01、.02和.03是否都表示报告发送频率？",
+    "target_control": "au-6",
+    "reference_criteria": "分别审查频次、关注异常活动类型和报告接收者；准确照原参数定义，不混类",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-07",
+    "question": "组织用户是否只包含正式员工，而排除承包商和客座研究人员？",
+    "target_control": "ia-2",
+    "reference_criteria": "包括被组织视为等同员工的人员，如承包商和客座研究人员；不把所有外部人员都当组织用户",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-08",
+    "question": "经组织内部局域网访问能否算成无需网络的本地访问？远程访问又是哪一类？",
+    "target_control": "ia-2",
+    "reference_criteria": "本地直接连接不用网络；局域网仍网络访问；远程经外部网络，是网络访问的一类",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-09",
+    "question": "用了加密VPN后，能否根据 IA-2 直接免除唯一身份标识和认证？",
+    "target_control": "ia-2",
+    "reference_criteria": "VPN可视为内部网络仅针对传输保密完整性保护，不推出身份认证豁免；不删除原文明确其他例外",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-10",
+    "question": "事件处置能力只要完成检测和恢复就够了吗，还要与哪类计划活动协同？",
+    "target_control": "ir-4",
+    "reference_criteria": "含准备检测分析遏制根除恢复，与应急计划活动协同",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-11",
+    "question": "事件报告存档后，IR-4 是否允许不再修改响应流程、培训和测试？",
+    "target_control": "ir-4",
+    "reference_criteria": "持续处理教训纳入响应流程培训测试并实施变化，不只存档",
+    "role": "new-control AI development preflight; not independent human gold"
+  },
+  {
+    "id": "new-control-12",
+    "question": "疑似供应链事件是否仅指恶意代码，采购和法务是否完全无需参与协同？",
+    "target_control": "ir-4",
+    "reference_criteria": "可包括假冒硬件和恶意代码；有效处置涉及多实体含采购法务，不声称每一事件必须所有列举部门全参加",
+    "role": "new-control AI development preflight; not independent human gold"
+  }
+]

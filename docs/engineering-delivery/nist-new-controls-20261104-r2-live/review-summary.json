@@ -1,0 +1,24 @@
+{
+  "questions": 12,
+  "old_regression": 1,
+  "corpus_controls": 8,
+  "new_target_controls": 4,
+  "retrieval": {
+    "bilingual_top1": 12,
+    "source_only_top1": 4,
+    "irrelevant_queries_with_hits": 0,
+    "irrelevant_query_count": 4
+  },
+  "completed_answers": 13,
+  "ai_source_review_accepted": 13,
+  "independent_human_gold": false,
+  "answer_chars_mean": 508.9230769230769,
+  "answer_seconds_mean": 2.3786153846155615,
+  "current_attempts": 33,
+  "current_cost_estimate_usd": 0.0336786,
+  "total_calls_in_user_budget": 249,
+  "total_known_estimate_usd": 0.22977,
+  "user_budget_usd": 3,
+  "resource_failure_preserved": "v1 stopped before review case03 estimated5071; seven calls, no retries",
+  "scope": "frozen bilingual BM25 actual top2 then answer and AI judge; not HTTP routing/rewrite/memory or production corpus"
+}

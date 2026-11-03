@@ -1,0 +1,11 @@
+{
+  "frozen_manifest_sha256": "fb4548c61d596c3fefebd344b6b19238dfd0e3bb692b2ac5dd717c532892a7a5",
+  "approved_user_total_usd": 3,
+  "prior_known_estimate_usd": 0.1960914,
+  "new_calls_max": 26,
+  "new_batch_cap_usd": 0.26,
+  "source": "same pinned public NIST catalog, four new base controls plus four seen distractors",
+  "selection": "frozen bilingual actual top2, no oracle contexts or target-label-based arm switch",
+  "limitations": "AI development criteria; exact question disjointness only; not human gold or whole application runtime",
+  "input_risk": "worst-case1024-token answer could put one judge prompt above5000 estimate; existing hard cap remains, stop without retry if hit"
+}

@@ -1,10 +1,28 @@
 import hashlib
 from pathlib import Path
 
-from scripts.eval_nist_batch import load, record_failure, request_content, retrieve
+from scripts.eval_nist_batch import input_token_limit, load, record_failure, request_content, retrieve, select_retrieval_arm
 
 
 PACKET = Path(__file__).resolve().parents[1] / "evaluation/nist-development-v1"
+
+
+def test_input_estimate_default_and_hard_ceiling():
+    import pytest
+    assert input_token_limit({}) == 5000
+    assert input_token_limit({"max_estimated_input_tokens": 5500}) == 5500
+    for invalid in (True, 0, -1, 5501, 6000, "5500", 5500.0):
+        with pytest.raises(ValueError, match="integer"):
+            input_token_limit({"max_estimated_input_tokens": invalid})
+
+
+def test_frozen_retrieval_arm_does_not_change_to_fit_test_labels():
+    import pytest
+    metrics = {"bilingual": {"top1": 1, "top4": 2}, "source_only": {"top1": 3, "top4": 3}}
+    assert select_retrieval_arm(metrics, "bilingual") == "bilingual"
+    assert select_retrieval_arm(metrics) == "source_only"
+    with pytest.raises(ValueError, match="Unknown frozen"):
+        select_retrieval_arm(metrics, "nonexistent")
 
 
 def test_line_evidence_protocol_does_not_require_answer_before_generation():
