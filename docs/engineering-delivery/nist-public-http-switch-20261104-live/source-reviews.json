@@ -1,0 +1,23 @@
+[
+  {
+    "id": "incident-first",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "status": "accepted_development_review",
+    "answer_sha256": "68098d447c405deaed2e744af7d1c1a1b9e8a22e55cf838cc446a429ebc34fe4",
+    "notes": "All five incident-handling phases retained; other mandatory actions distinguished"
+  },
+  {
+    "id": "incident-followup",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "status": "accepted_development_review",
+    "answer_sha256": "1866c972bdfabff0f4433b7a0ea111a3108117a038e58105b818900a97414151",
+    "notes": "Correct contingency-planning coordination; no stale account context"
+  },
+  {
+    "id": "explicit-topic-switch",
+    "reviewer": "Codex AI source review; not independent human gold",
+    "status": "accepted_development_review",
+    "answer_sha256": "8c7265db760a1e447f05c63c528422e7cdf1970164acd4ba711e41064fa9e5ab",
+    "notes": "Actual rewrite retains IA2 and local/network distinction; answer does not continue IR4 incident stages"
+  }
+]

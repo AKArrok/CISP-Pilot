@@ -1,0 +1,23 @@
+[
+  {
+    "id": "incident-first",
+    "thread_group": "switch",
+    "question": "IR-4 的事件处理能力应覆盖哪些阶段？",
+    "target_locator": "ir-4",
+    "criteria": "preparation, detection and analysis, containment, eradication, recovery; do not replace with backup-only tasks"
+  },
+  {
+    "id": "incident-followup",
+    "thread_group": "switch",
+    "question": "这些处理活动需要与哪类规划活动协同？",
+    "target_locator": "ir-4",
+    "criteria": "retain incident topic and coordinate contingency planning, distinguish consistency with incident response plan"
+  },
+  {
+    "id": "explicit-topic-switch",
+    "thread_group": "switch",
+    "question": "换个主题：IA-2 中，经内部局域网访问算本地访问吗？",
+    "target_locator": "ia-2",
+    "criteria": "honor explicit topic switch; LAN is network access, local uses direct connection without network; no stale incident-handling answer"
+  }
+]

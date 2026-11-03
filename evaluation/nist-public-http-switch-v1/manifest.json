@@ -1,0 +1,21 @@
+{
+  "role": "public-source multi-turn topic-switch development, not independent gold",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf",
+  "frozen_sha256": {
+    "cases.json": "460d31e05c0a0ee4e53b9e2b9887c30d9376b9cd95253211f1c0484314b1ac99",
+    "chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "prompts.json": "e6f5639c11b09dfd563a63de9f9d7ed67c13179d9eac665027b184042317c682"
+  },
+  "acceptance": "all3HTTP done, same thread histories2/4/6; real rewrites for two followups; IR4,IR4,IA2 actual source targets and supported answers; no stale-topic answer, known receipts, defaultDB unchanged"
+}

@@ -1,0 +1,10 @@
+{
+  "approved_total_usd": 3,
+  "prior_known_estimate_usd": 0.2330544,
+  "current_attempts": 8,
+  "current_known_estimate_usd": 0.0035955,
+  "cumulative_attempts": 263,
+  "cumulative_known_estimate_usd": 0.2366499,
+  "current_cost_unknown": false,
+  "policy": "peak cache-miss conservative estimates; not actual invoice; historical unknown503 outside this current grant ledger"
+}
