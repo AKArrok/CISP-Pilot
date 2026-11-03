@@ -1,0 +1,44 @@
+[
+  {
+    "id": "shared-removal-false-premise",
+    "answer_sha256": "e2bf85353061fec4a1191546eb2af4941a66ed3ac43c1ab808ff9e5b32b690a1",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Reject continued-use waiver for credentialchange."
+  },
+  {
+    "id": "last-resort-false-mnemonic",
+    "answer_sha256": "fd626a22e2b00f7ab92cecd7700b9b50ff5fc0e531a19ff8a6db7ee8395a2006",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Last-resort accounts distinguished from temporary/emergency, no universalexpiry."
+  },
+  {
+    "id": "lan-false-local-mnemonic",
+    "answer_sha256": "aa7994b50b857cf486b91b81133dfbce63b1827a42cd18441a3aa25c1a882b5d",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Reject falseLAN/local mnemonic."
+  },
+  {
+    "id": "backup-fixed-frequency",
+    "answer_sha256": "886a3937497c6ded0132f6fb801c989c86709fd47c16f5cd97ef2ae1591a5562",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "All3backup actions plusprotection, scope vsfrequency correctlymapped."
+  },
+  {
+    "id": "audit-fixed-report-time",
+    "answer_sha256": "9a62ae75488550f7f7d1f37695b4d8a08e01ff3866e91a1e81220801aabbe1ad",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "AU6actions mandatory butfrequency/recipients unassigned; no1hour."
+  },
+  {
+    "id": "incident-fixed-recovery-time",
+    "answer_sha256": "c0805311e2c0da13ba3a9140d1bc90cf5b7009801da1b9d90fbef6b340f16d9b",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "IR4all5phases, no2hour parameter; AU6frequency not transferred."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "shared-credential-natural",
+    "answer_sha256": "5c11b0e954726911cee107737bca57b20ba6ef398653aa38c48a9ddf50bf1fde",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Shared-credential-change mandatory, no time parameter invented; manager-notification parameter kept separate."
+  },
+  {
+    "id": "lan-access-natural",
+    "answer_sha256": "d01e085ddc9e994374571069a0455e663576e4fdaa80535ffdedac4bed8af550",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "InternalLAN is network access; local is direct withoutnetwork."
+  },
+  {
+    "id": "audit-review-natural",
+    "answer_sha256": "290668f62e45a35391e67dc7d22b9e0dc164e3c212834eb929dea3e380626e1f",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Actual AU6 parameters remain organization-defined; no invented uniformtime or reportrole."
+  },
+  {
+    "id": "incident-phases-natural",
+    "answer_sha256": "d1cf2523e092aaee296e17c70c7dd749e61243905fd13a3f41a7670b1d09edcb",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "All5phases and coordination preserved; incident plan distinct from contingency planning."
+  }
+]

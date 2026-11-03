@@ -1,0 +1,21 @@
+{
+  "role": "same4 frozen natural Chinese cases, parameter-existence prompt fix candidate; not independent gold",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf",
+  "frozen_sha256": {
+    "cases.json": "ab9c36413fb64b0c6abff9217f80f53657b01b7dbf2238f5a12f568f6d2c0185",
+    "chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "prompts.json": "6a31df0392e0bb6d741931df31aac819bd9754452c947aafad69c4b504be0387"
+  },
+  "acceptance": "All4 HTTPdone and durablepaired; targets AC2/IA2/AU6/IR4 present; source-supported answers meet frozencriteria, no invented fixedparameters; known boundedusage and defaultDB unchanged. No corpusalias tuning after seeing these questions to claim same unseen performance."
+}

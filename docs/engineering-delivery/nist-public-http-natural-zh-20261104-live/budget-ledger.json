@@ -1,0 +1,10 @@
+{
+  "approved_total_usd": 3,
+  "prior_calls": 286,
+  "prior_known_estimate_usd": 0.2494395,
+  "batch_calls": 8,
+  "batch_known_estimate_usd": 0.0049461,
+  "cumulative_calls": 294,
+  "cumulative_known_estimate_usd": 0.2543856,
+  "unknown_current_charge": false
+}

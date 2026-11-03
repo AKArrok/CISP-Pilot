@@ -1,0 +1,30 @@
+[
+  {
+    "id": "shared-credential-natural",
+    "thread_group": "account",
+    "question": "团队有人退出了，但大家合用的账号还要继续用，原来的共享登录凭据应该怎样处理？",
+    "target_locator": "ac-2",
+    "criteria": "Retrieve AC2 without explicit control ID; change shared/group authenticator when member removed, not necessarily close shared account or blanket ban."
+  },
+  {
+    "id": "lan-access-natural",
+    "thread_group": "network",
+    "question": "员工通过办公室内部局域网连接公司的服务器，这叫本地访问还是网络访问？为什么？",
+    "target_locator": "ia-2",
+    "criteria": "Retrieve IA2 without ID; internalLAN network access; local means direct withoutnetwork, not equate office physical presence tolocal."
+  },
+  {
+    "id": "audit-review-natural",
+    "thread_group": "audit",
+    "question": "系统审计日志应该多久分析一次，发现可疑情况要报告给谁？资料能给出统一的时间和岗位吗？",
+    "target_locator": "au-6",
+    "criteria": "Retrieve AU6 without ID; organization-definedfrequency, inappropriate/unusualactivities and impacts, report organization-defined personnel orroles; no invented uniformtime."
+  },
+  {
+    "id": "incident-phases-natural",
+    "thread_group": "incident",
+    "question": "发生安全事件后，隔离了受影响的主机就算处理结束了吗？事件处理能力还应包含哪些环节？",
+    "target_locator": "ir-4",
+    "criteria": "Retrieve IR4 without ID; containmentalone insufficient, cover preparation/detection-analysis/containment/eradication/recovery; do not infer detailed unprovided host procedure."
+  }
+]

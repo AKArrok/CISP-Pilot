@@ -1,0 +1,30 @@
+[
+  {
+    "id": "shared-credential-natural",
+    "answer_sha256": "e8c72d6056287fd8ef5fb666087fc1fb54b576edce550e3659018e623b64d144",
+    "accepted": false,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Reject unsupported claim that unspecified credential-change timing/frequency is an organization-defined parameter; actual AC2 time ODP06-08 are manager-notification and ODP10 account review, not authenticator-change time. Core action correct but extra parameter assertion ungrounded."
+  },
+  {
+    "id": "lan-access-natural",
+    "answer_sha256": "a2501d318c109311287b846f706a90d49ecbf40d5729144dd91d7376761c2f15",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Supported internal LAN network/local distinction."
+  },
+  {
+    "id": "audit-review-natural",
+    "answer_sha256": "dc3d1ed40a687738de95c9a358a67127892eca12fe4a6ffd1eabc48f151c82d1",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Supported organization-defined audit review and report recipients; no universal numbers invented."
+  },
+  {
+    "id": "incident-phases-natural",
+    "answer_sha256": "4f64d66281ac28a6effb2c25e69bdc6e3406bde5a6a57735b7aaff160b136db5",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Main phases and coordination supported; opening translation incident plan as contingency plan is less precise than later explicit distinction, retained as wording limitation."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "shared-credential-natural",
+    "answer_sha256": "b2bdfed103f9131690e63372c985d15a3320ed9dbc0ce1ae0b6f54739156d6f1",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Shared change rule retained; absence of time parameter distinguished from actual notification/review ODPs."
+  },
+  {
+    "id": "lan-access-natural",
+    "answer_sha256": "b9d55f7f1d8b40710f7a72e47168abe280ec5d60caddea4f7942b48b57b30029",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Correct local/network classification."
+  },
+  {
+    "id": "audit-review-natural",
+    "answer_sha256": "ab216cce64c2041403c3af32f734b6942882848a871d402150cbe030bc30ab39",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "Actual frequency and recipient parameters retained without inventedvalues."
+  },
+  {
+    "id": "incident-phases-natural",
+    "answer_sha256": "cc1b1018d8a5d750873e3037f52c505c65569a59492af4124fd78fb2125f29a3",
+    "accepted": true,
+    "reviewer": "Codex AI source review, not independent human gold",
+    "reason": "All5phases and feedback retained without inventeddeadline."
+  }
+]

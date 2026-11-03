@@ -1,21 +1,22 @@
 {
   "status": "in_progress",
-  "latest_runtime_commit": "fe32743",
+  "latest_runtime_commit": "2b2b507 + local parameter-existence prompt fix, pending commit",
   "answer_quality": {
     "new_controls": "12 new plus AT2 regression, source-review13/13; AI development only",
     "http": "3 baseline, 3 topic-switch, 3 leading-question outputs source-reviewed accepted; different frozen scenarios, not pooled generalization",
     "missing_parameters": "3/3 source-reviewed AI development; supports partial answer and rejects fabricated universal numeric deadlines",
-    "thread_isolation": "interleaved4/4 source reviewed; SQL per-request restore; no cross-user or process-restart claim"
+    "thread_isolation": "interleaved4/4 source reviewed; SQL per-request restore; no cross-user or process-restart claim",
+    "natural_chinese": "same4 without IDs baseline3/4; minimal prompt fix4/4 and repeat4/4; previous6regression6/6; allAI source development evidence"
   },
   "judge_calibration": "original disputed12 remains10/12; independent human gold missing",
-  "audit_hardening": "six negative evidence cases now rejected; five saved scenario audits checked by parametrized tests",
+  "audit_hardening": "six negative evidence cases rejected; nine saved HTTP scenarios checked; baseline semantic3/4 remains failed despite structural pass",
   "budget": {
     "approved_total_usd": 3,
-    "dispatch_attempts": 286,
-    "known_estimate_usd": 0.2494395,
+    "dispatch_attempts": 323,
+    "known_estimate_usd": 0.2726898,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "natural Chinese queries without explicit control IDs, frozen same8-doc corpus",
+  "next": "freeze larger public corpus retrieval comparison and answer-quality check, not tune aliases on seen failures; verify next exact-head CI",
   "git": "check newest exact-head CI; do not reuse historical green result"
 }

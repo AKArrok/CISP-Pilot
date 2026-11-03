@@ -1,0 +1,7 @@
+{
+  "application_git": "2b2b507a923a674901f41dccacfa3d745d9c029e",
+  "local_change": "single parameter-existence rule in agents/prompts.py",
+  "answer_system_sha256": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+  "frozen_prompt_sha256": "6a31df0392e0bb6d741931df31aac819bd9754452c947aafad69c4b504be0387",
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf"
+}

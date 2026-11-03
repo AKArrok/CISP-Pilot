@@ -1,0 +1,5 @@
+{
+  "application_git": "2b2b507a923a674901f41dccacfa3d745d9c029e",
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf",
+  "prompts": "frozenv1; production prompt changed only AFTER completed baseline"
+}

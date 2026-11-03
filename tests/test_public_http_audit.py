@@ -20,6 +20,10 @@ RUN = ROOT / "docs/engineering-delivery/nist-public-http-20261104-live"
     ("nist-public-http-leading-v2", "nist-public-http-leading-20261104-r2-live"),
     ("nist-public-http-insufficient-v1", "nist-public-http-insufficient-20261104-live"),
     ("nist-public-http-interleaved-v1", "nist-public-http-interleaved-20261104-live"),
+    ("nist-public-http-natural-zh-v1", "nist-public-http-natural-zh-20261104-live"),
+    ("nist-public-http-natural-zh-v2", "nist-public-http-natural-zh-20261104-r2-live"),
+    ("nist-public-http-paramfix-regression-v1", "nist-public-http-paramfix-regression-20261104-live"),
+    ("nist-public-http-natural-zh-repeat-v1", "nist-public-http-natural-zh-20261104-repeat-live"),
 ])
 def test_saved_real_http_preflight_has_bounded_evidence(packet, run):
     result = audit(ROOT / "evaluation" / packet, ROOT / "docs/engineering-delivery" / run)

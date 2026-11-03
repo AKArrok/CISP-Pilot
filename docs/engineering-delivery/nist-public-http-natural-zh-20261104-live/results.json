@@ -1,0 +1,998 @@
+[
+  {
+    "id": "shared-credential-natural",
+    "question": "团队有人退出了，但大家合用的账号还要继续用，原来的共享登录凭据应该怎样处理？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+            "locator": "ac-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "实验补充资料",
+            "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+            "locator": "ac-8",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "**结论：当有成员退出共享/组账号时，应建立并执行相应流程，更改该共享或组账号的认证凭据（authenticator），以确保退出成员不再保留对该共享或组账号的访问权。**\n\n依据与说明：\n\n- 资料在账户管理控制中明确要求：建立并实施一项流程，用于在个人被移出组时更改共享或组账号的认证凭据（若已部署此类账号）[ac-2_smt.k]。\n- 指南进一步说明，这样做的目的是确保前组成员不再保留对共享或组账号的访问权限 [ac-2_gdn]。\n- 同时，账户管理流程应与人员离职和调动流程保持一致 [ac-2_smt.l]；指南也把“个人被调动或离职”列为禁用或停用账户的条件之一 [ac-2_gdn]。\n\n易混淆点：这里要处理的是**共享/组账号的认证凭据轮换**，不是简单停用账号本身——账号继续使用，但凭据必须更换。资料未规定更换凭据的具体时限或频次，这部分属于组织待确定的参数范畴。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-2】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 2898,
+          "completion_tokens": 268
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "bb40ef26-9af8-4b75-9e46-f395f047b569",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "bb40ef26-9af8-4b75-9e46-f395f047b569",
+      "thread_id": "bed614e7-c3ed-4259-ba25-beccdfb05883",
+      "status": "completed",
+      "trace": {
+        "request_id": "bb40ef26-9af8-4b75-9e46-f395f047b569",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 6.8
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 18.3
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 18.5
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 21.6
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 1109.5
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 1110.3
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 1111.3
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 1111.8
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "miss",
+            "elapsed_ms": 1539.8
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 1539.8
+          },
+          {
+            "stage": "retrieval_rerank",
+            "outcome": "disabled",
+            "elapsed_ms": 1540.1
+          },
+          {
+            "stage": "retrieval_cache_write",
+            "outcome": "attempted",
+            "elapsed_ms": 1540.1
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 1540.7
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 1541.7
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 1542.3
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 1542.9
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 4245.1
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 4245.8
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 4249.9
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 4250.7
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 4250.8
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 4253.9
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 4258.4
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 518,
+              "completion_tokens": 50
+            },
+            "response_observed": true,
+            "started_ms": 146.7,
+            "ended_ms": 1108.4
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 2898,
+              "completion_tokens": 268
+            },
+            "response_observed": true,
+            "started_ms": 1614.7,
+            "ended_ms": 4244.8
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 2,
+          "counts": {
+            "chat": 2,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 85.75
+        },
+        "observation_deadline_at": 1793730667.8651283
+      },
+      "created_at": 1793730577.8715422,
+      "updated_at": 1793730582.1239684,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "elapsed_seconds": 4.28099999999904
+  },
+  {
+    "id": "lan-access-natural",
+    "question": "员工通过办公室内部局域网连接公司的服务器，这叫本地访问还是网络访问？为什么？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+            "locator": "ia-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "实验补充资料",
+            "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+            "locator": "ac-8",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "**结论：这属于网络访问（network access），不是本地访问。** 依据是 NIST SP 800-53 对两种访问的定义：本地访问指用户或代表用户的进程通过**不使用网络的直接连接**访问组织系统；网络访问指通过**网络连接**（即非本地访问）访问组织系统。\n\n**为什么：**\n- 员工通过办公室内部局域网连接服务器，访问是经由网络连接建立的，因此符合“网络访问”的定义。\n- 资料同时说明，内部网络包括局域网（LAN）和广域网（WAN）；也就是说，局域网属于网络，通过局域网接入仍属网络访问。\n- 资料还指出，远程访问是网络访问的一种，涉及通过外部网络通信。本例走的是内部局域网，不属于远程访问，但仍是网络访问。\n\n**易混淆点：**\n- “本地”不等于“在办公室内”或“物理位置近”，判断标准是**是否使用网络连接**，而不是地理位置。\n- 本地访问与网络访问的区分，与“内部网络/外部网络”“远程访问”是不同层次的概念：局域网属于内部网络，远程访问则属于经由外部网络的网络访问。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ia-2】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 1764,
+          "completion_tokens": 272
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "c51ac713-cafd-4909-aae2-e3b4e2d79230",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "c51ac713-cafd-4909-aae2-e3b4e2d79230",
+      "thread_id": "83763054-9b16-4b4c-9b81-b69a475bf4af",
+      "status": "completed",
+      "trace": {
+        "request_id": "c51ac713-cafd-4909-aae2-e3b4e2d79230",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 3.5
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 12.3
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 12.4
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 13.7
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 880.8
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 881.4
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 881.6
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 882.0
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "miss",
+            "elapsed_ms": 882.1
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 882.1
+          },
+          {
+            "stage": "retrieval_rerank",
+            "outcome": "disabled",
+            "elapsed_ms": 882.4
+          },
+          {
+            "stage": "retrieval_cache_write",
+            "outcome": "attempted",
+            "elapsed_ms": 882.4
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 882.7
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 883.2
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 883.5
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 883.9
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 2948.9
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 2949.4
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 2957.6
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 2958.6
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 2958.7
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 2962.1
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 2965.9
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 513,
+              "completion_tokens": 53
+            },
+            "response_observed": true,
+            "started_ms": 15.8,
+            "ended_ms": 880.0
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 1764,
+              "completion_tokens": 272
+            },
+            "response_observed": true,
+            "started_ms": 884.4,
+            "ended_ms": 2948.7
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 2,
+          "counts": {
+            "chat": 2,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 87.03099999999904
+        },
+        "observation_deadline_at": 1793730672.148917
+      },
+      "created_at": 1793730582.148917,
+      "updated_at": 1793730585.1145318,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "elapsed_seconds": 2.9690000000009604
+  },
+  {
+    "id": "audit-review-natural",
+    "question": "系统审计日志应该多久分析一次，发现可疑情况要报告给谁？资料能给出统一的时间和岗位吗？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+            "locator": "au-6",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "实验补充资料",
+            "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+            "locator": "ac-8",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "**不能给出统一的时间和岗位。** 资料把“审计记录审查分析的频次”和“接收审查发现的人员或角色”都列为待组织定义的参数，未赋值；资料只规定必须执行“按该频次审查分析、向该角色报告”的动作，具体取值由组织确定。\n\n**依据与要点：**\n\n- **频次**：AU-6 要求按参数 `au-06_odp.01`（label 为 frequency）所定义的频次，审查和分析系统审计记录，查找 `au-06_odp.02` 所定义的“不当或异常活动”迹象及其潜在影响。该参数在本资料中未赋值，因此没有统一的“多久一次”。\n- **报告对象**：要求将发现报告给参数 `au-06_odp.03`（label 为 personnel or roles）。该参数同样未赋值。指南仅举例说明发现可报告给事件响应团队、帮助台、安全或隐私办公室等组织实体，这属于示例，不是统一指定岗位。\n- **频次可调整**：当基于执法信息、情报信息或其他可信来源的信息，风险发生变化时，应在系统内调整审计记录审查、分析和报告的级别；指南也说明，频次、范围和/或深度可根据新信息按组织需要调整。\n- **易混淆点**：`au-06_odp.01` 是频次参数，`au-06_odp.03` 是人员或角色参数，两者含义不同，不能混用；参数待赋值不等于相关动作可选，审查分析并报告仍是必须执行的要求。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【au-6】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 1865,
+          "completion_tokens": 368
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "7ac59d51-1ed4-4b52-8f9d-104f8c5aab98",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "7ac59d51-1ed4-4b52-8f9d-104f8c5aab98",
+      "thread_id": "14044deb-9f41-419a-8596-14f8e54635bd",
+      "status": "completed",
+      "trace": {
+        "request_id": "7ac59d51-1ed4-4b52-8f9d-104f8c5aab98",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 3.6
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 13.5
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 13.7
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 14.8
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 693.1
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 693.7
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 693.8
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 694.2
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "miss",
+            "elapsed_ms": 694.3
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 694.3
+          },
+          {
+            "stage": "retrieval_rerank",
+            "outcome": "disabled",
+            "elapsed_ms": 694.8
+          },
+          {
+            "stage": "retrieval_cache_write",
+            "outcome": "attempted",
+            "elapsed_ms": 694.8
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 695.2
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 695.8
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 696.2
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 696.6
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 3560.4
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 3561.0
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 3564.0
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 3564.7
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 3564.7
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 3567.5
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 3571.1
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 519,
+              "completion_tokens": 50
+            },
+            "response_observed": true,
+            "started_ms": 16.0,
+            "ended_ms": 692.4
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 1865,
+              "completion_tokens": 368
+            },
+            "response_observed": true,
+            "started_ms": 697.0,
+            "ended_ms": 3560.1
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 2,
+          "counts": {
+            "chat": 2,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 86.42199999999866
+        },
+        "observation_deadline_at": 1793730675.1373482
+      },
+      "created_at": 1793730585.1390958,
+      "updated_at": 1793730588.7086658,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "elapsed_seconds": 3.5780000000013388
+  },
+  {
+    "id": "incident-phases-natural",
+    "question": "发生安全事件后，隔离了受影响的主机就算处理结束了吗？事件处理能力还应包含哪些环节？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+            "locator": "ir-4",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "实验补充资料",
+            "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+            "locator": "at-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "不算。隔离受影响主机只是事件处理过程中的遏制环节之一，不能视为处理结束。按资料，事件处理能力应覆盖准备、检测与分析、遏制、根除、恢复等环节，并与应急预案保持一致。\n\n要点：\n- **完整环节**：事件处理能力需与事件响应计划一致，包含准备（preparation）、检测与分析（detection and analysis）、遏制（containment）、根除（eradication）、恢复（recovery）。\n- **与其他活动协调**：事件处理活动应与应急规划（contingency planning）活动协调。\n- **经验反馈闭环**：应将事件处理中获得的经验教训纳入事件响应程序、培训和测试，并据此落实相应变更。\n- **一致性要求**：应确保事件处理活动的严谨性、强度、范围和结果在整个组织内具有可比性和可预测性。\n- **事件信息来源**：可来自审计监控、物理访问监控、网络监控、用户或管理员报告以及供应链事件报告等；可疑事件包括收到可能含恶意代码的可疑邮件，可疑供应链事件包括在系统或组件中插入假冒硬件或恶意代码。\n- **需多部门协同**：有效的事件处理能力需要任务或业务负责人、系统负责人、授权官员、人力资源、物理安全、人员安全、法务、风险执行职能、运维、采购等多个组织实体协同。\n\n易混淆点：隔离主机属于“遏制”，不等于“根除”和“恢复”，也不替代事后经验教训的纳入与整改。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ir-4】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 2112,
+          "completion_tokens": 332
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "e354ce4e-c8c2-411a-92e8-70e9f7c1f9ba",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "e354ce4e-c8c2-411a-92e8-70e9f7c1f9ba",
+      "thread_id": "3a5e6fff-c700-4ab0-a733-90f580ec22be",
+      "status": "completed",
+      "trace": {
+        "request_id": "e354ce4e-c8c2-411a-92e8-70e9f7c1f9ba",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 3.3
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 12.8
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 12.9
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 14.2
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 492.1
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 492.7
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 492.9
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 493.5
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "miss",
+            "elapsed_ms": 493.7
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 493.7
+          },
+          {
+            "stage": "retrieval_rerank",
+            "outcome": "disabled",
+            "elapsed_ms": 494.0
+          },
+          {
+            "stage": "retrieval_cache_write",
+            "outcome": "attempted",
+            "elapsed_ms": 494.0
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 494.6
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 495.2
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 495.5
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 496.0
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 3117.4
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 3118.1
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 3121.1
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 3122.0
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 3122.0
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 3125.3
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 3129.2
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 518,
+              "completion_tokens": 52
+            },
+            "response_observed": true,
+            "started_ms": 16.0,
+            "ended_ms": 491.3
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 2112,
+              "completion_tokens": 332
+            },
+            "response_observed": true,
+            "started_ms": 496.5,
+            "ended_ms": 3117.1
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 2,
+          "counts": {
+            "chat": 2,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 86.86000000000058
+        },
+        "observation_deadline_at": 1793730678.724041
+      },
+      "created_at": 1793730588.724041,
+      "updated_at": 1793730591.8620174,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "elapsed_seconds": 3.139999999999418
+  }
+]
