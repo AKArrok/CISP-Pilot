@@ -1,0 +1,18 @@
+{
+  "status": "offline_scope_completed",
+  "baseline_natural_top5": 2,
+  "candidate_natural_top5": 4,
+  "natural_cases": 4,
+  "baseline_old_development_top5": 30,
+  "candidate_old_development_top5": 35,
+  "old_development_cases": 44,
+  "old_hit_regressions": 0,
+  "remaining_old_misses": 9,
+  "negative_nist_top5_hits": 0,
+  "negative_cases": 8,
+  "provider_calls": 0,
+  "cost_usd": 0,
+  "independent_gold": false,
+  "production_index_changed": false,
+  "private_disclosure": "pending user confirmation; local packet has no authorization or dispatch lock"
+}

@@ -1,0 +1,21 @@
+{
+  "mode": "offline dev ranking diagnostic; private source text not exported",
+  "acceptance": "four frozen natural queries NIST target top5; four unrelated queries have no NIST in top5. No score tuning, no defaultDB writes. Rank presence not semantic acceptance.",
+  "source_sha256": {
+    "data/kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+    "evaluation/nist-public-http-natural-zh-v2/chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044"
+  },
+  "frozen_cases_sha256": "ab9c36413fb64b0c6abff9217f80f53657b01b7dbf2238f5a12f568f6d2c0185",
+  "configuration": {
+    "top_k": 5,
+    "dense": false,
+    "reranking": false,
+    "aliases": "unchanged frozen8NIST plus existing localcourseembedding_text, no synthetic standardanswers"
+  },
+  "negative_queries": [
+    "AES 支持哪些密钥长度？",
+    "DNS 域名解析如何工作？",
+    "TLS 握手如何协商会话密钥？",
+    "SQL 注入的参数化查询是什么？"
+  ]
+}

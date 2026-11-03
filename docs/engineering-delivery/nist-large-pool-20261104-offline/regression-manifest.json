@@ -1,0 +1,8 @@
+{
+  "frozen_sha256": {
+    "candidate-chunks.json": "4ec89abb1b9ceabf98b5765d1a245053e341c724d172bb18be32eb5e1400009f",
+    "regression-cases.json": "258848ee9dc40641df940f5d019af4d88d75724e9c6a91c76867f9ca18b9268b",
+    "negative-cases.json": "6adb4a78ea94937120ae86552f421f20a6fd9f760b4a72df1626fe7992fd98fb"
+  },
+  "acceptance": "4 natural targets top5; candidate targettop5 coverage for44oldcases no worse than baseline;8negative queries noNISTtop5; primarytexts unchanged, defaultDB unchanged; no paidcalls"
+}

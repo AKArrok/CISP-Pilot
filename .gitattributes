@@ -4,3 +4,4 @@ evaluation/**/*.json -text whitespace=cr-at-eol
 evaluation/**/NIST-LICENSE.md -text whitespace=cr-at-eol
 scripts/evaluate_public_http.py -text whitespace=cr-at-eol
 docs/engineering-delivery/nist-public-http-*/executor.py -text whitespace=cr-at-eol
+docs/engineering-delivery/nist-large-pool-20261104-offline/*.json -text whitespace=cr-at-eol

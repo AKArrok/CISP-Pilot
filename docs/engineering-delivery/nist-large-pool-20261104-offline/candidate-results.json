@@ -1,0 +1,71 @@
+{
+  "positive": [
+    {
+      "id": "shared-credential-natural",
+      "target": "ac-2",
+      "rank": 1,
+      "hit_locators": [
+        "ac-2",
+        "local-course-1d0f2a91db5a",
+        "local-course-34a2f187f2e1",
+        "local-course-bac7bfbc2b70",
+        "local-course-06ef2de171a4"
+      ]
+    },
+    {
+      "id": "lan-access-natural",
+      "target": "ia-2",
+      "rank": 1,
+      "hit_locators": [
+        "ia-2",
+        "local-course-7810c4e8767b",
+        "local-course-8bc3324c3d35",
+        "local-course-1eb833af00d2",
+        "local-course-7f93713556c6"
+      ]
+    },
+    {
+      "id": "audit-review-natural",
+      "target": "au-6",
+      "rank": 1,
+      "hit_locators": [
+        "au-6",
+        "local-course-c1224b555bda",
+        "local-course-6829008cfd76",
+        "local-course-5829e8d4c5b0",
+        "local-course-9d5b7c16d479"
+      ]
+    },
+    {
+      "id": "incident-phases-natural",
+      "target": "ir-4",
+      "rank": 1,
+      "hit_locators": [
+        "ir-4",
+        "local-course-e7104531bf37",
+        "local-course-38861e1b2ac4",
+        "local-course-3417d280fb3a",
+        "local-course-8a3f8d0cc461"
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "question": "AES 支持哪些密钥长度？",
+      "nist_hits": []
+    },
+    {
+      "question": "DNS 域名解析如何工作？",
+      "nist_hits": []
+    },
+    {
+      "question": "TLS 握手如何协商会话密钥？",
+      "nist_hits": []
+    },
+    {
+      "question": "SQL 注入的参数化查询是什么？",
+      "nist_hits": []
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,522 @@
+{
+  "baseline": {
+    "positive": [
+      {
+        "id": "nist-development-v1/ac-8-new-01",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-02",
+        "target": "ac-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-03",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-04",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-05",
+        "target": "ac-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-06",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-07",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-08",
+        "target": "ac-8",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/at-2-new-01",
+        "target": "at-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/at-2-new-02",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/at-2-new-03",
+        "target": "at-2",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/at-2-new-04",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/at-2-new-05",
+        "target": "at-2",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/at-2-new-06",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/at-2-new-07",
+        "target": "at-2",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/at-2-new-08",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-01",
+        "target": "cp-9",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-02",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-03",
+        "target": "cp-9",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-04",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-05",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-06",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-07",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-08",
+        "target": "cp-9",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-01",
+        "target": "ca-8",
+        "rank": 5
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-02",
+        "target": "ca-8",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-03",
+        "target": "ca-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-04",
+        "target": "ca-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-05",
+        "target": "ca-8",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-06",
+        "target": "ca-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-07",
+        "target": "ca-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-08",
+        "target": "ca-8",
+        "rank": 2
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-01",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-02",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-03",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-04",
+        "target": "au-6",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-05",
+        "target": "au-6",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-06",
+        "target": "au-6",
+        "rank": 2
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-07",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-08",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-09",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-10",
+        "target": "ir-4",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-11",
+        "target": "ir-4",
+        "rank": 3
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-12",
+        "target": "ir-4",
+        "rank": 1
+      }
+    ],
+    "negative": [
+      {
+        "question": "AES 支持哪些密钥长度？",
+        "nist_hits": []
+      },
+      {
+        "question": "DNS 域名解析如何工作？",
+        "nist_hits": []
+      },
+      {
+        "question": "TLS 握手如何协商会话密钥？",
+        "nist_hits": []
+      },
+      {
+        "question": "SQL 注入的参数化查询是什么？",
+        "nist_hits": []
+      },
+      {
+        "question": "Kerberos 的 AS 和 TGS 分别签发什么票据？",
+        "nist_hits": []
+      },
+      {
+        "question": "防火墙的代理与 NAT 地址转换有什么区别？",
+        "nist_hits": []
+      },
+      {
+        "question": "入侵检测系统的误报率与漏报率应怎样区分？",
+        "nist_hits": []
+      },
+      {
+        "question": "访问控制列表 ACL 的规则匹配顺序和隐式拒绝怎样工作？",
+        "nist_hits": []
+      }
+    ],
+    "top5": 30,
+    "negative_nist_hits": 0
+  },
+  "candidate": {
+    "positive": [
+      {
+        "id": "nist-development-v1/ac-8-new-01",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-02",
+        "target": "ac-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-03",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-04",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-05",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-06",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-07",
+        "target": "ac-8",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/ac-8-new-08",
+        "target": "ac-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/at-2-new-01",
+        "target": "at-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/at-2-new-02",
+        "target": "at-2",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/at-2-new-03",
+        "target": "at-2",
+        "rank": 4
+      },
+      {
+        "id": "nist-development-v1/at-2-new-04",
+        "target": "at-2",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/at-2-new-05",
+        "target": "at-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/at-2-new-06",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/at-2-new-07",
+        "target": "at-2",
+        "rank": 2
+      },
+      {
+        "id": "nist-development-v1/at-2-new-08",
+        "target": "at-2",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-01",
+        "target": "cp-9",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-02",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-03",
+        "target": "cp-9",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-04",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-05",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-06",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-07",
+        "target": "cp-9",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/cp-9-new-08",
+        "target": "cp-9",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-01",
+        "target": "ca-8",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-02",
+        "target": "ca-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-03",
+        "target": "ca-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-04",
+        "target": "ca-8",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-05",
+        "target": "ca-8",
+        "rank": 1
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-06",
+        "target": "ca-8",
+        "rank": null
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-07",
+        "target": "ca-8",
+        "rank": 3
+      },
+      {
+        "id": "nist-development-v1/ca-8-new-08",
+        "target": "ca-8",
+        "rank": 2
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-01",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-02",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-03",
+        "target": "ac-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-04",
+        "target": "au-6",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-05",
+        "target": "au-6",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-06",
+        "target": "au-6",
+        "rank": 2
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-07",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-08",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-09",
+        "target": "ia-2",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-10",
+        "target": "ir-4",
+        "rank": 1
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-11",
+        "target": "ir-4",
+        "rank": 3
+      },
+      {
+        "id": "nist-new-controls-v2/new-control-12",
+        "target": "ir-4",
+        "rank": 1
+      }
+    ],
+    "negative": [
+      {
+        "question": "AES 支持哪些密钥长度？",
+        "nist_hits": []
+      },
+      {
+        "question": "DNS 域名解析如何工作？",
+        "nist_hits": []
+      },
+      {
+        "question": "TLS 握手如何协商会话密钥？",
+        "nist_hits": []
+      },
+      {
+        "question": "SQL 注入的参数化查询是什么？",
+        "nist_hits": []
+      },
+      {
+        "question": "Kerberos 的 AS 和 TGS 分别签发什么票据？",
+        "nist_hits": []
+      },
+      {
+        "question": "防火墙的代理与 NAT 地址转换有什么区别？",
+        "nist_hits": []
+      },
+      {
+        "question": "入侵检测系统的误报率与漏报率应怎样区分？",
+        "nist_hits": []
+      },
+      {
+        "question": "访问控制列表 ACL 的规则匹配顺序和隐式拒绝怎样工作？",
+        "nist_hits": []
+      }
+    ],
+    "top5": 35,
+    "negative_nist_hits": 0
+  }
+}

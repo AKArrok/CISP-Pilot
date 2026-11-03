@@ -1,0 +1,74 @@
+[
+  {
+    "id": "nist-development-v1/ac-8-new-02",
+    "question": "警告横幅在什么情况下可以从屏幕消失？",
+    "target_locator": "ac-8",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-06",
+    "question": "培训内容是否需要涉及个人身份信息的处理？",
+    "target_locator": "at-2",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-08",
+    "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+    "target_locator": "at-2",
+    "target_rank_top5": null,
+    "diagnosis": "question needs source/conversation scope; do not insert target ID from labels",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-02",
+    "question": "用户级信息与系统级信息在指南中如何区分？",
+    "target_locator": "cp-9",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-04",
+    "question": "备份传输保护关联哪两个控制编号？",
+    "target_locator": "cp-9",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-05",
+    "question": "备份计划除应急计划还要考虑什么要求？",
+    "target_locator": "cp-9",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-06",
+    "question": "涉及个人健康信息的备份要求应向哪些人员咨询？",
+    "target_locator": "cp-9",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-07",
+    "question": "该控制是否指定只能购买某一家公司的备份软件？",
+    "target_locator": "cp-9",
+    "target_rank_top5": null,
+    "diagnosis": "question needs source/conversation scope; do not insert target ID from labels",
+    "status": "open_development_diagnostic"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-06",
+    "question": "测试人员所需独立程度由什么指导？",
+    "target_locator": "ca-8",
+    "target_rank_top5": null,
+    "diagnosis": "short retrieval summary omits relevant source detail or lexical specificity; not proven absence of valid course answer",
+    "status": "open_development_diagnostic"
+  }
+]

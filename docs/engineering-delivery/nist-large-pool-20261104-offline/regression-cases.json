@@ -1,0 +1,222 @@
+[
+  {
+    "id": "nist-development-v1/ac-8-new-01",
+    "question": "登录告知应在授予访问权限之前还是之后出现？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-02",
+    "question": "警告横幅在什么情况下可以从屏幕消失？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-03",
+    "question": "不存在人机界面的系统需要使用告知吗？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-04",
+    "question": "公开访问系统的告知需要说明授权用途吗？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-05",
+    "question": "告知是否需要考虑多语言用户？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-06",
+    "question": "登录网络以后还需要考虑应用层的二次告知吗？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-07",
+    "question": "该控制是否允许在用户确认前隐藏警告横幅？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/ac-8-new-08",
+    "question": "这份资料是否规定登录告知必须每隔五分钟弹出？",
+    "target_locator": "ac-8"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-01",
+    "question": "安全与隐私培训的用户是否包括承包商？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-02",
+    "question": "培训内容是否应随远程工作环境变化而调整？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-03",
+    "question": "列举资料中两种提升安全意识的具体手段。",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-04",
+    "question": "后续培训是否可以采用简短临时专题形式？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-05",
+    "question": "适用法规变化是否可能触发培训内容更新？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-06",
+    "question": "培训内容是否需要涉及个人身份信息的处理？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-07",
+    "question": "该控制是否规定培训只能使用海报一种方式？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/at-2-new-08",
+    "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+    "target_locator": "at-2"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-01",
+    "question": "系统级备份信息包含哪些软件类别？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-02",
+    "question": "用户级信息与系统级信息在指南中如何区分？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-03",
+    "question": "备份完整性可以使用哪两种技术机制保护？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-04",
+    "question": "备份传输保护关联哪两个控制编号？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-05",
+    "question": "备份计划除应急计划还要考虑什么要求？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-06",
+    "question": "涉及个人健康信息的备份要求应向哪些人员咨询？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-07",
+    "question": "该控制是否指定只能购买某一家公司的备份软件？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/cp-9-new-08",
+    "question": "该控制是否允许跳过包含隐私文档的系统文档备份？",
+    "target_locator": "cp-9"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-01",
+    "question": "渗透测试与自动漏洞扫描相比有什么区别？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-02",
+    "question": "渗透测试团队应具备哪些可证明的能力？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-03",
+    "question": "时间资源技能如何影响渗透测试？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-04",
+    "question": "从IPv4迁移IPv6时为什么值得关注渗透测试？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-05",
+    "question": "漏洞分析结果能否支持渗透测试活动？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-06",
+    "question": "测试人员所需独立程度由什么指导？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-07",
+    "question": "这份资料是否规定每次渗透测试必须持续七天？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-development-v1/ca-8-new-08",
+    "question": "渗透测试是否只能从组织外部进行？",
+    "target_locator": "ca-8"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-01",
+    "question": "共享账号在 AC-2 中是否一律禁止，成员退出后应如何处理共享认证器？",
+    "target_locator": "ac-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-02",
+    "question": "临时账号、紧急账号和不常用的兜底账号是否可以用同一到期自动停用规则概括？",
+    "target_locator": "ac-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-03",
+    "question": "员工离职后能否直接按该资料写成24小时内通知安全主管并由他审批？",
+    "target_locator": "ac-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-04",
+    "question": "风险因可信情报变化时，审计审查是否仍只能维持原定频率和深度？",
+    "target_locator": "au-6"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-05",
+    "question": "某组织无权审查审计日志，是否意味着日志永远不能由其他组织分析？",
+    "target_locator": "au-6"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-06",
+    "question": "au-06_odp.01、.02和.03是否都表示报告发送频率？",
+    "target_locator": "au-6"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-07",
+    "question": "组织用户是否只包含正式员工，而排除承包商和客座研究人员？",
+    "target_locator": "ia-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-08",
+    "question": "经组织内部局域网访问能否算成无需网络的本地访问？远程访问又是哪一类？",
+    "target_locator": "ia-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-09",
+    "question": "用了加密VPN后，能否根据 IA-2 直接免除唯一身份标识和认证？",
+    "target_locator": "ia-2"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-10",
+    "question": "事件处置能力只要完成检测和恢复就够了吗，还要与哪类计划活动协同？",
+    "target_locator": "ir-4"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-11",
+    "question": "事件报告存档后，IR-4 是否允许不再修改响应流程、培训和测试？",
+    "target_locator": "ir-4"
+  },
+  {
+    "id": "nist-new-controls-v2/new-control-12",
+    "question": "疑似供应链事件是否仅指恶意代码，采购和法务是否完全无需参与协同？",
+    "target_locator": "ir-4"
+  }
+]

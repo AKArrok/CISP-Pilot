@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "latest_runtime_commit": "2b2b507 + local parameter-existence prompt fix, pending commit",
+  "latest_runtime_commit": "1135677",
   "answer_quality": {
     "new_controls": "12 new plus AT2 regression, source-review13/13; AI development only",
     "http": "3 baseline, 3 topic-switch, 3 leading-question outputs source-reviewed accepted; different frozen scenarios, not pooled generalization",
@@ -17,6 +17,20 @@
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "freeze larger public corpus retrieval comparison and answer-quality check, not tune aliases on seen failures; verify next exact-head CI",
-  "git": "check newest exact-head CI; do not reuse historical green result"
+  "next": "await confirmation before mixed private-course model calls; offline remaining9source/context diagnostics retained; no target-label query injection",
+  "git": "check newest exact-head CI; do not reuse historical green result",
+  "latest_runtime_ci": {
+    "run": 41695158879,
+    "conclusion": "success"
+  },
+  "targeted_regression": "47 passed; Ruff passed",
+  "mixed_pool": {
+    "documents": 1085,
+    "natural_top5": "2/4 to4/4",
+    "old_target_top5": "30/44 to35/44;9misses retained",
+    "negative_nist_top5": "0/8",
+    "production_index_changed": false,
+    "provider_calls": 0,
+    "private_scope_confirmation": "pending; packet local only, no authorization/dispatch"
+  }
 }
