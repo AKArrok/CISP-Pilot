@@ -1,0 +1,35 @@
+{
+  "arms": {
+    "summary": "docs/engineering-delivery/nist-large-pool-20261104-offline/candidate-chunks.json",
+    "fulltext": "docs/engineering-delivery/nist-search-translation-20261104-live/translated-chunks.json",
+    "passage": "docs/engineering-delivery/nist-search-translation-20261104-live/passage-chunks.json",
+    "multilevel": "docs/engineering-delivery/nist-search-translation-20261104-live/multilevel-chunks.json",
+    "multiscale": "docs/engineering-delivery/nist-search-translation-20261104-live/multiscale-chunks.json"
+  },
+  "frozen_sha256": {
+    "data/kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+    "evaluation/nist-public-http-natural-zh-v2/chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "evaluation/nist-public-http-natural-zh-v2/cases.json": "ab9c36413fb64b0c6abff9217f80f53657b01b7dbf2238f5a12f568f6d2c0185",
+    "docs/engineering-delivery/nist-large-pool-20261104-offline/regression-cases.json": "258848ee9dc40641df940f5d019af4d88d75724e9c6a91c76867f9ca18b9268b",
+    "docs/engineering-delivery/nist-large-pool-20261104-offline/negative-cases.json": "6adb4a78ea94937120ae86552f421f20a6fd9f760b4a72df1626fe7992fd98fb",
+    "docs/engineering-delivery/nist-large-pool-20261104-offline/candidate-chunks.json": "4ec89abb1b9ceabf98b5765d1a245053e341c724d172bb18be32eb5e1400009f",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/translated-chunks.json": "12bbe3e23463453a1eda17862f51c030ecf3492f2c8fc0381df0adac1ad8d660",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/passage-chunks.json": "bbe9e19e3b362dc39dfc9812c7e263f2026fdb5c32641b235b0d21b7ce5a19cc",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/multilevel-chunks.json": "6acffa2b10122b4d45583e178112cade13ea9f7fdb178e574de34781d1f3c970",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/multiscale-chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693"
+  },
+  "protocol": "same actual HybridRetriever; BM25-only, cold-cache, existing parent dedup; comparison arms isolated; model/embedding prohibited",
+  "acceptance": "natural4top5; all prior summary35oldhits retained;8negative noNISTtop5. Primary source text/parameters/locator unchanged. Old failures preserved, new source metadata development only.",
+  "retrieval_config": {
+    "ENABLE_QUERY_REWRITE": true,
+    "DENSE_DEGRADED_SPARSE_K": 60,
+    "SPARSE_K": 20,
+    "RRF_K": 60
+  },
+  "code_sha256": {
+    "retrieval/bm25.py": "18faf59998dd0a9387fedbb809559e692af7f85ffcafbf6c5482118c8381f150",
+    "retrieval/hybrid.py": "9724877ed2e00d7cb4bdf17f450c043eae1aa0fcdf6306dc7576a60fcc545cf7",
+    "retrieval/query_rewrite.py": "656a19ec90b164ab8676bfdda69f4bd722e55142b89699bddc67de8f4a4fcbeb",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/replay.py": "e9599f99aeb71d7a5005df145e7765711f226264ab83142f563d2f139a8442f4"
+  }
+}

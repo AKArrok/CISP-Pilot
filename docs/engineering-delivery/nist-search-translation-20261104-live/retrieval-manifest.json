@@ -1,0 +1,11 @@
+{
+  "frozen_sha256": {
+    "translated-chunks.json": "12bbe3e23463453a1eda17862f51c030ecf3492f2c8fc0381df0adac1ad8d660",
+    "source-translation-review.json": "d44e233da99de64450c8b394410fe492733104b171ef9a6951c7946c5da51e7c"
+  },
+  "source_inputs_sha256": {
+    "data/kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4"
+  },
+  "reference_packet": "docs/engineering-delivery/nist-large-pool-20261104-offline",
+  "acceptance": "natural4all top5; no earlier35oldhits lost; noNISTtop5for8negative. Original9misses and all raw translations retained. Full-source translation input excluded questions and labels."
+}

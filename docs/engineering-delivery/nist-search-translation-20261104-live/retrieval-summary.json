@@ -1,0 +1,38 @@
+{
+  "counts": {
+    "summary": {
+      "natural_top5": 4,
+      "old_top5": 35,
+      "negative_nist_top5": 0
+    },
+    "fulltext": {
+      "natural_top5": 4,
+      "old_top5": 34,
+      "negative_nist_top5": 0
+    },
+    "passage": {
+      "natural_top5": 4,
+      "old_top5": 40,
+      "negative_nist_top5": 0
+    },
+    "multilevel": {
+      "natural_top5": 4,
+      "old_top5": 41,
+      "negative_nist_top5": 0
+    },
+    "multiscale": {
+      "natural_top5": 4,
+      "old_top5": 42,
+      "negative_nist_top5": 0
+    }
+  },
+  "original_untranslated_baseline_raw_top5": 30,
+  "old_cases": 44,
+  "natural_cases": 4,
+  "negative_cases": 8,
+  "source_parents": 931,
+  "multiscale_index_documents": 1178,
+  "default_index_changed": false,
+  "passed": true,
+  "scope": "AI development retrieval; not answer accuracy or human gold"
+}

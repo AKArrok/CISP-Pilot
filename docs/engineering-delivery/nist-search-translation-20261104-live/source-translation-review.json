@@ -1,0 +1,31 @@
+{
+  "reviewer": "Codex AI source-fidelity review; not independent human gold",
+  "raw_translations_immutable": true,
+  "corrections": [
+    {
+      "segment": "ir-4-2",
+      "before": "违规",
+      "after": "泄露（breach）",
+      "reason": "Source defines a breach involving PII; violation is not an adequate term here."
+    },
+    {
+      "segment": "cp-9-1",
+      "before": "加密哈希",
+      "after": "密码学哈希",
+      "reason": "cryptographic hash is not encrypted hash."
+    },
+    {
+      "segment": "ac-8-2",
+      "before": "隐私便利措施",
+      "after": "隐私安排",
+      "reason": "privacy accommodations concerns system privacy arrangements."
+    },
+    {
+      "segment": "ia-2-1",
+      "before": "用户的唯一标识与认证适用于除[AC-14](#ac-14)中明确标识的访问之外的所有访问，以及通过经授权使用组认证器而未进行个体认证而发生的访问。",
+      "after": "除[AC-14](#ac-14)中明确标识的访问，以及经授权使用组认证器而不进行个体认证的访问之外，其他访问均须唯一标识并认证用户。",
+      "reason": "Keep both exception classes within the scope of other than; do not convert an exception to an included requirement."
+    }
+  ],
+  "scope": "retrieval text only; original English remains the sole citation evidence"
+}

@@ -1,0 +1,17 @@
+{
+  "mode": "public NIST source-only translation for retrieval metadata; questions and labels excluded",
+  "max_calls": 22,
+  "budget_usd": 0.2,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_tokens": 1024,
+  "max_retries": 0,
+  "max_estimated_input_tokens": 2000,
+  "frozen_sha256": {
+    "chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "segments.json": "9bb603cb546468349beb153b6ff3a3a5b5ca944ecd7291a49a5eae160dad737e",
+    "system-prompt.txt": "27458213993fb15be67fa8cfbba08e0b192278965b9b2c786ed783a7c4bffc22"
+  },
+  "acceptance": "all frozen segments translated, known usage, no truncation, source primarytext unchanged; then offline ranking evaluation with old failures retained; translations never evidence quotations",
+  "executor_sha256": "d495eae84695ffdd7e3155c07ccedd36e898fdad158fb9d08fa608f338fffe88"
+}

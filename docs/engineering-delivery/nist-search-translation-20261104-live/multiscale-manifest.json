@@ -1,0 +1,5 @@
+{
+  "sha256": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+  "strategy": "same8parents:8summaries+22translated segments+sentence-boundary120charpassages; existing parentdedup; no score/threshold/sourceboost",
+  "acceptance": "same4natural top5; retain all41prioroldhits under same applicationparentprotocol;8negative noNISTtop5; original primarytexts unchanged; contextual failure questions unchanged"
+}

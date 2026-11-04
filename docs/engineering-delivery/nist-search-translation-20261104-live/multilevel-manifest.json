@@ -1,0 +1,5 @@
+{
+  "sha256": "6acffa2b10122b4d45583e178112cade13ea9f7fdb178e574de34781d1f3c970",
+  "strategy": "retain8shortsource summaries plus22translated source passages; same8parents; existing uniqueparent dedup; no per-question boosts",
+  "acceptance": "same4natural top5; retain all35oldsummary hits under same parentprotocol;8negative noNISTtop5; all original source text unchanged; old failures retained"
+}

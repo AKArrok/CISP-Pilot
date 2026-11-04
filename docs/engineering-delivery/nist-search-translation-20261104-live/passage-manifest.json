@@ -1,0 +1,6 @@
+{
+  "mode": "existing HybridRetriever cold-cache sparse retrieval; existing unique-parent dedup, no dense/model calls",
+  "candidate_sha256": "bbe9e19e3b362dc39dfc9812c7e263f2026fdb5c32641b235b0d21b7ce5a19cc",
+  "acceptance": "same4natural top5 and all prior35oldhits retained; noNISTtop5for8negative; compare previous summary corpus using same parent-dedup protocol; primary source unchanged, no corpus/version cache cross-arm reuse",
+  "additional_scope": "raw-rank fulltext candidate failure remains failed; distinct-parent protocol matches existing application and is separately reported"
+}
