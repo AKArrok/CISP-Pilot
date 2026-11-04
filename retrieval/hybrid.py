@@ -96,12 +96,17 @@ class HybridRetriever:
             if config.ENABLE_QUERY_VARIANTS else []
         # 检索结果 Redis 缓存（同一查询/域过滤组合在 TTL 内直接复用）
         import hashlib
+        if not hasattr(self, "_corpus_fingerprint"):
+            self._corpus_fingerprint = hashlib.sha256(json.dumps(
+                self._chunks_by_id, ensure_ascii=False, sort_keys=True,
+                separators=(",", ":"),
+            ).encode()).hexdigest()
         ctx_fp = hashlib.md5(
             json.dumps(sorted(context_pages or []), ensure_ascii=False).encode()
         ).hexdigest()[:8] if context_pages else "none"
         var_fp = hashlib.md5(json.dumps(variants, ensure_ascii=False).encode()).hexdigest()[:8]
         cache_payload = (
-            f"{query}|{retrieval_query}|{top_k}|{domain}|ctx{ctx_fp}|var{var_fp}|"
+            f"{query}|{retrieval_query}|{top_k}|{domain}|ctx{ctx_fp}|var{var_fp}|corpus{self._corpus_fingerprint}|"
             f"dense{int(config.ENABLE_DENSE_RETRIEVAL and not self._dense_degraded)}|"
             f"d{config.DENSE_K}|s{config.SPARSE_K}|rrf{config.RRF_K}|"
             f"feature{config.ENABLE_FEATURE_RERANKING}|"
