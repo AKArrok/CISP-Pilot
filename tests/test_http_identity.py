@@ -60,6 +60,21 @@ def _thread_requests(thread_id):
     ]
 
 
+def test_new_thread_limit_recovers_without_weakening_account_isolation(accounts, monkeypatch):
+    _users, clients, _threads = accounts
+    clock = {"now": 1000.0}
+    monkeypatch.setattr(cache.time, "time", lambda: clock["now"])
+    for _ in range(20):
+        assert clients[0].post("/api/threads").status_code == 201
+        clock["now"] += .1
+    assert clients[0].post("/api/threads").status_code == 429
+    assert clients[1].post("/api/threads").status_code == 201
+    clock["now"] = 1059.0
+    assert clients[0].post("/api/threads").status_code == 429
+    clock["now"] = 1061.0
+    assert clients[0].post("/api/threads").status_code == 201
+
+
 def test_cross_account_and_legacy_thread_requests_are_denied_without_side_effects(accounts, monkeypatch):
     _users, clients, threads = accounts
     from agents.graph import SessionStore

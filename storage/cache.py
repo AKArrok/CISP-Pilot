@@ -68,9 +68,9 @@ class _MemClient:
 
     def incr(self, key: str) -> int:
         self._purge()
-        _, val = self._data.get(key, (None, b"0"))
+        exp, val = self._data.get(key, (None, b"0"))
         n = int(val) + 1
-        self._data[key] = (None, str(n).encode())
+        self._data[key] = (exp, str(n).encode())
         return n
 
     def expire(self, key: str, seconds: int) -> None:
