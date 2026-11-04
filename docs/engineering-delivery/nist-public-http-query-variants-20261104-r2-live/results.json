@@ -1,0 +1,771 @@
+[
+  {
+    "id": "original-training-score-repeat0",
+    "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+            "locator": "ia-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+            "locator": "ac-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "本次检索到的资料不足以回答“是否要求所有员工培训考试必须取得九十分”这一问题：资料[1]和[2]均未涉及员工培训考试的合格分数要求。资料[2]仅在账户管理指南中提及“某些类型的系统账户可能需要专门培训”，但未规定考试或分数（通用补充：培训考核合格线通常由组织自身制度确定）。\n\n【出处】[资料2]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-2】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 3018,
+          "completion_tokens": 108
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "664ea355-e2ea-4a82-8b6d-4777f6472eda",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "664ea355-e2ea-4a82-8b6d-4777f6472eda",
+      "thread_id": "45215e69-48f8-4875-9853-9567c1a0578e",
+      "status": "completed",
+      "trace": {
+        "request_id": "664ea355-e2ea-4a82-8b6d-4777f6472eda",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 5.6
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 16.5
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 16.7
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 19.8
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 1029.5
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 1030.3
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 1853.2
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 1853.8
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "miss",
+            "elapsed_ms": 2418.3
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 2418.3
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 2418.9
+          },
+          {
+            "stage": "retrieval_dense",
+            "outcome": "disabled_by_config",
+            "elapsed_ms": 2419.4
+          },
+          {
+            "stage": "retrieval_rerank",
+            "outcome": "disabled",
+            "elapsed_ms": 2419.8
+          },
+          {
+            "stage": "retrieval_cache_write",
+            "outcome": "attempted",
+            "elapsed_ms": 2419.8
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 2420.7
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 2421.8
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 2422.4
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 2423.0
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 4016.8
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 4017.5
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 4022.1
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 4022.8
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 4022.8
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 4027.3
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 4032.1
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 570,
+              "completion_tokens": 50
+            },
+            "response_observed": true,
+            "started_ms": 199.5,
+            "ended_ms": 1028.1
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "rewrite",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 412,
+              "completion_tokens": 64
+            },
+            "response_observed": true,
+            "started_ms": 1031.5,
+            "ended_ms": 1852.7
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 3018,
+              "completion_tokens": 108
+            },
+            "response_observed": true,
+            "started_ms": 2499.3,
+            "ended_ms": 4016.5
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 3,
+          "counts": {
+            "chat": 3,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 85.96899999999732
+        },
+        "observation_deadline_at": 1793805353.8525765
+      },
+      "created_at": 1793805263.855103,
+      "updated_at": 1793805267.8853428,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "client_case_started_monotonic": 34543.593,
+    "elapsed_seconds": 4.062000000005355
+  },
+  {
+    "id": "original-training-score-repeat1",
+    "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+            "locator": "ia-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+            "locator": "ac-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "本次检索到的资料不足以回答“是否要求所有员工培训考试必须取得九十分”这一问题：资料中没有关于员工培训考试合格分数线的规定。资料仅提到“某些类型的系统账户可能需要专门培训”，未涉及考试分数要求。\n\n【出处】[资料2]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-2】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 3018,
+          "completion_tokens": 79
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "10db2356-62bc-4253-a6f8-bd8232566b1e",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "10db2356-62bc-4253-a6f8-bd8232566b1e",
+      "thread_id": "67809489-8d1f-4666-9dd7-ab8db1a2a13c",
+      "status": "completed",
+      "trace": {
+        "request_id": "10db2356-62bc-4253-a6f8-bd8232566b1e",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 3.3
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 13.0
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 13.1
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 14.5
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 941.2
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 941.8
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 1693.4
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 1693.9
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "hit",
+            "elapsed_ms": 1694.2
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 1694.4
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 1695.0
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 1695.4
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 1695.8
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 2773.1
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 2773.7
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 2777.0
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 2778.0
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 2778.0
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 2781.0
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 2784.8
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 570,
+              "completion_tokens": 50
+            },
+            "response_observed": true,
+            "started_ms": 16.0,
+            "ended_ms": 940.2
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "rewrite",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 412,
+              "completion_tokens": 64
+            },
+            "response_observed": true,
+            "started_ms": 942.7,
+            "ended_ms": 1693.0
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 3018,
+              "completion_tokens": 79
+            },
+            "response_observed": true,
+            "started_ms": 1696.2,
+            "ended_ms": 2772.8
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 3,
+          "counts": {
+            "chat": 3,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 87.20300000000134
+        },
+        "observation_deadline_at": 1793805357.9217262
+      },
+      "created_at": 1793805267.927863,
+      "updated_at": 1793805270.7125628,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "client_case_started_monotonic": 34547.671,
+    "elapsed_seconds": 2.813000000001921
+  },
+  {
+    "id": "original-training-score-repeat2",
+    "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+    "events": [
+      {
+        "type": "intent",
+        "intent": "knowledge"
+      },
+      {
+        "type": "contexts",
+        "contexts": [
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+            "locator": "ia-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          },
+          {
+            "source": "NIST SP 800-53 5.2.0 OSCAL",
+            "page": null,
+            "domain": "隔离开发资料",
+            "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+            "locator": "ac-2",
+            "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+          }
+        ]
+      },
+      {
+        "type": "token",
+        "content": "本次检索到的资料不足以回答“是否要求所有员工培训考试必须取得九十分”这一问题：资料中没有关于员工培训考试合格分数线的规定。资料中与培训相关的内容仅为账户管理指南提到“某些类型的系统账户可能需要专门培训”，未涉及考试或分数要求。【出处】[资料2]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-2】"
+      },
+      {
+        "type": "usage",
+        "usage": {
+          "prompt_tokens": 3018,
+          "completion_tokens": 87
+        },
+        "scope": "answer_and_evidence_receipts_only_excludes_router_rewrite_embedding_reranking_unobserved_retries",
+        "billing_cost": null
+      },
+      {
+        "type": "trace",
+        "request_id": "93a80908-9d47-4b88-9652-26e5759825b8",
+        "trace_persisted": true,
+        "conversation_commit": "confirmed"
+      },
+      {
+        "type": "done"
+      }
+    ],
+    "trace": {
+      "request_id": "93a80908-9d47-4b88-9652-26e5759825b8",
+      "thread_id": "0554d6c9-b762-4579-81ac-f8ca6ac153da",
+      "status": "completed",
+      "trace": {
+        "request_id": "93a80908-9d47-4b88-9652-26e5759825b8",
+        "events": [
+          {
+            "stage": "history",
+            "outcome": "started",
+            "elapsed_ms": 4.2
+          },
+          {
+            "stage": "history",
+            "outcome": "completed",
+            "elapsed_ms": 13.0
+          },
+          {
+            "stage": "graph",
+            "outcome": "started",
+            "elapsed_ms": 13.1
+          },
+          {
+            "stage": "route",
+            "outcome": "started",
+            "elapsed_ms": 14.3
+          },
+          {
+            "stage": "route",
+            "outcome": "completed",
+            "elapsed_ms": 1130.9
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "started",
+            "elapsed_ms": 1131.5
+          },
+          {
+            "stage": "rewrite",
+            "outcome": "completed",
+            "elapsed_ms": 2171.0
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "started",
+            "elapsed_ms": 2171.7
+          },
+          {
+            "stage": "retrieval_cache",
+            "outcome": "hit",
+            "elapsed_ms": 2172.1
+          },
+          {
+            "stage": "retrieve",
+            "outcome": "completed",
+            "elapsed_ms": 2172.5
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "started",
+            "elapsed_ms": 2173.1
+          },
+          {
+            "stage": "recall_memory",
+            "outcome": "completed",
+            "elapsed_ms": 2173.4
+          },
+          {
+            "stage": "answer",
+            "outcome": "started",
+            "elapsed_ms": 2173.8
+          },
+          {
+            "stage": "answer",
+            "outcome": "completed",
+            "elapsed_ms": 4122.6
+          },
+          {
+            "stage": "persist",
+            "outcome": "started",
+            "elapsed_ms": 4123.2
+          },
+          {
+            "stage": "conversation_commit",
+            "outcome": "confirmed",
+            "elapsed_ms": 4131.1
+          },
+          {
+            "stage": "short_memory_cache",
+            "outcome": "completed",
+            "elapsed_ms": 4131.7
+          },
+          {
+            "stage": "long_memory_write",
+            "outcome": "completed",
+            "elapsed_ms": 4131.7
+          },
+          {
+            "stage": "persist",
+            "outcome": "completed",
+            "elapsed_ms": 4134.6
+          },
+          {
+            "stage": "graph",
+            "outcome": "completed",
+            "elapsed_ms": 4137.5
+          }
+        ],
+        "dropped_events": 0,
+        "conversation_commit": "confirmed",
+        "model_calls": [
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "route",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 570,
+              "completion_tokens": 50
+            },
+            "response_observed": true,
+            "started_ms": 15.7,
+            "ended_ms": 1129.9
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "rewrite",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 412,
+              "completion_tokens": 64
+            },
+            "response_observed": true,
+            "started_ms": 1132.4,
+            "ended_ms": 2170.5
+          },
+          {
+            "requested_model": "deepseek-flash",
+            "response_model": "deepseek-flash",
+            "stage": "answer",
+            "status": "completed",
+            "usage": {
+              "prompt_tokens": 3018,
+              "completion_tokens": 87
+            },
+            "response_observed": true,
+            "started_ms": 2174.2,
+            "ended_ms": 4122.3
+          }
+        ],
+        "dropped_model_calls": 0,
+        "service_calls": [],
+        "dropped_service_calls": 0,
+        "service_call_scope": "application_embedding_rerank_attempts_excludes_legacy_sdk_internal_retries",
+        "cost": {
+          "amount": null,
+          "currency": null,
+          "rate_source": null,
+          "status": "unknown_unbound_pricing",
+          "scope": "observed_receipts_not_provider_invoice"
+        },
+        "model_call_scope": "application_chat_attempts_excludes_sdk_internal_retries_embedding_reranking",
+        "scope": "history_graph_nodes_sql_commit_optional_memory_retrieval_observations",
+        "budget": {
+          "max_calls": 6,
+          "timeout_seconds": 90.0,
+          "max_output_tokens": 1024,
+          "max_attempts_per_call": 1,
+          "total_calls": 3,
+          "counts": {
+            "chat": 3,
+            "embedding": 0,
+            "local_embedding": 0,
+            "local_rerank": 0,
+            "rerank": 0
+          },
+          "closed": true,
+          "reason": "completed",
+          "remaining_seconds": 85.85900000000402
+        },
+        "observation_deadline_at": 1793805361.0185163
+      },
+      "created_at": 1793805271.024588,
+      "updated_at": 1793805275.1578848,
+      "recovery": {
+        "state": "recorded_terminal",
+        "reason": "terminal_observed",
+        "next_action": "refresh_history",
+        "execution_stopped": null
+      }
+    },
+    "history_rows": 2,
+    "client_case_started_monotonic": 34550.765,
+    "elapsed_seconds": 4.155999999995402
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "role": "Same originalquestion3repeats, source unchanged; only3logicalstopwords andcache namespace changed; no gold-control hints or threshold reduction",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 6,
+  "budget_usd": 0.06,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "9cd7fad5690c1c91fed0b3f66651861b66982e98d5e94e9e558ac84948f87973",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "fd98c2c7c84cfe6bd26b72efb617f31a586dcaf06417b64297c3f366eba1473a"
+  },
+  "acceptance": "Frozenquestions and primarysource immutable, allrequests done with durabletrace, validcitation, source/support correctness and criteria preserved. Targetmiss remainsfailure even if scopedrefusal is safe. AI development only, no independenthuman gold."
+}

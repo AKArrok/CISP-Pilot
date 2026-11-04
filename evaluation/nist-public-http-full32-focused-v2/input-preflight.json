@@ -1,0 +1,290 @@
+[
+  {
+    "id": "ac-8-new-01",
+    "locators": [
+      "ac-8",
+      "at-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3101
+  },
+  {
+    "id": "ac-8-new-02",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3674
+  },
+  {
+    "id": "ac-8-new-03",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3663
+  },
+  {
+    "id": "ac-8-new-04",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3668
+  },
+  {
+    "id": "ac-8-new-05",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3662
+  },
+  {
+    "id": "ac-8-new-06",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3670
+  },
+  {
+    "id": "ac-8-new-07",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3672
+  },
+  {
+    "id": "ac-8-new-08",
+    "locators": [
+      "ac-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3671
+  },
+  {
+    "id": "at-2-new-01",
+    "locators": [
+      "at-2",
+      "ac-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3100
+  },
+  {
+    "id": "at-2-new-02",
+    "locators": [
+      "at-2",
+      "au-6"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3009
+  },
+  {
+    "id": "at-2-new-03",
+    "locators": [
+      "at-2",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2916
+  },
+  {
+    "id": "at-2-new-04",
+    "locators": [
+      "at-2",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 4011
+  },
+  {
+    "id": "at-2-new-05",
+    "locators": [
+      "at-2",
+      "ac-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3098
+  },
+  {
+    "id": "at-2-new-06",
+    "locators": [
+      "at-2",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2912
+  },
+  {
+    "id": "at-2-new-07",
+    "locators": [
+      "at-2",
+      "ia-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2925
+  },
+  {
+    "id": "at-2-new-08",
+    "locators": [
+      "ac-2",
+      "ia-2"
+    ],
+    "target_present": false,
+    "estimated_answer_input_tokens": 3501
+  },
+  {
+    "id": "cp-9-new-01",
+    "locators": [
+      "cp-9",
+      "ca-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2640
+  },
+  {
+    "id": "cp-9-new-02",
+    "locators": [
+      "cp-9",
+      "ca-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2639
+  },
+  {
+    "id": "cp-9-new-03",
+    "locators": [
+      "cp-9",
+      "ca-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2644
+  },
+  {
+    "id": "cp-9-new-04",
+    "locators": [
+      "cp-9",
+      "ia-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2522
+  },
+  {
+    "id": "cp-9-new-05",
+    "locators": [
+      "cp-9",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2516
+  },
+  {
+    "id": "cp-9-new-06",
+    "locators": [
+      "cp-9",
+      "at-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3043
+  },
+  {
+    "id": "cp-9-new-07",
+    "locators": [
+      "cp-9",
+      "ca-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2647
+  },
+  {
+    "id": "cp-9-new-08",
+    "locators": [
+      "cp-9",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3614
+  },
+  {
+    "id": "ca-8-new-01",
+    "locators": [
+      "ca-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3619
+  },
+  {
+    "id": "ca-8-new-02",
+    "locators": [
+      "ca-8",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2522
+  },
+  {
+    "id": "ca-8-new-03",
+    "locators": [
+      "ca-8",
+      "au-6"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2608
+  },
+  {
+    "id": "ca-8-new-04",
+    "locators": [
+      "ca-8",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2525
+  },
+  {
+    "id": "ca-8-new-05",
+    "locators": [
+      "ca-8",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2521
+  },
+  {
+    "id": "ca-8-new-06",
+    "locators": [
+      "ca-8",
+      "ac-2"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 3613
+  },
+  {
+    "id": "ca-8-new-07",
+    "locators": [
+      "ca-8",
+      "ir-4"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2526
+  },
+  {
+    "id": "ca-8-new-08",
+    "locators": [
+      "ca-8",
+      "ac-8"
+    ],
+    "target_present": true,
+    "estimated_answer_input_tokens": 2702
+  }
+]

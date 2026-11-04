@@ -1,0 +1,22 @@
+{
+  "role": "focused complete answer policy, answer temperature0; same6 prior frozen source-bound regression cases",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 13,
+  "budget_usd": 0.13,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "95fcf7d9e88a340f8390394b28ea058afe5f41217cd860ca107303a8524e09cf",
+  "frozen_sha256": {
+    "cases.json": "b672227f992fb576575f46fa34ab8a0d65997cf8617c7f1a907bf443eebc925e",
+    "chunks.json": "56f8254d16833deab3791e3546d5f935433a60087e31f24e63fa7d82a3ac8044",
+    "prompts.json": "f2ef6f88ffc362f32099a7934248dae1f85b56650b3070daecc50ce62799b6bd"
+  },
+  "acceptance": "Same frozen6 prior case texts/criteria and corpus; all done durable, expectedsource, corrected falsepremises and no invented universalparameters. Knownusage, defaultDB unchanged. Do not modify case labels to pass.",
+  "answer_temperature": 0
+}

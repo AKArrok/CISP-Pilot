@@ -1,0 +1,23 @@
+{
+  "role": "Original32 unchanged; routerfix broad current-version regression with3.1s pacing. Original failed20outputs retained.",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 64,
+  "budget_usd": 0.64,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "764c80573b7fe5c612697384fab5c9ac7214838f22aff0cbd266145ef36d4b91",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "f68797c67de97a0109b1d57200a4d4b574198ba104a7f1dad8f3232206ec722f"
+  },
+  "acceptance": "Original32 questions and source-support standards unchanged; all done,durable,valid citations and source reviewed; no paraphrase/criteria changes to pass. Preserve any failures. Public original NIST only, no private course data or standardanswers in index; defaultDB unchanged, known boundedusage."
+}

@@ -1,0 +1,249 @@
+{
+  "approved_total_usd": 3,
+  "anchor_calls": 323,
+  "anchor_known_estimate_usd": 0.2726898,
+  "batches": [
+    {
+      "batch": "public-translation",
+      "calls": 22,
+      "known_estimate_usd": 0.0060228,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "mixed-baseline",
+      "calls": 8,
+      "known_estimate_usd": 0.0045564,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "temporal-r1",
+      "calls": 2,
+      "known_estimate_usd": 0.0010296,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "temporal-r2",
+      "calls": 2,
+      "known_estimate_usd": 0.0009738,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "temporal-r2-repeat",
+      "calls": 8,
+      "known_estimate_usd": 0.0044724,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "public-temporal-v1",
+      "calls": 13,
+      "known_estimate_usd": 0.0079998,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "temporal-r3",
+      "calls": 8,
+      "known_estimate_usd": 0.0047148,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "mixed-multiscale",
+      "calls": 8,
+      "known_estimate_usd": 0.0044376,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "public-temporal-v2",
+      "calls": 13,
+      "known_estimate_usd": 0.0079791,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "mixed-temp0",
+      "calls": 8,
+      "known_estimate_usd": 0.00435,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "mixed-focused",
+      "calls": 8,
+      "known_estimate_usd": 0.0035952000000000002,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "mixed-focused-complete",
+      "calls": 8,
+      "known_estimate_usd": 0.0036588000000000002,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "mixed-focused-complete-repeat",
+      "calls": 8,
+      "known_estimate_usd": 0.0036528000000000008,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only; approved private source excerpts excluded from Git"
+    },
+    {
+      "batch": "public-focused-regression",
+      "calls": 13,
+      "known_estimate_usd": 0.0066357,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "public-full32-first-stopped",
+      "calls": 39,
+      "known_estimate_usd": 0.021264000000000005,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "public-route-fix",
+      "calls": 10,
+      "known_estimate_usd": 0.0050121,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "public-full32-second-stopped",
+      "calls": 40,
+      "known_estimate_usd": 0.022647299999999995,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public original source only"
+    },
+    {
+      "batch": "public-remainder",
+      "calls": 24,
+      "known_estimate_usd": 0.0122538,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-scopefix-v1",
+      "calls": 25,
+      "known_estimate_usd": 0.013821899999999996,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-scopefix-v2",
+      "calls": 25,
+      "known_estimate_usd": 0.013821299999999998,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "mixed-scopefix",
+      "calls": 8,
+      "known_estimate_usd": 0.0037103999999999995,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, specifically approved4private excerpts; excluded fromGit"
+    },
+    {
+      "batch": "mixed-citationfix",
+      "calls": 8,
+      "known_estimate_usd": 0.003752399999999999,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, specifically approved4private excerpts; excluded fromGit"
+    },
+    {
+      "batch": "mixed-citation-repeat",
+      "calls": 8,
+      "known_estimate_usd": 0.0037871999999999997,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, specifically approved4private excerpts; excluded fromGit"
+    },
+    {
+      "batch": "public-citation-regression",
+      "calls": 35,
+      "known_estimate_usd": 0.019032900000000002,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-inference-boundary",
+      "calls": 12,
+      "known_estimate_usd": 0.0070734,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-full32-final",
+      "calls": 64,
+      "known_estimate_usd": 0.036241499999999996,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-queryvariants-v1",
+      "calls": 9,
+      "known_estimate_usd": 0.0043343999999999995,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-queryvariants-v2",
+      "calls": 9,
+      "known_estimate_usd": 0.0043392,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-functionwords",
+      "calls": 6,
+      "known_estimate_usd": 0.0032237999999999998,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "public-full32-functionwords",
+      "calls": 64,
+      "known_estimate_usd": 0.0356412,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "mixed-functionwords",
+      "calls": 8,
+      "known_estimate_usd": 0.0037571999999999996,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, specifically approved4private excerpts; excluded fromGit"
+    },
+    {
+      "batch": "public-minimal-answer",
+      "calls": 25,
+      "known_estimate_usd": 0.014222699999999998,
+      "unknown_charge": false,
+      "raw_evidence_scope": "public NIST only"
+    },
+    {
+      "batch": "mixed-minimal-answer",
+      "calls": 8,
+      "known_estimate_usd": 0.00405,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, specifically approved4private excerpts; excluded fromGit"
+    },
+    {
+      "batch": "mixed-default-answer-retained",
+      "calls": 8,
+      "known_estimate_usd": 0.0045179999999999994,
+      "unknown_charge": false,
+      "raw_evidence_scope": "local only, same4 specifically approved private excerpts; excluded fromGit"
+    }
+  ],
+  "cumulative_calls": 887,
+  "cumulative_known_estimate_usd": 0.5732733,
+  "unknown_current_charge": false,
+  "cost_basis": "peak cache-miss conservative estimate, not provider invoice"
+}

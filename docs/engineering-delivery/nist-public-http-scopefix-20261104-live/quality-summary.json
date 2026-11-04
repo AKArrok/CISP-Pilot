@@ -1,0 +1,22 @@
+{
+  "structural_passed": true,
+  "execution_complete": true,
+  "budget_receipts_valid": true,
+  "source_review": {
+    "planned": 12,
+    "recorded": 12,
+    "reviewed": 12,
+    "accepted": 9,
+    "missing_ids": [],
+    "failed_ids": [
+      "cp-9-new-07-repeat0",
+      "cp-9-new-07-repeat1",
+      "cp-9-new-07-repeat2"
+    ],
+    "all_reviewed_and_accepted": false,
+    "independent_human_gold": false,
+    "evidence_scope": "Saved AI source annotations; binding validates provenance, not semantic truth"
+  },
+  "development_checks_passed": false,
+  "automatic_production_acceptance": false
+}

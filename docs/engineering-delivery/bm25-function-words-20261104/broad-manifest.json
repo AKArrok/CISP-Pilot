@@ -1,0 +1,46 @@
+{
+  "cases": [
+    "tests/fixtures/retrieval_gold.json",
+    "tests/fixtures/retrieval_holdout.json"
+  ],
+  "arms": {
+    "baseline": [],
+    "combined": [
+      "是否",
+      "所有",
+      "必须"
+    ]
+  },
+  "original_stopwords": [
+    "一个",
+    "下列",
+    "与",
+    "主要",
+    "了",
+    "以下",
+    "以下哪一项",
+    "关于",
+    "及",
+    "可以",
+    "和",
+    "哪一种",
+    "哪些",
+    "哪项",
+    "在",
+    "对于",
+    "或",
+    "是",
+    "的",
+    "能够",
+    "进行",
+    "通过"
+  ],
+  "acceptance": "All original180 evidenceinputs resolve, candidate loses no baseline top5 hit; no question/evidence/threshold changes, zero provider calls. Existingcases are regression, not novel independent gold.",
+  "frozen_sha256": {
+    "data/kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+    "tests/fixtures/retrieval_gold.json": "67391b09f705ebd12a2077b6e70be1ee129483a191389ecc2802459f17ed5cb6",
+    "tests/fixtures/retrieval_holdout.json": "a2b3b0a6e5abca393b75fe3cf7e848f91cbc6007e176208cca7cae8cb8b0a6d8",
+    "tests/eval_retrieval_gold.py": "2e6ad4ac88569ece8fc3ac5320529ea6cf79aed31c3266ea747efb109f4dcd9f",
+    "docs/engineering-delivery/bm25-function-words-20261104/broad-replay.py": "db5f8a82f460f8ed665462174d4d67cfc9b320a804de82cb3ea2d9c2f3b0adc1"
+  }
+}

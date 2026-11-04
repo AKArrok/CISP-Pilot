@@ -113,7 +113,8 @@ class HybridRetriever:
             f"learned{config.ENABLE_LEARNED_RANKING}:{config.LEARNED_RANKER_QUERY_TYPES}:{config.LEARNED_RANKER_PATH}|"
             f"rerank{config.ENABLE_RERANKING}:{config.RERANK_BACKEND}:{config.RERANK_TOP_K}"
         )
-        cache_key = f"ret:{hashlib.md5(cache_payload.encode()).hexdigest()}"
+        # v2 excludes question logic words from BM25; do not reuse pre-change ranks.
+        cache_key = f"ret:v2:{hashlib.md5(cache_payload.encode()).hexdigest()}"
         from storage import cache
         cached = cache.get_json(cache_key)
         if cached is not None:

@@ -1,0 +1,190 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "cp-9-new-05",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-06",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-07",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-08",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-01",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-02",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-03",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-04",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-05",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-06",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-07",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ca-8-new-08",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    }
+  ],
+  "budget_receipts_valid": true,
+  "default_database_unchanged": true,
+  "execution_complete": true,
+  "semantic_source_review": "required separately",
+  "independent_human_gold": false
+}

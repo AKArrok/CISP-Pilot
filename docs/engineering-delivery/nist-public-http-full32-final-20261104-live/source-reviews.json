@@ -1,0 +1,226 @@
+[
+  {
+    "id": "ac-8-new-01",
+    "answer_sha256": "3177738b4ca61f9de729e947dc7426518911ea41a800969decb789c6affc1154",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-02",
+    "answer_sha256": "89c972a76000a8ee978b96dfc8d312e7319510857f22c219707e1f1bd17b28ac",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-03",
+    "answer_sha256": "bbfa901ee725840c2ab3c692cd1459d8217a875fba4845e476d66b645a5e3597",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-04",
+    "answer_sha256": "bab525cc20367b641c7bf4ffaf46fd9bb01fce2e907e4556a3c8e5119c6d376f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-05",
+    "answer_sha256": "66255ef877945d015bd89ee3143adbcef684b3cc1da7966da05737cd15846335",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "1ea6a6555e17b0157c2df04438d5a22b7fdc2ea56bd2bc94921fd7207541c041",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-07",
+    "answer_sha256": "e194109ef9268603cc516a6e9302c94d939793d82426dbfffca51ce87640dad8",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac-8-new-08",
+    "answer_sha256": "19b7b1c19c52a90ae648c583a903041bfa5ec1846173eb4b14af3d7b58b723d4",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-01",
+    "answer_sha256": "f03caef8af01591a6ebdb0579256e1e4eef310cc342a96d3ae5da012a84687df",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "1a17a79bf1fe2c8d50ae3cac53516058abd60fef03c9b6945133da1130be85e4",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-03",
+    "answer_sha256": "04aef670c829ddd6efb897380fb68d6a029f8ec40d7c08eeb42de8b1613724c7",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-04",
+    "answer_sha256": "080d3abde1f637ff17d4a8b197360a6d8f130509dee419f631e2ff7654f6f854",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-05",
+    "answer_sha256": "f0e8aa3e2431c8f1ddaead2c4624a3286ee757d5b6a42ee8ffa4c2445f41e153",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-06",
+    "answer_sha256": "c89e0f486449cd72ea91ee7750ea1961a344b20895306c12a3a256c650ea6c3a",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-07",
+    "answer_sha256": "fb42ad0c5179628ad3c994218c8d9e77963ba97e6befaf4887d650c46df7b6e9",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-08",
+    "answer_sha256": "f0d502ea89890aa94fb10bbd663a9b8a2483a08a591e4f9fbe38b18de0f7d1ea",
+    "accepted": false,
+    "reason_code": "required_source_not_retrieved",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-01",
+    "answer_sha256": "4cafaa6c158deffa316aa622907db447b915d89c801905f029d39d17bf805d69",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-02",
+    "answer_sha256": "1d5de20fa9602ff803602c24c74899153ffe4e2b02726c77c13e2dadfb0cb5aa",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-03",
+    "answer_sha256": "a28f8c898f93a71acf31804934d7beac747cdac06ce7ecc03d983fb597f89526",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-04",
+    "answer_sha256": "58a18057c034c8bbe291487d3989af37992c6f56622cc734c6a5cf043ba8a65e",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-05",
+    "answer_sha256": "e03f69921683a8f251730abc4260a7b24bcef30c349f03b6f41162a760701149",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-06",
+    "answer_sha256": "9af6d9733e5211f5a2eb07c86672810a2eae0ccdb334bb73a7cd2f43923f7bd7",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "b9c7034835a22b8f824799f0e9e2c6ae982fbb73a8dc369b850e32bebec86973",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-08",
+    "answer_sha256": "61d08662e8f791f9bfbad6e978f840f2842fe48ea980fb4d1a743f41bf2bc184",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-01",
+    "answer_sha256": "e8566a1806c48448993e68af5747fc9e852883bf29ae71a533a3b71579e2a5e3",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-02",
+    "answer_sha256": "dcb99d10368000294e854a6375c21c4647f278eb485ab49c6722e1f9b9f7c3f2",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-03",
+    "answer_sha256": "edbcddd428f7a2982dba7a9dbc9916439c516573fd6a575a8a43f21b83905b34",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-04",
+    "answer_sha256": "925b0147ad71a545c2a47a083f1d7aa0339cb9f639b4ea4a28e42bcd6574fe9f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-05",
+    "answer_sha256": "2079271ef36f1581dac591024e32f2209c6197fce5791efcfc423a1cceb3a4a3",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-06",
+    "answer_sha256": "82f22dc48f16dae39b197e0e83917c3acc38b9b07b80a7d8f1394013ff3cc0f2",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-07",
+    "answer_sha256": "0a8aa34744121cd5878fe0bf2caf105e815ac68df8d60cef95c329a6035c9162",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ca-8-new-08",
+    "answer_sha256": "6f395da5e9d45c799ccde906348d3c86238f0e6e48ce3d70c12dc5ad779d2d35",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  }
+]

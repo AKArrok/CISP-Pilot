@@ -1,0 +1,23 @@
+[
+  {
+    "id": "original-training-score-repeat0",
+    "answer_sha256": "439eaeff50d7dc673bd857cd03e424aff0fdc375aeff32b9406fb651beccb52e",
+    "accepted": false,
+    "reason_code": "required_source_not_retrieved",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "original-training-score-repeat1",
+    "answer_sha256": "8682dcfe5c4d2bd0ca363e183bd0aa62504d656a9e913aaa3a718129da8551b4",
+    "accepted": false,
+    "reason_code": "required_source_not_retrieved",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "original-training-score-repeat2",
+    "answer_sha256": "2037941494ce9251b9a9e5b96a301cdb3de8a69e7a63155e09805ac8291c4ebf",
+    "accepted": false,
+    "reason_code": "required_source_not_retrieved",
+    "reviewer": "Codex AI source review, not independent human gold"
+  }
+]

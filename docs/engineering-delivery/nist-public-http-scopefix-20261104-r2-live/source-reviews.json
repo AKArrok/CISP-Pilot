@@ -1,0 +1,86 @@
+[
+  {
+    "id": "at-2-new-02-repeat0",
+    "answer_sha256": "64f352dbec717fab651ef4066b9bc5370d27efbf10b89126d30425bab57e84fc",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-02-repeat1",
+    "answer_sha256": "ed72aa683055b16bcf4a783f8fde61b6829e176e275597d1fc672051a07cfab2",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "at-2-new-02-repeat2",
+    "answer_sha256": "708f10beca11869c8a69a0a9fc14cfd9d32ff251613094d58d482684dbe43a78",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-07-repeat0",
+    "answer_sha256": "b791cf4cc8d596a56a5f5f4b700186a6228b9f62bdd8f5a421e1bd2ae9878f1e",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-07-repeat1",
+    "answer_sha256": "f9b69922f1efd46d739e00dfa0bae392ceff14becdc05e2e59edb8a42b98ce2c",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "cp-9-new-07-repeat2",
+    "answer_sha256": "bd95d805f330bf9c71e6cb57a341198e67748f8dcaa39c7172c2c4eff03df253",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "shared-removal-false-premise",
+    "answer_sha256": "a568409e2f22796d5b662f8c09e897ae3ae541ae0835fc629806989f289b2e5c",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "last-resort-false-mnemonic",
+    "answer_sha256": "14aaae3b56eb1dda8f6bdf027ed6595ab1a86757d3f8ae637b682a04287773e4",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "lan-false-local-mnemonic",
+    "answer_sha256": "ff92dcf5230a1d149d448dc65e8927abe1082070a17ce14b7792786280eb8f0d",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "backup-fixed-frequency",
+    "answer_sha256": "8c653e6ce331ab22a6bd817090e451079011a5843516ab4a8669a397fd1b71c9",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "audit-fixed-report-time",
+    "answer_sha256": "6e5a5f1cd71699b58a02d51c8691f350dc48a59064764586ef901d5c5ae72773",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "incident-fixed-recovery-time",
+    "answer_sha256": "f9962bbc45864e992f366da25b776200eef18449c29ed16838988a1eeb0badfb",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review, not independent human gold"
+  }
+]

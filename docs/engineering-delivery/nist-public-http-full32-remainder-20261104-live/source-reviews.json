@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cp-9-new-05",
+    "answer_sha256": "73eb0c117122ed96969d4be96be464744d1c3b1da488f13fa9818582efcd5802",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-06",
+    "answer_sha256": "35c540b12b6f815cceaa71d26290c63241fff28550cbd65eefea29cef790b8da",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "a60ac7de82d75bef6cfafae412036a28f0e9657e18c2de8a7ae8ce0a3f21b1df",
+    "accepted": false,
+    "reason_code": "scope_parameter_overgeneralized",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-08",
+    "answer_sha256": "194fa143b7cf3aa128095f585a6c594fba9a55c177901062e1abdf30549bdb98",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-01",
+    "answer_sha256": "910316cabd3e2b5e73e9acabf72c00ba397821a59b01abea0e2feb48da823e5e",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-02",
+    "answer_sha256": "5a0e614273f266db10b8dac0c6aea4c70e0ea9f6e011693da18c39d150355423",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-03",
+    "answer_sha256": "ab2f5bacf3cbe505ee0fdcdd1113e15d3831179204f85cde5191dde08c550b70",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-04",
+    "answer_sha256": "05697913c6e6d92c217805825232a17ba1425fa2c1606e98516c7bc87923eb84",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-05",
+    "answer_sha256": "d228afdd8726531a8b4ed0e77b20529d912fb43ea44928345dc8891df45874ea",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-06",
+    "answer_sha256": "18d377322f66216de0645a9e1e817d1a4a201e42ec40960f0ef6d7c1b6db4f97",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-07",
+    "answer_sha256": "52c796eff4fd78a039a3f6d399fcd2c554f8d488d3b514ea431faac81046be03",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ca-8-new-08",
+    "answer_sha256": "bf89e5c4213eb1f3557aff5f324c7dd57a595c228b1e4bd19778ff5fe482733f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  }
+]

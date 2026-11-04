@@ -1,0 +1,12 @@
+{
+  "git": "9d88a3e",
+  "local_files_sha256": {
+    "agents/prompts.py": "e034243e3c6425d46886f75ff0b850743a2463b8613f15e6092cc7681ca585ba",
+    "llms.py": "d7880821529787dfe9dbeaec1a60cca91a43288258fe71d3aa8b8b6b78a6f49c",
+    "retrieval/hybrid.py": "9724877ed2e00d7cb4bdf17f450c043eae1aa0fcdf6306dc7576a60fcc545cf7"
+  },
+  "prior_calls": 452,
+  "prior_known_estimate_usd": 0.3367686,
+  "standing_budget_usd": 3,
+  "quota_verified_remaining_percent": 63
+}

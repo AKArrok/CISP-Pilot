@@ -1,0 +1,704 @@
+[
+  {
+    "batch": "baseline",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "4e2d5aea59e4f934f5b222f7e42e2e5f40006ba34fa688500c0cbbdb69c2d7a6",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "4ea2723d72c9cde4bf4c39eb25a84bc18ef099ce8f9b5ff0aafbaf3ddee01042",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "f322ff9aa9c46cf5407108b527e43e607eed0876066a4cb7befce07cf4eef495",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "86b9f09fe2cfd65f805e53ccb0cbdda27f174cb1974eaeacd4158a0f0637006d",
+        "source_supported": false,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "unsupported_temporal_inference",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0045564,
+    "raw_results_sha256": "40169a4a17057b4ccb963092fd80ef694e88a429efacd755de00506cd84dc349",
+    "raw_receipts_sha256": "e78c2a09094b9bc8289f1de868fe1c6e5ec72a81aca8e354b5453a228f32b639",
+    "evidence_location": "local-only private-local/nist-mixed-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "temporal-r1",
+    "case_count": 1,
+    "accepted": 0,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "69ada55b892e20f1a3bda91dfe05706dfcdfff787ac4bb4b075e89359975fdac",
+        "source_supported": false,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "stage_ownership_conflation",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 2,
+    "known_cost_estimate_usd": 0.0010296,
+    "raw_results_sha256": "877ac731796b949bceaac1e76b59d61c7418c009260373cf6b4425065a0b4767",
+    "raw_receipts_sha256": "3cb27b01390807c964d5bd0585eb31de715510cf388cd3a9a3c00874335fcf0a",
+    "evidence_location": "local-only private-local/nist-mixed-temporal-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "temporal-r2",
+    "case_count": 1,
+    "accepted": 1,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "fee47eeb6b0d890bf4c70e726e5fd1991ee840ade02292d1dd65970627600fb8",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 2,
+    "known_cost_estimate_usd": 0.0009738,
+    "raw_results_sha256": "ce34bd9ed3aed84bb3086c65c077e2f0030fb3019f8c884bbee21cd343617d66",
+    "raw_receipts_sha256": "ee0d7c3d2cfbccc043eeca69f9185a8201840cb9d56d89d33b27656f5f054c15",
+    "evidence_location": "local-only private-local/nist-mixed-temporal-20261104-r2-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "temporal-r2-repeat",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "edf94a1c9ff69d500bf1b295c7069c1c1327a34e65ad4de7f2d4f403c833b046",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "cedc526bceec0ebf892693e4db64c83a39642658aae108768e30bb11b944f279",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "15d987f8a51846decc7ae4b6bb2b6efd3321138b601fbdcaae50972c05d79fd9",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "b8317991fe8a3bb641d014adeb111ad9dd80eab82ace384c25c9121d25a6f98f",
+        "source_supported": false,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "unsupported_temporal_inference",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0044724,
+    "raw_results_sha256": "c2c0e504e0919791dc2af68a80ca2cadc53e2c810246fcac8ee4731ca0cc234f",
+    "raw_receipts_sha256": "b09d706959325cd9d520fdc90ae45b8039643de3eb417f8cead125aa1e91add8",
+    "evidence_location": "local-only private-local/nist-mixed-temporal-full-regression-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "temporal-r3",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "77b5150574d82c313b03b16ec20bd87f604ddab19f2d18f40865062c2abb0785",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "e6f0d146118c00c2adde96d042bab8d80a95ae166c56884645b7dedf0518cc46",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "173f2881c30e7040b0a2816f507322925d14f7ef55a7a9ff3c320dcb64162ba0",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "3ac5e6a9aedfa28be056959cce6110991eba05f2681ea39949f1efab3023c737",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0047148,
+    "raw_results_sha256": "544a18de3847f61e2bbab14cd8e1f39e8af3016b7318d1bb69ed05d4c536e435",
+    "raw_receipts_sha256": "90f47c2dfd2f70ae472cd9915b2df14ea3627da476eb90ce02b7d4ed809ef1ff",
+    "evidence_location": "local-only private-local/nist-mixed-temporal-20261104-r3-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "multiscale",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "3988881c19970a0bc5d9511c31e3eab43eacdf53d3da1e02344d14c914c9e9a0",
+        "source_supported": false,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "unrelated_parameter_borrowing",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "1d3d01cdfff1c9ea437465a7efbb9c28f804a07d024788c9ce04223d07e3bf26",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "492c60c40dcceec558fe7249ca9c86d20873845cd3ec9d8a6a47ce3bce4a6efe",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "2104c155763bba4d5b8ac50bb786f1a8ff0f79bfedcb760498e20e97fad685fc",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0044376,
+    "raw_results_sha256": "c90989adc4696ba347e9b6ce368cb53db62648ab491cdc533657bd705d86bd8f",
+    "raw_receipts_sha256": "a97b1e495d6c3b4f7a4ef527a3802e28385b7cb7ffd32cb5c37fc150bcd01edc",
+    "evidence_location": "local-only private-local/nist-mixed-multiscale-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "temperature0",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "158056fc354459576f8db39dba3bca56dbbeb9b8cc88378d0a44d96c06965cc3",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "1a779d39e3da70688959e434fee37a3f183821dad707d7f884b8732b26493ac9",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "7282391d8a48ca6d1b6f99db949dcdcfee66291addd1ce639e339a524f3e8db8",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "f31b70880fa5db47bd488f76e4fa21e754476a7abf28692cf6c09f04b20fb9e5",
+        "source_supported": false,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "unsupported_temporal_inference",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.00435,
+    "raw_results_sha256": "5fde6c7c2050452950908be3e109da007a41b7172f3f72844366e36ccffe5b88",
+    "raw_receipts_sha256": "0964637a9dff7c722caf7f84af86f0e4d1dc5de94268ba34b2e7a4c933e775d6",
+    "evidence_location": "local-only private-local/nist-mixed-temp0-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "focused",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "e3b5ae9165b99457e0f61998c219578d400c632e22ff72383bdbc1f8e3ffacf9",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "f02f8e4130f2cded60faee2ce06e99ef2523e88e611ac0494aa3d346960f38c6",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "119f454cb68af9260e4d0c516a715b1e3557836ca75a5562f17300a6b10142d3",
+        "source_supported": true,
+        "requirements_complete": false,
+        "accepted": false,
+        "reason_code": "missing_frozen_activity_and_impact_requirement",
+        "reviewer": "Codex AI review; not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "6b4451bddfa1f4d92894b345907ea07e98982ec3edccbfcb02ba5d3a20bf4f6a",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI review; not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0035952000000000002,
+    "raw_results_sha256": "f770fcfb82842a967f703bd0ae3a34d839e1868f637f0922a79ea2996e825ab2",
+    "raw_receipts_sha256": "30f7a854e807d46e257ffc5646108fe76dbbb5859a9c6a867cfbef52a5442ada",
+    "evidence_location": "local-only private-local/nist-mixed-focused-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "focused-complete",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "fb1517091f96dbbc3fd86c3a0d5a18b100d663e67e051a792f2df9acb23d0a32",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "092dcbb530b309026dcc4fc76c6719a53173e74e18836f5e05d069abf45075b7",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "359829a37b85784535c1b79e65c60086eb4f028234d6a25941b76c35804fc819",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "3cb0fd4a424e241bcdfd8ef5ca728cd7321a27d9ccd509e348d5fe8d3fbb3287",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0036588000000000002,
+    "raw_results_sha256": "bb52953f7355250949dc0b8db3be5c3e03aa6cb739901ed13138f70c84826722",
+    "raw_receipts_sha256": "44c0e3d1efa19c01970f0998a216f772c38f2ad0ba5235cfc2cd4f2577d2afae",
+    "evidence_location": "local-only private-local/nist-mixed-focused-complete-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "focused-complete-repeat",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "approved_source_previews_match": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "f83b836f1939e027a6c51fe360d7935817844e264051ca504dcdd000fbc34f28",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "38ef2e4d490406ca5723401ba8bd4ea0d30b129266b01bcf244c10b3716e604b",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "b581e020ac57351fef6b341146eab858dd7df4848c9874df9008e6453c219370",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "8d32b08241f7cba9b4ff5649cdbba8327fef5d81540e68e73761a799a5b6b19d",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "calls": 8,
+    "known_cost_estimate_usd": 0.0036528000000000008,
+    "raw_results_sha256": "399ac02b4271041d03dd73613dcf5061d1a35a7e8e5dd746ca7b8a5863aa0b7b",
+    "raw_receipts_sha256": "0c0b61d7c458605a7e0fd42cc5207154b9a2a1436c06a3d0d82e783c6887ea9f",
+    "evidence_location": "local-only private-local/nist-mixed-focused-complete-repeat-20261104-live",
+    "raw_private_material_in_git": false
+  },
+  {
+    "batch": "mixed-scopefix",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": false,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "53eec8ff72dae9a69d7ccea2b4b314e1889807a687bf403e0f1317e650af21df",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": false,
+        "reason_code": "citation_locator_label_missing",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "f518a06f5dba1c3d3a5cb7dd47fabb2987e6b82829d5b1e0208537f6faad2353",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "09135ae42c04a68c2df43b9742fd7914873f7043252691d40f11aeeade3e2004",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "b88c3f90b4c292c73289a2c2723e8406bb36d5c776db33be0c606ab09a9b42cc",
+        "source_supported": true,
+        "requirements_complete": true,
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  },
+  {
+    "batch": "mixed-citationfix",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "d74ce82fdb82c9ffc0dc578165605173c461874d266341d0685f61046aac40c4",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "f54245c6043973f7502b10baa40a9a4669796fc43e808ace39e584258def65f4",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "aac9fd1e6f91fab528224acea48de9a10f6d469baa3ba81af7dc8823eb666de7",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "3ac69794d3ca9afdee8547d5d82c07dc6fc46b90f42d10ae1cf1b0ed728140c2",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  },
+  {
+    "batch": "mixed-citation-repeat",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "87f3bf8f586057e3eaaa72d1eb4313103ea30800e9fc12a23ef8c5fee6a06828",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "d5748de8ccde473ef65d12c53ed18ef09781e218a929b78d62580f0576c4c065",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "11d26d7b6b81bb2a19a754afb27d58ca15041c89f2b710a7b176de4f8d6b2622",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "4dacc02d530e7eb2b4409f696c83c2c23deeb323e3f23e7e2bcb89d3b03f16a8",
+        "accepted": true,
+        "source_supported": true,
+        "requirements_complete": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  },
+  {
+    "batch": "mixed-functionwords",
+    "case_count": 4,
+    "accepted": 3,
+    "structural_audit_passed": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "40389819a6058f7bcdb7bbd6c5c4780df3fffc3a3862c7b532c4a80eb9564011",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review; conservative same frozen criteria, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "9cc8772b6a7940194c780186e4282edd4750195c021183a31f2e8bb0d296ca80",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review; conservative same frozen criteria, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "86d2f534c11ae1bd5cf837550425a752a150f3803849102b412afaa5309ce854",
+        "accepted": false,
+        "reason_code": "audit_activity_and_impact_requirement_omitted",
+        "reviewer": "Codex AI source review; conservative same frozen criteria, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "3c64dbec525786c6a7711f73a66e546241f619791b862218107e71b1ef7932b7",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review; conservative same frozen criteria, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  },
+  {
+    "batch": "mixed-minimal-answer",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "55ebb871cb40cc346fab57bfdf32e780aa38da8ec9c02b54dcbc4256da16953e",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "1c5408a6b7afad25c1c18f3f2b78a016b61df971964b70a7ac24efa201cd2c87",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "f1eacc13936eef3c722520f07acf6977e0a7a6886abddb4c40f9bf0509ff1182",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "ebfd3d54fc9fdd5da5bbcb9e710e11d46133b672b9aac9c841df88451ff66576",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  },
+  {
+    "batch": "default-answer-retained",
+    "case_count": 4,
+    "accepted": 4,
+    "structural_audit_passed": true,
+    "source_reviews": [
+      {
+        "id": "shared-credential-natural",
+        "answer_sha256": "5ca361ebf906b2a39888290c3487edaee87a2422a2a4d22aa30fee7e5c1dd6ab",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "lan-access-natural",
+        "answer_sha256": "bf8b407642b3d8f40db15dd5a50a14641f92eb0b3b5f4c67b73a39873fa93ff4",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "audit-review-natural",
+        "answer_sha256": "8eeb49b363f15542e6acc97d462b76ea66aaef3a874babae39518c591ca2e625",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      },
+      {
+        "id": "incident-phases-natural",
+        "answer_sha256": "8a49be591114f477e213838a4ffbf2fc82d7c707787dd837a86403eeb71b9dd8",
+        "accepted": true,
+        "reason_code": "source_supported_core_complete",
+        "reviewer": "Codex AI source review, not independent human gold"
+      }
+    ],
+    "private_text_exported_to_git": false
+  }
+]

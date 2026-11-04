@@ -1,0 +1,15 @@
+{
+  "frozen_sha256": {
+    "retrieval/bm25.py": "249fbbd0c9e4febd24368eb2ab882ace5fb2d5923e0f04aba41777d74dec595e",
+    "retrieval/hybrid.py": "1387f37ff64c35a351c4a42a6fd5bdc5191b43921977560e95b301d3aab35b9d",
+    "retrieval/query_rewrite.py": "656a19ec90b164ab8676bfdda69f4bd722e55142b89699bddc67de8f4a4fcbeb",
+    "docs/engineering-delivery/bm25-function-words-20261104/broad-manifest.json": "6002191187f99b61474d4fe75c191050faf238d49e2bd1185fbadd7c88fd6fb0",
+    "docs/engineering-delivery/bm25-function-words-20261104/broad-replay.py": "db5f8a82f460f8ed665462174d4d67cfc9b320a804de82cb3ea2d9c2f3b0adc1",
+    "docs/engineering-delivery/bm25-function-words-20261104/broad-results.json": "2e6858eaff94e547fd01765a60d20592b3d423a932ec572b6b9522ff6c744e5a",
+    "docs/engineering-delivery/bm25-function-words-20261104/manifest.json": "71c7a51070b200b6b154b8497a2f49a4334a6e9e96f7c5e6a7408ce13622cdf9",
+    "docs/engineering-delivery/bm25-function-words-20261104/replay.py": "d3ffeab55be48c7f67e33c9efe485363426a84ecc0eb71cca25f01866089e18b",
+    "docs/engineering-delivery/bm25-function-words-20261104/results.json": "92ae64d2f62eed7c779ee3ba107f9fd4bb435cca404b6976394b5d134799e827",
+    "docs/engineering-delivery/bm25-function-words-20261104/verified-replay.py": "6ca5a49d9f2827fb64acb6824b158d537bcf51701015b234452906ca666853f5"
+  },
+  "note": "Originalmanifest/results untouched. Replaywrapper restores frozen original stopwords for baseline arms, checks current runtimecode and saved exact result equality."
+}

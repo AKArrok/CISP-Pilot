@@ -1,0 +1,34 @@
+{
+  "structural_passed": false,
+  "execution_complete": false,
+  "budget_receipts_valid": true,
+  "source_review": {
+    "planned": 32,
+    "recorded": 20,
+    "reviewed": 20,
+    "accepted": 18,
+    "missing_ids": [
+      "ca-8-new-01",
+      "ca-8-new-02",
+      "ca-8-new-03",
+      "ca-8-new-04",
+      "ca-8-new-05",
+      "ca-8-new-06",
+      "ca-8-new-07",
+      "ca-8-new-08",
+      "cp-9-new-05",
+      "cp-9-new-06",
+      "cp-9-new-07",
+      "cp-9-new-08"
+    ],
+    "failed_ids": [
+      "at-2-new-02",
+      "at-2-new-08"
+    ],
+    "all_reviewed_and_accepted": false,
+    "independent_human_gold": false,
+    "evidence_scope": "Saved AI source annotations; binding validates provenance, not semantic truth"
+  },
+  "development_checks_passed": false,
+  "automatic_production_acceptance": false
+}

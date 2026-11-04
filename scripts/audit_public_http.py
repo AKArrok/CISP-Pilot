@@ -36,7 +36,11 @@ def audit(packet, run):
             contexts = next((event["contexts"] for event in events if event["type"] == "contexts"), [])
             answer = "".join(event.get("content", "") for event in events if event["type"] == "token")
             observations = trace["trace"]["events"]
+            expected_intent = case.get("expected_intent", "knowledge")
+            if expected_intent not in {"knowledge", "quiz", "chitchat"}:
+                raise ValueError("Unknown expected intent")
             detail = {"input_matches": row["question"] == case["question"],
+                      "intent_matches": any(e["type"] == "intent" and e.get("intent") == expected_intent for e in events),
                       "sse_done": bool(events) and events[-1]["type"] == "done"
                       and not any(event["type"] == "error" for event in events),
                       "history_pairs": row["history_rows"] == rounds[case["thread_group"]] * 2,
@@ -44,7 +48,11 @@ def audit(packet, run):
                       and trace["trace"]["conversation_commit"] == "confirmed",
                       "no_degraded_stage": not any("degraded" in event["outcome"] for event in observations)}
             detail["frozen_source_previews"] = all(context in frozen_previews for context in contexts)
-            if case["target_locator"] is None:
+            if expected_intent != "knowledge":
+                stage = "quiz_hint" if expected_intent == "quiz" else "chitchat"
+                detail["nonknowledge_path"] = not contexts and bool(answer) and any(
+                    event["stage"] == stage and event["outcome"] == "completed" for event in observations)
+            elif case["target_locator"] is None:
                 detail["scoped_abstention"] = not contexts and bool(answer) and any(
                     event["stage"] == "answer" and event["outcome"] == "abstained_no_context" for event in observations)
             else:
@@ -83,8 +91,12 @@ def audit(packet, run):
                  and math.isclose(summary["known_cost_estimate_usd"], recomputed_cost, rel_tol=1e-9, abs_tol=1e-12)
                  and summary["known_cost_estimate_usd"] <= manifest["budget_usd"])
     unchanged = database["before"] == database["after"] and database["unchanged"]
-    return {"passed": all(row["passed"] for row in checks) and budget_ok and unchanged,
+    execution_complete = (summary.get("status", "completed") == "completed"
+                          and summary["completed_http_requests"] == len(cases)
+                          and summary.get("recorded_http_requests", len(rows)) == len(rows))
+    return {"passed": all(row["passed"] for row in checks) and budget_ok and unchanged and execution_complete,
             "checks": checks, "budget_receipts_valid": budget_ok, "default_database_unchanged": unchanged,
+            "execution_complete": execution_complete,
             "semantic_source_review": "required separately", "independent_human_gold": False}
 
 

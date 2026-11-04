@@ -1,0 +1,7 @@
+{
+  "exact_ablation_reproduced": true,
+  "exact_180case_regression_reproduced": true,
+  "candidate_passed": true,
+  "provider_calls": 0,
+  "default_database_written": false
+}

@@ -1,0 +1,42 @@
+{
+  "status": "stopped",
+  "http_status": 429,
+  "operation": "create_thread",
+  "completed_case_ids": [
+    "ac-8-new-01",
+    "ac-8-new-02",
+    "ac-8-new-03",
+    "ac-8-new-04",
+    "ac-8-new-05",
+    "ac-8-new-06",
+    "ac-8-new-07",
+    "ac-8-new-08",
+    "at-2-new-01",
+    "at-2-new-02",
+    "at-2-new-03",
+    "at-2-new-04",
+    "at-2-new-05",
+    "at-2-new-06",
+    "at-2-new-07",
+    "at-2-new-08",
+    "cp-9-new-01",
+    "cp-9-new-02",
+    "cp-9-new-03",
+    "cp-9-new-04"
+  ],
+  "not_started_case_ids": [
+    "cp-9-new-05",
+    "cp-9-new-06",
+    "cp-9-new-07",
+    "cp-9-new-08",
+    "ca-8-new-01",
+    "ca-8-new-02",
+    "ca-8-new-03",
+    "ca-8-new-04",
+    "ca-8-new-05",
+    "ca-8-new-06",
+    "ca-8-new-07",
+    "ca-8-new-08"
+  ],
+  "note": "Old executor summary stopped flag only described provider guard; batch process exited1. Original summary and receipts retained."
+}

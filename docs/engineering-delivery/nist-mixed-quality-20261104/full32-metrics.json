@@ -1,0 +1,17 @@
+{
+  "scope": "Current prompt/cache candidate, BM25-only publicNIST101searchchunks, ASGIrealFlash, original32 unchanged; not dense/TCP/production/independenthuman",
+  "requests_done": 32,
+  "http_failure_count": 0,
+  "target_top2_count": 31,
+  "ai_source_accepted_count": 31,
+  "source_miss_ids": [
+    "at-2-new-08"
+  ],
+  "scoped_insufficiency_on_target_miss": true,
+  "latency_seconds": {
+    "p50": 2.312000000001717,
+    "p95_nearest_rank": 3.1089999999967404
+  },
+  "known_cost_estimate_usd": 0.036241499999999996,
+  "production_acceptance": false
+}

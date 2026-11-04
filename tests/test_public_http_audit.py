@@ -24,6 +24,10 @@ RUN = ROOT / "docs/engineering-delivery/nist-public-http-20261104-live"
     ("nist-public-http-natural-zh-v2", "nist-public-http-natural-zh-20261104-r2-live"),
     ("nist-public-http-paramfix-regression-v1", "nist-public-http-paramfix-regression-20261104-live"),
     ("nist-public-http-natural-zh-repeat-v1", "nist-public-http-natural-zh-20261104-repeat-live"),
+    ("nist-public-http-temporal-regression-v1", "nist-public-http-temporal-regression-20261104-live"),
+    ("nist-public-http-temporal-regression-v2", "nist-public-http-temporal-regression-20261104-r2-live"),
+    ("nist-public-http-focused-regression-v1", "nist-public-http-focused-regression-20261104-live"),
+    ("nist-public-http-route-fix-v2", "nist-public-http-route-fix-20261104-r2-live"),
 ])
 def test_saved_real_http_preflight_has_bounded_evidence(packet, run):
     result = audit(ROOT / "evaluation" / packet, ROOT / "docs/engineering-delivery" / run)
@@ -34,7 +38,8 @@ def test_saved_real_http_preflight_has_bounded_evidence(packet, run):
 
 @pytest.mark.parametrize("fault", ["done", "history", "source", "source_text", "source_url", "trace",
                                   "unknown_cost", "wrong_cost", "missing_usage", "excess_tokens", "duplicate_receipt",
-                                  "answer_text", "trace_usage"])
+                                  "answer_text", "trace_usage", "wrong_intent", "stopped_batch",
+                                  "wrong_completed_count", "wrong_recorded_count"])
 def test_http_gate_rejects_incomplete_or_unbound_results(tmp_path, fault):
     for name in ("results.json", "summary.json", "default-db.json", "receipts.jsonl", "executor.py"):
         shutil.copyfile(RUN / name, tmp_path / name)
@@ -54,6 +59,15 @@ def test_http_gate_rejects_incomplete_or_unbound_results(tmp_path, fault):
         next(e for e in rows[0]["events"] if e["type"] == "token")["content"] += " fabricated claim"
     elif fault == "trace_usage":
         rows[0]["trace"]["trace"]["model_calls"][0]["usage"]["prompt_tokens"] += 1
+    elif fault == "wrong_intent":
+        next(e for e in rows[0]["events"] if e["type"] == "intent")["intent"] = "chitchat"
+    elif fault in {"stopped_batch", "wrong_completed_count", "wrong_recorded_count"}:
+        summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
+        key, value = {"stopped_batch": ("status", "stopped"),
+                      "wrong_completed_count": ("completed_http_requests", 0),
+                      "wrong_recorded_count": ("recorded_http_requests", 0)}[fault]
+        summary[key] = value
+        (tmp_path / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
     elif fault in {"unknown_cost", "wrong_cost"}:
         summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
         summary["cost_unknown" if fault == "unknown_cost" else "known_cost_estimate_usd"] = True if fault == "unknown_cost" else 0

@@ -1,0 +1,1457 @@
+{
+  "summary": {
+    "cases": 180,
+    "baseline_top5": 174,
+    "candidate_top5": 174,
+    "lost_ids": [],
+    "gained_ids": [],
+    "independent_human_gold": false,
+    "provider_calls": 0
+  },
+  "results": {
+    "baseline": [
+      {
+        "id": "assurance_characteristics",
+        "rank": 5
+      },
+      {
+        "id": "assurance_ppdr",
+        "rank": 1
+      },
+      {
+        "id": "assurance_iatf",
+        "rank": 1
+      },
+      {
+        "id": "assurance_critical_infrastructure",
+        "rank": 1
+      },
+      {
+        "id": "regulation_cybersecurity_law_date",
+        "rank": 1
+      },
+      {
+        "id": "regulation_mlps_levels",
+        "rank": null
+      },
+      {
+        "id": "regulation_document_27",
+        "rank": 1
+      },
+      {
+        "id": "regulation_strategy_goals",
+        "rank": 1
+      },
+      {
+        "id": "support_aes_key_lengths",
+        "rank": 1
+      },
+      {
+        "id": "support_crl",
+        "rank": 1
+      },
+      {
+        "id": "support_mac_models",
+        "rank": 3
+      },
+      {
+        "id": "support_aaa_protocols",
+        "rank": 2
+      },
+      {
+        "id": "network_stateful_firewall",
+        "rank": 1
+      },
+      {
+        "id": "network_ipsec_ah_esp",
+        "rank": 1
+      },
+      {
+        "id": "network_ids_detection",
+        "rank": 1
+      },
+      {
+        "id": "network_soc_functions",
+        "rank": 2
+      },
+      {
+        "id": "computing_xss",
+        "rank": 1
+      },
+      {
+        "id": "computing_sql_injection",
+        "rank": 1
+      },
+      {
+        "id": "computing_security_audit",
+        "rank": 2
+      },
+      {
+        "id": "computing_windows_identity",
+        "rank": 1
+      },
+      {
+        "id": "software_sdl_phases",
+        "rank": 1
+      },
+      {
+        "id": "software_code_review",
+        "rank": 1
+      },
+      {
+        "id": "software_penetration_test",
+        "rank": 1
+      },
+      {
+        "id": "software_stride",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_process",
+        "rank": 4
+      },
+      {
+        "id": "assessment_eal",
+        "rank": 2
+      },
+      {
+        "id": "assessment_risk_formula",
+        "rank": 1
+      },
+      {
+        "id": "assessment_tools",
+        "rank": 1
+      },
+      {
+        "id": "operations_sse_cmm",
+        "rank": 1
+      },
+      {
+        "id": "operations_sse_cmm_structure",
+        "rank": 1
+      },
+      {
+        "id": "operations_patch_management",
+        "rank": 1
+      },
+      {
+        "id": "operations_security_operations",
+        "rank": 1
+      },
+      {
+        "id": "continuity_incident_process",
+        "rank": 1
+      },
+      {
+        "id": "continuity_bia",
+        "rank": 1
+      },
+      {
+        "id": "continuity_rto_rpo",
+        "rank": 1
+      },
+      {
+        "id": "continuity_recovery_levels",
+        "rank": 2
+      },
+      {
+        "id": "management_isms_plan",
+        "rank": 2
+      },
+      {
+        "id": "management_isms_do",
+        "rank": 1
+      },
+      {
+        "id": "management_measurement",
+        "rank": 1
+      },
+      {
+        "id": "management_document_hierarchy",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_h_range",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_12_level",
+        "rank": 1
+      },
+      {
+        "id": "assessment_asset_value_top",
+        "rank": 1
+      },
+      {
+        "id": "assessment_threat_freq_3",
+        "rank": 1
+      },
+      {
+        "id": "regulation_mlps_level_public",
+        "rank": 1
+      },
+      {
+        "id": "regulation_gbt22239_parts",
+        "rank": null
+      },
+      {
+        "id": "network_tcp_checksum",
+        "rank": 1
+      },
+      {
+        "id": "assurance_security_attributes",
+        "rank": 1
+      },
+      {
+        "id": "assurance_problem_classification",
+        "rank": 1
+      },
+      {
+        "id": "assurance_security_views",
+        "rank": 2
+      },
+      {
+        "id": "assurance_development_stages",
+        "rank": 4
+      },
+      {
+        "id": "regulation_cybercrime_categories",
+        "rank": 2
+      },
+      {
+        "id": "regulation_cybersecurity_law_chapters",
+        "rank": 1
+      },
+      {
+        "id": "support_hash_function_properties",
+        "rank": 1
+      },
+      {
+        "id": "support_digital_signature_roles",
+        "rank": 1
+      },
+      {
+        "id": "support_pki_components",
+        "rank": 1
+      },
+      {
+        "id": "support_kerberos_components",
+        "rank": 1
+      },
+      {
+        "id": "network_firewall_type_comparison",
+        "rank": 1
+      },
+      {
+        "id": "network_ids_components",
+        "rank": null
+      },
+      {
+        "id": "network_ipsec_modes",
+        "rank": 1
+      },
+      {
+        "id": "computing_os_secure_config",
+        "rank": 2
+      },
+      {
+        "id": "computing_buffer_overflow_principle",
+        "rank": 1
+      },
+      {
+        "id": "computing_buffer_overflow_defense",
+        "rank": 1
+      },
+      {
+        "id": "computing_database_defense_mechanisms",
+        "rank": 1
+      },
+      {
+        "id": "software_lifecycle_models",
+        "rank": 2
+      },
+      {
+        "id": "software_threat_modeling_process",
+        "rank": 1
+      },
+      {
+        "id": "software_security_design_principles",
+        "rank": 1
+      },
+      {
+        "id": "software_attack_surface_reduction",
+        "rank": 2
+      },
+      {
+        "id": "operations_security_engineering_definition",
+        "rank": 1
+      },
+      {
+        "id": "operations_security_engineering_principles",
+        "rank": 1
+      },
+      {
+        "id": "operations_change_management_process",
+        "rank": 5
+      },
+      {
+        "id": "operations_capability_level_2",
+        "rank": 4
+      },
+      {
+        "id": "continuity_event_categories",
+        "rank": 1
+      },
+      {
+        "id": "continuity_event_levels",
+        "rank": 1
+      },
+      {
+        "id": "continuity_backup_types",
+        "rank": 1
+      },
+      {
+        "id": "continuity_standby_sites",
+        "rank": 1
+      },
+      {
+        "id": "management_isms_definition",
+        "rank": 1
+      },
+      {
+        "id": "management_pdca_cycle",
+        "rank": 3
+      },
+      {
+        "id": "management_monitor_review_isms",
+        "rank": 1
+      },
+      {
+        "id": "management_risk_treatment_authorization",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_bcp_definition",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_forensics_principles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_threat_intelligence",
+        "rank": 3
+      },
+      {
+        "id": "holdout_assurance_situation_awareness_origin",
+        "rank": 1
+      },
+      {
+        "id": "holdout_support_asymmetric_algorithms",
+        "rank": 3
+      },
+      {
+        "id": "holdout_support_kerberos_tgt",
+        "rank": 1
+      },
+      {
+        "id": "holdout_regulation_standardization_principles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_regulation_china_standard_types",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_coso_elements",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_policy_review",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_quantitative_terms",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_existing_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_project_management_areas",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_digital_copyright_measures",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_osi_security_services",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_wpa2_stages",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_linux_password_files",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_hidden_channel",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_spiral_model_risk",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_supply_chain_security",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_business_priority_mtd",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_risk_reduction_people",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_ia_work_requirements",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_ics_controls",
+        "rank": 5
+      },
+      {
+        "id": "holdout_support_kerckhoffs_principle",
+        "rank": 1
+      },
+      {
+        "id": "holdout_support_signature_properties",
+        "rank": null
+      },
+      {
+        "id": "holdout_regulation_personal_info_scope",
+        "rank": null
+      },
+      {
+        "id": "holdout_regulation_security_review",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_security_management_value",
+        "rank": 3
+      },
+      {
+        "id": "holdout_management_document_structure",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_baseline_detailed_combined",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_plan_contents",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_sse_cmm_roles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_security_ops_standards",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_physical_earthquake_load",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_electromagnetic_protection",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_windows_uac",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_linux_suid",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_security_requirements_analysis",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_code_review_methods",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_continuity_backup_type_boundaries",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_continuity_incident_response_phases",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assurance_iatf_principles_characteristics",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assurance_cia_extended_attributes",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_support_x509_certificate_entity",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_support_crypto_property_mapping",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_regulation_sc27_workgroups_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_regulation_grade_measurement_bans",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_management_security_policy_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_management_communications_security_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assessment_tcsec_orange_book_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assessment_risk_result_levels",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_operations_sse_cmm_process_areas",
+        "rank": 4
+      },
+      {
+        "id": "holdout2_operations_capability_level_zero",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_network_electromagnetic_tempest_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_network_interface_layer_security_issues",
+        "rank": 2
+      },
+      {
+        "id": "holdout2_computing_info_collection_defense",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_computing_network_interface_confuser",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_software_stride_six_threats",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_software_attack_surface_reduction_examples",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_continuity_gbz20986_grades",
+        "rank": 3
+      },
+      {
+        "id": "holdout3_continuity_drill_procedure",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assurance_cloud_security_architecture",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assurance_sabsa_layers",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_support_pki_pmi_division",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_support_blp_biba_rules",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_regulation_global_legislation_focus",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_regulation_grading_process",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_management_risk_process_four_two",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_management_isms_role_internal_external",
+        "rank": 4
+      },
+      {
+        "id": "holdout3_assessment_pp_st_difference",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assessment_qualitative_method",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_operations_vulnerability_causes",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_operations_iso9000_quality_four",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_network_gap_gateway_isolation",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_network_syn_flood_principle_defense",
+        "rank": 4
+      },
+      {
+        "id": "holdout3_computing_memory_protection",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_computing_malware_propagation",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_software_security_models_compare",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_software_fix_cost_early",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_continuity_raid_levels",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_continuity_drp_four_stages",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assurance_security_evolution_stages",
+        "rank": null
+      },
+      {
+        "id": "holdout4_assurance_cloud_security_risks",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_support_sso_essence",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_support_rbac_four_types",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_regulation_grade_standard_four_categories",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_regulation_cisp_ethics_code",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_management_isms_success_factors",
+        "rank": 3
+      },
+      {
+        "id": "holdout4_management_control_structure_layers",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assessment_residual_risk",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assessment_threat_elements",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_operations_vulnerability_definition",
+        "rank": 3
+      },
+      {
+        "id": "holdout4_operations_incident_management_goals",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_network_vpn_tunnel_technologies",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_network_rfid_composition",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_computing_web_server_software_risks",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_computing_http_protocol_weakness",
+        "rank": 4
+      },
+      {
+        "id": "holdout4_software_insecurity_internal_external",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_software_fuzzing_key_factors",
+        "rank": 1
+      }
+    ],
+    "combined": [
+      {
+        "id": "assurance_characteristics",
+        "rank": 5
+      },
+      {
+        "id": "assurance_ppdr",
+        "rank": 1
+      },
+      {
+        "id": "assurance_iatf",
+        "rank": 1
+      },
+      {
+        "id": "assurance_critical_infrastructure",
+        "rank": 1
+      },
+      {
+        "id": "regulation_cybersecurity_law_date",
+        "rank": 1
+      },
+      {
+        "id": "regulation_mlps_levels",
+        "rank": null
+      },
+      {
+        "id": "regulation_document_27",
+        "rank": 1
+      },
+      {
+        "id": "regulation_strategy_goals",
+        "rank": 1
+      },
+      {
+        "id": "support_aes_key_lengths",
+        "rank": 1
+      },
+      {
+        "id": "support_crl",
+        "rank": 1
+      },
+      {
+        "id": "support_mac_models",
+        "rank": 3
+      },
+      {
+        "id": "support_aaa_protocols",
+        "rank": 2
+      },
+      {
+        "id": "network_stateful_firewall",
+        "rank": 1
+      },
+      {
+        "id": "network_ipsec_ah_esp",
+        "rank": 1
+      },
+      {
+        "id": "network_ids_detection",
+        "rank": 1
+      },
+      {
+        "id": "network_soc_functions",
+        "rank": 2
+      },
+      {
+        "id": "computing_xss",
+        "rank": 1
+      },
+      {
+        "id": "computing_sql_injection",
+        "rank": 1
+      },
+      {
+        "id": "computing_security_audit",
+        "rank": 2
+      },
+      {
+        "id": "computing_windows_identity",
+        "rank": 1
+      },
+      {
+        "id": "software_sdl_phases",
+        "rank": 1
+      },
+      {
+        "id": "software_code_review",
+        "rank": 1
+      },
+      {
+        "id": "software_penetration_test",
+        "rank": 1
+      },
+      {
+        "id": "software_stride",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_process",
+        "rank": 4
+      },
+      {
+        "id": "assessment_eal",
+        "rank": 2
+      },
+      {
+        "id": "assessment_risk_formula",
+        "rank": 1
+      },
+      {
+        "id": "assessment_tools",
+        "rank": 1
+      },
+      {
+        "id": "operations_sse_cmm",
+        "rank": 1
+      },
+      {
+        "id": "operations_sse_cmm_structure",
+        "rank": 1
+      },
+      {
+        "id": "operations_patch_management",
+        "rank": 1
+      },
+      {
+        "id": "operations_security_operations",
+        "rank": 1
+      },
+      {
+        "id": "continuity_incident_process",
+        "rank": 1
+      },
+      {
+        "id": "continuity_bia",
+        "rank": 1
+      },
+      {
+        "id": "continuity_rto_rpo",
+        "rank": 1
+      },
+      {
+        "id": "continuity_recovery_levels",
+        "rank": 2
+      },
+      {
+        "id": "management_isms_plan",
+        "rank": 2
+      },
+      {
+        "id": "management_isms_do",
+        "rank": 1
+      },
+      {
+        "id": "management_measurement",
+        "rank": 1
+      },
+      {
+        "id": "management_document_hierarchy",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_h_range",
+        "rank": 1
+      },
+      {
+        "id": "assessment_risk_12_level",
+        "rank": 1
+      },
+      {
+        "id": "assessment_asset_value_top",
+        "rank": 1
+      },
+      {
+        "id": "assessment_threat_freq_3",
+        "rank": 1
+      },
+      {
+        "id": "regulation_mlps_level_public",
+        "rank": 1
+      },
+      {
+        "id": "regulation_gbt22239_parts",
+        "rank": null
+      },
+      {
+        "id": "network_tcp_checksum",
+        "rank": 1
+      },
+      {
+        "id": "assurance_security_attributes",
+        "rank": 1
+      },
+      {
+        "id": "assurance_problem_classification",
+        "rank": 1
+      },
+      {
+        "id": "assurance_security_views",
+        "rank": 2
+      },
+      {
+        "id": "assurance_development_stages",
+        "rank": 4
+      },
+      {
+        "id": "regulation_cybercrime_categories",
+        "rank": 2
+      },
+      {
+        "id": "regulation_cybersecurity_law_chapters",
+        "rank": 1
+      },
+      {
+        "id": "support_hash_function_properties",
+        "rank": 1
+      },
+      {
+        "id": "support_digital_signature_roles",
+        "rank": 1
+      },
+      {
+        "id": "support_pki_components",
+        "rank": 1
+      },
+      {
+        "id": "support_kerberos_components",
+        "rank": 1
+      },
+      {
+        "id": "network_firewall_type_comparison",
+        "rank": 1
+      },
+      {
+        "id": "network_ids_components",
+        "rank": null
+      },
+      {
+        "id": "network_ipsec_modes",
+        "rank": 1
+      },
+      {
+        "id": "computing_os_secure_config",
+        "rank": 2
+      },
+      {
+        "id": "computing_buffer_overflow_principle",
+        "rank": 1
+      },
+      {
+        "id": "computing_buffer_overflow_defense",
+        "rank": 1
+      },
+      {
+        "id": "computing_database_defense_mechanisms",
+        "rank": 1
+      },
+      {
+        "id": "software_lifecycle_models",
+        "rank": 2
+      },
+      {
+        "id": "software_threat_modeling_process",
+        "rank": 1
+      },
+      {
+        "id": "software_security_design_principles",
+        "rank": 1
+      },
+      {
+        "id": "software_attack_surface_reduction",
+        "rank": 2
+      },
+      {
+        "id": "operations_security_engineering_definition",
+        "rank": 1
+      },
+      {
+        "id": "operations_security_engineering_principles",
+        "rank": 1
+      },
+      {
+        "id": "operations_change_management_process",
+        "rank": 5
+      },
+      {
+        "id": "operations_capability_level_2",
+        "rank": 5
+      },
+      {
+        "id": "continuity_event_categories",
+        "rank": 1
+      },
+      {
+        "id": "continuity_event_levels",
+        "rank": 1
+      },
+      {
+        "id": "continuity_backup_types",
+        "rank": 1
+      },
+      {
+        "id": "continuity_standby_sites",
+        "rank": 1
+      },
+      {
+        "id": "management_isms_definition",
+        "rank": 1
+      },
+      {
+        "id": "management_pdca_cycle",
+        "rank": 3
+      },
+      {
+        "id": "management_monitor_review_isms",
+        "rank": 1
+      },
+      {
+        "id": "management_risk_treatment_authorization",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_bcp_definition",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_forensics_principles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_threat_intelligence",
+        "rank": 3
+      },
+      {
+        "id": "holdout_assurance_situation_awareness_origin",
+        "rank": 1
+      },
+      {
+        "id": "holdout_support_asymmetric_algorithms",
+        "rank": 3
+      },
+      {
+        "id": "holdout_support_kerberos_tgt",
+        "rank": 1
+      },
+      {
+        "id": "holdout_regulation_standardization_principles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_regulation_china_standard_types",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_coso_elements",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_policy_review",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_quantitative_terms",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_existing_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_project_management_areas",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_digital_copyright_measures",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_osi_security_services",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_wpa2_stages",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_linux_password_files",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_hidden_channel",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_spiral_model_risk",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_supply_chain_security",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_business_priority_mtd",
+        "rank": 1
+      },
+      {
+        "id": "holdout_continuity_risk_reduction_people",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_ia_work_requirements",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assurance_ics_controls",
+        "rank": 5
+      },
+      {
+        "id": "holdout_support_kerckhoffs_principle",
+        "rank": 1
+      },
+      {
+        "id": "holdout_support_signature_properties",
+        "rank": null
+      },
+      {
+        "id": "holdout_regulation_personal_info_scope",
+        "rank": null
+      },
+      {
+        "id": "holdout_regulation_security_review",
+        "rank": 1
+      },
+      {
+        "id": "holdout_management_security_management_value",
+        "rank": 3
+      },
+      {
+        "id": "holdout_management_document_structure",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_baseline_detailed_combined",
+        "rank": 1
+      },
+      {
+        "id": "holdout_assessment_plan_contents",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_sse_cmm_roles",
+        "rank": 1
+      },
+      {
+        "id": "holdout_operations_security_ops_standards",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_physical_earthquake_load",
+        "rank": 1
+      },
+      {
+        "id": "holdout_network_electromagnetic_protection",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_windows_uac",
+        "rank": 1
+      },
+      {
+        "id": "holdout_computing_linux_suid",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_security_requirements_analysis",
+        "rank": 1
+      },
+      {
+        "id": "holdout_software_code_review_methods",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_continuity_backup_type_boundaries",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_continuity_incident_response_phases",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assurance_iatf_principles_characteristics",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assurance_cia_extended_attributes",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_support_x509_certificate_entity",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_support_crypto_property_mapping",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_regulation_sc27_workgroups_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_regulation_grade_measurement_bans",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_management_security_policy_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_management_communications_security_controls",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assessment_tcsec_orange_book_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_assessment_risk_result_levels",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_operations_sse_cmm_process_areas",
+        "rank": 4
+      },
+      {
+        "id": "holdout2_operations_capability_level_zero",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_network_electromagnetic_tempest_boundary",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_network_interface_layer_security_issues",
+        "rank": 2
+      },
+      {
+        "id": "holdout2_computing_info_collection_defense",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_computing_network_interface_confuser",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_software_stride_six_threats",
+        "rank": 1
+      },
+      {
+        "id": "holdout2_software_attack_surface_reduction_examples",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_continuity_gbz20986_grades",
+        "rank": 3
+      },
+      {
+        "id": "holdout3_continuity_drill_procedure",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assurance_cloud_security_architecture",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assurance_sabsa_layers",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_support_pki_pmi_division",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_support_blp_biba_rules",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_regulation_global_legislation_focus",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_regulation_grading_process",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_management_risk_process_four_two",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_management_isms_role_internal_external",
+        "rank": 4
+      },
+      {
+        "id": "holdout3_assessment_pp_st_difference",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_assessment_qualitative_method",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_operations_vulnerability_causes",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_operations_iso9000_quality_four",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_network_gap_gateway_isolation",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_network_syn_flood_principle_defense",
+        "rank": 4
+      },
+      {
+        "id": "holdout3_computing_memory_protection",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_computing_malware_propagation",
+        "rank": 1
+      },
+      {
+        "id": "holdout3_software_security_models_compare",
+        "rank": 2
+      },
+      {
+        "id": "holdout3_software_fix_cost_early",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_continuity_raid_levels",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_continuity_drp_four_stages",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assurance_security_evolution_stages",
+        "rank": null
+      },
+      {
+        "id": "holdout4_assurance_cloud_security_risks",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_support_sso_essence",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_support_rbac_four_types",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_regulation_grade_standard_four_categories",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_regulation_cisp_ethics_code",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_management_isms_success_factors",
+        "rank": 3
+      },
+      {
+        "id": "holdout4_management_control_structure_layers",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assessment_residual_risk",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_assessment_threat_elements",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_operations_vulnerability_definition",
+        "rank": 3
+      },
+      {
+        "id": "holdout4_operations_incident_management_goals",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_network_vpn_tunnel_technologies",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_network_rfid_composition",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_computing_web_server_software_risks",
+        "rank": 2
+      },
+      {
+        "id": "holdout4_computing_http_protocol_weakness",
+        "rank": 4
+      },
+      {
+        "id": "holdout4_software_insecurity_internal_external",
+        "rank": 1
+      },
+      {
+        "id": "holdout4_software_fuzzing_key_factors",
+        "rank": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ac8-route-repeat-0",
+    "answer_sha256": "6d7f6ee4a311acd196892a8563f68e0aba51b363c68028ff32f6e3cbe0ffb612",
+    "accepted": true,
+    "reason_code": "correct_intent_and_source_supported_answer",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac8-route-repeat-1",
+    "answer_sha256": "6d7f6ee4a311acd196892a8563f68e0aba51b363c68028ff32f6e3cbe0ffb612",
+    "accepted": true,
+    "reason_code": "correct_intent_and_source_supported_answer",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "ac8-route-repeat-2",
+    "answer_sha256": "ed3bfe338bb79a42054b9cd364e99734075fb062637932f79a78df26ae614aa8",
+    "accepted": true,
+    "reason_code": "correct_intent_and_source_supported_answer",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "pure-greeting",
+    "answer_sha256": "637091db1688da7c4b1aa743a10c2aac667309fe902f0d0e701371651d1b460f",
+    "accepted": true,
+    "reason_code": "correct_fixed_ui_guidance",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "explicit-quiz",
+    "answer_sha256": "c060a140d055b45c7b517b446a53528f1461f0998d0a75009fccbb23f431a1d5",
+    "accepted": true,
+    "reason_code": "correct_fixed_ui_guidance",
+    "reviewer": "Codex AI source review, not independent human gold"
+  },
+  {
+    "id": "greeting-with-question",
+    "answer_sha256": "870ca526307461c92a14561e0d4cc4c261cc094cd4392438f69791ca6603014b",
+    "accepted": true,
+    "reason_code": "correct_intent_and_source_supported_answer",
+    "reviewer": "Codex AI source review, not independent human gold"
+  }
+]

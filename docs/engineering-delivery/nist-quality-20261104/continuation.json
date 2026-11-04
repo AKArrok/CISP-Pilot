@@ -1,36 +1,51 @@
 {
   "status": "in_progress",
-  "latest_runtime_commit": "1135677",
+  "latest_runtime_commit": "eb266af pushed CI41852859916success; current router/BM25/evaluation-contract improvements awaiting nextcommit",
   "answer_quality": {
     "new_controls": "12 new plus AT2 regression, source-review13/13; AI development only",
     "http": "3 baseline, 3 topic-switch, 3 leading-question outputs source-reviewed accepted; different frozen scenarios, not pooled generalization",
     "missing_parameters": "3/3 source-reviewed AI development; supports partial answer and rejects fabricated universal numeric deadlines",
     "thread_isolation": "interleaved4/4 source reviewed; SQL per-request restore; no cross-user or process-restart claim",
-    "natural_chinese": "same4 without IDs baseline3/4; minimal prompt fix4/4 and repeat4/4; previous6regression6/6; allAI source development evidence"
+    "natural_chinese": "same4 without IDs baseline3/4; minimal prompt fix4/4 and repeat4/4; previous6regression6/6; allAI source development evidence",
+    "mixed_live": "Original defaultanswer prompt/temp retained, latestrouter/cache/BM25 sameapproved4sourcebytes actual4/4. Multiple candidate failures preserved: latestminimalanswer public8/12, mixed4/4; not promoted.",
+    "full32": "Sameoriginal32 currentcandidate after3wordBM25fix targettop2 32/32, sourceAIreview31/32 (conservative scopebindingfailure), original31target/32andvariant0/3misses retained. This is not currentdefaultprompt or human-gold acceptance."
   },
   "judge_calibration": "original disputed12 remains10/12; independent human gold missing",
   "audit_hardening": "six negative evidence cases rejected; nine saved HTTP scenarios checked; baseline semantic3/4 remains failed despite structural pass",
   "budget": {
     "approved_total_usd": 3,
-    "dispatch_attempts": 323,
-    "known_estimate_usd": 0.2726898,
+    "dispatch_attempts": 887,
+    "known_estimate_usd": 0.5732733,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "await confirmation before mixed private-course model calls; offline remaining9source/context diagnostics retained; no target-label query injection",
+  "next": "Finish explicit public-evidence commit/push and check exactheadCI. Answerprompt candidates not promoted: original committed answerprompt/temp retained; currentdefault mixed4/4. Then continue claim-level parameter grounding or new independently authored evaluation within budget/quota; do not repeat spent dispatchlocks.",
   "git": "check newest exact-head CI; do not reuse historical green result",
   "latest_runtime_ci": {
-    "run": 41695158879,
-    "conclusion": "success"
+    "run": 41837807559,
+    "conclusion": "success",
+    "commit": "9d88a3e"
   },
-  "targeted_regression": "47 passed; Ruff passed",
+  "targeted_regression": "Current retrieval and evidence94passed, Ruffpassed. Earlier localfullsnapshot830passed4skipped; not relabelled latestfullsuite.",
   "mixed_pool": {
     "documents": 1085,
-    "natural_top5": "2/4 to4/4",
-    "old_target_top5": "30/44 to35/44;9misses retained",
+    "natural_top5": "4/4 at rank1",
+    "old_target_top5": "42/44 retained; original2context-dependent misses remain",
     "negative_nist_top5": "0/8",
     "production_index_changed": false,
     "provider_calls": 0,
-    "private_scope_confirmation": "pending; packet local only, no authorization/dispatch"
-  }
+    "private_scope_confirmation": "user approved the four specified course excerpts; all executed batches use same scope; raw data remain local",
+    "broad_course_regression": "existing180 evidencecases baseline174/180 andcandidate174/180 top5, no losthits, zero calls"
+  },
+  "quota_stop_rule": {
+    "user_instruction": "先做到剩下10%额度就停",
+    "primary_window_minutes": 300,
+    "stop_when_remaining_percent_lte": 10,
+    "check": "read Codex get_usage_limits before paid batches and at stage boundaries",
+    "on_threshold": "save checkpoint then update goal paused; no automatic credit reset or resume",
+    "last_verified_primary_remaining_percent": 15,
+    "last_verified_weekly_remaining_percent": 79,
+    "observed_date": "2026-11-04"
+  },
+  "pending_batches": []
 }

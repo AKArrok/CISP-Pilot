@@ -13,10 +13,19 @@ from urllib.parse import urlsplit
 from langchain_core.callbacks import BaseCallbackHandler
 
 ROOT = Path(__file__).resolve().parents[1]
+MIN_CASE_INTERVAL_SECONDS = 3.1  # Stay below the application's 20 new threads/minute.
 
 
 def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def pace_case(previous_start):
+    if previous_start is not None:
+        delay = MIN_CASE_INTERVAL_SECONDS - (time.monotonic() - previous_start)
+        if delay > 0:
+            time.sleep(delay)
+    return time.monotonic()
 
 
 class Receipts(BaseCallbackHandler):
@@ -48,7 +57,7 @@ class Receipts(BaseCallbackHandler):
             record = {"run_id": str(run_id), "stage": stage, "usage": usage,
                       "elapsed_seconds": time.monotonic() - started,
                       "receipt_scope": "raw LangChain LLMResult, not HTTP wire body",
-                      "response": response.model_dump(mode="json")}
+                      "response": response.model_dump(mode="json", serialize_as_any=True)}
             with (self.output / "receipts.jsonl").open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(record, ensure_ascii=False) + "\n")
             if any(value is None for value in usage.values()):
@@ -112,6 +121,7 @@ def execute(packet, output, manifest):
     for flag in ("ENABLE_DENSE_RETRIEVAL", "ENABLE_RERANKING", "ENABLE_QUERY_VARIANTS",
                  "ENABLE_FEATURE_RERANKING", "ENABLE_LEARNED_RANKING", "ENABLE_EVIDENCE_SUBAGENT"):
         setattr(config, flag, False)
+    config.ENABLE_QUERY_VARIANTS = manifest.get("query_variants", False)
     config.RETRIEVER_K = 2
     chunks = json.loads((packet / "chunks.json").read_text(encoding="utf-8"))
     write(data / "kb_chunks.json", chunks)
@@ -136,6 +146,7 @@ def execute(packet, output, manifest):
     options = {"model": "deepseek-flash", "extra_body": {"thinking": {"type": "disabled"}},
                "max_tokens": 1024, "stream_usage": True, "callbacks": [recorder]}
     rows = []
+    completed = False
     try:
         with patch.object(graph, "get_simple_llm", functools.partial(llms.get_simple_llm, **options)), \
              patch.object(graph, "get_answer_llm", functools.partial(llms.get_answer_llm, **options)), \
@@ -150,9 +161,11 @@ def execute(packet, output, manifest):
             client.headers["X-CSRF-Token"] = login.json()["csrf_token"]
             assert client.get("/api/ready").status_code == 200
             threads = {}
+            previous_start = None
             for case in json.loads((packet / "cases.json").read_text(encoding="utf-8")):
                 if recorder.stopped or recorder.unknown:
                     raise RuntimeError("Batch stopped before next request")
+                previous_start = pace_case(previous_start)
                 group = case["thread_group"]
                 if group not in threads:
                     response = client.post("/api/threads")
@@ -167,14 +180,21 @@ def execute(packet, output, manifest):
                 history = client.get("/api/history", params={"thread_id": threads[group]}).json()
                 row = {"id": case["id"], "question": case["question"], "events": events,
                        "trace": trace.json(), "history_rows": len(history),
+                       "client_case_started_monotonic": previous_start,
                        "elapsed_seconds": time.monotonic() - started}
                 rows.append(row)
                 write(output / "results.json", rows)
                 if not events or events[-1].get("type") != "done" or any(e.get("type") == "error" for e in events):
                     raise RuntimeError("HTTP request did not complete")
                 print(case["id"] + ": completed", flush=True)
+            completed = True
     finally:
-        write(output / "summary.json", {**recorder.snapshot(), "completed_http_requests": len(rows),
+        finished = sum(bool(row["events"]) and row["events"][-1].get("type") == "done"
+                       and not any(e.get("type") == "error" for e in row["events"]) for row in rows)
+        write(output / "summary.json", {**recorder.snapshot(), "completed_http_requests": finished,
+                                       "recorded_http_requests": len(rows),
+                                       "status": "completed" if completed else "stopped",
+                                       "client_min_interval_seconds": MIN_CASE_INTERVAL_SECONDS,
                                        "transport": "in-process ASGI TestClient; real provider",
                                        "dense": False, "vector_memory": False})
 
@@ -186,6 +206,8 @@ def main():
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+    if type(manifest.get("query_variants", False)) is not bool:
+        raise ValueError("Query variants must be an explicitly frozen boolean")
     if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
         raise ValueError("Frozen executor changed")
     for name, digest in manifest["frozen_sha256"].items():
@@ -206,6 +228,10 @@ def main():
     before = hashlib.sha256(default.read_bytes()).hexdigest()
     try:
         execute(args.packet, args.output.resolve(), manifest)
+    except Exception as error:
+        write(args.output / "failure.json", {"error_type": type(error).__name__,
+              "http_status": getattr(getattr(error, "response", None), "status_code", None)})
+        raise
     finally:
         after = hashlib.sha256(default.read_bytes()).hexdigest()
         write(args.output / "default-db.json", {"before": before, "after": after, "unchanged": before == after})

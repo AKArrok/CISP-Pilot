@@ -1,0 +1,23 @@
+{
+  "role": "Original32 pending12 only; original questions unmodified; no repeat of completed20. Same prompts plus minimal fallbackcache TTL fix.",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 24,
+  "budget_usd": 0.24,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "764c80573b7fe5c612697384fab5c9ac7214838f22aff0cbd266145ef36d4b91",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "e3554eba75c37aa9cdc4e99e89ae8d5c1d1424f7b4c973af151fa17d60d94442",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "f68797c67de97a0109b1d57200a4d4b574198ba104a7f1dad8f3232206ec722f"
+  },
+  "acceptance": "Original32 questions and source-support standards unchanged; all done,durable,valid citations and source reviewed; no paraphrase/criteria changes to pass. Preserve any failures. Public original NIST only, no private course data or standardanswers in index; defaultDB unchanged, known boundedusage."
+}

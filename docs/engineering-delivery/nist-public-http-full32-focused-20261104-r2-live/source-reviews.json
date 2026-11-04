@@ -1,0 +1,142 @@
+[
+  {
+    "id": "ac-8-new-01",
+    "answer_sha256": "dd2286a714566cab1f4cbc86b9b52d4031de835712d4d577ac2311896ed4f1af",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-02",
+    "answer_sha256": "21adb81dd81859de068825cbd0b29de1de877fa42964fbd25ee529d577529dd8",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-03",
+    "answer_sha256": "03337ff92f2ba268778e71fd540446334e41a9c4670263ce3fa24b001643c413",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-04",
+    "answer_sha256": "058988a160b18a1163e9a5068721f31bfd1bc45cb8ff9ae90aa80af91fd14c64",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-05",
+    "answer_sha256": "ed3bfe338bb79a42054b9cd364e99734075fb062637932f79a78df26ae614aa8",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "0a69eabadabac1c2d4a72565463820531a85e68292bbe77d4cabdf7e756174b6",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-07",
+    "answer_sha256": "b58ec2b1137f898685b35d3580bdd2c81027da1f4df71b342842c10e4b31e4e4",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "ac-8-new-08",
+    "answer_sha256": "0da0573e74656a5ce60cc8c2d32bc9add821f5dff9c74d15915a4963d187fd17",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-01",
+    "answer_sha256": "e6a3f93bf2e31fd13ef670fab1cd7aa5c70e0056930fe587d6a9313046db22e6",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "8d9eb0a9d6685780fe5985e8011eaf0ff673812dbaa33f94c6ca480a3f964ec6",
+    "accepted": false,
+    "reason_code": "overnegative_from_nonexhaustive_examples",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-03",
+    "answer_sha256": "48f449be9f733a62e3fceb6093ad4283a72ff7b92a60cf71641cce7076722e06",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-04",
+    "answer_sha256": "3b53b06f91b3e85899cda6c01f5e3284f9fb8498cb82a75534b3c879e5fe0bbe",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-05",
+    "answer_sha256": "88487b4593aa63b91967177126a4dbff5c2c11915eafc5ff7ceed3ce875a758f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-06",
+    "answer_sha256": "21848615ff709c20c8baae03e6556a38c74407341f509a4e725da00aed4fb038",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-07",
+    "answer_sha256": "7c4e931dcfb59260908196927f367d22d419294027704bf3a2c7c733de6c49f6",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "at-2-new-08",
+    "answer_sha256": "b2208a2de1a1105b7bb456b1fedfc3201f88096486d061c712688f1b69929bc9",
+    "accepted": false,
+    "reason_code": "required_source_not_retrieved",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-01",
+    "answer_sha256": "4c80a882d3defed4c8c62b3fd5d899c8260b40a3669ec02714cc98125b25c39f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-02",
+    "answer_sha256": "26622d96d80316d4e9edb23f4cc971f5c592981f4cd2a8cd75cdff3e83d183f7",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-03",
+    "answer_sha256": "f9b90d1a16cf2747d0779f28ed9314e80db61f40943f988742528954be29c853",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  },
+  {
+    "id": "cp-9-new-04",
+    "answer_sha256": "48a7193bb65359f4fb14563fbf4b99d0c167742f12ce9928d392feae730d9403",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI source review against frozen original evidence; not independent human gold"
+  }
+]

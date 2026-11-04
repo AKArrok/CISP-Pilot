@@ -48,3 +48,18 @@ def test_known_truncation_keeps_known_charge_and_stops(tmp_path):
     recorder.on_llm_error(RuntimeError("private details"), run_id=identity)
     assert recorder.stopped and not recorder.unknown
     assert "private details" not in (tmp_path / "errors.jsonl").read_text()
+
+
+def test_structured_response_receipt_keeps_tool_arguments(tmp_path):
+    recorder = Receipts(tmp_path, 1, .08)
+    identity = uuid4()
+    recorder.on_chat_model_start({}, [[]], run_id=identity)
+    response = LLMResult(generations=[[ChatGeneration(message=AIMessage(
+        content="", tool_calls=[{"id": "route-1", "name": "VariantsOut",
+                                "args": {"variants": ["training assessment", "training requirements"]}}],
+        response_metadata={"finish_reason": "tool_calls"},
+        usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15}))]])
+    recorder.on_llm_end(response, run_id=identity)
+    saved = json.loads((tmp_path / "receipts.jsonl").read_text())
+    message = saved["response"]["generations"][0][0]["message"]
+    assert message["tool_calls"][0]["args"] == response.generations[0][0].message.tool_calls[0]["args"]

@@ -1,0 +1,31 @@
+{
+  "arms": {
+    "baseline": [],
+    "question_marker": [
+      "是否"
+    ],
+    "quantifiers": [
+      "所有",
+      "必须"
+    ],
+    "combined": [
+      "是否",
+      "所有",
+      "必须"
+    ]
+  },
+  "frozen_sha256": {
+    "data/kb_chunks.json": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+    "docs/engineering-delivery/nist-search-translation-20261104-live/multiscale-chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "docs/engineering-delivery/nist-large-pool-20261104-offline/regression-cases.json": "258848ee9dc40641df940f5d019af4d88d75724e9c6a91c76867f9ca18b9268b",
+    "docs/engineering-delivery/nist-large-pool-20261104-offline/negative-cases.json": "6adb4a78ea94937120ae86552f421f20a6fd9f760b4a72df1626fe7992fd98fb",
+    "evaluation/nist-public-http-natural-zh-v2/cases.json": "ab9c36413fb64b0c6abff9217f80f53657b01b7dbf2238f5a12f568f6d2c0185",
+    "evaluation/nist-public-http-full32-final-v1/cases.json": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314"
+  },
+  "acceptance": "Originalinputs unchanged; mixednatural4rank1; mixedold42hits retained;8negative noNISTtop5; originalpublic32targettop2all. Zero externalcalls, no defaultindexwrites. Querylogic retained in originalquestion; ablation concerns topicretrieval only.",
+  "code_sha256": {
+    "retrieval/bm25.py": "18faf59998dd0a9387fedbb809559e692af7f85ffcafbf6c5482118c8381f150",
+    "retrieval/hybrid.py": "9724877ed2e00d7cb4bdf17f450c043eae1aa0fcdf6306dc7576a60fcc545cf7",
+    "retrieval/query_rewrite.py": "656a19ec90b164ab8676bfdda69f4bd722e55142b89699bddc67de8f4a4fcbeb"
+  }
+}
