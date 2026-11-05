@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "76c457e7619f497199b16934f6daefdbef3292b0a1654230fc005c613d3e2b19",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言条件归属正确；CP9系统组件仅属于用户级备份，三类频次区分明确"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "28a268d626b49a5955945d9799d38fad73bf0cf4a073a2a38c7f4908cc264ef8",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言条件归属正确；CP9系统组件仅属于用户级备份，三类频次区分明确"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "5e8e2345563d78fd43fc2dc356ef754cf3b388e4607d7c109ccb2d7294de82c1",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言条件归属正确；CP9系统组件仅属于用户级备份，三类频次区分明确"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "aabdeb84e8e7404e87276efff331c9f450fdf17ba4e4c83c6bbc11d820eb6140",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言条件归属正确；CP9系统组件仅属于用户级备份，三类频次区分明确"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "0f018aeddafade5f1c4f17b1f90cb38ca011dbd5b32693a9ea9793956aae8fb4",
+    "accepted": false,
+    "reason_code": "breach_mistranslated_as_policy_violation",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "security incidents or breaches被两次译为事件或违规，仍改变事件类别"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "0c66585bd6447e34e011eccf2219bf35d3b16e33f705feab65d736acf054e039",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言条件归属正确；CP9系统组件仅属于用户级备份，三类频次区分明确"
+  }
+]

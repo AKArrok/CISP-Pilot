@@ -1,0 +1,9 @@
+{
+  "variable": "ANSWER_SYSTEM.rule1",
+  "added_sentence": "使用来源中的条件、范围和参数时，必须保持其与原文对应动作的绑定，不得把相邻陈述的前提移用到另一动作。",
+  "temperature_unchanged": 0.3,
+  "source_bytes_unchanged": true,
+  "original_question_bytes_unchanged": true,
+  "production_prompt_unchanged": true,
+  "acceptance": "All6 source-supported, original failure3repeats plus secondary-notification/AT2-nonexhaustive/CP9-scope regression; no candidate promotion without original32 and approvedmixed4 regression"
+}

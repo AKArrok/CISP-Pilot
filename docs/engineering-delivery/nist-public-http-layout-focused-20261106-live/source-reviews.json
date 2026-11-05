@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "1469aa3d6d2d149badb8e5ff829103935abc6d6ab4093a1c5c038e7812938017",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "a48a6a1a71d7c37fcab4db95de09162c4aae29a71d917b3e67d05dcfabcbd610",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "3f84dc01bb8154cb8d3ef6dcd905e586e4477d491757a2c6a9397617d837eddc",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "fc413c9df56a9453aa2c01e49c758dbb6ceb6a69d6bbe42b20783e201dba1787",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "e98f1d890a09ba0fde5e11ca4a856bea18e06ecaa6ce9466a4f78235107bc929",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "88b15ed8061fe659e14cdfc44bfd3e69efe76a45a4cbc341a1aef91fe0c45070",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "cp-9-new-07-repeat-1",
+    "answer_sha256": "9d213e913befa5feabfe2c67ddfcc3e2ebd344758384de4cb364e1de460232ab",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "原多语言无前提串用；培训保留组织定义/非穷尽和工作环境因素，未推出全局排除；供应商无指定，未泛化范围"
+  },
+  {
+    "id": "cp-9-new-07-repeat-2",
+    "answer_sha256": "bb0309b83551626c15c39a02716ce88b897dd44f4d110629d4c5a45dec961987",
+    "accepted": false,
+    "reason_code": "scope_parameter_not_limited_to_user_information_in_unasked_expansion",
+    "reviewer": "Codex AI original-source review; same conservative criteria, not human gold",
+    "rationale": "再次泛称备份所涉系统组件待赋值，未限定用户级信息；与原范围概括按同标准保留拒绝"
+  }
+]

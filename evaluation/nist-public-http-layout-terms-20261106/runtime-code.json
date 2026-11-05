@@ -1,0 +1,13 @@
+{
+  "experimental_source_candidate_not_promoted": true,
+  "base_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
+  "sha256": {
+    "agents/sources.py": "b87ef3b40a78f1bd06f1e80891213e526db7c6e8db370a908c448597f46b7f69",
+    "agents/graph.py": "8a07ae2a57aa3ea5d89044af8b67f65763b224b1de2a8c38d1a393224e092df7",
+    "agents/prompts.py": "287b744a32723f2d986b73f4a8a3bbaf723d572c073e8c729d83eeac8135c7c4",
+    "llms.py": "ee20a7b7fdee99fe86104be4b723c4acb12df7f8143865cbcfb7368585705dc3",
+    "scripts/evaluate_public_http.py": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+    "retrieval/bm25.py": "249fbbd0c9e4febd24368eb2ab882ace5fb2d5923e0f04aba41777d74dec595e",
+    "retrieval/hybrid.py": "1387f37ff64c35a351c4a42a6fd5bdc5191b43921977560e95b301d3aab35b9d"
+  }
+}

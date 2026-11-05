@@ -1,0 +1,27 @@
+{
+  "mode": "judge_calibration",
+  "role": "balanced4supported4unsupported saved real answers from seen development runs; AI labels not human gold, not replacement of old disputed12",
+  "frozen_sha256": {
+    "cases.json": "7e43dd4b0b5bbf2cb973b486e21c23c5263faa5b1703f6f5aea8b48746a65623",
+    "chunks.json": "8c557586ae6a6467664da2d9b1730ad593cff44b526a0792822e6aefbe08697e",
+    "prompts.json": "5342e35e97cca5a1101ff7ab5eb11cfc7958e6d6e64b5342ca1a65ac61dfe4ad",
+    "provenance.json": "2f451ad7fd25013d7cf4fae2446d3cac293c89b6144c36b82b2f273837cf8503"
+  },
+  "paid_proposal": {
+    "calls": 8,
+    "budget_usd": 0.08,
+    "scope": "Existing unchanged v12 judge only; no answer generation, public NIST and saved public answers, no labels sent",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "evidence_protocol": "line_ids",
+  "allow_absent_source": true,
+  "max_estimated_input_tokens": 5500,
+  "acceptance": "All8 frozen source-support ranges with valid line evidence; separately report false accepts and false rejects; never relabel to match judge",
+  "executor_sha256": "a3d5906d073abcdaabc7799ff09d1d51baaff6e0b7165aedc31b2b524e7db3df"
+}

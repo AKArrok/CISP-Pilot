@@ -1,0 +1,47 @@
+{
+  "all_requests": [
+    {
+      "id": "ac8_risk_transfer",
+      "estimated_tokens": 4374,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "ac8_supported",
+      "estimated_tokens": 4426,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "at2_mistranslation",
+      "estimated_tokens": 3809,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "at2_supported",
+      "estimated_tokens": 3827,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "cp9_default_supported",
+      "estimated_tokens": 3041,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "cp9_layout_supported",
+      "estimated_tokens": 3260,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "cp9_scope_generic",
+      "estimated_tokens": 3000,
+      "labels_excluded_from_request": true
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "estimated_tokens": 2904,
+      "labels_excluded_from_request": true
+    }
+  ],
+  "existing_judge_prompt_unchanged": true,
+  "executor_sha256_verified": "a3d5906d073abcdaabc7799ff09d1d51baaff6e0b7165aedc31b2b524e7db3df",
+  "scope": "same raw original contexts, no derived source-layout notes or new source; source previews expanded to their original full text"
+}

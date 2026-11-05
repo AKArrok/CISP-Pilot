@@ -1,0 +1,13 @@
+{
+  "role": "failed candidate code preserved for replay, not active default",
+  "sha256": {
+    "sources.py": "b87ef3b40a78f1bd06f1e80891213e526db7c6e8db370a908c448597f46b7f69",
+    "graph.py": "8a07ae2a57aa3ea5d89044af8b67f65763b224b1de2a8c38d1a393224e092df7",
+    "test_source_answer_layout.py": "7f450ae77c4e1c211cb9d01c8641f5baaf4e030b3ae7239953d4c38f2d9c5c96"
+  },
+  "restore_mapping": {
+    "sources.py": "agents/sources.py",
+    "graph.py": "agents/graph.py",
+    "test_source_answer_layout.py": "tests/test_source_answer_layout.py"
+  }
+}

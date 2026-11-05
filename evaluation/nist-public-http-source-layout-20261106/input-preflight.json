@@ -1,0 +1,18 @@
+{
+  "original_chunks_bytes_unchanged": true,
+  "original_default_prompts_bytes_unchanged": true,
+  "input_tokenizer": "cl100k_base estimate only",
+  "largest2_source_tokens_plus_system": 4567,
+  "source_token_counts": {
+    "ac-2": 2149,
+    "au-6": 685,
+    "ia-2": 386,
+    "ir-4": 375,
+    "ac-8": 731,
+    "at-2": 1197,
+    "ca-8": 664,
+    "cp-9": 793
+  },
+  "acceptance": "Original same6 all source-supported; no extra inference from annotations; plain course content unchanged; no candidate promotion without original32 and approvedmixed4 regression",
+  "default_index_modified": false
+}

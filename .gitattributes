@@ -13,3 +13,10 @@ docs/engineering-delivery/nist-search-translation-20261104-live/replay.py -text 
 
 docs/engineering-delivery/bm25-function-words-20261104/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/bm25-function-words-20261104/*.py -text whitespace=cr-at-eol
+
+# Preserve the byte hashes of the frozen November 6 experiments and prototypes.
+evaluation/nist-public-http-*-20261106/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261106-live/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261106-live/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261106-live/executor.py -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-20261106/source-layout-prototype/*.py -text whitespace=cr-at-eol

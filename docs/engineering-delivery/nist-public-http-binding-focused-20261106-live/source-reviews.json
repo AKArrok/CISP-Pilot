@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "3db3c860c82601bfd70ce7a6e9690f1cfde97886d80694289eca64c12f02caea",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言组织需求/用户构成、二次告知风险评估保持各自动作绑定"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "1765e185e0f56a797528c63fb6c8dc849ded5af677d86cba41d8c582dcefe79e",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言组织需求/用户构成、二次告知风险评估保持各自动作绑定"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "3e6dc45bebdf7c4ee8640b2b3e63b85c83f71363facf0fcba13683ce65598ff0",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言组织需求/用户构成、二次告知风险评估保持各自动作绑定"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "be89a36fe782996bda59a497ed5c867ea0da61509a3abc78a8ef8e7388718097",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "多语言组织需求/用户构成、二次告知风险评估保持各自动作绑定"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "eb8eacd5db466c78c0e56c5ed28168479f63d0b76d11419c01ceca4aa43418a1",
+    "accepted": false,
+    "reason_code": "breach_mistranslated_as_policy_violation_and_overexclusive_summary",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "breaches译为违规；开头对未列举事件过度排他，正文又承认非穷尽；保留失败"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "a7c942c8351ce38ded2212115cfa100b517a55d30d2ec485a163cea6da155338",
+    "accepted": false,
+    "reason_code": "scope_parameter_overgeneralized_in_unasked_expansion",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "把备份对象范围泛称参数，未限定用户级系统组件，原范围泛化标准保持"
+  }
+]

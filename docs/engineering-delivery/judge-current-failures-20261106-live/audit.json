@@ -1,0 +1,66 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "id": "ac8_risk_transfer",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "ac8_supported",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "at2_mistranslation",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    },
+    {
+      "id": "at2_supported",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "cp9_default_supported",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "cp9_layout_supported",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 2
+    },
+    {
+      "id": "cp9_scope_generic",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": true,
+      "score": 1
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "arm": "judge_candidate",
+      "status": "validated",
+      "passed": false,
+      "score": 2
+    }
+  ],
+  "arm_matches": {
+    "judge_candidate": 5
+  },
+  "independent_human_review": false,
+  "provider_calls": 0
+}

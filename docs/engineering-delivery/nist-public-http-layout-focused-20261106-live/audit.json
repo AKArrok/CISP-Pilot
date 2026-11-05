@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "ac-8-new-05-repeat-0",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ac-8-new-05-repeat-1",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ac-8-new-05-repeat-2",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "ac-8-new-06",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "at-2-new-02",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-07",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-07-repeat-1",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "cp-9-new-07-repeat-2",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    }
+  ],
+  "budget_receipts_valid": true,
+  "default_database_unchanged": true,
+  "execution_complete": true,
+  "semantic_source_review": "required separately",
+  "independent_human_gold": false
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ac8_risk_transfer",
+    "grade_sha256": "12d1d76ac5c31a5ce01b8b6628f678933768c58a30cce9d36dfebc93c3d30de5",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": false,
+    "finding": "Failed to identify frozen original semantic issue; full score remains unchanged",
+    "original_score": 2,
+    "score_range_match": false
+  },
+  {
+    "id": "ac8_supported",
+    "grade_sha256": "1b26639e755b5e2a7fff22fa94d79f4439828ef7ae15efa40698a1dd66aec825",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": true,
+    "finding": "Supported saved answer accepted with compatible rationale",
+    "original_score": 2,
+    "score_range_match": true
+  },
+  {
+    "id": "at2_mistranslation",
+    "grade_sha256": "09802b32ce940c927d6cfbe5eb343eab74dc9b1888ae7795fe3039ecd906186e",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": false,
+    "finding": "Failed to identify frozen original semantic issue; full score remains unchanged",
+    "original_score": 2,
+    "score_range_match": false
+  },
+  {
+    "id": "at2_supported",
+    "grade_sha256": "b420ad0654e7346f77d53769a1db16747b2a00d09c9370ac7ca2ab242175a6be",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": true,
+    "finding": "Supported saved answer accepted with compatible rationale",
+    "original_score": 2,
+    "score_range_match": true
+  },
+  {
+    "id": "cp9_default_supported",
+    "grade_sha256": "931df8a0ae5c7bf8bc84a63af9413dd63a21ced8aec3582b244245ff0cbe1162",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": true,
+    "finding": "Supported saved answer accepted with compatible rationale",
+    "original_score": 2,
+    "score_range_match": true
+  },
+  {
+    "id": "cp9_layout_supported",
+    "grade_sha256": "b81501303cff488c34022910faa5dd2c7423b35a298f78ca0127d1a390afe574",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": true,
+    "finding": "Supported saved answer accepted with compatible rationale",
+    "original_score": 2,
+    "score_range_match": true
+  },
+  {
+    "id": "cp9_scope_generic",
+    "grade_sha256": "6b99870d3b22c3ee2feaf199d47a51211a9465abda9e08ff89b5952badb08a1d",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": false,
+    "finding": "Wrong rationale: answer explicitly says cp-09_odp.01=system components, 02-04=frequency; judge falsely attributes grouped frequency to 01. Score-range match does not establish correct detection.",
+    "original_score": 1,
+    "score_range_match": true
+  },
+  {
+    "id": "cp9_scope_generic_combined",
+    "grade_sha256": "73ea377c9868a2de1b707d1f1c51ed68e97bf5120b5f1c61eea38a96522f5bd4",
+    "attribution": "Codex AI review of judge rationale against original saved answer/source; not human gold",
+    "rationale_supported": false,
+    "finding": "Failed to identify frozen original semantic issue; full score remains unchanged",
+    "original_score": 2,
+    "score_range_match": false
+  }
+]

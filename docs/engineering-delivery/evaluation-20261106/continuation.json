@@ -7,37 +7,82 @@
   "previous_turn": "progress; validated fixes pushed, exacthead CI succeeded; paused at user 10percent threshold",
   "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
   "active_experiment": {
-    "packet": "evaluation/nist-public-http-default-baseline-20261106",
-    "status": "running",
-    "max_calls": 64,
-    "budget_usd": 0.2,
-    "session_id": 47766,
-    "output": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live"
+    "status": "completed_failed",
+    "packet": "evaluation/judge-current-failures-v1",
+    "range_matches": "5/8",
+    "grounded_error_detections": "0/4"
   },
   "budget": {
     "approved_total_usd": 3,
     "anchor_dispatch_attempts": 887,
     "anchor_estimate_usd": 0.5732733,
-    "new_batches": [],
-    "dispatch_attempts": 887,
-    "known_estimate_usd": 0.5732733,
+    "new_batches": [
+      {
+        "id": "nist-public-http-default-baseline-20261106",
+        "calls": 64,
+        "estimated_cost_usd": 0.0386388,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-default-repeat-20261106",
+        "calls": 6,
+        "estimated_cost_usd": 0.0040958999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-binding-focused-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.008190600000000001,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-focused-output-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.00708,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-source-layout-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.0093477,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-terms-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0115035,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-focused-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0106935,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-failures-v1",
+        "calls": 8,
+        "estimated_cost_usd": 0.0082974,
+        "unknown_charge": false
+      }
+    ],
+    "dispatch_attempts": 1033,
+    "known_estimate_usd": 0.6711207,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "冻结当前默认配置原32题基线；不能把旧候选31/32当成当前默认失败",
+  "next": "Preserve and push full failed-round evidence; compare concise claim-focused reviewer against unchanged8 before any two-pass answer repair",
   "quota": {
     "stop_remaining_percent_lte": 10,
-    "last_verified_primary_remaining_percent": 93,
+    "last_verified_primary_remaining_percent": 79,
     "no_reset_credit": true
   },
-  "pending_batches": [
-    {
-      "packet": "evaluation/nist-public-http-default-baseline-20261106",
-      "status": "running",
-      "max_calls": 64,
-      "budget_usd": 0.2,
-      "session_id": 47766,
-      "output": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live"
-    }
-  ]
+  "pending_batches": [],
+  "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
+  "documentation_ci": {
+    "id": 42073073436,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "production_candidate_status": "None promoted. Original graph/source behavior and answer prompt restored; exact original graph byte hash verified; prototype archived."
 }

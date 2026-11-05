@@ -1,0 +1,10 @@
+{
+  "variable": "unsolicited teaching expansion/output format",
+  "baseline": "current default, not failed binding candidate",
+  "remove_optional_mnemonics": true,
+  "default_one_relevant_paragraph": true,
+  "retain_all_existing_source_grounding": true,
+  "complete_requested_content_priority": true,
+  "default_production_prompt_unchanged": true,
+  "acceptance": "All6 source-supported then original32 and approvedmixed4; no dropping failures"
+}

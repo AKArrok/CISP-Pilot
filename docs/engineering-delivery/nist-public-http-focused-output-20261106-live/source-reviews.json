@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "3907797a32f705e73a9b70f7b26e87ade72f6048f5e152c394e4216b185fb2fd",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/多语言动作各自保持；非穷尽示例及泄露正确，未取消组织定义事件"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "d268619e46cdeddcf1d8a4f474dc3ea9ee5511f9cf24644b7727a32d843437b1",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/多语言动作各自保持；非穷尽示例及泄露正确，未取消组织定义事件"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "d139d22b51a7a94c637f10791410162e093e93dd9f3fd4f762d11b56f8d07eb8",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/多语言动作各自保持；非穷尽示例及泄露正确，未取消组织定义事件"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "1511501dafee77d6aa3a66d06dcaeee41272b819d3b43822c7c948b420802b2f",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/多语言动作各自保持；非穷尽示例及泄露正确，未取消组织定义事件"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "bc2e9a6b673df52755c59d61542fb3c2e2e7c3cc5fcf1b7a42aa5b4b90ad23aa",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/多语言动作各自保持；非穷尽示例及泄露正确，未取消组织定义事件"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "7025422fa32004670cf66d2dc2abcc2842727b5a91a384bc39a8fa3b354f0725",
+    "accepted": false,
+    "reason_code": "scope_parameter_overgeneralized_and_citation_not_on_separate_line",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "对象范围未限定用户级组件，重现原拒绝标准，出处不另起一行"
+  }
+]

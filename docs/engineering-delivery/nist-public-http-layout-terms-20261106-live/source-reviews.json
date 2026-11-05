@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "d0723f221bb221b102a0e7930e12e3fbe66311ab286b090ed685c492994f1a4a",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "08dd8417e243ebb49b6280b3a9569549fe77b21362e9568b1ae79014ae258707",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "c4acdb6fdedc4e4371cbb45160cc90ec5cc91b28e81ebbd6e41d882c99698a13",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "d86b49e6b6b56e87fc6d1794f9077cf346aa4aee18ddd34fe3a0016b7649e7f0",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "0da50cf8fc86edc4b37a73dfa0425b8e923b3e340037d326bc4f807f7bed7edf",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "880cbd9f9c66642a8e06aa340f71b990b69a7f65673b0fda9c99aba42fc2e675",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "多语言和二次风险分离；培训明确非穷尽且泄露/失陷术语正确；CP9主样例明确用户级组件与三类频次"
+  },
+  {
+    "id": "cp-9-new-07-repeat-1",
+    "answer_sha256": "4e43b0908dd1fad306f4dc35ff861c17343823d6376d81c60e96ffa03d124b36",
+    "accepted": false,
+    "reason_code": "scope_parameter_overgeneralized_in_unasked_expansion",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "原对象范围概括仍未限定用户级组件，即使列出参数名仍不足消除概括句歧义，沿用原拒绝标准"
+  },
+  {
+    "id": "cp-9-new-07-repeat-2",
+    "answer_sha256": "4878643017dbec238187cd065e5e725f388bad04c862bd19e447f41d321e10c1",
+    "accepted": false,
+    "reason_code": "scope_parameter_overgeneralized_in_unasked_expansion",
+    "reviewer": "Codex AI original-source review; conservative unchanged criteria, not human gold",
+    "rationale": "原对象范围概括仍未限定用户级组件，即使列出参数名仍不足消除概括句歧义，沿用原拒绝标准"
+  }
+]

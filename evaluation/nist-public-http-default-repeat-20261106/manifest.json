@@ -1,0 +1,23 @@
+{
+  "role": "Same original AC8 question and default config repeated3 times; no source/question edits; diagnostic not new holdout",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 6,
+  "budget_usd": 0.03,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0.3,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "73ed4d800feb7bca883e6d8d898b7cb7df58dd9d643cd407e458750243b88515",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "087b924dd68ae80dfba915245d03a28aa44b381115b2d7dc398d3ab9045fcf28"
+  },
+  "acceptance": "Frozenquestions and primarysource immutable, allrequests done with durabletrace, validcitation, source/support correctness and criteria preserved. Targetmiss remainsfailure even if scopedrefusal is safe. AI development only, no independenthuman gold."
+}

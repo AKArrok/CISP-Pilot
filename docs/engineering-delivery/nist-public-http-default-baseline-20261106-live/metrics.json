@@ -1,0 +1,22 @@
+{
+  "case_count": 32,
+  "target_top2": 32,
+  "structural_passed": true,
+  "source_ai_accepted": 31,
+  "source_ai_failed_ids": [
+    "ac-8-new-05"
+  ],
+  "failed_execution": 0,
+  "latency_seconds": {
+    "p50": 3.2034999999996217,
+    "p95_nearest_rank": 4.5,
+    "p99_nearest_rank": 6.563000000000102
+  },
+  "answer_chars": {
+    "mean": 428.875,
+    "max": 769
+  },
+  "calls": 64,
+  "estimated_cost_usd": 0.0386388,
+  "scope": "serial ASGI, real provider, AI source annotations; not production SLA or independent gold"
+}

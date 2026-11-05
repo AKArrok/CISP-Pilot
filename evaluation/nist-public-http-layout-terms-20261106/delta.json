@@ -1,0 +1,8 @@
+{
+  "additional_variable": "term meaning safeguard; source-layout code retained unchanged",
+  "added_sentence": "英文安全术语须保留原义，例如 security incidents or breaches 应译为“安全事件或泄露/失陷”，不能把 breaches 换成普通“违规”；无法确定时保留英文原词。",
+  "grounding": "https://csrc.nist.gov/glossary/term/breach",
+  "interpretation": "NIST SP80053 usage concerns loss of control/compromise/unauthorized disclosure/access of PII. Generic policy violation is not an equivalent translation. Chinese rendering is AI interpretation, not an official NIST translation.",
+  "not_indexed": true,
+  "acceptance": "all8 plus original32 and approvedmixed4 before promotion; keep all prior failures"
+}

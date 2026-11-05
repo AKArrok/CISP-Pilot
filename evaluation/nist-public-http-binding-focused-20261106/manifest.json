@@ -1,0 +1,25 @@
+{
+  "role": "Single generic action-condition binding sentence only; same original questions and source, temp0.3 and all retrieval settings retained; default code not edited",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 12,
+  "budget_usd": 0.06,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0.3,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "e13f188e1eee2bc4007250e60b02202643ca0f903c5fbd6ae3ca00e8c4311dc0",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "189d8031d97f98200b9d450b0eef5dba446291f1a0d89e7fafc1a0473b6cce85"
+  },
+  "acceptance": "Frozenquestions and primarysource immutable, allrequests done with durabletrace, validcitation, source/support correctness and criteria preserved. Targetmiss remainsfailure even if scopedrefusal is safe. AI development only, no independenthuman gold.",
+  "baseline_answer_sha256": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+  "candidate_wrapper_sha256": "27b8484c942a1c20729d5459c71304a292b82a15c062e33cf18cb15a1d436ac5"
+}

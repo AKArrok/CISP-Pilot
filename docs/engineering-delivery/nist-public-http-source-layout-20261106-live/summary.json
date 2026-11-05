@@ -1,0 +1,13 @@
+{
+  "dispatch_attempts": 12,
+  "known_cost_estimate_usd": 0.0093477,
+  "cost_unknown": false,
+  "stopped": false,
+  "completed_http_requests": 6,
+  "recorded_http_requests": 6,
+  "status": "completed",
+  "client_min_interval_seconds": 3.1,
+  "transport": "in-process ASGI TestClient; real provider",
+  "dense": false,
+  "vector_memory": false
+}

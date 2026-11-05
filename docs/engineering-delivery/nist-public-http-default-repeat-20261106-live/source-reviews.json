@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "08a5ac9de59db6301c1827d1e522b7cfea47bc54d472791b94cb56749ccbecd7",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "组织需求与用户构成；未借用风险前提"
+  },
+  {
+    "id": "ac-8-new-05-repeat-1",
+    "answer_sha256": "1edd3d18f2859e1aa4ecdaf2c219e4093b55fffc20818de60d494bf6f8473f93",
+    "accepted": false,
+    "reason_code": "risk_condition_moved_between_distinct_actions",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "风险/需求评估附加到多语言条件；风险评估原文属于二次告知"
+  },
+  {
+    "id": "ac-8-new-05-repeat-2",
+    "answer_sha256": "8ad0f22e3c2e2e5763168e36b03f08184ca5f5d76093e8b631860f8a25dd56bf",
+    "accepted": true,
+    "reason_code": "source_supported_core_complete",
+    "reviewer": "Codex AI original-source review; not independent human gold",
+    "rationale": "组织需求与用户构成；未借用风险前提"
+  }
+]

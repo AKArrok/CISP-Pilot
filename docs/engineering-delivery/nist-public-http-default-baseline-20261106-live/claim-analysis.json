@@ -1,0 +1,32 @@
+{
+  "id": "ac-8-new-05",
+  "role": "AI-authored diagnostic source alignment; not independent gold",
+  "answer_sha256": "8dd70f281de7fd634abab7c3c082f554aa72e41d8f98b693d1ae1404666c1912",
+  "claims": [
+    {
+      "claim": "多语言显示基于组织需求与用户构成",
+      "support": "supported",
+      "source_exact": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "claim": "多语言考虑基于风险评估",
+      "support": "unsupported transferred condition",
+      "source_exact": "Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon.",
+      "reason": "risk premise belongs to secondary notification, not language selection"
+    }
+  ],
+  "hypotheses_ranked": [
+    {
+      "hypothesis": "Unrequested expansion creates opportunities to borrow adjacent premises",
+      "prediction": "Same evidence with a question-focused answer contract reduces irrelevant clauses and prevents risk premise transfer"
+    },
+    {
+      "hypothesis": "Adjacent source sentences blur action-condition binding",
+      "prediction": "Explicit source segmentation with unchanged original prose resolves transfer under original answer prompt"
+    },
+    {
+      "hypothesis": "Sampling-dependent slip rather than stable deterministic error",
+      "prediction": "Same default prompt and question repeated yields mixed outcomes; original failure still retained"
+    }
+  ]
+}

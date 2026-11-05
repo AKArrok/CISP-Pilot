@@ -1,0 +1,17 @@
+{
+  "role": "seen AI development calibration, not human gold",
+  "cases": 8,
+  "supported_controls": 4,
+  "unsupported_controls": 4,
+  "score_range_matches": 5,
+  "full_score_on_frozen_unsupported": 3,
+  "low_score_on_supported": 0,
+  "unsupported_detected_with_supported_rationale": 0,
+  "score_match_with_false_rationale": [
+    "cp9_scope_generic"
+  ],
+  "rationale_supported_cases": 4,
+  "automatic_acceptance_enabled": false,
+  "old_disputed12": "10/12 unchanged",
+  "basis": "Raw judge grades retained; added source-grounded AI rationale annotations without rewriting grades/labels."
+}

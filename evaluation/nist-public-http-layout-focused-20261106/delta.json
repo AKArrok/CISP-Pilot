@@ -1,0 +1,11 @@
+{
+  "variable_vs_previous": "reuse already-frozen unsolicited-expansion/output format only",
+  "factors": [
+    "mechanical source layout",
+    "terminology meaning safeguard",
+    "question-focused output format"
+  ],
+  "no_new_semantic_rule": true,
+  "all_cases_and_chunks_same_bytes_as_previous": true,
+  "acceptance": "All8 then original32 and approvedmixed4; same scope failure standards maintained"
+}
