@@ -1,0 +1,23 @@
+{
+  "role": "Current committed default answer prompt and temperature 0.3 baseline; same original32 cases/chunks byte-for-byte, no new private data or labels sent",
+  "transport": "ASGI TestClient in process, real external model calls",
+  "max_calls": 64,
+  "budget_usd": 0.2,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_output_tokens": 1024,
+  "answer_temperature": 0.3,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "executor_sha256": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+  "original_cases_sha256": "ca5b5e62770ae5df4e4816a7c3ff5a76789bf0a13f47f957c615cf99599e8cdc",
+  "frozen_sha256": {
+    "cases.json": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "087b924dd68ae80dfba915245d03a28aa44b381115b2d7dc398d3ab9045fcf28"
+  },
+  "acceptance": "Frozenquestions and primarysource immutable, allrequests done with durabletrace, validcitation, source/support correctness and criteria preserved. Targetmiss remainsfailure even if scopedrefusal is safe. AI development only, no independenthuman gold."
+}

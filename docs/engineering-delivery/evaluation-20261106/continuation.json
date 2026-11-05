@@ -1,0 +1,43 @@
+{
+  "status": "in_progress",
+  "date": "2026-11-06",
+  "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
+  "entrypoint": "AGENTS.md",
+  "roadmap": "EVALUATION_LOOP.md",
+  "previous_turn": "progress; validated fixes pushed, exacthead CI succeeded; paused at user 10percent threshold",
+  "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
+  "active_experiment": {
+    "packet": "evaluation/nist-public-http-default-baseline-20261106",
+    "status": "running",
+    "max_calls": 64,
+    "budget_usd": 0.2,
+    "session_id": 47766,
+    "output": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live"
+  },
+  "budget": {
+    "approved_total_usd": 3,
+    "anchor_dispatch_attempts": 887,
+    "anchor_estimate_usd": 0.5732733,
+    "new_batches": [],
+    "dispatch_attempts": 887,
+    "known_estimate_usd": 0.5732733,
+    "unknown_current_charge": false
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "冻结当前默认配置原32题基线；不能把旧候选31/32当成当前默认失败",
+  "quota": {
+    "stop_remaining_percent_lte": 10,
+    "last_verified_primary_remaining_percent": 93,
+    "no_reset_credit": true
+  },
+  "pending_batches": [
+    {
+      "packet": "evaluation/nist-public-http-default-baseline-20261106",
+      "status": "running",
+      "max_calls": 64,
+      "budget_usd": 0.2,
+      "session_id": 47766,
+      "output": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live"
+    }
+  ]
+}

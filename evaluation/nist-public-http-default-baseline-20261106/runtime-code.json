@@ -1,0 +1,13 @@
+{
+  "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
+  "sha256": {
+    "agents/prompts.py": "287b744a32723f2d986b73f4a8a3bbaf723d572c073e8c729d83eeac8135c7c4",
+    "agents/graph.py": "b7c3834423bfe587b4c9ee9b9dc8cfd2b1b177cf769518dc81c84e10a99452ea",
+    "llms.py": "ee20a7b7fdee99fe86104be4b723c4acb12df7f8143865cbcfb7368585705dc3",
+    "retrieval/bm25.py": "249fbbd0c9e4febd24368eb2ab882ace5fb2d5923e0f04aba41777d74dec595e",
+    "retrieval/hybrid.py": "1387f37ff64c35a351c4a42a6fd5bdc5191b43921977560e95b301d3aab35b9d",
+    "scripts/evaluate_public_http.py": "59ff96533088a1468da2c4be93b043d2294f790d424bbf05d264a150bdd2a250",
+    "storage/cache.py": "256323062766e303477576f92296e6bdf4e0942f6d65f5c1a25b5e12495e24b3"
+  },
+  "scope": "local runtime byte hashes; excludes secrets and unrelated working tree"
+}

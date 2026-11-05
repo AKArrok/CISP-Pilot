@@ -1,0 +1,12 @@
+{
+  "case_count": 32,
+  "same_original_cases_bytes": true,
+  "same_original_chunks_bytes": true,
+  "code_matches_committed_runtime": true,
+  "max_calls": 64,
+  "batch_budget_usd": 0.2,
+  "authorization": "standing user $3 total; scoped public NIST only; current batch allocated .20",
+  "estimated_total_already_used_usd": 0.5732733,
+  "max_total_if_full_ceiling_spent_usd": 0.7732733,
+  "executor": "python -m scripts.evaluate_public_http --packet evaluation/nist-public-http-default-baseline-20261106 --output docs/engineering-delivery/nist-public-http-default-baseline-20261106-live --execute"
+}
