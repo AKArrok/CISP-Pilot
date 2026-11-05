@@ -148,13 +148,14 @@
     "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls"
   },
   "config_fix_commit": "84d8538",
-  "git_delivery": "Final1117962 pushed and remote head matched; direct route resets, existing proxy + OpenSSL worked, TLS verification retained",
-  "latest_commit": "111796219201a06c4a15bee5a1be3fbb9debd108",
+  "git_delivery": "12d4e8c pushed, exact remote head matched; independent current CI recorded, old green not inherited",
+  "latest_commit": "12d4e8c19ecf68e1ff9df11f52ba9bf10a408018",
   "latest_ci": {
-    "conclusion": "success",
-    "head_sha": "111796219201a06c4a15bee5a1be3fbb9debd108",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42084422074",
-    "id": 42084422074,
-    "status": "completed"
-  }
+    "id": 42096151653,
+    "head_sha": "12d4e8c19ecf68e1ff9df11f52ba9bf10a408018",
+    "status": "in_progress",
+    "conclusion": null,
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42096151653"
+  },
+  "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json"
 }

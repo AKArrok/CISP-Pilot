@@ -1,0 +1,7 @@
+{
+  "expected_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "after_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "matches": true,
+  "baseline_origin": "previous verified checkpoint; this direct-SDK v2 batch did not independently persist an immediate pre-dispatch DB hash",
+  "limitation": "Do not describe as independent paired before/after measurement for this batch"
+}

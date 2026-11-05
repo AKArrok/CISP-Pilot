@@ -1,0 +1,35 @@
+{
+  "status": "analysis_only_no_new_calls",
+  "gold_boundary": "AI development interpretation; CP9 ambiguous scope not confirmed factual contradiction",
+  "issues": [
+    {
+      "id": "at-2-new-02",
+      "answer_sha256": "59e023c4d68b8594273b095e766225fe116df857c88d67f519ee1e69ec53458a",
+      "raw_answer": "{\"answer\":\"资料未把“远程工作环境变化”明确列为触发培训内容更新的情形，因此不能据此断言培训内容必须随远程工作环境变化而调整。\\n\\n资料中的相关要求是：\\n- 培训与意识内容应按待组织确定的频率更新，并在待组织确定的事件发生后更新（at-2_smt.c，参数 at-02_odp.06 为更新频率、at-02_odp.07 为触发更新的事件，均未赋值）。\\n- 资料列举的可能促使更新的事件包括评估或审计发现、安全事件或违规、适用法律/行政命令/指令/法规/政策/标准/指南的变化，但明确“包括但不限于”，并非穷尽清单。\\n- 资料在说明培训内容确定依据时提到工作环境（例如远程办公/telework），但这是确定培训内容的考虑因素，并未表述为“工作环境变化即触发内容更新”的强制要求。\\n\\n记忆点/易混淆点：不要把“确定培训内容时考虑工作环境”等同于“工作环境变化属于必须更新内容的事件”；后者在资料中没有明确规定。\",\"source_ids\":[1]}",
+      "source_excerpt": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.",
+      "classification": "lexical_translation_error",
+      "previous_factor_results": "Generic binding, output focus, source-layout and output JSON all had remaining errors; do not replay unchanged methods",
+      "next_hypothesis": "Test whether bilingual term alignment from source parsing prevents substituting event categories without altering examples."
+    },
+    {
+      "id": "cp-9-new-07",
+      "answer_sha256": "118414e5f9bb6f3fe7f1d428c7b19135ad4c7fa6af69d5d44fea9d92d0ec9d97",
+      "raw_answer": "{\"answer\":\"没有。资料1的CP-9“系统备份”控制要求执行用户级信息备份、系统级信息备份、系统文档备份，并保护备份信息的机密性、完整性和可用性；其中备份对象和频次以参数形式待组织确定（cp-09_odp.01为系统组件，cp-09_odp.02至cp-09_odp.04为频次），资料未对备份软件的品牌或供应商作出任何限定，也未出现只能向某一家公司采购的表述。因此不能从该控制得出“只能购买某一家公司备份软件”的结论。\",\"source_ids\":[1]}",
+      "source_excerpt": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};",
+      "classification": "parameter_scope_ambiguity",
+      "previous_factor_results": "Generic binding, output focus, source-layout and output JSON all had remaining errors; do not replay unchanged methods",
+      "next_hypothesis": "Test machine-derived parameter-to-control-clause binding with explicit governed object; original generic layout prototype already failed7/8, so require a distinct inspected representation before new calls."
+    }
+  ],
+  "prerequisites_before_paid_run": [
+    "freeze same input and criterion",
+    "document meaningful difference from failed source-layout prototype",
+    "confirm remaining platform quota >10 and budget",
+    "never source answers or expected labels in index"
+  ],
+  "promotion_gate": [
+    "same8 including failures and negative checks",
+    "original32 full application",
+    "approvedmixed4 full application"
+  ]
+}
