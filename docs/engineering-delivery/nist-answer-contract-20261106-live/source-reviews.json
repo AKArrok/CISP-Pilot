@@ -1,0 +1,108 @@
+{
+  "method": "AI原文复查，非独立人工金标；源自本批保存原文与回答，原标准不变",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "baseline_sha256": "64f166e323def77ee791675bbff75e43398a78013219b6fc23da35247b4c38a2",
+      "structured_sha256": "b89cbb7b135bafc5235643abb98746b60ad581076b1d031dff9df414a67b8680",
+      "baseline_source_supported": true,
+      "baseline_reason": "多语言依据限组织需要与人口构成，未串入风险条件。",
+      "structured_source_supported": true,
+      "structured_reason": "多语言依据限组织需要与人口构成，未串入风险条件。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "ac-8-new-06",
+      "baseline_sha256": "c4bb09c8325d0259b03fbfcf0c1a903344af7e0b7cf193e06a2e24254f62827c",
+      "structured_sha256": "bc417e03f4d739b499e04854655688c654c853a63fac66e959a06bd1d783bc80",
+      "baseline_source_supported": true,
+      "baseline_reason": "二次告知保留初始登录之后、基于风险考虑，未升级为必须实施。",
+      "structured_source_supported": true,
+      "structured_reason": "二次告知保留初始登录之后、基于风险考虑，未升级为必须实施。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "at-2-new-02",
+      "baseline_sha256": "3c7a2e341ca0337c72cf05f477e02c429fe406e21c7f5055d224056c422f4fc4",
+      "structured_sha256": "9e5d10e3ef0778460624ee9b26d8e81b62be59e35165a49fc08bbbcd644fd14e",
+      "baseline_source_supported": true,
+      "baseline_reason": "区分工作环境作为内容设计因素与未明确指定的强制更新事件；原事件列表非穷尽。",
+      "structured_source_supported": false,
+      "structured_reason": "将security incidents or breaches译成安全事件或违规，且把未列明强制触发扩成无法得出应调整结论。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "at-2-new-03",
+      "baseline_sha256": "47473c657dd8709f6232a55d0bd3fbdd7701669b965da5d982a6f5b66b8a05c0",
+      "structured_sha256": "8ce7b431c63fe61f9e612457a7c2f7273125a49e21990292bc6aef0108b0e7c8",
+      "baseline_source_supported": true,
+      "baseline_reason": "具体海报、登录消息等与原文相符，未声称唯一手段。",
+      "structured_source_supported": true,
+      "structured_reason": "具体海报、登录消息等与原文相符，未声称唯一手段。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "cp-9-new-07",
+      "baseline_sha256": "9f0d8e109e4b7d400b763e398f0fbf309e0e7a31b4e2d67e096d37fc071b76a2",
+      "structured_sha256": "699a6d2387dfb6903a003483fc7e0653616bb725b0147094428c03a6a925339e",
+      "baseline_source_supported": true,
+      "baseline_reason": "未指定供应商；对象组件限定用户级信息，三种备份及保护要求保持。",
+      "structured_source_supported": true,
+      "structured_reason": "未指定供应商；对象组件限定用户级信息，三种备份及保护要求保持。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "cp-9-new-08",
+      "baseline_sha256": "9a18778490cdf3a7456480ed7513b59e1421bf05872c50072e600ac82a2ad6c4",
+      "structured_sha256": "c21a147cda7d955f1667b2174828122cb08fe5dbedafadf026c244a99d1f44a8",
+      "baseline_source_supported": true,
+      "baseline_reason": "系统文档含隐私文档，频次待定未变成动作可选。",
+      "structured_source_supported": true,
+      "structured_reason": "系统文档含隐私文档，频次待定未变成动作可选。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "ca-8-new-01",
+      "baseline_sha256": "2954b59e7da31c4abf7336e9bab7dd8d9c688b4a4a3d259adf5bc18f20526bdf",
+      "structured_sha256": "32c2ac2c963043171ee9cbcde59e4d65d3405d0f3172d377e29f8097a0d7758e",
+      "baseline_source_supported": true,
+      "baseline_reason": "人员技能、超越扫描、模拟对手及更深入分析有原文支持。",
+      "structured_source_supported": true,
+      "structured_reason": "人员技能、超越扫描、模拟对手及更深入分析有原文支持。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    },
+    {
+      "id": "ca-8-new-07",
+      "baseline_sha256": "f1ddb2dbc5524bf72b1da31cd84118e6994390f04475a5766df621a542b1451c",
+      "structured_sha256": "8834b0de0148c650f7a36a2a2760b54bde1aefd73d3a393a47949c0fd7262ec4",
+      "baseline_source_supported": true,
+      "baseline_reason": "频次与范围参数保持，不虚构七天时长。",
+      "structured_source_supported": true,
+      "structured_reason": "频次与范围参数保持，不虚构七天时长。",
+      "structured_contract_valid": false,
+      "contract_reason": "source_ids=[\"1\"] is string; frozen renderer requires integers; no coercion",
+      "accepted": false
+    }
+  ],
+  "baseline_source_supported": 8,
+  "structured_source_supported": 7,
+  "structured_contract_valid": 0,
+  "structured_accepted": 0,
+  "denominator": 8,
+  "source_excerpt_for_failure": "security incidents or breaches",
+  "default_promoted": false
+}

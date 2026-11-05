@@ -1,0 +1,622 @@
+{
+  "execution_complete": true,
+  "planned_atoms": 70,
+  "checks": [
+    {
+      "id": "ac8_risk_transfer::atom-001",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "来源仅称组织基于需求与用户人口特征考虑多语言通知，未支持“需要”这一确定性主张。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-002",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第16行明确要求组织根据需求和用户人口构成考虑多语言显示通知，与片段一致。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-003",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 1,
+      "reason": "片段仅标题“依据与说明”，无实质主张，无法判断是否支持多语言用户考虑。",
+      "source_quote": null
+    },
+    {
+      "id": "ac8_risk_transfer::atom-004",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第16行明确说明组织基于组织需要和用户人口特征考虑多语言系统使用通知，片段转述一致。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-005",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称系统使用通知仅用于有人类用户的登录界面，但来源还说明组织需根据需求考虑多语言通知，片段遗漏该要求且表述绝对化。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-006",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称无人类接口时不需要通知，但来源仅针对系统使用通知，且另文要求组织考虑多语言，片段未涵盖该要求。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-007",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称通知涉隐私应咨询隐私办公室，来源仅要求就隐私信息咨询隐私办公室，未涉及多语言用户考量。",
+      "source_quote": "Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-008",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段仅称法律审查应咨询总法律顾问，未涉及多语言用户；来源另有条款明确多语言横幅需按组织需求考虑。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-009",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确说明组织基于需求和用户人口特征考虑多语言显示系统使用通知，属考虑事项。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-010",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段仅称显示通知并保留至确认登录是必须动作，未涉及多语言用户考量；来源明确多语言显示属组织按需考虑事项。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_risk_transfer::atom-011",
+      "parent_id": "ac8_risk_transfer",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称通知内容由待赋值参数确定且资料未给取值，与来源参数定义及未赋值说明一致。",
+      "source_quote": "{\"id\": \"ac-08_odp.01\", \"label\": \"system use notification\", \"guidelines\": [{\"prose\": \"system use notification message or banner to be displayed by the system to users before granting access to the system is defined;\"}]},"
+    },
+    {
+      "id": "ac8_supported::atom-012",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确要求组织根据需求和用户人口特征考虑多语言通知，支持“需要”。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-013",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称资料要求组织根据需求和用户人口构成考虑多语言显示通知，与来源第16行一致。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-014",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第16行明确组织应根据需求和用户人口特征考虑多语言显示，与片段主张一致。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-015",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段仅提隐私办公室和法律审查，未涉及多语言用户；来源另有专门多语言条款，片段遗漏且未回应。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-016",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确说明组织基于需求和用户人口特征考虑多语言通知，属考虑事项而非必须执行。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-017",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称显示通知等属强制动作，但来源未将多语言显示列为强制，仅建议按需考虑多语言。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-018",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称通知内容与公开系统条件均为待赋值参数，但来源第16行明确组织需考虑多语言横幅，片段未提及且与问题相关主张不符。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-019",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第16行明确组织基于组织需求和用户人口构成考虑多语言通知，与片段一致。",
+      "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+    },
+    {
+      "id": "ac8_supported::atom-020",
+      "parent_id": "ac8_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段仅述隐私办公室与法律审查职责，未涉及多语言用户考量，与来源不符。",
+      "source_quote": null
+    },
+    {
+      "id": "at2_mistranslation::atom-021",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确列出更新触发事件，未含远程工作环境变化；且培训内容基于工作环境确定，但未要求据此调整。",
+      "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+    },
+    {
+      "id": "at2_mistranslation::atom-022",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确培训内容按组织定义频次及事件更新，且内容基于工作环境（如远程办公）确定，片段转述一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-023",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容需考虑工作环境（如远程办公），与片段主张一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-024",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确将工作环境（如远程办公）列为确定培训内容的考量因素，而非内容更新的触发事件，与片段主张一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-025",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称按组织定义频次及事件更新培训内容，与来源AT-2第6行及参数定义一致。",
+      "source_quote": "[at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and"
+    },
+    {
+      "id": "at2_mistranslation::atom-026",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 1,
+      "reason": "片段称两个参数取值待组织确定，但未指明是哪两个参数，来源中多个参数均未赋值，无法唯一对应。",
+      "source_quote": null
+    },
+    {
+      "id": "at2_mistranslation::atom-027",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 1,
+      "reason": "片段称参数待定不等于更新动作可选，但来源仅列更新频率与事件为组织定义参数，未明确该逻辑关系。",
+      "source_quote": "[at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and"
+    },
+    {
+      "id": "at2_mistranslation::atom-028",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段列举的更新触发事件与来源第13行一致，含评估审计发现、安全事件、法律政策等变化及包括但不限于。",
+      "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+    },
+    {
+      "id": "at2_mistranslation::atom-029",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 0,
+      "reason": "来源明确将工作环境（如远程办公）列为培训内容确定依据，片段称其不在列举中与来源不符。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-030",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容基于组织要求、授权访问系统及工作环境（如远程办公）确定，片段转述一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-031",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容依据工作环境（如远程办公）确定，支持片段主张内容设计需考虑环境而非环境变化即触发更新。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-032",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容依据工作环境（如远程办公）确定，支持片段区分考虑环境与更新触发事件。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_mistranslation::atom-033",
+      "parent_id": "at2_mistranslation",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称前者为设计依据、后者为已列明或组织定义事件，但来源未作此区分，且未涉及远程工作环境调整。",
+      "source_quote": null
+    },
+    {
+      "id": "at2_supported::atom-034",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容应基于工作环境（如远程办公）确定，第13行列举更新触发事件未含远程环境变化，与片段结论一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-035",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容依据组织需求、授权访问系统和工作环境（如远程办公）确定，片段转述一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-036",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确培训内容依据工作环境（如远程办公）确定，支持内容随环境调整。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-037",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确培训内容依据组织需求、系统访问和工作环境（如远程办公）确定，支持随环境变化调整。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-038",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第9行明确将工作环境（如telework）列为确定培训内容的依据，片段转述一致。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-039",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第6行明确要求按频率及触发事件更新培训与意识内容，与片段主张一致。",
+      "source_quote": "[at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and"
+    },
+    {
+      "id": "at2_supported::atom-040",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称两个参数均为待组织赋值，但来源中参数众多且未限定仅两个，与来源不符。",
+      "source_quote": "Original OSCAL parameter definitions (no values assigned by this extraction):"
+    },
+    {
+      "id": "at2_supported::atom-041",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第13行列举更新事件时未含远程工作环境变化，第24行参数定义亦未列，片段表述与之一致。",
+      "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+    },
+    {
+      "id": "at2_supported::atom-042",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第13行列举更新诱因时同样未提及远程工作环境变化，片段转述一致。",
+      "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+    },
+    {
+      "id": "at2_supported::atom-043",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确区分工作环境是内容确定依据，更新由组织定义频率和事件触发，未将环境变化等同强制更新。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "at2_supported::atom-044",
+      "parent_id": "at2_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源明确培训内容依据工作环境（如远程办公）确定，并需定期更新，支持随环境变化调整。",
+      "source_quote": "Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework)."
+    },
+    {
+      "id": "cp9_default_supported::atom-045",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称控制未指定只能购买某公司备份软件；来源cp-9仅规定备份对象、频率等，未涉及厂商限定。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_default_supported::atom-046",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9条款仅规定备份对象、频率和保护要求，未指定只能购买某公司软件，片段结论有依据。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_default_supported::atom-047",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源CP-9仅规定备份对象、频次及保护要求，未涉及品牌或供应商选择，片段表述一致。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_default_supported::atom-048",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段仅描述CP-9备份动作与保护要求，未提及指定单一公司软件，来源原文亦无此限定。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_default_supported::atom-049",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅含system components和三个frequency待赋值参数，未涉及软件采购来源，片段主张有据。",
+      "source_quote": "{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]},"
+    },
+    {
+      "id": "cp9_default_supported::atom-050",
+      "parent_id": "cp9_default_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第8行仅将数字签名和密码哈希列为保护备份完整性的机制示例，未指定任何公司或产品，片段转述一致。",
+      "source_quote": "Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes."
+    },
+    {
+      "id": "cp9_layout_supported::atom-051",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅规定备份对象、频率等参数，未指定任何厂商或公司，支持“不是”的结论。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_layout_supported::atom-052",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源CP-9条款仅规定备份对象、频率和保护要求，未指定或推荐任何厂商软件，支持片段主张。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_layout_supported::atom-053",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源CP-9控制陈述仅列四类备份动作，未指定只能购买某一家公司软件，片段与来源一致。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_layout_supported::atom-054",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称参数均为待组织确定的占位参数，并列出cp-09_odp.01至04，与来源参数定义一致。",
+      "source_quote": "{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]},"
+    },
+    {
+      "id": "cp9_layout_supported::atom-055",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 0,
+      "reason": "片段称参数未赋值但备份动作必须落实，来源仅列参数定义，未说明动作必须落实或不可选。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_layout_supported::atom-056",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源第8行仅将数字签名和密码散列作为保护备份完整性的机制示例，未指定采购任何公司产品，片段转述一致。",
+      "source_quote": "Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes."
+    },
+    {
+      "id": "cp9_layout_supported::atom-057",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅涉及备份操作与保护，未提及软件采购、供应商选择或品牌限制，片段主张有据。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_layout_supported::atom-058",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源仅要求保护备份信息的机密性、完整性和可用性，未指定特定商业产品或公司，片段提醒勿误读有依据。",
+      "source_quote": "[cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information."
+    },
+    {
+      "id": "cp9_layout_supported::atom-059",
+      "parent_id": "cp9_layout_supported",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅规定备份机制示例，未限定具体厂商或实现方式，片段表述一致。",
+      "source_quote": "Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes."
+    },
+    {
+      "id": "cp9_scope_generic::atom-060",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅规定备份对象、频率和保护要求，未指定只能购买某一家公司的备份软件。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic::atom-061",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅规定备份对象、频率和保护要求，未指定或限制只能购买某一家公司的备份软件。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic::atom-062",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段仅概括CP-9备份对象与保护要求，未提及指定单一厂商，来源各条亦无此限定。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic::atom-063",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅含备份对象、频率等参数，未提软件品牌或供应商，片段表述一致。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic::atom-064",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源未规定必须采用商业软件或特定产品，片段转述一致。",
+      "source_quote": "Original OSCAL parameter definitions (no values assigned by this extraction):"
+    },
+    {
+      "id": "cp9_scope_generic::atom-065",
+      "parent_id": "cp9_scope_generic",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源CP-9仅规定备份对象、频率和保护要求，未涉及采购或指定公司，片段表述一致。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-066",
+      "parent_id": "cp9_scope_generic_combined",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源cp-9仅规定备份对象、频率和保护要求，未指定只能购买某一家公司的备份软件。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-067",
+      "parent_id": "cp9_scope_generic_combined",
+      "status": "validated",
+      "score": 2,
+      "reason": "CP-9原文仅规定备份对象、频率等，未出现厂商或产品限定，片段主张有据。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-068",
+      "parent_id": "cp9_scope_generic_combined",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段称控制规定备份对象、频次及保护要求，与来源cp-9的备份对象、频率参数和保护要求一致，未提厂商限定。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-069",
+      "parent_id": "cp9_scope_generic_combined",
+      "status": "validated",
+      "score": 2,
+      "reason": "片段仅述CP-9备份要求，未提指定单一公司软件；来源亦无此限定，故不冲突。",
+      "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-070",
+      "parent_id": "cp9_scope_generic_combined",
+      "status": "validated",
+      "score": 2,
+      "reason": "来源显示备份相关参数（系统组件、频次）均为待赋值，由组织确定，未绑定特定厂商产品。",
+      "source_quote": "{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]},"
+    }
+  ],
+  "auditor_sha256": "1fb0e5da2d34140ed7781ed1e07bad63f5e537ac0afe45ce681598701b5c82c6",
+  "parent_checks": [
+    {
+      "id": "ac8_risk_transfer",
+      "score": 0,
+      "valid": true,
+      "passed": true
+    },
+    {
+      "id": "ac8_supported",
+      "score": 0,
+      "valid": true,
+      "passed": false
+    },
+    {
+      "id": "at2_mistranslation",
+      "score": 0,
+      "valid": true,
+      "passed": true
+    },
+    {
+      "id": "at2_supported",
+      "score": 0,
+      "valid": true,
+      "passed": false
+    },
+    {
+      "id": "cp9_default_supported",
+      "score": 2,
+      "valid": true,
+      "passed": true
+    },
+    {
+      "id": "cp9_layout_supported",
+      "score": 0,
+      "valid": true,
+      "passed": false
+    },
+    {
+      "id": "cp9_scope_generic",
+      "score": 2,
+      "valid": true,
+      "passed": false
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "score": 2,
+      "valid": true,
+      "passed": false
+    }
+  ],
+  "parent_range_matches": 3,
+  "range_checks_passed": false,
+  "rationale_review": "required separately; line binding does not prove entailment",
+  "independent_human_gold": false,
+  "automatic_production_acceptance": false
+}

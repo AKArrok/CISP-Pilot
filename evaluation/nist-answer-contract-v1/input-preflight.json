@@ -1,0 +1,93 @@
+{
+  "cases": 8,
+  "planned_calls": 16,
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3323
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_structured",
+      "estimated_tokens": 3291
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3332
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_structured",
+      "estimated_tokens": 3300
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2671
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_structured",
+      "estimated_tokens": 2639
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2578
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_structured",
+      "estimated_tokens": 2546
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2309
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2277
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3276
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_structured",
+      "estimated_tokens": 3244
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3282
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_structured",
+      "estimated_tokens": 3250
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2188
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2156
+    }
+  ],
+  "same_question_and_context_bytes_in_both_arms": true,
+  "both_temperatures": 0.3,
+  "baseline_then_structured_order": true,
+  "order_randomized": false,
+  "labels_not_sent": true,
+  "format_change_only": "Rule4 citation representation; same original grounding and completeness requirements",
+  "scope": "Direct SDK answer stage, not route/retrieval/history/network-load validation"
+}

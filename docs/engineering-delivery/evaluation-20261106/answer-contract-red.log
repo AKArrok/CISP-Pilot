@@ -1,0 +1,63 @@
+..........F                                                              [100%]
+================================== FAILURES ===================================
+_____ test_answer_contract_executor_keeps_both_arms_at_frozen_temperature _____
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-answer-contract-red-20261106-wh0qcq0f/pytest/test_answer_contract_executor_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B050465A50>
+
+    def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch):
+        import dotenv
+        import openai
+        import tiktoken
+        import truststore
+        from scripts import eval_nist_batch
+    
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
+        for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context]}],
+                            "chunks.json": [context], "prompts.json": {"answer_baseline_system": "Plain",
+                                                                         "answer_structured_system": "JSON"}}.items():
+            (packet / name).write_text(json.dumps(value), encoding="utf-8")
+        manifest = {"mode": "answer_contract", "answer_temperature": .3, "frozen_sha256": {},
+                    "paid_proposal": {"calls": 2, "budget_usd": .03}}
+        (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        (packet / "authorization.json").write_text(json.dumps({"max_calls": 2, "budget_usd": .03,
+            "manifest_sha256": hashlib.sha256((packet / "manifest.json").read_bytes()).hexdigest()}), encoding="utf-8")
+        calls = []
+    
+        def create(**kwargs):
+            calls.append(kwargs)
+            return SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2, completion_tokens=2),
+                choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(content='{"answer":"A","source_ids":[1]}'))],
+                model_dump=lambda: {"model": "synthetic transport response", "usage": {"prompt_tokens": 2, "completion_tokens": 2}})
+    
+        monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(tiktoken, "get_encoding", lambda name: SimpleNamespace(encode=lambda text: [1]))
+        monkeypatch.setattr(openai, "OpenAI", lambda **kw: SimpleNamespace(chat=SimpleNamespace(
+            completions=SimpleNamespace(create=create))))
+        monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+>       eval_nist_batch.main()
+
+tests\test_answer_output_contract.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\eval_nist_batch.py:112: in main
+    rows = [] if calibration else retrieve(cases, chunks)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+scripts\eval_nist_batch.py:77: in retrieve
+    "source_plus_alias": [{**c, "embedding_text": c["text"] + "\n" + c["embedding_text"]} for c in chunks]}
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x000001B051D5D720>
+
+>   "source_plus_alias": [{**c, "embedding_text": c["text"] + "\n" + c["embedding_text"]} for c in chunks]}
+                                                                     ^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'embedding_text'
+
+scripts\eval_nist_batch.py:77: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_output_contract.py::test_answer_contract_executor_keeps_both_arms_at_frozen_temperature
+1 failed, 10 passed in 0.82s

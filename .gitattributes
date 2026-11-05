@@ -4,6 +4,9 @@ evaluation/**/*.json -text whitespace=cr-at-eol
 evaluation/**/NIST-LICENSE.md -text whitespace=cr-at-eol
 scripts/evaluate_public_http.py -text whitespace=cr-at-eol
 scripts/eval_nist_batch.py -text whitespace=cr-at-eol
+scripts/audit_atomic_judge.py -text whitespace=cr-at-eol
+scripts/freeze_atomic_judge.py -text whitespace=cr-at-eol
+scripts/answer_output_contract.py -text whitespace=cr-at-eol
 docs/engineering-delivery/nist-public-http-*/executor.py -text whitespace=cr-at-eol
 docs/engineering-delivery/nist-large-pool-20261104-offline/*.json -text whitespace=cr-at-eol
 scripts/translate_nist_search.py -text whitespace=cr-at-eol
@@ -17,6 +20,8 @@ docs/engineering-delivery/bm25-function-words-20261104/*.py -text whitespace=cr-
 
 # Preserve the byte hashes of the frozen November 6 experiments and prototypes.
 evaluation/nist-public-http-*-20261106/*.py -text whitespace=cr-at-eol
+evaluation/judge-atomic-*/*.py -text whitespace=cr-at-eol
+evaluation/nist-answer-contract-*/*.py -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261106-live/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261106-live/*.jsonl -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261106-live/executor.py -text whitespace=cr-at-eol

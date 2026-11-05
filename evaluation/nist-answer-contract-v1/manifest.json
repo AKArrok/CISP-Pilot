@@ -1,0 +1,25 @@
+{
+  "mode": "answer_contract",
+  "role": "Paired original8 seen questions: freeform vs structured answer/source_ids; not independent gold or full application integration",
+  "answer_temperature": 0.3,
+  "frozen_sha256": {
+    "cases.json": "d69c0668a6f0be730e1968a44e4a203f927ebd1672575dff33771c429406d12f",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "a662fa4118bf82da9084254fc65cbd0b7085566559473db5cac40d9f325c11fd",
+    "renderer.py": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+    "selection.json": "f3f9aaab1f40c308b2795da13752a14dea72789f3d2ef0bfaedb04fa98108d8a"
+  },
+  "paid_proposal": {
+    "calls": 16,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only pinned public NIST and original questions/prompts; two answer-generation arms, no external judge calls"
+  },
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "47c428d0da137a91a5a5203f7aadb23ed12bfe04c6566f5606b347888801b9c3",
+  "renderer_sha256": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+  "acceptance": "All8 structured answers retain original completeness/source/parameter/quotation criteria and valid source IDs; every baseline failure kept. No default switch before original32 and approvedmixed4 full chain regression."
+}

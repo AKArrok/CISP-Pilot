@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ac-8-new-05",
+    "raw_structured_sha256": "70a22e9b88455c0576d399a95550c9f15c79f0ff78c5d18e8c14c1a2c831acd1",
+    "contract_valid": true,
+    "structured_answer": "需要。资料在系统使用通知（ac-8）的指南中明确：组织根据组织需要和系统用户的人口特征，考虑以多种语言显示系统使用通知消息或横幅。这是“考虑”而非强制动作，且未给出具体语言清单或参数。\n\n补充要点：\n- 该考虑属于ac-8指南中的建议性内容，不是ac-8_smt中的强制动作；ac-8_smt.a要求显示的系统使用通知内容由待赋值参数ac-08_odp.01（system use notification）定义，资料未赋值。\n- 易混淆点：多语言显示是“基于组织需要和用户人口特征”的考虑事项，不要与公开可访问系统的ac-8_smt.c要求混同；后者涉及ac-08_odp.02（conditions）待赋值参数。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】",
+    "rendered_sha256": "9b2d23aa9b38520c55a8e4cc1f7767e449774e00800a7e045ffbfc1631967178"
+  },
+  {
+    "id": "ac-8-new-06",
+    "raw_structured_sha256": "ef65928487bc1745f522bb71284a8bc81b20823a9cf3c4c3582e0fc7ddef2b30",
+    "contract_valid": true,
+    "structured_answer": "需要，但这是基于风险评估后由组织自行决定的事项，并非强制要求。资料在系统使用通知（ac-8）的指南中说明：组织基于风险评估，考虑在初始网络登录之后访问应用或其他系统资源时，是否需要二次系统使用通知。也就是说，登录网络后是否在应用层再次告知，属于组织经风险评估后自行决定的事项，资料未将其规定为必须执行的动作。此外，资料明确系统使用通知仅用于通过有人类用户的登录界面进行的访问；不存在人类接口时不需要通知。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】",
+    "rendered_sha256": "fa3ba402dd27c9e42f1d52632fb0e8c73174faf1babdb62ef2844a01bd5d9394"
+  },
+  {
+    "id": "at-2-new-02",
+    "raw_structured_sha256": "59e023c4d68b8594273b095e766225fe116df857c88d67f519ee1e69ec53458a",
+    "contract_valid": true,
+    "structured_answer": "资料未把“远程工作环境变化”明确列为触发培训内容更新的情形，因此不能据此断言培训内容必须随远程工作环境变化而调整。\n\n资料中的相关要求是：\n- 培训与意识内容应按待组织确定的频率更新，并在待组织确定的事件发生后更新（at-2_smt.c，参数 at-02_odp.06 为更新频率、at-02_odp.07 为触发更新的事件，均未赋值）。\n- 资料列举的可能促使更新的事件包括评估或审计发现、安全事件或违规、适用法律/行政命令/指令/法规/政策/标准/指南的变化，但明确“包括但不限于”，并非穷尽清单。\n- 资料在说明培训内容确定依据时提到工作环境（例如远程办公/telework），但这是确定培训内容的考虑因素，并未表述为“工作环境变化即触发内容更新”的强制要求。\n\n记忆点/易混淆点：不要把“确定培训内容时考虑工作环境”等同于“工作环境变化属于必须更新内容的事件”；后者在资料中没有明确规定。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】",
+    "rendered_sha256": "f8713ab3035f39f08e5d85e4d15c94102848922488a48735a2d78dc6e09224da"
+  },
+  {
+    "id": "at-2-new-03",
+    "raw_structured_sha256": "c63e786a27fe1c5945e9549e4e62b073d59fa9a0b40cee480c821988a5c9b7ea",
+    "contract_valid": true,
+    "structured_answer": "资料中明确列举的提升安全意识的具体手段（awareness techniques）包括：展示海报、提供印有安全与隐私提醒的用品、显示登录屏幕消息、生成来自组织官员的电子邮件通告或通知，以及开展安全意识活动。\n\n依据资料[1]的指南说明，这些手段属于“awareness techniques”的示例；具体采用哪些手段，由组织通过待赋值参数 {{ insert: param, at-02_odp.05 }}（awareness techniques）确定，该参数值在本次资料中未赋值。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】",
+    "rendered_sha256": "cae40f04f5ea241a207a68f677717dd290777d9042216b01018e8462eda94c7e"
+  },
+  {
+    "id": "cp-9-new-07",
+    "raw_structured_sha256": "118414e5f9bb6f3fe7f1d428c7b19135ad4c7fa6af69d5d44fea9d92d0ec9d97",
+    "contract_valid": true,
+    "structured_answer": "没有。资料1的CP-9“系统备份”控制要求执行用户级信息备份、系统级信息备份、系统文档备份，并保护备份信息的机密性、完整性和可用性；其中备份对象和频次以参数形式待组织确定（cp-09_odp.01为系统组件，cp-09_odp.02至cp-09_odp.04为频次），资料未对备份软件的品牌或供应商作出任何限定，也未出现只能向某一家公司采购的表述。因此不能从该控制得出“只能购买某一家公司备份软件”的结论。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "rendered_sha256": "07203c5feb039b56b1dbe6d6d338127f9b03e52de8c3ee7fd832ef18171cb135"
+  },
+  {
+    "id": "cp-9-new-08",
+    "raw_structured_sha256": "6db374fd79981fa440fbb65499968278e260f1add5119ca6790cfd047b526300",
+    "contract_valid": true,
+    "structured_answer": "不允许。资料1的 cp-9 明确要求对系统文档（包括安全与隐私相关文档）执行备份，该动作本身是强制的；资料只把“备份频次”设为待组织确定的参数（cp-09_odp.04，label 为 frequency），参数值待定不等于该备份动作可选，资料中也没有任何允许跳过隐私文档备份的表述。\n\n要点：\n- 强制动作：[cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }}。\n- 待赋值参数：cp-09_odp.04 仅定义“系统文档备份的频次”，需与恢复时间目标和恢复点目标保持一致，具体数值由组织确定。\n- 易混淆点：不要把“频次待定”理解为“可以不做”；也不要把 cp-09_odp.01（system components，对象范围）与 cp-09_odp.02/03/04（frequency，频次）混用。\n- 资料1指南还指出，组织可能受法律、行政命令、指令、法规或政策约束，对特定类别信息（如个人健康信息）有备份要求，人员应就此咨询高级隐私官员和法律顾问。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+    "rendered_sha256": "9bd6d05d8b7f7684815699d959f491bc9d35504ff2ce0d023964508c273365e8"
+  },
+  {
+    "id": "ca-8-new-01",
+    "raw_structured_sha256": "52276a482c35c1f4c263b05cb677d6ccbd8a58e1cd18fe8539333e1020e01cf7",
+    "contract_valid": true,
+    "structured_answer": "渗透测试与自动漏洞扫描的区别在于：渗透测试是超出自动漏洞扫描范围的一类专门评估，由具备可证明技能和经验、涵盖网络、操作系统和/或应用层安全技术专长的人员和团队实施，用于识别可能被对手利用的漏洞。渗透测试可以验证漏洞，或在规定约束（如时间、资源和技能）内确定系统对对手的穿透抵抗程度；它试图复制对手的行动，并对安全与隐私相关的弱点或缺陷提供更深入的分析。资料还指出，渗透测试在组织从旧技术向新技术过渡时尤为重要（例如从IPv4向IPv6网络协议过渡）。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】",
+    "rendered_sha256": "281be6b763d682ec31e89d0674084484779d84a76c06e1630b14d9612ac7a507"
+  },
+  {
+    "id": "ca-8-new-07",
+    "raw_structured_sha256": "0b7b5ae3d82b483d7c19e1885ac7ea4383ec6283c2f2ad92f52a2f6b075810ce",
+    "contract_valid": true,
+    "structured_answer": "没有。资料1对渗透测试只设置了两个待组织确定的参数：ca-08_odp.01 为“frequency”（对系统或系统组件开展渗透测试的频次），ca-08_odp.02 为“system(s) or system components”（开展渗透测试的系统或系统组件）；资料未给出任何具体数值，也未出现“七天”或测试持续时长的规定。因此不能把“每次渗透测试持续七天”视为该资料的要求。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】",
+    "rendered_sha256": "321d90fdcedd81db1c031591b2a79f566ca8adc506d3cfece4d56b62d4eaf700"
+  }
+]

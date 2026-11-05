@@ -1,0 +1,32 @@
+{
+  "mode": "judge_calibration",
+  "role": "Paired same70 exact fragments/sources/questions/parentlabels; original question not sent to NLI, full literal parent answer is non-evidence context; no fragment deleted",
+  "frozen_sha256": {
+    "cases.json": "91eca9ddffb9530ab7c8a77ca566108aa82dd823c541611ef235756ef74131fd",
+    "parent-cases.json": "93fe763f41e5509564562187c1cb1aecc04d03b09eb92a3091a703276893b30e",
+    "excluded-spans.json": "0cf2aed235a414327811ebe38eefc1bb6a3b6ece2ebcc520b79997bb3e54b918",
+    "chunks.json": "6a2e45afe653db8b7e932352887e6e39536ad35934e773369f30847fc9cc564d",
+    "prompts.json": "708090363910ba1b54a4e6c654cfcd07008f7e3948ad9fcafc3a2fe2a0e31ed7",
+    "method-builder.py": "955fdcaf949356efb584ab33c903fb38b0af40b6a23e49a6aa4811762915e380",
+    "method-auditor.py": "cbfe3fa797a4a95576dcaf9a225f975f351e347fce85b71998c453969728b3b1"
+  },
+  "paid_proposal": {
+    "calls": 70,
+    "budget_usd": 0.24,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Review saved fragments only; this proposal is not authorization"
+  },
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "evidence_protocol": "atomic_lines",
+  "claim_only": false,
+  "claim_focus": false,
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "8c8afd6fbfd04c4fa80be48ebd78d46707e974e85b0f0f1631aee1f857561f99",
+  "parent_cases_sha256": "93fe763f41e5509564562187c1cb1aecc04d03b09eb92a3091a703276893b30e",
+  "acceptance": "All original8 parent ranges and grounded issue rationale; same70 requests retained, not_claim only host-validated headings/format; all-nonclaim parents invalid; no automatic production acceptance."
+}

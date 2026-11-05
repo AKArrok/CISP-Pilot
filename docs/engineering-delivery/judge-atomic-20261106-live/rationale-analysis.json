@@ -1,0 +1,70 @@
+{
+  "parent_range_matches": 3,
+  "parents": 8,
+  "supported_controls_rejected": 3,
+  "frozen_target_errors_detected": 0,
+  "targets": [
+    {
+      "parent_id": "ac8_risk_transfer",
+      "issue_quote": "基于风险评估/组织需要",
+      "checks": [
+        {
+          "id": "ac8_risk_transfer::atom-004",
+          "parent_id": "ac8_risk_transfer",
+          "status": "validated",
+          "score": 2,
+          "reason": "来源第16行明确说明组织基于组织需要和用户人口特征考虑多语言系统使用通知，片段转述一致。",
+          "source_quote": "Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users."
+        }
+      ]
+    },
+    {
+      "parent_id": "at2_mistranslation",
+      "issue_quote": "安全事件或违规",
+      "checks": [
+        {
+          "id": "at2_mistranslation::atom-028",
+          "parent_id": "at2_mistranslation",
+          "status": "validated",
+          "score": 2,
+          "reason": "片段列举的更新触发事件与来源第13行一致，含评估审计发现、安全事件、法律政策等变化及包括但不限于。",
+          "source_quote": "Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines."
+        }
+      ]
+    },
+    {
+      "parent_id": "cp9_scope_generic",
+      "issue_quote": "备份对象范围和备份频率",
+      "checks": [
+        {
+          "id": "cp9_scope_generic::atom-063",
+          "parent_id": "cp9_scope_generic",
+          "status": "validated",
+          "score": 2,
+          "reason": "来源cp-9仅含备份对象、频率等参数，未提软件品牌或供应商，片段表述一致。",
+          "source_quote": "[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};"
+        }
+      ]
+    },
+    {
+      "parent_id": "cp9_scope_generic_combined",
+      "issue_quote": "备份所涉系统组件和各频次参数",
+      "checks": [
+        {
+          "id": "cp9_scope_generic_combined::atom-070",
+          "parent_id": "cp9_scope_generic_combined",
+          "status": "validated",
+          "score": 2,
+          "reason": "来源显示备份相关参数（系统组件、频次）均为待赋值，由组织确定，未绑定特定厂商产品。",
+          "source_quote": "{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]},"
+        }
+      ]
+    }
+  ],
+  "diagnosis": [
+    "Original question contaminated source checking with completeness/relevance requirements",
+    "Isolated pronouns lost their antecedents",
+    "A pure heading was treated as a source claim"
+  ],
+  "interpretation": "Two negative parents were rejected for unrelated reasoning, not successful detection of the frozen errors. No promotion."
+}

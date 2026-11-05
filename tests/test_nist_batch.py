@@ -100,6 +100,62 @@ def test_declared_executor_hash_is_checked_before_output_or_dispatch(tmp_path, m
     assert not (packet / "dispatch.lock").exists()
 
 
+def test_atomic_protocol_preserves_target_and_context_without_question_or_labels():
+    import json
+    row = {"question": "leading original question", "answer": "these two parameters",
+           "contexts": [{"source": "synthetic", "text": "source evidence"}]}
+    case = {"fragment_context": "First and second parameters. These two parameters.", "minimum": 0}
+    payload = json.loads(request_content("judge_candidate", case, row, "", {"evidence_protocol": "atomic_lines"}))
+    assert payload["target_fragment"] == row["answer"]
+    assert payload["answer_context"] == case["fragment_context"]
+    assert "question" not in payload and "minimum" not in payload
+    assert payload["contexts"][0]["lines"] == [{"line": 1, "text": "source evidence"}]
+
+
+def test_interrupted_dispatch_is_persisted_before_sdk_call(tmp_path, monkeypatch):
+    import json
+    import sys
+    from types import SimpleNamespace
+    import dotenv
+    import openai
+    import pytest
+    import tiktoken
+    import truststore
+    from scripts import eval_nist_batch
+
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
+    for name, value in {"cases.json": [{"id": "c", "question": "Q", "answer": "A", "fixed_contexts": [context]}],
+                        "chunks.json": [context], "prompts.json": {"judge_candidate_system": "JSON only"}}.items():
+        (packet / name).write_text(json.dumps(value), encoding="utf-8")
+    manifest = {"mode": "judge_calibration", "frozen_sha256": {}, "judge_arms": ["judge_candidate"],
+                "evidence_protocol": "line_ids", "paid_proposal": {"calls": 1, "budget_usd": .03}}
+    (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    (packet / "authorization.json").write_text(json.dumps({"max_calls": 1, "budget_usd": .03,
+        "manifest_sha256": hashlib.sha256((packet / "manifest.json").read_bytes()).hexdigest()}), encoding="utf-8")
+    observed = {}
+
+    class Interrupted(BaseException):
+        pass
+
+    def create(**kwargs):
+        observed.update(json.loads((output / "summary.json").read_text()))
+        raise Interrupted
+
+    monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
+    monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+    monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+    monkeypatch.setattr(tiktoken, "get_encoding", lambda name: SimpleNamespace(encode=lambda text: [1]))
+    monkeypatch.setattr(openai, "OpenAI", lambda **kw: SimpleNamespace(chat=SimpleNamespace(
+        completions=SimpleNamespace(create=create))))
+    monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+    with pytest.raises(Interrupted):
+        eval_nist_batch.main()
+    assert observed["provider_calls"] == 1 and observed["cost_unknown"]
+    assert observed["pending_call"] == {"id": "c", "stage": "judge_candidate"}
+
+
 def test_frozen_packet_has_32_unique_development_questions_and_exact_sources():
     manifest = load(PACKET / "manifest.json")
     for filename, digest in manifest["frozen_sha256"].items():

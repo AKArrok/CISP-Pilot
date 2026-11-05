@@ -1,0 +1,116 @@
+[
+  {
+    "parent_id": "ac8_risk_transfer",
+    "start": 366,
+    "end": 411,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "ac8_supported",
+    "start": 385,
+    "end": 430,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "at2_mistranslation",
+    "start": 169,
+    "end": 178,
+    "kind": "heading"
+  },
+  {
+    "parent_id": "at2_mistranslation",
+    "start": 510,
+    "end": 576,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "at2_mistranslation",
+    "start": 508,
+    "end": 509,
+    "kind": "format"
+  },
+  {
+    "parent_id": "at2_mistranslation",
+    "start": 649,
+    "end": 694,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "at2_supported",
+    "start": 212,
+    "end": 217,
+    "kind": "heading"
+  },
+  {
+    "parent_id": "at2_supported",
+    "start": 606,
+    "end": 681,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "at2_supported",
+    "start": 683,
+    "end": 728,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "cp9_default_supported",
+    "start": 104,
+    "end": 113,
+    "kind": "heading"
+  },
+  {
+    "parent_id": "cp9_default_supported",
+    "start": 329,
+    "end": 362,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "cp9_default_supported",
+    "start": 364,
+    "end": 409,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "cp9_layout_supported",
+    "start": 79,
+    "end": 88,
+    "kind": "heading"
+  },
+  {
+    "parent_id": "cp9_layout_supported",
+    "start": 412,
+    "end": 485,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "cp9_layout_supported",
+    "start": 549,
+    "end": 594,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "cp9_scope_generic",
+    "start": 307,
+    "end": 341,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "cp9_scope_generic",
+    "start": 343,
+    "end": 388,
+    "kind": "citation"
+  },
+  {
+    "parent_id": "cp9_scope_generic_combined",
+    "start": 209,
+    "end": 242,
+    "kind": "marked_general"
+  },
+  {
+    "parent_id": "cp9_scope_generic_combined",
+    "start": 244,
+    "end": 289,
+    "kind": "citation"
+  }
+]

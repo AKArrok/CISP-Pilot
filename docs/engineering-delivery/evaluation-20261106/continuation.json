@@ -7,9 +7,12 @@
   "previous_turn": "progress; validated fixes pushed, exacthead CI succeeded; paused at user 10percent threshold",
   "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
   "active_experiment": {
-    "status": "completed_failed",
-    "packet": "evaluation/judge-current-source-only-v4",
-    "range_matches": "4/8"
+    "packet": "evaluation/nist-answer-contract-v2",
+    "status": "completed_not_accepted_6_of_8",
+    "max_calls": 16,
+    "budget_usd": 0.08,
+    "session_id": 10512,
+    "output": "docs/engineering-delivery/nist-answer-contract-v2-20261106-live"
   },
   "budget": {
     "approved_total_usd": 3,
@@ -81,17 +84,41 @@
         "calls": 8,
         "estimated_cost_usd": 0.007793399999999999,
         "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-v1",
+        "calls": 70,
+        "estimated_cost_usd": 0.05467889999999998,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-context-v2",
+        "calls": 70,
+        "estimated_cost_usd": 0.062013300000000014,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0160434,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v2",
+        "calls": 16,
+        "estimated_cost_usd": 0.0159906,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1057,
-    "known_estimate_usd": 0.6940059,
+    "dispatch_attempts": 1229,
+    "known_estimate_usd": 0.8427321,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Push configuration fixes/evidence, then mechanically decompose same8 answers into all retained sentence probes; aggregate back to unchanged parent labels, no hidden failure deletion",
+  "next": "Do not promote JSON contract: format8/8 but semantics6/8. Diagnose AT2 translation and CP9 scoped parameter binding from frozen answers; then same-input negative/repeat checks and original32 plus approvedmixed4 full-chain only when candidate passes.",
   "quota": {
     "stop_remaining_percent_lte": 10,
-    "last_verified_primary_remaining_percent": 66,
+    "last_verified_primary_remaining_percent": 14,
     "no_reset_credit": true
   },
   "pending_batches": [],
@@ -116,9 +143,18 @@
     "green": "43passed,1existing warning",
     "lint": "passed",
     "boolean_flags": "claim_only/claim_focus reject nonboolean JSON before output/lock; separate red1failed, final combined74passed",
-    "final_regression": "75passed,1existing warning,3.89s; Ruff passed",
-    "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported"
+    "final_regression": "103passed,1existing warning,5.02s; Ruff passed",
+    "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported",
+    "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls"
   },
   "config_fix_commit": "84d8538",
-  "git_delivery": "84d8538 committed locally; first direct push ended Recv failure Connection reset, remote not yet confirmed"
+  "git_delivery": "Final1117962 pushed and remote head matched; direct route resets, existing proxy + OpenSSL worked, TLS verification retained",
+  "latest_commit": "111796219201a06c4a15bee5a1be3fbb9debd108",
+  "latest_ci": {
+    "conclusion": "success",
+    "head_sha": "111796219201a06c4a15bee5a1be3fbb9debd108",
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42084422074",
+    "id": 42084422074,
+    "status": "completed"
+  }
 }

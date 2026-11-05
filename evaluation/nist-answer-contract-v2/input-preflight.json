@@ -1,0 +1,88 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3323
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_structured",
+      "estimated_tokens": 3333
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3332
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_structured",
+      "estimated_tokens": 3342
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2671
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_structured",
+      "estimated_tokens": 2681
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2578
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_structured",
+      "estimated_tokens": 2588
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2309
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2319
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3276
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_structured",
+      "estimated_tokens": 3286
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3282
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_structured",
+      "estimated_tokens": 3292
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2188
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2198
+    }
+  ],
+  "max_calls": 16,
+  "budget_usd": 0.08,
+  "prior_total_estimate": 0.8267415,
+  "within_approved_3_usd": true
+}

@@ -26,6 +26,9 @@ def load(path):
 
 
 def request_content(stage, case, row, context, manifest):
+    if stage.startswith("judge") and manifest.get("evidence_protocol") == "atomic_lines":
+        return json.dumps({"target_fragment": row["answer"], "answer_context": case["fragment_context"],
+                           "contexts": line_payload(row)["contexts"]}, ensure_ascii=False)
     if stage.startswith("judge") and manifest.get("evidence_protocol") == "line_ids":
         payload = line_payload(row)
         if manifest.get("claim_focus"):
@@ -95,6 +98,10 @@ def main():
     for flag in ("claim_focus", "claim_only"):
         if type(manifest.get(flag, False)) is not bool:
             raise ValueError(f"{flag} must be an explicitly frozen boolean")
+    if "answer_temperature" in manifest:
+        temperature = manifest["answer_temperature"]
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
     if ("executor_sha256" in manifest
             and hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]):
         raise ValueError("Frozen executor changed")
@@ -106,7 +113,9 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     (args.output / "executor.py").write_bytes(Path(__file__).read_bytes())
     calibration = manifest.get("mode") == "judge_calibration"
-    rows = [] if calibration else retrieve(cases, chunks)
+    answer_contract = manifest.get("mode") == "answer_contract"
+    fixed_inputs = calibration or answer_contract
+    rows = [] if fixed_inputs else retrieve(cases, chunks)
     write(args.output / "retrieval.json", rows)
     metrics = {arm: {"top1": sum(r["target_rank"] == 1 for r in rows if r["arm"] == arm),
                      "top4": sum(r["target_rank"] is not None for r in rows if r["arm"] == arm)}
@@ -139,11 +148,13 @@ def main():
     client = OpenAI(api_key=os.environ.get("LLM_API_KEY") or env.get("LLM_API_KEY"), base_url=base, max_retries=0)
     encoding = tiktoken.get_encoding("cl100k_base")
     prompts = load(args.packet / "prompts.json")
-    if calibration:
+    if fixed_inputs:
         work = cases
     else:
         regression = load(args.packet / "at2-regression.json")
         work = [{"id": "at2-regression", "question": regression["question"], "fixed_contexts": regression["contexts"]}] + cases
+    stages = (("answer_baseline", "answer_structured") if answer_contract else
+              manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge"))
     outputs = []
     try:
         for case in work:
@@ -157,7 +168,7 @@ def main():
             if calibration:
                 row["answer"] = case["answer"]
             context = "\n".join(f'[资料{i+1}]《{c["source"]}》定位【{c["locator"]}】\n{c["text"]}' for i, c in enumerate(contexts))
-            for stage in (manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge")):
+            for stage in stages:
                 content = request_content(stage, case, row, context, manifest)
                 messages = [{"role": "system", "content": prompts[stage + "_system"]},
                             {"role": "user", "content": content}]
@@ -166,10 +177,14 @@ def main():
                     raise RuntimeError("Input or budget limit; no automatic retry")
                 summary["provider_calls"] += 1
                 summary["cost_unknown"] = True
+                summary["pending_call"] = {"id": case["id"], "stage": stage}
+                write(args.output / "summary.json", summary)
                 started = time.monotonic()
                 response = client.chat.completions.create(model="deepseek-flash", messages=messages,
-                    max_tokens=1024, temperature=0, timeout=60, extra_body={"thinking": {"type": "disabled"}},
-                    **({"response_format": {"type": "json_object"}} if stage.startswith("judge") else {}))
+                    max_tokens=1024, temperature=0 if stage.startswith("judge") else manifest.get("answer_temperature", 0),
+                    timeout=60, extra_body={"thinking": {"type": "disabled"}},
+                    **({"response_format": {"type": "json_object"}}
+                       if stage.startswith("judge") or (answer_contract and stage == "answer_structured") else {}))
                 receipt = {"id": case["id"], "stage": stage, "response": response.model_dump(),
                            "elapsed_seconds": time.monotonic()-started}
                 with (args.output / "receipts.jsonl").open("a", encoding="utf-8") as stream:
@@ -180,6 +195,7 @@ def main():
                     raise RuntimeError("Unknown usage")
                 summary["cost_usd_conservative"] += (usage.prompt_tokens*.3 + usage.completion_tokens*1.2)/1e6
                 summary["cost_unknown"] = False
+                summary.pop("pending_call", None)
                 if usage.prompt_tokens > 6000 or usage.completion_tokens > 1024 or summary["cost_usd_conservative"] > budget:
                     raise RuntimeError("Actual input, output or cost exceeded bound")
                 choice = response.choices[0]

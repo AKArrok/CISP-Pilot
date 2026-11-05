@@ -1,0 +1,88 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_atomic_protocol_preserves_target_and_context_without_question_or_labels _
+
+    def test_atomic_protocol_preserves_target_and_context_without_question_or_labels():
+        import json
+        row = {"question": "leading original question", "answer": "these two parameters",
+               "contexts": [{"source": "synthetic", "text": "source evidence"}]}
+        case = {"fragment_context": "First and second parameters. These two parameters.", "minimum": 0}
+>       payload = json.loads(request_content("judge_candidate", case, row, "", {"evidence_protocol": "atomic_lines"}))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_nist_batch.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+stage = 'judge_candidate'
+case = {'fragment_context': 'First and second parameters. These two parameters.', 'minimum': 0}
+row = {'question': 'leading original question', 'answer': 'these two parameters', 'contexts': [{'source': 'synthetic', 'text': 'source evidence'}]}
+context = '', manifest = {'evidence_protocol': 'atomic_lines'}
+
+    def request_content(stage, case, row, context, manifest):
+        if stage.startswith("judge") and manifest.get("evidence_protocol") == "line_ids":
+            payload = line_payload(row)
+            if manifest.get("claim_focus"):
+                payload["focus_claims"] = [line for line in payload["answer_lines"]
+                                           if re.search(r"即使|自行|禁止|不得|只有|唯一", line["text"])]
+            if manifest.get("claim_only"):
+                payload["answer_lines"] = payload.get("focus_claims") or payload["answer_lines"]
+                payload.pop("question")
+            return json.dumps(payload, ensure_ascii=False)
+>       return context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
+                                   ^^^^^^^^^^^^^^^^
+E       KeyError: 'question'
+
+scripts\eval_nist_batch.py:38: KeyError
+___________ test_interrupted_dispatch_is_persisted_before_sdk_call ____________
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-dispatch-state-red-20261106-fepnr4u1/pytest/test_interrupted_dispatch_is_p0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A3386B0C50>
+
+    def test_interrupted_dispatch_is_persisted_before_sdk_call(tmp_path, monkeypatch):
+        import json
+        import sys
+        from types import SimpleNamespace
+        import dotenv
+        import openai
+        import pytest
+        import tiktoken
+        import truststore
+        from scripts import eval_nist_batch
+    
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
+        for name, value in {"cases.json": [{"id": "c", "question": "Q", "answer": "A", "fixed_contexts": [context]}],
+                            "chunks.json": [context], "prompts.json": {"judge_candidate_system": "JSON only"}}.items():
+            (packet / name).write_text(json.dumps(value), encoding="utf-8")
+        manifest = {"mode": "judge_calibration", "frozen_sha256": {}, "judge_arms": ["judge_candidate"],
+                    "evidence_protocol": "line_ids", "paid_proposal": {"calls": 1, "budget_usd": .03}}
+        (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        (packet / "authorization.json").write_text(json.dumps({"max_calls": 1, "budget_usd": .03,
+            "manifest_sha256": hashlib.sha256((packet / "manifest.json").read_bytes()).hexdigest()}), encoding="utf-8")
+        observed = {}
+    
+        class Interrupted(BaseException):
+            pass
+    
+        def create(**kwargs):
+            observed.update(json.loads((output / "summary.json").read_text()))
+            raise Interrupted
+    
+        monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(tiktoken, "get_encoding", lambda name: SimpleNamespace(encode=lambda text: [1]))
+        monkeypatch.setattr(openai, "OpenAI", lambda **kw: SimpleNamespace(chat=SimpleNamespace(
+            completions=SimpleNamespace(create=create))))
+        monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(Interrupted):
+            eval_nist_batch.main()
+>       assert observed["provider_calls"] == 1 and observed["cost_unknown"]
+E       assert (0 == 1)
+
+tests\test_nist_batch.py:155: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_nist_batch.py::test_atomic_protocol_preserves_target_and_context_without_question_or_labels
+FAILED tests/test_nist_batch.py::test_interrupted_dispatch_is_persisted_before_sdk_call
+2 failed, 11 deselected in 0.71s

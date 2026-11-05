@@ -1,0 +1,54 @@
+{
+  "parent_range_matches": 3,
+  "parents": 8,
+  "frozen_target_errors_detected": 0,
+  "targets": [
+    {
+      "parent_id": "ac8_risk_transfer",
+      "target_ids": [
+        "ac8_risk_transfer::atom-004"
+      ],
+      "target_scores": [
+        2
+      ]
+    },
+    {
+      "parent_id": "at2_mistranslation",
+      "target_ids": [
+        "at2_mistranslation::atom-028"
+      ],
+      "target_scores": [
+        2
+      ]
+    },
+    {
+      "parent_id": "cp9_scope_generic",
+      "target_ids": [
+        "cp9_scope_generic::atom-063"
+      ],
+      "target_scores": [
+        2
+      ]
+    },
+    {
+      "parent_id": "cp9_scope_generic_combined",
+      "target_ids": [
+        "cp9_scope_generic_combined::atom-070"
+      ],
+      "target_scores": [
+        2
+      ]
+    }
+  ],
+  "supported_controls": {
+    "accepted": 2,
+    "false_rejected": 1,
+    "invalid_evidence_contract": 1
+  },
+  "invalid_ids": [
+    "cp9_default_supported::atom-048"
+  ],
+  "not_claim_count": 1,
+  "scope": "Reduced spurious rejections but no grounded target error detection; no automatic acceptance or answer repair",
+  "multi_line_evidence_issue": "source_line=\"2-5\" violates frozen integer contract; retained invalid, not coerced."
+}

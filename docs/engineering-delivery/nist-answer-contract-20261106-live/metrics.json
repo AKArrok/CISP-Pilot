@@ -1,0 +1,15 @@
+{
+  "scope": "direct SDK answer stage; fixed originalTop2; serial baseline-first; not application performance or causal latency effect",
+  "stages": {
+    "answer_baseline": {
+      "calls": 8,
+      "mean_elapsed_seconds": 2.50400000000036,
+      "mean_content_chars": 497.125
+    },
+    "answer_structured": {
+      "calls": 8,
+      "mean_elapsed_seconds": 2.066374999999425,
+      "mean_content_chars": 400.375
+    }
+  }
+}

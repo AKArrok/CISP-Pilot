@@ -1,0 +1,99 @@
+{
+  "method": "AI原文复查；非独立人工金标，CP9依原范围歧义标准保守判定，不改标求通过",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "baseline_sha256": "67d0a025067cf2821aaf7f3b7388816bfd68456cebe0d2d62015a3c91b374f45",
+      "baseline_source_supported": true,
+      "baseline_reason": "多语言依据限组织需要与人口构成，未串入风险条件。",
+      "structured_sha256": "70a22e9b88455c0576d399a95550c9f15c79f0ff78c5d18e8c14c1a2c831acd1",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "多语言依据限组织需要与人口构成，未串入风险条件。",
+      "accepted": true
+    },
+    {
+      "id": "ac-8-new-06",
+      "baseline_sha256": "8258a04df0de3c9ed84b239dfeefdbaa8c0abb93b57c1b5d25b88c8587cbf431",
+      "baseline_source_supported": true,
+      "baseline_reason": "二次告知保留初始登录之后、基于风险考虑，未升级为必须实施。",
+      "structured_sha256": "ef65928487bc1745f522bb71284a8bc81b20823a9cf3c4c3582e0fc7ddef2b30",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "二次告知保留初始登录之后、基于风险考虑，未升级为必须实施。",
+      "accepted": true
+    },
+    {
+      "id": "at-2-new-02",
+      "baseline_sha256": "c5e66bae4cf1d6e260820c2191d7e314d05a085fe513b884385b349e6da9aa4b",
+      "baseline_source_supported": true,
+      "baseline_reason": "区分工作环境作为内容设计因素与未明确指定的强制更新事件；原事件列表非穷尽。",
+      "structured_sha256": "59e023c4d68b8594273b095e766225fe116df857c88d67f519ee1e69ec53458a",
+      "structured_contract_valid": true,
+      "structured_source_supported": false,
+      "structured_reason": "security incidents or breaches仍译成安全事件或违规，原具体示例变更，不支持。",
+      "accepted": false
+    },
+    {
+      "id": "at-2-new-03",
+      "baseline_sha256": "2c5bbab4224bbab45eb970b76949ed1b7730065e8a784b5716b4714f62c47a5b",
+      "baseline_source_supported": true,
+      "baseline_reason": "具体海报、登录消息等与原文相符，未声称唯一手段。",
+      "structured_sha256": "c63e786a27fe1c5945e9549e4e62b073d59fa9a0b40cee480c821988a5c9b7ea",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "具体海报、登录消息等与原文相符，未声称唯一手段。",
+      "accepted": true
+    },
+    {
+      "id": "cp-9-new-07",
+      "baseline_sha256": "27439e995feb42b84e911491ce100a07f6f54a9a58a345747853598ad880033d",
+      "baseline_source_supported": true,
+      "baseline_reason": "未指定供应商；对象组件限定用户级信息，三种备份及保护要求保持。",
+      "structured_sha256": "118414e5f9bb6f3fe7f1d428c7b19135ad4c7fa6af69d5d44fea9d92d0ec9d97",
+      "structured_contract_valid": true,
+      "structured_source_supported": false,
+      "structured_reason": "将备份对象概括为待组织确定；仅括注odp01系统组件，未绑定用户级信息，按既有范围歧义标准保守拒绝，非确定事实矛盾。",
+      "accepted": false
+    },
+    {
+      "id": "cp-9-new-08",
+      "baseline_sha256": "c7f844fb3509e720335a3bc86c4e225f01cc58504bc7bc8c2e8a312c195a162e",
+      "baseline_source_supported": true,
+      "baseline_reason": "系统文档含隐私文档，频次待定未变成动作可选。",
+      "structured_sha256": "6db374fd79981fa440fbb65499968278e260f1add5119ca6790cfd047b526300",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "系统文档含隐私文档，频次待定未变成动作可选。",
+      "accepted": true
+    },
+    {
+      "id": "ca-8-new-01",
+      "baseline_sha256": "838063b1dd64761d16701a699c296f446ba30f41de2553cce3288038abf0780f",
+      "baseline_source_supported": true,
+      "baseline_reason": "人员技能、超越扫描、模拟对手及更深入分析有原文支持。",
+      "structured_sha256": "52276a482c35c1f4c263b05cb677d6ccbd8a58e1cd18fe8539333e1020e01cf7",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "人员技能、超越扫描、模拟对手及更深入分析有原文支持。",
+      "accepted": true
+    },
+    {
+      "id": "ca-8-new-07",
+      "baseline_sha256": "943172ac957b997e06d67d26bf9dacb396a8e657dd4b61841fb3fd30ecab1b54",
+      "baseline_source_supported": true,
+      "baseline_reason": "频次与范围参数保持，不虚构七天时长。",
+      "structured_sha256": "0b7b5ae3d82b483d7c19e1885ac7ea4383ec6283c2f2ad92f52a2f6b075810ce",
+      "structured_contract_valid": true,
+      "structured_source_supported": true,
+      "structured_reason": "频次与范围参数保持，不虚构七天时长。",
+      "accepted": true
+    }
+  ],
+  "baseline_source_supported": 8,
+  "structured_source_supported": 6,
+  "structured_contract_valid": 8,
+  "structured_accepted": 6,
+  "denominator": 8,
+  "default_promoted": false
+}

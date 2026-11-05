@@ -1,0 +1,32 @@
+{
+  "mode": "judge_calibration",
+  "role": "Seen8 full parent answers decomposed without rewriting; AI labels not human gold",
+  "frozen_sha256": {
+    "cases.json": "09c7bf26ba8c08f38abd1316b36f41949ac968f2db21f5565f8c93521e80577a",
+    "parent-cases.json": "93fe763f41e5509564562187c1cb1aecc04d03b09eb92a3091a703276893b30e",
+    "excluded-spans.json": "0cf2aed235a414327811ebe38eefc1bb6a3b6ece2ebcc520b79997bb3e54b918",
+    "chunks.json": "6a2e45afe653db8b7e932352887e6e39536ad35934e773369f30847fc9cc564d",
+    "prompts.json": "f12a5ed5c7ac0f7cf7839144f7115870482fdbd2c994590915926e20a92d2a70",
+    "method-builder.py": "955fdcaf949356efb584ab33c903fb38b0af40b6a23e49a6aa4811762915e380",
+    "method-auditor.py": "1fb0e5da2d34140ed7781ed1e07bad63f5e537ac0afe45ce681598701b5c82c6"
+  },
+  "paid_proposal": {
+    "calls": 70,
+    "budget_usd": 0.24,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Review saved fragments only; this proposal is not authorization"
+  },
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "evidence_protocol": "line_ids",
+  "claim_only": false,
+  "claim_focus": false,
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "f333c79ee3ab581ee034db704f1a7341d39d38013024400b465530cbbb6a7dcc",
+  "parent_cases_sha256": "93fe763f41e5509564562187c1cb1aecc04d03b09eb92a3091a703276893b30e",
+  "acceptance": "All original8 parent score ranges plus grounded-rationale review; invalid/missing children never imply support. No automatic production acceptance."
+}

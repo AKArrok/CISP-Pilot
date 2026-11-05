@@ -1,0 +1,38 @@
+{
+  "all_known_failure_spans_retained": true,
+  "checks": [
+    {
+      "parent_id": "ac8_risk_transfer",
+      "known_issue_quote": "基于风险评估/组织需要",
+      "retained_atom_ids": [
+        "ac8_risk_transfer::atom-004"
+      ],
+      "sent_as_label": false
+    },
+    {
+      "parent_id": "at2_mistranslation",
+      "known_issue_quote": "安全事件或违规",
+      "retained_atom_ids": [
+        "at2_mistranslation::atom-028"
+      ],
+      "sent_as_label": false
+    },
+    {
+      "parent_id": "cp9_scope_generic",
+      "known_issue_quote": "备份对象范围和备份频率",
+      "retained_atom_ids": [
+        "cp9_scope_generic::atom-063"
+      ],
+      "sent_as_label": false
+    },
+    {
+      "parent_id": "cp9_scope_generic_combined",
+      "known_issue_quote": "备份所涉系统组件和各频次参数",
+      "retained_atom_ids": [
+        "cp9_scope_generic_combined::atom-070"
+      ],
+      "sent_as_label": false
+    }
+  ],
+  "purpose": "host coverage check only; not sent to reviewer; no score or label changes"
+}

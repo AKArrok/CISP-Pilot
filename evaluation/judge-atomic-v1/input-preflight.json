@@ -1,0 +1,292 @@
+{
+  "parents": 8,
+  "atoms": 70,
+  "coverage_validated": true,
+  "estimates": [
+    {
+      "id": "ac8_risk_transfer::atom-001",
+      "estimated_tokens": 3250
+    },
+    {
+      "id": "ac8_risk_transfer::atom-002",
+      "estimated_tokens": 3295
+    },
+    {
+      "id": "ac8_risk_transfer::atom-003",
+      "estimated_tokens": 3254
+    },
+    {
+      "id": "ac8_risk_transfer::atom-004",
+      "estimated_tokens": 3309
+    },
+    {
+      "id": "ac8_risk_transfer::atom-005",
+      "estimated_tokens": 3277
+    },
+    {
+      "id": "ac8_risk_transfer::atom-006",
+      "estimated_tokens": 3259
+    },
+    {
+      "id": "ac8_risk_transfer::atom-007",
+      "estimated_tokens": 3275
+    },
+    {
+      "id": "ac8_risk_transfer::atom-008",
+      "estimated_tokens": 3289
+    },
+    {
+      "id": "ac8_risk_transfer::atom-009",
+      "estimated_tokens": 3268
+    },
+    {
+      "id": "ac8_risk_transfer::atom-010",
+      "estimated_tokens": 3303
+    },
+    {
+      "id": "ac8_risk_transfer::atom-011",
+      "estimated_tokens": 3279
+    },
+    {
+      "id": "ac8_supported::atom-012",
+      "estimated_tokens": 3250
+    },
+    {
+      "id": "ac8_supported::atom-013",
+      "estimated_tokens": 3295
+    },
+    {
+      "id": "ac8_supported::atom-014",
+      "estimated_tokens": 3303
+    },
+    {
+      "id": "ac8_supported::atom-015",
+      "estimated_tokens": 3317
+    },
+    {
+      "id": "ac8_supported::atom-016",
+      "estimated_tokens": 3282
+    },
+    {
+      "id": "ac8_supported::atom-017",
+      "estimated_tokens": 3283
+    },
+    {
+      "id": "ac8_supported::atom-018",
+      "estimated_tokens": 3314
+    },
+    {
+      "id": "ac8_supported::atom-019",
+      "estimated_tokens": 3284
+    },
+    {
+      "id": "ac8_supported::atom-020",
+      "estimated_tokens": 3297
+    },
+    {
+      "id": "at2_mistranslation::atom-021",
+      "estimated_tokens": 2384
+    },
+    {
+      "id": "at2_mistranslation::atom-022",
+      "estimated_tokens": 2379
+    },
+    {
+      "id": "at2_mistranslation::atom-023",
+      "estimated_tokens": 2376
+    },
+    {
+      "id": "at2_mistranslation::atom-024",
+      "estimated_tokens": 2373
+    },
+    {
+      "id": "at2_mistranslation::atom-025",
+      "estimated_tokens": 2420
+    },
+    {
+      "id": "at2_mistranslation::atom-026",
+      "estimated_tokens": 2353
+    },
+    {
+      "id": "at2_mistranslation::atom-027",
+      "estimated_tokens": 2348
+    },
+    {
+      "id": "at2_mistranslation::atom-028",
+      "estimated_tokens": 2415
+    },
+    {
+      "id": "at2_mistranslation::atom-029",
+      "estimated_tokens": 2354
+    },
+    {
+      "id": "at2_mistranslation::atom-030",
+      "estimated_tokens": 2408
+    },
+    {
+      "id": "at2_mistranslation::atom-031",
+      "estimated_tokens": 2365
+    },
+    {
+      "id": "at2_mistranslation::atom-032",
+      "estimated_tokens": 2381
+    },
+    {
+      "id": "at2_mistranslation::atom-033",
+      "estimated_tokens": 2362
+    },
+    {
+      "id": "at2_supported::atom-034",
+      "estimated_tokens": 2405
+    },
+    {
+      "id": "at2_supported::atom-035",
+      "estimated_tokens": 2416
+    },
+    {
+      "id": "at2_supported::atom-036",
+      "estimated_tokens": 2370
+    },
+    {
+      "id": "at2_supported::atom-037",
+      "estimated_tokens": 2373
+    },
+    {
+      "id": "at2_supported::atom-038",
+      "estimated_tokens": 2401
+    },
+    {
+      "id": "at2_supported::atom-039",
+      "estimated_tokens": 2403
+    },
+    {
+      "id": "at2_supported::atom-040",
+      "estimated_tokens": 2353
+    },
+    {
+      "id": "at2_supported::atom-041",
+      "estimated_tokens": 2369
+    },
+    {
+      "id": "at2_supported::atom-042",
+      "estimated_tokens": 2438
+    },
+    {
+      "id": "at2_supported::atom-043",
+      "estimated_tokens": 2382
+    },
+    {
+      "id": "at2_supported::atom-044",
+      "estimated_tokens": 2358
+    },
+    {
+      "id": "cp9_default_supported::atom-045",
+      "estimated_tokens": 1916
+    },
+    {
+      "id": "cp9_default_supported::atom-046",
+      "estimated_tokens": 1943
+    },
+    {
+      "id": "cp9_default_supported::atom-047",
+      "estimated_tokens": 1958
+    },
+    {
+      "id": "cp9_default_supported::atom-048",
+      "estimated_tokens": 1973
+    },
+    {
+      "id": "cp9_default_supported::atom-049",
+      "estimated_tokens": 1979
+    },
+    {
+      "id": "cp9_default_supported::atom-050",
+      "estimated_tokens": 1957
+    },
+    {
+      "id": "cp9_layout_supported::atom-051",
+      "estimated_tokens": 1917
+    },
+    {
+      "id": "cp9_layout_supported::atom-052",
+      "estimated_tokens": 1965
+    },
+    {
+      "id": "cp9_layout_supported::atom-053",
+      "estimated_tokens": 1982
+    },
+    {
+      "id": "cp9_layout_supported::atom-054",
+      "estimated_tokens": 2005
+    },
+    {
+      "id": "cp9_layout_supported::atom-055",
+      "estimated_tokens": 1952
+    },
+    {
+      "id": "cp9_layout_supported::atom-056",
+      "estimated_tokens": 1960
+    },
+    {
+      "id": "cp9_layout_supported::atom-057",
+      "estimated_tokens": 1940
+    },
+    {
+      "id": "cp9_layout_supported::atom-058",
+      "estimated_tokens": 1954
+    },
+    {
+      "id": "cp9_layout_supported::atom-059",
+      "estimated_tokens": 1928
+    },
+    {
+      "id": "cp9_scope_generic::atom-060",
+      "estimated_tokens": 1916
+    },
+    {
+      "id": "cp9_scope_generic::atom-061",
+      "estimated_tokens": 1940
+    },
+    {
+      "id": "cp9_scope_generic::atom-062",
+      "estimated_tokens": 1996
+    },
+    {
+      "id": "cp9_scope_generic::atom-063",
+      "estimated_tokens": 1987
+    },
+    {
+      "id": "cp9_scope_generic::atom-064",
+      "estimated_tokens": 1932
+    },
+    {
+      "id": "cp9_scope_generic::atom-065",
+      "estimated_tokens": 1952
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-066",
+      "estimated_tokens": 1916
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-067",
+      "estimated_tokens": 1954
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-068",
+      "estimated_tokens": 1946
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-069",
+      "estimated_tokens": 1974
+    },
+    {
+      "id": "cp9_scope_generic_combined::atom-070",
+      "estimated_tokens": 1960
+    }
+  ],
+  "excluded_spans_recorded": 19,
+  "parent_source_labels_unchanged": true,
+  "general_supplements": "Explicitly marked additions retained separately, not scored for source entailment",
+  "provider_calls": 0,
+  "authorized": false
+}
