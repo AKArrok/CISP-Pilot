@@ -149,7 +149,8 @@ def execute(packet, output, manifest):
     completed = False
     try:
         with patch.object(graph, "get_simple_llm", functools.partial(llms.get_simple_llm, **options)), \
-             patch.object(graph, "get_answer_llm", functools.partial(llms.get_answer_llm, **options)), \
+             patch.object(graph, "get_answer_llm", functools.partial(
+                 llms.get_answer_llm, **options, temperature=manifest.get("answer_temperature", .3))), \
              patch.object(memory, "search_long_memory", return_value=[]), \
              patch.object(memory, "_save_vector_round", return_value=None), \
              TestClient(server.app, base_url=config.CISP_PUBLIC_ORIGIN) as client:
@@ -208,6 +209,9 @@ def main():
     manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
     if type(manifest.get("query_variants", False)) is not bool:
         raise ValueError("Query variants must be an explicitly frozen boolean")
+    temperature = manifest.get("answer_temperature", .3)
+    if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+        raise ValueError("Answer temperature must be a number from 0 to 2")
     if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
         raise ValueError("Frozen executor changed")
     for name, digest in manifest["frozen_sha256"].items():

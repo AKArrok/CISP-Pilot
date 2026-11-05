@@ -1,0 +1,53 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______ test_declared_executor_hash_is_checked_before_output_or_dispatch _______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-executor-hash-red-20261106-s2y1sv0j/pytest/test_declared_executor_hash_is0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001EB52139410>
+
+    def test_declared_executor_hash_is_checked_before_output_or_dispatch(tmp_path, monkeypatch):
+        import json
+        import sys
+        import pytest
+        from scripts import eval_nist_batch
+    
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({
+            "executor_sha256": "0" * 64, "frozen_sha256": {}}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="executor"):
+>           eval_nist_batch.main()
+
+tests\test_nist_batch.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\eval_nist_batch.py:102: in main
+    cases, chunks = load(args.packet / "cases.json"), load(args.packet / "chunks.json")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\eval_nist_batch.py:25: in load
+    return json.loads(path.read_text(encoding="utf-8"))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-executor-hash-red-20261106-s2y1sv0j/pytest/test_declared_executor_hash_is0/packet/cases.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\cisp-executor-hash-red-20261106-s2y1sv0j\\pytest\\test_declared_executor_hash_is0\\packet\\cases.json'
+
+C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\pathlib.py:1044: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_nist_batch.py::test_declared_executor_hash_is_checked_before_output_or_dispatch
+1 failed, 10 deselected in 0.34s

@@ -1,0 +1,55 @@
+{
+  "requests": [
+    {
+      "id": "ac8_risk_transfer",
+      "estimated_tokens": 3983,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "ac8_supported",
+      "estimated_tokens": 4035,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "at2_mistranslation",
+      "estimated_tokens": 3382,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "at2_supported",
+      "estimated_tokens": 3400,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "cp9_default_supported",
+      "estimated_tokens": 2612,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "cp9_layout_supported",
+      "estimated_tokens": 2831,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "cp9_scope_generic",
+      "estimated_tokens": 2571,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "estimated_tokens": 2475,
+      "question_removed": true,
+      "all_answer_lines_and_sources_retained": true
+    }
+  ],
+  "host_cases_answers_sources_labels_unchanged": true,
+  "change_only": "question omitted from source-support judge input; no claim filtering",
+  "scope": "source_support only; completeness cannot be independently inferred without original question"
+}

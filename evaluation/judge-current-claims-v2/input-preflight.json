@@ -1,0 +1,40 @@
+{
+  "requests": [
+    {
+      "id": "ac8_risk_transfer",
+      "estimated_tokens": 3770
+    },
+    {
+      "id": "ac8_supported",
+      "estimated_tokens": 3822
+    },
+    {
+      "id": "at2_mistranslation",
+      "estimated_tokens": 3205
+    },
+    {
+      "id": "at2_supported",
+      "estimated_tokens": 3223
+    },
+    {
+      "id": "cp9_default_supported",
+      "estimated_tokens": 2437
+    },
+    {
+      "id": "cp9_layout_supported",
+      "estimated_tokens": 2656
+    },
+    {
+      "id": "cp9_scope_generic",
+      "estimated_tokens": 2396
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "estimated_tokens": 2300
+    }
+  ],
+  "same_cases_and_ai_labels": true,
+  "labels_not_sent": true,
+  "criterion_addendum": "Wrong rationale score matches remain historical numeric matches but cannot establish actual detection; declared before candidate run",
+  "default_answer_changed": false
+}

@@ -1,0 +1,9 @@
+{
+  "score_range_matches": 4,
+  "cases": 8,
+  "unsupported_full_score_misses": 4,
+  "supported_rejected": 0,
+  "grounded_target_error_detections": 0,
+  "source_nonwhitespace_unchanged": true,
+  "conclusion": "Finer evidence lines alone did not fix semantic misses. No automatic acceptance."
+}

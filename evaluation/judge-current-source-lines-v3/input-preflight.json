@@ -1,0 +1,48 @@
+{
+  "requests": [
+    {
+      "id": "ac8_risk_transfer",
+      "estimated_tokens": 4000,
+      "labels_not_sent": true
+    },
+    {
+      "id": "ac8_supported",
+      "estimated_tokens": 4052,
+      "labels_not_sent": true
+    },
+    {
+      "id": "at2_mistranslation",
+      "estimated_tokens": 3410,
+      "labels_not_sent": true
+    },
+    {
+      "id": "at2_supported",
+      "estimated_tokens": 3428,
+      "labels_not_sent": true
+    },
+    {
+      "id": "cp9_default_supported",
+      "estimated_tokens": 2640,
+      "labels_not_sent": true
+    },
+    {
+      "id": "cp9_layout_supported",
+      "estimated_tokens": 2859,
+      "labels_not_sent": true
+    },
+    {
+      "id": "cp9_scope_generic",
+      "estimated_tokens": 2599,
+      "labels_not_sent": true
+    },
+    {
+      "id": "cp9_scope_generic_combined",
+      "estimated_tokens": 2503,
+      "labels_not_sent": true
+    }
+  ],
+  "same_questions_answers_labels": true,
+  "source_nonwhitespace_unchanged": true,
+  "source_parameter_objects_equal": true,
+  "change_only": "evidence line granularity; not an independent test or new answer generation"
+}

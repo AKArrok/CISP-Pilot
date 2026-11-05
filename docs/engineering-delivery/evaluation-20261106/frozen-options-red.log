@@ -1,0 +1,371 @@
+FF.FFFFFFF                                                               [100%]
+================================== FAILURES ===================================
+_ test_claim_only_without_focus_removes_question_without_dropping_answer_lines _
+
+    def test_claim_only_without_focus_removes_question_without_dropping_answer_lines():
+        import json
+        row = {"question": "leading question", "answer": "first claim\nsecond claim",
+               "contexts": [{"source": "synthetic", "text": "original evidence"}]}
+        payload = json.loads(request_content("judge_candidate", {}, row, "", {
+            "evidence_protocol": "line_ids", "claim_only": True, "claim_focus": False}))
+>       assert "question" not in payload
+E       AssertionError: assert 'question' not in {'question': 'leading question', 'answer_lines': [{'line': 1, 'text': 'first claim'}, {'line': 2, 'text': 'second claim'}], 'contexts': [{'source_ref': 1, 'source': 'synthetic', 'locator': None, 'page': None, ...}]}
+
+tests\test_nist_batch.py:61: AssertionError
+_______ test_frozen_answer_temperature_reaches_real_executor_factory[0] _______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_frozen_answer_temperature0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015042503B10>
+temperature = 0
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+            runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03})
+>       assert captured == {"answer": temperature, "simple": .2}
+E       AssertionError: assert {'answer': 0.3, 'simple': 0.2} == {'answer': 0, 'simple': 0.2}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'answer': 0.3} != {'answer': 0}
+E         Use -v to get more diff
+
+tests\test_quality_http_execution.py:139: AssertionError
+______ test_frozen_answer_temperature_reaches_real_executor_factory[1.2] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_frozen_answer_temperature2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015076617A10>
+temperature = 1.2
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+            runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03})
+>       assert captured == {"answer": temperature, "simple": .2}
+E       AssertionError: assert {'answer': 0.3, 'simple': 0.2} == {'answer': 1.2, 'simple': 0.2}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'answer': 0.3} != {'answer': 1.2}
+E         Use -v to get more diff
+
+tests\test_quality_http_execution.py:139: AssertionError
+_____ test_invalid_frozen_answer_temperature_stops_before_dispatch[True] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000150766C0BD0>
+temperature = True
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+_____ test_invalid_frozen_answer_temperature_stops_before_dispatch[None] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001507668A990>
+temperature = None
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+______ test_invalid_frozen_answer_temperature_stops_before_dispatch[0.3] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015076669150>
+temperature = '0.3'
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+_____ test_invalid_frozen_answer_temperature_stops_before_dispatch[-0.1] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000150766DA190>
+temperature = -0.1
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+______ test_invalid_frozen_answer_temperature_stops_before_dispatch[2.1] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000150766C1650>
+temperature = 2.1
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+______ test_invalid_frozen_answer_temperature_stops_before_dispatch[nan] ______
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-frozen-options-red-20261106-hqpv2431/pytest/test_invalid_frozen_answer_tem5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000150766E5A10>
+temperature = nan
+
+    @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+    def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="temperature"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:211: KeyError
+============================== warnings summary ===============================
+tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[0]
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_nist_batch.py::test_claim_only_without_focus_removes_question_without_dropping_answer_lines
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[0]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[1.2]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[True]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[None]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[0.3]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[-0.1]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[2.1]
+FAILED tests/test_quality_http_execution.py::test_invalid_frozen_answer_temperature_stops_before_dispatch[nan]
+9 failed, 1 passed, 16 deselected, 1 warning in 4.84s

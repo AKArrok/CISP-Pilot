@@ -1,0 +1,14 @@
+{
+  "observed_date": "2026-11-06",
+  "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "model": "deepseek-flash",
+  "published_model_version": "DeepSeek-V4.1-Flash-1017",
+  "conservative_usd_per_million": {
+    "input_cache_miss_peak": 0.3,
+    "output_peak": 1.2
+  },
+  "basis_matches_existing_estimator": true,
+  "invoice_verified": false,
+  "thinking": "disabled by user; explicit in all actual requests",
+  "temperature_doc": "https://api-docs.deepseek.com/api/create-chat-completion/"
+}

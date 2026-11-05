@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ac8_risk_transfer",
+    "results_path": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live/results.json",
+    "results_sha256": "8e661731cbad0a08f99cbec5eca7f5ee17da821875200f24fca5c5630062e5b8",
+    "original_case_id": "ac-8-new-05",
+    "answer_sha256": "8dd70f281de7fd634abab7c3c082f554aa72e41d8f98b693d1ae1404666c1912",
+    "frozen_reason": "risk_condition_moved_between_distinct_actions"
+  },
+  {
+    "id": "ac8_supported",
+    "results_path": "docs/engineering-delivery/nist-public-http-default-repeat-20261106-live/results.json",
+    "results_sha256": "12a1474fbab0a24202924bf8c62552dce5489270bf80ae85ec4aa90437774a08",
+    "original_case_id": "ac-8-new-05-repeat-0",
+    "answer_sha256": "08a5ac9de59db6301c1827d1e522b7cfea47bc54d472791b94cb56749ccbecd7",
+    "frozen_reason": "source_supported_core_complete"
+  },
+  {
+    "id": "at2_mistranslation",
+    "results_path": "docs/engineering-delivery/nist-public-http-binding-focused-20261106-live/results.json",
+    "results_sha256": "42cf5d3f7743875c7052d8144a6ab7bb67b1808785fa9feb1c3673b6b52db7ea",
+    "original_case_id": "at-2-new-02",
+    "answer_sha256": "eb8eacd5db466c78c0e56c5ed28168479f63d0b76d11419c01ceca4aa43418a1",
+    "frozen_reason": "breach_mistranslated_as_policy_violation_and_overexclusive_summary"
+  },
+  {
+    "id": "at2_supported",
+    "results_path": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live/results.json",
+    "results_sha256": "8e661731cbad0a08f99cbec5eca7f5ee17da821875200f24fca5c5630062e5b8",
+    "original_case_id": "at-2-new-02",
+    "answer_sha256": "d2633de89b9f642e4eff6883ce2b09ddd8047befb01bef1f1981a8b9998219fa",
+    "frozen_reason": "source_supported_core_complete"
+  },
+  {
+    "id": "cp9_default_supported",
+    "results_path": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live/results.json",
+    "results_sha256": "8e661731cbad0a08f99cbec5eca7f5ee17da821875200f24fca5c5630062e5b8",
+    "original_case_id": "cp-9-new-07",
+    "answer_sha256": "c5b4db0c64e1ca44602e2cc5b6b8e714c5b6bb3e0fe1bfa11017a849d5b09fd1",
+    "frozen_reason": "source_supported_core_complete"
+  },
+  {
+    "id": "cp9_layout_supported",
+    "results_path": "docs/engineering-delivery/nist-public-http-source-layout-20261106-live/results.json",
+    "results_sha256": "0bbb7e8a6194a6579bceea95f81fb8fa8c820eeb2ea5f8e6bf72dbbf99fcec15",
+    "original_case_id": "cp-9-new-07",
+    "answer_sha256": "0c66585bd6447e34e011eccf2219bf35d3b16e33f705feab65d736acf054e039",
+    "frozen_reason": "source_supported_core_complete"
+  },
+  {
+    "id": "cp9_scope_generic",
+    "results_path": "docs/engineering-delivery/nist-public-http-layout-terms-20261106-live/results.json",
+    "results_sha256": "9843832ff19669c49a61bcf007912924dbbdd6930d378ef465551370bc960bb9",
+    "original_case_id": "cp-9-new-07-repeat-1",
+    "answer_sha256": "4e43b0908dd1fad306f4dc35ff861c17343823d6376d81c60e96ffa03d124b36",
+    "frozen_reason": "scope_parameter_overgeneralized_in_unasked_expansion"
+  },
+  {
+    "id": "cp9_scope_generic_combined",
+    "results_path": "docs/engineering-delivery/nist-public-http-layout-focused-20261106-live/results.json",
+    "results_sha256": "a4fb0ab65751bc57c624fe99464683fc3ffadfbf9a3bcc6858e0658c18cc5498",
+    "original_case_id": "cp-9-new-07-repeat-2",
+    "answer_sha256": "bb0309b83551626c15c39a02716ce88b897dd44f4d110629d4c5a45dec961987",
+    "frozen_reason": "scope_parameter_not_limited_to_user_information_in_unasked_expansion"
+  }
+]

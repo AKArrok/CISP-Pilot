@@ -1,0 +1,27 @@
+[
+  {
+    "packet": "nist-public-http-full32-functionwords-v1",
+    "declared_answer_temperature": 0,
+    "frozen_llms_sha256": "d7880821529787dfe9dbeaec1a60cca91a43288258fe71d3aa8b8b6b78a6f49c",
+    "reconstructed_matching_variants": [
+      "answer_defaults_0.0"
+    ],
+    "conclusion": "Frozen source hash matches reconstructed factory defaults; not independent wire-request proof"
+  },
+  {
+    "packet": "nist-public-http-minimal-answer-v1",
+    "declared_answer_temperature": 0,
+    "frozen_llms_sha256": null,
+    "reconstructed_matching_variants": [],
+    "conclusion": "No reconstructable source evidence here; retain declared config as unverified, not changed or rerun"
+  },
+  {
+    "packet": "nist-public-http-default-baseline-20261106",
+    "declared_answer_temperature": 0.3,
+    "frozen_llms_sha256": "ee20a7b7fdee99fe86104be4b723c4acb12df7f8143865cbcfb7368585705dc3",
+    "reconstructed_matching_variants": [
+      "current_default"
+    ],
+    "conclusion": "Frozen source hash matches reconstructed factory defaults; not independent wire-request proof"
+  }
+]

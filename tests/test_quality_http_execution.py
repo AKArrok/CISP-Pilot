@@ -75,3 +75,77 @@ def test_failure_records_status_without_private_error_text(tmp_path, monkeypatch
     assert "private" not in (output / "failure.json").read_text()
     assert json.loads((output / "default-db.json").read_text())["unchanged"]
     assert database.read_bytes() == b"synthetic DB sentinel"
+
+
+@pytest.mark.parametrize("temperature", [0, .3, 1.2])
+def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature):
+    import config
+    import dotenv
+    import fastapi.testclient
+    import llms
+    import truststore
+    from agents import graph
+    from scripts import prepare_demo
+    from storage import cache
+
+    for name, value in list(vars(config).items()):
+        if name.isupper():
+            monkeypatch.setattr(config, name, value)
+    monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+    monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+    monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+    monkeypatch.setattr(cache, "_client", cache._client)
+    monkeypatch.setattr(cache, "_live", cache._live)
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    output.mkdir()
+    (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+    (packet / "prompts.json").write_text('{}', encoding="utf-8")
+
+    def prepare(data):
+        data.mkdir()
+        (data / "manifest.json").write_text('{}', encoding="utf-8")
+
+    captured = {}
+
+    def answer_factory(temperature=.3, **kwargs):
+        captured["answer"] = temperature
+
+    def simple_factory(temperature=.2, **kwargs):
+        captured["simple"] = temperature
+
+    class ProbeFinished(Exception):
+        pass
+
+    class Client:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def __enter__(self):
+            graph.get_answer_llm()
+            graph.get_simple_llm()
+            raise ProbeFinished
+
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(prepare_demo, "prepare", prepare)
+    monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+    monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+    monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+    with pytest.raises(ProbeFinished):
+        runner.execute(packet, output, {"answer_temperature": temperature,
+                                       "max_calls": 1, "budget_usd": .03})
+    assert captured == {"answer": temperature, "simple": .2}
+
+
+@pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
+def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monkeypatch, temperature):
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    (packet / "manifest.json").write_text(json.dumps({"answer_temperature": temperature}), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+    with pytest.raises(ValueError, match="temperature"):
+        runner.main()
+    assert not output.exists()
+    assert not (packet / "dispatch.lock").exists()

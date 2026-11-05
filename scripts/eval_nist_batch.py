@@ -31,9 +31,9 @@ def request_content(stage, case, row, context, manifest):
         if manifest.get("claim_focus"):
             payload["focus_claims"] = [line for line in payload["answer_lines"]
                                        if re.search(r"即使|自行|禁止|不得|只有|唯一", line["text"])]
-            if manifest.get("claim_only"):
-                payload["answer_lines"] = payload["focus_claims"] or payload["answer_lines"]
-                payload.pop("question")
+        if manifest.get("claim_only"):
+            payload["answer_lines"] = payload.get("focus_claims") or payload["answer_lines"]
+            payload.pop("question")
         return json.dumps(payload, ensure_ascii=False)
     return context + "\n问题：" + case["question"] + ("\n待审回答：" + row["answer"] if stage.startswith("judge") else "")
 
@@ -92,6 +92,12 @@ def main():
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     manifest = load(args.packet / "manifest.json")
+    for flag in ("claim_focus", "claim_only"):
+        if type(manifest.get(flag, False)) is not bool:
+            raise ValueError(f"{flag} must be an explicitly frozen boolean")
+    if ("executor_sha256" in manifest
+            and hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]):
+        raise ValueError("Frozen executor changed")
     max_input_tokens = input_token_limit(manifest)
     for name, digest in manifest["frozen_sha256"].items():
         if hashlib.sha256((args.packet / name).read_bytes()).hexdigest() != digest:

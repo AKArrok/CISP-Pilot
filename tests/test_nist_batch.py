@@ -52,6 +52,54 @@ def test_claim_focus_keeps_original_lines_and_does_not_supply_verdicts():
     assert isolated["contexts"] == payload["contexts"]
 
 
+def test_claim_only_without_focus_removes_question_without_dropping_answer_lines():
+    import json
+    row = {"question": "leading question", "answer": "first claim\nsecond claim",
+           "contexts": [{"source": "synthetic", "text": "original evidence"}]}
+    payload = json.loads(request_content("judge_candidate", {}, row, "", {
+        "evidence_protocol": "line_ids", "claim_only": True, "claim_focus": False}))
+    assert "question" not in payload
+    assert payload["answer_lines"] == [{"line": 1, "text": "first claim"},
+                                       {"line": 2, "text": "second claim"}]
+    assert payload["contexts"][0]["lines"] == [{"line": 1, "text": "original evidence"}]
+
+
+def test_claim_flags_reject_nonboolean_json_before_creating_output(tmp_path, monkeypatch):
+    import json
+    import sys
+    import pytest
+    from scripts import eval_nist_batch
+
+    packet = tmp_path / "packet"
+    packet.mkdir()
+    for flag in ("claim_only", "claim_focus"):
+        for invalid in (0, 1, "false", None):
+            (packet / "manifest.json").write_text(json.dumps({flag: invalid}), encoding="utf-8")
+            output = tmp_path / f"{flag}-{invalid}"
+            monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output)])
+            with pytest.raises(ValueError, match="boolean"):
+                eval_nist_batch.main()
+            assert not output.exists()
+            assert not (packet / "dispatch.lock").exists()
+
+
+def test_declared_executor_hash_is_checked_before_output_or_dispatch(tmp_path, monkeypatch):
+    import json
+    import sys
+    import pytest
+    from scripts import eval_nist_batch
+
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    (packet / "manifest.json").write_text(json.dumps({
+        "executor_sha256": "0" * 64, "frozen_sha256": {}}), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+    with pytest.raises(ValueError, match="executor"):
+        eval_nist_batch.main()
+    assert not output.exists()
+    assert not (packet / "dispatch.lock").exists()
+
+
 def test_frozen_packet_has_32_unique_development_questions_and_exact_sources():
     manifest = load(PACKET / "manifest.json")
     for filename, digest in manifest["frozen_sha256"].items():

@@ -8,9 +8,8 @@
   "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
   "active_experiment": {
     "status": "completed_failed",
-    "packet": "evaluation/judge-current-failures-v1",
-    "range_matches": "5/8",
-    "grounded_error_detections": "0/4"
+    "packet": "evaluation/judge-current-source-only-v4",
+    "range_matches": "4/8"
   },
   "budget": {
     "approved_total_usd": 3,
@@ -64,17 +63,35 @@
         "calls": 8,
         "estimated_cost_usd": 0.0082974,
         "unknown_charge": false
+      },
+      {
+        "id": "judge-current-claims-v2",
+        "calls": 8,
+        "estimated_cost_usd": 0.0072846000000000004,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-lines-v3",
+        "calls": 8,
+        "estimated_cost_usd": 0.007807199999999999,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-only-v4",
+        "calls": 8,
+        "estimated_cost_usd": 0.007793399999999999,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1033,
-    "known_estimate_usd": 0.6711207,
+    "dispatch_attempts": 1057,
+    "known_estimate_usd": 0.6940059,
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Preserve and push full failed-round evidence; compare concise claim-focused reviewer against unchanged8 before any two-pass answer repair",
+  "next": "Push configuration fixes/evidence, then mechanically decompose same8 answers into all retained sentence probes; aggregate back to unchanged parent labels, no hidden failure deletion",
   "quota": {
     "stop_remaining_percent_lte": 10,
-    "last_verified_primary_remaining_percent": 79,
+    "last_verified_primary_remaining_percent": 66,
     "no_reset_credit": true
   },
   "pending_batches": [],
@@ -84,5 +101,22 @@
     "status": "completed",
     "conclusion": "success"
   },
-  "production_candidate_status": "None promoted. Original graph/source behavior and answer prompt restored; exact original graph byte hash verified; prototype archived."
+  "production_candidate_status": "None promoted. Original graph/source behavior and answer prompt restored; exact original graph byte hash verified; prototype archived.",
+  "evidence_commit": "a6879f5",
+  "evidence_ci": {
+    "id": 42079024764,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "a6879f54487fe548d02418395f04928a56ead4bc"
+  },
+  "offline_fixes": {
+    "claim_only": "Question removal independent of claim_focus; all answer lines retained when no focus",
+    "answer_temperature": "Frozen manifest value reaches answer factory, router default remains0.2; invalid values stop before dispatch",
+    "red": "9failed1passed",
+    "green": "43passed,1existing warning",
+    "lint": "passed",
+    "boolean_flags": "claim_only/claim_focus reject nonboolean JSON before output/lock; separate red1failed, final combined74passed",
+    "final_regression": "75passed,1existing warning,3.89s; Ruff passed",
+    "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported"
+  }
 }

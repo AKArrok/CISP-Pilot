@@ -6,7 +6,7 @@
 
 持续改善 CISP 的检索覆盖、回答正确性、来源及引用支持、合理拒答、评测可信度、认证与服务性能、可靠性和可审计交付。借鉴 OpenJudge 的审阅/校准和 claw-eval 的冻结任务、执行轨迹、失败保留方式；采用这些流程不等于已经完整接入其所有功能。企业级交付需要可复现、可追踪、权限隔离、费用控制和真实质量证据，不能仅靠包装文档或压力测试完成。
 
-- **当前执行状态**：用户于 2026-11-06 明确恢复，goal active。长期工作入口已推送 cb8926e 且 CI42073073436成功；当前默认32题基线已执行，AI复查31/32，提示/来源组合最高7/8仍未通过，候选已归档且恢复默认；既有v12在本轮真实错误校准分数5/8，但错误检出理由也需原文复查。下一项为支持P1修复的逐主张审阅对照；详细状态看最新continuation。
+- **当前执行状态**：用户于 2026-11-06 明确恢复，goal active。长期工作入口已推送 cb8926e 且 CI42073073436成功；当前默认32题基线已执行，AI复查31/32，提示/来源组合最高7/8仍未通过，候选已归档且恢复默认；既有v12在本轮真实错误校准分数5/8，但错误检出理由也需原文复查。审阅提示、证据粒度和去问题对照均4/8，未启用；冻结配置/源码防漂移修复75定向通过。下一项为支持P1的完整片段分解复查，详细状态看最新continuation。
 - **最新续跑记录**：[evaluation-20261106/continuation.json](docs/engineering-delivery/evaluation-20261106/continuation.json)。过程与实验索引见同目录 [README.md](docs/engineering-delivery/evaluation-20261106/README.md)。
 - **上轮详细证据**：[nist-mixed-quality-20261104/continuation.md](docs/engineering-delivery/nist-mixed-quality-20261104/continuation.md)；[账本](docs/engineering-delivery/nist-mixed-quality-20261104/budget-ledger.json)。
 - **已验证交付**：35d2b47 已推，Actions 41859222126 completed/success。当前运行时代码与该提交相同；文档及用户既有改动须以实际 Git 状态核对。

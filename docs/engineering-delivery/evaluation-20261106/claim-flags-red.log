@@ -1,0 +1,42 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ test_claim_flags_reject_nonboolean_json_before_creating_output ________
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-claim-flag-red-20261106-75vfb88m/pytest/test_claim_flags_reject_nonboo0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000017EDC3C8710>
+
+    def test_claim_flags_reject_nonboolean_json_before_creating_output(tmp_path, monkeypatch):
+        import json
+        import sys
+        import pytest
+        from scripts import eval_nist_batch
+    
+        packet = tmp_path / "packet"
+        packet.mkdir()
+        for flag in ("claim_only", "claim_focus"):
+            for invalid in (0, 1, "false", None):
+                (packet / "manifest.json").write_text(json.dumps({flag: invalid}), encoding="utf-8")
+                output = tmp_path / f"{flag}-{invalid}"
+                monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output)])
+                with pytest.raises(ValueError, match="boolean"):
+>                   eval_nist_batch.main()
+
+tests\test_nist_batch.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, default=ROOT / "evaluation/nist-development-v1")
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = load(args.packet / "manifest.json")
+        max_input_tokens = input_token_limit(manifest)
+>       for name, digest in manifest["frozen_sha256"].items():
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'frozen_sha256'
+
+scripts\eval_nist_batch.py:96: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_nist_batch.py::test_claim_flags_reject_nonboolean_json_before_creating_output
+1 failed, 9 deselected in 0.24s
