@@ -150,3 +150,6 @@ agents/sources.py新增机械formatter，graph.answer仅在生成上下文时调
 
 
 操作12进一步核实：NIST执行器原来不核对声明的executor_sha256，错误哈希仍走到读题。新增红测1failed后，三行校验在建输出/锁/调用前拒绝源码漂移；旧未声明字段仍兼容。最终相关75passed、1既有警告、3.89秒，Ruff通过；executor-hash-red.log与executor-final.log/xml保留。执行器源码用.gitattributes保留原始字节，避免Git换行归一化破坏新冻结哈希。默认库哈希再次相同。
+
+
+交付核对：配置修复提交84d8538。暂存检查发现机器生成红测log/xml含原始尾部空白，diff--check当次失败但后续统计命令掩盖了退出状态；未把检查写为通过。应保留原始失败证据，新增仅针对本轮log/xml的字节与空白属性，不清洗失败文本，随后重新检查。首轮直接push出现Recv failure: Connection reset，尚未确认远端，继续核对并推送最终提交，不以旧CI成功替代。

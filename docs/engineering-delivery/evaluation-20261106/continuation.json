@@ -118,5 +118,7 @@
     "boolean_flags": "claim_only/claim_focus reject nonboolean JSON before output/lock; separate red1failed, final combined74passed",
     "final_regression": "75passed,1existing warning,3.89s; Ruff passed",
     "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported"
-  }
+  },
+  "config_fix_commit": "84d8538",
+  "git_delivery": "84d8538 committed locally; first direct push ended Recv failure Connection reset, remote not yet confirmed"
 }
