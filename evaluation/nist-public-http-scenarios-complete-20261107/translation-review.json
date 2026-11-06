@@ -1,0 +1,78 @@
+{
+  "source_only": true,
+  "reviewer": "Codex AI, not human/NIST official",
+  "complete_source": "ia-2",
+  "units": [
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:1:1",
+      "english": "Identification and Authentication (Organizational Users)",
+      "reading_translation": "标识与认证（组织用户）"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:2:1",
+      "english": "[ia-2_smt] Uniquely identify and authenticate organizational users and associate that unique identification with processes acting on behalf of those users.",
+      "reading_translation": "唯一标识并认证组织用户，并将该唯一标识与代表这些用户执行的进程关联。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:3:1",
+      "english": "[ia-2_gdn] Organizations can satisfy the identification and authentication requirements by complying with the requirements in [HSPD 12](#f16e438e-7114-4144-bfe2-2dfcad8cb2d0) .",
+      "reading_translation": "组织可通过符合[HSPD 12](#f16e438e-7114-4144-bfe2-2dfcad8cb2d0)的要求，满足标识与认证要求。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:3:2",
+      "english": " Organizational users include employees or individuals who organizations consider to have an equivalent status to employees (e.g., contractors and guest researchers).",
+      "reading_translation": "组织用户包括员工，或组织认为具有与员工相当地位的个人，例如承包商和客座研究人员。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:3:3",
+      "english": " Unique identification and authentication of users applies to all accesses other than those that are explicitly identified in [AC-14](#ac-14) and that occur through the authorized use of group authenticators without individual authentication.",
+      "reading_translation": "用户唯一标识与认证适用于所有访问，但[AC-14](#ac-14)中明确标识且通过经授权使用组认证凭据、没有个体认证而发生的访问除外。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:3:4",
+      "english": " Since processes execute on behalf of groups and roles, organizations may require unique identification of individuals in group accounts or for detailed accountability of individual activity.",
+      "reading_translation": "由于进程代表组和角色执行，组织可能要求唯一标识组账号中的个人，或为个人活动提供详细可追责性。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:1",
+      "english": "Organizations employ passwords, physical authenticators, or biometrics to authenticate user identities or, in the case of multi-factor authentication, some combination thereof.",
+      "reading_translation": "组织采用口令、物理认证器或生物特征认证用户身份；多因素认证则使用其中某些要素的组合。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:2",
+      "english": " Access to organizational systems is defined as either local access or network access.",
+      "reading_translation": "组织系统访问被定义为本地访问或网络访问。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:3",
+      "english": " Local access is any access to organizational systems by users or processes acting on behalf of users, where access is obtained through direct connections without the use of networks.",
+      "reading_translation": "本地访问是用户或代表用户的进程通过不使用网络的直接连接获得的组织系统访问。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:4",
+      "english": " Network access is access to organizational systems by users (or processes acting on behalf of users) where access is obtained through network connections (i.e., nonlocal accesses).",
+      "reading_translation": "网络访问是用户或代表用户的进程通过网络连接获得的组织系统访问，即非本地访问。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:5",
+      "english": " Remote access is a type of network access that involves communication through external networks.",
+      "reading_translation": "远程访问是涉及通过外部网络通信的一种网络访问。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:5:6",
+      "english": " Internal networks include local area networks and wide area networks.",
+      "reading_translation": "内部网络包括局域网和广域网。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:7:1",
+      "english": "The use of encrypted virtual private networks for network connections between organization-controlled endpoints and non-organization-controlled endpoints may be treated as internal networks with respect to protecting the confidentiality and integrity of information traversing the network.",
+      "reading_translation": "就保护网络上传输信息的机密性和完整性而言，在组织控制端点与非组织控制端点之间采用加密虚拟专用网络的网络连接，可视为内部网络。"
+    },
+    {
+      "id": "ca356544668d00ce2c037adaf8c3a307b24ff24b8974c2901dcdac2863753bb1:7:2",
+      "english": " Identification and authentication requirements for non-organizational users are described in [IA-8](#ia-8).",
+      "reading_translation": "非组织用户的标识与认证要求见[IA-8](#ia-8)。"
+    }
+  ],
+  "questions_labels_answers": false
+}

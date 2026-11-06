@@ -1,0 +1,60 @@
+{
+  "reviewer": "Codex actual full-source source review, not human gold",
+  "supported": 7,
+  "total": 8,
+  "strict_audit": 8,
+  "failed_ids": [
+    "scenario-01"
+  ],
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "scenario-01",
+      "supported": false,
+      "note": "已不再断言口头批准被禁止，但泛否定导语未明确解释批准形式未规定，按直接回应/缺口作用域保守仍不通过。成员条件和指定批准人区分正确。",
+      "answer_sha256": "5eea636a1a5f5a4a05534b8c4f30faa248e5f8a5a600097b46eb00f2386ed733"
+    },
+    {
+      "id": "scenario-02",
+      "supported": true,
+      "note": "公开系统隐私安排条件完整，无一律任意监控结论。",
+      "answer_sha256": "9e7935a708ca77df72f0ffef93e60b15f3b295a605689f04d33fde4bb66a375f"
+    },
+    {
+      "id": "scenario-03",
+      "supported": true,
+      "note": "初始、后续频次、系统变更/事件培训完整，参数未赋值。",
+      "answer_sha256": "a4fef1d9c8bfe083100e172990fd0cd5f9be190a7204825c3985fbf9b8542564"
+    },
+    {
+      "id": "scenario-04",
+      "supported": true,
+      "note": "三类备份对象、系统级OS和许可证、用户级组件范围各自正确。",
+      "answer_sha256": "16d1c4adba75d087bf625e16d63742057db0a89f0de299faf6af9578621d27de"
+    },
+    {
+      "id": "scenario-05",
+      "supported": true,
+      "note": "超越扫描、交战规则开始前。",
+      "answer_sha256": "8a6eefdc84bbab01cd94d9cfeaa6d9ab8bee1cbdfe8baae6c1dd84f43d4629a4"
+    },
+    {
+      "id": "scenario-06",
+      "supported": true,
+      "note": "级别调整强制与指南频次范围深度可调整区分。",
+      "answer_sha256": "a0927aa95811394ee65b4a9efcbdc70f8529d17bb293f74a24d6dd28956e8838"
+    },
+    {
+      "id": "scenario-07",
+      "supported": true,
+      "note": "联邦机构/PII/授权用户目的限制完整，compromise译为失陷。",
+      "answer_sha256": "3c91ce9d83286e7abfe050d05345c169d2c96fa76aca73a8eaac975a275170ee"
+    },
+    {
+      "id": "scenario-08",
+      "supported": true,
+      "note": "网络/远程/本地按有无网络与外部通信区分，无额外机制定义。",
+      "answer_sha256": "aaa002a88ce5f916cf7c8572a47e61ff0f026a8c482b996b93353a4724244395"
+    }
+  ]
+}

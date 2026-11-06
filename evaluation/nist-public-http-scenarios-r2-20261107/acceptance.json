@@ -1,0 +1,53 @@
+{
+  "scope": "Offline only; no index/model expected answers",
+  "cases": [
+    {
+      "id": "scenario-01",
+      "expected_direction": "explain",
+      "criterion": "组/角色条件与创建批准分开；具体条件、批准人员未赋值，不编造IT统一批准。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-02",
+      "expected_direction": "deny",
+      "criterion": "公开系统监控引用须与隐私安排一致，原文一般禁止，不能全盘允许或绝对全部禁止。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-03",
+      "expected_direction": "deny",
+      "criterion": "初始及后续频次、系统变更或组织定义事件后的培训，保留参数未赋值。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-04",
+      "expected_direction": "deny",
+      "criterion": "用户级/系统级/文档不同，软件许可证属系统级；不编造频次。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-05",
+      "expected_direction": "deny",
+      "criterion": "渗透超越扫描且规则测试前商定，不泛化为扫描无价值。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-06",
+      "expected_direction": "deny",
+      "criterion": "风险变化调整级别，指南频次范围深度可调整；不可把可调整全部变一律强制。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-07",
+      "expected_direction": "explain",
+      "criterion": "保留联邦机构/PII条件，授权用户为授权目的以外使用也在定义内；不能只限外部。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "scenario-08",
+      "expected_direction": "deny",
+      "criterion": "是否用网络与是否外部网络两层区分，物理位置无关，不补未给技术机制。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    }
+  ]
+}

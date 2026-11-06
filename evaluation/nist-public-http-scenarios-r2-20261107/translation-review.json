@@ -1,0 +1,225 @@
+{
+  "role": "Source-only Codex AI alignment, not human/NIST official translation",
+  "source": "complete ac-2",
+  "new_units": [
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:1:1",
+      "english": "Account Management",
+      "reading_translation": "账号管理"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:2:1",
+      "english": "[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use within the system;",
+      "reading_translation": "定义并记录系统内允许使用和明确禁止使用的账号类型；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:3:1",
+      "english": "[ac-2_smt.b] Assign account managers;",
+      "reading_translation": "指定账号管理员；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:4:1",
+      "english": "[ac-2_smt.c] Require {{ insert: param, ac-02_odp.01 }} for group and role membership;",
+      "reading_translation": "对组和角色成员资格要求{{ insert: param, ac-02_odp.01 }}；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:5:1",
+      "english": "[ac-2_smt.d] Specify:",
+      "reading_translation": "规定："
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:6:1",
+      "english": "[ac-2_smt.d.1] Authorized users of the system;",
+      "reading_translation": "系统的授权用户；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:7:1",
+      "english": "[ac-2_smt.d.2] Group and role membership; and",
+      "reading_translation": "组和角色成员资格；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:8:1",
+      "english": "[ac-2_smt.d.3] Access authorizations (i.e., privileges) and {{ insert: param, ac-02_odp.02 }} for each account;",
+      "reading_translation": "每个账号的访问授权（即权限）和{{ insert: param, ac-02_odp.02 }}；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:9:1",
+      "english": "[ac-2_smt.e] Require approvals by {{ insert: param, ac-02_odp.03 }} for requests to create accounts;",
+      "reading_translation": "账号创建请求须获得{{ insert: param, ac-02_odp.03 }}的批准；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:10:1",
+      "english": "[ac-2_smt.f] Create, enable, modify, disable, and remove accounts in accordance with {{ insert: param, ac-02_odp.04 }};",
+      "reading_translation": "按照{{ insert: param, ac-02_odp.04 }}创建、启用、修改、禁用和移除账号；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:11:1",
+      "english": "[ac-2_smt.g] Monitor the use of accounts;",
+      "reading_translation": "监测账号使用；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:12:1",
+      "english": "[ac-2_smt.h] Notify account managers and {{ insert: param, ac-02_odp.05 }} within:",
+      "reading_translation": "在下列期限内通知账号管理员和{{ insert: param, ac-02_odp.05 }}："
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:13:1",
+      "english": "[ac-2_smt.h.1] {{ insert: param, ac-02_odp.06 }} when accounts are no longer required;",
+      "reading_translation": "账号不再需要时，在{{ insert: param, ac-02_odp.06 }}内；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:14:1",
+      "english": "[ac-2_smt.h.2] {{ insert: param, ac-02_odp.07 }} when users are terminated or transferred; and",
+      "reading_translation": "用户离职或调动时，在{{ insert: param, ac-02_odp.07 }}内；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:15:1",
+      "english": "[ac-2_smt.h.3] {{ insert: param, ac-02_odp.08 }} when system usage or need-to-know changes for an individual;",
+      "reading_translation": "个人的系统使用或知悉需要发生变化时，在{{ insert: param, ac-02_odp.08 }}内；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:16:1",
+      "english": "[ac-2_smt.i] Authorize access to the system based on:",
+      "reading_translation": "根据下列事项授权系统访问："
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:17:1",
+      "english": "[ac-2_smt.i.1] A valid access authorization;",
+      "reading_translation": "有效的访问授权；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:18:1",
+      "english": "[ac-2_smt.i.2] Intended system usage; and",
+      "reading_translation": "预期的系统使用；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:19:1",
+      "english": "[ac-2_smt.i.3] {{ insert: param, ac-02_odp.09 }};",
+      "reading_translation": "{{ insert: param, ac-02_odp.09 }}；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:20:1",
+      "english": "[ac-2_smt.j] Review accounts for compliance with account management requirements {{ insert: param, ac-02_odp.10 }};",
+      "reading_translation": "按{{ insert: param, ac-02_odp.10 }}审查账号是否符合账号管理要求；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:21:1",
+      "english": "[ac-2_smt.k] Establish and implement a process for changing shared or group account authenticators (if deployed) when individuals are removed from the group; and",
+      "reading_translation": "在个人被移出组时，建立并实施更改共享或组账号认证凭据的流程（若部署了此类账号）；"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:22:1",
+      "english": "[ac-2_smt.l] Align account management processes with personnel termination and transfer processes.",
+      "reading_translation": "将账号管理流程与人员离职和调动流程对齐。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:23:1",
+      "english": "[ac-2_gdn] Examples of system account types include individual, shared, group, system, guest, anonymous, emergency, developer, temporary, and service.",
+      "reading_translation": "系统账号类型的例子包括个人、共享、组、系统、访客、匿名、应急、开发者、临时和服务账号。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:23:2",
+      "english": " Identification of authorized system users and the specification of access privileges reflect the requirements in other controls in the security plan.",
+      "reading_translation": "识别授权系统用户以及规定访问权限，反映安全计划中其他控制的要求。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:23:3",
+      "english": " Users requiring administrative privileges on system accounts receive additional scrutiny by organizational personnel responsible for approving such accounts and privileged access, including system owner, mission or business owner, senior agency information security officer, or senior agency official for privacy.",
+      "reading_translation": "需要系统账号管理权限的用户，由负责批准此类账号和特权访问的组织人员进行额外审查，包括系统所有者、使命或业务所有者、机构高级信息安全官或机构高级隐私官。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:23:4",
+      "english": " Types of accounts that organizations may wish to prohibit due to increased risk include shared, group, emergency, anonymous, temporary, and guest accounts.",
+      "reading_translation": "组织可能因风险增加而希望禁止的账号类型包括共享、组、应急、匿名、临时和访客账号。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:1",
+      "english": "Where access involves personally identifiable information, security programs collaborate with the senior agency official for privacy to establish the specific conditions for group and role membership; specify authorized users, group and role membership, and access authorizations for each account; and create, adjust, or remove system accounts in accordance with organizational policies.",
+      "reading_translation": "当访问涉及个人可识别信息时，安全项目与机构高级隐私官合作：制定组和角色成员资格的具体条件；规定每个账号的授权用户、组和角色成员资格以及访问授权；并按组织政策创建、调整或移除系统账号。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:2",
+      "english": " Policies can include such information as account expiration dates or other factors that trigger the disabling of accounts.",
+      "reading_translation": "政策可包含账号到期日期或其他触发禁用账号的因素等信息。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:3",
+      "english": " Organizations may choose to define access privileges or other attributes by account, type of account, or a combination of the two.",
+      "reading_translation": "组织可选择按账号、账号类型或二者结合来定义访问权限或其他属性。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:4",
+      "english": " Examples of other attributes required for authorizing access include restrictions on time of day, day of week, and point of origin.",
+      "reading_translation": "授权访问所需其他属性的例子包括对每天的时段、每周的日期和来源位置的限制。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:5",
+      "english": " In defining other system account attributes, organizations consider system-related requirements and mission/business requirements.",
+      "reading_translation": "定义其他系统账号属性时，组织考虑系统相关要求以及使命／业务要求。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:25:6",
+      "english": " Failure to consider these factors could affect system availability.",
+      "reading_translation": "未考虑这些因素可能影响系统可用性。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:1",
+      "english": "Temporary and emergency accounts are intended for short-term use.",
+      "reading_translation": "临时和应急账号旨在短期使用。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:2",
+      "english": " Organizations establish temporary accounts as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation.",
+      "reading_translation": "需要短期账号但不要求立即激活账号时，组织把建立临时账号纳入正常账号激活程序。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:3",
+      "english": " Organizations establish emergency accounts in response to crisis situations and with the need for rapid account activation.",
+      "reading_translation": "组织为应对危机情况以及迅速激活账号的需要而建立应急账号。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:4",
+      "english": " Therefore, emergency account activation may bypass normal account authorization processes.",
+      "reading_translation": "因此，应急账号的激活可绕过正常账号授权流程。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:5",
+      "english": " Emergency and temporary accounts are not to be confused with infrequently used accounts, including local logon accounts used for special tasks or when network resources are unavailable (may also be known as accounts of last resort).",
+      "reading_translation": "不要把应急和临时账号与不常使用的账号混淆；后者包括用于特殊任务或网络资源不可用时的本地登录账号，也可称为最后手段账号。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:6",
+      "english": " Such accounts remain available and are not subject to automatic disabling or removal dates.",
+      "reading_translation": "此类账号保持可用，不受自动禁用或移除日期的限制。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:7",
+      "english": " Conditions for disabling or deactivating accounts include when shared/group, emergency, or temporary accounts are no longer required and when individuals are transferred or terminated.",
+      "reading_translation": "禁用或停用账号的条件包括共享／组、应急或临时账号不再需要，以及人员调动或离职。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:8",
+      "english": " Changing shared/group authenticators when members leave the group is intended to ensure that former group members do not retain access to the shared or group account.",
+      "reading_translation": "成员离开组时更改共享／组认证凭据，旨在确保前组成员不再保留对共享或组账号的访问。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:27:9",
+      "english": " Some types of system accounts may require specialized training.",
+      "reading_translation": "某些系统账号类型可能需要专门培训。"
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:28:1",
+      "english": "Original OSCAL parameter definitions (no values assigned by this extraction):",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）："
+    },
+    {
+      "id": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1:29:1",
+      "english": "[{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}, {\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}, {\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}, {\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}, {\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}, {\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}, {\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}, {\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}, {\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}, {\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}]",
+      "reading_translation": "ac-02_odp.01：组和角色成员资格的前提与准则，待定义。\nac-02_odp.02：每个账号所需的属性，待定义。\nac-02_odp.03：批准创建账号请求的人员或角色，待定义。\nac-02_odp.04：创建、启用、修改、禁用及移除账号的政策、程序、前提与准则，待定义。\nac-02_odp.05：需通知的人员或角色，待定义。\nac-02_odp.06：账号不再需要时通知账号管理员的期限，待定义。\nac-02_odp.07：用户离职或调动时通知账号管理员的期限，待定义。\nac-02_odp.08：个人系统使用或知悉需要变化时通知账号管理员的期限，待定义。\nac-02_odp.09：授权系统访问所需的属性，待定义。\nac-02_odp.10：账号审查的频次，待定义。"
+    }
+  ],
+  "new_parameters": 10,
+  "questions_labels_answers": false,
+  "authenticator": "认证凭据; no password example added",
+  "normative_strength_preserved": true
+}

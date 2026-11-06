@@ -1,0 +1,51 @@
+{
+  "reviewer": "Codex complete original and answer reading, not human gold",
+  "supported": 7,
+  "total": 8,
+  "strict_audit": true,
+  "failed_ids": [
+    "scenario-01"
+  ],
+  "cases": [
+    {
+      "id": "scenario-01",
+      "supported": false,
+      "note": "开头口头不够与末尾形式未知冲突；来源只要求满足条件和获批准，未禁止口头批准。"
+    },
+    {
+      "id": "scenario-02",
+      "supported": true,
+      "note": "公开系统隐私安排保留，并非一律允许或一律绝对禁止。"
+    },
+    {
+      "id": "scenario-03",
+      "supported": true,
+      "note": "初始/后续/系统变更事件培训分开，频次事件未赋值。"
+    },
+    {
+      "id": "scenario-04",
+      "supported": true,
+      "note": "系统级软件许可证与安全隐私文档要求保留。"
+    },
+    {
+      "id": "scenario-05",
+      "supported": true,
+      "note": "超越扫描及测试前规则保留。"
+    },
+    {
+      "id": "scenario-06",
+      "supported": true,
+      "note": "风险变化调整级别，指南频次范围深度保留可。"
+    },
+    {
+      "id": "scenario-07",
+      "supported": true,
+      "note": "联邦机构PII及授权用户非授权目的条件保留；compromise中文表达精度列术语复核点，不当作只限外部。"
+    },
+    {
+      "id": "scenario-08",
+      "supported": true,
+      "note": "本地无网络、远程外部网络、VPN机密完整性限定原文存在。"
+    }
+  ]
+}

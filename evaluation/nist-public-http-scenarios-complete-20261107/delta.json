@@ -1,0 +1,5 @@
+{
+  "same_questions_and_semantic_criteria": true,
+  "change": "Complete IA2 fourteen source-only units, now all8 public controls registered and translated; no prompt edits. Protocol expects card path instead of previous unknown-source fallback, not changed semantic labels.",
+  "old7of8_retained": true
+}
