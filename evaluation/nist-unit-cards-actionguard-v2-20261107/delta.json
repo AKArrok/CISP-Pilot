@@ -1,0 +1,9 @@
+{
+  "only_selector_prompt_delta": "区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。",
+  "origin": "Existing baseline rule2, not new control/question-specific hint",
+  "same_positive8_sha256": "d6b901f300cbcbf41ac13be569661561b4e3cb2ad6ed73510777ce8a0a072da5",
+  "same_negative8_sha256": "9dd9842e58b5aec8aeb2c4ed2602a51bf00d84dbf7f3a47f856d1fdec230b1aa",
+  "baseline_prompt_unchanged": true,
+  "host_contract_and_source_translations_unchanged_from_negative_batch": true,
+  "criteria_unchanged": true
+}

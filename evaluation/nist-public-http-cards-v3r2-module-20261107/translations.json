@@ -1,0 +1,618 @@
+{
+  "scope": "All nonblank units of four complete controls; no questions, answers or expected labels; not indexed",
+  "units": {
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:1:1": {
+      "english_sha256": "0275263505cd16664862c396a1a2cc15dfa4aafa7b6113b5ce7beaa48e38cd63",
+      "reading_translation": "系统使用通知",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:2:1": {
+      "english_sha256": "08f6c750141a958128fbbf5a0e0906b6106cf8fdebc7b2ee646614f9bc29f95f",
+      "reading_translation": "在授予对系统的访问权限之前，向用户显示{{ insert: param, ac-08_odp.01 }}，该通知提供符合适用法律、行政命令、指令、法规、政策、标准和指南的隐私和安全通知，并声明：",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:3:1": {
+      "english_sha256": "f4285503fdfa93afe7646688cd89045276a1b04802abd123ff4af8c06e1406c2",
+      "reading_translation": "用户正在访问美国政府系统；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:4:1": {
+      "english_sha256": "0f11c6d50dbde950adb2284982b2499cd997cdb8052265b97f772855dec9de9c",
+      "reading_translation": "系统使用可能被监控、记录并接受审计；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:5:1": {
+      "english_sha256": "f86452accdee4437171a62e321e627690d934cb623ad2e8c2b969b4513f95bb8",
+      "reading_translation": "禁止未经授权使用系统，并可能受到刑事和民事处罚；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:6:1": {
+      "english_sha256": "00470aefa54ef0e1a119883a7650d8de053266b03b01911ff4cc171ebc03eb87",
+      "reading_translation": "使用系统即表示同意监控和记录；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:7:1": {
+      "english_sha256": "4083d0bf6540856cda292878a4a99eb534b924fdaa4878f28ffea697f6443a4d",
+      "reading_translation": "在用户确认使用条件并采取明确操作登录或进一步访问系统之前，将通知消息或横幅保留在屏幕上；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:8:1": {
+      "english_sha256": "27d349047408dd3da531e2df39655e87a1bbd628334131d93d0faab4c69b2f6d",
+      "reading_translation": "对于可公开访问的系统：",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:9:1": {
+      "english_sha256": "304eb5c5afad78911078f68d856c5cc0e5c5dfcb254e9995f5315cb8c076caa0",
+      "reading_translation": "在授予对可公开访问系统的进一步访问权限之前，显示系统使用信息{{ insert: param, ac-08_odp.02 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:10:1": {
+      "english_sha256": "28a8b72fdd1c48ab0f0fcb1d9297a97be94075f266673aa4c4caaf14fa7e130f",
+      "reading_translation": "显示任何与对此类系统的隐私安排（通常禁止这些活动）相一致的监控、记录或审计的引用（如有）；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:11:1": {
+      "english_sha256": "5c7884b6f6a0379bcad812f764d8437bc5c35be5d206b32b2d82eb8ae9f31188",
+      "reading_translation": "包括系统授权使用的描述。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:1": {
+      "english_sha256": "7cf98c218ac93970d275bf363cc237d4d71a5cd9cbe6af9fe7eef583d36aeca3",
+      "reading_translation": "系统使用通知可以在个人登录系统之前通过显示的消息或警告横幅来实现。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:2": {
+      "english_sha256": "0c95983ad62e0d10a2a9c878994206b4fa8f0d50adf8583ad078135134b6231a",
+      "reading_translation": "系统使用通知仅用于通过具有人类用户的登录界面进行访问。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:3": {
+      "english_sha256": "08abbd1e425cfdea2b792aa3d43427f2d9cbe3df901d1acdc07e6190d0eda2c1",
+      "reading_translation": "当不存在人类接口时，不需要通知。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:4": {
+      "english_sha256": "c13dc54cf66c18b980157c35c7e57515c9d6652c59f5bec2f2ffe8b81846ddde",
+      "reading_translation": "基于风险评估，组织考虑在初始网络登录之后访问应用程序或其他系统资源是否需要二次系统使用通知。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:5": {
+      "english_sha256": "933c5c0eb60f72999d3607827b16fc33befb8e85c41f8b77d635cd6414076c6a",
+      "reading_translation": "组织根据组织需求和系统用户的人口统计特征考虑以多种语言显示的系统使用通知消息或横幅。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:12:6": {
+      "english_sha256": "3e625bf113c2a9d629a1cc13ae3b0e0f7b126fbbe2c6eab60f0b07842b08e026",
+      "reading_translation": "组织就隐私信息内容向隐私办公室征询意见，并就警告横幅内容的法律审查和批准向总法律顾问办公室或组织内同等机构征询意见。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:13:1": {
+      "english_sha256": "e8a6fcd77c3c28ff048df4a329592c45be21eaf3e294963e397ee94d2db9667b",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458:14:1": {
+      "english_sha256": "cf09325fa97ffd704e72375a2c23231efe8c36b0a4e2309b90e9d67091785058",
+      "reading_translation": "ac-08_odp.01：系统在授予用户访问权限前显示的系统使用通知消息或横幅，待定义。\nac-08_odp.02：系统在授予进一步访问权限前显示的系统使用条件，待定义。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:1:1": {
+      "english_sha256": "45270e70e8426b33064a1ee559f91a765e7498a1370b8c962b55d35ed0ba6ec0",
+      "reading_translation": "素养培训与意识教育",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:2:1": {
+      "english_sha256": "802a49d52411638b3da7f44ef467bc412344ebe4ce9ba859d7c5c378f87ca2ad",
+      "reading_translation": "向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私素养培训：",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:3:1": {
+      "english_sha256": "316923c83ca1ea43ee3ee7d21c77677b84c650e03627ab6601a626ec7ddea099",
+      "reading_translation": "作为新用户初始培训的一部分，并在其后{{ insert: param, at-2_prm_1 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:4:1": {
+      "english_sha256": "80cd1f5bed1c762d396772d31f7e10a11feab33dd79bee375c71517b15054efc",
+      "reading_translation": "当系统变更需要时，或在{{ insert: param, at-2_prm_2 }}发生后；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:5:1": {
+      "english_sha256": "691a5ba6a9bf04fc44b435690c1bab8a96dae82b26c80507ae0d55459ca2bda6",
+      "reading_translation": "采用以下技术来提高系统用户的安全与隐私意识{{ insert: param, at-02_odp.05 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:6:1": {
+      "english_sha256": "f0a091ce40926e22ab409e4c9104ee7417ce6f1024342be669aad974af9b0989",
+      "reading_translation": "按{{ insert: param, at-02_odp.06 }}并在{{ insert: param, at-02_odp.07 }}发生后更新素养培训与意识内容；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:7:1": {
+      "english_sha256": "ab096a86d57622427cfb79b5479706ddb65648deaa246f6490aff97ae06844dd",
+      "reading_translation": "将来自内部或外部安全事件或泄露的经验教训纳入素养培训与意识技术中。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:8:1": {
+      "english_sha256": "1989d7df931ef1745cd31c210f10d228eeb4f8588b6dfb43b928401336ba0629",
+      "reading_translation": "组织向系统用户提供基础级和高级别的素养培训，包括测试用户知识水平的措施。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:8:2": {
+      "english_sha256": "a278ce4335a44d0a08507ba72f049553b7a9079322ff273efc24ee6741f7f0ee",
+      "reading_translation": "组织根据特定的组织要求、人员被授权访问的系统以及工作环境（例如远程办公）来确定素养培训和意识培训的内容。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:8:3": {
+      "english_sha256": "2746906a4ebf3c72ab6975829c17639998e6597a55cecf213e61021b6b7680ed",
+      "reading_translation": "内容包括对安全和隐私需求的理解，以及用户为维护安全和个人隐私并应对可疑事件而采取的行动。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:8:4": {
+      "english_sha256": "4ff7884a322f2b1cfc35dc11345e279bc1d7598f53eacd92500cee145e7dff5f",
+      "reading_translation": "内容涉及操作安全的需要以及个人可识别信息的处理。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:10:1": {
+      "english_sha256": "962ef9d7d945f90610bbb233b256cf38b5e3d0f5e4426fc4a8e71ce6f8f67b70",
+      "reading_translation": "意识技术包括展示海报、提供印有安全和隐私提醒的用品、显示登录屏幕消息、生成组织官员的电子邮件建议或通知，以及开展意识活动。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:10:2": {
+      "english_sha256": "1682f7c81f100296f931cb9b58085384008564d09607d04ed5d644ebbd565179",
+      "reading_translation": "在[AT-2a.1](#at-2_smt.a.1)中描述的初始培训之后，素养培训至少以符合适用法律、指令、法规和政策的频率进行。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:10:3": {
+      "english_sha256": "777151f94d426258fb6c8a099b9eb26518f7dbf91345623a5e4337290a0b2688",
+      "reading_translation": "后续的素养培训可通过一次或多次简短的临时课程来满足，并包括关于近期攻击方案、组织安全与隐私政策变更、修订后的安全与隐私期望，或初始培训中部分主题的最新信息。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:10:4": {
+      "english_sha256": "249476920ac8ccc947e806636e8ee1d6a60771f28a514e9afa36285042ac7423",
+      "reading_translation": "定期更新素养培训与意识内容有助于确保内容保持相关性。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:10:5": {
+      "english_sha256": "7cab12d2fbe3e2cb696ec951c85f50b3b1f21c3249446dd4cbacd56c985d1ee0",
+      "reading_translation": "可能促使更新素养培训与意识内容的事件包括但不限于评估或审计发现、安全事件或泄露，或适用法律、行政命令、指令、法规、政策、标准和指南的变化。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:11:1": {
+      "english_sha256": "e8a6fcd77c3c28ff048df4a329592c45be21eaf3e294963e397ee94d2db9667b",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:12:1": {
+      "english_sha256": "c4289d013b369496852894a6c279d0409cba220290ed5f150bf06612948486c6",
+      "reading_translation": "at-2_prm_1：由组织定义的频次，未赋值。\nat-2_prm_2：由组织定义的事件，未赋值。\nat-02_odp.01：初始培训之后向系统用户（包括经理、高管和承包商）提供安全素养培训的频次，待定义。\nat-02_odp.02：初始培训之后向系统用户（包括经理、高管和承包商）提供隐私素养培训的频次，待定义。\nat-02_odp.03：要求对系统用户开展安全素养培训的事件，待定义。\nat-02_odp.04：要求对系统用户开展隐私素养培训的事件，待定义。\nat-02_odp.05：用于提升系统用户安全与隐私意识的技术，待定义。\nat-02_odp.06：更新素养培训与意识内容的频次，待定义。\nat-02_odp.07：要求更新素养培训与意识内容的事件，待定义。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:1:1": {
+      "english_sha256": "81eb3476f9b7e79eb1d070e6e2b3ba0ae8d1e9806f51fc4874512ed141d9888c",
+      "reading_translation": "渗透测试",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:2:1": {
+      "english_sha256": "06b28ac4469e16d9d00bda46aaf0a1f23f079f0a01c350a7f9058367f2b5398d",
+      "reading_translation": "对{{ insert: param, ca-08_odp.02 }}按{{ insert: param, ca-08_odp.01 }}实施渗透测试。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:1": {
+      "english_sha256": "33f08f9d0a21a80334980b57b67802e59e2bb0ceb03b603c7de064ae63e059ea",
+      "reading_translation": "渗透测试是一种针对系统或单个系统组件进行的专门评估类型，用于识别可能被对手利用的漏洞。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:2": {
+      "english_sha256": "823163bbb0bef3e6abdddc846a9cb87eea6ff9680ff135482a8b508f4df061c6",
+      "reading_translation": "渗透测试超越了自动化漏洞扫描，由具备可证明技能和经验的人员（agents）和团队执行，这些技能和经验包括网络、操作系统和/或应用层安全方面的技术专长。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:3": {
+      "english_sha256": "3ea6cc01bfe32eb5411ee543ca6fc44448bd3864db728ffd1fa5c3dd74e1cd69",
+      "reading_translation": "渗透测试可用于验证漏洞或确定系统在指定约束条件下对对手的渗透抵抗程度。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:4": {
+      "english_sha256": "4f24c0fab1dc8ed311b4e1b31fd605ccfbf4da5e5cb1803ae54dedd2f3d145d0",
+      "reading_translation": "此类约束包括时间、资源和技能。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:5": {
+      "english_sha256": "f7b004916897de35f2663eed754d2c9b8720ef5b971affff3a7db1bc388ff576",
+      "reading_translation": "渗透测试试图复制对手的行动，并对安全和隐私相关的弱点或缺陷提供更深入的分析。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:3:6": {
+      "english_sha256": "94f10a08cd6b3422da0f7703a29b848ed2137b06350e0d8104446b0c7a0c8b98",
+      "reading_translation": "当组织从较旧技术过渡到较新技术（例如，从IPv4过渡到IPv6网络协议）时，渗透测试尤为重要。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:1": {
+      "english_sha256": "3b14e6dda0a352ddec956f4e0fe6e4bcce1df6595f5a1a19c4b8ece924500ea0",
+      "reading_translation": "组织可以使用漏洞分析的结果来支持渗透测试活动。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:2": {
+      "english_sha256": "0ef18a3c52b6733ce66806af811fc624ec95fb9f4e7c5393e1c6482be831d5ff",
+      "reading_translation": "渗透测试可以在系统硬件、软件或固件组件上内部或外部进行，并可以检验物理控制和技术控制。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:3": {
+      "english_sha256": "42f5e6d2d3bf7b65d76bf22a98bcc8d6cbc6775dd1767e2a8cf713ff380974ec",
+      "reading_translation": "渗透测试的标准方法包括基于对系统的充分了解进行测试前分析、基于该分析在测试前识别潜在漏洞，以及旨在确定漏洞可利用性的测试。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:4": {
+      "english_sha256": "568c031c22b3aaa5363376700ff405ba6604d49135bf6a1511d54622b88f4ef2",
+      "reading_translation": "所有各方在开始渗透测试场景之前同意交战规则。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:5": {
+      "english_sha256": "8c39d240b0212cf481f8634bfd1eb157cb63af6acd5de1efd110a62868c5c7ee",
+      "reading_translation": "组织将渗透测试的交战规则与预期对手将采用的工具、技术和程序相关联。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:6": {
+      "english_sha256": "39ab781e254d0e087a85b174be6afe79fbe3e47c5be4462ce3b2315e547d83a0",
+      "reading_translation": "渗透测试可能导致受法律或法规保护的信息暴露给执行测试的人员。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:7": {
+      "english_sha256": "8d2f639d827d808457962545b697f3bb260ad4d3f3ca13c091f013a0c42e9abb",
+      "reading_translation": "交战规则、合同或其他适当机制可用于传达关于如何保护此信息的期望。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:5:8": {
+      "english_sha256": "26924509988eb49288bb49c00e03ea91a3f270b0f27628051902e57efb669209",
+      "reading_translation": "风险评估指导关于执行渗透测试的人员所需独立性水平的决策。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:6:1": {
+      "english_sha256": "e8a6fcd77c3c28ff048df4a329592c45be21eaf3e294963e397ee94d2db9667b",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63:7:1": {
+      "english_sha256": "d507db4be70b1d6bb89195600bda5cc1c86fe552e40c3da8527dc04a936fda50",
+      "reading_translation": "ca-08_odp.01：对系统或系统组件开展渗透测试的频次，待定义。\nca-08_odp.02：需要开展渗透测试的系统或系统组件，待定义。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:1:1": {
+      "english_sha256": "cfb674d4d8749461ef89f7bb0c743b204cc9d229ba20436a3c43ab698e8860b8",
+      "reading_translation": "系统备份",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:2:1": {
+      "english_sha256": "a98fb5dcaa19f94c2668d450dbf191605422b1e6594e82b01bacebf8b0b432f4",
+      "reading_translation": "对{{ insert: param, cp-09_odp.01 }}中包含的用户级信息执行备份{{ insert: param, cp-09_odp.02 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:3:1": {
+      "english_sha256": "814c8dba8783b0aa613b5e1c5e484ef7bf5d2ba47fd33e0f7b4a60ae8a7ad827",
+      "reading_translation": "对系统中包含的系统级信息执行备份{{ insert: param, cp-09_odp.03 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:4:1": {
+      "english_sha256": "3d983d4de66a2fcc2371fa21f9cb46bac7766c1ea16f1814a14146f2e7487731",
+      "reading_translation": "对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}；",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:5:1": {
+      "english_sha256": "4eb5d1a243eb97e9dbbd1f2959da58ad0cb282eb867dc1a48bf261d3f1002a35",
+      "reading_translation": "保护备份信息的机密性、完整性和可用性。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:1": {
+      "english_sha256": "14fc012f13e4ff84881c0bbf32f498dc5222a7e14c9feb7cccbdd2d5921259c2",
+      "reading_translation": "系统级信息包括系统状态信息、操作系统软件、中间件、应用软件和许可证。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:2": {
+      "english_sha256": "d55b04aef176c1497f0ccfb02e5fdca88c0442e5a916e692ac3fdfd2b5b3ebf3",
+      "reading_translation": "用户级信息包括系统级信息以外的信息。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:3": {
+      "english_sha256": "2ed9bc8546232369dfb034897f4ca1612aad3f19cbc09d35b86216f417c3f398",
+      "reading_translation": "用于保护系统备份完整性的机制包括数字签名和密码学哈希。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:4": {
+      "english_sha256": "c2f7580d93833ad27e40af5653e9158350ad980c4bfe2b86a0f000d9968478f2",
+      "reading_translation": "系统备份信息在传输过程中的保护由[MP-5](#mp-5)和[SC-8](#sc-8)处理。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:5": {
+      "english_sha256": "49aecbd0b4ec0f42ed68d2c223ca9c9da9a063b118085be7e18bd0b60897251b",
+      "reading_translation": "系统备份反映应急计划中的要求以及组织对信息备份的其他要求。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:6": {
+      "english_sha256": "31ed03096fb7448d61a2500c5eb25b90152747a62e41bebeec477bd448f54a99",
+      "reading_translation": "组织可能受到法律、行政命令、指令、法规或政策的约束，这些法律、行政命令、指令、法规或政策对特定类别的信息（例如个人健康信息）提出了要求。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:6:7": {
+      "english_sha256": "aee3458a3b71dda24ceffc9e1facc2fe7e33fca73840653961b6894977c02903",
+      "reading_translation": "组织人员就此类要求与机构高级隐私官和法律顾问进行协商。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:7:1": {
+      "english_sha256": "e8a6fcd77c3c28ff048df4a329592c45be21eaf3e294963e397ee94d2db9667b",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    },
+    "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e:8:1": {
+      "english_sha256": "baaf34df74220f5e75bffc124df6b5d72298ed6174e891430ec32de8a694939f",
+      "reading_translation": "cp-09_odp.01：需要对其中的用户级信息执行备份的系统组件，待定义。\ncp-09_odp.02：与恢复时间目标和恢复点目标一致的用户级信息备份频次，待定义。\ncp-09_odp.03：与恢复时间目标和恢复点目标一致的系统级信息备份频次，待定义。\ncp-09_odp.04：与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。",
+      "authority": "Unofficial AI source translation, not primary evidence or human gold"
+    }
+  },
+  "parameters": {
+    "ac-08_odp.01": {
+      "original_definition": {
+        "id": "ac-08_odp.01",
+        "label": "system use notification",
+        "guidelines": [
+          {
+            "prose": "system use notification message or banner to be displayed by the system to users before granting access to the system is defined;"
+          }
+        ]
+      },
+      "reading_translation": "系统在授予用户访问权限前显示的系统使用通知消息或横幅，待定义。",
+      "source_text_sha256": "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    },
+    "ac-08_odp.02": {
+      "original_definition": {
+        "id": "ac-08_odp.02",
+        "label": "conditions",
+        "guidelines": [
+          {
+            "prose": "conditions for system use to be displayed by the system before granting further access are defined;"
+          }
+        ]
+      },
+      "reading_translation": "系统在授予进一步访问权限前显示的系统使用条件，待定义。",
+      "source_text_sha256": "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458"
+    },
+    "at-2_prm_1": {
+      "original_definition": {
+        "id": "at-2_prm_1",
+        "label": "organization-defined frequency"
+      },
+      "reading_translation": "由组织定义的频次，未赋值。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-2_prm_2": {
+      "original_definition": {
+        "id": "at-2_prm_2",
+        "label": "organization-defined events"
+      },
+      "reading_translation": "由组织定义的事件，未赋值。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.01": {
+      "original_definition": {
+        "id": "at-02_odp.01",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;"
+          }
+        ]
+      },
+      "reading_translation": "初始培训之后向系统用户（包括经理、高管和承包商）提供安全素养培训的频次，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.02": {
+      "original_definition": {
+        "id": "at-02_odp.02",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;"
+          }
+        ]
+      },
+      "reading_translation": "初始培训之后向系统用户（包括经理、高管和承包商）提供隐私素养培训的频次，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.03": {
+      "original_definition": {
+        "id": "at-02_odp.03",
+        "label": "events",
+        "guidelines": [
+          {
+            "prose": "events that require security literacy training for system users are defined;"
+          }
+        ]
+      },
+      "reading_translation": "要求对系统用户开展安全素养培训的事件，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.04": {
+      "original_definition": {
+        "id": "at-02_odp.04",
+        "label": "events",
+        "guidelines": [
+          {
+            "prose": "events that require privacy literacy training for system users are defined;"
+          }
+        ]
+      },
+      "reading_translation": "要求对系统用户开展隐私素养培训的事件，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.05": {
+      "original_definition": {
+        "id": "at-02_odp.05",
+        "label": "awareness techniques",
+        "guidelines": [
+          {
+            "prose": "techniques to be employed to increase the security and privacy awareness of system users are defined;"
+          }
+        ]
+      },
+      "reading_translation": "用于提升系统用户安全与隐私意识的技术，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.06": {
+      "original_definition": {
+        "id": "at-02_odp.06",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "the frequency at which to update literacy training and awareness content is defined;"
+          }
+        ]
+      },
+      "reading_translation": "更新素养培训与意识内容的频次，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "at-02_odp.07": {
+      "original_definition": {
+        "id": "at-02_odp.07",
+        "label": "events",
+        "guidelines": [
+          {
+            "prose": "events that would require literacy training and awareness content to be updated are defined;"
+          }
+        ]
+      },
+      "reading_translation": "要求更新素养培训与意识内容的事件，待定义。",
+      "source_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed"
+    },
+    "ca-08_odp.01": {
+      "original_definition": {
+        "id": "ca-08_odp.01",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "frequency at which to conduct penetration testing on systems or system components is defined;"
+          }
+        ]
+      },
+      "reading_translation": "对系统或系统组件开展渗透测试的频次，待定义。",
+      "source_text_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    },
+    "ca-08_odp.02": {
+      "original_definition": {
+        "id": "ca-08_odp.02",
+        "label": "system(s) or system components",
+        "guidelines": [
+          {
+            "prose": "systems or system components on which penetration testing is to be conducted are defined;"
+          }
+        ]
+      },
+      "reading_translation": "需要开展渗透测试的系统或系统组件，待定义。",
+      "source_text_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63"
+    },
+    "cp-09_odp.01": {
+      "original_definition": {
+        "id": "cp-09_odp.01",
+        "label": "system components",
+        "guidelines": [
+          {
+            "prose": "system components for which to conduct backups of user-level information is defined;"
+          }
+        ]
+      },
+      "reading_translation": "需要对其中的用户级信息执行备份的系统组件，待定义。",
+      "source_text_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    },
+    "cp-09_odp.02": {
+      "original_definition": {
+        "id": "cp-09_odp.02",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;"
+          }
+        ]
+      },
+      "reading_translation": "与恢复时间目标和恢复点目标一致的用户级信息备份频次，待定义。",
+      "source_text_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    },
+    "cp-09_odp.03": {
+      "original_definition": {
+        "id": "cp-09_odp.03",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;"
+          }
+        ]
+      },
+      "reading_translation": "与恢复时间目标和恢复点目标一致的系统级信息备份频次，待定义。",
+      "source_text_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    },
+    "cp-09_odp.04": {
+      "original_definition": {
+        "id": "cp-09_odp.04",
+        "label": "frequency",
+        "guidelines": [
+          {
+            "prose": "frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;"
+          }
+        ]
+      },
+      "reading_translation": "与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。",
+      "source_text_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e"
+    }
+  },
+  "alignment": [
+    {
+      "control": "ac-8",
+      "canonical_text_sha256": "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458",
+      "guidance_units": 6,
+      "guidance_translations": 6,
+      "review": "Codex AI pairwise original-English review; source-only, no question/answer/label input"
+    },
+    {
+      "control": "at-2",
+      "canonical_text_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed",
+      "guidance_units": 9,
+      "guidance_translations": 9,
+      "review": "Codex AI pairwise original-English review; source-only, no question/answer/label input"
+    },
+    {
+      "control": "ca-8",
+      "canonical_text_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63",
+      "guidance_units": 14,
+      "guidance_translations": 14,
+      "review": "Codex AI pairwise original-English review; source-only, no question/answer/label input"
+    },
+    {
+      "control": "cp-9",
+      "canonical_text_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e",
+      "guidance_units": 7,
+      "guidance_translations": 7,
+      "review": "Codex AI pairwise original-English review; source-only, no question/answer/label input"
+    }
+  ],
+  "input_sha256": {
+    "docs/engineering-delivery/evaluation-resume-20261106/literal-source-units.json": "e2da6e528e08c0e768340a4d3489e05f0a475486575061563c61fd866b2086e0",
+    "evaluation/nist-reading-guidance-v4-20261107/reading-aids.json": "22732f542f77068770970fd20f881e833efc620e0be38ed9631b20cf7dc95abf",
+    "evaluation/nist-unit-evidence-first-v1-20261107/chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693"
+  },
+  "compiler_sha256": "a76e8e72ca90e4e46c7e2c399246aef87e0400d365b77a726b783baf261b0949",
+  "translation_corrections": [
+    "AT2 title and firstguidance literacy training rendered as 素养培训, awareness remains distinct; original English unchanged",
+    {
+      "unit_id": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:2:1",
+      "original_English": "[at-2_smt.a] Provide security and privacy literacy training to system users (including managers, senior executives, and contractors):",
+      "before": "向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私意识培训：",
+      "after": "向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私素养培训：",
+      "reason": "literacy training与awareness techniques须区分，逐源核对，不以问题或标签生成。"
+    },
+    {
+      "unit_id": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:7:1",
+      "original_English": "[at-2_smt.d] Incorporate lessons learned from internal or external security incidents or breaches into literacy training and awareness techniques.",
+      "before": "将来自内部或外部安全事件或泄露的经验教训纳入意识培训与意识技术中。",
+      "after": "将来自内部或外部安全事件或泄露的经验教训纳入素养培训与意识技术中。",
+      "reason": "literacy training与awareness techniques须区分，逐源核对，不以问题或标签生成。"
+    }
+  ],
+  "limit": "Pair count and offsets prove alignment, not semantic translation fidelity; review is AI, not independent human",
+  "previous_translation_sha256": "c6c397634d46e84da65ca2034fabeb70c880c9d110b2b6bedba7bff3130d3f30"
+}

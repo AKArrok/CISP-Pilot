@@ -1,0 +1,10 @@
+{
+  "cases": 4,
+  "private_fragments": 4,
+  "exact_original_scope_verified": true,
+  "scope_proof_sha256": "3e836ea4b3fca750154e153ea6ca52e54d452f8395f7805d03078669469f00f4",
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "packet_and_results_local_only": true,
+  "new_private_fragments": 0
+}

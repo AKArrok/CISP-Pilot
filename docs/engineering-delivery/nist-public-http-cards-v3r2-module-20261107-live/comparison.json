@@ -1,0 +1,25 @@
+{
+  "baseline": {
+    "requests": 32,
+    "mean_seconds": 3.3139687500001287,
+    "median_seconds": 3.2034999999996217,
+    "p95_nearest_rank_seconds": 4.5,
+    "max_seconds": 6.563000000000102,
+    "estimate_usd": 0.0386388,
+    "attempts": 64,
+    "transport": "in-process ASGI TestClient; real provider"
+  },
+  "candidate": {
+    "requests": 32,
+    "mean_seconds": 1.7759374999993724,
+    "median_seconds": 1.7504999999982829,
+    "p95_nearest_rank_seconds": 2.2189999999973224,
+    "max_seconds": 2.3280000000013388,
+    "estimate_usd": 0.0323307,
+    "attempts": 64,
+    "transport": "in-process ASGI TestClient; real provider"
+  },
+  "semantic_baseline": "31/32 per retained baseline source review",
+  "semantic_candidate": "32/32 Codex development source review, not human gold",
+  "limits": "Sequential ASGI real-provider comparison on separate times, output shape differs; not causal significance/concurrent throughput/SLA"
+}

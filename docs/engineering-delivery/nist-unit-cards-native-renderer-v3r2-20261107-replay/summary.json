@@ -1,0 +1,11 @@
+{
+  "rendered_observations": 24,
+  "unique_questions": 16,
+  "new_provider_calls": 0,
+  "new_model_cost_usd": 0,
+  "source_model_attempts_already_accounted": 48,
+  "source_model_cost_already_accounted_usd": 0.05321879999999999,
+  "semantic_acceptance": "pending_original_source_review",
+  "default_db_unchanged": true,
+  "limit": "Offline real-selector replay, not new model/HTTP results; two old ambiguity failures remain in their original records"
+}

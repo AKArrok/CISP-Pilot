@@ -80,3 +80,9 @@ docs/engineering-delivery/evaluation-window2-20261107/*.py -text whitespace=cr-a
 docs/engineering-delivery/evaluation-window2-20261107/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/evaluation-window2-20261107/*.log -text -whitespace
 docs/engineering-delivery/evaluation-window2-20261107/*.xml -text -whitespace
+scripts/experimental_card_node.py -text whitespace=cr-at-eol
+scripts/audit_card_materialization.py -text whitespace=cr-at-eol
+agents/sources.py -text whitespace=cr-at-eol
+evaluation/nist-public-http-*-20261107/*.py -text whitespace=cr-at-eol
+scripts/audit_public_http.py -text whitespace=cr-at-eol
+docs/engineering-delivery/nist-unit-cards-native-renderer-*-20261107-replay/*.json -text whitespace=cr-at-eol

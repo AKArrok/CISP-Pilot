@@ -1,0 +1,38 @@
+.........FF.                                                             [100%]
+================================== FAILURES ===================================
+_ test_native_child_clause_keeps_actual_parent_condition_without_other_actions _
+
+    def test_native_child_clause_keeps_actual_parent_condition_without_other_actions():
+        from scripts.compile_nist_source_units import compile_units
+        text = ("Title\n[x_smt.a] For publicly accessible systems:\n"
+                "[x_smt.a.1] Display authorized uses.\n[x_smt.b] An unrelated action.")
+        contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": text}]
+        catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+        selected = materialize_card_selection('{"unit_ids":["s1:l3:p1"],"answer_type":"explain"}', catalog, contexts)
+>       assert [unit["id"] for unit in selected["units"]] == ["s1:l2:p1", "s1:l3:p1"]
+E       AssertionError: assert ['s1:l3:p1'] == ['s1:l2:p1', 's1:l3:p1']
+E         
+E         At index 0 diff: 's1:l3:p1' != 's1:l2:p1'
+E         Right contains one more item: 's1:l3:p1'
+E         Use -v to get more diff
+
+tests\test_answer_card_contract.py:92: AssertionError
+_ test_native_action_notice_distinguishes_unassigned_values_from_optional_actions _
+
+    def test_native_action_notice_distinguishes_unassigned_values_from_optional_actions():
+        from scripts.compile_nist_source_units import compile_units
+        text = "[x_smt] Conduct backups of privacy documentation."
+        contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": text}]
+        catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+        selected = materialize_card_selection('{"unit_ids":["s1:l1:p1"],"answer_type":"not_specified"}', catalog, contexts)
+        translations = translation_map(catalog, contexts)
+        next(iter(translations["units"].values()))["reading_translation"] = "对隐私文档执行备份。"
+        rendered = render_card_answer(selected, contexts, translations)
+>       assert "参数值待定不表示动作可选" in rendered
+E       AssertionError: assert '参数值待定不表示动作可选' in '本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第1行片段1\n辅助译文：对隐私文档执行备份。\n原文：\n> [x_smt] Conduct backups of privacy documentation.\n\n【出处】[资料1]《synthetic》定位【x】'
+
+tests\test_answer_card_contract.py:106: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_card_contract.py::test_native_child_clause_keeps_actual_parent_condition_without_other_actions
+FAILED tests/test_answer_card_contract.py::test_native_action_notice_distinguishes_unassigned_values_from_optional_actions
+2 failed, 10 passed in 0.25s

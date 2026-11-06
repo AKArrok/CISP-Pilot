@@ -1,0 +1,273 @@
+{
+  "reviewer": "Codex AI manual reading of complete frozen English and actual Chinese/English SSE answers; no paid judge",
+  "criteria": "Original frozen response/source/condition/parameter/completeness criteria; no question, label or failure removed",
+  "supported": 32,
+  "total": 32,
+  "retrieval_target_top2": 32,
+  "citation_materialization_audit": "audit.json passed32/32",
+  "independent_human_gold": false,
+  "default_promoted": false,
+  "limitations": [
+    "Source cards are lengthy and have generic affirmative leads on several open questions.",
+    "CA8 migration explanation limited to source statement and general testing purpose, not a detailed IPv6 risk mechanism.",
+    "Same32 development questions, one real application run; no independent generalization or production SLA."
+  ],
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "question": "登录告知应在授予访问权限之前还是之后出现？",
+      "answer_sha256": "7edd77d638ab482ebb90e7fbc57e5d5efd943c2396501de66e1d9b4141f55625",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "before granting access，包含公开系统进一步访问；开放题肯定导语生硬，正文明确之前。"
+    },
+    {
+      "id": "ac-8-new-02",
+      "question": "警告横幅在什么情况下可以从屏幕消失？",
+      "answer_sha256": "fc862234d92dca8a624ba488e0bfe751cbe13106e69312d5d92d6c3ab7ca7593",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "保留直到确认使用条件且采取明确登录/进一步访问操作，两个条件均在。"
+    },
+    {
+      "id": "ac-8-new-03",
+      "question": "不存在人机界面的系统需要使用告知吗？",
+      "answer_sha256": "4238b97356a81e9d21441388c506c50475552eee620646c2beabc88252db6492",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "无human interface不要求通知，不附加风险或多语言义务。"
+    },
+    {
+      "id": "ac-8-new-04",
+      "question": "公开访问系统的告知需要说明授权用途吗？",
+      "answer_sha256": "16989ae3da9819d87e6ac06355d00ed62f7b219871bf145c9c86698b5bb898bb",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "公开系统父条件与授权用途子条款同时呈现。"
+    },
+    {
+      "id": "ac-8-new-05",
+      "question": "告知是否需要考虑多语言用户？",
+      "answer_sha256": "2220ebcf63a75fdf995ba5dc49002d872b4b3f21654115a987710b94e2d0a28f",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "多语言根据组织需求和用户人口特征，无二次告知风险串用。"
+    },
+    {
+      "id": "ac-8-new-06",
+      "question": "登录网络以后还需要考虑应用层的二次告知吗？",
+      "answer_sha256": "134196533fab5d971b32ffb9ca6ba88973f4f8a4a79e93769c9a817fc79d0095",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "二次告知依据风险评估，未变成一律强制。"
+    },
+    {
+      "id": "ac-8-new-07",
+      "question": "该控制是否允许在用户确认前隐藏警告横幅？",
+      "answer_sha256": "96dde0fdfba7196bb5ca20a25a94f30f66778b5c08cd41d11ccec049b239a312",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "否定提前隐藏，原文两个持续条件完整。"
+    },
+    {
+      "id": "ac-8-new-08",
+      "question": "这份资料是否规定登录告知必须每隔五分钟弹出？",
+      "answer_sha256": "b1bfea1c017a2919faef6ae9431fb9015b04c2b6a7686bf82f49c8e873ce887c",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "只说本次资料未给五分钟附加规定，保留原有动作。"
+    },
+    {
+      "id": "at-2-new-01",
+      "question": "安全与隐私培训的用户是否包括承包商？",
+      "answer_sha256": "1bef44b776008057a65eb5a25e595039c3dba91c3fa8af2894ed467b9561d7f7",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "contractors与managers/senior executives在原文，未排除承包商。"
+    },
+    {
+      "id": "at-2-new-02",
+      "question": "培训内容是否应随远程工作环境变化而调整？",
+      "answer_sha256": "061625bbcf584a57daa1125c634d382cb6dbb0631ed373c557ad876e9d844931",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "内容取决于组织/系统/远程工作环境；更新事件非穷尽，breaches译为泄露。"
+    },
+    {
+      "id": "at-2-new-03",
+      "question": "列举资料中两种提升安全意识的具体手段。",
+      "answer_sha256": "bbdbd84b4e150b26470b2bb421ed083ef35141c69b4758a6aac14010ba9e7033",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "给出海报、提醒用品、登录消息、邮件与活动，至少两种；未声称只有两种。"
+    },
+    {
+      "id": "at-2-new-04",
+      "question": "后续培训是否可以采用简短临时专题形式？",
+      "answer_sha256": "0a6a789da0aabe2e9249aa7392aead7e0c87bb9c31b5529a0224a39a4f506e28",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "后续可一次或多次简短临时课程，保留may和主题范围。"
+    },
+    {
+      "id": "at-2-new-05",
+      "question": "适用法规变化是否可能触发培训内容更新？",
+      "answer_sha256": "42a23aa54e3115f63116ec687e79bc9a5225624b2f71cde595c012a153481a7e",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "法规变化可触发更新，不声称是全部事件；未给参数具体值。"
+    },
+    {
+      "id": "at-2-new-06",
+      "question": "培训内容是否需要涉及个人身份信息的处理？",
+      "answer_sha256": "ad269352f569c522a4a99460c1772aef2d236b11bc21db823138f79d350a28e1",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "明确PII处理，未变成敏感信息无边界泛称。"
+    },
+    {
+      "id": "at-2-new-07",
+      "question": "该控制是否规定培训只能使用海报一种方式？",
+      "answer_sha256": "b69be102912d56f21bc1521fda76a31e0f8f91fde9cc8927025d42d323440cf8",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "否定只能海报，列举多个机制且原生参数未赋值。"
+    },
+    {
+      "id": "at-2-new-08",
+      "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+      "answer_sha256": "c67b724cc046067862058f7db06dcecf5aa6b2d678cc151620827aada7df01cf",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "本次原文没有90分要求；知识测试存在但不能反推分数。"
+    },
+    {
+      "id": "cp-9-new-01",
+      "question": "系统级备份信息包含哪些软件类别？",
+      "answer_sha256": "2e910963e8ca3460eb6fbeec25037e10b083d973b37c9540182bb57cd4bdb5a3",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "系统状态、OS、中间件、应用和许可证，软件类别完整。"
+    },
+    {
+      "id": "cp-9-new-02",
+      "question": "用户级信息与系统级信息在指南中如何区分？",
+      "answer_sha256": "c413c330e451b3df9ccb9e279bbab2f6be874acdd369a1016f0fae27e3736417",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "系统级列举与用户级为其他信息的区分，不把组件参数泛化。"
+    },
+    {
+      "id": "cp-9-new-03",
+      "question": "备份完整性可以使用哪两种技术机制保护？",
+      "answer_sha256": "ea165ec73d9c451e1b620f13a6c906d5a68173174445d4a0934d6ac3ba077d0f",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "数字签名与密码学哈希；未混同机密性加密。"
+    },
+    {
+      "id": "cp-9-new-04",
+      "question": "备份传输保护关联哪两个控制编号？",
+      "answer_sha256": "2e995d7e9a6dd8ace7dc234294d61effa102d250e3e86f6af52ba0fda3f584fa",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "MP-5和SC-8准确；肯定导语不适合哪两个，正文仍直接回答。"
+    },
+    {
+      "id": "cp-9-new-05",
+      "question": "备份计划除应急计划还要考虑什么要求？",
+      "answer_sha256": "1c09d7df3d0a063ac5d1c04f6c465d55c62cf6a52a4590ca5f4dc6d70a6c91fd",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "除应急计划还有组织备份要求，补充特定信息法律义务而非杜撰。"
+    },
+    {
+      "id": "cp-9-new-06",
+      "question": "涉及个人健康信息的备份要求应向哪些人员咨询？",
+      "answer_sha256": "4c1944fc8cacbe1dae28906ff993ed32540203f32f5215bc71b46c142ceccb56",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "senior agency official for privacy与legal counsel均有。"
+    },
+    {
+      "id": "cp-9-new-07",
+      "question": "该控制是否指定只能购买某一家公司的备份软件？",
+      "answer_sha256": "9dcd3167b492ea930373661edf6cf0b556ea106c4c0ef671f0e5f99612bb82fa",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "无独家厂商规定；三类备份和保护动作仍强制，组件只属用户级。"
+    },
+    {
+      "id": "cp-9-new-08",
+      "question": "该控制是否允许跳过包含隐私文档的系统文档备份？",
+      "answer_sha256": "b4c0d404db0fab5ad8a1edaeed761091560df4b13d62d0268c3818b47d7680b3",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "否定跳过系统文档，安全/隐私文档包括在内，频次未赋值。"
+    },
+    {
+      "id": "ca-8-new-01",
+      "question": "渗透测试与自动漏洞扫描相比有什么区别？",
+      "answer_sha256": "10ded35c1f502afb9abd9535f4becbef9b77aebb6ed1dde8d582f2976418bff4",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "超越自动扫描，技能/经验、人为对手动作与深入分析，未称扫描无用。"
+    },
+    {
+      "id": "ca-8-new-02",
+      "question": "渗透测试团队应具备哪些可证明的能力？",
+      "answer_sha256": "35c8481a6d01375927d4b2a7514dd73ffc37c92cf9778bfc9d7c48770fe495e8",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "网络、操作系统和/或应用层技术能力，保留and/or。"
+    },
+    {
+      "id": "ca-8-new-03",
+      "question": "时间资源技能如何影响渗透测试？",
+      "answer_sha256": "fbe8d2457651334b0aee1ce9247ba25175f5ef92ef62384ea7aa16606e895bc5",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "限定time/resources/skills影响约束内抵抗评估，未推断无限覆盖。"
+    },
+    {
+      "id": "ca-8-new-04",
+      "question": "从IPv4迁移IPv6时为什么值得关注渗透测试？",
+      "answer_sha256": "5d6f58d508717cd948d978a4386c9ec7aba3341976562a63d742f37d06dd9762",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "原文明确迁移尤其重要，给识别可利用弱点与模拟对手的上下文；没有捏造IPv6特有原因。仅支持这一来源层面的解释，不能当详细迁移风险机制答案。"
+    },
+    {
+      "id": "ca-8-new-05",
+      "question": "漏洞分析结果能否支持渗透测试活动？",
+      "answer_sha256": "a66e505e65da007296253ab75a4c082813d66e7e8d69029e5c9b81a0d27ada1b",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "漏洞分析可支持测试，保留can而非唯一前提。"
+    },
+    {
+      "id": "ca-8-new-06",
+      "question": "测试人员所需独立程度由什么指导？",
+      "answer_sha256": "8b93d7d07b78b6ce847af88139d3e71f9f20c3a5a50226ff33d71f1c7a4259a8",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "风险评估指导所需独立程度，无一律外部独立要求。"
+    },
+    {
+      "id": "ca-8-new-07",
+      "question": "这份资料是否规定每次渗透测试必须持续七天？",
+      "answer_sha256": "64c0f07f73134ce44c91dd4be5a9792442fecfc59abaac052752d52576029969",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "未给七天期限，频次参数与单次持续时间未混为一谈。"
+    },
+    {
+      "id": "ca-8-new-08",
+      "question": "渗透测试是否只能从组织外部进行？",
+      "answer_sha256": "8fcde85da000d6016264c1f7d0eeea7c453e933710328ab360705352147d0958",
+      "source_support": true,
+      "semantic_supported": true,
+      "note": "内部或外部均可，保留硬件/软件/固件与物理/技术控制。"
+    }
+  ]
+}

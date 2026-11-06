@@ -1,0 +1,304 @@
+{
+  "scope": "Production HybridRetriever methods with frozen in-memory corpus/dense disabled/private memorycache; no API/SQLite write; not full HTTP",
+  "input_sha256": {
+    "cases.json": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693"
+  },
+  "target_top2": 32,
+  "cases": 32,
+  "max_input": 3432,
+  "raw_BM25_top2_preflight": 31,
+  "raw_documents": 101,
+  "unique_document_ids": 101,
+  "difference": "Production HybridRetriever searches a larger sparse pool and deduplicates parent_id before topK; rawBM25first2 can be two aliases of one parent. No input or question changed.",
+  "rows": [
+    {
+      "id": "ac-8-new-01",
+      "locators": [
+        "ac-8",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2476
+    },
+    {
+      "id": "ac-8-new-02",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3432
+    },
+    {
+      "id": "ac-8-new-03",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3421
+    },
+    {
+      "id": "ac-8-new-04",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3426
+    },
+    {
+      "id": "ac-8-new-05",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3419
+    },
+    {
+      "id": "ac-8-new-06",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3428
+    },
+    {
+      "id": "ac-8-new-07",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3430
+    },
+    {
+      "id": "ac-8-new-08",
+      "locators": [
+        "ac-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3429
+    },
+    {
+      "id": "at-2-new-01",
+      "locators": [
+        "at-2",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2348
+    },
+    {
+      "id": "at-2-new-02",
+      "locators": [
+        "at-2",
+        "au-6"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2252
+    },
+    {
+      "id": "at-2-new-03",
+      "locators": [
+        "at-2",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2199
+    },
+    {
+      "id": "at-2-new-04",
+      "locators": [
+        "at-2",
+        "ia-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2233
+    },
+    {
+      "id": "at-2-new-05",
+      "locators": [
+        "at-2",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2473
+    },
+    {
+      "id": "at-2-new-06",
+      "locators": [
+        "at-2",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2195
+    },
+    {
+      "id": "at-2-new-07",
+      "locators": [
+        "at-2",
+        "ia-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2229
+    },
+    {
+      "id": "at-2-new-08",
+      "locators": [
+        "ia-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2235
+    },
+    {
+      "id": "cp-9-new-01",
+      "locators": [
+        "cp-9",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1929
+    },
+    {
+      "id": "cp-9-new-02",
+      "locators": [
+        "cp-9",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1930
+    },
+    {
+      "id": "cp-9-new-03",
+      "locators": [
+        "cp-9",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1934
+    },
+    {
+      "id": "cp-9-new-04",
+      "locators": [
+        "cp-9",
+        "ia-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1745
+    },
+    {
+      "id": "cp-9-new-05",
+      "locators": [
+        "cp-9",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1718
+    },
+    {
+      "id": "cp-9-new-06",
+      "locators": [
+        "cp-9",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2354
+    },
+    {
+      "id": "cp-9-new-07",
+      "locators": [
+        "cp-9",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1937
+    },
+    {
+      "id": "cp-9-new-08",
+      "locators": [
+        "cp-9",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3308
+    },
+    {
+      "id": "ca-8-new-01",
+      "locators": [
+        "ca-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3374
+    },
+    {
+      "id": "ca-8-new-02",
+      "locators": [
+        "ca-8",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1785
+    },
+    {
+      "id": "ca-8-new-03",
+      "locators": [
+        "ca-8",
+        "au-6"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1831
+    },
+    {
+      "id": "ca-8-new-04",
+      "locators": [
+        "ca-8",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1787
+    },
+    {
+      "id": "ca-8-new-05",
+      "locators": [
+        "ca-8",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1783
+    },
+    {
+      "id": "ca-8-new-06",
+      "locators": [
+        "ca-8",
+        "ac-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 3367
+    },
+    {
+      "id": "ca-8-new-07",
+      "locators": [
+        "ca-8",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 1788
+    },
+    {
+      "id": "ca-8-new-08",
+      "locators": [
+        "ca-8",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_input_tokens": 2412
+    }
+  ]
+}

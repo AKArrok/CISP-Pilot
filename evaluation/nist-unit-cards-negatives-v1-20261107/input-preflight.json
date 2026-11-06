@@ -1,0 +1,89 @@
+{
+  "estimates": [
+    {
+      "id": "card-boundary-01",
+      "stage": "answer_baseline",
+      "tokens": 4485
+    },
+    {
+      "id": "card-boundary-01",
+      "stage": "evidence_select",
+      "tokens": 3182
+    },
+    {
+      "id": "card-boundary-02",
+      "stage": "answer_baseline",
+      "tokens": 4484
+    },
+    {
+      "id": "card-boundary-02",
+      "stage": "evidence_select",
+      "tokens": 3181
+    },
+    {
+      "id": "card-boundary-03",
+      "stage": "answer_baseline",
+      "tokens": 3540
+    },
+    {
+      "id": "card-boundary-03",
+      "stage": "evidence_select",
+      "tokens": 2106
+    },
+    {
+      "id": "card-boundary-04",
+      "stage": "answer_baseline",
+      "tokens": 3560
+    },
+    {
+      "id": "card-boundary-04",
+      "stage": "evidence_select",
+      "tokens": 2126
+    },
+    {
+      "id": "card-boundary-05",
+      "stage": "answer_baseline",
+      "tokens": 2925
+    },
+    {
+      "id": "card-boundary-05",
+      "stage": "evidence_select",
+      "tokens": 1779
+    },
+    {
+      "id": "card-boundary-06",
+      "stage": "answer_baseline",
+      "tokens": 2931
+    },
+    {
+      "id": "card-boundary-06",
+      "stage": "evidence_select",
+      "tokens": 1785
+    },
+    {
+      "id": "card-boundary-07",
+      "stage": "answer_baseline",
+      "tokens": 4363
+    },
+    {
+      "id": "card-boundary-07",
+      "stage": "evidence_select",
+      "tokens": 3116
+    },
+    {
+      "id": "card-boundary-08",
+      "stage": "answer_baseline",
+      "tokens": 3543
+    },
+    {
+      "id": "card-boundary-08",
+      "stage": "evidence_select",
+      "tokens": 2109
+    }
+  ],
+  "max_input": 4485,
+  "criteria_not_sent_to_model": true,
+  "fixed_primary_and_secondary_source_contexts": true,
+  "limitation": "Answer workflow diagnostic, not actual retrieval or production HTTP gate",
+  "model_calls": 0
+}

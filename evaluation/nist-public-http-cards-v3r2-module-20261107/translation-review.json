@@ -1,0 +1,24 @@
+{
+  "method": "Codex AI bilingual source review, not independent human gold",
+  "all_original_English_unchanged": true,
+  "units": 69,
+  "native_parameters": 17,
+  "guidance_pairs_reviewed": 36,
+  "parameter_tokens_checked": "next automated preflight",
+  "changes": [
+    {
+      "unit_id": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:2:1",
+      "original_English": "[at-2_smt.a] Provide security and privacy literacy training to system users (including managers, senior executives, and contractors):",
+      "before": "向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私意识培训：",
+      "after": "向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私素养培训：",
+      "reason": "literacy training与awareness techniques须区分，逐源核对，不以问题或标签生成。"
+    },
+    {
+      "unit_id": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed:7:1",
+      "original_English": "[at-2_smt.d] Incorporate lessons learned from internal or external security incidents or breaches into literacy training and awareness techniques.",
+      "before": "将来自内部或外部安全事件或泄露的经验教训纳入意识培训与意识技术中。",
+      "after": "将来自内部或外部安全事件或泄露的经验教训纳入素养培训与意识技术中。",
+      "reason": "literacy training与awareness techniques须区分，逐源核对，不以问题或标签生成。"
+    }
+  ]
+}

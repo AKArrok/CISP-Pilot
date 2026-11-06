@@ -1,0 +1,10 @@
+{
+  "rendered": 16,
+  "new_provider_calls": 0,
+  "new_model_cost_usd": 0,
+  "source_model_attempts": 32,
+  "source_model_cost_usd_conservative": 0.03567479999999999,
+  "semantic_acceptance": "pending_original_source_review",
+  "default_db_unchanged": true,
+  "limit": "Frozen real selector replay, not16new model answers or fullHTTP; old15of16failure retained"
+}

@@ -1,0 +1,41 @@
+{
+  "reviewer": "Codex AI reading same4 actual source packets and full answers; no human gold",
+  "core_question_correct": 4,
+  "strict_source_supported": 3,
+  "total": 4,
+  "source_binding_audit_passed": true,
+  "fallback_observed": 4,
+  "new_private_fragments": 0,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "shared-credential-natural",
+      "source_supported": true,
+      "note": "共享组成员退出更改凭据，非必须关闭仍需账号；参数未移用。",
+      "answer_sha256": "6379ebbdc79b353de31b2391ca774d68bace8dfde1ed2fbfbefeb9a3c514764e"
+    },
+    {
+      "id": "lan-access-natural",
+      "source_supported": true,
+      "note": "内部LAN属于网络访问，本地无网络，未物理位置混淆。",
+      "answer_sha256": "4b830805b2095fbbd4da306a2a91cb5c1d87e6a3b91f0f7faa6a015509349c82"
+    },
+    {
+      "id": "audit-review-natural",
+      "source_supported": true,
+      "note": "审查频次/接收角色未赋值，动作保留，示例未冒充统一岗位。",
+      "answer_sha256": "75033e0743b9585800c06fb23a41d22c59990158e7bf0d0539cb995fb1108cbf"
+    },
+    {
+      "id": "incident-phases-natural",
+      "source_supported": false,
+      "note": "核心环节正确，但新增根除/恢复术语解释未在本次材料给出且无通用补充标记；严格来源支持失败。",
+      "answer_sha256": "df99432359f40ce859a4aa526e56358348c260aa5721af51347ad4c9f38c626d"
+    }
+  ],
+  "raw_private_text_published": false,
+  "local_evidence": "docs/engineering-delivery/evaluation-window2-20261107/operator-private/mixed-cards-regression-r2-live",
+  "local_results_sha256": "62b1799484e244cec4eb2b367112529ef4c5f61976cd7453504714e4257d7159",
+  "calls": 8,
+  "estimated_cost_usd": 0.004542
+}

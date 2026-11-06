@@ -1,0 +1,21 @@
+{
+  "mode": "offline_card_replay",
+  "new_provider_calls": 0,
+  "source_batch": "docs/engineering-delivery/nist-unit-cards-actionguard-v2-20261107-live",
+  "source_receipts_sha256": "89bc6a0f803e2d20f8f398f5097a7f2b11ba2f3da05b127e52efff8512179551",
+  "renderer_sha256": "f24bb6aabca661d98b16f8e2d531b58d1bd68216a0dec39f559891d1b2970391",
+  "delta": "Only host materialization: actual native statement ancestors copied; required-action/undefined-parameter policy shown for statement units, not advisory guidance. Same16 questions/rawselectors/source/translation/criteria.",
+  "acceptance": "Unchanged complete answer, condition, action, parameter, terminology, citation criteria; enum alone not graded; no semantic autoaccept.",
+  "frozen_sha256": {
+    "cases.json": "cc59b9e12b07223c8f00b3e29b970830e7e4efdabe8e88674a8a5706bab09311",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "contract.py": "f24bb6aabca661d98b16f8e2d531b58d1bd68216a0dec39f559891d1b2970391",
+    "negative-acceptance.json": "0111b6cd9a54251924f2dd9ae53a119d9486c7372891fbaf82bd17c8772350fe",
+    "original-positive-cases.json": "6248af1fd41194c054fd9f9ec5119e71b64a3830fe636e07d217f90cf90167ca",
+    "prompts.json": "dc050c6b4f46af326972745a6f32aa080f12ff270265551b6dcbe04bb431f133",
+    "recorded-results.json": "9a6e4e8c82a55c6c2eefc61d25ad7e672f76b6c2c7406264850a255e9e00fd46",
+    "source-units.json": "e2da6e528e08c0e768340a4d3489e05f0a475486575061563c61fd866b2086e0",
+    "translation-review.json": "baf9f8d843b8d2b217df1893a6513d31de82c0f4b6a1840dd7e40fa6d8e44f82",
+    "translations.json": "5db2210c8f5d0ba5da67a31cd7c6f576e9f8f59d9fb443e3a650f58825d32b65"
+  }
+}

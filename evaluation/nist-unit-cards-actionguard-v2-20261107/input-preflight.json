@@ -1,0 +1,169 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens": 4464
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "evidence_select",
+      "tokens": 3189
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens": 4473
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "evidence_select",
+      "tokens": 3198
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens": 3542
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "evidence_select",
+      "tokens": 2136
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens": 3226
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "evidence_select",
+      "tokens": 2071
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2919
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "evidence_select",
+      "tokens": 1801
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens": 4496
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "evidence_select",
+      "tokens": 3092
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens": 4358
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "evidence_select",
+      "tokens": 3139
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2517
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "evidence_select",
+      "tokens": 1655
+    },
+    {
+      "id": "card-boundary-01",
+      "stage": "answer_baseline",
+      "tokens": 4485
+    },
+    {
+      "id": "card-boundary-01",
+      "stage": "evidence_select",
+      "tokens": 3210
+    },
+    {
+      "id": "card-boundary-02",
+      "stage": "answer_baseline",
+      "tokens": 4484
+    },
+    {
+      "id": "card-boundary-02",
+      "stage": "evidence_select",
+      "tokens": 3209
+    },
+    {
+      "id": "card-boundary-03",
+      "stage": "answer_baseline",
+      "tokens": 3540
+    },
+    {
+      "id": "card-boundary-03",
+      "stage": "evidence_select",
+      "tokens": 2134
+    },
+    {
+      "id": "card-boundary-04",
+      "stage": "answer_baseline",
+      "tokens": 3560
+    },
+    {
+      "id": "card-boundary-04",
+      "stage": "evidence_select",
+      "tokens": 2154
+    },
+    {
+      "id": "card-boundary-05",
+      "stage": "answer_baseline",
+      "tokens": 2925
+    },
+    {
+      "id": "card-boundary-05",
+      "stage": "evidence_select",
+      "tokens": 1807
+    },
+    {
+      "id": "card-boundary-06",
+      "stage": "answer_baseline",
+      "tokens": 2931
+    },
+    {
+      "id": "card-boundary-06",
+      "stage": "evidence_select",
+      "tokens": 1813
+    },
+    {
+      "id": "card-boundary-07",
+      "stage": "answer_baseline",
+      "tokens": 4363
+    },
+    {
+      "id": "card-boundary-07",
+      "stage": "evidence_select",
+      "tokens": 3144
+    },
+    {
+      "id": "card-boundary-08",
+      "stage": "answer_baseline",
+      "tokens": 3543
+    },
+    {
+      "id": "card-boundary-08",
+      "stage": "evidence_select",
+      "tokens": 2137
+    }
+  ],
+  "max_input": 4496,
+  "same_questions_sources_criteria": true,
+  "positive_cases": 8,
+  "boundary_cases": 8,
+  "model_calls": 0
+}

@@ -1,0 +1,652 @@
+..............FFFFFF..........                                           [100%]
+================================== FAILURES ===================================
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-default-0] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C3946550>
+temperature = 0, strategy = 'default', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C394E890>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-default-0.3] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C3954610>
+temperature = 0.3, strategy = 'default', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C3625950>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-default-1.2] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C39546D0>
+temperature = 1.2, strategy = 'default', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C3956210>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-0] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C3944810>
+temperature = 0, strategy = 'source_cards', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C3947A50>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-0.3] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature10')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C3947CD0>
+temperature = 0.3, strategy = 'source_cards', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C36893D0>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+_ test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-1.2] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-fallback-red-20261107/test_frozen_answer_temperature11')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000184C3946650>
+temperature = 1.2, strategy = 'source_cards', override = True
+
+    @pytest.mark.parametrize("temperature", [0, .3, 1.2])
+    @pytest.mark.parametrize("strategy", ["default", "source_cards"])
+    @pytest.mark.parametrize("override", [False, True])
+    def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
+        import config
+        import dotenv
+        import fastapi.testclient
+        import llms
+        import truststore
+        from agents import graph, prompts
+        from scripts import prepare_demo
+        from storage import cache
+    
+        for name, value in list(vars(config).items()):
+            if name.isupper():
+                monkeypatch.setattr(config, name, value)
+        monkeypatch.setattr(runner.os, "environ", dict(runner.os.environ))
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(cache, "_client", cache._client)
+        monkeypatch.setattr(cache, "_live", cache._live)
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        output.mkdir()
+        (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
+        (packet / "prompts.json").write_text('{}', encoding="utf-8")
+        original_system = prompts.ANSWER_SYSTEM
+        if override:
+            (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+        if strategy == "source_cards":
+            (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+            (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+            (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+        original_answer = graph.answer
+    
+        def prepare(data):
+            data.mkdir()
+            (data / "manifest.json").write_text('{}', encoding="utf-8")
+    
+        captured = {}
+    
+        def answer_factory(temperature=.3, **kwargs):
+            captured["answer"] = temperature
+    
+        def simple_factory(temperature=.2, **kwargs):
+            captured["simple"] = temperature
+    
+        class ProbeFinished(Exception):
+            pass
+    
+        class Client:
+            def __init__(self, *args, **kwargs):
+                pass
+    
+            def __enter__(self):
+                assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+                if strategy == "source_cards":
+                    assert isinstance(graph.answer, functools.partial)
+                    assert graph.answer.keywords["fallback"] is original_answer
+                else:
+                    assert graph.answer is original_answer
+                captured["strategy"] = strategy
+                graph.get_answer_llm()
+                graph.get_simple_llm()
+                raise ProbeFinished
+    
+            def __exit__(self, *args):
+                pass
+    
+        monkeypatch.setattr(prepare_demo, "prepare", prepare)
+        monkeypatch.setattr(llms, "get_answer_llm", answer_factory)
+        monkeypatch.setattr(llms, "get_simple_llm", simple_factory)
+        monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
+        with pytest.raises(ProbeFinished):
+>           runner.execute(packet, output, {"answer_temperature": temperature,
+                                           "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                           "fallback_system_override": override})
+
+tests\test_quality_http_execution.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\evaluate_public_http.py:158: in execute
+    with patch.object(graph, "answer", answer_node), \
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_quality_http_execution.test_frozen_answer_temperature_reaches_real_executor_factory.<locals>.Client object at 0x00000184C39D3C90>
+
+    def __enter__(self):
+>       assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+E       assert '你是一名严谨的 CISP...，不能因简短遗漏关键限制。' == 'Synthetic bo...source answer'
+E         
+E         - Synthetic bounded source answer
+E         + 你是一名严谨的 CISP（注册信息安全专业人员）备考辅导老师。根据提供的知识库资料回答用户问题。
+E         + 
+E         + 规则:
+E         + 1. 只依据资料内容作答，禁止编造资料中没有的说法，转述资料时不得改动具体示例和数字；未赋值参数须保留待组织确定的状态，参数含义以资料中的定义为准，不得把对象范围参数误作频次参数，也不得猜测未提供的参数定义。只有原文明确为该事项设置参数时，才称其为待赋值参数；没有给出数值不等于存在该事项的参数，其他动作的通知时限或审查频次不得移用。资料不足以回答时，明确说"本次检索到的资料不足以回答这一部分"并指出具体缺口，不能据此断言整个知识库没有该内容。可基于通用安全常识简短补充但须标注"（通用补充）"。
+E         + 2. 回答结构：先给直接答案/结论，再展开解释；概念对比可用要点列表。区分待赋值的参数与必须执行的动作；参数值待定不表示动作可选。资料列出多个强制动作时，不得将其中一个概括为“唯一要求”。...
+E         
+E         ...Full output truncated (8 lines hidden), use '-vv' to show
+
+tests\test_quality_http_execution.py:136: AssertionError
+============================== warnings summary ===============================
+tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[False-default-0]
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-default-0]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-default-0.3]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-default-1.2]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-0]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-0.3]
+FAILED tests/test_quality_http_execution.py::test_frozen_answer_temperature_reaches_real_executor_factory[True-source_cards-1.2]
+6 failed, 24 passed, 1 warning in 2.96s

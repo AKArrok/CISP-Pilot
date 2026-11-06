@@ -1,0 +1,37 @@
+{
+  "mode": "answer_card_pipeline",
+  "evidence_protocol": "answer_source_lines",
+  "guidance_segments": true,
+  "native_parameter_bindings": true,
+  "answer_temperature": 0.3,
+  "selector_temperature": 0,
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "f5efd08773c777dce5c878423e65aac7913c4241773a0747ba8a55805bc2c08c",
+  "paid_proposal": {
+    "calls": 32,
+    "budget_usd": 0.16,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only same publicNIST sources, positive8+boundary8 baseline and selector"
+  },
+  "acceptance": "Frozen acceptance.json; complete question/condition/parameter/term/citation support and scoped insufficiency, not enum matching or structure alone; all failures retained.",
+  "limitations": "Bounded evidence response candidate with reduced free-form teaching; not a replacement of full project scope or independent human gold. No default change.",
+  "frozen_sha256": {
+    "cases.json": "cc59b9e12b07223c8f00b3e29b970830e7e4efdabe8e88674a8a5706bab09311",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "contract.py": "8ac0eda9f27827b8ac2021218c4c59c455df6223773d3c0bb19ee42b4db7ab5a",
+    "delta.json": "0ace5834e21f5785ba0694d6a7acdfc01058d93743d442b079e2306e26bbfecb",
+    "funding-preflight.json": "291568d6c265b15c266aa440318125f42853abd0d69490f53a82cfe01532a92f",
+    "input-preflight.json": "c0727981bf94fcb6271adfdd285bcc2d71a638e3805fe5eb42b4de150ad40a6d",
+    "negative-acceptance.json": "0111b6cd9a54251924f2dd9ae53a119d9486c7372891fbaf82bd17c8772350fe",
+    "original-positive-cases.json": "6248af1fd41194c054fd9f9ec5119e71b64a3830fe636e07d217f90cf90167ca",
+    "prompts.json": "dc050c6b4f46af326972745a6f32aa080f12ff270265551b6dcbe04bb431f133",
+    "runtime-source-hashes.json": "fabcf2fd3ed09017186aa8f0c4711ef9d0b98117993a3878c0c94801dc039959",
+    "source-units.json": "e2da6e528e08c0e768340a4d3489e05f0a475486575061563c61fd866b2086e0",
+    "translation-review.json": "baf9f8d843b8d2b217df1893a6513d31de82c0f4b6a1840dd7e40fa6d8e44f82",
+    "translations.json": "5db2210c8f5d0ba5da67a31cd7c6f576e9f8f59d9fb443e3a650f58825d32b65"
+  },
+  "role": "Same originalpositive8+sameboundary8, one generic baseline principle restored in selector; old7/8failure retained, no criterion/index/source changes."
+}

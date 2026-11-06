@@ -1,0 +1,38 @@
+{
+  "reviewer": "Codex original same4 source review; no human gold",
+  "core_correct": 4,
+  "strict_source_supported": 2,
+  "total": 4,
+  "strict_audit_passed": true,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "shared-credential-natural",
+      "source_supported": true,
+      "note": "共享/组凭据更改，不必停用仍需账号；略多列参数但无范围错误。",
+      "answer_sha256": "bc6201aa6b8df5001a3a00bdcc5ec98c36964cb4af87635be3ec34ab00c936e3"
+    },
+    {
+      "id": "lan-access-natural",
+      "source_supported": true,
+      "note": "LAN网络访问、本地无网络，区分准确。",
+      "answer_sha256": "8e9db98e5c156de14db73eccf70e53d175de5cc16992ed3854f44c4125e43131"
+    },
+    {
+      "id": "audit-review-natural",
+      "source_supported": false,
+      "note": "前文限定资料未给，后又称不存在可统一适用周期/报告对象，范围过强；保留为严格来源失败。",
+      "answer_sha256": "722c028899da9895f1444e8580887e982e1e0cebd8ae85680493a2cd01ebbc36"
+    },
+    {
+      "id": "incident-phases-natural",
+      "source_supported": false,
+      "note": "未标定义已去掉，但把incident response plan称为应急计划，与contingency planning概念混同，计划归属失败。",
+      "answer_sha256": "cf4cbe660345a2af05d8bedd706b16fcdfec0b6ca814914e4fe0b2e491edc280"
+    }
+  ],
+  "raw_private_published": false,
+  "calls": 8,
+  "estimated_cost_usd": 0.004236,
+  "local_results_sha256": "52452c62946800c385a8ec52471315f010f539bcb27fdfc4104c9972f37a1c4f"
+}

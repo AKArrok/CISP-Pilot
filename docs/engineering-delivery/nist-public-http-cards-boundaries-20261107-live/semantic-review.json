@@ -1,0 +1,57 @@
+{
+  "reviewer": "Codex source reading, original frozen acceptance.json; no paid judge or human gold",
+  "supported": 8,
+  "total": 8,
+  "source_binding": "strict audit.json passed",
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "card-boundary-01",
+      "semantic_supported": true,
+      "note": "无human interfaces不要求通知，未因语言强加。",
+      "answer_sha256": "9c962ee187cbb8a0687033b44cde71e3a7e0df6e7d32108343ae811eef40784c"
+    },
+    {
+      "id": "card-boundary-02",
+      "semantic_supported": true,
+      "note": "无三种具体语言值；仅需求与用户人口特征。",
+      "answer_sha256": "f26f0a9d03f2d09b19c757ef4e208cdf093adde66340a917c8f711cf7b83b806"
+    },
+    {
+      "id": "card-boundary-03",
+      "semantic_supported": true,
+      "note": "90分钟未规定，区分频次与时长。",
+      "answer_sha256": "26f5b3c4a2d359d3b956f18e76fc84dc420675fe0a0cc42aa3f4e29b101d7bef"
+    },
+    {
+      "id": "card-boundary-04",
+      "semantic_supported": true,
+      "note": "包括但不限于，非封闭事件清单。",
+      "answer_sha256": "3e33af17a08b7d9c95040a4035f34d8194766ecb650176cfe3336945529d9f49"
+    },
+    {
+      "id": "card-boundary-05",
+      "semantic_supported": true,
+      "note": "预算金额未提供，不编造金额或预算参数，保留备份动作。",
+      "answer_sha256": "362424cf17928550401b44dc9fb3902c57de6968968c1c641b5ab3a79fb06d47"
+    },
+    {
+      "id": "card-boundary-06",
+      "semantic_supported": true,
+      "note": "明确否定参数未定可停止；系统级/文档备份与用户级组件范围区分。",
+      "answer_sha256": "8c2f94b3ca766ee060caf3e64e51dd82bddc48d8155c46bc7bc6e797e915f492"
+    },
+    {
+      "id": "card-boundary-07",
+      "semantic_supported": true,
+      "note": "各方开始前同意规则，不延后。",
+      "answer_sha256": "cef0c18e432e70da2c2169d4c46254bd269abed1000cb164e8b7dfa1d84cb7c5"
+    },
+    {
+      "id": "card-boundary-08",
+      "semantic_supported": true,
+      "note": "breaches为泄露，未推出调查处分员工义务。",
+      "answer_sha256": "6d1a77bae42d6f681497d34589e61cc7e64054ba2a68980253a0a09e8392ee42"
+    }
+  ]
+}

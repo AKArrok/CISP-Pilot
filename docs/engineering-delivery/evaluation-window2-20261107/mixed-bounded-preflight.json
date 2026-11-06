@@ -1,0 +1,11 @@
+{
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "prior_accounted_usd": 1.3100744,
+  "max_accounted_usd": 1.3900744,
+  "same_private_scope": true,
+  "default_prompt_changed": false,
+  "cases_sha256": "b70064e7aaa9813281d619596d818c43a0a839f1723944d0950180a24b56b748",
+  "chunks_sha256": "e8ac7a1922f51d785fb0daf949d07e39428a2f4983c683e68620e4a69b066aaa",
+  "delta_sha256": "affda42e3e6eac0c4efbf9d2a62cafc914f5a21c6737a09da60baea94e23bea2"
+}

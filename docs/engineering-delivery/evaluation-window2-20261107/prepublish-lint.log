@@ -1,0 +1,26 @@
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-bounded.py:14:35: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-bounded.py:14:57: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-bounded.py:19:46: E701 Multiple statements on one line (colon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-bounded.py:38:76: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-bounded.py:42:54: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:21:1: E402 Module level import not at top of file
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:22:1: E402 Module level import not at top of file
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:23:1: E402 Module level import not at top of file
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:24:1: E402 Module level import not at top of file
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:46:22: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:50:29: E701 Multiple statements on one line (colon)
+docs\engineering-delivery\evaluation-window2-20261107\prepare-mixed-regression.py:54:15: E701 Multiple statements on one line (colon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:25:35: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:25:57: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:26:59: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:27:35: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:33:37: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:35:101: E701 Multiple statements on one line (colon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:38:28: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:39:76: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\recover-mixed-initialization.py:43:54: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\review-http32.py:48:24: B905 `zip()` without an explicit `strict=` parameter
+docs\engineering-delivery\evaluation-window2-20261107\review-http32.py:62:55: E702 Multiple statements on one line (semicolon)
+docs\engineering-delivery\evaluation-window2-20261107\review-http32.py:76:59: E702 Multiple statements on one line (semicolon)
+Found 24 errors.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

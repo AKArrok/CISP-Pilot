@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import sys
 from types import SimpleNamespace
+import functools
 
 import pytest
 
@@ -78,13 +79,15 @@ def test_failure_records_status_without_private_error_text(tmp_path, monkeypatch
 
 
 @pytest.mark.parametrize("temperature", [0, .3, 1.2])
-def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature):
+@pytest.mark.parametrize("strategy", ["default", "source_cards"])
+@pytest.mark.parametrize("override", [False, True])
+def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monkeypatch, temperature, strategy, override):
     import config
     import dotenv
     import fastapi.testclient
     import llms
     import truststore
-    from agents import graph
+    from agents import graph, prompts
     from scripts import prepare_demo
     from storage import cache
 
@@ -101,6 +104,14 @@ def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monke
     output.mkdir()
     (packet / "chunks.json").write_text('[{"text":"synthetic source"}]', encoding="utf-8")
     (packet / "prompts.json").write_text('{}', encoding="utf-8")
+    original_system = prompts.ANSWER_SYSTEM
+    if override:
+        (packet / "fallback-system.json").write_text('{"system":"Synthetic bounded source answer"}', encoding="utf-8")
+    if strategy == "source_cards":
+        (packet / "source-units.json").write_text('{"sources":[]}', encoding="utf-8")
+        (packet / "translations.json").write_text('{"units":{},"parameters":{}}', encoding="utf-8")
+        (packet / "card-selector.json").write_text('{"evidence_select_system":"Synthetic selector"}', encoding="utf-8")
+    original_answer = graph.answer
 
     def prepare(data):
         data.mkdir()
@@ -122,6 +133,13 @@ def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monke
             pass
 
         def __enter__(self):
+            assert prompts.ANSWER_SYSTEM == ("Synthetic bounded source answer" if override else original_system)
+            if strategy == "source_cards":
+                assert isinstance(graph.answer, functools.partial)
+                assert graph.answer.keywords["fallback"] is original_answer
+            else:
+                assert graph.answer is original_answer
+            captured["strategy"] = strategy
             graph.get_answer_llm()
             graph.get_simple_llm()
             raise ProbeFinished
@@ -135,8 +153,11 @@ def test_frozen_answer_temperature_reaches_real_executor_factory(tmp_path, monke
     monkeypatch.setattr(fastapi.testclient, "TestClient", Client)
     with pytest.raises(ProbeFinished):
         runner.execute(packet, output, {"answer_temperature": temperature,
-                                       "max_calls": 1, "budget_usd": .03})
-    assert captured == {"answer": temperature, "simple": .2}
+                                       "max_calls": 1, "budget_usd": .03, "answer_strategy": strategy,
+                                       "fallback_system_override": override})
+    assert captured == {"answer": temperature, "simple": .2, "strategy": strategy}
+    assert graph.answer is original_answer
+    assert prompts.ANSWER_SYSTEM == original_system
 
 
 @pytest.mark.parametrize("temperature", [True, None, "0.3", -.1, 2.1, float("nan")])
@@ -149,3 +170,14 @@ def test_invalid_frozen_answer_temperature_stops_before_dispatch(tmp_path, monke
         runner.main()
     assert not output.exists()
     assert not (packet / "dispatch.lock").exists()
+
+
+@pytest.mark.parametrize("strategy", [True, None, "unrecognized", []])
+def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, strategy):
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    (packet / "manifest.json").write_text(json.dumps({"answer_strategy": strategy}), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+    with pytest.raises(ValueError, match="strategy"):
+        runner.main()
+    assert not output.exists() and not (packet / "dispatch.lock").exists()

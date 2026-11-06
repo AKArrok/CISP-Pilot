@@ -28,6 +28,18 @@ def pace_case(previous_start):
     return time.monotonic()
 
 
+def answer_system(packet, manifest, default):
+    override = manifest.get("fallback_system_override", False)
+    if type(override) is not bool:
+        raise ValueError("Frozen fallback override must be boolean")
+    if not override:
+        return default
+    value = json.loads((packet / "fallback-system.json").read_text(encoding="utf-8"))["system"]
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("Frozen fallback system prompt must be nonempty text")
+    return value
+
+
 class Receipts(BaseCallbackHandler):
     """Fail closed on unknown usage; persist raw framework results, never headers."""
     raise_error = True
@@ -147,8 +159,17 @@ def execute(packet, output, manifest):
                "max_tokens": 1024, "stream_usage": True, "callbacks": [recorder]}
     rows = []
     completed = False
+    answer_node = graph.answer
+    if manifest.get("answer_strategy") == "source_cards":
+        from scripts.experimental_card_node import card_answer
+        answer_node = functools.partial(card_answer, fallback=graph.answer,
+            sources=json.loads((packet / "source-units.json").read_text(encoding="utf-8"))["sources"],
+            translations=json.loads((packet / "translations.json").read_text(encoding="utf-8")),
+            selector_prompt=json.loads((packet / "card-selector.json").read_text(encoding="utf-8"))["evidence_select_system"])
     try:
-        with patch.object(graph, "get_simple_llm", functools.partial(llms.get_simple_llm, **options)), \
+        with patch.object(prompts, "ANSWER_SYSTEM", answer_system(packet, manifest, prompts.ANSWER_SYSTEM)), \
+             patch.object(graph, "answer", answer_node), \
+             patch.object(graph, "get_simple_llm", functools.partial(llms.get_simple_llm, **options)), \
              patch.object(graph, "get_answer_llm", functools.partial(
                  llms.get_answer_llm, **options, temperature=manifest.get("answer_temperature", .3))), \
              patch.object(memory, "search_long_memory", return_value=[]), \
@@ -183,6 +204,11 @@ def execute(packet, output, manifest):
                        "trace": trace.json(), "history_rows": len(history),
                        "client_case_started_monotonic": previous_start,
                        "elapsed_seconds": time.monotonic() - started}
+                if manifest.get("answer_strategy") == "source_cards":
+                    saved_answer = next((item.get("content") for item in reversed(history)
+                                         if item.get("role") == "assistant"), None)
+                    row["persisted_answer_sha256"] = (hashlib.sha256(saved_answer.encode()).hexdigest()
+                                                       if isinstance(saved_answer, str) else None)
                 rows.append(row)
                 write(output / "results.json", rows)
                 if not events or events[-1].get("type") != "done" or any(e.get("type") == "error" for e in events):
@@ -209,6 +235,9 @@ def main():
     manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
     if type(manifest.get("query_variants", False)) is not bool:
         raise ValueError("Query variants must be an explicitly frozen boolean")
+    strategy = manifest.get("answer_strategy", "default")
+    if type(strategy) is not str or strategy not in {"default", "source_cards"}:
+        raise ValueError("Unknown frozen answer strategy")
     temperature = manifest.get("answer_temperature", .3)
     if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
         raise ValueError("Answer temperature must be a number from 0 to 2")
@@ -217,6 +246,10 @@ def main():
     for name, digest in manifest["frozen_sha256"].items():
         if hashlib.sha256((args.packet / name).read_bytes()).hexdigest() != digest:
             raise ValueError("Frozen input changed")
+    if manifest.get("fallback_system_override"):
+        if "fallback-system.json" not in manifest["frozen_sha256"]:
+            raise ValueError("Fallback override must be frozen")
+    answer_system(args.packet, manifest, "unchanged default")
     if not args.execute:
         print(json.dumps(manifest))
         return

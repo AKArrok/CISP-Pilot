@@ -102,23 +102,47 @@ CARD_LEADS = {
 }
 
 
+def _statement_tag(unit):
+    match = re.match(r"\[([^]]+_smt(?:\.[^]]+)?)\]", unit["text"])
+    return match[1] if match else None
+
+
 def materialize_card_selection(raw, catalog, contexts):
     value = json.loads(raw)
     if (not isinstance(value, dict) or set(value) != {"unit_ids", "answer_type"}
             or not isinstance(value["answer_type"], str) or value["answer_type"] not in CARD_LEADS):
         raise ValueError("Select original units and an allowed answer type only")
-    selected = materialize_selection(json.dumps({"unit_ids": value["unit_ids"],
+    requested = _ids(value["unit_ids"], catalog, value["answer_type"] == "insufficient")
+    tags = {(unit["source_id"], _statement_tag(unit)): key for key, unit in catalog.items() if _statement_tag(unit)}
+    expanded = []
+    for key in requested:
+        unit, ancestors = catalog[key], []
+        tag = _statement_tag(unit)
+        while tag and "." in tag:
+            tag = tag.rsplit(".", 1)[0]
+            parent = tags.get((unit["source_id"], tag))
+            if parent:
+                ancestors.insert(0, parent)
+        expanded.extend([*ancestors, key])
+    expanded = list(dict.fromkeys(expanded))
+    selected = materialize_selection(json.dumps({"unit_ids": expanded,
         "insufficient": value["answer_type"] == "insufficient"}), catalog, contexts)
-    return {**selected, "answer_type": value["answer_type"]}
+    return {**selected, "answer_type": value["answer_type"], "requested_unit_ids": requested,
+            "ancestor_unit_ids": [key for key in expanded if key not in requested]}
 
 
 def render_card_answer(selected, contexts, translations, *, question=None):
     lead = CARD_LEADS[selected["answer_type"]]
+    has_statement = any(_statement_tag(unit) for unit in selected["units"])
+    if selected["answer_type"] == "not_specified" and has_statement:
+        lead = "本次资料未给出题述的额外规定或具体赋值；原文已有的明确要求仍须按适用条件执行。"
     if selected["answer_type"] == "insufficient" and question:
         lead = f"针对问题「{question}」，本次检索到的资料不足以给出有依据的回答。"
     if not selected["units"]:
         return lead
     pieces, refs = [lead, "以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。"], []
+    if has_statement:
+        pieces.append("控制条款须按原文适用条件执行；参数值待定不表示动作可选，不能据此省略原文明确要求的动作。")
     for unit in selected["units"]:
         ref = unit["source_id"]
         digest = hashlib.sha256(contexts[ref-1]["text"].encode()).hexdigest()

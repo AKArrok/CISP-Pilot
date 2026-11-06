@@ -1,0 +1,11 @@
+{
+  "failure": "prepare_demo intentionally rejects synthetic demo output inside default data tree",
+  "provider_dispatches": 0,
+  "cost_usd": 0,
+  "evidence": "Frozen executor prepare at111 precedes server import/Receipts/HTTP; no summary or receipts; local traceback matches guard.",
+  "console_sha256": "0865843d9ba366e1a76813a0fabb4c4b14222c45aa02eba51706b7a42e61693f",
+  "executor_sha256": "371302b89b43d5e90f6f239c6a5516d7975cf2e372f7fa17280cb266e6899666",
+  "default_database_unchanged": true,
+  "old_failure_and_lock_retained": true,
+  "fix": "Keep source packet in ignored data; put isolated synthetic output in ignored operator-private outside data tree. No application guard weakened."
+}

@@ -1,0 +1,10 @@
+{
+  "cases": 16,
+  "retrieval": {},
+  "selected_arm": null,
+  "provider_calls": 32,
+  "cost_usd_conservative": 0.03567479999999999,
+  "semantic_acceptance": "pending_source_review",
+  "cost_unknown": false,
+  "completed": 16
+}

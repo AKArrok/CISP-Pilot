@@ -1,0 +1,148 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_ test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[True] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-card-strategy-red-20261107/test_invalid_answer_strategy_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021234766FD0>
+strategy = True
+
+    @pytest.mark.parametrize("strategy", [True, None, "unrecognized", []])
+    def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, strategy):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": strategy}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="strategy"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:215: KeyError
+_ test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[None] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-card-strategy-red-20261107/test_invalid_answer_strategy_s1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000212347668D0>
+strategy = None
+
+    @pytest.mark.parametrize("strategy", [True, None, "unrecognized", []])
+    def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, strategy):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": strategy}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="strategy"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:215: KeyError
+_ test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[unrecognized] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-card-strategy-red-20261107/test_invalid_answer_strategy_s2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021234727010>
+strategy = 'unrecognized'
+
+    @pytest.mark.parametrize("strategy", [True, None, "unrecognized", []])
+    def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, strategy):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": strategy}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="strategy"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:215: KeyError
+_ test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[strategy3] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-card-strategy-red-20261107/test_invalid_answer_strategy_s3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021234739210>
+strategy = []
+
+    @pytest.mark.parametrize("strategy", [True, None, "unrecognized", []])
+    def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, strategy):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": strategy}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="strategy"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:215: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_quality_http_execution.py::test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[True]
+FAILED tests/test_quality_http_execution.py::test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[None]
+FAILED tests/test_quality_http_execution.py::test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[unrecognized]
+FAILED tests/test_quality_http_execution.py::test_invalid_answer_strategy_stops_before_creating_output_or_dispatch[strategy3]
+4 failed, 20 deselected in 0.29s

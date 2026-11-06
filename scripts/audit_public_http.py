@@ -48,6 +48,10 @@ def audit(packet, run):
                       and trace["trace"]["conversation_commit"] == "confirmed",
                       "no_degraded_stage": not any("degraded" in event["outcome"] for event in observations)}
             detail["frozen_source_previews"] = all(context in frozen_previews for context in contexts)
+            if manifest.get("answer_strategy") == "source_cards" and expected_intent == "knowledge" and contexts:
+                expected_path = "rendered" if case.get("expected_card_path", True) else "fallback_unmapped_source"
+                detail["card_strategy_observed"] = any(event["stage"] == "answer_source_cards"
+                                                       and event["outcome"] == expected_path for event in observations)
             if expected_intent != "knowledge":
                 stage = "quiz_hint" if expected_intent == "quiz" else "chitchat"
                 detail["nonknowledge_path"] = not contexts and bool(answer) and any(
@@ -84,6 +88,14 @@ def audit(packet, run):
                                                for call in row["trace"]["trace"]["model_calls"])]
     provider_answers = [receipt["response"]["generations"][0][0]["message"]["content"]
                         for receipt in receipts if receipt["stage"] == "answer"]
+    materialization_error = None
+    if manifest.get("answer_strategy") == "source_cards":
+        from scripts.audit_card_materialization import expected_answers
+        try:
+            provider_answers = expected_answers(packet, rows, receipts, manifest)
+        except (ValueError, KeyError, TypeError, IndexError, StopIteration) as error:
+            provider_answers = None
+            materialization_error = type(error).__name__
     answers_match = streamed_answers == provider_answers
     budget_ok = (not summary["cost_unknown"] and not summary["stopped"] and bounded_usage
                  and matching_receipts and answers_match
@@ -97,6 +109,7 @@ def audit(packet, run):
     return {"passed": all(row["passed"] for row in checks) and budget_ok and unchanged and execution_complete,
             "checks": checks, "budget_receipts_valid": budget_ok, "default_database_unchanged": unchanged,
             "execution_complete": execution_complete,
+            "materialization_error": materialization_error,
             "semantic_source_review": "required separately", "independent_human_gold": False}
 
 

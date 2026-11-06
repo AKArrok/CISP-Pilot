@@ -1,0 +1,90 @@
+{
+  "method": "Codex AI original full-source review, not independent human gold",
+  "candidate_supported": 7,
+  "cases": 8,
+  "literal_provenance_valid": 8,
+  "candidate_reviews": [
+    {
+      "id": "card-boundary-01",
+      "selector_sha256": "5300ef5fdd867851ef4609b4c3a6301cca29cafa31d2b10b431a0c55acbe98d5",
+      "candidate_sha256": "9c962ee187cbb8a0687033b44cde71e3a7e0df6e7d32108343ae811eef40784c",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "无human interfaces时通知不要求；不得因语言或风险强行增加通知。",
+      "answer_type": "deny",
+      "rendered_candidate": "资料不支持题述说法，具体要求如下。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第12行片段2\n辅助译文：系统使用通知仅用于通过具有人类用户的登录界面进行访问。\n原文：\n>  System use notifications are used only for access via logon interfaces with human users.\n\n[资料1]原文第12行片段3\n辅助译文：当不存在人类接口时，不需要通知。\n原文：\n>  Notifications are not required when human interfaces do not exist.\n\n[资料1]原文第12行片段5\n辅助译文：组织根据组织需求和系统用户的人口统计特征考虑以多种语言显示的系统使用通知消息或横幅。\n原文：\n>  Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "card-boundary-02",
+      "selector_sha256": "f21055eaea8eeaca6dd9c5dd2886938f44ca8a6340ce7927ee79f5d3ed9f01ed",
+      "candidate_sha256": "f26f0a9d03f2d09b19c757ef4e208cdf093adde66340a917c8f711cf7b83b806",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "只按组织需求与人口特征考虑多语言，没有三种语言的具体清单，不编造语言或参数。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第12行片段5\n辅助译文：组织根据组织需求和系统用户的人口统计特征考虑以多种语言显示的系统使用通知消息或横幅。\n原文：\n>  Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "card-boundary-03",
+      "selector_sha256": "f04c188358ee81665dd7cbe921a7a3073e991315d7adeebae950272bdc5e28fd",
+      "candidate_sha256": "40ad29d039ca0ebd1426327f448dd4c7866b081a0a645555fe8cae80820958a5",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "资料未给90分钟或每次时长，培训频次/更新频次不等于时长。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第2行片段1\n辅助译文：向系统用户（包括管理人员、高级管理人员和承包商）提供安全与隐私素养培训：\n原文：\n> [at-2_smt.a] Provide security and privacy literacy training to system users (including managers, senior executives, and contractors):\n\n[资料1]原文第3行片段1\n辅助译文：作为新用户初始培训的一部分，并在其后{{ insert: param, at-2_prm_1 }}；\n原文：\n> [at-2_smt.a.1] As part of initial training for new users and {{ insert: param, at-2_prm_1 }} thereafter; and\n\n[资料1]原文第10行片段2\n辅助译文：在[AT-2a.1](#at-2_smt.a.1)中描述的初始培训之后，素养培训至少以符合适用法律、指令、法规和政策的频率进行。\n原文：\n>  Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies.\n\n[资料1]原文第10行片段3\n辅助译文：后续的素养培训可通过一次或多次简短的临时课程来满足，并包括关于近期攻击方案、组织安全与隐私政策变更、修订后的安全与隐私期望，或初始培训中部分主题的最新信息。\n原文：\n>  Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training.\n\n[资料1]原文第12行片段1\n辅助译文：at-2_prm_1：由组织定义的频次，未赋值。\nat-2_prm_2：由组织定义的事件，未赋值。\nat-02_odp.01：初始培训之后向系统用户（包括经理、高管和承包商）提供安全素养培训的频次，待定义。\nat-02_odp.02：初始培训之后向系统用户（包括经理、高管和承包商）提供隐私素养培训的频次，待定义。\nat-02_odp.03：要求对系统用户开展安全素养培训的事件，待定义。\nat-02_odp.04：要求对系统用户开展隐私素养培训的事件，待定义。\nat-02_odp.05：用于提升系统用户安全与隐私意识的技术，待定义。\nat-02_odp.06：更新素养培训与意识内容的频次，待定义。\nat-02_odp.07：要求更新素养培训与意识内容的事件，待定义。\n原文：\n> [{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}, {\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}, {\"id\": \"at-02_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.03\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require security literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.04\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require privacy literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}, {\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}, {\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "card-boundary-04",
+      "selector_sha256": "a480cbdc82b4f0e9425f2ac77a5565e662e10dec3a5698bf3315d7b5d6c6d4e2",
+      "candidate_sha256": "0f19ae14a83cf975b6d0edaa2b513c5022f83fdd0f99a63c1591fe180a4cac88",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "include but are not limited to是非穷尽示例；不得排除其他组织定义事件。",
+      "answer_type": "deny",
+      "rendered_candidate": "资料不支持题述说法，具体要求如下。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第10行片段5\n辅助译文：可能促使更新素养培训与意识内容的事件包括但不限于评估或审计发现、安全事件或泄露，或适用法律、行政命令、指令、法规、政策、标准和指南的变化。\n原文：\n>  Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n[资料1]原文第6行片段1\n辅助译文：按{{ insert: param, at-02_odp.06 }}并在{{ insert: param, at-02_odp.07 }}发生后更新素养培训与意识内容；\n原文：\n> [at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and\n\n[资料1]原文第12行片段1\n辅助译文：at-2_prm_1：由组织定义的频次，未赋值。\nat-2_prm_2：由组织定义的事件，未赋值。\nat-02_odp.01：初始培训之后向系统用户（包括经理、高管和承包商）提供安全素养培训的频次，待定义。\nat-02_odp.02：初始培训之后向系统用户（包括经理、高管和承包商）提供隐私素养培训的频次，待定义。\nat-02_odp.03：要求对系统用户开展安全素养培训的事件，待定义。\nat-02_odp.04：要求对系统用户开展隐私素养培训的事件，待定义。\nat-02_odp.05：用于提升系统用户安全与隐私意识的技术，待定义。\nat-02_odp.06：更新素养培训与意识内容的频次，待定义。\nat-02_odp.07：要求更新素养培训与意识内容的事件，待定义。\n原文：\n> [{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}, {\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}, {\"id\": \"at-02_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide security literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to provide privacy literacy training to system users (including managers, senior executives, and contractors) after initial training is defined;\"}]}, {\"id\": \"at-02_odp.03\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require security literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.04\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that require privacy literacy training for system users are defined;\"}]}, {\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}, {\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}, {\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "card-boundary-05",
+      "selector_sha256": "f04071c7b8e06559c409f53d5aa09242de8916b0ed59a22d81cfdaeb53da6630",
+      "candidate_sha256": "f044489bb8a7bdd6bce7bec499e2361298d88742cd32e91f84afa72062a97c58",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "未给采购预算或金额，不编造数字；不足说明限定该问题而非全库没有备份内容。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第1行片段1\n辅助译文：系统备份\n原文：\n> System Backup\n\n[资料1]原文第2行片段1\n辅助译文：对{{ insert: param, cp-09_odp.01 }}中包含的用户级信息执行备份{{ insert: param, cp-09_odp.02 }}；\n原文：\n> [cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n\n[资料1]原文第3行片段1\n辅助译文：对系统中包含的系统级信息执行备份{{ insert: param, cp-09_odp.03 }}；\n原文：\n> [cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n\n[资料1]原文第4行片段1\n辅助译文：对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}；\n原文：\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第5行片段1\n辅助译文：保护备份信息的机密性、完整性和可用性。\n原文：\n> [cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n\n[资料1]原文第7行片段1\n辅助译文：原生OSCAL参数定义（本次提取未赋值）。\n原文：\n> Original OSCAL parameter definitions (no values assigned by this extraction):\n\n[资料1]原文第8行片段1\n辅助译文：cp-09_odp.01：需要对其中的用户级信息执行备份的系统组件，待定义。\ncp-09_odp.02：与恢复时间目标和恢复点目标一致的用户级信息备份频次，待定义。\ncp-09_odp.03：与恢复时间目标和恢复点目标一致的系统级信息备份频次，待定义。\ncp-09_odp.04：与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。\n原文：\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "card-boundary-06",
+      "selector_sha256": "69f99c8a4f42dbd7b6395f8404fc20cb4ef9a0e9f0226650bc68001e307d4c01",
+      "candidate_sha256": "6fe1cc1fe0ca62df274016199842ea46d7572051da6460370a29ddec6a27a045",
+      "accepted": false,
+      "literal_provenance_valid": true,
+      "reason": "原文已明确系统级和文档备份动作，导语却按未规定处理能否停止，没有清楚否定停备份；直接回答/规范强度存在歧义，按冻结的不豁免标准未通过，不称已确认事实矛盾；不是只按枚举计分。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第3行片段1\n辅助译文：对系统中包含的系统级信息执行备份{{ insert: param, cp-09_odp.03 }}；\n原文：\n> [cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n\n[资料1]原文第4行片段1\n辅助译文：对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}；\n原文：\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第7行片段1\n辅助译文：原生OSCAL参数定义（本次提取未赋值）。\n原文：\n> Original OSCAL parameter definitions (no values assigned by this extraction):\n\n[资料1]原文第8行片段1\n辅助译文：cp-09_odp.01：需要对其中的用户级信息执行备份的系统组件，待定义。\ncp-09_odp.02：与恢复时间目标和恢复点目标一致的用户级信息备份频次，待定义。\ncp-09_odp.03：与恢复时间目标和恢复点目标一致的系统级信息备份频次，待定义。\ncp-09_odp.04：与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。\n原文：\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "card-boundary-07",
+      "selector_sha256": "beb02b00a2e258888cefec4e78d66e72cb25011a38f2cc040a06ad186b6168ef",
+      "candidate_sha256": "cef0c18e432e70da2c2169d4c46254bd269abed1000cb164e8b7dfa1d84cb7c5",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "All parties agree before commencing；不能将开始前改为开始后。",
+      "answer_type": "deny",
+      "rendered_candidate": "资料不支持题述说法，具体要求如下。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第5行片段4\n辅助译文：所有各方在开始渗透测试场景之前同意交战规则。\n原文：\n>  All parties agree to the rules of engagement before commencing penetration testing scenarios.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "card-boundary-08",
+      "selector_sha256": "6412e9ad2ec6f4a607bb3b4828e3a5c08ba31c02934b7079bcf7b34fea6ce25a",
+      "candidate_sha256": "5da04923895ce1dccf6b4cc57c15b7f2cf358f2cc6e76d0121a27dda888160f2",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "原词是安全事件或泄露，条款把经验纳入培训/意识技术，未规定员工处分，不偷换事件类别。",
+      "answer_type": "deny",
+      "rendered_candidate": "资料不支持题述说法，具体要求如下。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第7行片段1\n辅助译文：将来自内部或外部安全事件或泄露的经验教训纳入素养培训与意识技术中。\n原文：\n> [at-2_smt.d] Incorporate lessons learned from internal or external security incidents or breaches into literacy training and awareness techniques.\n\n[资料1]原文第10行片段5\n辅助译文：可能促使更新素养培训与意识内容的事件包括但不限于评估或审计发现、安全事件或泄露，或适用法律、行政命令、指令、法规、政策、标准和指南的变化。\n原文：\n>  Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    }
+  ],
+  "promotion": "negative gate not passed; original criteria not changed; no default promotion",
+  "baseline_review": "failurecase baseline inspected; remaining raw baselines retained but not fully graded"
+}

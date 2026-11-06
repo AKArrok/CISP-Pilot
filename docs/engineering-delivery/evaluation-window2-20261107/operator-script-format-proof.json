@@ -1,0 +1,22 @@
+{
+  "docs\\engineering-delivery\\evaluation-window2-20261107\\prepare-mixed-bounded.py": {
+    "before_sha256": "fcbd2fa1fbbf03a534a163f336519695dd30be1a08e6e72f3232f05447a8b074",
+    "format_only_ast_equal": true,
+    "after_sha256": "75e6e8566c624a04f34de6431c8fdb84d12e9d1f17afb6717c59c45a8acddc62"
+  },
+  "docs\\engineering-delivery\\evaluation-window2-20261107\\prepare-mixed-regression.py": {
+    "before_sha256": "9599ec6355807c896e5948d467ddfc3f91d869f91bf01e5b64349384b61c4e45",
+    "format_only_ast_equal": true,
+    "after_sha256": "14059b1eeb1890739fda4aa7c4646398ce825d6290e41171bd87dba4358ef642"
+  },
+  "docs\\engineering-delivery\\evaluation-window2-20261107\\recover-mixed-initialization.py": {
+    "before_sha256": "0acb8c4f30886b678a6b859864c2d5378f996eefc5de1a0eb08836205bae5eae",
+    "format_only_ast_equal": true,
+    "after_sha256": "a856c507e287e4c532a4dbec49d8e31803a76e7ebe67891415f42d02e655f6f9"
+  },
+  "docs\\engineering-delivery\\evaluation-window2-20261107\\review-http32.py": {
+    "before_sha256": "1dfd7428508aa5c1d308d1016240b116796ac3576cf672ab112e274d489f426f",
+    "format_only_ast_equal": true,
+    "after_sha256": "fb9c6370cc8f6d86a3aab6b6b9f255b0a5e68456698c8bc9e4decd3c29484775"
+  }
+}

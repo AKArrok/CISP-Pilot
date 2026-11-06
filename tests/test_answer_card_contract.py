@@ -80,3 +80,37 @@ def test_native_parameter_annotation_is_bound_to_original_definition_and_selecte
     translations["parameters"]["scope"]["original_definition"] = {"id": "scope", "label": "frequency"}
     with pytest.raises(ValueError, match="parameter translation"):
         render_card_answer(selected, contexts, translations)
+
+
+def test_native_child_clause_keeps_actual_parent_condition_without_other_actions():
+    from scripts.compile_nist_source_units import compile_units
+    text = ("Title\n[x_smt.a] For publicly accessible systems:\n"
+            "[x_smt.a.1] Display authorized uses.\n[x_smt.b] An unrelated action.")
+    contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": text}]
+    catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+    selected = materialize_card_selection('{"unit_ids":["s1:l3:p1"],"answer_type":"explain"}', catalog, contexts)
+    assert [unit["id"] for unit in selected["units"]] == ["s1:l2:p1", "s1:l3:p1"]
+    assert selected["ancestor_unit_ids"] == ["s1:l2:p1"]
+    assert "unrelated" not in json.dumps(selected)
+
+
+def test_native_action_notice_distinguishes_unassigned_values_from_optional_actions():
+    from scripts.compile_nist_source_units import compile_units
+    text = "[x_smt] Conduct backups of privacy documentation."
+    contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": text}]
+    catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+    selected = materialize_card_selection('{"unit_ids":["s1:l1:p1"],"answer_type":"not_specified"}', catalog, contexts)
+    translations = translation_map(catalog, contexts)
+    next(iter(translations["units"].values()))["reading_translation"] = "对隐私文档执行备份。"
+    rendered = render_card_answer(selected, contexts, translations)
+    assert "参数值待定不表示动作可选" in rendered
+    assert "适用条件" in rendered
+    assert "已有的明确要求仍须" in rendered
+
+
+def test_advisory_guidance_is_not_rendered_as_a_mandatory_statement():
+    contexts, sources = fixture()
+    catalog = build_catalog(contexts, sources)
+    selected = materialize_card_selection('{"unit_ids":["s1:l1:p2"],"answer_type":"affirm"}', catalog, contexts)
+    text = render_card_answer(selected, contexts, translation_map(catalog, contexts))
+    assert "参数值待定不表示动作可选" not in text

@@ -1,0 +1,297 @@
+{
+  "global_BM25": [
+    {
+      "id": "ac-8-new-01",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2121
+    },
+    {
+      "id": "ac-8-new-02",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2124
+    },
+    {
+      "id": "ac-8-new-03",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2113
+    },
+    {
+      "id": "ac-8-new-04",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2118
+    },
+    {
+      "id": "ac-8-new-05",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2111
+    },
+    {
+      "id": "ac-8-new-06",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2120
+    },
+    {
+      "id": "ac-8-new-07",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2122
+    },
+    {
+      "id": "ac-8-new-08",
+      "global_BM25_locators": [
+        "ac-8",
+        "ac-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2121
+    },
+    {
+      "id": "at-2-new-01",
+      "global_BM25_locators": [
+        "at-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2830
+    },
+    {
+      "id": "at-2-new-02",
+      "global_BM25_locators": [
+        "at-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2832
+    },
+    {
+      "id": "at-2-new-03",
+      "global_BM25_locators": [
+        "at-2",
+        "ir-4"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2199
+    },
+    {
+      "id": "at-2-new-04",
+      "global_BM25_locators": [
+        "at-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2833
+    },
+    {
+      "id": "at-2-new-05",
+      "global_BM25_locators": [
+        "at-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2828
+    },
+    {
+      "id": "at-2-new-06",
+      "global_BM25_locators": [
+        "at-2",
+        "at-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2827
+    },
+    {
+      "id": "at-2-new-07",
+      "global_BM25_locators": [
+        "at-2",
+        "ia-2"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2229
+    },
+    {
+      "id": "at-2-new-08",
+      "global_BM25_locators": [
+        "ia-2",
+        "ia-2"
+      ],
+      "target_in_top2": false,
+      "selector_tokens": 1635
+    },
+    {
+      "id": "cp-9-new-01",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1860
+    },
+    {
+      "id": "cp-9-new-02",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1861
+    },
+    {
+      "id": "cp-9-new-03",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1865
+    },
+    {
+      "id": "cp-9-new-04",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1863
+    },
+    {
+      "id": "cp-9-new-05",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1868
+    },
+    {
+      "id": "cp-9-new-06",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1872
+    },
+    {
+      "id": "cp-9-new-07",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1868
+    },
+    {
+      "id": "cp-9-new-08",
+      "global_BM25_locators": [
+        "cp-9",
+        "cp-9"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1873
+    },
+    {
+      "id": "ca-8-new-01",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2008
+    },
+    {
+      "id": "ca-8-new-02",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2004
+    },
+    {
+      "id": "ca-8-new-03",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1998
+    },
+    {
+      "id": "ca-8-new-04",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2006
+    },
+    {
+      "id": "ca-8-new-05",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2002
+    },
+    {
+      "id": "ca-8-new-06",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2001
+    },
+    {
+      "id": "ca-8-new-07",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 2007
+    },
+    {
+      "id": "ca-8-new-08",
+      "global_BM25_locators": [
+        "ca-8",
+        "ca-8"
+      ],
+      "target_in_top2": true,
+      "selector_tokens": 1999
+    }
+  ],
+  "target_top2": 31,
+  "cases": 32,
+  "max_selector_input_tokens": 2833,
+  "limit": "Offline globalBM25 only; actual router/domain/retrieval/trace/persistence and semantic correctness require the live app run",
+  "model_calls": 0
+}

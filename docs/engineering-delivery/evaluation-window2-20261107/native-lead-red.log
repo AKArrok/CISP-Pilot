@@ -1,0 +1,22 @@
+..........F.                                                             [100%]
+================================== FAILURES ===================================
+_ test_native_action_notice_distinguishes_unassigned_values_from_optional_actions _
+
+    def test_native_action_notice_distinguishes_unassigned_values_from_optional_actions():
+        from scripts.compile_nist_source_units import compile_units
+        text = "[x_smt] Conduct backups of privacy documentation."
+        contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": text}]
+        catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+        selected = materialize_card_selection('{"unit_ids":["s1:l1:p1"],"answer_type":"not_specified"}', catalog, contexts)
+        translations = translation_map(catalog, contexts)
+        next(iter(translations["units"].values()))["reading_translation"] = "对隐私文档执行备份。"
+        rendered = render_card_answer(selected, contexts, translations)
+        assert "参数值待定不表示动作可选" in rendered
+        assert "适用条件" in rendered
+>       assert "已有的明确要求仍须" in rendered
+E       AssertionError: assert '已有的明确要求仍须' in '本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n控制条款须按原文适用条件执行；参数值待定不表示动作可选，不能据此省略原文明确要求的动作。\n\n[资料1]原文第1行片段1\n辅助译文：对隐私文档执行备份。\n原文：\n> [x_smt] Conduct backups of privacy documentation.\n\n【出处】[资料1]《synthetic》定位【x】'
+
+tests\test_answer_card_contract.py:108: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_card_contract.py::test_native_action_notice_distinguishes_unassigned_values_from_optional_actions
+1 failed, 11 passed in 0.24s

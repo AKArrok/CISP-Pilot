@@ -1,0 +1,23 @@
+{
+  "failure": "ModuleNotFoundError:scripts",
+  "phase": "execute line110 imports prepare_demo, before model clients/Receipts/HTTP cases",
+  "executor_sha256": "371302b89b43d5e90f6f239c6a5516d7975cf2e372f7fa17280cb266e6899666",
+  "no_receipts_or_summary": true,
+  "provider_attempts_proven_zero": true,
+  "old_batch": {
+    "id": "nist-public-http-cards-v3r2-20261107",
+    "calls": 0,
+    "estimated_cost_usd": 0,
+    "unknown_charge": true
+  },
+  "released_reservation": {
+    "batch": "nist-public-http-cards-v3r2-20261107",
+    "unknown_attempts": "at least1 or unconfirmed if summary absent",
+    "known_estimate_usd": 0,
+    "allocation_held_usd": 0.2,
+    "additional_reservation_usd": 0.2,
+    "status": "Full batch allocation retained; no automatic retry"
+  },
+  "known_cost_usd": 0,
+  "old_original_unknown_fee_retained": true
+}
