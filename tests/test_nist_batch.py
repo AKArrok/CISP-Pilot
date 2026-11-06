@@ -72,7 +72,7 @@ def test_claim_flags_reject_nonboolean_json_before_creating_output(tmp_path, mon
 
     packet = tmp_path / "packet"
     packet.mkdir()
-    for flag in ("claim_only", "claim_focus"):
+    for flag in ("claim_only", "claim_focus", "guidance_segments", "native_parameter_bindings"):
         for invalid in (0, 1, "false", None):
             (packet / "manifest.json").write_text(json.dumps({flag: invalid}), encoding="utf-8")
             output = tmp_path / f"{flag}-{invalid}"

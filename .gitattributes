@@ -47,3 +47,17 @@ evaluation/nist-reading-*/*.py -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261107-live/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261107-live/*.jsonl -text whitespace=cr-at-eol
 docs/engineering-delivery/*-20261107-live/executor.py -text whitespace=cr-at-eol
+
+# Frozen business workload and raw final statistics (private files excluded).
+docs/engineering-delivery/business-load-20261107/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-20261107/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-20261107/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-20261107/*.csv -text -whitespace
+docs/engineering-delivery/business-load-20261107/*.log -text -whitespace
+evaluation/nist-native-ownership-*/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-resume-20261106/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-profile-20261107/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-profile-20261107/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-profile-20261107/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/business-load-profile-20261107/*.csv -text -whitespace
+docs/engineering-delivery/business-load-profile-20261107/*.log -text -whitespace

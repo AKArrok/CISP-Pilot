@@ -1,0 +1,15 @@
+{
+  "cases": 8,
+  "retrieval": {},
+  "selected_arm": null,
+  "provider_calls": 12,
+  "cost_usd_conservative": null,
+  "semantic_acceptance": "pending_source_review",
+  "cost_unknown": true,
+  "pending_call": {
+    "id": "cp-9-new-08",
+    "stage": "answer_structured"
+  },
+  "stop_reason": "APIConnectionError",
+  "known_cost_lower_bound_usd": 0.014341499999999998
+}

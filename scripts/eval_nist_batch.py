@@ -37,10 +37,29 @@ def request_content(stage, case, row, context, manifest):
                     or aid.get("canonical_text_sha256") != hashlib.sha256(
                         row["contexts"][aid["source_ref"]-1]["text"].encode()).hexdigest()):
                 raise ValueError("Invalid reading aid binding")
-        return json.dumps({"question": case["question"], "canonical_contexts": line_payload({
+        payload = {"question": case["question"], "canonical_contexts": line_payload({
             "question": case["question"], "answer": "", "contexts": row["contexts"]})["contexts"],
             "unofficial_reading_aids": aids,
-            "aid_notice": "非官方AI辅助译文，不能作为原文引句或独立证据；以canonical_contexts为准"}, ensure_ascii=False)
+            "aid_notice": "非官方AI辅助译文，不能作为原文引句或独立证据；以canonical_contexts为准"}
+        if manifest.get("guidance_segments"):
+            for source in payload["canonical_contexts"]:
+                for line in source["lines"]:
+                    text = line["text"]
+                    if text.startswith("[") and not re.match(r"\[[^]]+_gdn\]", text):
+                        continue
+                    boundaries = [m.start() for m in re.finditer(r"(?<=[.!?])(?=\s+[A-Z])", text)
+                                  if not re.search(r"(?:[A-Za-z]\.){2,}$", text[:m.start()])]
+                    if boundaries:
+                        ends = [0, *boundaries, len(text)]
+                        line["segments"] = [text[start:end] for start, end in zip(ends[:-1], ends[1:], strict=True)]
+                        del line["text"]
+            payload["segment_notice"] = "segments为同一原文行的保序片段，拼接还原整行；source_lines仍选择父line行号"
+        if manifest.get("native_parameter_bindings"):
+            from scripts.inline_oscal_parameters import parameter_bindings
+            for source, original in zip(payload["canonical_contexts"], row["contexts"], strict=True):
+                source["parameter_bindings"] = parameter_bindings(original["text"])
+        return json.dumps(payload, ensure_ascii=False,
+                          **({"separators": (",", ":")} if manifest.get("native_parameter_bindings") else {}))
     if stage == "answer_candidate" and manifest.get("mode") == "answer_pipeline":
         return context + "\n问题：" + case["question"] + "\n待翻译英文答案：\n" + row["answer_english"]
     if stage.startswith("judge") and manifest.get("evidence_protocol") == "atomic_lines":
@@ -112,7 +131,7 @@ def main():
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     manifest = load(args.packet / "manifest.json")
-    for flag in ("claim_focus", "claim_only"):
+    for flag in ("claim_focus", "claim_only", "guidance_segments", "native_parameter_bindings"):
         if type(manifest.get(flag, False)) is not bool:
             raise ValueError(f"{flag} must be an explicitly frozen boolean")
     if "answer_temperature" in manifest:

@@ -1,0 +1,17 @@
+{
+  "trace_rows": 147,
+  "stage_counts": {
+    "history": 294,
+    "graph": 294,
+    "route": 294,
+    "chitchat": 294,
+    "persist": 294,
+    "conversation_commit": 147,
+    "short_memory_cache": 147,
+    "long_memory_write": 147
+  },
+  "first_analysis_error": "Used node key instead of actual stage key; previous output retained separately",
+  "quiz_transaction_timings": "not present; trace only chat stages",
+  "root_cause": "not proven; do not assumeSQLite lock solely from tail latency",
+  "next": "Isolated SQLverb/endpoint stage timing, no SQLarguments or private body logging"
+}

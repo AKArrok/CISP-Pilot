@@ -1,0 +1,70 @@
+............F...................F..............                          [100%]
+================================== FAILURES ===================================
+______ test_native_parameter_context_binds_to_actual_referencing_action _______
+
+    def test_native_parameter_context_binds_to_actual_referencing_action():
+        from scripts.eval_nist_batch import request_content
+        from scripts.inline_oscal_parameters import MARKER
+    
+        text = ("[x.a] User data in {{ insert: param, scope }}.\n[x.b] All system data." + MARKER
+                + json.dumps([{"id": "scope", "label": "components"}]))
+        context = {**CONTEXTS[0], "text": text}
+        payload = json.loads(request_content("answer_structured", {"question": "Q"}, {"contexts": [context]}, "", {
+            "evidence_protocol": "answer_source_lines", "native_parameter_bindings": True}))
+>       assert payload["canonical_contexts"][0]["parameter_bindings"] == [{"parameter_id": "scope",
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "referenced_in": [{"line": 1, "original_clause": "[x.a] User data in {{ insert: param, scope }}."}]}]
+E       KeyError: 'parameter_bindings'
+
+tests\test_answer_output_contract.py:94: KeyError
+_______ test_claim_flags_reject_nonboolean_json_before_creating_output ________
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-ownership-red-w78r8a7a/pytest/test_claim_flags_reject_nonboo0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F871BB6BD0>
+
+    def test_claim_flags_reject_nonboolean_json_before_creating_output(tmp_path, monkeypatch):
+        import json
+        import sys
+        import pytest
+        from scripts import eval_nist_batch
+    
+        packet = tmp_path / "packet"
+        packet.mkdir()
+        for flag in ("claim_only", "claim_focus", "guidance_segments", "native_parameter_bindings"):
+            for invalid in (0, 1, "false", None):
+                (packet / "manifest.json").write_text(json.dumps({flag: invalid}), encoding="utf-8")
+                output = tmp_path / f"{flag}-{invalid}"
+                monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output)])
+                with pytest.raises(ValueError, match="boolean"):
+>                   eval_nist_batch.main()
+
+tests\test_nist_batch.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, default=ROOT / "evaluation/nist-development-v1")
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = load(args.packet / "manifest.json")
+        for flag in ("claim_focus", "claim_only", "guidance_segments"):
+            if type(manifest.get(flag, False)) is not bool:
+                raise ValueError(f"{flag} must be an explicitly frozen boolean")
+        if "answer_temperature" in manifest:
+            temperature = manifest["answer_temperature"]
+            if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+                raise ValueError("Answer temperature must be a number from 0 to 2")
+        if ("executor_sha256" in manifest
+                and hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]):
+            raise ValueError("Frozen executor changed")
+        max_input_tokens = input_token_limit(manifest)
+>       for name, digest in manifest["frozen_sha256"].items():
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'frozen_sha256'
+
+scripts\eval_nist_batch.py:140: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_output_contract.py::test_native_parameter_context_binds_to_actual_referencing_action
+FAILED tests/test_nist_batch.py::test_claim_flags_reject_nonboolean_json_before_creating_output
+2 failed, 45 passed in 1.47s

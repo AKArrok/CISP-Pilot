@@ -1,0 +1,13 @@
+{
+  "trace_rows": 147,
+  "status_counts": {
+    "completed": 147
+  },
+  "node_counts": {
+    "unknown": 1911
+  },
+  "scope": "Existing business fixture database, read-only; only chat route persists request traces",
+  "quiz_tail_ms_observed": 934.9932,
+  "root_cause": "not proven; no per-stage quiz transaction timing in saved trace",
+  "next": "Freeze endpoint/SQL-stage timing instrumentation in isolated fixture; log duration and SQLverb only, no payload/credentials, same workload before any lock/transaction change"
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "single unauthenticated readonly transport probe",
+  "endpoint": "https://api.deepseek.com/models",
+  "model_generation_calls": 0,
+  "credentials_sent": false,
+  "max_retries": 0,
+  "http_status": 401,
+  "transport_response_received": true,
+  "elapsed_seconds": 0.35399189999952796
+}

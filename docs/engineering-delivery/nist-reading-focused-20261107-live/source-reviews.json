@@ -1,0 +1,58 @@
+{
+  "method": "AI original-source review, not human gold",
+  "completed_case_reviews": [
+    {
+      "id": "ac-8-new-05",
+      "candidate_sha256": "35b20de6ed00035edfe9af9bbb7130fc039671210fd8afa21d8132c4879b8b4a",
+      "original_line_provenance_valid": true,
+      "factual_support": false,
+      "accepted": false,
+      "rationale": "把仅用于二次告知的风险评估前提移到多语言，原失败依然复现。",
+      "rendered_candidate": "中文解释（非逐字原文）\n需要考虑，但这是基于组织需求和系统用户人口特征的风险评估后作出的考量，并非无条件强制要求。资料指出，组织应根据组织需求和系统用户的人口统计特征，考虑以多种语言显示系统使用通知消息或横幅。\n\n【原文证据】\n[资料1]原文第12行\n> [ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "candidate_sha256": "b2b99fd7b2e236e2df280ca07b7d5291a0aa6a710a407cf9bc77b633dcb3689c",
+      "original_line_provenance_valid": true,
+      "factual_support": true,
+      "accepted": true,
+      "rationale": "核心所问、必要限制与参数未赋值状态有原文支持；原文行由宿主复制，不以辅助作金标。",
+      "rendered_candidate": "中文解释（非逐字原文）\n需要视风险评估结果而定，并非一律强制。资料明确：系统使用通知仅适用于存在人类用户的登录界面，无人类接口时不需要通知；在此基础上，组织应基于风险评估，考虑在初始网络登录之后访问应用程序或其他系统资源时是否需要二次系统使用通知。也就是说，登录网络后是否再做应用层二次告知，属于组织经风险评估后决定的事项，资料未给出统一强制结论。\n\n【原文证据】\n[资料1]原文第12行\n> [ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "candidate_sha256": "bcc2188c11e3ae4d50ad58d9bea1edec236d7582cf66eae20f2d0246570f7183",
+      "original_line_provenance_valid": true,
+      "factual_support": true,
+      "accepted": true,
+      "rationale": "核心所问、必要限制与参数未赋值状态有原文支持；原文行由宿主复制，不以辅助作金标。",
+      "rendered_candidate": "中文解释（非逐字原文）\n应随远程工作环境变化而调整。资料明确说明，组织在确定素养培训与意识培训内容时，依据之一是工作环境（例如远程办公/telework），因此远程工作环境属于内容确定的考量因素。此外，资料要求按组织待赋值的更新频率并在组织待赋值的触发事件发生后更新培训与意识内容，并定期更新以保持内容相关性；但资料未把“远程工作环境变化”明确列为触发更新的具体事件，也未给出更新频率和触发事件的取值，这些参数仍待组织确定。\n\n【原文证据】\n[资料1]原文第8行\n> [at-2_gdn] Organizations provide basic and advanced levels of literacy training to system users, including measures to test the knowledge level of users. Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework). The content includes an understanding of the need for security and privacy as well as actions by users to maintain security and personal privacy and to respond to suspected incidents. The content addresses the need for operations security and the handling of personally identifiable information.\n\n[资料1]原文第6行\n> [at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and\n\n[资料1]原文第10行\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "candidate_sha256": "4c6310f7c6a5e5bdfbd898408d4bfbb89857358f83a7896886025c945a603aa4",
+      "original_line_provenance_valid": true,
+      "factual_support": true,
+      "accepted": true,
+      "rationale": "核心所问、必要限制与参数未赋值状态有原文支持；原文行由宿主复制，不以辅助作金标。",
+      "rendered_candidate": "中文解释（非逐字原文）\n资料中提升安全意识的具体手段包括：展示海报、提供印有安全和隐私提醒的用品、显示登录屏幕消息、生成组织官员的电子邮件建议或通知，以及开展意识活动。这些手段属于组织需采用的技术，具体采用哪些由待组织确定的参数（at-02_odp.05“意识技术”）界定；此外，资料还要求将内部或外部安全事件或泄露的经验教训纳入意识培训与意识技术中。\n\n【原文证据】\n[资料1]原文第10行\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n[资料1]原文第7行\n> [at-2_smt.d] Incorporate lessons learned from internal or external security incidents or breaches into literacy training and awareness techniques.\n\n[资料1]原文第5行\n> [at-2_smt.b] Employ the following techniques to increase the security and privacy awareness of system users {{ insert: param, at-02_odp.05 }};\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "candidate_sha256": "5405b5d531b2838a93cef4b610d285d359e53411efe6cf4f1651f0f364dcd02f",
+      "original_line_provenance_valid": true,
+      "factual_support": true,
+      "accepted": true,
+      "rationale": "核心所问、必要限制与参数未赋值状态有原文支持；原文行由宿主复制，不以辅助作金标。",
+      "rendered_candidate": "中文解释（非逐字原文）\n该控制（CP-9 系统备份）没有指定只能购买某一家公司的备份软件。资料中仅要求对用户级信息、系统级信息和系统文档执行备份并保护备份信息的机密性、完整性和可用性，未涉及备份软件的品牌或供应商选择限制。\n\n【原文证据】\n[资料1]原文第2行\n> [cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n\n[资料1]原文第5行\n> [cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    }
+  ],
+  "planned_denominator": 8,
+  "completed_candidate_answers": 5,
+  "accepted_completed": 4,
+  "failed_completed": 1,
+  "missing_candidates": 3,
+  "execution_gate_passed": false,
+  "full8_accuracy": "not reported: incomplete execution",
+  "default_promoted": false
+}

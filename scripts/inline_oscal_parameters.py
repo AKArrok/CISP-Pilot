@@ -31,3 +31,17 @@ def expand_parameters(text):
         length += len(annotation)
         previous = match.end()
     return "".join(pieces) + body[previous:] + MARKER + definitions, additions
+
+
+def parameter_bindings(text):
+    """Copy only literal parameter-to-clause references, never infer ownership."""
+    body, found, definitions = text.partition(MARKER)
+    if not found:
+        return []
+    expand_parameters(text)  # Reuse original definition and reference validation.
+    parameters = json.loads(definitions)
+    return [{"parameter_id": parameter["id"], "referenced_in": [
+        {"line": number, "original_clause": line}
+        for number, line in enumerate(body.splitlines(), 1)
+        if parameter["id"] in PARAMETER.findall(line)]}
+        for parameter in parameters]

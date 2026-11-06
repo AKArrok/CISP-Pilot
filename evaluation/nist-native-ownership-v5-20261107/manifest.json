@@ -1,0 +1,34 @@
+{
+  "mode": "answer_contract",
+  "role": "Same v4 questions/source/aids/prompts/temperature/guidance/renderer; only add literal parameter-to-original-clause references, no inferred scope or expected answers. Development diagnostic, not independent test.",
+  "answer_temperature": 0.3,
+  "frozen_sha256": {
+    "cases.json": "785ddd9e22baae93946a40b047d802af5659946ebb57e4b6acf7e612175ef4b7",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "funding-preflight.json": "ddf4544ce952181c0d2e2c5194cda56022af6134dae7f23e7ec733392cbbd25d",
+    "original-cases.json": "d69c0668a6f0be730e1968a44e4a203f927ebd1672575dff33771c429406d12f",
+    "parameter-helper.py": "90a3476eb64ea5a2660dbef510a17546792273928f0af2cad551f2b930fec50d",
+    "prompts.json": "7bd2cb62801cda0f392d941ea14d280278bfe241d7080b0a3e9f3935ad2adeee",
+    "reading-aids.json": "22732f542f77068770970fd20f881e833efc620e0be38ed9631b20cf7dc95abf",
+    "renderer.py": "09ef44dbc7550d0fa837e149e3225b4cf3d5ac361ca033d8336aa8c9b69aa3af",
+    "runtime-source-hashes.json": "bbb26c2fc5389bca31bdfbfa6a40d10577c52d4b4a864cd8cdf4d46a04ad03bf",
+    "selection.json": "f3f9aaab1f40c308b2795da13752a14dea72789f3d2ef0bfaedb04fa98108d8a",
+    "translation-review.json": "d54185b00040c2a2f4edb2a906ced1d70fde4f4b57a514a54418b8d9e6e607ec"
+  },
+  "paid_proposal": {
+    "calls": 16,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only pinned public NIST and original questions/prompts; two answer-generation arms, no external judge calls"
+  },
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "8f5bbf8058a7d790c3fb4ac90dbf79be9f1059cf32d7a761ca4fa19dc1299a5b",
+  "renderer_sha256": "09ef44dbc7550d0fa837e149e3225b4cf3d5ac361ca033d8336aa8c9b69aa3af",
+  "acceptance": "Same8 original factual/completeness/parameter/citation criteria plus correct original line provenance and relevant support. Literal origin does not prove entailment. No aid-as-NIST quotation, allfailures retained; no default promotion without repeat/negative32/mixed4 gates.",
+  "evidence_protocol": "answer_source_lines",
+  "guidance_segments": true,
+  "native_parameter_bindings": true
+}

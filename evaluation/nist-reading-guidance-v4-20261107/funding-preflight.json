@@ -1,0 +1,21 @@
+{
+  "approved_total_usd": 3,
+  "known_estimate_usd": 0.9792489,
+  "unknown_reservations": [
+    {
+      "batch": "nist-reading-evidence-focused-v3-20261107",
+      "unknown_attempts": 1,
+      "known_estimate_usd": 0.014341499999999998,
+      "allocation_held_usd": 0.08,
+      "additional_reservation_usd": 0.0656585,
+      "status": "unknown actual charge, allocation reserved conservatively; not invoice"
+    }
+  ],
+  "prior_accounted_usd": 1.0449074,
+  "new_frozen_allocation_usd": 0.08,
+  "maximum_accounted_after_allocation_usd": 1.1249074,
+  "unallocated_after_usd": 1.8750926,
+  "authorization": "Existing user3USD grant, not daily reset or reuse of failedbatch lock",
+  "unknown_charge_not_cleared": true,
+  "not_actual_invoice": true
+}

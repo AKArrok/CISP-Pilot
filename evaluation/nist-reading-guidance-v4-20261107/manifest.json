@@ -1,0 +1,31 @@
+{
+  "mode": "answer_contract",
+  "role": "Same original8 and focusedv3 prompts/aids/canonical source/renderer; only canonical guidance line representation is grouped into ordered literal fragments with unchanged parent line IDs. No question/gold in source, not new independent test.",
+  "answer_temperature": 0.3,
+  "frozen_sha256": {
+    "cases.json": "785ddd9e22baae93946a40b047d802af5659946ebb57e4b6acf7e612175ef4b7",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "7bd2cb62801cda0f392d941ea14d280278bfe241d7080b0a3e9f3935ad2adeee",
+    "renderer.py": "09ef44dbc7550d0fa837e149e3225b4cf3d5ac361ca033d8336aa8c9b69aa3af",
+    "selection.json": "f3f9aaab1f40c308b2795da13752a14dea72789f3d2ef0bfaedb04fa98108d8a",
+    "original-cases.json": "d69c0668a6f0be730e1968a44e4a203f927ebd1672575dff33771c429406d12f",
+    "reading-aids.json": "22732f542f77068770970fd20f881e833efc620e0be38ed9631b20cf7dc95abf",
+    "translation-review.json": "d54185b00040c2a2f4edb2a906ced1d70fde4f4b57a514a54418b8d9e6e607ec",
+    "funding-preflight.json": "4d1b87f78d5454071cb283daf775ba3309dd6061208b94f8fabe565a58c4f734"
+  },
+  "paid_proposal": {
+    "calls": 16,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only pinned public NIST and original questions/prompts; two answer-generation arms, no external judge calls"
+  },
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "33ea907789f09bd1ae16dc0d504281cfd330e818d64074f733058b572c7fa929",
+  "renderer_sha256": "09ef44dbc7550d0fa837e149e3225b4cf3d5ac361ca033d8336aa8c9b69aa3af",
+  "acceptance": "Same8 original factual/completeness/parameter/citation criteria plus correct original line provenance and relevant support. Literal origin does not prove entailment. No aid-as-NIST quotation, allfailures retained; no default promotion without repeat/negative32/mixed4 gates.",
+  "evidence_protocol": "answer_source_lines",
+  "guidance_segments": true
+}

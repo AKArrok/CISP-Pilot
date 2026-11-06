@@ -1,0 +1,110 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens": 4661
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_structured",
+      "tokens": 4834
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens": 4670
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_structured",
+      "tokens": 4843
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens": 3925
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_structured",
+      "tokens": 4098
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens": 3817
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_structured",
+      "tokens": 3990
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens": 3807
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_structured",
+      "tokens": 3980
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens": 4327
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_structured",
+      "tokens": 4500
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens": 4537
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_structured",
+      "tokens": 4710
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens": 3169
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_structured",
+      "tokens": 3342
+    }
+  ],
+  "planned_calls": 16,
+  "budget_usd": 0.08,
+  "maximum_input": 4843,
+  "all_questions_and_sources_unchanged": true,
+  "funding_reserved_with_unknown_charge": {
+    "approved_total_usd": 3,
+    "known_estimate_usd": 0.9792489,
+    "unknown_reservations": [
+      {
+        "batch": "nist-reading-evidence-focused-v3-20261107",
+        "unknown_attempts": 1,
+        "known_estimate_usd": 0.014341499999999998,
+        "allocation_held_usd": 0.08,
+        "additional_reservation_usd": 0.0656585,
+        "status": "unknown actual charge, allocation reserved conservatively; not invoice"
+      }
+    ],
+    "prior_accounted_usd": 1.0449074,
+    "new_frozen_allocation_usd": 0.08,
+    "maximum_accounted_after_allocation_usd": 1.1249074,
+    "unallocated_after_usd": 1.8750926,
+    "authorization": "Existing user3USD grant, not daily reset or reuse of failedbatch lock",
+    "unknown_charge_not_cleared": true,
+    "not_actual_invoice": true
+  },
+  "default_model": "deepseek-flash,thinkingdisabled,max_output1024,retries0"
+}

@@ -55,6 +55,47 @@ def test_answer_request_keeps_reading_aid_out_of_canonical_lines():
             "evidence_protocol": "answer_source_lines"})
 
 
+def test_guidance_fragments_preserve_parent_line_and_all_original_characters():
+    from scripts.eval_nist_batch import request_content
+
+    text = ("[x_gdn] U.S. Government guidance applies. Risk applies to a secondary notice. "
+            "Languages depend on needs and demographics.")
+    context = {**CONTEXTS[0], "text": text}
+    case, row = {"question": "Q"}, {"contexts": [context]}
+    manifest = {"evidence_protocol": "answer_source_lines", "guidance_segments": True}
+    payload = json.loads(request_content("answer_structured", case, row, "", manifest))
+    line = payload["canonical_contexts"][0]["lines"][0]
+    assert line["line"] == 1
+    assert len(line["segments"]) == 3
+    assert line["segments"][0] == "[x_gdn] U.S. Government guidance applies."
+    assert "".join(line["segments"]) == context["text"] == text
+    assert "Risk applies" not in line["segments"][2]
+
+
+def test_guidance_fragment_view_never_splits_statements_or_parameter_json():
+    from scripts.eval_nist_batch import request_content
+
+    text = '[x_smt] Preserve this clause. Keep its exact line.\n[{"id":"x.1","label":"A. B."}]'
+    context = {**CONTEXTS[0], "text": text}
+    payload = json.loads(request_content("answer_structured", {"question": "Q"}, {"contexts": [context]}, "", {
+        "evidence_protocol": "answer_source_lines", "guidance_segments": True}))
+    assert [line["text"] for line in payload["canonical_contexts"][0]["lines"]] == text.splitlines()
+
+
+def test_native_parameter_context_binds_to_actual_referencing_action():
+    from scripts.eval_nist_batch import request_content
+    from scripts.inline_oscal_parameters import MARKER
+
+    text = ("[x.a] User data in {{ insert: param, scope }}.\n[x.b] All system data." + MARKER
+            + json.dumps([{"id": "scope", "label": "components"}]))
+    context = {**CONTEXTS[0], "text": text}
+    payload = json.loads(request_content("answer_structured", {"question": "Q"}, {"contexts": [context]}, "", {
+        "evidence_protocol": "answer_source_lines", "native_parameter_bindings": True}))
+    assert payload["canonical_contexts"][0]["parameter_bindings"] == [{"parameter_id": "scope",
+        "referenced_in": [{"line": 1, "original_clause": "[x.a] User data in {{ insert: param, scope }}."}]}]
+    assert context["text"] == text
+
+
 @pytest.mark.parametrize("value", [[], {"answer": "A", "source_ids": []},
     {"answer": "", "source_ids": [1]}, {"answer": "A", "source_ids": [True]},
     {"answer": "A", "source_ids": [3]}, {"answer": "A", "source_ids": [1, 1]},

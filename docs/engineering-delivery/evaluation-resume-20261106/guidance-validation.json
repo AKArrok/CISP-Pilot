@@ -1,0 +1,7 @@
+{
+  "red": "2failed37passed",
+  "first_green": "82passed but RuffB905 missing explicitzipstrict; first CLI failure retained in task trace",
+  "fix": "equal length ends[:-1],ends[1:] with strictTrue",
+  "current": "82passed,Ruffpassed",
+  "model_calls": 0
+}

@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "users": 8,
+  "seconds": 60,
+  "business_requests": 223,
+  "metrics": [
+    {
+      "name": "chat/SSE",
+      "count": 147,
+      "failures": 0,
+      "mean_ms": 66.69337959178259,
+      "histogram_p95_ms": 120,
+      "histogram_p99_ms": 230,
+      "max_ms": 311.3047999977425
+    },
+    {
+      "name": "quiz/next",
+      "count": 38,
+      "failures": 0,
+      "mean_ms": 12.514636842273543,
+      "histogram_p95_ms": 38,
+      "histogram_p99_ms": 51,
+      "max_ms": 51.43250000037369
+    },
+    {
+      "name": "quiz/answer",
+      "count": 38,
+      "failures": 0,
+      "mean_ms": 68.73190526292953,
+      "histogram_p95_ms": 860,
+      "histogram_p99_ms": 930,
+      "max_ms": 934.9932000004628
+    }
+  ],
+  "resource_pid_verified": true,
+  "peak_rss_mib": 207.01953125,
+  "server_cpu_seconds": 7.53125,
+  "health_max_ms": 59.15559999994002,
+  "persistence": {
+    "roles": {
+      "assistant": 147,
+      "user": 147
+    },
+    "answer_receipts": 38,
+    "max_message_chars": 17,
+    "integrity": "ok",
+    "database_bytes": 823296
+  },
+  "model_calls": 0,
+  "runtime_stopped": true,
+  "default_db_unchanged": true,
+  "server_errors": 0,
+  "limitations": "Synthetic fixed replies, localTCP SQLite, preauthenticated users; no trueLLM latency or productionSLA; randomtask distribution and hardware differ from old238, descriptive only"
+}

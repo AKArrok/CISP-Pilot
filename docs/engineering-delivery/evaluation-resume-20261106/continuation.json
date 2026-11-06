@@ -7,9 +7,9 @@
   "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
   "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
   "active_experiment": {
-    "packet": "evaluation/nist-reading-evidence-focused-v3-20261107",
-    "output": "docs/engineering-delivery/nist-reading-focused-20261107-live",
-    "status": "frozen_not_dispatched",
+    "packet": "evaluation/nist-native-ownership-repeat-20261107",
+    "output": "docs/engineering-delivery/nist-native-ownership-repeat-20261107-live",
+    "status": "repeat_failed_7_of_8_original_AC8_risk_recurred",
     "max_calls": 16,
     "budget_usd": 0.08
   },
@@ -137,29 +137,67 @@
         "calls": 16,
         "estimated_cost_usd": 0.0213336,
         "unknown_charge": false
+      },
+      {
+        "id": "nist-reading-evidence-focused-v3-20261107",
+        "calls": 12,
+        "estimated_cost_usd": 0.014341499999999998,
+        "unknown_charge": true,
+        "unknown_attempts": 1,
+        "batch_allocation_held_usd": 0.08,
+        "known_responses": 11
+      },
+      {
+        "id": "nist-reading-guidance-v4-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.020922,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-v5r2-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.023286599999999994,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-repeat-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.0233802,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1365,
-    "known_estimate_usd": 0.9649074,
-    "unknown_current_charge": false
+    "dispatch_attempts": 1425,
+    "known_estimate_usd": 1.0468377,
+    "unknown_current_charge": true,
+    "unknown_fee_reservations": [
+      {
+        "batch": "nist-reading-evidence-focused-v3-20261107",
+        "unknown_attempts": 1,
+        "known_estimate_usd": 0.014341499999999998,
+        "allocation_held_usd": 0.08,
+        "additional_reservation_usd": 0.0656585,
+        "status": "unknown actual charge, allocation reserved conservatively; not invoice"
+      }
+    ],
+    "accounted_with_reservations_usd": 1.1124962,
+    "unallocated_authorization_usd": 1.8875038,
+    "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Do not promote structured reading candidate6/8; literal origin8/8 not entailment. Profile/fix cold-cache probe placement at startup, no hash weakening; retain quality errors for next source-condition binding experiment.",
+  "next": "Do not promote unstable8case generation; isolate quiz latency stage in zero-model fullTCPfixture, then continue source condition representation using preserved failures.",
   "quota": {
-    "stop_remaining_percent_lte": 10,
-    "last_verified_primary_remaining_percent": 99,
+    "stop_remaining_percent_lte": 0,
+    "last_verified_primary_remaining_percent": 18,
     "no_reset_credit": true,
-    "verified_at_utc": "2026-11-06T14:58:29.048078+00:00"
+    "verified_at_utc": "2026-11-06T14:58:29.048078+00:00",
+    "previous_default_threshold_percent": 10,
+    "override_scope": "this run only: user2026-11-07 says use current quota to exhaustion",
+    "user_reported_remaining_percent": 25,
+    "quota_tool_temporarily_unavailable": false,
+    "stop_on_rate_limit": true,
+    "verified_at_local": "2026-11-07T02:48+08:00"
   },
-  "pending_batches": [
-    {
-      "packet": "evaluation/nist-reading-evidence-focused-v3-20261107",
-      "output": "docs/engineering-delivery/nist-reading-focused-20261107-live",
-      "status": "frozen_not_dispatched",
-      "max_calls": 16,
-      "budget_usd": 0.08
-    }
-  ],
+  "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
   "documentation_ci": {
     "id": 42073073436,
@@ -188,13 +226,13 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "b82d8bb pushed, GitHub branch head verified; raw server.log excluded after auto-review rejection; aggregates only",
-  "latest_commit": "b82d8bb93ef609c214c3789ce725a8d1ccedbd11",
+  "latest_commit": "ace98c197218774cb90c315143611aceee72e3a8",
   "latest_ci": {
-    "id": 42242303028,
-    "head_sha": "b82d8bb93ef609c214c3789ce725a8d1ccedbd11",
+    "id": 42249176426,
+    "head_sha": "ace98c197218774cb90c315143611aceee72e3a8",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42242303028"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42249176426"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -212,5 +250,14 @@
     "model_calls": 0,
     "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
   },
-  "latest_activity_local": "2026-11-07T00:02:54.929051+08:00"
+  "latest_activity_local": "2026-11-07T02:38:05.217229+08:00",
+  "business_load": {
+    "status": "completed_all_frozen_gates",
+    "directory": "docs/engineering-delivery/business-load-20261107",
+    "model_calls": 0,
+    "users": 8,
+    "seconds": 60,
+    "audit": "docs/engineering-delivery/business-load-20261107/audit.json",
+    "requests": 223
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "roles": {
+    "assistant": 147,
+    "user": 147
+  },
+  "answer_receipts": 38,
+  "max_message_chars": 17,
+  "integrity": "ok",
+  "database_bytes": 823296
+}

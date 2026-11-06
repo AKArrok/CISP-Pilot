@@ -1,0 +1,234 @@
+[
+  {
+    "id": "ac-8-new-05",
+    "source_ref": 1,
+    "parent_line": 12,
+    "segment_count": 6,
+    "canonical_sha256": "43d09e58d8dda974735deb71b84572346377a53e4659fbb73268b1c7fbad2ccf",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-05",
+    "source_ref": 2,
+    "parent_line": 23,
+    "segment_count": 4,
+    "canonical_sha256": "8a20eb2c3f42850f231a97cc32a3596a456daed51a916e65f01ef6de15a1a512",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-05",
+    "source_ref": 2,
+    "parent_line": 25,
+    "segment_count": 6,
+    "canonical_sha256": "095b74fcb389cec52ffca4f25718ac4d84a885571f39bc08f2fbfd37a9950cc1",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-05",
+    "source_ref": 2,
+    "parent_line": 27,
+    "segment_count": 9,
+    "canonical_sha256": "9582fd2bbad29c9532574d9d4b23edf84d2a197599660aff146b68505bdb1b00",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-06",
+    "source_ref": 1,
+    "parent_line": 12,
+    "segment_count": 6,
+    "canonical_sha256": "43d09e58d8dda974735deb71b84572346377a53e4659fbb73268b1c7fbad2ccf",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-06",
+    "source_ref": 2,
+    "parent_line": 23,
+    "segment_count": 4,
+    "canonical_sha256": "8a20eb2c3f42850f231a97cc32a3596a456daed51a916e65f01ef6de15a1a512",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-06",
+    "source_ref": 2,
+    "parent_line": 25,
+    "segment_count": 6,
+    "canonical_sha256": "095b74fcb389cec52ffca4f25718ac4d84a885571f39bc08f2fbfd37a9950cc1",
+    "exact_join": true
+  },
+  {
+    "id": "ac-8-new-06",
+    "source_ref": 2,
+    "parent_line": 27,
+    "segment_count": 9,
+    "canonical_sha256": "9582fd2bbad29c9532574d9d4b23edf84d2a197599660aff146b68505bdb1b00",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-02",
+    "source_ref": 1,
+    "parent_line": 8,
+    "segment_count": 4,
+    "canonical_sha256": "8c4a9ee93dd0900893d8840df7a046580a6eaa93b741a87a390cd491c31b24a5",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-02",
+    "source_ref": 1,
+    "parent_line": 10,
+    "segment_count": 5,
+    "canonical_sha256": "ba87f0434f3b56134e46db646a18d19a3f5a371090ccd12604632fd1dcff091e",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-02",
+    "source_ref": 2,
+    "parent_line": 5,
+    "segment_count": 4,
+    "canonical_sha256": "a29fad57db6a43f0ace3dad08f13cd1396f9fdc5f024c9ae458c1926c4a36af4",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-03",
+    "source_ref": 1,
+    "parent_line": 8,
+    "segment_count": 4,
+    "canonical_sha256": "8c4a9ee93dd0900893d8840df7a046580a6eaa93b741a87a390cd491c31b24a5",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-03",
+    "source_ref": 1,
+    "parent_line": 10,
+    "segment_count": 5,
+    "canonical_sha256": "ba87f0434f3b56134e46db646a18d19a3f5a371090ccd12604632fd1dcff091e",
+    "exact_join": true
+  },
+  {
+    "id": "at-2-new-03",
+    "source_ref": 2,
+    "parent_line": 6,
+    "segment_count": 8,
+    "canonical_sha256": "b07822bd19b9835cf5556f868cea3935eab3d07925e03bc8fbddf2f3620abdd1",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-07",
+    "source_ref": 1,
+    "parent_line": 6,
+    "segment_count": 7,
+    "canonical_sha256": "59539ccd013f34b1cf1973181cc11e22d0a768eb4eb61c0f0efecc4ac13cbecb",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-07",
+    "source_ref": 2,
+    "parent_line": 3,
+    "segment_count": 6,
+    "canonical_sha256": "54b592121bda7ed5806fd7861e0a807030c172320791c6feaa24fdc40f974d6f",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-07",
+    "source_ref": 2,
+    "parent_line": 5,
+    "segment_count": 8,
+    "canonical_sha256": "1fdfe831895750bb57b9b224bb95d74e881152cd591f61bb48e823a3d029d45c",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-08",
+    "source_ref": 1,
+    "parent_line": 6,
+    "segment_count": 7,
+    "canonical_sha256": "59539ccd013f34b1cf1973181cc11e22d0a768eb4eb61c0f0efecc4ac13cbecb",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-08",
+    "source_ref": 2,
+    "parent_line": 23,
+    "segment_count": 4,
+    "canonical_sha256": "8a20eb2c3f42850f231a97cc32a3596a456daed51a916e65f01ef6de15a1a512",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-08",
+    "source_ref": 2,
+    "parent_line": 25,
+    "segment_count": 6,
+    "canonical_sha256": "095b74fcb389cec52ffca4f25718ac4d84a885571f39bc08f2fbfd37a9950cc1",
+    "exact_join": true
+  },
+  {
+    "id": "cp-9-new-08",
+    "source_ref": 2,
+    "parent_line": 27,
+    "segment_count": 9,
+    "canonical_sha256": "9582fd2bbad29c9532574d9d4b23edf84d2a197599660aff146b68505bdb1b00",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-01",
+    "source_ref": 1,
+    "parent_line": 3,
+    "segment_count": 6,
+    "canonical_sha256": "54b592121bda7ed5806fd7861e0a807030c172320791c6feaa24fdc40f974d6f",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-01",
+    "source_ref": 1,
+    "parent_line": 5,
+    "segment_count": 8,
+    "canonical_sha256": "1fdfe831895750bb57b9b224bb95d74e881152cd591f61bb48e823a3d029d45c",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-01",
+    "source_ref": 2,
+    "parent_line": 23,
+    "segment_count": 4,
+    "canonical_sha256": "8a20eb2c3f42850f231a97cc32a3596a456daed51a916e65f01ef6de15a1a512",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-01",
+    "source_ref": 2,
+    "parent_line": 25,
+    "segment_count": 6,
+    "canonical_sha256": "095b74fcb389cec52ffca4f25718ac4d84a885571f39bc08f2fbfd37a9950cc1",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-01",
+    "source_ref": 2,
+    "parent_line": 27,
+    "segment_count": 9,
+    "canonical_sha256": "9582fd2bbad29c9532574d9d4b23edf84d2a197599660aff146b68505bdb1b00",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-07",
+    "source_ref": 1,
+    "parent_line": 3,
+    "segment_count": 6,
+    "canonical_sha256": "54b592121bda7ed5806fd7861e0a807030c172320791c6feaa24fdc40f974d6f",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-07",
+    "source_ref": 1,
+    "parent_line": 5,
+    "segment_count": 8,
+    "canonical_sha256": "1fdfe831895750bb57b9b224bb95d74e881152cd591f61bb48e823a3d029d45c",
+    "exact_join": true
+  },
+  {
+    "id": "ca-8-new-07",
+    "source_ref": 2,
+    "parent_line": 6,
+    "segment_count": 8,
+    "canonical_sha256": "b07822bd19b9835cf5556f868cea3935eab3d07925e03bc8fbddf2f3620abdd1",
+    "exact_join": true
+  }
+]

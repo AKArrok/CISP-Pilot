@@ -1,0 +1,88 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens": 5181
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_structured",
+      "tokens": 5354
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens": 5190
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_structured",
+      "tokens": 5363
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens": 4420
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_structured",
+      "tokens": 4593
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens": 4104
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_structured",
+      "tokens": 4277
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens": 4087
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_structured",
+      "tokens": 4260
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens": 4973
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_structured",
+      "tokens": 5146
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens": 5049
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_structured",
+      "tokens": 5222
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens": 3208
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_structured",
+      "tokens": 3381
+    }
+  ],
+  "maximum_input": 5363,
+  "limit": 5500,
+  "calls": 16,
+  "same_questions_and_sources": true
+}

@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from scripts.inline_oscal_parameters import expand_parameters
+from scripts.inline_oscal_parameters import expand_parameters, parameter_bindings
 
 
 MARKER = "\nOriginal OSCAL parameter definitions (no values assigned by this extraction):\n"
@@ -29,3 +29,19 @@ def test_unstructured_text_is_unchanged():
 def test_missing_or_duplicate_definitions_cannot_silently_invent_bindings(definitions):
     with pytest.raises(ValueError):
         expand_parameters("Use {{ insert: param, x }}" + MARKER + json.dumps(definitions))
+
+
+def test_parameter_ownership_contains_only_literal_referencing_clauses():
+    parameters = [{"id": "scope", "label": "components"}, {"id": "frequency", "label": "frequency"}]
+    text = ("[x.a] Back up user data in {{ insert: param, scope }}.\n"
+            "[x.b] Back up system data {{ insert: param, frequency }}." + MARKER + json.dumps(parameters))
+    bindings = parameter_bindings(text)
+    assert bindings[0]["referenced_in"] == [{"line": 1,
+        "original_clause": "[x.a] Back up user data in {{ insert: param, scope }}."}]
+    assert bindings[1]["referenced_in"][0]["line"] == 2
+    assert "system data" not in bindings[0]["referenced_in"][0]["original_clause"]
+
+
+def test_unreferenced_parameter_definition_is_not_assigned_an_invented_clause():
+    text = "No parameter use." + MARKER + json.dumps([{"id": "unused", "label": "events"}])
+    assert parameter_bindings(text) == [{"parameter_id": "unused", "referenced_in": []}]
