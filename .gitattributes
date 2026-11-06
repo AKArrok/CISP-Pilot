@@ -71,3 +71,5 @@ docs/engineering-delivery/business-soak-20261107/*.json -text whitespace=cr-at-e
 docs/engineering-delivery/business-soak-20261107/*.jsonl -text whitespace=cr-at-eol
 docs/engineering-delivery/business-soak-20261107/*.csv -text -whitespace
 docs/engineering-delivery/business-soak-20261107/*.log -text -whitespace
+scripts/compile_nist_source_units.py -text whitespace=cr-at-eol
+scripts/audit_business_profile.py -text whitespace=cr-at-eol

@@ -1,0 +1,49 @@
+{
+  "reviewer": "Codex AI source review, not human gold",
+  "role_change": "Previous retrieval-only translations independently rechecked as experimental reading aids, never primary citation evidence",
+  "corrections": [
+    {
+      "segment": "ac-8-2",
+      "before": "隐私便利措施",
+      "after": "隐私安排",
+      "original_english_excerpt": "privacy accommodations"
+    },
+    {
+      "segment": "cp-9-1",
+      "before": "加密哈希",
+      "after": "密码学哈希",
+      "original_english_excerpt": "cryptographic hashes"
+    },
+    {
+      "segment": "ca-8-1",
+      "before": "代理人员和团队",
+      "after": "人员（agents）和团队",
+      "original_english_excerpt": "agents and teams"
+    },
+    {
+      "segment": "ca-8-1",
+      "before": "在{{ insert: param, ca-08_odp.02 }}上执行{{ insert: param, ca-08_odp.01 }}的渗透测试。",
+      "after": "对{{ insert: param, ca-08_odp.02 }}按{{ insert: param, ca-08_odp.01 }}实施渗透测试。",
+      "original_english_excerpt": "Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}"
+    },
+    {
+      "segment": "ca-8-2",
+      "before": "基于对系统的充分了解进行预测试分析、基于预测试分析识别潜在漏洞的预测试",
+      "after": "基于对系统的充分了解进行测试前分析、基于该分析在测试前识别潜在漏洞",
+      "original_english_excerpt": "pretest identification of potential vulnerabilities based on the pretest analysis"
+    },
+    {
+      "segment": "at-2-1",
+      "before": "当系统变更要求时或遵循{{ insert: param, at-2_prm_2 }}之后",
+      "after": "当系统变更需要时，或在{{ insert: param, at-2_prm_2 }}发生后",
+      "original_english_excerpt": "When required by system changes or following {{ insert: param, at-2_prm_2 }}"
+    },
+    {
+      "segment": "at-2-1",
+      "before": "更新意识培训与意识内容{{ insert: param, at-02_odp.06 }}并遵循{{ insert: param, at-02_odp.07 }}",
+      "after": "按{{ insert: param, at-02_odp.06 }}并在{{ insert: param, at-02_odp.07 }}发生后更新素养培训与意识内容",
+      "original_english_excerpt": "Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }}"
+    }
+  ],
+  "coverage": "Full4 source bodies verified, parameters unresolved, no questions/answers/labels used"
+}

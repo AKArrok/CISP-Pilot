@@ -1,0 +1,63 @@
+{
+  "scope": "Original8 repeated four times, not32independent cases or human gold",
+  "inputs_identical_questions_and_English_sources": true,
+  "records": [
+    {
+      "batch": "docs/engineering-delivery/nist-native-ownership-20261107-live",
+      "cases": 8,
+      "AI_supported": 8,
+      "literal_provenance": 8,
+      "calls_including_baseline": 16,
+      "cost_conservative_usd": 0.0232866,
+      "failures": []
+    },
+    {
+      "batch": "docs/engineering-delivery/nist-native-ownership-repeat-20261107-live",
+      "cases": 8,
+      "AI_supported": 7,
+      "literal_provenance": 8,
+      "calls_including_baseline": 16,
+      "cost_conservative_usd": 0.0233802,
+      "failures": [
+        {
+          "id": "ac-8-new-05",
+          "reason": "首句将多语言考虑绑定风险评估，原文该条件只属于二次告知。重复暴露旧失败，不能取首轮8/8作为最终成绩。"
+        }
+      ]
+    },
+    {
+      "batch": "docs/engineering-delivery/nist-native-ownership-noaid-20261107-live",
+      "cases": 8,
+      "AI_supported": 8,
+      "literal_provenance": 8,
+      "calls_including_baseline": 16,
+      "cost_conservative_usd": 0.0212712,
+      "failures": []
+    },
+    {
+      "batch": "docs/engineering-delivery/nist-native-ownership-noaid-repeat-20261107-live",
+      "cases": 8,
+      "AI_supported": 6,
+      "literal_provenance": 8,
+      "calls_including_baseline": 16,
+      "cost_conservative_usd": 0.020694,
+      "failures": [
+        {
+          "id": "at-2-new-02",
+          "reason": "英文security incidents or breaches再次译为安全事件或违规；breaches的事件类别被替换，保持原术语标准失败。"
+        },
+        {
+          "id": "cp-9-new-07",
+          "reason": "列出三类备份后泛称系统组件与备份频次待组织确定，未限定组件范围属于用户级备份；按原保守范围歧义标准失败，不称明确事实矛盾。"
+        }
+      ]
+    }
+  ],
+  "candidate_observations": 32,
+  "candidate_supported_AI": 29,
+  "literal_provenance_valid": 32,
+  "total_calls_including_baselines": 64,
+  "cost_conservative_usd": 0.088632,
+  "decision": "Neither aided nor noaid candidate passes repeat stability; keep default. No causal/statistical generalization or best-run selection.",
+  "next": "Source-derived fact units and terminology provenance; retain AC8/AT2/CP9 failures. Repeat/negative/full32/mixed4 gates before default promotion."
+}

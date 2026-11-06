@@ -7,9 +7,9 @@
   "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
   "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
   "active_experiment": {
-    "packet": "evaluation/nist-native-ownership-repeat-20261107",
-    "output": "docs/engineering-delivery/nist-native-ownership-repeat-20261107-live",
-    "status": "repeat_failed_7_of_8_original_AC8_risk_recurred",
+    "packet": "evaluation/nist-native-ownership-noaid-repeat-20261107",
+    "output": "docs/engineering-delivery/nist-native-ownership-noaid-repeat-20261107-live",
+    "status": "noaid_repeat_failed6of8_AT2translation_CP9scope",
     "max_calls": 16,
     "budget_usd": 0.08
   },
@@ -164,10 +164,22 @@
         "calls": 16,
         "estimated_cost_usd": 0.0233802,
         "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-noaid-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.0212712,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-noaid-repeat-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.020694,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1425,
-    "known_estimate_usd": 1.0468377,
+    "dispatch_attempts": 1457,
+    "known_estimate_usd": 1.0888029,
     "unknown_current_charge": true,
     "unknown_fee_reservations": [
       {
@@ -179,15 +191,15 @@
         "status": "unknown actual charge, allocation reserved conservatively; not invoice"
       }
     ],
-    "accounted_with_reservations_usd": 1.1124962,
-    "unallocated_authorization_usd": 1.8875038,
+    "accounted_with_reservations_usd": 1.1544614,
+    "unallocated_authorization_usd": 1.8455386,
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Finalize extended zero-model load, push4line startup fix and verify exactCI; generation8case repeat still7/8, keep originaldefault and pursue fact-level source bindings not more domain-specific hints.",
+  "next": "Original AC8/AT2/CP9 failures: literal-unit citation coverage and term provenance diagnostic; no new prompt stacking. Need unit-reference contract, frozen same8 repeat/negative and original32/mixed4 before default promotion. Latest quality noaid repeat6/8; default unchanged. Push current source-unit preparation/soak/results then check exactCI.",
   "quota": {
     "stop_remaining_percent_lte": 0,
-    "last_verified_primary_remaining_percent": 11,
+    "last_verified_primary_remaining_percent": 6,
     "no_reset_credit": true,
     "verified_at_utc": "2026-11-07T02:54:13.408675+08:00",
     "previous_default_threshold_percent": 10,
@@ -226,13 +238,13 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "1abcf69 pushed; exact CI observed",
-  "latest_commit": "1abcf690779511df1826ec64fec348ed14a6413d",
+  "latest_commit": "06eb7bf6c9e93e0bd2f719ef33835b0ebb2a93ae",
   "latest_ci": {
-    "id": 42274328854,
-    "head_sha": "1abcf690779511df1826ec64fec348ed14a6413d",
+    "id": 42275376749,
+    "head_sha": "06eb7bf6c9e93e0bd2f719ef33835b0ebb2a93ae",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42274328854"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42275376749"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -250,7 +262,7 @@
     "model_calls": 0,
     "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
   },
-  "latest_activity_local": "2026-11-07T02:54:13.408675+08:00",
+  "latest_activity_local": "2026-11-07T03:07:28.156991+08:00",
   "business_load": {
     "status": "completed_all_frozen_gates",
     "directory": "docs/engineering-delivery/business-load-20261107",
@@ -272,10 +284,24 @@
     "init_seconds": 0.398219
   },
   "business_soak": {
-    "status": "running",
+    "status": "completed_all_frozen_diagnostic_gates",
     "directory": "docs/engineering-delivery/business-soak-20261107",
     "model_calls": 0,
     "users": 8,
-    "seconds": 180
+    "seconds": 180,
+    "verification": "docs/engineering-delivery/business-soak-20261107/verification.json",
+    "requests": 714,
+    "failures": 0,
+    "rss_growth_mib": 1.45703125
+  },
+  "source_units": {
+    "status": "offline_literal_compilation_only_not_semantic_fix",
+    "input": "evaluation/nist-native-ownership-v5r2-20261107/chunks.json",
+    "output": "docs/engineering-delivery/evaluation-resume-20261106/literal-source-units.json",
+    "retrieval_documents": 101,
+    "canonical_sources": 8,
+    "literal_units": 155,
+    "tests": "10passed plus Ruff",
+    "model_calls": 0
   }
 }

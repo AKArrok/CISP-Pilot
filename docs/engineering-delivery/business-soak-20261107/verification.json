@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "users": 8,
+  "seconds": 180,
+  "requests": 714,
+  "failures": 0,
+  "model_calls": 0,
+  "default_db_unchanged": true,
+  "runtime_stopped": true,
+  "persistence": {
+    "roles": {
+      "assistant": 416,
+      "user": 416
+    },
+    "answer_receipts": 149,
+    "max_message_chars": 17,
+    "integrity": "ok",
+    "database_bytes": 1646592
+  },
+  "rss_peak_mib": 207.0390625,
+  "health_max_ms": 40.17269999894779,
+  "scope": "Same8users current fullTCPfixture extended180seconds, no model; observe RSS plateau and fixedmessage/persistence integrity. Not production endurance qualification.",
+  "limitations": "Synthetic local workload, no real-model concurrency or production SLA",
+  "quiz_internal_max_ms": 32.42179999870132,
+  "retrieval_max_ms": 0.9011000001919456,
+  "init_before_first_quiz": true,
+  "init_seconds": 0.3979966000006243,
+  "rss_late_minus_early_median_mib": 1.45703125,
+  "rss_diagnostic_bound_mib": 64
+}

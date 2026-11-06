@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "users": 8,
+  "seconds": 60,
+  "requests": 232,
+  "failures": 0,
+  "model_calls": 0,
+  "default_db_unchanged": true,
+  "runtime_stopped": true,
+  "persistence": {
+    "roles": {
+      "assistant": 142,
+      "user": 142
+    },
+    "answer_receipts": 45,
+    "max_message_chars": 17,
+    "integrity": "ok",
+    "database_bytes": 819200
+  },
+  "rss_peak_mib": 206.02734375,
+  "health_max_ms": 29.905800001870375,
+  "scope": "Current app real TCP/auth/SSE/quiz/transactions, syntheticdemoSQLite, fixed local model nodes, no external model or realcourse data; synthetic-only diagnostic wrappers of retrieval/apply/lock/SQLverb, no raw SQL or identities; only production change4lines startup load; record cold init end before user quiz begins",
+  "limitations": "Synthetic local workload, no real-model concurrency or production SLA",
+  "quiz_internal_max_ms": 21.07149999937974,
+  "retrieval_max_ms": 0.6453000023611821,
+  "init_before_first_quiz": true,
+  "init_seconds": 0.39821889999802806
+}
