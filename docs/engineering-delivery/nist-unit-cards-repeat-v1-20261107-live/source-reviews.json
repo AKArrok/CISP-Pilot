@@ -1,0 +1,99 @@
+{
+  "method": "Codex AI original-source review and exact rendered output hash replay, not independent human gold",
+  "candidate_supported": 8,
+  "cases": 8,
+  "literal_provenance_valid": 8,
+  "candidate_reviews": [
+    {
+      "id": "ac-8-new-05",
+      "selector_sha256": "3889ec040b68d30d0c8af942ebfd635543907e46090af22aa97ee1eef6247bd0",
+      "candidate_sha256": "2220ebcf63a75fdf995ba5dc49002d872b4b3f21654115a987710b94e2d0a28f",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "多语言按组织需求和用户人口构成考虑，未添加风险前提。",
+      "answer_type": "affirm",
+      "rendered_candidate": "可以作肯定回答，但须保留下列适用条件。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第12行片段5\n辅助译文：组织根据组织需求和系统用户的人口统计特征考虑以多种语言显示的系统使用通知消息或横幅。\n原文：\n>  Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "ac-8-new-06",
+      "selector_sha256": "9993726b1fd9cb37c9ed2f6cf8d6299723c0e48ce5f3004489aa60aff05b0db8",
+      "candidate_sha256": "134196533fab5d971b32ffb9ca6ba88973f4f8a4a79e93769c9a817fc79d0095",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "所选原句明确基于风险评估考虑二次告知，直接覆盖所问；未声称一律强制。",
+      "answer_type": "explain",
+      "rendered_candidate": "依据资料，可作如下说明。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第12行片段4\n辅助译文：基于风险评估，组织考虑在初始网络登录之后访问应用程序或其他系统资源是否需要二次系统使用通知。\n原文：\n>  Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "at-2-new-02",
+      "selector_sha256": "a2f930502db6301c44933b231d936df04f99b25049f06c82f311481020f111ad",
+      "candidate_sha256": "55bc328971206e9f983a931103dfb15ef19845ac48cea8e645ac18cc8ec809d8",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "工作环境影响培训内容；组织更新参数未赋值，示例包含但不限于，breaches译泄露；合理肯定转述。",
+      "answer_type": "affirm",
+      "rendered_candidate": "可以作肯定回答，但须保留下列适用条件。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第8行片段2\n辅助译文：组织根据特定的组织要求、人员被授权访问的系统以及工作环境（例如远程办公）来确定素养培训和意识培训的内容。\n原文：\n>  Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework).\n\n[资料1]原文第6行片段1\n辅助译文：按{{ insert: param, at-02_odp.06 }}并在{{ insert: param, at-02_odp.07 }}发生后更新素养培训与意识内容；\n原文：\n> [at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and\n\n[资料1]原文第10行片段4\n辅助译文：定期更新素养培训与意识内容有助于确保内容保持相关性。\n原文：\n>  Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant.\n\n[资料1]原文第10行片段5\n辅助译文：可能促使更新素养培训与意识内容的事件包括但不限于评估或审计发现、安全事件或泄露，或适用法律、行政命令、指令、法规、政策、标准和指南的变化。\n原文：\n>  Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n[资料1]参数at-02_odp.06（未赋值），引用于s1:l6:p1\n辅助译文：更新素养培训与意识内容的频次，待定义。\n原生定义（结构化摘录）：{\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}\n\n[资料1]参数at-02_odp.07（未赋值），引用于s1:l6:p1\n辅助译文：要求更新素养培训与意识内容的事件，待定义。\n原生定义（结构化摘录）：{\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "at-2-new-03",
+      "selector_sha256": "7d00eb2c6e9b52b3259b511edc4fc0eed40063fc658e561c7162c74e7c3a484d",
+      "candidate_sha256": "6487e229b76b50c589595579895948eeda840ea609f53124c699773621d20f5d",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "原文意识技术示例包含至少两种，具体技术仍组织定义。",
+      "answer_type": "explain",
+      "rendered_candidate": "依据资料，可作如下说明。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第5行片段1\n辅助译文：采用以下技术来提高系统用户的安全与隐私意识{{ insert: param, at-02_odp.05 }}；\n原文：\n> [at-2_smt.b] Employ the following techniques to increase the security and privacy awareness of system users {{ insert: param, at-02_odp.05 }};\n\n[资料1]原文第10行片段1\n辅助译文：意识技术包括展示海报、提供印有安全和隐私提醒的用品、显示登录屏幕消息、生成组织官员的电子邮件建议或通知，以及开展意识活动。\n原文：\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events.\n\n[资料1]参数at-02_odp.05（未赋值），引用于s1:l5:p1\n辅助译文：用于提升系统用户安全与隐私意识的技术，待定义。\n原生定义（结构化摘录）：{\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "cp-9-new-07",
+      "selector_sha256": "1c0d415d984255c6badeeff96561e7ea984cb550a11dcf0583d7a92e9f2c3700",
+      "candidate_sha256": "ce8d22c67831e94b8e479e95ebe82392219de6bcd7c8101cf243d8d8e5617425",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "未指定厂商的结论限定本次完整控制；三类备份及用户级组件范围准确展示。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第1行片段1\n辅助译文：系统备份\n原文：\n> System Backup\n\n[资料1]原文第2行片段1\n辅助译文：对{{ insert: param, cp-09_odp.01 }}中包含的用户级信息执行备份{{ insert: param, cp-09_odp.02 }}；\n原文：\n> [cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n\n[资料1]原文第3行片段1\n辅助译文：对系统中包含的系统级信息执行备份{{ insert: param, cp-09_odp.03 }}；\n原文：\n> [cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n\n[资料1]原文第4行片段1\n辅助译文：对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}；\n原文：\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第5行片段1\n辅助译文：保护备份信息的机密性、完整性和可用性。\n原文：\n> [cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n\n[资料1]原文第6行片段1\n辅助译文：系统级信息包括系统状态信息、操作系统软件、中间件、应用软件和许可证。\n原文：\n> [cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses.\n\n[资料1]原文第6行片段2\n辅助译文：用户级信息包括系统级信息以外的信息。\n原文：\n>  User-level information includes information other than system-level information.\n\n[资料1]原文第6行片段3\n辅助译文：用于保护系统备份完整性的机制包括数字签名和密码学哈希。\n原文：\n>  Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes.\n\n[资料1]原文第6行片段4\n辅助译文：系统备份信息在传输过程中的保护由[MP-5](#mp-5)和[SC-8](#sc-8)处理。\n原文：\n>  Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) .\n\n[资料1]原文第6行片段5\n辅助译文：系统备份反映应急计划中的要求以及组织对信息备份的其他要求。\n原文：\n>  System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information.\n\n[资料1]原文第6行片段6\n辅助译文：组织可能受到法律、行政命令、指令、法规或政策的约束，这些法律、行政命令、指令、法规或政策对特定类别的信息（例如个人健康信息）提出了要求。\n原文：\n>  Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information).\n\n[资料1]原文第6行片段7\n辅助译文：组织人员就此类要求与机构高级隐私官和法律顾问进行协商。\n原文：\n>  Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\n\n[资料1]原文第7行片段1\n辅助译文：原生OSCAL参数定义（本次提取未赋值）。\n原文：\n> Original OSCAL parameter definitions (no values assigned by this extraction):\n\n[资料1]原文第8行片段1\n辅助译文：cp-09_odp.01：需要对其中的用户级信息执行备份的系统组件，待定义。\ncp-09_odp.02：与恢复时间目标和恢复点目标一致的用户级信息备份频次，待定义。\ncp-09_odp.03：与恢复时间目标和恢复点目标一致的系统级信息备份频次，待定义。\ncp-09_odp.04：与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。\n原文：\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "cp-9-new-08",
+      "selector_sha256": "ad0374171b37494d4b15c8babf7dbc3bba179b93cbc2b09656215bdd202703c4",
+      "candidate_sha256": "3555192e025286369f19b3908d2c43b4994f3388b9935ac53378c2981481bcbe",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "明确否定跳过文档备份，文档包含安全隐私，频次未赋值但动作必须。",
+      "answer_type": "deny",
+      "rendered_candidate": "资料不支持题述说法，具体要求如下。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第4行片段1\n辅助译文：对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}；\n原文：\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第6行片段6\n辅助译文：组织可能受到法律、行政命令、指令、法规或政策的约束，这些法律、行政命令、指令、法规或政策对特定类别的信息（例如个人健康信息）提出了要求。\n原文：\n>  Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information).\n\n[资料1]原文第6行片段7\n辅助译文：组织人员就此类要求与机构高级隐私官和法律顾问进行协商。\n原文：\n>  Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\n\n[资料1]参数cp-09_odp.04（未赋值），引用于s1:l4:p1\n辅助译文：与恢复时间目标和恢复点目标一致的系统文档备份频次，待定义。\n原生定义（结构化摘录）：{\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "ca-8-new-01",
+      "selector_sha256": "3a215c0d73de17cff895ab625e3ad90da2fb1ea2b87cfe5f664d31a27542ac62",
+      "candidate_sha256": "10ded35c1f502afb9abd9535f4becbef9b77aebb6ed1dde8d582f2976418bff4",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "与扫描相比的人员专长、深度分析和对手模拟均由原句支持；未补造扫描能力。",
+      "answer_type": "explain",
+      "rendered_candidate": "依据资料，可作如下说明。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第3行片段1\n辅助译文：渗透测试是一种针对系统或单个系统组件进行的专门评估类型，用于识别可能被对手利用的漏洞。\n原文：\n> [ca-8_gdn] Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries.\n\n[资料1]原文第3行片段2\n辅助译文：渗透测试超越了自动化漏洞扫描，由具备可证明技能和经验的人员（agents）和团队执行，这些技能和经验包括网络、操作系统和/或应用层安全方面的技术专长。\n原文：\n>  Penetration testing goes beyond automated vulnerability scanning and is conducted by agents and teams with demonstrable skills and experience that include technical expertise in network, operating system, and/or application level security.\n\n[资料1]原文第3行片段3\n辅助译文：渗透测试可用于验证漏洞或确定系统在指定约束条件下对对手的渗透抵抗程度。\n原文：\n>  Penetration testing can be used to validate vulnerabilities or determine the degree of penetration resistance of systems to adversaries within specified constraints.\n\n[资料1]原文第3行片段5\n辅助译文：渗透测试试图复制对手的行动，并对安全和隐私相关的弱点或缺陷提供更深入的分析。\n原文：\n>  Penetration testing attempts to duplicate the actions of adversaries and provides a more in-depth analysis of security- and privacy-related weaknesses or deficiencies.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】",
+      "repeat_rendered_identical": true
+    },
+    {
+      "id": "ca-8-new-07",
+      "selector_sha256": "c19c0bbff9fb2797c8e02953ac4dc468a665acb1710129d974d6822bb059f209",
+      "candidate_sha256": "05d6fd9fdce7274da541ba13ed184ae82e947f34f3c229e34556f5b136b0fff4",
+      "accepted": true,
+      "literal_provenance_valid": true,
+      "reason": "未规定七天，频次/对象参数未赋值，不把频次作时长。",
+      "answer_type": "not_specified",
+      "rendered_candidate": "本次资料未作出题述规定。\n\n以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。\n\n[资料1]原文第2行片段1\n辅助译文：对{{ insert: param, ca-08_odp.02 }}按{{ insert: param, ca-08_odp.01 }}实施渗透测试。\n原文：\n> [ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}.\n\n[资料1]原文第7行片段1\n辅助译文：ca-08_odp.01：对系统或系统组件开展渗透测试的频次，待定义。\nca-08_odp.02：需要开展渗透测试的系统或系统组件，待定义。\n原文：\n> [{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】",
+      "repeat_rendered_identical": true
+    }
+  ],
+  "all_candidate_outputs_identical_to_first": true,
+  "promotion": "two observed8/8 samples; no independent16case claim; negatives/full32/mixed4 remain",
+  "baseline_review": "raw secondbaseline retained, not fully graded; do not claim its accuracy"
+}

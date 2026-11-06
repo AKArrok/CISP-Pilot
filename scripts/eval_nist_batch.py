@@ -26,6 +26,21 @@ def load(path):
 
 
 def request_content(stage, case, row, context, manifest):
+    if manifest.get("mode") in {"answer_unit_pipeline", "answer_card_pipeline"} and stage in {"evidence_select", "answer_candidate"}:
+        from scripts.answer_unit_contract import build_catalog, materialize_selection
+        catalog = build_catalog(row["contexts"], case["unit_sources"])
+        if stage == "evidence_select":
+            return json.dumps({"question": case["question"], "sources": [
+                {"source_id": ref, "source": source["source"], "locator": source["locator"],
+                 "units": [{"id": unit["id"], "text": unit["text"]} for unit in catalog.values()
+                           if unit["source_id"] == ref]}
+                for ref, source in enumerate(row["contexts"], 1)],
+                "notice": "保序原文片段并非独立事实；选择完整回答所需的适用条件、前文指代及参数定义，不输出答案"},
+                ensure_ascii=False, separators=(",", ":"))
+        selected = materialize_selection(row["evidence_select"], catalog, row["contexts"])
+        selected["units"] = [{"id": unit["id"], "text": unit["text"]} for unit in selected["units"]]
+        return json.dumps({"question": case["question"], "selected_evidence": selected},
+                          ensure_ascii=False, separators=(",", ":"))
     if stage.startswith("answer") and manifest.get("evidence_protocol") == "answer_source_lines":
         aids = case.get("reading_aids", [])
         if not isinstance(aids, list):
@@ -151,7 +166,9 @@ def main():
     calibration = manifest.get("mode") == "judge_calibration"
     answer_contract = manifest.get("mode") == "answer_contract"
     answer_pipeline = manifest.get("mode") == "answer_pipeline"
-    fixed_inputs = calibration or answer_contract or answer_pipeline
+    answer_unit_pipeline = manifest.get("mode") == "answer_unit_pipeline"
+    answer_card_pipeline = manifest.get("mode") == "answer_card_pipeline"
+    fixed_inputs = calibration or answer_contract or answer_pipeline or answer_unit_pipeline or answer_card_pipeline
     rows = [] if fixed_inputs else retrieve(cases, chunks)
     write(args.output / "retrieval.json", rows)
     metrics = {arm: {"top1": sum(r["target_rank"] == 1 for r in rows if r["arm"] == arm),
@@ -190,7 +207,9 @@ def main():
     else:
         regression = load(args.packet / "at2-regression.json")
         work = [{"id": "at2-regression", "question": regression["question"], "fixed_contexts": regression["contexts"]}] + cases
-    stages = (("answer_baseline", "answer_english", "answer_candidate") if answer_pipeline else
+    stages = (("answer_baseline", "evidence_select") if answer_card_pipeline else
+              ("answer_baseline", "evidence_select", "answer_candidate") if answer_unit_pipeline else
+              ("answer_baseline", "answer_english", "answer_candidate") if answer_pipeline else
               ("answer_baseline", "answer_structured") if answer_contract else
               manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge"))
     outputs = []
@@ -219,11 +238,13 @@ def main():
                 write(args.output / "summary.json", summary)
                 started = time.monotonic()
                 response = client.chat.completions.create(model="deepseek-flash", messages=messages,
-                    max_tokens=1024, temperature=0 if stage.startswith("judge") else manifest.get("answer_temperature", 0),
+                    max_tokens=1024, temperature=0 if stage.startswith("judge") or stage == "evidence_select" else manifest.get("answer_temperature", 0),
                     timeout=60, extra_body={"thinking": {"type": "disabled"}},
                     **({"response_format": {"type": "json_object"}}
                        if stage.startswith("judge") or (answer_contract and stage == "answer_structured")
-                       or (answer_pipeline and stage == "answer_candidate") else {}))
+                       or (answer_pipeline and stage == "answer_candidate")
+                       or (answer_unit_pipeline and stage in {"evidence_select", "answer_candidate"})
+                       or (answer_card_pipeline and stage == "evidence_select") else {}))
                 receipt = {"id": case["id"], "stage": stage, "response": response.model_dump(),
                            "elapsed_seconds": time.monotonic()-started}
                 with (args.output / "receipts.jsonl").open("a", encoding="utf-8") as stream:

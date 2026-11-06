@@ -1,0 +1,37 @@
+...........F                                                             [100%]
+================================== FAILURES ===================================
+_ test_original_blank_lines_remain_numbered_but_cannot_be_selected_as_evidence _
+
+    def test_original_blank_lines_remain_numbered_but_cannot_be_selected_as_evidence():
+        from scripts.compile_nist_source_units import compile_units
+        contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "First.\n\nThird."}]
+>       catalog = build_catalog(contexts, compile_units(contexts)["sources"])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_answer_unit_contract.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contexts = [{'source': 'synthetic', 'locator': 'x', 'source_url': 'https://example.invalid', 'text': 'First.\n\nThird.'}]
+sources = [{'source': 'synthetic', 'source_url': 'https://example.invalid', 'locator': 'x', 'canonical_text_sha256': '0ef87aaf889a7d183674d14678eba89409fa686355b9bbd75cccc1e1f7cfe572', ...}]
+
+    def build_catalog(contexts, sources):
+        originals = {(source["source_url"], source["locator"], source["canonical_text_sha256"]): source for source in sources}
+        catalog = {}
+        for ref, context in enumerate(contexts, 1):
+            digest = hashlib.sha256(context["text"].encode()).hexdigest()
+            source = originals.get((context["source_url"], context["locator"], digest))
+            if source is None:
+                raise ValueError("Original source binding mismatch")
+            lines, coverage = context["text"].splitlines(), {}
+            for unit in source["units"]:
+                line, part, start, end = (unit[key] for key in ("parent_line", "part", "start_codepoint", "end_codepoint"))
+                if (any(type(number) is not int for number in (line, part, start, end))
+                        or not 1 <= line <= len(lines) or part < 1 or not 0 <= start < end <= len(lines[line-1])
+                        or unit["text"] != lines[line-1][start:end] or unit["id"] != f"{digest}:{line}:{part}"):
+>                   raise ValueError("Invalid literal unit or offset")
+E                   ValueError: Invalid literal unit or offset
+
+scripts\answer_unit_contract.py:24: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_unit_contract.py::test_original_blank_lines_remain_numbered_but_cannot_be_selected_as_evidence
+1 failed, 11 passed in 0.25s

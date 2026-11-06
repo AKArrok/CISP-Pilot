@@ -1,0 +1,325 @@
+{
+  "status": "in_progress",
+  "date": "2026-11-07",
+  "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
+  "entrypoint": "AGENTS.md",
+  "roadmap": "EVALUATION_LOOP.md",
+  "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
+  "base_commit": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
+  "active_experiment": {
+    "packet": "evaluation/nist-unit-cards-repeat-v1-20261107",
+    "output": "docs/engineering-delivery/nist-unit-cards-repeat-v1-20261107-live",
+    "status": "cards_repeat8of8_AI_negative_and_app_gates_pending",
+    "max_calls": 16,
+    "budget_usd": 0.08
+  },
+  "budget": {
+    "approved_total_usd": 3,
+    "anchor_dispatch_attempts": 887,
+    "anchor_estimate_usd": 0.5732733,
+    "new_batches": [
+      {
+        "id": "nist-public-http-default-baseline-20261106",
+        "calls": 64,
+        "estimated_cost_usd": 0.0386388,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-default-repeat-20261106",
+        "calls": 6,
+        "estimated_cost_usd": 0.0040958999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-binding-focused-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.008190600000000001,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-focused-output-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.00708,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-source-layout-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.0093477,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-terms-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0115035,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-focused-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0106935,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-failures-v1",
+        "calls": 8,
+        "estimated_cost_usd": 0.0082974,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-claims-v2",
+        "calls": 8,
+        "estimated_cost_usd": 0.0072846000000000004,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-lines-v3",
+        "calls": 8,
+        "estimated_cost_usd": 0.007807199999999999,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-only-v4",
+        "calls": 8,
+        "estimated_cost_usd": 0.007793399999999999,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-v1",
+        "calls": 70,
+        "estimated_cost_usd": 0.05467889999999998,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-context-v2",
+        "calls": 70,
+        "estimated_cost_usd": 0.062013300000000014,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0160434,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v2",
+        "calls": 16,
+        "estimated_cost_usd": 0.0159906,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-inline-parameters-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0185136,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-english-translation-v1",
+        "calls": 24,
+        "estimated_cost_usd": 0.025549500000000003,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-temperature-zero-20261106",
+        "calls": 64,
+        "estimated_cost_usd": 0.038800799999999996,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-reading-aid-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0179778,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-reading-evidence-v2",
+        "calls": 16,
+        "estimated_cost_usd": 0.0213336,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-reading-evidence-focused-v3-20261107",
+        "calls": 12,
+        "estimated_cost_usd": 0.014341499999999998,
+        "unknown_charge": true,
+        "unknown_attempts": 1,
+        "batch_allocation_held_usd": 0.08,
+        "known_responses": 11
+      },
+      {
+        "id": "nist-reading-guidance-v4-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.020922,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-v5r2-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.023286599999999994,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-repeat-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.0233802,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-noaid-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.0212712,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-native-ownership-noaid-repeat-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.020694,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-unit-evidence-first-v1-20261107",
+        "calls": 24,
+        "estimated_cost_usd": 0.021990299999999997,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-unit-cards-v1-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.0176676,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-unit-cards-repeat-v1-20261107",
+        "calls": 16,
+        "estimated_cost_usd": 0.017514,
+        "unknown_charge": false
+      }
+    ],
+    "dispatch_attempts": 1513,
+    "known_estimate_usd": 1.1459748,
+    "unknown_current_charge": true,
+    "unknown_fee_reservations": [
+      {
+        "batch": "nist-reading-evidence-focused-v3-20261107",
+        "unknown_attempts": 1,
+        "known_estimate_usd": 0.014341499999999998,
+        "allocation_held_usd": 0.08,
+        "additional_reservation_usd": 0.0656585,
+        "status": "unknown actual charge, allocation reserved conservatively; not invoice"
+      }
+    ],
+    "accounted_with_reservations_usd": 1.2116333,
+    "unallocated_authorization_usd": 1.7883667,
+    "pending_allocations": []
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "Freeze8adversarial development negatives with original full-source criteria; source-only translations predate new questions, no gold in index. Then fullapplication32 and mixed4 gates.",
+  "quota": {
+    "stop_remaining_percent_lte": 0,
+    "override_scope": "user explicitly resumed current new window: use to exhaustion",
+    "last_verified_primary_remaining_percent": 98,
+    "no_reset_credit": true,
+    "no_automatic_resume_next_window": true,
+    "verified_at_utc": "2026-11-07T04:18:18.105064+08:00"
+  },
+  "pending_batches": [],
+  "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
+  "documentation_ci": {
+    "id": 42073073436,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "production_candidate_status": "None promoted. Original graph/source behavior and answer prompt restored; exact original graph byte hash verified; prototype archived.",
+  "evidence_commit": "a6879f5",
+  "evidence_ci": {
+    "id": 42079024764,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "a6879f54487fe548d02418395f04928a56ead4bc"
+  },
+  "offline_fixes": {
+    "claim_only": "Question removal independent of claim_focus; all answer lines retained when no focus",
+    "answer_temperature": "Frozen manifest value reaches answer factory, router default remains0.2; invalid values stop before dispatch",
+    "red": "9failed1passed",
+    "green": "43passed,1existing warning",
+    "lint": "passed",
+    "boolean_flags": "claim_only/claim_focus reject nonboolean JSON before output/lock; separate red1failed, final combined74passed",
+    "final_regression": "103passed,1existing warning,5.02s; Ruff passed",
+    "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported",
+    "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls",
+    "current_combined_regression": "132passed,1existingAnyIOwarning,29.33s; Ruffpassed; actual current server+contracts+corpuscache"
+  },
+  "config_fix_commit": "84d8538",
+  "git_delivery": "e1ce3c3 pushed and remote branch verified",
+  "latest_commit": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
+  "latest_ci": {
+    "id": 42277108112,
+    "head_sha": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42277108112"
+  },
+  "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
+  "stop_reason": null,
+  "local_checkpoint": "Quota pause/current CI snapshot and delivery-integrity.json are local after245524a; sync on explicit resume without staging unrelated modifications",
+  "previous_record": "docs/engineering-delivery/evaluation-resume-20261106/continuation.json",
+  "resume_budget_anchor": {
+    "attempts": 1229,
+    "estimate_usd": 0.8427321,
+    "approved_total_usd": 3
+  },
+  "auth_profile": {
+    "status": "completed_r6_startup_probe_and_final_statistics_gates",
+    "current": "docs/engineering-delivery/auth-profile-20261106-r6",
+    "audit": "docs/engineering-delivery/auth-profile-20261106-r6/audit.json",
+    "model_calls": 0,
+    "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
+  },
+  "latest_activity_local": "2026-11-07T03:10:13.734355+08:00",
+  "business_load": {
+    "status": "completed_all_frozen_gates",
+    "directory": "docs/engineering-delivery/business-load-20261107",
+    "model_calls": 0,
+    "users": 8,
+    "seconds": 60,
+    "audit": "docs/engineering-delivery/business-load-20261107/audit.json",
+    "requests": 223
+  },
+  "business_profile": {
+    "status": "r2_completed_cold_cost_transfer_gates_passed",
+    "baseline": "docs/engineering-delivery/business-load-profile-20261107",
+    "retest": "docs/engineering-delivery/business-load-profile-r2-20261107",
+    "change": "server.warmup4lines loads local indexes before first question; no query/API",
+    "tests": "red2failed1passed; green15passed1existingwarning; Ruffpassed",
+    "audit": "docs/engineering-delivery/business-load-profile-r2-20261107/audit.json",
+    "retrieval_max_ms": 0.6453,
+    "quiz_internal_max_ms": 21.0715,
+    "init_seconds": 0.398219
+  },
+  "business_soak": {
+    "status": "completed_all_frozen_diagnostic_gates",
+    "directory": "docs/engineering-delivery/business-soak-20261107",
+    "model_calls": 0,
+    "users": 8,
+    "seconds": 180,
+    "verification": "docs/engineering-delivery/business-soak-20261107/verification.json",
+    "requests": 714,
+    "failures": 0,
+    "rss_growth_mib": 1.45703125
+  },
+  "source_units": {
+    "status": "offline_literal_compilation_only_not_semantic_fix",
+    "input": "evaluation/nist-native-ownership-v5r2-20261107/chunks.json",
+    "output": "docs/engineering-delivery/evaluation-resume-20261106/literal-source-units.json",
+    "retrieval_documents": 101,
+    "canonical_sources": 8,
+    "literal_units": 155,
+    "tests": "10passed plus Ruff",
+    "model_calls": 0,
+    "failure_breadth_diagnostic": "docs/engineering-delivery/evaluation-resume-20261106/evidence-breadth-diagnostic.json",
+    "all_failed_candidates_retained": 3
+  },
+  "resource_checkpoint": "Explicitly resumed by user; previous exhausted-window stop remains historical.",
+  "previous_record_sha256": "afeee8f73211cc8a4a2ec9d23cb5ae5c5e48dc345634908987246dc60046b482"
+}

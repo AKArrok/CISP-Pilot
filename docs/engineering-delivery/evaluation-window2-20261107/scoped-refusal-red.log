@@ -1,0 +1,16 @@
+.......F.                                                                [100%]
+================================== FAILURES ===================================
+_ test_insufficient_card_names_original_question_without_global_absence_claim _
+
+    def test_insufficient_card_names_original_question_without_global_absence_claim():
+        contexts, sources = fixture()
+        selected = materialize_card_selection('{"unit_ids":[],"answer_type":"insufficient"}', build_catalog(contexts, sources), contexts)
+        question = "每年的采购预算金额是多少？"
+>       rendered = render_card_answer(selected, contexts, {"units": {}, "parameters": {}}, question=question)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: render_card_answer() got an unexpected keyword argument 'question'
+
+tests\test_answer_card_contract.py:63: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_card_contract.py::test_insufficient_card_names_original_question_without_global_absence_claim
+1 failed, 8 passed in 0.23s

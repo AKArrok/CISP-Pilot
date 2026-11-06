@@ -107,8 +107,9 @@ def test_invalid_model_contract_never_becomes_a_rendered_answer(value):
         render_structured_answer(json.dumps(value), CONTEXTS)
 
 
-@pytest.mark.parametrize("mode", ["answer_contract", "answer_pipeline"])
-def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch, mode):
+@pytest.mark.parametrize("mode,bad_selection", [("answer_contract", False), ("answer_pipeline", False),
+    ("answer_unit_pipeline", False), ("answer_unit_pipeline", True), ("answer_card_pipeline", False)])
+def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch, mode, bad_selection):
     import dotenv
     import openai
     import tiktoken
@@ -118,13 +119,17 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
     packet, output = tmp_path / "packet", tmp_path / "output"
     packet.mkdir()
     context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
-    for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context]}],
+    digest = hashlib.sha256(b"Source").hexdigest()
+    unit_sources = [{"canonical_text_sha256": digest, "source_url": context["source_url"], "locator": "x", "units": [
+        {"id": digest + ":1:1", "parent_line": 1, "part": 1, "start_codepoint": 0, "end_codepoint": 6, "text": "Source"}]}]
+    for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context], "unit_sources": unit_sources}],
                         "chunks.json": [context], "prompts.json": {"answer_baseline_system": "Plain",
                                                                      "answer_structured_system": "JSON",
                                                                      "answer_english_system": "English",
+                                                                     "evidence_select_system": "Select",
                                                                      "answer_candidate_system": "Translate"}}.items():
         (packet / name).write_text(json.dumps(value), encoding="utf-8")
-    planned = 3 if mode == "answer_pipeline" else 2
+    planned = 3 if mode in {"answer_pipeline", "answer_unit_pipeline"} else 2
     manifest = {"mode": mode, "answer_temperature": .3, "frozen_sha256": {},
                 "paid_proposal": {"calls": planned, "budget_usd": .03}}
     (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
@@ -134,10 +139,17 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
 
     def create(**kwargs):
         calls.append(kwargs)
+        content = ('{"unit_ids":["s1:l1:p1"],"insufficient":false}' if len(calls) == 2
+                   else '{"answer":"A","unit_ids":["s1:l1:p1"]}') if mode == "answer_unit_pipeline" else (
+                   "English final answer" if mode == "answer_pipeline" and len(calls) == 2
+                   else '{"answer":"A","source_ids":[1]}')
+        if bad_selection and len(calls) == 2:
+            content = '{"unit_ids":["unknown"],"insufficient":false}'
+        if mode == "answer_card_pipeline" and len(calls) == 2:
+            content = '{"unit_ids":["s1:l1:p1"],"answer_type":"explain"}'
         return SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2, completion_tokens=2),
             choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(
-                content="English final answer" if mode == "answer_pipeline" and len(calls) == 2
-                else '{"answer":"A","source_ids":[1]}'))],
+                content=content))],
             model_dump=lambda: {"model": "synthetic transport response", "usage": {"prompt_tokens": 2, "completion_tokens": 2}})
 
     monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
@@ -147,13 +159,27 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
     monkeypatch.setattr(openai, "OpenAI", lambda **kw: SimpleNamespace(chat=SimpleNamespace(
         completions=SimpleNamespace(create=create))))
     monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+    if bad_selection:
+        with pytest.raises(ValueError, match="unavailable"):
+            eval_nist_batch.main()
+        assert len(calls) == 2
+        summary = json.loads((output / "summary.json").read_text())
+        assert summary["provider_calls"] == 2 and not summary["cost_unknown"]
+        assert json.loads((output / "execution-status.json").read_text())[0]["status"] == "failed"
+        return
     eval_nist_batch.main()
-    assert len(calls) == planned and all(c["temperature"] == .3 for c in calls)
+    assert len(calls) == planned
+    expected_temperatures = ([.3, 0, .3] if mode == "answer_unit_pipeline" else
+                             [.3, 0] if mode == "answer_card_pipeline" else [.3] * planned)
+    assert [c["temperature"] for c in calls] == expected_temperatures
     assert "response_format" not in calls[0]
     if mode == "answer_pipeline":
         assert "English final answer" in calls[2]["messages"][1]["content"]
         assert "English final answer" not in calls[1]["messages"][1]["content"]
         assert calls[2]["response_format"] == {"type": "json_object"}
+    elif mode == "answer_unit_pipeline":
+        assert "selected_evidence" in json.loads(calls[2]["messages"][1]["content"])
+        assert calls[1]["response_format"] == calls[2]["response_format"] == {"type": "json_object"}
     else:
         assert calls[1]["response_format"] == {"type": "json_object"}
     assert all(c["extra_body"] == {"thinking": {"type": "disabled"}} for c in calls)

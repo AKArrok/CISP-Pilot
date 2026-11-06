@@ -1,0 +1,85 @@
+{
+  "method": "Codex AI original English review, not human gold",
+  "candidate_supported": 6,
+  "literal_provenance_valid": 8,
+  "cases": 8,
+  "candidate_reviews": [
+    {
+      "id": "ac-8-new-05",
+      "candidate_sha256": "d8e478bd2b28a9cdd663059aef21b5ed5c10ff57aa53e4ea4b85e07342b39e8f",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n需要考虑，但并非无条件强制：资料指出，组织应根据自身需要和系统用户的人口构成，考虑以多种语言显示系统使用通知消息或横幅。因此是否采用多语言取决于组织需求与用户构成这两个条件。\n\n【原文证据】\n[资料1]原文第12行片段5\n>  Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "candidate_sha256": "edf440039abe607ed80bc56ac47271a2b9f86adb23ffcd805ef63d24b7992383",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n需要，但并非一律强制。资料指出，组织应基于风险评估，考虑在初次网络登录之后访问应用或其他系统资源时，是否需要二次系统使用通知。也就是说，是否在应用层再次告知，取决于组织对风险的评估结果，而不是登录网络后自动必须执行的动作。\n\n【原文证据】\n[资料1]原文第12行片段4\n>  Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "candidate_sha256": "7fec67b350d40c2ac1f45647dd95bc437eabb5b3e9df369d385ce173910fd4f9",
+      "literal_provenance_valid": true,
+      "accepted": false,
+      "reason": "原文security incidents or breaches被译为安全事件或违规，事件类别替换。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n应调整。资料明确要求组织根据具体组织需求、人员获授权访问的系统以及工作环境（例如远程办公/远程工作）来确定素养培训与意识培训的内容，因此远程工作环境变化属于内容确定的考量因素。同时，培训与意识内容须按组织待确定的更新频率（at-02_odp.06）并在组织待确定的触发事件（at-02_odp.07）发生后更新；定期更新有助于保持内容相关性，可能触发更新的事件包括评估或审计发现、安全事件或违规、适用法律/行政命令/指令/法规/政策/标准/指南的变化等，但资料未将“远程工作环境变化”明确列入这些触发事件示例，是否将其定义为触发事件由组织确定。\n\n【原文证据】\n[资料1]原文第8行片段2\n>  Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework).\n\n[资料1]原文第6行片段1\n> [at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and\n\n[资料1]原文第10行片段4\n>  Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant.\n\n[资料1]原文第10行片段5\n>  Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "candidate_sha256": "c29ce4f1a0254a1f27d62e80071013b592f9cef2b80886a4da1145d53b31c47f",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n资料中提升安全意识的具体手段包括：张贴海报、发放印有安全与隐私提醒的用品、显示登录屏幕消息、由组织官员生成电子邮件通告或通知，以及举办安全意识活动。这些手段属于组织待定义参数“意识技术（awareness techniques）”的示例，具体采用哪些由组织确定。\n\n【原文证据】\n[资料1]原文第5行片段1\n> [at-2_smt.b] Employ the following techniques to increase the security and privacy awareness of system users {{ insert: param, at-02_odp.05 }};\n\n[资料1]原文第10行片段1\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "candidate_sha256": "7ac4292c53526e9828e13d3729a112815144d8a4bc1ea36f4522c8382d5b465a",
+      "literal_provenance_valid": true,
+      "accepted": false,
+      "reason": "备份对象范围（系统组件）泛化，未限定其属于用户级信息备份；按原保守范围歧义标准失败。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n没有。该控制（System Backup，CP-9）只要求对用户级信息、系统级信息和系统文档执行备份，并保护备份信息的机密性、完整性和可用性；其中待组织确定的参数分别是备份对象范围（系统组件）和三类备份的执行频次，均不涉及软件品牌或供应商。资料中未出现任何指定只能购买某一家公司备份软件的表述。\n\n【原文证据】\n[资料1]原文第1行片段1\n> System Backup\n\n[资料1]原文第2行片段1\n> [cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n\n[资料1]原文第3行片段1\n> [cp-9_smt.b] Conduct backups of system-level information contained in the system {{ insert: param, cp-09_odp.03 }};\n\n[资料1]原文第4行片段1\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第5行片段1\n> [cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n\n[资料1]原文第8行片段1\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "cp-9-new-08",
+      "candidate_sha256": "c90ccda1fef22ebeda752f07ad722b25e8feb47cc1697681371d82149b684139",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": true,
+      "rendered_candidate": "中文解释（非逐字原文）\n不允许跳过。该控制要求对系统文档（包括与安全和隐私相关的文档）执行备份，备份频次按待组织确定的参数 cp-09_odp.04 执行，该参数的含义是“根据恢复时间和恢复点目标确定的系统文档备份频次”，资料未给出具体数值，因此频次待组织确定，但备份动作本身是必须执行的。资料还指出，组织可能受法律、行政命令、指令、法规或政策约束，这些规定对特定类别的信息（如个人健康信息）有要求，组织人员应就此类要求咨询高级隐私官员和法律顾问。因此，包含隐私文档的系统文档备份不能跳过；具体频次和合规要求需由组织确定并咨询相关官员。（通用补充）跳过备份会削弱恢复能力并可能违反隐私合规义务。\n\n【原文证据】\n[资料1]原文第4行片段1\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第6行片段6\n>  Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information).\n\n[资料1]原文第6行片段7\n>  Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "ca-8-new-01",
+      "candidate_sha256": "682d5fc9b308cda86c98fb662beab88aa911c296ffb9159d94a808b4f21427b2",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n渗透测试与自动漏洞扫描的主要区别在于：渗透测试超越自动漏洞扫描，由具备可证明技能和经验、涵盖网络、操作系统和/或应用层安全技术专长的人员或团队实施；它试图复制对手的行动，对安全与隐私相关弱点或缺陷进行更深入的分析，并可用于验证漏洞或确定系统在指定约束下抵御对手的穿透程度。资料未进一步说明自动漏洞扫描的具体能力或局限。\n\n【原文证据】\n[资料1]原文第3行片段1\n> [ca-8_gdn] Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries.\n\n[资料1]原文第3行片段2\n>  Penetration testing goes beyond automated vulnerability scanning and is conducted by agents and teams with demonstrable skills and experience that include technical expertise in network, operating system, and/or application level security.\n\n[资料1]原文第3行片段3\n>  Penetration testing can be used to validate vulnerabilities or determine the degree of penetration resistance of systems to adversaries within specified constraints.\n\n[资料1]原文第3行片段5\n>  Penetration testing attempts to duplicate the actions of adversaries and provides a more in-depth analysis of security- and privacy-related weaknesses or deficiencies.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "ca-8-new-07",
+      "candidate_sha256": "3138449016a1fb6eadca4743d086889842679c2e57da2843443bdb5bbe3bda13",
+      "literal_provenance_valid": true,
+      "accepted": true,
+      "reason": "原英文支持所问核心、条件、动作与引用；参数不赋值。CP9文档的通用补充紧邻标注，不作为NIST原句。",
+      "selector_insufficient": false,
+      "rendered_candidate": "中文解释（非逐字原文）\n资料没有规定渗透测试必须持续七天。资料只要求按待赋值的频次参数 ca-08_odp.01 对系统或系统组件开展渗透测试，测试对象由待赋值参数 ca-08_odp.02 确定；其中 ca-08_odp.01 是频次参数，ca-08_odp.02 是对象范围参数，两者均未赋值，资料也未给出任何具体时长或“七天”的要求。\n\n【原文证据】\n[资料1]原文第2行片段1\n> [ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}.\n\n[资料1]原文第7行片段1\n> [{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    }
+  ],
+  "selection_issue": {
+    "id": "cp-9-new-08",
+    "reason": "参数频次未给值不等于跳过文档备份问题无法回答，selector insufficient=true偏保守；最终答案未拒答。"
+  },
+  "promotion": "rejected; selected literal evidence does not guarantee faithful Chinese explanation"
+}

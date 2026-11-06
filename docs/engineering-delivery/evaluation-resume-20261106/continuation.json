@@ -1,5 +1,5 @@
 {
-  "status": "in_progress",
+  "status": "stopped_current_window_exhausted",
   "date": "2026-11-06",
   "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
   "entrypoint": "AGENTS.md",
@@ -196,18 +196,19 @@
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Original AC8/AT2/CP9 failures: literal-unit citation coverage and term provenance diagnostic; no new prompt stacking. Need unit-reference contract, frozen same8 repeat/negative and original32/mixed4 before default promotion. Latest quality noaid repeat6/8; default unchanged. Push current source-unit preparation/soak/results then check exactCI.",
+  "next": "On explicit user resume first verify e1ce3c3 exactCI42277108112; continue source-unit failure localization/contract then same8 repeat+negatives+full32/mixed4. Quality not complete.",
   "quota": {
     "stop_remaining_percent_lte": 0,
-    "last_verified_primary_remaining_percent": 2,
+    "last_verified_primary_remaining_percent": 0,
     "no_reset_credit": true,
-    "verified_at_utc": "2026-11-07T03:08:48.068464+08:00",
+    "verified_at_utc": "2026-11-07T03:10:28.837660+08:00",
     "previous_default_threshold_percent": 10,
     "override_scope": "this run only: user2026-11-07 says use current quota to exhaustion",
     "user_reported_remaining_percent": 25,
     "quota_tool_temporarily_unavailable": false,
     "stop_on_rate_limit": true,
-    "verified_at_local": "2026-11-07T02:48+08:00"
+    "verified_at_local": "2026-11-07T02:48+08:00",
+    "verified_used_percent": 100
   },
   "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
@@ -237,17 +238,17 @@
     "current_combined_regression": "132passed,1existingAnyIOwarning,29.33s; Ruffpassed; actual current server+contracts+corpuscache"
   },
   "config_fix_commit": "84d8538",
-  "git_delivery": "1abcf69 pushed; exact CI observed",
-  "latest_commit": "b70ea4651ca371f02293bc7a4139b7b034ea90ca",
+  "git_delivery": "e1ce3c3 pushed and remote branch verified",
+  "latest_commit": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
   "latest_ci": {
-    "id": 42276887222,
-    "head_sha": "b70ea4651ca371f02293bc7a4139b7b034ea90ca",
+    "id": 42277108112,
+    "head_sha": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
     "status": "in_progress",
     "conclusion": null,
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42276887222"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42277108112"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
-  "stop_reason": null,
+  "stop_reason": "User this-run current-window exhaustion threshold reached: tool usedPercent100. No resetcredits and no automatic resume.",
   "local_checkpoint": "Quota pause/current CI snapshot and delivery-integrity.json are local after245524a; sync on explicit resume without staging unrelated modifications",
   "previous_record": "docs/engineering-delivery/evaluation-20261106/continuation.json",
   "resume_budget_anchor": {
@@ -262,7 +263,7 @@
     "model_calls": 0,
     "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
   },
-  "latest_activity_local": "2026-11-07T03:08:48.068464+08:00",
+  "latest_activity_local": "2026-11-07T03:10:13.734355+08:00",
   "business_load": {
     "status": "completed_all_frozen_gates",
     "directory": "docs/engineering-delivery/business-load-20261107",
@@ -305,5 +306,6 @@
     "model_calls": 0,
     "failure_breadth_diagnostic": "docs/engineering-delivery/evaluation-resume-20261106/evidence-breadth-diagnostic.json",
     "all_failed_candidates_retained": 3
-  }
+  },
+  "resource_checkpoint": "Near current-window exhaustion; no pending model calls or load processes; never use resetcredits or auto-resume next window."
 }

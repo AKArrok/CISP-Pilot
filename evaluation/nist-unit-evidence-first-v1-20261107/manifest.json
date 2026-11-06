@@ -1,0 +1,31 @@
+{
+  "mode": "answer_unit_pipeline",
+  "evidence_protocol": "answer_source_lines",
+  "guidance_segments": true,
+  "native_parameter_bindings": true,
+  "answer_temperature": 0.3,
+  "selector_temperature": 0,
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "64cccbece86a791a8ad51d5df1c2871d38dbae1d883736a2b57dad73e2bbf48b",
+  "paid_proposal": {
+    "calls": 24,
+    "budget_usd": 0.12,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Public pinned NIST only, original8, baseline+unit selection+answer"
+  },
+  "acceptance": "Original8 frozen semantic/completeness/condition/parameter/terminology/citation criteria, strict unit contract. All failures retained. Repeat/negative/full32/mixed4 before default promotion; AI diagnostic not human gold.",
+  "frozen_sha256": {
+    "cases.json": "d6b901f300cbcbf41ac13be569661561b4e3cb2ad6ed73510777ce8a0a072da5",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "contract.py": "00cac9d6c6605e8fcfcd33504a15d6f8f3ac8274b6e3c2e7c1684494b7c24538",
+    "funding-preflight.json": "29bc3e32bdd3484bb347b42614268dbac4d52fa7ca9639eb34ba1c7b21f4ba4d",
+    "input-preflight.json": "e1230d531d4e88a000dc9d2dc5addd49151158e0c23390b8711f24c9f5cadcdb",
+    "original-cases.json": "6248af1fd41194c054fd9f9ec5119e71b64a3830fe636e07d217f90cf90167ca",
+    "prompts.json": "dbc1b05900e1a372e03504d0010d04455b0697933cddaab47814df05f7c36ad1",
+    "runtime-source-hashes.json": "603d389688e8b48e0f1df7742a526e7c9dfd5d37fe56e40dfb3b4756bf810fae",
+    "source-units.json": "e2da6e528e08c0e768340a4d3489e05f0a475486575061563c61fd866b2086e0"
+  }
+}

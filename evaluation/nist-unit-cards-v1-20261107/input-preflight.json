@@ -1,0 +1,90 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens": 4464
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "evidence_select",
+      "tokens": 3161
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens": 4473
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "evidence_select",
+      "tokens": 3170
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens": 3542
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "evidence_select",
+      "tokens": 2108
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens": 3226
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "evidence_select",
+      "tokens": 2043
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2919
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "evidence_select",
+      "tokens": 1773
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens": 4496
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "evidence_select",
+      "tokens": 3064
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens": 4358
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "evidence_select",
+      "tokens": 3111
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2517
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "evidence_select",
+      "tokens": 1627
+    }
+  ],
+  "max_input": 4496,
+  "same_questions_sources_labels": true,
+  "all69translated_units_bound": true,
+  "parameter_tokens_preserved": true,
+  "translation_review": "Codex AI source-only review, not independent human gold",
+  "model_calls": 0
+}

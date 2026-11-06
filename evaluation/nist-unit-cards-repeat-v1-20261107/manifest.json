@@ -1,0 +1,35 @@
+{
+  "mode": "answer_card_pipeline",
+  "evidence_protocol": "answer_source_lines",
+  "guidance_segments": true,
+  "native_parameter_bindings": true,
+  "answer_temperature": 0.3,
+  "selector_temperature": 0,
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "f5efd08773c777dce5c878423e65aac7913c4241773a0747ba8a55805bc2c08c",
+  "paid_proposal": {
+    "calls": 16,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Public NIST only, original8 baseline+typed selection; host cards zero generation calls"
+  },
+  "acceptance": "Original8 factual/completeness/condition/parameter/terminology/citation criteria unchanged; typed lead must answer actual question, selected translations+original must cover it. No format-only pass. Repeat/negative/full32/mixed4 required before promotion.",
+  "limitations": "Bounded evidence response candidate with reduced free-form teaching; not a replacement of full project scope or independent human gold. No default change.",
+  "frozen_sha256": {
+    "cases.json": "d6b901f300cbcbf41ac13be569661561b4e3cb2ad6ed73510777ce8a0a072da5",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "contract.py": "efe8ed0627b74bd1a69d372a6eede79aa8b5955c73be9d76e4b0d4cec26014d1",
+    "funding-preflight.json": "42605913fec49994c77c7ebb14a6a9fb7188a5123485335f9d40168015d9c84d",
+    "input-preflight.json": "b317414113c802a973fcdbf44801b582a0bbc38e898885cfd645241c5a33a4a6",
+    "original-cases.json": "6248af1fd41194c054fd9f9ec5119e71b64a3830fe636e07d217f90cf90167ca",
+    "prompts.json": "2e8046527990c12fdc8684572ef6f686e0426f4d2d17abccd31a053849be38a6",
+    "runtime-source-hashes.json": "6a42abc10fa5c9cf6c21654276cb3654deae05da2839cec648538fb6599bc659",
+    "source-units.json": "e2da6e528e08c0e768340a4d3489e05f0a475486575061563c61fd866b2086e0",
+    "translation-review.json": "baf9f8d843b8d2b217df1893a6513d31de82c0f4b6a1840dd7e40fa6d8e44f82",
+    "translations.json": "5db2210c8f5d0ba5da67a31cd7c6f576e9f8f59d9fb443e3a650f58825d32b65"
+  },
+  "role": "Exact same8/source/selector/host card translations/contract, same criteria; sequential repetition, not new independent cases."
+}

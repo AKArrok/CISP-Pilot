@@ -1,0 +1,152 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens": 4464,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "evidence_select",
+      "tokens": 3104,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_candidate",
+      "tokens": 4874,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens": 4473,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "evidence_select",
+      "tokens": 3113,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_candidate",
+      "tokens": 4883,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens": 3542,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "evidence_select",
+      "tokens": 2051,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_candidate",
+      "tokens": 3508,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens": 3226,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "evidence_select",
+      "tokens": 1986,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_candidate",
+      "tokens": 3264,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2919,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "evidence_select",
+      "tokens": 1716,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_candidate",
+      "tokens": 3115,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens": 4496,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "evidence_select",
+      "tokens": 3007,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_candidate",
+      "tokens": 4900,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens": 4358,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "evidence_select",
+      "tokens": 3054,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_candidate",
+      "tokens": 4817,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens": 2517,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "evidence_select",
+      "tokens": 1570,
+      "candidate_preflight": "exact request"
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_candidate",
+      "tokens": 2716,
+      "candidate_preflight": "all selectable units, including parameter closure"
+    }
+  ],
+  "max_input": 4900,
+  "all_candidate_units_preflight": true,
+  "same_questions_sources_and_labels": true,
+  "model_calls": 0
+}

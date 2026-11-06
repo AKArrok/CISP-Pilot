@@ -73,3 +73,10 @@ docs/engineering-delivery/business-soak-20261107/*.csv -text -whitespace
 docs/engineering-delivery/business-soak-20261107/*.log -text -whitespace
 scripts/compile_nist_source_units.py -text whitespace=cr-at-eol
 scripts/audit_business_profile.py -text whitespace=cr-at-eol
+scripts/answer_unit_contract.py -text whitespace=cr-at-eol
+evaluation/nist-unit-*/*.py -text whitespace=cr-at-eol
+evaluation/nist-unit-*/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-window2-20261107/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-window2-20261107/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-window2-20261107/*.log -text -whitespace
+docs/engineering-delivery/evaluation-window2-20261107/*.xml -text -whitespace
