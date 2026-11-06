@@ -26,6 +26,8 @@ def load(path):
 
 
 def request_content(stage, case, row, context, manifest):
+    if stage == "answer_candidate" and manifest.get("mode") == "answer_pipeline":
+        return context + "\n问题：" + case["question"] + "\n待翻译英文答案：\n" + row["answer_english"]
     if stage.startswith("judge") and manifest.get("evidence_protocol") == "atomic_lines":
         return json.dumps({"target_fragment": row["answer"], "answer_context": case["fragment_context"],
                            "contexts": line_payload(row)["contexts"]}, ensure_ascii=False)
@@ -114,7 +116,8 @@ def main():
     (args.output / "executor.py").write_bytes(Path(__file__).read_bytes())
     calibration = manifest.get("mode") == "judge_calibration"
     answer_contract = manifest.get("mode") == "answer_contract"
-    fixed_inputs = calibration or answer_contract
+    answer_pipeline = manifest.get("mode") == "answer_pipeline"
+    fixed_inputs = calibration or answer_contract or answer_pipeline
     rows = [] if fixed_inputs else retrieve(cases, chunks)
     write(args.output / "retrieval.json", rows)
     metrics = {arm: {"top1": sum(r["target_rank"] == 1 for r in rows if r["arm"] == arm),
@@ -153,7 +156,8 @@ def main():
     else:
         regression = load(args.packet / "at2-regression.json")
         work = [{"id": "at2-regression", "question": regression["question"], "fixed_contexts": regression["contexts"]}] + cases
-    stages = (("answer_baseline", "answer_structured") if answer_contract else
+    stages = (("answer_baseline", "answer_english", "answer_candidate") if answer_pipeline else
+              ("answer_baseline", "answer_structured") if answer_contract else
               manifest.get("judge_arms", ["judge_baseline", "judge_candidate"]) if calibration else ("answer", "judge"))
     outputs = []
     try:
@@ -184,7 +188,8 @@ def main():
                     max_tokens=1024, temperature=0 if stage.startswith("judge") else manifest.get("answer_temperature", 0),
                     timeout=60, extra_body={"thinking": {"type": "disabled"}},
                     **({"response_format": {"type": "json_object"}}
-                       if stage.startswith("judge") or (answer_contract and stage == "answer_structured") else {}))
+                       if stage.startswith("judge") or (answer_contract and stage == "answer_structured")
+                       or (answer_pipeline and stage == "answer_candidate") else {}))
                 receipt = {"id": case["id"], "stage": stage, "response": response.model_dump(),
                            "elapsed_seconds": time.monotonic()-started}
                 with (args.output / "receipts.jsonl").open("a", encoding="utf-8") as stream:

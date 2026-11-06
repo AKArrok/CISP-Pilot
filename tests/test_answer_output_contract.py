@@ -28,7 +28,8 @@ def test_invalid_model_contract_never_becomes_a_rendered_answer(value):
         render_structured_answer(json.dumps(value), CONTEXTS)
 
 
-def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch):
+@pytest.mark.parametrize("mode", ["answer_contract", "answer_pipeline"])
+def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch, mode):
     import dotenv
     import openai
     import tiktoken
@@ -40,19 +41,24 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
     context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
     for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context]}],
                         "chunks.json": [context], "prompts.json": {"answer_baseline_system": "Plain",
-                                                                     "answer_structured_system": "JSON"}}.items():
+                                                                     "answer_structured_system": "JSON",
+                                                                     "answer_english_system": "English",
+                                                                     "answer_candidate_system": "Translate"}}.items():
         (packet / name).write_text(json.dumps(value), encoding="utf-8")
-    manifest = {"mode": "answer_contract", "answer_temperature": .3, "frozen_sha256": {},
-                "paid_proposal": {"calls": 2, "budget_usd": .03}}
+    planned = 3 if mode == "answer_pipeline" else 2
+    manifest = {"mode": mode, "answer_temperature": .3, "frozen_sha256": {},
+                "paid_proposal": {"calls": planned, "budget_usd": .03}}
     (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
-    (packet / "authorization.json").write_text(json.dumps({"max_calls": 2, "budget_usd": .03,
+    (packet / "authorization.json").write_text(json.dumps({"max_calls": planned, "budget_usd": .03,
         "manifest_sha256": hashlib.sha256((packet / "manifest.json").read_bytes()).hexdigest()}), encoding="utf-8")
     calls = []
 
     def create(**kwargs):
         calls.append(kwargs)
         return SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2, completion_tokens=2),
-            choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(content='{"answer":"A","source_ids":[1]}'))],
+            choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(
+                content="English final answer" if mode == "answer_pipeline" and len(calls) == 2
+                else '{"answer":"A","source_ids":[1]}'))],
             model_dump=lambda: {"model": "synthetic transport response", "usage": {"prompt_tokens": 2, "completion_tokens": 2}})
 
     monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
@@ -63,11 +69,17 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
         completions=SimpleNamespace(create=create))))
     monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
     eval_nist_batch.main()
-    assert len(calls) == 2 and all(c["temperature"] == .3 for c in calls)
-    assert "response_format" not in calls[0] and calls[1]["response_format"] == {"type": "json_object"}
+    assert len(calls) == planned and all(c["temperature"] == .3 for c in calls)
+    assert "response_format" not in calls[0]
+    if mode == "answer_pipeline":
+        assert "English final answer" in calls[2]["messages"][1]["content"]
+        assert "English final answer" not in calls[1]["messages"][1]["content"]
+        assert calls[2]["response_format"] == {"type": "json_object"}
+    else:
+        assert calls[1]["response_format"] == {"type": "json_object"}
     assert all(c["extra_body"] == {"thinking": {"type": "disabled"}} for c in calls)
     summary = json.loads((output / "summary.json").read_text())
-    assert summary["provider_calls"] == 2 and summary["completed"] == 1 and not summary["cost_unknown"]
+    assert summary["provider_calls"] == planned and summary["completed"] == 1 and not summary["cost_unknown"]
     assert "pending_call" not in summary
 
 

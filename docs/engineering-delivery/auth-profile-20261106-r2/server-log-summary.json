@@ -1,0 +1,8 @@
+{
+  "raw_log_retained_local_ignored": true,
+  "raw_log_sha256": "c7074f10e0a2f886fd7947b25e429b98907c901dec8e1c1e2989bb18104b499c",
+  "error_entries": 3,
+  "tracebacks": 3,
+  "connection_reset_errors": 3,
+  "raw_log_published": false
+}

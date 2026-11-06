@@ -1,0 +1,9 @@
+{
+  "stages": [],
+  "default_db_before": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "default_db_after": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "default_db_unchanged": true,
+  "model_calls": 0,
+  "server_pid": 37504,
+  "server_stopped": true
+}

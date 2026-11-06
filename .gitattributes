@@ -29,3 +29,15 @@ docs/engineering-delivery/evaluation-20261106/source-layout-prototype/*.py -text
 # Raw test evidence retains whitespace exactly as emitted by the test runner.
 docs/engineering-delivery/evaluation-20261106/*.log -text -whitespace
 docs/engineering-delivery/evaluation-20261106/*.xml -text -whitespace
+
+# Preserve resumed November 6 frozen helpers and raw diagnostic failures.
+scripts/inline_oscal_parameters.py -text whitespace=cr-at-eol
+evaluation/nist-inline-parameters-*/*.py -text whitespace=cr-at-eol
+evaluation/nist-english-translation-*/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/evaluation-resume-20261106/*.log -text -whitespace
+docs/engineering-delivery/evaluation-resume-20261106/*.xml -text -whitespace
+docs/engineering-delivery/auth-profile-20261106*/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/auth-profile-20261106*/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/auth-profile-20261106*/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/auth-profile-20261106*/*.log -text -whitespace
+docs/engineering-delivery/auth-profile-20261106*/*.csv -text -whitespace

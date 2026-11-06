@@ -1,0 +1,570 @@
+[
+  {
+    "case": "ac-8-new-05",
+    "context_number": 1,
+    "original_sha256": "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458",
+    "derived_sha256": "efe9b66354989033033de57c31a186b657b2329751abdd399b7056f9c87a1dcd",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-08_odp.01",
+        "start": 78,
+        "end": 314,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-08_odp.01\", \"label\": \"system use notification\", \"guidelines\": [{\"prose\": \"system use notification message or banner to be displayed by the system to users before granting access to the system is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-08_odp.02",
+        "start": 1172,
+        "end": 1365,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-08_odp.02\", \"label\": \"conditions\", \"guidelines\": [{\"prose\": \"conditions for system use to be displayed by the system before granting further access are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ac-8-new-05",
+    "context_number": 2,
+    "original_sha256": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+    "derived_sha256": "1a1c909cecee953a18d387766095aff27ad83782ef222f1128064247190b7d28",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-02_odp.01",
+        "start": 229,
+        "end": 408,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.02",
+        "start": 648,
+        "end": 810,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.03",
+        "start": 896,
+        "end": 1080,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.04",
+        "start": 1232,
+        "end": 1492,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.05",
+        "start": 1610,
+        "end": 1761,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.06",
+        "start": 1818,
+        "end": 2013,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.07",
+        "start": 2100,
+        "end": 2300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.08",
+        "start": 2395,
+        "end": 2617,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.09",
+        "start": 2868,
+        "end": 3047,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.10",
+        "start": 3163,
+        "end": 3299,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ac-8-new-06",
+    "context_number": 1,
+    "original_sha256": "0cade33edee3acc6b93c75809cf378255b4572186e83b113bf005a4da64e8458",
+    "derived_sha256": "efe9b66354989033033de57c31a186b657b2329751abdd399b7056f9c87a1dcd",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-08_odp.01",
+        "start": 78,
+        "end": 314,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-08_odp.01\", \"label\": \"system use notification\", \"guidelines\": [{\"prose\": \"system use notification message or banner to be displayed by the system to users before granting access to the system is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-08_odp.02",
+        "start": 1172,
+        "end": 1365,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-08_odp.02\", \"label\": \"conditions\", \"guidelines\": [{\"prose\": \"conditions for system use to be displayed by the system before granting further access are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ac-8-new-06",
+    "context_number": 2,
+    "original_sha256": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+    "derived_sha256": "1a1c909cecee953a18d387766095aff27ad83782ef222f1128064247190b7d28",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-02_odp.01",
+        "start": 229,
+        "end": 408,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.02",
+        "start": 648,
+        "end": 810,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.03",
+        "start": 896,
+        "end": 1080,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.04",
+        "start": 1232,
+        "end": 1492,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.05",
+        "start": 1610,
+        "end": 1761,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.06",
+        "start": 1818,
+        "end": 2013,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.07",
+        "start": 2100,
+        "end": 2300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.08",
+        "start": 2395,
+        "end": 2617,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.09",
+        "start": 2868,
+        "end": 3047,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.10",
+        "start": 3163,
+        "end": 3299,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "at-2-new-02",
+    "context_number": 1,
+    "original_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed",
+    "derived_sha256": "f38707b94889f8daefcd1fd4f1dfffa78769957aa3604594a2409daf3c7172be",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "at-2_prm_1",
+        "start": 258,
+        "end": 339,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}）"
+      },
+      {
+        "parameter_id": "at-2_prm_2",
+        "start": 447,
+        "end": 525,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}）"
+      },
+      {
+        "parameter_id": "at-02_odp.05",
+        "start": 668,
+        "end": 873,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "at-02_odp.06",
+        "start": 968,
+        "end": 1145,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "at-02_odp.07",
+        "start": 1193,
+        "end": 1375,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "at-2-new-02",
+    "context_number": 2,
+    "original_sha256": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16",
+    "derived_sha256": "e9a184aee16b7d4fa4e57dd95db4c70e84b8a80e4561bb87dc8f2b82d207f442",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "au-06_odp.01",
+        "start": 131,
+        "end": 301,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "au-06_odp.02",
+        "start": 354,
+        "end": 516,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "au-06_odp.03",
+        "start": 649,
+        "end": 849,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "at-2-new-03",
+    "context_number": 1,
+    "original_sha256": "ae5493d5ceacb1d95883e4a22d3ec19a5e760e42a02002ceaa8e35e1273adaed",
+    "derived_sha256": "f38707b94889f8daefcd1fd4f1dfffa78769957aa3604594a2409daf3c7172be",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "at-2_prm_1",
+        "start": 258,
+        "end": 339,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-2_prm_1\", \"label\": \"organization-defined frequency\"}）"
+      },
+      {
+        "parameter_id": "at-2_prm_2",
+        "start": 447,
+        "end": 525,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-2_prm_2\", \"label\": \"organization-defined events\"}）"
+      },
+      {
+        "parameter_id": "at-02_odp.05",
+        "start": 668,
+        "end": 873,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.05\", \"label\": \"awareness techniques\", \"guidelines\": [{\"prose\": \"techniques to be employed to increase the security and privacy awareness of system users are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "at-02_odp.06",
+        "start": 968,
+        "end": 1145,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.06\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency at which to update literacy training and awareness content is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "at-02_odp.07",
+        "start": 1193,
+        "end": 1375,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"at-02_odp.07\", \"label\": \"events\", \"guidelines\": [{\"prose\": \"events that would require literacy training and awareness content to be updated are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "at-2-new-03",
+    "context_number": 2,
+    "original_sha256": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+    "derived_sha256": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+    "restoration_exact": true,
+    "additions": []
+  },
+  {
+    "case": "cp-9-new-07",
+    "context_number": 1,
+    "original_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e",
+    "derived_sha256": "4813e413d8ad0fd5bb30c303a96aa104e4970dc98da054971a17214166637c64",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "cp-09_odp.01",
+        "start": 115,
+        "end": 300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.02",
+        "start": 334,
+        "end": 562,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.03",
+        "start": 678,
+        "end": 908,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.04",
+        "start": 1051,
+        "end": 1277,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "cp-9-new-07",
+    "context_number": 2,
+    "original_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63",
+    "derived_sha256": "8cf90310d5097ab967aeaf1943332ef06bacaa81704b3545352d484cf57b2d22",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ca-08_odp.01",
+        "start": 92,
+        "end": 278,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ca-08_odp.02",
+        "start": 315,
+        "end": 518,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "cp-9-new-08",
+    "context_number": 1,
+    "original_sha256": "fc81bd859dd464f86318f5f738aa38ce49f222f6c434eb4728c0267e0571870e",
+    "derived_sha256": "4813e413d8ad0fd5bb30c303a96aa104e4970dc98da054971a17214166637c64",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "cp-09_odp.01",
+        "start": 115,
+        "end": 300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.02",
+        "start": 334,
+        "end": 562,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.03",
+        "start": 678,
+        "end": 908,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "cp-09_odp.04",
+        "start": 1051,
+        "end": 1277,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "cp-9-new-08",
+    "context_number": 2,
+    "original_sha256": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+    "derived_sha256": "1a1c909cecee953a18d387766095aff27ad83782ef222f1128064247190b7d28",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-02_odp.01",
+        "start": 229,
+        "end": 408,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.02",
+        "start": 648,
+        "end": 810,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.03",
+        "start": 896,
+        "end": 1080,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.04",
+        "start": 1232,
+        "end": 1492,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.05",
+        "start": 1610,
+        "end": 1761,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.06",
+        "start": 1818,
+        "end": 2013,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.07",
+        "start": 2100,
+        "end": 2300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.08",
+        "start": 2395,
+        "end": 2617,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.09",
+        "start": 2868,
+        "end": 3047,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.10",
+        "start": 3163,
+        "end": 3299,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ca-8-new-01",
+    "context_number": 1,
+    "original_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63",
+    "derived_sha256": "8cf90310d5097ab967aeaf1943332ef06bacaa81704b3545352d484cf57b2d22",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ca-08_odp.01",
+        "start": 92,
+        "end": 278,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ca-08_odp.02",
+        "start": 315,
+        "end": 518,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ca-8-new-01",
+    "context_number": 2,
+    "original_sha256": "2b2b9ada64dcec6a694118468381302bd2cc1365d07e62f981d1226ec5c314b1",
+    "derived_sha256": "1a1c909cecee953a18d387766095aff27ad83782ef222f1128064247190b7d28",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ac-02_odp.01",
+        "start": 229,
+        "end": 408,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.02",
+        "start": 648,
+        "end": 810,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.03",
+        "start": 896,
+        "end": 1080,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.04",
+        "start": 1232,
+        "end": 1492,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.05",
+        "start": 1610,
+        "end": 1761,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.06",
+        "start": 1818,
+        "end": 2013,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.07",
+        "start": 2100,
+        "end": 2300,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.08",
+        "start": 2395,
+        "end": 2617,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.09",
+        "start": 2868,
+        "end": 3047,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ac-02_odp.10",
+        "start": 3163,
+        "end": 3299,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ca-8-new-07",
+    "context_number": 1,
+    "original_sha256": "4e2a51c7d21681e6ba8aa5820a679ce1f8d5a6f1083a4cde797478d8d3a21b63",
+    "derived_sha256": "8cf90310d5097ab967aeaf1943332ef06bacaa81704b3545352d484cf57b2d22",
+    "restoration_exact": true,
+    "additions": [
+      {
+        "parameter_id": "ca-08_odp.01",
+        "start": 92,
+        "end": 278,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}）"
+      },
+      {
+        "parameter_id": "ca-08_odp.02",
+        "start": 315,
+        "end": 518,
+        "inserted_text": "（原始参数定义，不赋值或扩展范围：{\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}）"
+      }
+    ]
+  },
+  {
+    "case": "ca-8-new-07",
+    "context_number": 2,
+    "original_sha256": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+    "derived_sha256": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d",
+    "restoration_exact": true,
+    "additions": []
+  }
+]

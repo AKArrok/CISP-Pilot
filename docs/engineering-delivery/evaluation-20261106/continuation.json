@@ -1,5 +1,5 @@
 {
-  "status": "in_progress",
+  "status": "paused_user_quota_threshold",
   "date": "2026-11-06",
   "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
   "entrypoint": "AGENTS.md",
@@ -115,11 +115,12 @@
     "unknown_current_charge": false
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Do not promote JSON contract: format8/8 but semantics6/8. Diagnose AT2 translation and CP9 scoped parameter binding from frozen answers; then same-input negative/repeat checks and original32 plus approvedmixed4 full-chain only when candidate passes.",
+  "next": "On explicit resume first verify Actions42096500940 against245524a, preserve/fix any failure; then read remaining-semantic-issues.json. Candidate6/8 remains rejected; same-input negatives and original32/approvedmixed4 full-chain gates unchanged.",
   "quota": {
     "stop_remaining_percent_lte": 10,
-    "last_verified_primary_remaining_percent": 14,
-    "no_reset_credit": true
+    "last_verified_primary_remaining_percent": 10,
+    "no_reset_credit": true,
+    "verified_at_utc": "2026-11-05T19:44:53.248630+00:00"
   },
   "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
@@ -148,14 +149,17 @@
     "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls"
   },
   "config_fix_commit": "84d8538",
-  "git_delivery": "12d4e8c pushed, exact remote head matched; independent current CI recorded, old green not inherited",
-  "latest_commit": "12d4e8c19ecf68e1ff9df11f52ba9bf10a408018",
+  "git_delivery": "245524a push succeeded; GitHub commits API verified exact branch head. Last ls-remote read failed defaultGBK decode, corrected via UTF8 GitHubAPI, no credentials changed",
+  "latest_commit": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
   "latest_ci": {
-    "id": 42096151653,
-    "head_sha": "12d4e8c19ecf68e1ff9df11f52ba9bf10a408018",
+    "id": 42096500940,
+    "head_sha": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
     "status": "in_progress",
     "conclusion": null,
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42096151653"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42096500940",
+    "last_observed_step": "Offline regression"
   },
-  "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json"
+  "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
+  "stop_reason": "User explicitly requested stop at remaining10%; saved scene, no new calls, no reset credit, no automatic resume",
+  "local_checkpoint": "Quota pause/current CI snapshot and delivery-integrity.json are local after245524a; sync on explicit resume without staging unrelated modifications"
 }

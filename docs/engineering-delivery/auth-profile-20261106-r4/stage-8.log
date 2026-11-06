@@ -1,0 +1,25 @@
+[2026-11-06 23:18:29,731] LAPTOP-TSMLS2E6/INFO/locust.main: Starting Locust 2.47.0
+[2026-11-06 23:18:29,732] LAPTOP-TSMLS2E6/INFO/locust.main: Run time limit set to 12 seconds
+[2026-11-06 23:18:29,733] LAPTOP-TSMLS2E6/INFO/locust.runners: Ramping to 8 users at a rate of 100.00 per second
+[2026-11-06 23:18:29,734] LAPTOP-TSMLS2E6/INFO/locust.runners: All users spawned: {"LoginUser": 8} (8 total users)
+[2026-11-06 23:18:41,429] LAPTOP-TSMLS2E6/INFO/locust.main: --run-time limit reached, shutting down
+[2026-11-06 23:18:41,593] LAPTOP-TSMLS2E6/INFO/locust.main: Shutting down (exit code 0)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+POST     auth/login                                                                        16     0(0.00%) |   4076    1269    5056   5000 |    1.59        0.00
+POST     auth/logout                                                                       16     0(0.00%) |     10       5      25      7 |    1.59        0.00
+GET      auth/me                                                                           16     0(0.00%) |      2       2       3      3 |    1.59        0.00
+GET      auth/revoked-old-cookie                                                           16     0(0.00%) |      2       2       3      2 |    1.59        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        64     0(0.00%) |   1022       2    5056      6 |    6.36        0.00
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+POST     auth/login                                                                           5000   5000   5000   5000   5000   5100   5100   5100   5100   5100   5100     16
+POST     auth/logout                                                                             7      7     17     17     19     25     25     25     25     25     25     16
+GET      auth/me                                                                                 3      3      3      3      3      4      4      4      4      4      4     16
+GET      auth/revoked-old-cookie                                                                 2      3      3      3      3      3      3      3      3      3      3     16
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                              6      7   1300   2500   5000   5000   5000   5100   5100   5100   5100     64
+

@@ -1,0 +1,49 @@
+{
+  "status": "frozen_before_run",
+  "base_head": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
+  "scope": "Full local FastAPI actual auth routes, TCP; synthetic accounts/isolatedSQLite; no chat or model requests; assets readiness check bypass only in fixture",
+  "tool": "existing Locust2.47.0 environment, psutil7.2.2 sampler",
+  "stages_users": [
+    1,
+    4,
+    8
+  ],
+  "login_cycles_per_user": 2,
+  "stage_seconds": 12,
+  "spawn_rate": 100,
+  "expected_login_attempts": 28,
+  "rate_limit": "Original IP30/300s and username10/300s, unchanged; no reset between stages",
+  "password_security": "Original scrypt N131072,r8,p1 and original BoundedSemaphore2 unchanged",
+  "metrics": [
+    "login HTTP/session correctness",
+    "scrypt admission wait vs compute walltime",
+    "exact child PID CPU and RSS samples",
+    "health responses during each load stage"
+  ],
+  "gates": [
+    "26 successful login+me+logout+old-cookie-replay401 cycles and2 invalid credential401",
+    "zero unexpected HTTP errors or exceptions",
+    "scrypt active peak <=2; security constants unchanged",
+    "default DB hash unchanged",
+    "all server/load child processes terminated by exact Popen handles"
+  ],
+  "limitations": "Small short diagnostic samples, no production p95/p99/SLA or multi-instance claim; profiler instrumentation can affect timings; credentials and syntheticDB private local",
+  "default_db_before": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "model_calls": 0,
+  "frozen_sha256": {
+    "driver.py": "e5932737d1667dd89d3d7f89161dae2ff8611dcfec6743955541a49b17a88c98",
+    "server-fixture.py": "9082406a2d974ae4a6a773cde0216bb87ac3490a8b9696b52f9558799afc69aa",
+    "locustfile.py": "ed8dce81db8fe0ab91d3b6ebab776a84ef24dd329fe0f72ee851e0259ad99ae1"
+  },
+  "runtime_sha256": {
+    "storage/auth.py": "bf6ad042e510a72e366cd8ccf92a66c9db097670362ea1669535cbf99f63e067",
+    "storage/http_auth.py": "cb8820cf78cb5cee7cc099ed742c78720904740b86ceb19080f6843376a0c766",
+    "storage/cache.py": "256323062766e303477576f92296e6bdf4e0942f6d65f5c1a25b5e12495e24b3",
+    "server.py": "44f13c96e64d27de37e035390932c83caefdee258b1e28d4cac4fb57e913196a"
+  },
+  "previous_failure": "r3 resource/HTTP/zero-server-error checks passed but revoked check only followed client cookie deletion. r4 replays original cookie; invalid credentials2 and cold/warm distinction added, same security thresholds and positive26.",
+  "negative_cases": [
+    "known wrong password first cold-cache401",
+    "unknown account after stages warm-cache401"
+  ]
+}

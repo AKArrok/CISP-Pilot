@@ -1,0 +1,188 @@
+{
+  "status": "in_progress",
+  "date": "2026-11-06",
+  "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
+  "entrypoint": "AGENTS.md",
+  "roadmap": "EVALUATION_LOOP.md",
+  "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
+  "base_commit": "35d2b47a275075defdda9a6852b69b9a20a353b0",
+  "active_experiment": {
+    "packet": "evaluation/nist-english-translation-v1",
+    "output": "docs/engineering-delivery/nist-english-translation-20261106-live",
+    "status": "completed_not_accepted",
+    "max_calls": 24,
+    "budget_usd": 0.12
+  },
+  "budget": {
+    "approved_total_usd": 3,
+    "anchor_dispatch_attempts": 887,
+    "anchor_estimate_usd": 0.5732733,
+    "new_batches": [
+      {
+        "id": "nist-public-http-default-baseline-20261106",
+        "calls": 64,
+        "estimated_cost_usd": 0.0386388,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-default-repeat-20261106",
+        "calls": 6,
+        "estimated_cost_usd": 0.0040958999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-binding-focused-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.008190600000000001,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-focused-output-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.00708,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-source-layout-20261106",
+        "calls": 12,
+        "estimated_cost_usd": 0.0093477,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-terms-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0115035,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-layout-focused-20261106",
+        "calls": 16,
+        "estimated_cost_usd": 0.0106935,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-failures-v1",
+        "calls": 8,
+        "estimated_cost_usd": 0.0082974,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-claims-v2",
+        "calls": 8,
+        "estimated_cost_usd": 0.0072846000000000004,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-lines-v3",
+        "calls": 8,
+        "estimated_cost_usd": 0.007807199999999999,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-current-source-only-v4",
+        "calls": 8,
+        "estimated_cost_usd": 0.007793399999999999,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-v1",
+        "calls": 70,
+        "estimated_cost_usd": 0.05467889999999998,
+        "unknown_charge": false
+      },
+      {
+        "id": "judge-atomic-context-v2",
+        "calls": 70,
+        "estimated_cost_usd": 0.062013300000000014,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0160434,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-answer-contract-v2",
+        "calls": 16,
+        "estimated_cost_usd": 0.0159906,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-inline-parameters-v1",
+        "calls": 16,
+        "estimated_cost_usd": 0.0185136,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-english-translation-v1",
+        "calls": 24,
+        "estimated_cost_usd": 0.025549500000000003,
+        "unknown_charge": false
+      }
+    ],
+    "dispatch_attempts": 1269,
+    "known_estimate_usd": 0.8867952,
+    "unknown_current_charge": false
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "Quality: translation-stage breach error now directly localized; avoid promoting extra-stage pipeline (language5/8, final6/8). In parallel profile real auth queue/CPU/RSS with fixed scrypt security, isolated synthetic HTTP, no model calls.",
+  "quota": {
+    "stop_remaining_percent_lte": 10,
+    "last_verified_primary_remaining_percent": 99,
+    "no_reset_credit": true,
+    "verified_at_utc": "2026-11-06T14:58:29.048078+00:00"
+  },
+  "pending_batches": [],
+  "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
+  "documentation_ci": {
+    "id": 42073073436,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "production_candidate_status": "None promoted. Original graph/source behavior and answer prompt restored; exact original graph byte hash verified; prototype archived.",
+  "evidence_commit": "a6879f5",
+  "evidence_ci": {
+    "id": 42079024764,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "a6879f54487fe548d02418395f04928a56ead4bc"
+  },
+  "offline_fixes": {
+    "claim_only": "Question removal independent of claim_focus; all answer lines retained when no focus",
+    "answer_temperature": "Frozen manifest value reaches answer factory, router default remains0.2; invalid values stop before dispatch",
+    "red": "9failed1passed",
+    "green": "43passed,1existing warning",
+    "lint": "passed",
+    "boolean_flags": "claim_only/claim_focus reject nonboolean JSON before output/lock; separate red1failed, final combined74passed",
+    "final_regression": "103passed,1existing warning,5.02s; Ruff passed",
+    "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported",
+    "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls"
+  },
+  "config_fix_commit": "84d8538",
+  "git_delivery": "245524a push succeeded; GitHub commits API verified exact branch head. Last ls-remote read failed defaultGBK decode, corrected via UTF8 GitHubAPI, no credentials changed",
+  "latest_commit": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
+  "latest_ci": {
+    "id": 42096500940,
+    "head_sha": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42096500940"
+  },
+  "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
+  "stop_reason": null,
+  "local_checkpoint": "Quota pause/current CI snapshot and delivery-integrity.json are local after245524a; sync on explicit resume without staging unrelated modifications",
+  "previous_record": "docs/engineering-delivery/evaluation-20261106/continuation.json",
+  "resume_budget_anchor": {
+    "attempts": 1229,
+    "estimate_usd": 0.8427321,
+    "approved_total_usd": 3
+  },
+  "auth_profile": {
+    "status": "completed_diagnostic_gates_passed",
+    "current": "docs/engineering-delivery/auth-profile-20261106-r4",
+    "audit": "docs/engineering-delivery/auth-profile-20261106-r4/audit.json",
+    "model_calls": 0,
+    "runtime_modified": false
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "users": 1,
+    "time_monotonic": 11944.4804824,
+    "health_started_monotonic": 11944.4779322,
+    "server_pid": 37504,
+    "rss_bytes": 5476352,
+    "cpu_user_seconds": 0.0,
+    "cpu_system_seconds": 0.0,
+    "health_elapsed_seconds": 0.0026022000001830747,
+    "health_status": 200
+  },
+  {
+    "users": 1,
+    "time_monotonic": 11944.6826266,
+    "health_started_monotonic": 11944.6807594,
+    "server_pid": 37504,
+    "rss_bytes": 5476352,
+    "cpu_user_seconds": 0.0,
+    "cpu_system_seconds": 0.0,
+    "health_elapsed_seconds": 0.0019033999997191131,
+    "health_status": 200
+  },
+  {
+    "users": 1,
+    "time_monotonic": 11944.9074044,
+    "health_started_monotonic": 11944.8832572,
+    "server_pid": 37504,
+    "rss_bytes": 5476352,
+    "cpu_user_seconds": 0.0,
+    "cpu_system_seconds": 0.0,
+    "health_elapsed_seconds": 0.024186000000554486,
+    "health_status": 200
+  },
+  {
+    "users": 1,
+    "time_monotonic": 11945.1225616,
+    "health_started_monotonic": 11945.1081273,
+    "server_pid": 37504,
+    "rss_bytes": 5476352,
+    "cpu_user_seconds": 0.0,
+    "cpu_system_seconds": 0.0,
+    "health_elapsed_seconds": 0.014476199999990058,
+    "health_status": 200
+  }
+]

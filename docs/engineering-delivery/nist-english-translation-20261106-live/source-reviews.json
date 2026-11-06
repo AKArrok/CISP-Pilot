@@ -1,0 +1,133 @@
+{
+  "method": "AI来源与阶段差异复查，非独立人工金标",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "hashes": {
+        "answer_baseline": "2da372497989ca4458e72c1e239ac227374ed433a91f8aa877bc304a0d42f870",
+        "answer_english": "cf69b60375e20ef38c6251d9e496c2fe2fe33d7efe2ec4dbf1acec301e6d7ee9",
+        "answer_candidate": "643eb6175eb106c5c9d65ddd194bb9d3b8849cf073c28e2f3a401b3f366d77d8"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": false,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "**结论：需要，但属于基于组织需要和用户构成的“考虑”事项，而非强制要求。** 资料在 AC-8 的补充指导中明确：组织应基于组织需求和系统用户的人口构成，考虑以多种语言显示系统使用通知（system use notification）消息或横幅。\n\n**依据与限制：**\n- 该表述为“Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users”，即是否多语言、覆盖哪些语言，由组织结合自身需要和用户群体判断，资料未设定强制性的语言清单或审批动作。\n- 同一指导还要求：就隐私信息内容咨询隐私办公室，就警告横幅内容取得总法律顾问（或组织等效机构）的法律审查与批准。这是对通知内容的要求，不等于禁止某角色起草或实施。\n- 通知本身须在授予访问前显示，并保留在屏幕上直至用户确认使用条件并采取明确动作登录或进一步访问；这些是必须执行的动作，与“是否多语言”的考虑事项不同。\n\n**易混淆点：** 多语言是“考虑”项，不是待赋值参数；资料中 AC-8 的待赋值参数只有 `ac-08_odp.01`（系统使用通知内容）和 `ac-08_odp.02`（公开可访问系统进一步访问前的使用条件），二者均未赋值，需由组织确定。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "hashes": {
+        "answer_baseline": "8497235c2baff3dbe7bb83ac6ac9067363bf7e04ef33c9bf931faad04ccf3951",
+        "answer_english": "4e5f3b9abd8cf0454296a7e51834b619eeeab65dcc975a0b8df471b7debd5d8a",
+        "answer_candidate": "28a6cd7fe6b7011dcdd53353bfb0726bff8f6740ede1d19add02a97f4a1c3650"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": false,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "**结论：** 需要，但并非强制。资料明确指出，是否需要在初始网络登录后、访问应用或其他系统资源时再显示一次系统使用通知（system use notification），由组织基于风险评估自行决定。\n\n**依据与解释：**\n\n- **强制动作**：AC-8 要求在人机登录界面授予访问权限之前显示系统使用通知（system use notification），并持续保留在屏幕上，直到用户确认使用条件并采取明确动作登录或进一步访问系统。\n- **二次告知的性质**：指南部分说明，组织应“基于风险评估”考虑是否需要二次系统使用通知（system use notification），以便在初始网络登录后访问应用或其他系统资源。这是有条件考虑的事项，不是必须执行的强制动作。\n- **适用范围限制**：系统使用通知（system use notification）仅用于通过登录界面进行的人机访问；不存在人机接口时不需要通知。\n- **相关配套考虑**：组织可根据需要和用户群体特征考虑多语言横幅；隐私信息内容应咨询隐私办公室，警告横幅内容应由总法律顾问或组织等效机构进行法律审查和批准。这些属于咨询/审查安排，不构成对起草或实施角色的禁止。\n\n**易混淆点：** 不要将“基于风险考虑是否二次告知”误读为“必须二次告知”；也不要把仅适用于人机登录界面的通知要求扩展到无人机接口的场景。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "hashes": {
+        "answer_baseline": "c63c7ec886faed2033c732d086385690bd9f7cc7c234bcefbb6f62e0e8d096c0",
+        "answer_english": "118abf49e34d8b6fc200551205828adf3387ca44a1e7e0122e854212f799aa53",
+        "answer_candidate": "7dfbc144ac7024a8aa5b3b57412e6dd9bacb0261d1fca185d6bde6e5d5ce21ca"
+      },
+      "baseline_supported": false,
+      "english_supported": true,
+      "english_language_contract_valid": true,
+      "candidate_supported": false,
+      "candidate_contract_valid": true,
+      "reason": "英文原答明确security incidents or breaches，翻译阶段生成安全事件或违规事件；可直接定位到翻译阶段，不归因推断。中文基线也误译。",
+      "rendered_candidate": "**结论：** 所提供的材料并未说明当远程工作（telework）环境发生变化时必须调整培训内容。材料仅指出，组织在确定培训内容时考虑的因素包括工作环境（例如远程工作）。是否必须因这种变化而更新内容并未明确说明；材料仅将评估或审计发现、安全事件或违规事件，以及适用法律、行政命令、指令、法规、政策、标准与指南的变化列为可能促使更新（precipitate an update）的事件示例。\n\n**解释：**\n- **内容确定：** 组织根据具体的组织要求、人员被授权访问的系统以及工作环境（例如远程工作）来确定素养培训与意识（literacy training and awareness）的内容。这是确定内容时的一个因素，而非强制性的调整触发条件。\n- **内容更新：** AT-2c 要求按组织定义的频率（organization-defined frequency）并在组织定义的事件（organization-defined events）发生后更新素养培训与意识内容。参数 `at-02_odp.06`（频率）和 `at-02_odp.07`（事件）在本次提取中未赋值；其值由组织确定。指南给出了可能促使更新的事件示例——评估或审计发现、安全事件或违规事件，或适用法律、行政命令、指令、法规、政策、标准与指南的变化——但其中并未包含远程工作的变化。\n- **需注意的区别：** 更新内容的频率参数（`at-02_odp.06`）与定期开展素养培训的频率参数（`at-2_prm_1` / `at-02_odp.01`、`at-02_odp.02`）是分开的；不要将二者混为一谈。参数值未赋值这一事实并不使更新动作成为可选。\n\n**记忆点／常见混淆：** “工作环境（例如远程工作）”是指南下的内容确定因素，而不是所列的示例更新触发事件之一。更新义务本身是强制性的，但其频率和触发事件是组织定义的参数。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "hashes": {
+        "answer_baseline": "d0685829d9a78460ae43e7a1153676a1326070bfe3b530cc83bf24604533dca2",
+        "answer_english": "c894a8298f528f472866ca71288e4c2d81000da90a6aee2505f6f2014d1a36b4",
+        "answer_candidate": "94dffc413708a957cf18a15085e03e50aa99aa76395e4fb6b63d0b1bdfdf97ce"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": true,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "资料在[at-2_smt.b]和AT-2指南中列出了若干意识提升技术（awareness techniques）：展示海报（displaying posters）和显示登录屏幕消息（displaying logon screen messages）是两个具体示例。\n\n指南中列出的完整技术集为：展示海报（displaying posters）、提供印有安全和隐私提醒的用品（offering supplies inscribed with security and privacy reminders）、显示登录屏幕消息（displaying logon screen messages）、生成来自组织官员的电子邮件建议或通知（generating email advisories or notices from organizational officials），以及开展意识提升活动（conducting awareness events）。注意，[at-2_smt.b]要求采用组织定义的意识提升技术（awareness techniques）（参数at-02_odp.05，其值由组织决定）；上述具体技术是指南中给出的示例，并非固定的强制性清单。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "hashes": {
+        "answer_baseline": "fe024f545b9ed965c0e865f4696fe21337c12ec627bea7e3dca0db1d4058278f",
+        "answer_english": "05fe5697590fdedd028c954ea910366fa662123bf093853be1186b31ae97db4f",
+        "answer_candidate": "e7066aae85597eb11fed81a6a5d75f89ef3d75a81c3985a2788feb0a4d39d37a"
+      },
+      "baseline_supported": true,
+      "english_supported": false,
+      "english_language_contract_valid": false,
+      "candidate_supported": false,
+      "candidate_contract_valid": true,
+      "reason": "中间答案仍概括全部备份对象范围待定，未限定用户级信息；翻译保持原错误，沿既有保守歧义规则失败。",
+      "rendered_candidate": "**结论：没有。** CP-9（System Backup，系统备份）未对备份软件的采购来源或供应商作出任何限制，资料中不存在“只能购买某一家公司备份软件”的要求。\n\n**依据说明：**\n- CP-9 的强制动作只涉及备份行为本身：按待赋值参数备份用户级信息、系统级信息和系统文档，并保护备份信息的机密性、完整性、可用性（[cp-9_smt.a]–[cp-9_smt.d]）。\n- 指南部分说明的是备份范围界定（系统级信息包括系统状态信息、操作系统软件、中间件、应用软件和许可证；用户级信息为系统级信息以外的信息）、备份完整性保护机制（数字签名、密码哈希）、传输中保护由 MP-5 和 SC-8 处理，以及涉及特定信息类别时需咨询高级隐私官员和法律顾问。\n- 资料未提及软件采购、供应商选择或产品品牌方面的任何约束。\n\n**易混淆点：** CP-9 中的待赋值参数是备份对象范围（system components）和三类备份的频次（frequency），均与“购买哪家软件”无关；不能把参数待定理解为对采购方式的限制。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "cp-9-new-08",
+      "hashes": {
+        "answer_baseline": "be8f5d8c610852e7b87f530ed76dea9b86a43cf793b55cb721bac8992bc42b6b",
+        "answer_english": "6ad9465b2f83f11f2b36ecd1be159d0b259e1e60aaf9173329e9263b0c1c59d6",
+        "answer_candidate": "d88b78e0d30a8539c9b1100ca03aaff8368b283b01f773731d0af99d8d7b1316"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": true,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "**否。** CP-9 不允许跳过对包含隐私相关文档的系统文档进行备份。备份系统文档的义务被表述为强制性动作，唯一未确定的事项是**频率**参数（cp-09_odp.04），该参数在本摘录中未赋值。\n\n**依据：**\n- [cp-9_smt.c] 要求：“Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }}。”此处的参数被定义为**频率**（“frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined”）。参数值未确定并**不**会使备份动作变为可选。\n- [cp-9_smt.d] 另行要求保护备份信息的机密性、完整性和可用性。\n- 指南指出，组织可能受法律、行政命令、指令、法规或政策约束，这些文件对特定类别的信息（例如个人健康信息）有要求，并且人员应就此类要求咨询高级机构隐私官员和法律顾问。这强化而非放宽了对隐私相关文档的处理。\n\n**记忆点／常见混淆：** 不要将未赋值的 cp-09_odp.04 视为允许省略文档备份；它只是尚待定义的频率。另请注意，cp-09_odp.01（系统组件）和 cp-09_odp.02（频率）适用于用户级信息备份，而 cp-09_odp.03（频率）适用于系统级信息备份——这些是不同的参数。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "ca-8-new-01",
+      "hashes": {
+        "answer_baseline": "d1ee0bb9cca6806d3be37eb9e8847e890339ec14fed6d30111c34a200879f475",
+        "answer_english": "a548e91d406bacaaec0d698d736b15dbc048b4904854aa54fbaf3ec56ab69a89",
+        "answer_candidate": "00400de0a2a423ff9a05eeab1f279afd5a4605b9f20becd0c943a2dfbb159c8f"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": true,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "**结论：** 渗透测试（penetration testing）超越了自动化漏洞扫描（automated vulnerability scanning）。渗透测试是一种针对系统或单个系统组件开展的专门评估类型，用于识别可能被对手利用的漏洞，并且由具备可证明的技能和经验的代理人员和团队执行，包括在网络、操作系统和/或应用层安全方面的技术专长。\n\n**差异要点（依据来源）：**\n- **范围/性质：** 渗透测试是一种专门的评估类型；它超越了自动化漏洞扫描。\n- **人员：** 它由具备可证明的技能和经验的代理人员和团队执行（网络、操作系统和/或应用层安全专长）。\n- **目的：** 它可以在指定约束（时间、资源和技能）内验证漏洞或确定系统对对手的渗透抵抗程度，并且它试图复制对手的行动，提供对安全和隐私相关弱点或缺陷的更深入分析。\n- **方法（所述标准方法）：** 基于对系统的完整知识进行测试前分析；基于该分析进行测试前潜在漏洞识别；以及旨在确定漏洞可利用性的测试。所有各方在场景开始前同意约定规则（rules of engagement）。\n\n**关于参数的说明：** 渗透测试动作在形式上是强制性的（“开展渗透测试……”），但频率（`ca-08_odp.01`）和系统/组件（`ca-08_odp.02`）是参数，其值在本次提取中未分配，仍有待组织定义。\n\n**记忆点/常见混淆：** 渗透测试与自动化漏洞扫描并不相同；来源明确指出它超越了此类扫描。此外，漏洞分析结果可以支持渗透测试活动。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "ca-8-new-07",
+      "hashes": {
+        "answer_baseline": "377df8a2cc63ca16e841342ace076997fd990ed239c8cfe4e73fbc9fd869275e",
+        "answer_english": "cce96defe34036012084e28c1ab9dc6d01b7a88c318bd7d1d2b338ae47fb9520",
+        "answer_candidate": "8955199f4b7ee9a98b52b819a38006301c01a72a4c89a73a08a1d552906c307b"
+      },
+      "baseline_supported": true,
+      "english_supported": true,
+      "english_language_contract_valid": true,
+      "candidate_supported": true,
+      "candidate_contract_valid": true,
+      "reason": "对象、动作、前提、参数和示例与原来源支持；语言协议另计。",
+      "rendered_candidate": "不。所提供的资料未规定渗透测试的任何持续时间，也未规定每次测试必须持续七天。\n\n【资料1】[ca-8_smt] 要求在待定义的频率下、对待定义的系统或系统组件进行渗透测试；OSCAL 参数定义将 `ca-08_odp.01` 确定为进行渗透测试的**频率**（frequency），将 `ca-08_odp.02` 确定为进行测试的**系统或系统组件**（systems or system components）。本次提取未赋予任何值，因此频率仍待组织确定。指南讨论了时间、资源、技能等约束条件，但未设定七天的持续时间。\n\n记忆要点：不要将频率参数（`ca-08_odp.01`）与范围参数（`ca-08_odp.02`）混淆；两者都不是持续时间参数。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    }
+  ],
+  "baseline_supported": 7,
+  "english_source_supported": 7,
+  "english_language_contract_valid": 5,
+  "candidate_supported": 6,
+  "candidate_contract_valid": 8,
+  "denominator": 8,
+  "candidate_accepted": false,
+  "default_promoted": false
+}

@@ -1,0 +1,70 @@
+...........F...                                                          [100%]
+================================== FAILURES ===================================
+_ test_answer_contract_executor_keeps_both_arms_at_frozen_temperature[answer_pipeline] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-pipeline-red-hi1la55h/pytest/test_answer_contract_executor_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000246E79155D0>
+mode = 'answer_pipeline'
+
+    @pytest.mark.parametrize("mode", ["answer_contract", "answer_pipeline"])
+    def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path, monkeypatch, mode):
+        import dotenv
+        import openai
+        import tiktoken
+        import truststore
+        from scripts import eval_nist_batch
+    
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
+        for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context]}],
+                            "chunks.json": [context], "prompts.json": {"answer_baseline_system": "Plain",
+                                                                         "answer_structured_system": "JSON",
+                                                                         "answer_english_system": "English",
+                                                                         "answer_candidate_system": "Translate"}}.items():
+            (packet / name).write_text(json.dumps(value), encoding="utf-8")
+        planned = 3 if mode == "answer_pipeline" else 2
+        manifest = {"mode": mode, "answer_temperature": .3, "frozen_sha256": {},
+                    "paid_proposal": {"calls": planned, "budget_usd": .03}}
+        (packet / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        (packet / "authorization.json").write_text(json.dumps({"max_calls": planned, "budget_usd": .03,
+            "manifest_sha256": hashlib.sha256((packet / "manifest.json").read_bytes()).hexdigest()}), encoding="utf-8")
+        calls = []
+    
+        def create(**kwargs):
+            calls.append(kwargs)
+            return SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2, completion_tokens=2),
+                choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(
+                    content="English final answer" if mode == "answer_pipeline" and len(calls) == 2
+                    else '{"answer":"A","source_ids":[1]}'))],
+                model_dump=lambda: {"model": "synthetic transport response", "usage": {"prompt_tokens": 2, "completion_tokens": 2}})
+    
+        monkeypatch.setattr(eval_nist_batch, "ROOT", tmp_path)
+        monkeypatch.setattr(dotenv, "dotenv_values", lambda *a, **kw: {})
+        monkeypatch.setattr(truststore, "inject_into_ssl", lambda: None)
+        monkeypatch.setattr(tiktoken, "get_encoding", lambda name: SimpleNamespace(encode=lambda text: [1]))
+        monkeypatch.setattr(openai, "OpenAI", lambda **kw: SimpleNamespace(chat=SimpleNamespace(
+            completions=SimpleNamespace(create=create))))
+        monkeypatch.setattr(sys, "argv", ["eval", "--packet", str(packet), "--output", str(output), "--execute"])
+>       eval_nist_batch.main()
+
+tests\test_answer_output_contract.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\eval_nist_batch.py:118: in main
+    rows = [] if fixed_inputs else retrieve(cases, chunks)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^
+scripts\eval_nist_batch.py:77: in retrieve
+    "source_plus_alias": [{**c, "embedding_text": c["text"] + "\n" + c["embedding_text"]} for c in chunks]}
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x00000246E765F2B0>
+
+>   "source_plus_alias": [{**c, "embedding_text": c["text"] + "\n" + c["embedding_text"]} for c in chunks]}
+                                                                     ^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'embedding_text'
+
+scripts\eval_nist_batch.py:77: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_output_contract.py::test_answer_contract_executor_keeps_both_arms_at_frozen_temperature[answer_pipeline]
+1 failed, 14 passed in 0.76s

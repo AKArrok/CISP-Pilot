@@ -1,0 +1,90 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "estimated_tokens": 4133
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_structured",
+      "estimated_tokens": 4143
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "estimated_tokens": 4142
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_structured",
+      "estimated_tokens": 4152
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "estimated_tokens": 3143
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_structured",
+      "estimated_tokens": 3153
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2856
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_structured",
+      "estimated_tokens": 2866
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2717
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2727
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "estimated_tokens": 4221
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_structured",
+      "estimated_tokens": 4231
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "estimated_tokens": 4085
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_structured",
+      "estimated_tokens": 4095
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "estimated_tokens": 2321
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_structured",
+      "estimated_tokens": 2331
+    }
+  ],
+  "max": 4231,
+  "maximum_calls": 16,
+  "budget_usd": 0.08,
+  "prior_estimate_usd": 0.8427321,
+  "within_approved_3_usd": true,
+  "method_difference": "Only expand literal original param definition at use; no guidance split, no end-of-source ID mapping, no term rules or gold; compare same representations as previousv2 but different sampling time, no causal source claim."
+}

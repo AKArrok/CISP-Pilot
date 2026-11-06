@@ -1,0 +1,8 @@
+{
+  "status": "failed_tool_configuration",
+  "symptom": "Locust TOML gbk UnicodeDecodeError",
+  "load_auth_calls": 0,
+  "server_terminated": true,
+  "fix": "Explicit PYTHONUTF8=1 in next fresh run; originalfailure preserved",
+  "product_auth_regression": false
+}

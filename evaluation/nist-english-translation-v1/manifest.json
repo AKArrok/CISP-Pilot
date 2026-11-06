@@ -1,0 +1,25 @@
+{
+  "mode": "answer_pipeline",
+  "role": "Original same8: current direct Chinese baseline vs English final answer followed by literal Chinese translation. No hidden reasoning requested, no human gold, originalTop2 unchanged.",
+  "answer_temperature": 0.3,
+  "frozen_sha256": {
+    "cases.json": "d69c0668a6f0be730e1968a44e4a203f927ebd1672575dff33771c429406d12f",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "cc96f51da95addbffc31a46d2e1abc8a8584cef80e588c97de41589dbd0dd9d0",
+    "renderer.py": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+    "selection.json": "f3f9aaab1f40c308b2795da13752a14dea72789f3d2ef0bfaedb04fa98108d8a"
+  },
+  "paid_proposal": {
+    "calls": 24,
+    "budget_usd": 0.12,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only pinned public NIST, original questions and saved generated English final answer; three calls per case, no judge calls"
+  },
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "03b1f9aef07d7cba03cc148c4df9ba2cf720d1f9e9fbd509ff01be5a7ac0e77a",
+  "renderer_sha256": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+  "acceptance": "All original8 direct or translated candidate answers assessed against original source/completeness/parameter/citation criteria. Preserve every baseline and English error; no promotion before same-input repeats/negative checks and original32 plus approvedmixed4 full application regression."
+}

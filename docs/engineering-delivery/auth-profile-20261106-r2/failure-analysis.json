@@ -1,0 +1,14 @@
+{
+  "status": "not_accepted_instrumentation",
+  "http_login_success": 26,
+  "http_failure": 0,
+  "errors_in_server_log": 3,
+  "rss_max_mib_5_unverified_pid": true,
+  "source_of_pid": "Popen launcher PID, runtime may be child interpreter",
+  "next_fixes": [
+    "server runtime self-reports PID and parent ancestry validated",
+    "read complete health response body before closing",
+    "fresh DB and same original workload/security/gates"
+  ],
+  "cleanup": "Exact frozen fixture process search found no surviving server processes"
+}

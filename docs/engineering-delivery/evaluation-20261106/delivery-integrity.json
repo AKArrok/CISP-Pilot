@@ -1,0 +1,39 @@
+{
+  "head_sha": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
+  "checks": [
+    {
+      "packet": "judge-atomic-v1",
+      "input_hashes_match": true,
+      "executor_snapshot_matches": true,
+      "receipt_count": 70,
+      "known_usage": true,
+      "semantic_acceptance": "not_passed; see source/rationale review, integrity alone is not acceptance"
+    },
+    {
+      "packet": "judge-atomic-context-v2",
+      "input_hashes_match": true,
+      "executor_snapshot_matches": true,
+      "receipt_count": 70,
+      "known_usage": true,
+      "semantic_acceptance": "not_passed; see source/rationale review, integrity alone is not acceptance"
+    },
+    {
+      "packet": "nist-answer-contract-v1",
+      "input_hashes_match": true,
+      "executor_snapshot_matches": true,
+      "receipt_count": 16,
+      "known_usage": true,
+      "semantic_acceptance": "not_passed; see source/rationale review, integrity alone is not acceptance"
+    },
+    {
+      "packet": "nist-answer-contract-v2",
+      "input_hashes_match": true,
+      "executor_snapshot_matches": true,
+      "receipt_count": 16,
+      "known_usage": true,
+      "semantic_acceptance": "not_passed; see source/rationale review, integrity alone is not acceptance"
+    }
+  ],
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "scope": "Offline public-artifact verification; zero model calls; final CI independent and pending"
+}

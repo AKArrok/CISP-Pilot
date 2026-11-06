@@ -1,0 +1,90 @@
+{
+  "method": "AI原文复查非独立人工金标",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "baseline_sha256": "6b0a91a40e49e0db3a818afeece2517a26c74c6072aaa4f8298ad53c820f9b74",
+      "structured_sha256": "b1a1e51c3bc0a4e9fe778a3e50ca28a1e1f9a7c7700dabf01cc27c32668c3aa6",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "需要。资料在系统使用通知（AC-8）的补充说明中明确：组织应基于组织需要和系统用户的人口构成，考虑以多种语言显示系统使用通知消息或横幅。这是“考虑”类事项，不是强制必须多语言；同时该通知仅适用于通过有人类用户的登录界面进行的访问，不存在人类接口时不要求通知。\n\n记忆点：多语言横幅属于基于组织需要和用户构成的考虑项；通知的展示对象是登录前的人类用户。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "baseline_sha256": "788a6d42141427ef5e4c887ba38be233b8489616c69d9bf1bb0c640af1dd0be6",
+      "structured_sha256": "8c5ad0863a6384233a2b26f0dbb03b35f18148ef6f6d829b13e16ea5b1b8d7fa",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "需要，但这不是强制要求，而是基于风险评估由组织自行决定。资料1的指南（ac-8_gdn）明确：基于风险评估，组织考虑在初始网络登录之后，访问应用或其他系统资源时是否需要二次系统使用通知。也就是说，二次告知属于组织可裁量的考虑事项，并非必须执行的动作。\n\n相关要点：\n- 系统使用通知仅用于通过有人类用户的登录接口进行的访问；不存在人类接口时不需要通知（资料1）。\n- 组织可考虑按需以多种语言显示通知消息或横幅（资料1）。\n- 通知内容涉及隐私信息时，应咨询隐私办公室；警告横幅内容的法律审查与批准应咨询总法律顾问办公室或组织等效机构（资料1）。\n\n易混淆点：ac-8中“在授予访问前显示通知”是强制动作，其显示内容由待赋值参数ac-08_odp.01（system use notification）确定；而“初始登录后的二次通知”只是基于风险的考虑事项，二者不能混为一谈。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "baseline_sha256": "7fcad879d895013b7db5857daf015b0c48a51f2c620fc2f836fcd2d48bb90d3e",
+      "structured_sha256": "68671a85c64c59d37a91a5a9a68acb4ff3e18deef3a53721de7b780a8a636a44",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "资料没有把“远程工作环境变化”规定为必须触发培训内容更新的情形，因此不能据此认定存在这样一项强制调整要求。AT-2 要求的是：培训与意识内容按组织定义的频率（at-02_odp.06，待赋值）更新，并在组织定义的事件（at-02_odp.07，待赋值）发生后更新；指南举例的触发事件包括评估或审计发现、安全事件或泄露、适用法律/行政令/指令/法规/政策/标准/指南的变化，未列远程工作环境变化。远程工作仅在指南说明培训内容确定依据时作为工作环境示例（如 telework）出现，属于内容设计考量，不是更新触发条件。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "baseline_sha256": "57502ec4d1b26ed3a15f845e268b12a15adb8e0a21027ee4008cfee6104a934a",
+      "structured_sha256": "d6dc675b181a8ca161a92c3cc4fb7851675414246d0f84a49d4378a6ed65fb34",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "资料中明确列出的提升安全意识的具体手段包括：展示海报、提供印有安全与隐私提醒的用品、显示登录屏幕消息、由组织官员生成电子邮件通告或通知、举办安全意识活动。这些均属于资料中“安全意识技术（awareness techniques）”的示例，具体采用哪些技术由组织定义的参数（awareness techniques）确定。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "baseline_sha256": "890249f4db5ccdeb7b2a9028c1ac5a4f38cf3f607e4d60f6c0d90c34f57bab47",
+      "structured_sha256": "352e7c0fa929a729c00be176f405167827509ce85e4e19c61cf4fb5e76545de7",
+      "contract_valid": true,
+      "baseline_supported": false,
+      "structured_supported": false,
+      "reason": "对象范围仍概括备份对象待定，未限定用户级信息；保持原保守歧义判定。",
+      "rendered_answer": "不是。资料1中系统备份（cp-9）控制并未指定只能购买某一家公司的备份软件，资料中也没有任何关于备份软件采购或供应商限定的要求。该控制规定的是必须执行的备份动作：对用户级信息、系统级信息以及系统文档（含安全与隐私相关文档）实施备份，并保护备份信息的机密性、完整性和可用性；其中备份对象范围与备份频次以参数形式待组织确定（cp-09_odp.01为系统组件，cp-09_odp.02至cp-09_odp.04为频次），参数值待定不代表备份动作可选。资料1还说明，用于保护系统备份完整性的机制包括数字签名和密码哈希，备份信息传输中的保护由MP-5和SC-8处理，均未涉及指定厂商。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "cp-9-new-08",
+      "baseline_sha256": "9151dff9eead25c824f4275e805507bfd4033ebcf917ce0f197cbe9e4235cdbe",
+      "structured_sha256": "0c925aea29238260f8f4189ba42c47a62516771d1cbb2ed3492e9d024a2bae42",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "不允许。资料中 cp-9 明确要求对系统文档（包括与安全和隐私相关的文档）执行备份，且该动作是必须执行的，不能跳过；只是备份频次由待赋值参数 cp-09_odp.04（label 为 frequency）确定，参数值待组织确定并不表示该备份动作可选。\n\n依据要点：\n- [cp-9_smt.c]：Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }}；其中 cp-09_odp.04 是“frequency”参数，用于定义系统文档备份的频次（与恢复时间和恢复点目标一致），资料未赋值。\n- [cp-9_smt.d] 还要求保护备份信息的机密性、完整性和可用性。\n- [cp-9_gdn] 说明系统备份应反映应急计划及组织其他备份要求；组织可能受法律、行政命令、指令、法规或政策约束（例如个人健康信息），此时组织人员应就此类要求咨询高级隐私官员和法律顾问。\n\n易混淆点：cp-09_odp.04 是频次参数，不是“是否备份”的开关；频次待定不等于可以不做。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "ca-8-new-01",
+      "baseline_sha256": "54306e588527cc9d6d3f4d119d037c7d471be13210f5a76ba510d57c2a4cf0bc",
+      "structured_sha256": "e0105498333c54c857a34a6b3bde8ec8944b65c3b394e56b386cddb19d0268e0",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "渗透测试是比自动漏洞扫描更深入的一类评估：资料明确指出，渗透测试“超越自动漏洞扫描”，由具备可证明技能和经验、涵盖网络、操作系统和/或应用层安全技术专长的人员与团队实施，用于识别可被对手利用的漏洞。其目的还包括验证漏洞，或在给定约束（时间、资源、技能）下确定系统对对手的抵御程度；它试图复现对手行为，对安全与隐私相关弱点作更深入分析。资料未对自动漏洞扫描本身作进一步定义或展开，因此两者在工具、流程层面的其他具体差异，本次检索到的资料不足以回答这一部分。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "ca-8-new-07",
+      "baseline_sha256": "cb860f79e26ad1375ba128c45f8f5367340d16234cced35f599383cfbf95c5de",
+      "structured_sha256": "b38cbe917bbd8131f1dada6576b5ce2d8a0f3bc0d5dd3f8ef40a7eb0f30df459",
+      "contract_valid": true,
+      "baseline_supported": true,
+      "structured_supported": true,
+      "reason": "直接结论、对象/动作/条件/参数和具体示例与原英文支持；AT2本次breaches为泄露，不能据此归因参数展开。",
+      "rendered_answer": "没有。资料1对渗透测试只设置了两个待组织确定的参数：ca-08_odp.01 为“frequency”（开展渗透测试的频次），ca-08_odp.02 为“system(s) or system components”（实施渗透测试的系统或系统组件）；资料未给出任何参数取值，也没有“每次渗透测试必须持续七天”或测试持续时间的参数或规定。资料1的说明部分提到渗透测试受时间、资源、技能等约束，但这不等于规定七天。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    }
+  ],
+  "baseline_supported": 7,
+  "structured_supported": 7,
+  "contract_valid": 8,
+  "total": 8,
+  "default_promoted": false
+}

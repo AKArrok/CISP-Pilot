@@ -1,0 +1,72 @@
+{
+  "scope": "Local TCP actual auth/SQLite with synthetic8 accounts, instrumented original gate; no model calls, no app runtime change",
+  "passed": true,
+  "login_success": 26,
+  "invalid_login_correct_401": 2,
+  "old_cookie_replay_401": 26,
+  "scrypt_work_items": 28,
+  "peak_parallel_scrypt": 2,
+  "peak_rss_mib": 386.8671875,
+  "health_ok_all": true,
+  "negative_logins": [
+    {
+      "kind": "known-wrong-password-cold-cache",
+      "status": 401,
+      "seconds": 3.2131078000002162
+    },
+    {
+      "kind": "unknown-account-warm-cache",
+      "status": 401,
+      "seconds": 1.2620894000010594
+    }
+  ],
+  "stages": [
+    {
+      "users": 1,
+      "login_count": 2,
+      "login_mean_ms": 1239.1879000006156,
+      "login_p95_ms_small_sample": 1200.0,
+      "mean_scrypt_seconds": 1.2282511499997781,
+      "max_gate_wait_seconds": 2.9000002541579306e-06,
+      "health_max_ms": 27.399200000218116,
+      "server_cpu_seconds": 2.5625
+    },
+    {
+      "users": 4,
+      "login_count": 8,
+      "login_mean_ms": 2153.738587500129,
+      "login_p95_ms_small_sample": 2500.0,
+      "mean_scrypt_seconds": 1.2267187499994634,
+      "max_gate_wait_seconds": 1.2546782999997959,
+      "health_max_ms": 27.160000001458684,
+      "server_cpu_seconds": 9.703125
+    },
+    {
+      "users": 8,
+      "login_count": 16,
+      "login_mean_ms": 4076.653556249994,
+      "login_p95_ms_small_sample": 5100.0,
+      "mean_scrypt_seconds": 1.2516105312499803,
+      "max_gate_wait_seconds": 3.7558471000011195,
+      "health_max_ms": 27.67620000122406,
+      "server_cpu_seconds": 19.78125
+    }
+  ],
+  "security_constants": {
+    "scrypt_n": 131072,
+    "scrypt_r": 8,
+    "scrypt_p": 1,
+    "original_gate_capacity": 2,
+    "gate_identity_preserved": true
+  },
+  "default_db_unchanged": true,
+  "actual_pid_verified": true,
+  "all_child_processes_stopped": true,
+  "server_error_count": 0,
+  "interpretation": "Warm login tail follows 2-job scrypt queue; health remains responsive. Do not weaken hashing or raise gate just for latency. Separate cold Redis connection from warm login; small sample not production capacity/SLA.",
+  "prior_failed_runs_preserved": [
+    "auth-profile-20261106",
+    "auth-profile-20261106-r2",
+    "auth-profile-20261106-r3"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "estimates": [
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 3323
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 3321
+    },
+    {
+      "id": "ac-8-new-05",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 3474
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 3332
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 3330
+    },
+    {
+      "id": "ac-8-new-06",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 3483
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 2671
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 2669
+    },
+    {
+      "id": "at-2-new-02",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 2822
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 2578
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 2576
+    },
+    {
+      "id": "at-2-new-03",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 2729
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 2309
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 2307
+    },
+    {
+      "id": "cp-9-new-07",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 2460
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 3276
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 3274
+    },
+    {
+      "id": "cp-9-new-08",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 3427
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 3282
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 3280
+    },
+    {
+      "id": "ca-8-new-01",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 3433
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_baseline",
+      "tokens_including_1024_english_output_reserve": 2188
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_english",
+      "tokens_including_1024_english_output_reserve": 2186
+    },
+    {
+      "id": "ca-8-new-07",
+      "stage": "answer_candidate",
+      "tokens_including_1024_english_output_reserve": 2339
+    }
+  ],
+  "planned_calls": 24,
+  "budget_usd": 0.12,
+  "prior_estimate_usd": 0.8612457,
+  "within_approved_3_usd": true,
+  "source_text_unchanged": true
+}

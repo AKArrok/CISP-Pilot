@@ -1,0 +1,10 @@
+{
+  "exclude": [
+    "all ignored raw server.log",
+    "all private synthetic databases/accounts",
+    "authorization.json",
+    "dispatch.lock",
+    "unrelated user changes"
+  ],
+  "safe_public_log_evidence": "server-log-summary.json contains digest and aggregate counts only"
+}

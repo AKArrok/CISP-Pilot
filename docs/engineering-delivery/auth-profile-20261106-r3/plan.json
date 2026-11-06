@@ -1,0 +1,45 @@
+{
+  "status": "frozen_before_run",
+  "base_head": "245524a4c436d90c34c7c18f80424d65a9e30b6e",
+  "scope": "Full local FastAPI actual auth routes, TCP; synthetic accounts/isolatedSQLite; no chat or model requests; assets readiness check bypass only in fixture",
+  "tool": "existing Locust2.47.0 environment, psutil7.2.2 sampler",
+  "stages_users": [
+    1,
+    4,
+    8
+  ],
+  "login_cycles_per_user": 2,
+  "stage_seconds": 12,
+  "spawn_rate": 100,
+  "expected_login_attempts": 26,
+  "rate_limit": "Original IP30/300s and username10/300s, unchanged; no reset between stages",
+  "password_security": "Original scrypt N131072,r8,p1 and original BoundedSemaphore2 unchanged",
+  "metrics": [
+    "login HTTP/session correctness",
+    "scrypt admission wait vs compute walltime",
+    "exact child PID CPU and RSS samples",
+    "health responses during each load stage"
+  ],
+  "gates": [
+    "26 successful login+me+logout+revocation cycles",
+    "zero unexpected HTTP errors or exceptions",
+    "scrypt active peak <=2; security constants unchanged",
+    "default DB hash unchanged",
+    "all server/load child processes terminated by exact Popen handles"
+  ],
+  "limitations": "Small short diagnostic samples, no production p95/p99/SLA or multi-instance claim; profiler instrumentation can affect timings; credentials and syntheticDB private local",
+  "default_db_before": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "model_calls": 0,
+  "frozen_sha256": {
+    "driver.py": "9e0a1d22e6bb3cd93566cded3e4df8042b7aff3745f2968fd0d12894aa6fbb82",
+    "server-fixture.py": "5d76727b819c216b6cf1b0a710dd200b93c70ad46285fea7e28a9095852b281d",
+    "locustfile.py": "b4ffa99ef5f3abdfd917b97a2cfd28168dd210456ef445a2090a2afc4e4c6517"
+  },
+  "runtime_sha256": {
+    "storage/auth.py": "bf6ad042e510a72e366cd8ccf92a66c9db097670362ea1669535cbf99f63e067",
+    "storage/http_auth.py": "cb8820cf78cb5cee7cc099ed742c78720904740b86ceb19080f6843376a0c766",
+    "storage/cache.py": "256323062766e303477576f92296e6bdf4e0942f6d65f5c1a25b5e12495e24b3",
+    "server.py": "44f13c96e64d27de37e035390932c83caefdee258b1e28d4cac4fb57e913196a"
+  },
+  "previous_failure": "r2 HTTP26/26 but sampled launcher PID, RSS unverified; three Proactor connection close errors. r3 server self-report PID + ancestor check and drain health bodies. Same workload/security/gates."
+}

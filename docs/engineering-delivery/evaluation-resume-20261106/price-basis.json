@@ -1,0 +1,12 @@
+{
+  "verified_date": "2026-11-06",
+  "official_url": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "model": "deepseek-flash",
+  "published_version": "DeepSeek-V4.1-Flash-1017",
+  "conservative_usd_per_million": {
+    "input_cache_miss_peak": 0.3,
+    "output_peak": 1.2
+  },
+  "account_invoice": false,
+  "ignore_cache_and_offpeak_discount_for_budget": true
+}

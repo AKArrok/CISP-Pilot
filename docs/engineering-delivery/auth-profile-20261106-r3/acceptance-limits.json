@@ -1,0 +1,13 @@
+{
+  "http_success": 26,
+  "resource_pid_verified": true,
+  "max_rss_mib": 387.48046875,
+  "max_password_queue_seconds": 3.8873402,
+  "health_max_seconds": 0.027199,
+  "server_errors": 0,
+  "default_db_unchanged": true,
+  "processes_stopped": true,
+  "revocation_proof": "insufficient: cookie removed by logout, client did not replay prior token",
+  "latency_comparison": "first stage includes cold Redis-connect fallback; do not treat pure-scrypt service-time estimate as full login time",
+  "overall_acceptance": false
+}
