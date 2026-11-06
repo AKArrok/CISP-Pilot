@@ -199,9 +199,9 @@
   "next": "Original AC8/AT2/CP9 failures: literal-unit citation coverage and term provenance diagnostic; no new prompt stacking. Need unit-reference contract, frozen same8 repeat/negative and original32/mixed4 before default promotion. Latest quality noaid repeat6/8; default unchanged. Push current source-unit preparation/soak/results then check exactCI.",
   "quota": {
     "stop_remaining_percent_lte": 0,
-    "last_verified_primary_remaining_percent": 6,
+    "last_verified_primary_remaining_percent": 2,
     "no_reset_credit": true,
-    "verified_at_utc": "2026-11-07T02:54:13.408675+08:00",
+    "verified_at_utc": "2026-11-07T03:08:48.068464+08:00",
     "previous_default_threshold_percent": 10,
     "override_scope": "this run only: user2026-11-07 says use current quota to exhaustion",
     "user_reported_remaining_percent": 25,
@@ -238,13 +238,13 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "1abcf69 pushed; exact CI observed",
-  "latest_commit": "06eb7bf6c9e93e0bd2f719ef33835b0ebb2a93ae",
+  "latest_commit": "b70ea4651ca371f02293bc7a4139b7b034ea90ca",
   "latest_ci": {
-    "id": 42275376749,
-    "head_sha": "06eb7bf6c9e93e0bd2f719ef33835b0ebb2a93ae",
-    "status": "completed",
-    "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42275376749"
+    "id": 42276887222,
+    "head_sha": "b70ea4651ca371f02293bc7a4139b7b034ea90ca",
+    "status": "in_progress",
+    "conclusion": null,
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42276887222"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -262,7 +262,7 @@
     "model_calls": 0,
     "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
   },
-  "latest_activity_local": "2026-11-07T03:07:28.156991+08:00",
+  "latest_activity_local": "2026-11-07T03:08:48.068464+08:00",
   "business_load": {
     "status": "completed_all_frozen_gates",
     "directory": "docs/engineering-delivery/business-load-20261107",
@@ -302,6 +302,8 @@
     "canonical_sources": 8,
     "literal_units": 155,
     "tests": "10passed plus Ruff",
-    "model_calls": 0
+    "model_calls": 0,
+    "failure_breadth_diagnostic": "docs/engineering-delivery/evaluation-resume-20261106/evidence-breadth-diagnostic.json",
+    "all_failed_candidates_retained": 3
   }
 }
