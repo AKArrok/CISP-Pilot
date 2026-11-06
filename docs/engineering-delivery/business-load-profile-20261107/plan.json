@@ -1,0 +1,47 @@
+{
+  "status": "frozen_profile_workload_before_run",
+  "users": 8,
+  "seconds": 60,
+  "spawn_rate": 2,
+  "wait_seconds": [
+    2,
+    3
+  ],
+  "tasks_weights": {
+    "chat_SSE": 3,
+    "quiz_round": 1
+  },
+  "preauthenticated": true,
+  "reply": "Existing tests/local_load_server.py fixed17character reply; no recursive history echo",
+  "scope": "Current app real TCP/auth/SSE/quiz/transactions, syntheticdemoSQLite, fixed local model nodes, no external model or realcourse data; synthetic-only diagnostic wrappers of retrieval/apply/lock/SQLverb, no raw SQL or identities",
+  "metric_source": "Locust native finalJSON after runner.quit; periodicCSV retained",
+  "resources": "Actual server PID handshake/ancestry and psutil; credential preparation outside timing",
+  "gates": [
+    "8 spawned users",
+    "nonempty chat/quiz stats and zero failures",
+    "SSEdone noerror",
+    "SQL user/assistant pair count equals completedchat",
+    "answer_submissions count equals completedquizanswers",
+    "maxmessage<100chars and fixedreplylength",
+    "SQLite integrityok",
+    "defaultDBunchanged",
+    "runtime and launcher stopped"
+  ],
+  "limitations": "Synthetic fixture and short singleprocess local SQLite, no actualLLM concurrency/productionSLA; compare old238 only descriptively, not matched causality",
+  "default_db_before": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "real_model_calls": 0,
+  "frozen_sha256": {
+    "driver.py": "0b215729a82b01c7609e5028fe10fa2638dd28f49b757cb46b9250d535a450d3",
+    "server-fixture.py": "5504a8b73e839d1d7752f57ef556b80b938213e65686674598b036d4e9f3245b",
+    "locustfile.py": "4cbdf0771921a1eac9ef0689e6497b06213f66dbece9f34943bbfddb9e1828aa",
+    "quiz_profile.py": "7ac6a04d38f8a76fd87450363f665ec48f6554d956baa0a0dd1ccb189ca75bbd"
+  },
+  "runtime_sha256": {
+    "server.py": "7f40c2ade723958fbd4a135c9218d3056349b4a066a6762bf06010742cae99a0",
+    "storage/auth.py": "bf6ad042e510a72e366cd8ccf92a66c9db097670362ea1669535cbf99f63e067",
+    "storage/cache.py": "256323062766e303477576f92296e6bdf4e0942f6d65f5c1a25b5e12495e24b3",
+    "storage/submissions.py": "11970cb1001414a9df1266eaefe65450235d7de9966f4a1ea9a61549d6bf7c81",
+    "tests/local_load_server.py": "37cf4c33426d5cd34bbb864b80ba80c23802508f023347d439e906efbbd7395c",
+    "scripts/prepare_demo.py": "ff278b2d5f773b37bf43585f028e0eea822e0c65804732fb5078e6e62553c051"
+  }
+}

@@ -184,12 +184,12 @@
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Do not promote unstable8case generation; isolate quiz latency stage in zero-model fullTCPfixture, then continue source condition representation using preserved failures.",
+  "next": "Finalize extended zero-model load, push4line startup fix and verify exactCI; generation8case repeat still7/8, keep originaldefault and pursue fact-level source bindings not more domain-specific hints.",
   "quota": {
     "stop_remaining_percent_lte": 0,
-    "last_verified_primary_remaining_percent": 18,
+    "last_verified_primary_remaining_percent": 11,
     "no_reset_credit": true,
-    "verified_at_utc": "2026-11-06T14:58:29.048078+00:00",
+    "verified_at_utc": "2026-11-07T02:54:13.408675+08:00",
     "previous_default_threshold_percent": 10,
     "override_scope": "this run only: user2026-11-07 says use current quota to exhaustion",
     "user_reported_remaining_percent": 25,
@@ -222,17 +222,17 @@
     "final_regression": "103passed,1existing warning,5.02s; Ruff passed",
     "executor_hash": "NIST runner verifies declared executor hash before output/lock/API; absent legacy field remains supported",
     "dispatch_persistence": "Real API call preceded by pending_call/cost_unknown disk write; fake hard interruption red2/green89, zero paid calls",
-    "current_combined_regression": "124 passed,1existingAnyIO warning,50.06s; Ruff passed; startup/auth/readiness plus source/output/execution contracts"
+    "current_combined_regression": "132passed,1existingAnyIOwarning,29.33s; Ruffpassed; actual current server+contracts+corpuscache"
   },
   "config_fix_commit": "84d8538",
-  "git_delivery": "b82d8bb pushed, GitHub branch head verified; raw server.log excluded after auto-review rejection; aggregates only",
-  "latest_commit": "ace98c197218774cb90c315143611aceee72e3a8",
+  "git_delivery": "1abcf69 pushed; exact CI observed",
+  "latest_commit": "1abcf690779511df1826ec64fec348ed14a6413d",
   "latest_ci": {
-    "id": 42249176426,
-    "head_sha": "ace98c197218774cb90c315143611aceee72e3a8",
+    "id": 42274328854,
+    "head_sha": "1abcf690779511df1826ec64fec348ed14a6413d",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42249176426"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42274328854"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -250,7 +250,7 @@
     "model_calls": 0,
     "runtime_changed": "server.warmup3line only,18 targeted passed, no password/Redis policy change"
   },
-  "latest_activity_local": "2026-11-07T02:38:05.217229+08:00",
+  "latest_activity_local": "2026-11-07T02:54:13.408675+08:00",
   "business_load": {
     "status": "completed_all_frozen_gates",
     "directory": "docs/engineering-delivery/business-load-20261107",
@@ -259,5 +259,23 @@
     "seconds": 60,
     "audit": "docs/engineering-delivery/business-load-20261107/audit.json",
     "requests": 223
+  },
+  "business_profile": {
+    "status": "r2_completed_cold_cost_transfer_gates_passed",
+    "baseline": "docs/engineering-delivery/business-load-profile-20261107",
+    "retest": "docs/engineering-delivery/business-load-profile-r2-20261107",
+    "change": "server.warmup4lines loads local indexes before first question; no query/API",
+    "tests": "red2failed1passed; green15passed1existingwarning; Ruffpassed",
+    "audit": "docs/engineering-delivery/business-load-profile-r2-20261107/audit.json",
+    "retrieval_max_ms": 0.6453,
+    "quiz_internal_max_ms": 21.0715,
+    "init_seconds": 0.398219
+  },
+  "business_soak": {
+    "status": "running",
+    "directory": "docs/engineering-delivery/business-soak-20261107",
+    "model_calls": 0,
+    "users": 8,
+    "seconds": 180
   }
 }

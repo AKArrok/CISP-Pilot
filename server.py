@@ -38,6 +38,10 @@ def warmup() -> None:
     # Resolve the optional cache backend before a user pays its cold connection cost.
     cache.is_live()
 
+    from retrieval.hybrid import HybridRetriever
+
+    HybridRetriever.get()  # Load local indexes before the first question, without a query or API call.
+
     if config.EMBEDDING_BACKEND == "local":
         from llms import get_embeddings
 

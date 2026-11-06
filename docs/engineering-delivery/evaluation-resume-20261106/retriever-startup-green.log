@@ -1,0 +1,54 @@
+FF.............                                                          [100%]
+================================== FAILURES ===================================
+_____ test_ready_startup_resolves_cache_before_first_user_request[False] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C6AF0E5150>
+redis_live = False
+
+    @pytest.mark.parametrize("redis_live", [False, True])
+    def test_ready_startup_resolves_cache_before_first_user_request(monkeypatch, redis_live):
+        calls = []
+        monkeypatch.setattr(server, "_readiness_payload", lambda: ({"status": "ready"}, True))
+        monkeypatch.setattr(server.config, "EMBEDDING_BACKEND", "dashscope")
+        monkeypatch.setattr(server.cache, "is_live", lambda: calls.append("cache") or redis_live)
+        monkeypatch.setattr(HybridRetriever, "get", lambda: calls.append("retriever"))
+        monkeypatch.setattr("llms.get_embeddings", lambda: pytest.fail("Remote embedding must remain lazy"))
+        server.warmup()
+>       assert calls == ["cache", "retriever"]
+E       AssertionError: assert ['cache'] == ['cache', 'retriever']
+E         
+E         Right contains one more item: 'retriever'
+E         Use -v to get more diff
+
+tests\test_startup_cache_probe.py:16: AssertionError
+______ test_ready_startup_resolves_cache_before_first_user_request[True] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C6AF0EF790>
+redis_live = True
+
+    @pytest.mark.parametrize("redis_live", [False, True])
+    def test_ready_startup_resolves_cache_before_first_user_request(monkeypatch, redis_live):
+        calls = []
+        monkeypatch.setattr(server, "_readiness_payload", lambda: ({"status": "ready"}, True))
+        monkeypatch.setattr(server.config, "EMBEDDING_BACKEND", "dashscope")
+        monkeypatch.setattr(server.cache, "is_live", lambda: calls.append("cache") or redis_live)
+        monkeypatch.setattr(HybridRetriever, "get", lambda: calls.append("retriever"))
+        monkeypatch.setattr("llms.get_embeddings", lambda: pytest.fail("Remote embedding must remain lazy"))
+        server.warmup()
+>       assert calls == ["cache", "retriever"]
+E       AssertionError: assert ['cache'] == ['cache', 'retriever']
+E         
+E         Right contains one more item: 'retriever'
+E         Use -v to get more diff
+
+tests\test_startup_cache_probe.py:16: AssertionError
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_startup_cache_probe.py::test_ready_startup_resolves_cache_before_first_user_request[False]
+FAILED tests/test_startup_cache_probe.py::test_ready_startup_resolves_cache_before_first_user_request[True]
+2 failed, 13 passed, 1 warning in 14.58s

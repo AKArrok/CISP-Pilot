@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "scope": "8users60sec synthetic full TCP; local fixed model nodes; zero paidcalls; perSQLverb timing only",
+  "business_requests": 232,
+  "quiz_stage_rows": 45,
+  "quiz_internal_max_ms": 21.07149999937974,
+  "stages": {
+    "related_retrieval": {
+      "count": 45,
+      "mean_ms": 0.23679111101147202,
+      "max_ms": 0.6453000023611821
+    },
+    "apply_answer": {
+      "count": 45,
+      "mean_ms": 5.95053333349319,
+      "max_ms": 15.904899999441113
+    },
+    "thread_write_lock": {
+      "count": 180,
+      "mean_ms": 0.06466666681161667,
+      "max_ms": 4.514099997322774
+    }
+  },
+  "max_SQL_ms": 4.412199999933364,
+  "resources": {
+    "rss_peak_mib": 206.02734375,
+    "health_max_ms": 29.905800001870375
+  },
+  "persistence": {
+    "roles": {
+      "assistant": 142,
+      "user": 142
+    },
+    "answer_receipts": 45,
+    "max_message_chars": 17,
+    "integrity": "ok",
+    "database_bytes": 819200
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "runtime_stopped": true,
+  "limitations": "Nested stage timings overlap. One synthetic run, no real-model or production SLA and no causal aggregate throughput comparison.",
+  "initialization": {
+    "started_monotonic": 25287.9077455,
+    "ended_monotonic": 25288.3059642,
+    "seconds": 0.39821889999802806
+  },
+  "init_before_first_quiz": true
+}
