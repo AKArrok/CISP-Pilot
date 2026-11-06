@@ -1,0 +1,32 @@
+{
+  "reviewer": "Codex full original source and actual answer reading, not human gold",
+  "source_supported": 4,
+  "total": 4,
+  "strict_audit_passed": true,
+  "cases": [
+    {
+      "id": "plan-boundary-01",
+      "source_supported": true,
+      "note": "响应计划一致与应急规划协调关系各自保留，不能免除前者。",
+      "answer_sha256": "26cb619f72aa57d52d0899d40fb8ceaed0a2638768ffad6c9bb901c6fbe9c158"
+    },
+    {
+      "id": "plan-boundary-02",
+      "source_supported": true,
+      "note": "只限本次未给重装和删日志等额外步骤，保留原处理能力动作。",
+      "answer_sha256": "c4f0aae8f88f117a02a5abaef757864be7f0253555dd66941d1fa99475b4a6a0"
+    },
+    {
+      "id": "plan-boundary-03",
+      "source_supported": true,
+      "note": "未赋值不免除审查和报告，频次与对象参数准确。",
+      "answer_sha256": "25f814e28693c8e522a0d980df3e46c6ccc6185da9361ff885da23675c583c99"
+    },
+    {
+      "id": "plan-boundary-04",
+      "source_supported": true,
+      "note": "其他组织须获授权限，不支持未经授权代行。",
+      "answer_sha256": "d0e37697187848973e0672968661e314ec56500a9793cb6f8a43cf8ded20803c"
+    }
+  ]
+}

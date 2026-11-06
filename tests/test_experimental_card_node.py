@@ -47,6 +47,30 @@ def test_card_node_preserves_raw_selector_receipt_and_returns_host_materializati
     assert calls[0]["max_tokens"] == 1024 and calls[0]["max_retries"] == 0
 
 
+def test_registered_chinese_page_without_url_runs_selector_and_verbatim_card(monkeypatch):
+    import hashlib
+    from scripts.compile_nist_source_units import compile_units
+
+    context = {"source": "Synthetic course", "page": 7, "text": "检测并确认事件。"}
+    compiled = compile_units([{**context, "source_url": None, "locator": None}])["sources"]
+    compiled[0]["page"] = 7
+    digest = hashlib.sha256(context["text"].encode()).hexdigest()
+    translations = {"units": {f"{digest}:1:1": {"english_sha256": digest,
+        "reading_translation": context["text"], "original_language": "zh"}}, "parameters": {}}
+
+    def factory(**kwargs):
+        return FakeMessagesListChatModel(responses=[AIMessage(content='{"unit_ids":["s1:l1:p1"],"answer_type":"explain"}')])
+
+    async def forbidden_fallback(state):
+        raise AssertionError("Registered original must not fall back")
+
+    monkeypatch.setattr(graph, "get_answer_llm", factory)
+    result = asyncio.run(card_answer({"question": "检测？", "contexts": [context], "messages": []},
+        sources=compiled, translations=translations, selector_prompt="Synthetic selector", fallback=forbidden_fallback))
+    assert "> 检测并确认事件。" in result["answer"] and "第7页" in result["answer"]
+    assert "source_url" not in context and "辅助译文：" not in result["answer"]
+
+
 def test_unmapped_course_source_uses_original_answer_without_a_selector_call(monkeypatch):
     node, state, calls, _ = setup(monkeypatch)
     state["contexts"] = [{"source": "Synthetic course", "page": 1, "text": "Not NIST"}]

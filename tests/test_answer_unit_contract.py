@@ -11,7 +11,7 @@ def fixture():
     first = "[x_gdn] Based on risk, consider a second notice."
     digest = hashlib.sha256(text.encode()).hexdigest()
     contexts = [{"source": "synthetic", "locator": "x", "source_url": "https://example.invalid/source", "text": text}]
-    sources = [{"canonical_text_sha256": digest, "source_url": contexts[0]["source_url"], "locator": "x", "units": [
+    sources = [{"source": "synthetic", "canonical_text_sha256": digest, "source_url": contexts[0]["source_url"], "locator": "x", "units": [
         {"id": digest + ":1:1", "parent_line": 1, "part": 1, "start_codepoint": 0, "end_codepoint": len(first), "text": first},
         {"id": digest + ":1:2", "parent_line": 1, "part": 2, "start_codepoint": len(first), "end_codepoint": len(text), "text": text[len(first):]}]}]
     return contexts, sources
@@ -26,6 +26,14 @@ def test_selection_materializes_only_selected_original_without_neighbor_conditio
     rendered = render_unit_answer('{"answer":"应考虑用户需要。","unit_ids":["s1:l1:p2"]}', selected, contexts)
     assert "Consider languages" in rendered and "risk" not in rendered
     assert "定位【x】" in rendered
+
+
+@pytest.mark.parametrize("metadata,value", [("source", "Another source"), ("page", 9)])
+def test_source_binding_rejects_wrong_name_or_page_even_when_text_matches(metadata, value):
+    contexts, sources = fixture()
+    contexts[0][metadata] = value
+    with pytest.raises(ValueError, match="binding"):
+        build_catalog(contexts, sources)
 
 
 @pytest.mark.parametrize("raw", [

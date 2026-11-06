@@ -1,0 +1,40 @@
+{
+  "reviewer": "Codex actual source-and-answer reading, not human gold",
+  "source_supported": 4,
+  "total": 4,
+  "strict_audit_passed": true,
+  "source_card_paths": 2,
+  "original_fallback_paths": 2,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "shared-credential-natural",
+      "source_supported": true,
+      "note": "组成员移除更改认证凭据，通知对象与时限分开、未强制关闭仍需账号。",
+      "answer_sha256": "fa73c9e7f1dc9e87a1f2513c32f53402a44e8b6fef042f13abdd296add725f5c"
+    },
+    {
+      "id": "lan-access-natural",
+      "source_supported": true,
+      "note": "LAN为网络访问，本地不经过网络。",
+      "answer_sha256": "9527183c13b9936be822507f42ec6991dca85f4f6bb92341da5112421fa5a454"
+    },
+    {
+      "id": "audit-review-natural",
+      "source_supported": true,
+      "note": "仅本次未给具体赋值，审查与报告动作保留；定义表只说明待组织确定。",
+      "answer_sha256": "6622652eb65afa4ffb8d9b912d39f552234b85a6fb8e75d9915f6878f3fa8b61"
+    },
+    {
+      "id": "incident-phases-natural",
+      "source_supported": true,
+      "note": "响应计划一致与应急规划协调分列，五个环节完整，未补术语定义。",
+      "answer_sha256": "ccc3c80398e9262018d8035a4455432d9d3067567b63e54187f5bbbb4570d3d0"
+    }
+  ],
+  "calls": 8,
+  "estimated_cost_usd": 0.0035625,
+  "new_private_fragments": 0,
+  "raw_private_published": false,
+  "local_results_sha256": "e9b257045416ab473feb88cbc8fd46fd352882ae298af9b65997d20a6453d274"
+}

@@ -1,0 +1,147 @@
+{
+  "role": "Codex source-only AI review, not human/NIST official translation",
+  "new_units": [
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:1:1",
+      "locator": "au-6",
+      "english": "Audit Record Review, Analysis, and Reporting",
+      "reading_translation": "审计记录审查、分析与报告"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:2:1",
+      "locator": "au-6",
+      "english": "[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-06_odp.01 }} for indications of {{ insert: param, au-06_odp.02 }} and the potential impact of the inappropriate or unusual activity;",
+      "reading_translation": "按{{ insert: param, au-06_odp.01 }}审查和分析系统审计记录，查找{{ insert: param, au-06_odp.02 }}的迹象及不当或异常活动的潜在影响；"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:3:1",
+      "locator": "au-6",
+      "english": "[au-6_smt.b] Report findings to {{ insert: param, au-06_odp.03 }} ; and",
+      "reading_translation": "将发现报告给{{ insert: param, au-06_odp.03 }}；"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:4:1",
+      "locator": "au-6",
+      "english": "[au-6_smt.c] Adjust the level of audit record review, analysis, and reporting within the system when there is a change in risk based on law enforcement information, intelligence information, or other credible sources of information.",
+      "reading_translation": "当基于执法信息、情报信息或其他可信信息来源的风险发生变化时，调整系统内审计记录审查、分析和报告的级别。"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:5:1",
+      "locator": "au-6",
+      "english": "[au-6_gdn] Audit record review, analysis, and reporting covers information security- and privacy-related logging performed by organizations, including logging that results from the monitoring of account usage, remote access, wireless connectivity, mobile device connection, configuration settings, system component inventory, use of maintenance tools and non-local maintenance, physical access, temperature and humidity, equipment delivery and removal, communications at system interfaces, and use of mobile code or Voice over Internet Protocol (VoIP).",
+      "reading_translation": "审计记录审查、分析和报告覆盖组织开展的信息安全和隐私相关日志记录，包括监测账号使用、远程访问、无线连接、移动设备连接、配置设置、系统组件清单、维护工具使用和非本地维护、物理访问、温湿度、设备交付和移除、系统接口通信，以及移动代码或互联网语音协议（VoIP）使用所产生的日志。"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:5:2",
+      "locator": "au-6",
+      "english": " Findings can be reported to organizational entities that include the incident response team, help desk, and security or privacy offices.",
+      "reading_translation": "发现可报告给事件响应团队、帮助台、安全或隐私办公室等组织实体。"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:5:3",
+      "locator": "au-6",
+      "english": " If organizations are prohibited from reviewing and analyzing audit records or unable to conduct such activities, the review or analysis may be carried out by other organizations granted such authority.",
+      "reading_translation": "若组织被禁止审查分析审计记录或无法开展这些活动，可由获授该权限的其他组织开展审查或分析。"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:5:4",
+      "locator": "au-6",
+      "english": " The frequency, scope, and/or depth of the audit record review, analysis, and reporting may be adjusted to meet organizational needs based on new information received.",
+      "reading_translation": "可根据收到的新信息调整审计记录审查、分析和报告的频率、范围和／或深度，以满足组织需要。"
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:6:1",
+      "locator": "au-6",
+      "english": "Original OSCAL parameter definitions (no values assigned by this extraction):",
+      "reading_translation": "原生OSCAL参数定义（本次提取未赋值）："
+    },
+    {
+      "id": "8814642e7c5a1ae1a224094643fd8ffda6b3cbcac64f41d89eae94d8ddcd9f16:7:1",
+      "locator": "au-6",
+      "english": "[{\"id\": \"au-06_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which system audit records are reviewed and analyzed is defined;\"}]}, {\"id\": \"au-06_odp.02\", \"label\": \"inappropriate or unusual activity\", \"guidelines\": [{\"prose\": \"inappropriate or unusual activity is defined;\"}]}, {\"id\": \"au-06_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to receive findings from reviews and analyses of system records is/are defined;\"}]}]",
+      "reading_translation": "au-06_odp.01：审查和分析系统审计记录的频次，待定义。\nau-06_odp.02：不当或异常活动，待定义。\nau-06_odp.03：接收系统记录审查与分析发现的人员或角色，待定义。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:1:1",
+      "locator": "ir-4",
+      "english": "Incident Handling",
+      "reading_translation": "事件处理"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:2:1",
+      "locator": "ir-4",
+      "english": "[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incident response plan and includes preparation, detection and analysis, containment, eradication, and recovery;",
+      "reading_translation": "实施与事件响应计划一致的事件处理能力，包含准备、检测与分析、遏制、根除和恢复；"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:3:1",
+      "locator": "ir-4",
+      "english": "[ir-4_smt.b] Coordinate incident handling activities with contingency planning activities;",
+      "reading_translation": "将事件处理活动与应急规划活动协调；"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:4:1",
+      "locator": "ir-4",
+      "english": "[ir-4_smt.c] Incorporate lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implement the resulting changes accordingly; and",
+      "reading_translation": "把持续事件处理活动的经验教训纳入事件响应程序、培训和测试，并相应实施由此产生的变更；"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:5:1",
+      "locator": "ir-4",
+      "english": "[ir-4_smt.d] Ensure the rigor, intensity, scope, and results of incident handling activities are comparable and predictable across the organization.",
+      "reading_translation": "确保事件处理活动的严谨性、强度、范围和结果在组织内具有可比性和可预测性。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:1",
+      "locator": "ir-4",
+      "english": "[ir-4_gdn] Organizations recognize that incident response capabilities are dependent on the capabilities of organizational systems and the mission and business processes being supported by those systems.",
+      "reading_translation": "组织认识到，事件响应能力依赖于组织系统的能力以及这些系统所支持的使命和业务流程。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:2",
+      "locator": "ir-4",
+      "english": " Organizations consider incident response as part of the definition, design, and development of mission and business processes and systems.",
+      "reading_translation": "组织把事件响应纳入使命和业务流程及系统的定义、设计和开发。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:3",
+      "locator": "ir-4",
+      "english": " Incident-related information can be obtained from a variety of sources, including audit monitoring, physical access monitoring, and network monitoring; user or administrator reports; and reported supply chain events.",
+      "reading_translation": "事件相关信息可来自多种来源，包括审计监测、物理访问监测和网络监测；用户或管理员报告；以及已报告的供应链事件。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:4",
+      "locator": "ir-4",
+      "english": " An effective incident handling capability includes coordination among many organizational entities (e.g., mission or business owners, system owners, authorizing officials, human resources offices, physical security offices, personnel security offices, legal departments, risk executive [function], operations personnel, procurement offices).",
+      "reading_translation": "有效的事件处理能力包括多个组织实体之间的协调，例如使命或业务所有者、系统所有者、授权官员、人力资源部门、物理安全部门、人员安全部门、法律部门、风险执行职能、运营人员和采购办公室。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:5",
+      "locator": "ir-4",
+      "english": " Suspected security incidents include the receipt of suspicious email communications that can contain malicious code.",
+      "reading_translation": "可疑安全事件包括收到可能包含恶意代码的可疑电子邮件。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:6",
+      "locator": "ir-4",
+      "english": " Suspected supply chain incidents include the insertion of counterfeit hardware or malicious code into organizational systems or system components.",
+      "reading_translation": "可疑供应链事件包括将假冒硬件或恶意代码插入组织系统或系统组件。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:7",
+      "locator": "ir-4",
+      "english": " For federal agencies, an incident that involves personally identifiable information is considered a breach.",
+      "reading_translation": "对联邦机构而言，涉及个人可识别信息的事件被视为泄露。"
+    },
+    {
+      "id": "9f1ffc0df5dd6d0c0c329189659431bb393fb66d859ce58319c93e1429d4db5d:6:8",
+      "locator": "ir-4",
+      "english": " A breach results in unauthorized disclosure, the loss of control, unauthorized acquisition, compromise, or a similar occurrence where a person other than an authorized user accesses or potentially accesses personally identifiable information or an authorized user accesses or potentially accesses such information for other than authorized purposes.",
+      "reading_translation": "泄露导致未经授权披露、失去控制、未经授权获取、失陷或类似情况：未经授权的用户访问或可能访问个人可识别信息，或授权用户为授权目的以外的用途访问或可能访问此类信息。"
+    }
+  ],
+  "source_only": true,
+  "plan_terms_distinct": "incident response plan=事件响应计划; contingency planning=应急规划",
+  "no_term_definitions_added": true,
+  "questions_labels_or_answers_included": false
+}

@@ -1,0 +1,13 @@
+{
+  "same_private_scope": true,
+  "new_private_fragments": 0,
+  "cases": 4,
+  "source_bound_targets": 2,
+  "fallback_targets": 2,
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "max_accounted_usd": 1.3943104000000002,
+  "source_packet_local_only": true,
+  "source_units_sha256": "1690da6a1ce1b22e9bcfa46cd35aee66407334bddecbc08576d64d9546b4358d",
+  "chunks_sha256": "e8ac7a1922f51d785fb0daf949d07e39428a2f4983c683e68620e4a69b066aaa"
+}

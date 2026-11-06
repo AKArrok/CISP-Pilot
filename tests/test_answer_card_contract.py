@@ -114,3 +114,24 @@ def test_advisory_guidance_is_not_rendered_as_a_mandatory_statement():
     selected = materialize_card_selection('{"unit_ids":["s1:l1:p2"],"answer_type":"affirm"}', catalog, contexts)
     text = render_card_answer(selected, contexts, translation_map(catalog, contexts))
     assert "参数值待定不表示动作可选" not in text
+
+def test_chinese_original_card_is_verbatim_not_claimed_as_an_english_translation():
+    import hashlib
+    from scripts.answer_unit_contract import build_catalog, materialize_card_selection, render_card_answer
+
+    text = "检测阶段：监测和报告。"
+    digest = hashlib.sha256(text.encode()).hexdigest()
+    contexts = [{"source": "Synthetic Chinese", "page": 3, "text": text}]
+    sources = [{"source": "Synthetic Chinese", "page": 3, "source_url": None, "locator": None,
+                "canonical_text_sha256": digest, "units": [{"id": f"{digest}:1:1", "parent_line": 1,
+                "part": 1, "start_codepoint": 0, "end_codepoint": len(text), "text": text}]}]
+    catalog = build_catalog(contexts, sources)
+    selected = materialize_card_selection('{"unit_ids":["s1:l1:p1"],"answer_type":"explain"}', catalog, contexts)
+    translation = {"english_sha256": digest, "reading_translation": text, "original_language": "zh"}
+    translations = {"units": {f"{digest}:1:1": translation}, "parameters": {}}
+    answer = render_card_answer(selected, contexts, translations)
+    assert f"> {text}" in answer and "英文原文" not in answer
+    assert "辅助译文：" not in answer and "第3页" in answer
+    translation["reading_translation"] = "编造的解释"
+    with pytest.raises(ValueError, match="Chinese original"):
+        render_card_answer(selected, contexts, translations)

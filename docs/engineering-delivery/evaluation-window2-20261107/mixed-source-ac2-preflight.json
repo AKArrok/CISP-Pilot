@@ -1,0 +1,11 @@
+{
+  "cases": 4,
+  "source_card_targets": 3,
+  "fallback_targets": 1,
+  "max_calls": 8,
+  "budget_usd": 0.08,
+  "same_private_scope": true,
+  "new_private_fragments": 0,
+  "max_accounted_usd": 1.4014174000000001,
+  "source_units_sha256": "a563ab8afb5388df4e3f48547c2d2d04e9c15ad3284e4b234fdcf7a8113407a0"
+}

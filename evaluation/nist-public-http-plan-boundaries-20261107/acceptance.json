@@ -1,0 +1,29 @@
+{
+  "scope": "Offline only; no index/model expected answers",
+  "cases": [
+    {
+      "id": "plan-boundary-01",
+      "expected_direction": "deny",
+      "criterion": "两种关系分开，不能免除与响应计划一致；不能推断必须为两个物理文件。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "plan-boundary-02",
+      "expected_direction": "not_specified",
+      "criterion": "本次原文只列根除，无此具体步骤/定义，不把未给细节说成整个库不存在。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "plan-boundary-03",
+      "expected_direction": "deny",
+      "criterion": "未赋值不免除审查分析/报告动作，频次和接收对象不同。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    },
+    {
+      "id": "plan-boundary-04",
+      "expected_direction": "deny",
+      "criterion": "其他组织须granted such authority，不扩大为任意未授权代行。",
+      "grading": "Actual answer/source/conditions, not enum alone. Preserve all old failures."
+    }
+  ]
+}

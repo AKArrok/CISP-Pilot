@@ -7,14 +7,14 @@
   "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
   "base_commit": "e1ce3c32c9c49fdd7355277cc05c0728b3ad411e",
   "active_experiment": {
-    "packet": "data/review_packets/nist-mixed-cards-bounded-20261107-r2",
-    "output": "docs/engineering-delivery/evaluation-window2-20261107/operator-private/mixed-cards-bounded-live",
-    "status": "completed_strictaudit4_sourceAI2_of4_not_promoted",
+    "packet": "evaluation/nist-public-http-plan-boundaries-20261107",
+    "output": "docs/engineering-delivery/nist-public-http-plan-boundaries-20261107-live",
+    "status": "completed_public4_strictaudit4_AI_semantic4",
     "max_calls": 8,
     "budget_usd": 0.08,
-    "controller_pid": 30736,
-    "controller_started_utc": "2026-11-06T21:52:54.791102+00:00",
-    "controller_script_sha256": "ab3dead2e94689ab05455beb2ec3974361b856710eb30b5e9900fb1466af8cfc"
+    "controller_pid": 24392,
+    "controller_started_utc": "2026-11-06T22:08:57.441012+00:00",
+    "controller_script_sha256": "b392d7139cb8650dffd88f7b1e2591b414ff6811cf2676b60ff22bfe368c0065"
   },
   "budget": {
     "approved_total_usd": 3,
@@ -247,10 +247,40 @@
         "calls": 8,
         "estimated_cost_usd": 0.004236,
         "unknown_charge": false
+      },
+      {
+        "id": "nist-mixed-source-bound-20261107",
+        "calls": 8,
+        "estimated_cost_usd": 0.0035624999999999997,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-mixed-source-bound-20261107-repeat",
+        "calls": 8,
+        "estimated_cost_usd": 0.0035444999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-mixed-source-bound-ac2-20261107",
+        "calls": 8,
+        "estimated_cost_usd": 0.0033710999999999993,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-mixed-source-bound-ac2-20261107-repeat",
+        "calls": 8,
+        "estimated_cost_usd": 0.0032763,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-plan-boundaries-20261107",
+        "calls": 8,
+        "estimated_cost_usd": 0.0036413999999999995,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1657,
-    "known_estimate_usd": 1.2486519,
+    "dispatch_attempts": 1697,
+    "known_estimate_usd": 1.2660477,
     "unknown_current_charge": true,
     "unknown_fee_reservations": [
       {
@@ -262,16 +292,16 @@
         "status": "unknown actual charge, allocation reserved conservatively; not invoice"
       }
     ],
-    "accounted_with_reservations_usd": 1.3143104,
-    "unallocated_authorization_usd": 1.6856896,
+    "accounted_with_reservations_usd": 1.3317062,
+    "unallocated_authorization_usd": 1.6682938,
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Stop prompt variants: bound ordinaryfallback claims to exact source roles/units; IR4 responseplan vs contingencyplanning and AU6 scopedunknown retained. Publiccards32/32 and boundary8/8 pass once only; mixed3/4 then bounded2/4 fail. Deliver exact commit CI, next source-structure diagnostic offline.",
+  "next": "Deliver exact current CI and freeze non-repeated scenario preflight without historical questions/labels; final production/human semantic acceptance remains disabled. Current candidate public32 once, boundary8, adjacent4, mixed4 twice; preserve all prior failures.",
   "quota": {
     "stop_remaining_percent_lte": 0,
     "override_scope": "user explicitly resumed current new window: use to exhaustion",
-    "last_verified_primary_remaining_percent": 27,
+    "last_verified_primary_remaining_percent": 8,
     "no_reset_credit": true,
     "no_automatic_resume_next_window": true,
     "verified_at_utc": "2026-11-07T04:18:18.105064+08:00"
@@ -305,13 +335,13 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "e1ce3c3 pushed and remote branch verified",
-  "latest_commit": "66fb46a619ddcac7f28b8d4499cd8b600f89282f",
+  "latest_commit": "cf258b903221f58f9910fa9c9d8a66a6419b5fcc",
   "latest_ci": {
-    "id": 42291683721,
-    "head_sha": "66fb46a619ddcac7f28b8d4499cd8b600f89282f",
+    "id": 42300727175,
+    "head_sha": "cf258b903221f58f9910fa9c9d8a66a6419b5fcc",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42291683721"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42300727175"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -398,6 +428,37 @@
     "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-bounded-summary.json",
     "source_supported": 2,
     "strict_audit": 4,
+    "default_promoted": false
+  },
+  "mixed_source_bound": {
+    "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-bound-summary.json",
+    "source_supported": 4,
+    "total": 4,
+    "strict_audit": 4,
+    "repeat_pending": true,
+    "human_gold": false
+  },
+  "mixed_source_ac2": {
+    "first_source_supported": 4,
+    "repeat_source_supported": 4,
+    "unique_cases": 4,
+    "observations": 8,
+    "original_failures_retained": true,
+    "default_promoted": false,
+    "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-ac2-summary.json"
+  },
+  "current_regression": {
+    "targeted": "132passed1warning before final Chinese node test",
+    "additional_after_last_test": "34passed1warning, includes new no-URL Chinese node path",
+    "lint": "passed",
+    "offline_replay": "40 saved realselectors render; only banner changed; no new live40 or semantic score",
+    "source_changes_default_promoted": false
+  },
+  "plan_boundaries": {
+    "run": "docs/engineering-delivery/nist-public-http-plan-boundaries-20261107-live",
+    "source_supported": 4,
+    "total": 4,
+    "role": "failure-directed development, not independent unseen or human gold",
     "default_promoted": false
   }
 }

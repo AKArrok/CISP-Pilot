@@ -1,0 +1,336 @@
+{
+  "mode": "Offline replay of saved real selectors, no new app/HTTP/model execution",
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "8a8284e9d821bedf28b09cccf632b7eec250d161079557683919987a385481dd",
+      "previous_answer_sha256": "7edd77d638ab482ebb90e7fbc57e5d5efd943c2396501de66e1d9b4141f55625",
+      "replay_answer_sha256": "2902735bca17a7805d8c2a9973e6750df1b0f636d3e439eb3aad75dc4bbae097"
+    },
+    {
+      "id": "ac-8-new-02",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "aaa0dd1adf7fd52110793e193fd69bba16069de3242f9a27531142675a9c8886",
+      "previous_answer_sha256": "fc862234d92dca8a624ba488e0bfe751cbe13106e69312d5d92d6c3ab7ca7593",
+      "replay_answer_sha256": "69fc550d9a8fd272c945bedce63177e81432b83b667ac40009700b2ce9448656"
+    },
+    {
+      "id": "ac-8-new-03",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "da29b9d50d97b87798f2c01577c8bd70ae76bd8ba66ade3841c34b7562303fbb",
+      "previous_answer_sha256": "4238b97356a81e9d21441388c506c50475552eee620646c2beabc88252db6492",
+      "replay_answer_sha256": "76291fc97092e2a5ea5bab500324ac58fccaf1eb87c379c3c974b8599f45fe01"
+    },
+    {
+      "id": "ac-8-new-04",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "cf4c595f3333aecdae07bf2cd5c428ef9b46bed90e4ac16e9ca5301994dcc664",
+      "previous_answer_sha256": "16989ae3da9819d87e6ac06355d00ed62f7b219871bf145c9c86698b5bb898bb",
+      "replay_answer_sha256": "c75f780ece7f04d0a1d3e4614c2bcf77a8836598418146069dc1a2143317a2ec"
+    },
+    {
+      "id": "ac-8-new-05",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "3109e20cf2337cc9553faec79ab86f3bd64805a55e41e78fb98e7a3ca8fc5cbe",
+      "previous_answer_sha256": "2220ebcf63a75fdf995ba5dc49002d872b4b3f21654115a987710b94e2d0a28f",
+      "replay_answer_sha256": "5219a4b7dc304c2e7629f6a85efa0257e2fb77e169d4516f912a84bc8d0f4eda"
+    },
+    {
+      "id": "ac-8-new-06",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "b4da1c31c78abe496a12b673e848c0fcf11856d06411652b8d39d5cd47ed146c",
+      "previous_answer_sha256": "134196533fab5d971b32ffb9ca6ba88973f4f8a4a79e93769c9a817fc79d0095",
+      "replay_answer_sha256": "79537c6e61b85c085e5363fb283b1c6028808f3066292d22bd73f4f61f0ae650"
+    },
+    {
+      "id": "ac-8-new-07",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "24675317b44a413b344424db0cdd0429f9e9e6d7513d6a468a189e190425e9b4",
+      "previous_answer_sha256": "96dde0fdfba7196bb5ca20a25a94f30f66778b5c08cd41d11ccec049b239a312",
+      "replay_answer_sha256": "7daf011806962574354297b490de821376229f03558a677ab51bef6d75e5baa3"
+    },
+    {
+      "id": "ac-8-new-08",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "e323b0954a64b9898f24e76163f2f6755a1b69dd53f71563daacb93cae73cbba",
+      "previous_answer_sha256": "b1bfea1c017a2919faef6ae9431fb9015b04c2b6a7686bf82f49c8e873ce887c",
+      "replay_answer_sha256": "9609e50c042d2f4271d6871b23cc28c16c359fa2330b1f155ba6eeaa0b1a345f"
+    },
+    {
+      "id": "at-2-new-01",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "0ba990bea68d3d9f1e5f78587966c6d8d0cca5d172cb93f69d2403b88455594a",
+      "previous_answer_sha256": "1bef44b776008057a65eb5a25e595039c3dba91c3fa8af2894ed467b9561d7f7",
+      "replay_answer_sha256": "940aba71f2510efc961c13ba298a3478ab11d8cc1231ceff421974a7ef89abe9"
+    },
+    {
+      "id": "at-2-new-02",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "d7212a885e3765e8844b2cd21342d76cc7e7209ba66cfb2b9e8b7d6d7f44c9ca",
+      "previous_answer_sha256": "061625bbcf584a57daa1125c634d382cb6dbb0631ed373c557ad876e9d844931",
+      "replay_answer_sha256": "183da030899d42a59a3c62ac2d818e081a2c4fefc9f4f29e08baf7d59eb7c42e"
+    },
+    {
+      "id": "at-2-new-03",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "e82326d05fdd9f67948ce6a70c371ef405be6acfebf0a7ecf52a63e9aaabe9b8",
+      "previous_answer_sha256": "bbdbd84b4e150b26470b2bb421ed083ef35141c69b4758a6aac14010ba9e7033",
+      "replay_answer_sha256": "5ba6562bd1bf030bcdfe65c6303be1bc8e77433892be0d65c22391c078d413ee"
+    },
+    {
+      "id": "at-2-new-04",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "0c37417519acd318c8545ccc1464a7fbbdaa4ade8e873f9f1b086351ea6808e1",
+      "previous_answer_sha256": "0a6a789da0aabe2e9249aa7392aead7e0c87bb9c31b5529a0224a39a4f506e28",
+      "replay_answer_sha256": "d6f09e079f2aa9768f58af2d5e622b74504d19c3ac348156c40311c6328ded4f"
+    },
+    {
+      "id": "at-2-new-05",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "b51bf8c770151a746761afb649c9bdd701c3d0fe5cbeeabac87aea844361a758",
+      "previous_answer_sha256": "42a23aa54e3115f63116ec687e79bc9a5225624b2f71cde595c012a153481a7e",
+      "replay_answer_sha256": "c133e59e4d89f90ea9e3132ac470c465a2688308547e3fef511efc74b0665eee"
+    },
+    {
+      "id": "at-2-new-06",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "95d828ef73856da95ebc1e20cf84665fabfd02234f636e78d200b044341aa829",
+      "previous_answer_sha256": "ad269352f569c522a4a99460c1772aef2d236b11bc21db823138f79d350a28e1",
+      "replay_answer_sha256": "c92cb281ad064726e4595a81c8a60b07a2dc5b8a478aef7d34bc4f35c57db2db"
+    },
+    {
+      "id": "at-2-new-07",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "7d95aaf6044b070419b869f10beee70c7714b7557a2a3c35281fba831a3bd7e6",
+      "previous_answer_sha256": "b69be102912d56f21bc1521fda76a31e0f8f91fde9cc8927025d42d323440cf8",
+      "replay_answer_sha256": "d4aba40c61e9dc84230c613fc5a1683e34a923758b93e1da530be0a4f121c5ee"
+    },
+    {
+      "id": "at-2-new-08",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "5f14a894f61364a0c7264d545171fcb7c4524fe125f26de3c42813c1b6c00665",
+      "previous_answer_sha256": "c67b724cc046067862058f7db06dcecf5aa6b2d678cc151620827aada7df01cf",
+      "replay_answer_sha256": "bf1897feb53677f0cef2cb3e21e264a334bbb72d5027be2712f22f1ecc9c1655"
+    },
+    {
+      "id": "cp-9-new-01",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "3e5e3b65d5ef975a29898d44707b9289d047d6d2e81a32a5f5e58e8761c51a69",
+      "previous_answer_sha256": "2e910963e8ca3460eb6fbeec25037e10b083d973b37c9540182bb57cd4bdb5a3",
+      "replay_answer_sha256": "221cfed213f3c5eccb0f638501489343619151c86323dfcd0dfe3edb0123bbcd"
+    },
+    {
+      "id": "cp-9-new-02",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "38800ff3f230681d6f8a7787ef520b01d9864b95949a34b830d4f412b61f2518",
+      "previous_answer_sha256": "c413c330e451b3df9ccb9e279bbab2f6be874acdd369a1016f0fae27e3736417",
+      "replay_answer_sha256": "bd29fab8feee76736972ad9c36042266272fc0c7e75bc0b0175274b59a459750"
+    },
+    {
+      "id": "cp-9-new-03",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "6201b5ce62fc0c5bc72396ff2b890b8febefa563b429359a3189032b9d074c66",
+      "previous_answer_sha256": "ea165ec73d9c451e1b620f13a6c906d5a68173174445d4a0934d6ac3ba077d0f",
+      "replay_answer_sha256": "906bb8e1f622a9d0970b3a6b432ba73097f9bd5e99a5a94cbb6071c608b86103"
+    },
+    {
+      "id": "cp-9-new-04",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "acf87f83bfc5e9d44ddd9c85f98a66db1952309bfd85a21f5b87032d0ce8e68b",
+      "previous_answer_sha256": "2e995d7e9a6dd8ace7dc234294d61effa102d250e3e86f6af52ba0fda3f584fa",
+      "replay_answer_sha256": "2569aa463270f4ce1b074b1d1439e522da5c7c2993127c7447d3834b12a7e82b"
+    },
+    {
+      "id": "cp-9-new-05",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "a4baed0549e8ff66021292df857caa0fe3f1e791098cdfe811c602d0a43846fd",
+      "previous_answer_sha256": "1c09d7df3d0a063ac5d1c04f6c465d55c62cf6a52a4590ca5f4dc6d70a6c91fd",
+      "replay_answer_sha256": "04d33f652d233935292b0d13e3499caf96810c37f50022de43f3cf4cfb53f339"
+    },
+    {
+      "id": "cp-9-new-06",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "749ae17ce73d61dcbb1e8696093c654cdcefd3cbac1bfee7ad2f6bc151575b0e",
+      "previous_answer_sha256": "4c1944fc8cacbe1dae28906ff993ed32540203f32f5215bc71b46c142ceccb56",
+      "replay_answer_sha256": "ad56a4573c76c3a4af13c39e808f8d7b451f5dd1da365628638ee3ac451dc031"
+    },
+    {
+      "id": "cp-9-new-07",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "220a9419e1a8e02ac2fed6b92ee5d89951113bf418efb79767cf0c20fd8e7b64",
+      "previous_answer_sha256": "9dcd3167b492ea930373661edf6cf0b556ea106c4c0ef671f0e5f99612bb82fa",
+      "replay_answer_sha256": "3d1f1e20c586b402b46021b32e6c3b74de7e40a93c0c2ed1e2620dfcef16de4e"
+    },
+    {
+      "id": "cp-9-new-08",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "4685f4d53ef6f411361a6839828dc10790722b31873401ec3d5b41f5af1341d8",
+      "previous_answer_sha256": "b4c0d404db0fab5ad8a1edaeed761091560df4b13d62d0268c3818b47d7680b3",
+      "replay_answer_sha256": "99d65506beec7d334956cd65e0163900f9fce7b6b742ece45ee418be9b692d7d"
+    },
+    {
+      "id": "ca-8-new-01",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "3a215c0d73de17cff895ab625e3ad90da2fb1ea2b87cfe5f664d31a27542ac62",
+      "previous_answer_sha256": "10ded35c1f502afb9abd9535f4becbef9b77aebb6ed1dde8d582f2976418bff4",
+      "replay_answer_sha256": "5a9728fdda5660fd862655bd98bdf7b938cfebc73ddf905b14f336894098e9c7"
+    },
+    {
+      "id": "ca-8-new-02",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "5f6f0c092ba3edb42de693625971f8e148e9fc8d33783b0d09335b4e5e44202e",
+      "previous_answer_sha256": "35c8481a6d01375927d4b2a7514dd73ffc37c92cf9778bfc9d7c48770fe495e8",
+      "replay_answer_sha256": "ceba45825a8041309d1c2b50f517b1645d826b82f33a17779e7e2ee62dff0b0a"
+    },
+    {
+      "id": "ca-8-new-03",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "19ad720f6d75e9a4b1c0727b58a98bf056229f6133a2e683b2673f04164d7cba",
+      "previous_answer_sha256": "fbe8d2457651334b0aee1ce9247ba25175f5ef92ef62384ea7aa16606e895bc5",
+      "replay_answer_sha256": "b3d4fb7083f58ecf0f544125caafe450fb05898b24ac58f52dec002bad96147d"
+    },
+    {
+      "id": "ca-8-new-04",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "3a83dc99fba2c43c48814e1e981b44cbc4aea390c30898e1d7568226168e74ad",
+      "previous_answer_sha256": "5d6f58d508717cd948d978a4386c9ec7aba3341976562a63d742f37d06dd9762",
+      "replay_answer_sha256": "881181742544b73e1fe99bc9c365c061b01163b13d7385ce61911967bde2070d"
+    },
+    {
+      "id": "ca-8-new-05",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "1721cd735fb0d793b12d8f3d89cd1125b482a6e85dacb4a1a0f9ba9e0e735247",
+      "previous_answer_sha256": "a66e505e65da007296253ab75a4c082813d66e7e8d69029e5c9b81a0d27ada1b",
+      "replay_answer_sha256": "8e2b6548875281864193edd4451b89baa057e8ccf6a764f6ae1ea198bf4df0c6"
+    },
+    {
+      "id": "ca-8-new-06",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "9aa0c743c13637fc82bf2a994b6762a41f1437eac91660193fe5549c7ebe636f",
+      "previous_answer_sha256": "8b93d7d07b78b6ce847af88139d3e71f9f20c3a5a50226ff33d71f1c7a4259a8",
+      "replay_answer_sha256": "026e999c9335865e4ed291b53f620c823f3a21620809359d9ae3aaa5e907eceb"
+    },
+    {
+      "id": "ca-8-new-07",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "d053fef02a82520d6c8a57f32a912e70921278948b3dcf8bc6e2555e904c4205",
+      "previous_answer_sha256": "64c0f07f73134ce44c91dd4be5a9792442fecfc59abaac052752d52576029969",
+      "replay_answer_sha256": "f3b27bda85cb4d46fc5b9a9415cbef81abde22f5a1fde5c855238288ed7628a1"
+    },
+    {
+      "id": "ca-8-new-08",
+      "original_run": "nist-public-http-cards-v3r2-module-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "fe5438ad5e5ad31a6a3ba333faae59b2443483d3fede62473fd75195aab395fe",
+      "previous_answer_sha256": "8fcde85da000d6016264c1f7d0eeea7c453e933710328ab360705352147d0958",
+      "replay_answer_sha256": "66ea30885c7fce844fa718aeaff832c104d287303d8e9539e930124c944ba496"
+    },
+    {
+      "id": "card-boundary-01",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "5300ef5fdd867851ef4609b4c3a6301cca29cafa31d2b10b431a0c55acbe98d5",
+      "previous_answer_sha256": "9c962ee187cbb8a0687033b44cde71e3a7e0df6e7d32108343ae811eef40784c",
+      "replay_answer_sha256": "4dd910494754e2aca519a26d7a46d04243eeec6a366fca404b8d9b0e72a624e6"
+    },
+    {
+      "id": "card-boundary-02",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "f21055eaea8eeaca6dd9c5dd2886938f44ca8a6340ce7927ee79f5d3ed9f01ed",
+      "previous_answer_sha256": "f26f0a9d03f2d09b19c757ef4e208cdf093adde66340a917c8f711cf7b83b806",
+      "replay_answer_sha256": "a0f10f8e246f52224e1e54daa0fe8e52fc0634830f4982362b321d104e0411a1"
+    },
+    {
+      "id": "card-boundary-03",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "1e44b36db611f533c32efafb6efe59a84028acdf99b65b11b2a8dbcd900e8e6d",
+      "previous_answer_sha256": "26f5b3c4a2d359d3b956f18e76fc84dc420675fe0a0cc42aa3f4e29b101d7bef",
+      "replay_answer_sha256": "9b29d13bb507c20b7d01f3908bcf6a149113f8ae60630e377979354b434a49cd"
+    },
+    {
+      "id": "card-boundary-04",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "a480cbdc82b4f0e9425f2ac77a5565e662e10dec3a5698bf3315d7b5d6c6d4e2",
+      "previous_answer_sha256": "3e33af17a08b7d9c95040a4035f34d8194766ecb650176cfe3336945529d9f49",
+      "replay_answer_sha256": "75d49c2753e10fb2da98e5d954c9c2ed6ef1153e81593dae08786e62b57e81b1"
+    },
+    {
+      "id": "card-boundary-05",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "e1d055a85b060947f2f86ecf5158258a4780b369b4cf8c9c2e73593e264ea990",
+      "previous_answer_sha256": "362424cf17928550401b44dc9fb3902c57de6968968c1c641b5ab3a79fb06d47",
+      "replay_answer_sha256": "f2be5fcb93c9b3753b0585828ecf727f76351eee17448594a1be7689fc718528"
+    },
+    {
+      "id": "card-boundary-06",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "1f288b0d5ded780981021531ed51a3cfa0192f401b85c082564fc6d8b462c92b",
+      "previous_answer_sha256": "8c2f94b3ca766ee060caf3e64e51dd82bddc48d8155c46bc7bc6e797e915f492",
+      "replay_answer_sha256": "0e9d8036df1909b465850edd8bc5a9a4dc27aa43eb764bf05b1205cd205cc855"
+    },
+    {
+      "id": "card-boundary-07",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "beb02b00a2e258888cefec4e78d66e72cb25011a38f2cc040a06ad186b6168ef",
+      "previous_answer_sha256": "cef0c18e432e70da2c2169d4c46254bd269abed1000cb164e8b7dfa1d84cb7c5",
+      "replay_answer_sha256": "6fdfdb06abb5d96af6886751ed31da194adc222f57021a3d12637bcec20dd010"
+    },
+    {
+      "id": "card-boundary-08",
+      "original_run": "nist-public-http-cards-boundaries-20261107",
+      "body_unchanged_except_banner": true,
+      "selector_sha256": "fcbed4b2f4d985bd00a973cc458f520260b749db096b4b4d8aed077eafe5fb90",
+      "previous_answer_sha256": "6d1a77bae42d6f681497d34589e61cc7e64054ba2a68980253a0a09e8392ee42",
+      "replay_answer_sha256": "416d5857b9d7e77bcf659e084386187d0e8b7ca05ce7680eba57cfa33c6bf5cf"
+    }
+  ],
+  "render_succeeded": 40,
+  "body_unchanged_except_banner": 40,
+  "model_calls": 0,
+  "cost_usd": 0,
+  "new_semantic_score_claimed": false,
+  "snapshot_sha256": "89c38ce1430496256306fffd42afede6572699a08fbf273760ac00eba789ef4f",
+  "direct_dependency_sha256": {
+    "scripts/answer_output_contract.py": "09ef44dbc7550d0fa837e149e3225b4cf3d5ac361ca033d8336aa8c9b69aa3af",
+    "scripts/inline_oscal_parameters.py": "90a3476eb64ea5a2660dbef510a17546792273928f0af2cad551f2b930fec50d",
+    "agents/sources.py": "9da7935a6f80417df1f5ae87741ffbceae6093d7a1e47426037c47981ab2f7b1"
+  }
+}

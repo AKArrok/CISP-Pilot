@@ -1,0 +1,40 @@
+{
+  "reviewer": "Codex same4 actual source/answer reading, not human gold",
+  "source_supported": 4,
+  "total": 4,
+  "strict_audit_passed": true,
+  "source_card_paths": 3,
+  "original_fallback_paths": 1,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "shared-credential-natural",
+      "source_supported": true,
+      "answer_sha256": "f581b434491fccfb5da58fed0d1b0ae2e14ae8c0e9d5b94d5274272110d5d77c",
+      "note": "原生流程与离组目的，无未提供口令例子；未命令关闭仍需账号。"
+    },
+    {
+      "id": "lan-access-natural",
+      "source_supported": true,
+      "answer_sha256": "0e794500b2db589fbad8dc8044c84ed3a96e8555c4e46cf9eedc246f28618bb1",
+      "note": "网络/本地按是否使用网络区分，原文已解释。"
+    },
+    {
+      "id": "audit-review-natural",
+      "source_supported": true,
+      "answer_sha256": "6622652eb65afa4ffb8d9b912d39f552234b85a6fb8e75d9915f6878f3fa8b61",
+      "note": "参数未赋值范围仅限本次，动作与人员频次区分。"
+    },
+    {
+      "id": "incident-phases-natural",
+      "source_supported": true,
+      "answer_sha256": "db1a4ecee8b25e9fcb4d150d7c3911816b9efbb1b041b4848523797799886439",
+      "note": "事件响应计划一致与应急规划协调分开，环节与教训来源支持。"
+    }
+  ],
+  "calls": 8,
+  "estimated_cost_usd": 0.0033711,
+  "new_private_fragments": 0,
+  "raw_private_published": false,
+  "local_results_sha256": "56ab7fafd9dca38a3e0e0c509e40c772e91bcdecfcc76ff9feeecddd1b45271a"
+}

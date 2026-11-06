@@ -12,8 +12,9 @@ def build_catalog(contexts, sources):
     catalog = {}
     for ref, context in enumerate(contexts, 1):
         digest = hashlib.sha256(context["text"].encode()).hexdigest()
-        source = originals.get((context["source_url"], context["locator"], digest))
-        if source is None:
+        source = originals.get((context.get("source_url"), context.get("locator"), digest))
+        if (source is None or source.get("source") != context["source"]
+                or source.get("page") != context.get("page")):
             raise ValueError("Original source binding mismatch")
         lines, coverage = context["text"].splitlines(), {}
         for unit in source["units"]:
@@ -140,7 +141,7 @@ def render_card_answer(selected, contexts, translations, *, question=None):
         lead = f"针对问题「{question}」，本次检索到的资料不足以给出有依据的回答。"
     if not selected["units"]:
         return lead
-    pieces, refs = [lead, "以下辅助译文由AI核对，属于非官方译文；英文原文为来源依据。"], []
+    pieces, refs = [lead, "辅助译文由AI核对，属于非官方译文；引用的原文为来源依据。"], []
     if has_statement:
         pieces.append("控制条款须按原文适用条件执行；参数值待定不表示动作可选，不能据此省略原文明确要求的动作。")
     for unit in selected["units"]:
@@ -152,7 +153,12 @@ def render_card_answer(selected, contexts, translations, *, question=None):
                 or not isinstance(translation.get("reading_translation"), str) or not translation["reading_translation"].strip()):
             raise ValueError("Missing or incorrectly bound source translation")
         refs.append(ref)
-        pieces.append(f"[资料{ref}]原文第{unit['line']}行片段{unit['part']}\n辅助译文：{translation['reading_translation']}\n原文：\n> {unit['text']}")
+        if translation.get("original_language") == "zh":
+            if translation["reading_translation"] != unit["text"]:
+                raise ValueError("Chinese original must remain verbatim")
+            pieces.append(f"[资料{ref}]原文第{unit['line']}行片段{unit['part']}\n> {unit['text']}")
+        else:
+            pieces.append(f"[资料{ref}]原文第{unit['line']}行片段{unit['part']}\n辅助译文：{translation['reading_translation']}\n原文：\n> {unit['text']}")
     for entry in selected["parameter_definitions"]:
         ref, definition = entry["source_id"], entry["original_definition"]
         native_table = contexts[ref-1]["text"].partition(MARKER)[2].strip()

@@ -1,0 +1,36 @@
+............F                                                            [100%]
+================================== FAILURES ===================================
+_ test_chinese_original_card_is_verbatim_not_claimed_as_an_english_translation _
+
+    def test_chinese_original_card_is_verbatim_not_claimed_as_an_english_translation():
+        import hashlib
+        from scripts.answer_unit_contract import build_catalog, materialize_card_selection, render_card_answer
+    
+        text = "检测阶段：监测和报告。"
+        digest = hashlib.sha256(text.encode()).hexdigest()
+        contexts = [{"source": "Synthetic Chinese", "page": 3, "text": text}]
+        sources = [{"source": "Synthetic Chinese", "page": 3, "source_url": None, "locator": None,
+                    "canonical_text_sha256": digest, "units": [{"id": f"{digest}:1:1", "parent_line": 1,
+                    "part": 1, "start_codepoint": 0, "end_codepoint": len(text), "text": text}]}]
+>       catalog = build_catalog(contexts, sources)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_answer_card_contract.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contexts = [{'source': 'Synthetic Chinese', 'page': 3, 'text': '检测阶段：监测和报告。'}]
+sources = [{'source': 'Synthetic Chinese', 'page': 3, 'source_url': None, 'locator': None, ...}]
+
+    def build_catalog(contexts, sources):
+        originals = {(source["source_url"], source["locator"], source["canonical_text_sha256"]): source for source in sources}
+        catalog = {}
+        for ref, context in enumerate(contexts, 1):
+            digest = hashlib.sha256(context["text"].encode()).hexdigest()
+>           source = originals.get((context["source_url"], context["locator"], digest))
+                                    ^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'source_url'
+
+scripts\answer_unit_contract.py:15: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_answer_card_contract.py::test_chinese_original_card_is_verbatim_not_claimed_as_an_english_translation
+1 failed, 12 passed in 0.26s

@@ -1,0 +1,15 @@
+{
+  "reviewer": "Codex original source comparison, not human gold",
+  "source_supported": 3,
+  "total": 4,
+  "core_correct": 4,
+  "strict_audit_passed": true,
+  "default_promoted": false,
+  "failed_id": "shared-credential-natural",
+  "reason": "Fallback added password example (口令等) absent in either actual source and unmarked; unsupported elaboration, not claimed incorrect credential nature. Same attribution criterion as IR4 original failure.",
+  "new_private_fragments": 0,
+  "raw_private_published": false,
+  "calls": 8,
+  "estimated_cost_usd": 0.0035445,
+  "local_results_sha256": "c6923f823f9f0d1e0f3eae084519d9f491256825f03f3caebf34fe3a3ae7e89c"
+}

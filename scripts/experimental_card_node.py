@@ -17,13 +17,18 @@ async def card_answer(state, *, sources, translations, selector_prompt, fallback
     contexts = state.get("contexts", [])
     if not contexts or graph._below_relevance_floor(contexts):
         return await fallback(state)
-    known = {(source["source_url"], source["locator"]): source["canonical_text_sha256"] for source in sources}
+    contexts = [{**context, "source_url": context.get("source_url"), "locator": context.get("locator")}
+                for context in contexts]
+    known = {}
+    for source in sources:
+        location = (source["source_url"], source["locator"], source["source"], source.get("page"))
+        known.setdefault(location, set()).add(source["canonical_text_sha256"])
     for context in contexts:
-        location = (context.get("source_url"), context.get("locator"))
+        location = (context.get("source_url"), context.get("locator"), context["source"], context.get("page"))
         if location not in known:
             observe("answer_source_cards", "fallback_unmapped_source")
             return await fallback(state)
-        if hashlib.sha256(context["text"].encode()).hexdigest() != known[location]:
+        if hashlib.sha256(context["text"].encode()).hexdigest() not in known[location]:
             raise ValueError("Frozen source text changed")
     content = json.loads(request_content("evidence_select", {"question": state["question"], "unit_sources": sources},
         {"contexts": contexts}, "", {"mode": "answer_card_pipeline"}))

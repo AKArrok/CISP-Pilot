@@ -120,7 +120,7 @@ def test_answer_contract_executor_keeps_both_arms_at_frozen_temperature(tmp_path
     packet.mkdir()
     context = {"source": "Synthetic", "locator": "x", "source_url": "https://example.invalid", "text": "Source"}
     digest = hashlib.sha256(b"Source").hexdigest()
-    unit_sources = [{"canonical_text_sha256": digest, "source_url": context["source_url"], "locator": "x", "units": [
+    unit_sources = [{"source": "Synthetic", "canonical_text_sha256": digest, "source_url": context["source_url"], "locator": "x", "units": [
         {"id": digest + ":1:1", "parent_line": 1, "part": 1, "start_codepoint": 0, "end_codepoint": 6, "text": "Source"}]}]
     for name, value in {"cases.json": [{"id": "c", "question": "Q", "fixed_contexts": [context], "unit_sources": unit_sources}],
                         "chunks.json": [context], "prompts.json": {"answer_baseline_system": "Plain",
