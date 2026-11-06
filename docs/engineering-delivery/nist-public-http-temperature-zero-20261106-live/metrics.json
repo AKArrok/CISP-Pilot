@@ -1,0 +1,10 @@
+{
+  "denominator": 32,
+  "source_supported": 31,
+  "citation_relevant": 31,
+  "overall_accepted": 30,
+  "scope": "AI development interpretation, not human gold; current answer temp0 test candidate not promoted",
+  "executed_runtime_hashes_still_match": true,
+  "mean_app_elapsed_seconds": 3.4485937499999864,
+  "mean_answer_chars": 440.53125
+}

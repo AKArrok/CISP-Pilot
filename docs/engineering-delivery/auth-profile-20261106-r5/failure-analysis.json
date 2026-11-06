@@ -1,0 +1,13 @@
+{
+  "status": "not_accepted_incomplete_final_statistics",
+  "console_login8": 16,
+  "periodic_csv_login8": 14,
+  "observed_profile_scrypt_jobs": 27,
+  "missing_negative_case": "unknown-account check skipped after CSV assertion failed",
+  "cold_probe_finished_before_ready": true,
+  "probe_cost_seconds": 2.0932363,
+  "first_known_invalid_seconds": 2.2036965,
+  "limitation": "CPU/password derive slower than baseline; no direct percentage latency claim",
+  "fix": "Native Locust --json-file after runner.quit, same 12second window/10second drain/expected26 positives plus2negatives; periodicCSV preserved",
+  "product_server_errors": 0
+}

@@ -26,6 +26,21 @@ def load(path):
 
 
 def request_content(stage, case, row, context, manifest):
+    if stage.startswith("answer") and manifest.get("evidence_protocol") == "answer_source_lines":
+        aids = case.get("reading_aids", [])
+        if not isinstance(aids, list):
+            raise ValueError("Invalid reading aid list")
+        for aid in aids:
+            if (not isinstance(aid, dict) or type(aid.get("source_ref")) is not int
+                    or not 1 <= aid["source_ref"] <= len(row["contexts"])
+                    or not isinstance(aid.get("text"), str) or not aid["text"].strip()
+                    or aid.get("canonical_text_sha256") != hashlib.sha256(
+                        row["contexts"][aid["source_ref"]-1]["text"].encode()).hexdigest()):
+                raise ValueError("Invalid reading aid binding")
+        return json.dumps({"question": case["question"], "canonical_contexts": line_payload({
+            "question": case["question"], "answer": "", "contexts": row["contexts"]})["contexts"],
+            "unofficial_reading_aids": aids,
+            "aid_notice": "非官方AI辅助译文，不能作为原文引句或独立证据；以canonical_contexts为准"}, ensure_ascii=False)
     if stage == "answer_candidate" and manifest.get("mode") == "answer_pipeline":
         return context + "\n问题：" + case["question"] + "\n待翻译英文答案：\n" + row["answer_english"]
     if stage.startswith("judge") and manifest.get("evidence_protocol") == "atomic_lines":

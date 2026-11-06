@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "scope": "Current three-line startup cache probe optimization, local TCP/auth/syntheticSQLite, no model or password-policy change",
+  "login_success": 26,
+  "old_cookie_replay_401": 26,
+  "invalid_credentials_401": 2,
+  "source": "Native Locust final JSON after runner.quit; periodicCSV retained",
+  "cache_probe_s": 2.1112885999991704,
+  "probe_completed_before_http_ready_and_first_request": true,
+  "first_request_s": 1.995117800001026,
+  "first_password_job_s": 1.9861680000012711,
+  "peak_rss_mib": 386.97265625,
+  "peak_scrypt_jobs": 2,
+  "stages": [
+    {
+      "users": 1,
+      "login_success": 2,
+      "mean_ms": 2196.4462999994794,
+      "histogram_p95_ms": 2200,
+      "max_queue_s": 3.7999998312443495e-06,
+      "mean_scrypt_s": 2.181057700000565,
+      "health_max_ms": 27.177599999049562,
+      "csv_snapshot_logins": 2,
+      "final_json_logins": 2
+    },
+    {
+      "users": 4,
+      "login_success": 8,
+      "mean_ms": 3985.8747125006175,
+      "histogram_p95_ms": 4600,
+      "max_queue_s": 2.3053798000000825,
+      "mean_scrypt_s": 2.2760020625000834,
+      "health_max_ms": 27.07850000115286,
+      "csv_snapshot_logins": 8,
+      "final_json_logins": 8
+    },
+    {
+      "users": 8,
+      "login_success": 16,
+      "mean_ms": 7414.461493750196,
+      "histogram_p95_ms": 9200,
+      "max_queue_s": 6.9811258999998245,
+      "mean_scrypt_s": 2.286307868749873,
+      "health_max_ms": 26.143099999899277,
+      "csv_snapshot_logins": 14,
+      "final_json_logins": 16
+    }
+  ],
+  "default_db_unchanged": true,
+  "actual_runtime_pid_verified": true,
+  "all_child_processes_stopped": true,
+  "server_log_errors": 0,
+  "limitation": "CPU/password jobs slower than priorr4; do not infer aggregate throughput or percentage improvement from cross-run p95. Verified moving actual cache-probe cost into startup, not eliminating it. Small sample not production SLA."
+}

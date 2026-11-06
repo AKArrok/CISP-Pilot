@@ -1,0 +1,290 @@
+[
+  {
+    "id": "ac-8-new-01",
+    "answer_sha256": "5e1f4234ee17570f9773f5cbb1414c0c55debb41508c6177b6acdff9cfc0acb6",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "授予访问前展示；确认并明确动作前保留，其他展开与原条款一致"
+  },
+  {
+    "id": "ac-8-new-02",
+    "answer_sha256": "4d158f996758f32bd79f994fc09c5bafd41b9cc4868aad811250b9f18f8d102c",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "确认使用条件并执行登录或继续访问才可移除，未虚构定时隐藏条件"
+  },
+  {
+    "id": "ac-8-new-03",
+    "answer_sha256": "5c0f23a3a90a2767f6f5737ee6edd9b3ae2ac43956e072b8740db2b42272eb29",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "无人机界面无需告知，未把登录后风险考虑变成无人界面强制项"
+  },
+  {
+    "id": "ac-8-new-04",
+    "answer_sha256": "cf7475962c00634cbe47ffa1df862a030d33ddb021f60d4fab4f8febca535a4b",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "公开系统包含授权用途说明，与另外两个并列动作相容"
+  },
+  {
+    "id": "ac-8-new-05",
+    "answer_sha256": "1c970babbeb53fa67c542af0b4afe42568e9aad755a43a4fa2d19a7e7246492f",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "本轮多语言仅绑定组织需要和人口构成，未串用二次告知风险条件。"
+  },
+  {
+    "id": "ac-8-new-06",
+    "answer_sha256": "c57d976d21e0af18f96d325e694ce705091b72a0043629ac5beec735054c4050",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "二次告知由风险评估考虑，未一律强制"
+  },
+  {
+    "id": "ac-8-new-07",
+    "answer_sha256": "be8b8a0f2888b5c384f5d6e47ca3aa96d8df9aca2e175a0c32ed61fce20fad6c",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "确认前不得隐藏，动作与参数区分正确"
+  },
+  {
+    "id": "ac-8-new-08",
+    "answer_sha256": "63d2dc60c21fc8974208fdfb26ceb798d888020bfbd2010bb23e0469b256ca60",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "未规定五分钟周期，也未设置告知频次参数；引用另控制时明确隔离范围"
+  },
+  {
+    "id": "at-2-new-01",
+    "answer_sha256": "64caff3588c1ad29887e8f18eb78d50dd6ba7ed681df7fc39dfd4307037c86e6",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "培训对象明确含contractors"
+  },
+  {
+    "id": "at-2-new-02",
+    "answer_sha256": "fe93e44034aebab071134ba94fa429a3705d097871fe9daf769216fffe6b1f03",
+    "source_supported": false,
+    "citation_relevant": true,
+    "accepted": false,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "原文security incidents or breaches被译为安全事件或违规；低温未解决事件类别替换。"
+  },
+  {
+    "id": "at-2-new-03",
+    "answer_sha256": "4876804b7cffdb716a08b87e821c06946dae61c1aeb9b0a485ffc71902c761ef",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "登录屏幕消息和组织邮件通知均原文示例，未冒充常识"
+  },
+  {
+    "id": "at-2-new-04",
+    "answer_sha256": "fba337895e4fce66059cee51a6fcd5f5327377c591f02a5c123cdbe8dfd80497",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "后续可用一或多次短专题，未取消后续培训频次要求"
+  },
+  {
+    "id": "at-2-new-05",
+    "answer_sha256": "de9283ffae3a2bcf3367f105dbbdeec22b25fb3507c17ac0f3045d56294b5ff4",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "法规变化是可能触发示例，非穷尽；事件与泄露经验要求均保留"
+  },
+  {
+    "id": "at-2-new-06",
+    "answer_sha256": "6cc586199d121ad217b2951e25394c956f125d107dd98d102939d7ba29237dfa",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "培训内容明确涉及PII处理"
+  },
+  {
+    "id": "at-2-new-07",
+    "answer_sha256": "3fd9268c64bd9399609d4ed5e8dcea5b88ea224896a29bfa267283eefb88a667",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "海报非唯一；其他原文示例及方法参数说明正确"
+  },
+  {
+    "id": "at-2-new-08",
+    "answer_sha256": "0e27a1d88c54a7a1766a78230e8708cbb816a223d76e7a586215ace1a9699a57",
+    "source_supported": true,
+    "citation_relevant": false,
+    "accepted": false,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "答案核心AT2无90分要求有支持，但将自行说明与培训考试无关的IA2也列入末尾出处；按原只列真正相关来源要求失败。"
+  },
+  {
+    "id": "cp-9-new-01",
+    "answer_sha256": "9aceffe93072b43787cadff905e0a7d4bf7abd71f6aad0f53da2752a66dfb9a8",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "系统状态、OS、中间件、应用与许可证均来自原文，未混用户信息"
+  },
+  {
+    "id": "cp-9-new-02",
+    "answer_sha256": "7c7e3584641cdf72ed12386cea2275c070c9dcdef59ea9f3b1a36d2711ddcbd0",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "系统级包含项与其余用户级区分，范围参数只绑定用户级"
+  },
+  {
+    "id": "cp-9-new-03",
+    "answer_sha256": "c8e15ffd29f2f3e5413f714171b9fc1542804b63941de3bd7dcbe86ed46027cb",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "数字签名与密码哈希是完整性机制示例"
+  },
+  {
+    "id": "cp-9-new-04",
+    "answer_sha256": "fb8d466c8e8a285e4b415be30ef36fd51c6573d026b9399b16550c3316aa0b4f",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "传输保护交叉引用MP5与SC8，没有捏造其未提供细则"
+  },
+  {
+    "id": "cp-9-new-05",
+    "answer_sha256": "9b695575b572675a659bdf9e5b1af8aa79c0fa17c41692e456de217354ff5c4d",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "应急计划以外含其他组织备份要求及特定信息适用规定"
+  },
+  {
+    "id": "cp-9-new-06",
+    "answer_sha256": "cc6999acdda3aeabc78fa5a571f48d1b22befdaafb9914d0bbd728f9d8562f68",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "特定类别要求向隐私高级官员与法律顾问咨询，未泛化所有操作"
+  },
+  {
+    "id": "cp-9-new-07",
+    "answer_sha256": "028686ff2b55bf339faf010c33c3d5fe2bcf389ec5df3d8bf2a2c30258623b0d",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "未规定厂商，额外参数准确区分系统组件及三类频次，旧范围泛化本轮未复现"
+  },
+  {
+    "id": "cp-9-new-08",
+    "answer_sha256": "b66af1239843a42391b700cf342258d7ad4e3cdd4768d0b0e04c3b56264753b4",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "系统文档包含隐私文档为强制，频次待定非是否备份可选"
+  },
+  {
+    "id": "ca-8-new-01",
+    "answer_sha256": "03c3f4ffbabfd529a1e08a34563e42b033d813729e3c1c58c2137ae6b68465ef",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "超出自动扫描、具备技能经验并验证利用/抵抗力；未伪造扫描细节"
+  },
+  {
+    "id": "ca-8-new-02",
+    "answer_sha256": "192b998ccb010899b34f9422f814e9b61c1cc0dac9616296065d76200e76ba2d",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "可证明技能经验、网络OS应用专长，独立性是不同维度"
+  },
+  {
+    "id": "ca-8-new-03",
+    "answer_sha256": "45a656ca7f5137dd47bee9a809ded763e9c03cf85df80963b710fae937c64dc6",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "时间资源技能是约束；来源未详述具体机制，通用解释紧邻标注"
+  },
+  {
+    "id": "ca-8-new-04",
+    "answer_sha256": "c09ab02c447d303a82aa49b48fd118a7a8be4f54fb8538383d273f2c2c577f62",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "IPv4到IPv6是技术迁移例，重要性与测试作用一致，无固定迁移频次"
+  },
+  {
+    "id": "ca-8-new-05",
+    "answer_sha256": "3ca7df287156cc9cb9c1357b40d0c1459ad3e95c4a7048f74bad981153505681",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "漏洞分析结果可支持渗透，未等同扫描替代"
+  },
+  {
+    "id": "ca-8-new-06",
+    "answer_sha256": "dea0f922c9de18a15b3b18cffa5541fb331e5ee8725bf2ef69e68c2020495ca3",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "风险评估指导人员独立程度，未虚构独立等级"
+  },
+  {
+    "id": "ca-8-new-07",
+    "answer_sha256": "ff81244e741a88e227b4748652eacaa6ecf46d7232c9a3075cfffeb143eb6c1b",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "频次不是持续时长，不存在固定七天或时长参数"
+  },
+  {
+    "id": "ca-8-new-08",
+    "answer_sha256": "8e6ceedbb20b808d16b13bee4ec5729a93e97d751d0eea061c1aca2568509287",
+    "source_supported": true,
+    "citation_relevant": true,
+    "accepted": true,
+    "reviewer": "Codex AI original-source review, development only not independent human gold",
+    "rationale": "内外部可实施，未由独立性推出外部唯一实施禁令"
+  }
+]

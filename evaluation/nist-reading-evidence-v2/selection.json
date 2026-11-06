@@ -1,0 +1,17 @@
+{
+  "source_cases_sha256": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+  "source_http_results_sha256": "8e661731cbad0a08f99cbec5eca7f5ee17da821875200f24fca5c5630062e5b8",
+  "selected_original_ids": [
+    "ac-8-new-05",
+    "ac-8-new-06",
+    "at-2-new-02",
+    "at-2-new-03",
+    "cp-9-new-07",
+    "cp-9-new-08",
+    "ca-8-new-01",
+    "ca-8-new-07"
+  ],
+  "question_and_source_unchanged": true,
+  "design": "Original judgment, conceptual comparison, enumeration, mandatory action and unsupported numeric premise; seen development, not holdout",
+  "single_factor": "Answer output contract; both direct SDK arms same fixed contexts and temp0.3, baseline first then structured; not full app ASGI"
+}

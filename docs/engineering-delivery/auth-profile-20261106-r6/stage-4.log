@@ -1,0 +1,6 @@
+[2026-11-06 23:57:12,671] LAPTOP-TSMLS2E6/INFO/locust.main: Starting Locust 2.47.0
+[2026-11-06 23:57:12,677] LAPTOP-TSMLS2E6/INFO/locust.main: Run time limit set to 12 seconds
+[2026-11-06 23:57:12,678] LAPTOP-TSMLS2E6/INFO/locust.runners: Ramping to 4 users at a rate of 100.00 per second
+[2026-11-06 23:57:12,678] LAPTOP-TSMLS2E6/INFO/locust.runners: All users spawned: {"LoginUser": 4} (4 total users)
+[2026-11-06 23:57:24,358] LAPTOP-TSMLS2E6/INFO/locust.main: --run-time limit reached, shutting down
+[2026-11-06 23:57:24,516] LAPTOP-TSMLS2E6/INFO/locust.main: Shutting down (exit code 0)

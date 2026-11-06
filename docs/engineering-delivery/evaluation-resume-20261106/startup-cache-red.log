@@ -1,0 +1,44 @@
+FF.                                                                      [100%]
+================================== FAILURES ===================================
+_____ test_ready_startup_resolves_cache_before_first_user_request[False] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000155B7D58150>
+redis_live = False
+
+    @pytest.mark.parametrize("redis_live", [False, True])
+    def test_ready_startup_resolves_cache_before_first_user_request(monkeypatch, redis_live):
+        calls = []
+        monkeypatch.setattr(server, "_readiness_payload", lambda: ({"status": "ready"}, True))
+        monkeypatch.setattr(server.config, "EMBEDDING_BACKEND", "dashscope")
+        monkeypatch.setattr(server.cache, "is_live", lambda: calls.append("cache") or redis_live)
+        server.warmup()
+>       assert calls == ["cache"]
+E       AssertionError: assert [] == ['cache']
+E         
+E         Right contains one more item: 'cache'
+E         Use -v to get more diff
+
+tests\test_startup_cache_probe.py:13: AssertionError
+______ test_ready_startup_resolves_cache_before_first_user_request[True] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000155B7CF8C50>
+redis_live = True
+
+    @pytest.mark.parametrize("redis_live", [False, True])
+    def test_ready_startup_resolves_cache_before_first_user_request(monkeypatch, redis_live):
+        calls = []
+        monkeypatch.setattr(server, "_readiness_payload", lambda: ({"status": "ready"}, True))
+        monkeypatch.setattr(server.config, "EMBEDDING_BACKEND", "dashscope")
+        monkeypatch.setattr(server.cache, "is_live", lambda: calls.append("cache") or redis_live)
+        server.warmup()
+>       assert calls == ["cache"]
+E       AssertionError: assert [] == ['cache']
+E         
+E         Right contains one more item: 'cache'
+E         Use -v to get more diff
+
+tests\test_startup_cache_probe.py:13: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_startup_cache_probe.py::test_ready_startup_resolves_cache_before_first_user_request[False]
+FAILED tests/test_startup_cache_probe.py::test_ready_startup_resolves_cache_before_first_user_request[True]
+2 failed, 1 passed in 8.10s

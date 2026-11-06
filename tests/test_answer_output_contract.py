@@ -5,7 +5,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from scripts.answer_output_contract import render_structured_answer
+from scripts.answer_output_contract import render_structured_answer, render_evidenced_answer
 
 
 CONTEXTS = [{"source": "Synthetic OSCAL", "locator": "x-1", "page": None},
@@ -15,6 +15,44 @@ CONTEXTS = [{"source": "Synthetic OSCAL", "locator": "x-1", "page": None},
 def test_renderer_uses_original_pages_and_locators_in_model_selected_order():
     result = render_structured_answer(json.dumps({"answer": "Direct answer", "source_ids": [2, 1]}), CONTEXTS)
     assert result == "Direct answer\n\n【出处】[资料2]《Synthetic pages》第7页；[资料1]《Synthetic OSCAL》定位【x-1】"
+
+
+def test_original_evidence_is_materialized_by_host_not_model_translation():
+    contexts = [{**CONTEXTS[0], "text": "Title\nOriginal control statement."}]
+    raw = json.dumps({"answer": "中文解释。", "source_ids": [1],
+                      "source_lines": [{"source_id": 1, "line": 2}]})
+    result = render_evidenced_answer(raw, contexts)
+    assert "中文解释（非逐字原文）" in result
+    assert "> Original control statement." in result
+    assert result.endswith("【出处】[资料1]《Synthetic OSCAL》定位【x-1】")
+
+
+@pytest.mark.parametrize("lines", [[], [{"source_id": 1, "line": True}],
+    [{"source_id": 1, "line": "2"}], [{"source_id": 1, "line": 3}],
+    [{"source_id": 2, "line": 1}], [{"source_id": 1, "line": 2, "quote": "fake"}],
+    [{"source_id": 1, "line": 2}, {"source_id": 1, "line": 2}]])
+def test_invalid_or_model_written_original_evidence_is_rejected(lines):
+    raw = json.dumps({"answer": "A", "source_ids": [1], "source_lines": lines})
+    with pytest.raises(ValueError):
+        render_evidenced_answer(raw, [{**CONTEXTS[0], "text": "Title\nOriginal."}])
+
+
+def test_answer_request_keeps_reading_aid_out_of_canonical_lines():
+    from scripts.eval_nist_batch import request_content
+
+    context = {**CONTEXTS[0], "text": "Original line"}
+    aid = {"source_ref": 1, "canonical_text_sha256": hashlib.sha256(b"Original line").hexdigest(),
+           "text": "仅阅读辅助"}
+    case = {"question": "Q", "reading_aids": [aid]}
+    payload = json.loads(request_content("answer_structured", case, {"contexts": [context]}, "", {
+        "evidence_protocol": "answer_source_lines"}))
+    assert payload["question"] == "Q"
+    assert payload["canonical_contexts"][0]["lines"] == [{"line": 1, "text": "Original line"}]
+    assert payload["unofficial_reading_aids"][0]["text"] == "仅阅读辅助"
+    aid["canonical_text_sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="reading aid"):
+        request_content("answer_structured", case, {"contexts": [context]}, "", {
+            "evidence_protocol": "answer_source_lines"})
 
 
 @pytest.mark.parametrize("value", [[], {"answer": "A", "source_ids": []},

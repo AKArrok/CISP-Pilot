@@ -1,0 +1,6 @@
+{
+  "stage": "pre-freeze",
+  "paid_calls": 0,
+  "error": "Proposed CA8 source excerpt omitted the original word the; literal-substring assertion rejected it",
+  "correction": "Use exact excerpt including the pretest analysis; original source unchanged"
+}

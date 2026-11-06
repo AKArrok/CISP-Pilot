@@ -35,6 +35,9 @@ def warmup() -> None:
         logging.warning("服务未就绪: %s；请显式完成迁移和资产部署", payload["status"])
         return
 
+    # Resolve the optional cache backend before a user pays its cold connection cost.
+    cache.is_live()
+
     if config.EMBEDDING_BACKEND == "local":
         from llms import get_embeddings
 

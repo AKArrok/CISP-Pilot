@@ -1,0 +1,124 @@
+{
+  "method": "AI original-source review, not human gold; reasonable paraphrase accepted, literal origin separate from semantic support",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "hashes": {
+        "answer_baseline": "7f4753fc6759a532ee708779aa3a4e964c22d9b69e552b1b95ca858fd3b3af65",
+        "answer_structured": "44d3780998e6a8feaa2e65160e35db357589fc966cf0380fc5afc7eded293276"
+      },
+      "baseline_fact_supported": false,
+      "structured_fact_supported": false,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": false,
+      "rationale": "两臂仍把风险评估性前提移到多语言；逐字引用本身不纠正主张。",
+      "rendered_candidate": "中文解释（非逐字原文）\n需要考虑，但这是基于组织需求和用户人口特征的风险评估性考量，而非强制要求。资料在系统使用通知（AC-8）的指南中说明：组织根据组织需求和系统用户的人口统计特征，考虑是否以多种语言显示系统使用通知消息或警告横幅。也就是说，多语言显示属于组织自行评估后决定的事项，资料未给出必须执行或必须赋值的参数。此外，该指南还指出系统使用通知仅用于通过有人类用户的登录界面进行访问，不存在人类接口时不需要通知；组织还应就隐私信息内容咨询隐私办公室，并就警告横幅内容的法律审查和批准咨询总法律顾问办公室或组织内同等机构。\n\n【原文证据】\n[资料1]原文第12行\n> [ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "hashes": {
+        "answer_baseline": "1aec30030152e8df8b6d71d8bc083ccb30da3afcebdc2437cf9c0a937d05eb50",
+        "answer_structured": "35ef39780f6102b48eabfa114610750a7147c6c9ad82584f1898a9c2540e49b6"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "来源事实、条件、动作及参数保持；所选原文相关且宿主还原逐字一致。",
+      "rendered_candidate": "中文解释（非逐字原文）\n需要，但这是基于风险评估后的“考虑”事项，不是无条件强制。资料明确：系统使用通知仅用于存在人类用户的登录界面，无人类接口时不需要通知；同时指出，组织应基于风险评估，考虑在初始网络登录之后访问应用程序或其他系统资源时是否需要二次系统使用通知。因此，登录网络后是否还要在应用层再次告知，取决于组织对该场景的风险评估结论，资料未给出统一强制要求。另外，初次访问前的通知横幅须保留到用户确认使用条件并采取明确操作登录或进一步访问系统为止。\n\n【原文证据】\n[资料1]原文第7行\n> [ac-8_smt.b] Retain the notification message or banner on the screen until users acknowledge the usage conditions and take explicit actions to log on to or further access the system; and\n\n[资料1]原文第12行\n> [ac-8_gdn] System use notifications can be implemented using messages or warning banners displayed before individuals log in to systems. System use notifications are used only for access via logon interfaces with human users. Notifications are not required when human interfaces do not exist. Based on an assessment of risk, organizations consider whether or not a secondary system use notification is needed to access applications or other system resources after the initial network logon. Organizations consider system use notification messages or banners displayed in multiple languages based on organizational needs and the demographics of system users. Organizations consult with the privacy office for input regarding privacy messaging and the Office of the General Counsel or organizational equivalent for legal review and approval of warning banner content.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "hashes": {
+        "answer_baseline": "09ada4a9b176dba3edf4e77325dc45068fdcd618172a3a83e6907bc704989d93",
+        "answer_structured": "66b0a94feae82ffc941ee86d436aba046a75270081e8666cf1a110ef31e9bce5"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "明确工作环境参与内容确定；仍说明远程变化未被设为已定触发事件、参数待组织确定。合理转述不因直接回答是而扣分，没有把未穷尽示例当排除或已赋值强制事件。",
+      "rendered_candidate": "中文解释（非逐字原文）\n是。资料明确把“工作环境（例如远程办公/telework）”列为组织确定素养培训与意识培训内容的依据之一，因此远程工作环境变化属于培训内容需要考虑的因素。具体而言，[at-2_gdn]指出，组织根据特定组织要求、人员被授权访问的系统以及工作环境（例如远程办公）来确定培训内容；同时[at-2_smt.c]要求按待赋值的更新频率（at-02_odp.06）并在待赋值的触发事件（at-02_odp.07）发生后更新培训与意识内容，指南还说明定期更新有助于保持内容相关性，可能促使更新的事件包括评估或审计发现、安全事件或泄露、适用法律政策标准等变化。需要注意：资料并未把“远程工作环境变化”直接列为at-02_odp.07的已定事件，该参数的具体取值待组织确定；但工作环境是确定内容时的明确考量因素，故内容应随其变化而调整。\n\n【原文证据】\n[资料1]原文第6行\n> [at-2_smt.c] Update literacy training and awareness content {{ insert: param, at-02_odp.06 }} and following {{ insert: param, at-02_odp.07 }} ; and\n\n[资料1]原文第8行\n> [at-2_gdn] Organizations provide basic and advanced levels of literacy training to system users, including measures to test the knowledge level of users. Organizations determine the content of literacy training and awareness based on specific organizational requirements, the systems to which personnel have authorized access, and work environments (e.g., telework). The content includes an understanding of the need for security and privacy as well as actions by users to maintain security and personal privacy and to respond to suspected incidents. The content addresses the need for operations security and the handling of personally identifiable information.\n\n[资料1]原文第10行\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "hashes": {
+        "answer_baseline": "b98a1fb8f8a40c4080efdfee05baa2f7b8148c5e2ee45ca2d005e131bdb22f6d",
+        "answer_structured": "0871ac279cd490351daab4b7c1ec7eccb2f78fec1128bc994bcd8eb98ded347a"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "来源事实、条件、动作及参数保持；所选原文相关且宿主还原逐字一致。",
+      "rendered_candidate": "中文解释（非逐字原文）\n资料中明确列出的提升安全意识的具体手段包括：展示海报、提供印有安全和隐私提醒的用品、显示登录屏幕消息、生成组织官员的电子邮件建议或通知，以及开展意识活动。其中任选两项即可，例如“展示海报”和“显示登录屏幕消息”。需要注意，采用哪些具体意识技术属于由组织确定的参数（at-02_odp.05，即“awareness techniques”），但“采用这些技术提升意识”这一动作本身是要求执行的，参数待定不等于动作可选。\n\n【原文证据】\n[资料1]原文第5行\n> [at-2_smt.b] Employ the following techniques to increase the security and privacy awareness of system users {{ insert: param, at-02_odp.05 }};\n\n[资料1]原文第10行\n> Awareness techniques include displaying posters, offering supplies inscribed with security and privacy reminders, displaying logon screen messages, generating email advisories or notices from organizational officials, and conducting awareness events. Literacy training after the initial training described in [AT-2a.1](#at-2_smt.a.1) is conducted at a minimum frequency consistent with applicable laws, directives, regulations, and policies. Subsequent literacy training may be satisfied by one or more short ad hoc sessions and include topical information on recent attack schemes, changes to organizational security and privacy policies, revised security and privacy expectations, or a subset of topics from the initial training. Updating literacy training and awareness content on a regular basis helps to ensure that the content remains relevant. Events that may precipitate an update to literacy training and awareness content include, but are not limited to, assessment or audit findings, security incidents or breaches, or changes in applicable laws, executive orders, directives, regulations, policies, standards, and guidelines.\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "hashes": {
+        "answer_baseline": "b5c4205c05e99b314f1d79040499162e8f285e8353134deab0c2789a11c2f286",
+        "answer_structured": "94b666bd2b0134090c3886410e0d87f2a37e30f1e4b574824e6f57e621483877"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": false,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": false,
+      "rationale": "结构化臂仍把组件范围概括为全部备份对象待定，沿原保守范围歧义规则失败；基线本次明确限用户级。",
+      "rendered_candidate": "中文解释（非逐字原文）\n否。资料中没有出现“只能购买某一家公司备份软件”或任何指定厂商、限定采购品牌的要求。备份控制（cp-9）的强制动作是：对用户级信息、系统级信息、系统文档分别执行备份，并保护备份信息的机密性、完整性和可用性；其中备份对象范围（cp-09_odp.01，system components）和各项备份频次（cp-09_odp.02、cp-09_odp.03、cp-09_odp.04，frequency）均为待组织赋值的参数，参数待定不等于动作可选。资料仅提到保护备份完整性可采用数字签名和密码学哈希等机制，属于示例性说明，并未限定具体产品或厂商。另一来源（ca-8）讲的是渗透测试，与备份软件采购无关。\n\n【原文证据】\n[资料1]原文第2行\n> [cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ insert: param, cp-09_odp.02 }};\n\n[资料1]原文第5行\n> [cp-9_smt.d] Protect the confidentiality, integrity, and availability of backup information.\n\n[资料1]原文第6行\n> [cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\n\n[资料1]原文第8行\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "cp-9-new-08",
+      "hashes": {
+        "answer_baseline": "e874a8842e2186ccac25e8ad81123a97465bd11edf6ed5fb32ff660713588685",
+        "answer_structured": "2faa408e766201f1f06f25bfec1721c0a1975b26433a2e095164e1e51f8830e4"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "来源事实、条件、动作及参数保持；所选原文相关且宿主还原逐字一致。",
+      "rendered_candidate": "中文解释（非逐字原文）\n不允许跳过。该控制（cp-9 系统备份）明确要求对系统文档执行备份，且系统文档的范围包括与安全和隐私相关的文档，因此包含隐私文档的系统文档备份属于必须执行的动作，不能省略。资料中与系统文档备份相关的参数 cp-09_odp.04 是“频次（frequency）”，其取值待组织确定，即备份按什么频次进行尚待赋值；参数待定只影响频次，并不意味着可以不做备份。此外，指南指出组织可能受法律、行政命令、指令、法规或政策约束，这些规定对特定类别的信息（如个人健康信息）提出要求，组织人员应就此与机构高级隐私官和法律顾问协商。\n\n【原文证据】\n[资料1]原文第4行\n> [cp-9_smt.c] Conduct backups of system documentation, including security- and privacy-related documentation {{ insert: param, cp-09_odp.04 }} ; and\n\n[资料1]原文第6行\n> [cp-9_gdn] System-level information includes system state information, operating system software, middleware, application software, and licenses. User-level information includes information other than system-level information. Mechanisms employed to protect the integrity of system backups include digital signatures and cryptographic hashes. Protection of system backup information while in transit is addressed by [MP-5](#mp-5) and [SC-8](#sc-8) . System backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information. Organizations may be subject to laws, executive orders, directives, regulations, or policies with requirements regarding specific categories of information (e.g., personal health information). Organizational personnel consult with the senior agency official for privacy and legal counsel regarding such requirements.\n\n[资料1]原文第8行\n> [{\"id\": \"cp-09_odp.01\", \"label\": \"system components\", \"guidelines\": [{\"prose\": \"system components for which to conduct backups of user-level information is defined;\"}]}, {\"id\": \"cp-09_odp.02\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of user-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.03\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system-level information consistent with recovery time and recovery point objectives is defined;\"}]}, {\"id\": \"cp-09_odp.04\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct backups of system documentation consistent with recovery time and recovery point objectives is defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "ca-8-new-01",
+      "hashes": {
+        "answer_baseline": "bbeb8cac51f9988938e4aeac65b2e3368d5aaa6d8a57865a25bb1fb1b514d88b",
+        "answer_structured": "17dc0b3105e14be2dc345568e6edd3ee488ecf3b91e3dc47cdddc714ca651cff"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "来源事实、条件、动作及参数保持；所选原文相关且宿主还原逐字一致。",
+      "rendered_candidate": "中文解释（非逐字原文）\n渗透测试与自动漏洞扫描的核心区别在于：渗透测试是“超越自动化漏洞扫描”的专门评估，由具备可证明技能和经验的人员或团队实施，模拟对手行动，对安全与隐私弱点做更深入分析。自动漏洞扫描则属于自动化工具扫描，资料未对其作进一步定义。\n\n要点对比：\n- 性质：渗透测试是针对系统或单个系统组件的专门评估类型，用于识别可能被对手利用的漏洞；资料明确其“超越自动化漏洞扫描”。\n- 实施主体：渗透测试由在网络、操作系统和/或应用层安全方面具备可证明技术专长与经验的人员和团队执行。\n- 目的：可验证漏洞，或确定系统在时间、资源、技能等指定约束下对对手的渗透抵抗程度；试图复制对手行动，提供更深入的安全和隐私弱点分析。\n- 方法：标准方法包括基于对系统充分了解的测试前分析、据此识别潜在漏洞，以及确定漏洞可利用性的测试；开始测试场景前各方须同意交战规则。\n- 适用场景：组织从旧技术向新技术过渡（如IPv4向IPv6）时尤为重要。\n\n易混淆点：资料只说明渗透测试“超越”自动漏洞扫描，并未给出自动漏洞扫描的定义或具体技术细节，不能据此推断其流程或工具要求。另需注意，渗透测试的实施频次与对象范围在资料中是待组织确定的参数，参数待定不代表可以不实施渗透测试。\n\n【原文证据】\n[资料1]原文第3行\n> [ca-8_gdn] Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries. Penetration testing goes beyond automated vulnerability scanning and is conducted by agents and teams with demonstrable skills and experience that include technical expertise in network, operating system, and/or application level security. Penetration testing can be used to validate vulnerabilities or determine the degree of penetration resistance of systems to adversaries within specified constraints. Such constraints include time, resources, and skills. Penetration testing attempts to duplicate the actions of adversaries and provides a more in-depth analysis of security- and privacy-related weaknesses or deficiencies. Penetration testing is especially important when organizations are transitioning from older technologies to newer technologies (e.g., transitioning from IPv4 to IPv6 network protocols).\n\n[资料1]原文第2行\n> [ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}.\n\n[资料1]原文第5行\n> Organizations can use the results of vulnerability analyses to support penetration testing activities. Penetration testing can be conducted internally or externally on the hardware, software, or firmware components of a system and can exercise both physical and technical controls. A standard method for penetration testing includes a pretest analysis based on full knowledge of the system, pretest identification of potential vulnerabilities based on the pretest analysis, and testing designed to determine the exploitability of vulnerabilities. All parties agree to the rules of engagement before commencing penetration testing scenarios. Organizations correlate the rules of engagement for the penetration tests with the tools, techniques, and procedures that are anticipated to be employed by adversaries. Penetration testing may result in the exposure of information that is protected by laws or regulations, to individuals conducting the testing. Rules of engagement, contracts, or other appropriate mechanisms can be used to communicate expectations for how to protect this information. Risk assessments guide the decisions on the level of independence required for the personnel conducting penetration testing.\n\n[资料1]原文第7行\n> [{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "ca-8-new-07",
+      "hashes": {
+        "answer_baseline": "2bbe81d4e72185cfff8ef6993d998e7322eb50c64ecd8fac7ab77b8a1350ad7f",
+        "answer_structured": "d7a4817aa3c74e22c56dad05d6719321877624fbc2c42c0a2c569cd4f1e76010"
+      },
+      "baseline_fact_supported": true,
+      "structured_fact_supported": true,
+      "structured_literal_origin_valid": true,
+      "structured_selected_lines_relevant": true,
+      "structured_accepted": true,
+      "rationale": "来源事实、条件、动作及参数保持；所选原文相关且宿主还原逐字一致。",
+      "rendered_candidate": "中文解释（非逐字原文）\n资料没有规定渗透测试必须持续七天。资料中渗透测试的执行频次是待组织确定的参数（ca-08_odp.01，label为frequency），资料未赋予具体数值，因此不存在“每次必须七天”的规定；七天这一时长在资料中完全没有出现。资料仅说明渗透测试受时间、资源、技能等约束，并要求所有各方在开始渗透测试场景前同意交战规则。\n\n【原文证据】\n[资料1]原文第2行\n> [ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_odp.02 }}.\n\n[资料1]原文第3行\n> [ca-8_gdn] Penetration testing is a specialized type of assessment conducted on systems or individual system components to identify vulnerabilities that could be exploited by adversaries. Penetration testing goes beyond automated vulnerability scanning and is conducted by agents and teams with demonstrable skills and experience that include technical expertise in network, operating system, and/or application level security. Penetration testing can be used to validate vulnerabilities or determine the degree of penetration resistance of systems to adversaries within specified constraints. Such constraints include time, resources, and skills. Penetration testing attempts to duplicate the actions of adversaries and provides a more in-depth analysis of security- and privacy-related weaknesses or deficiencies. Penetration testing is especially important when organizations are transitioning from older technologies to newer technologies (e.g., transitioning from IPv4 to IPv6 network protocols).\n\n[资料1]原文第7行\n> [{\"id\": \"ca-08_odp.01\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"frequency at which to conduct penetration testing on systems or system components is defined;\"}]}, {\"id\": \"ca-08_odp.02\", \"label\": \"system(s) or system components\", \"guidelines\": [{\"prose\": \"systems or system components on which penetration testing is to be conducted are defined;\"}]}]\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    }
+  ],
+  "baseline_factual_support": 7,
+  "structured_factual_support": 6,
+  "structured_literal_origin": 8,
+  "structured_accepted": 6,
+  "denominator": 8,
+  "default_promoted": false,
+  "unresolved": "AC8 risk premise transfer and CP9 parameter scope ambiguity remain"
+}

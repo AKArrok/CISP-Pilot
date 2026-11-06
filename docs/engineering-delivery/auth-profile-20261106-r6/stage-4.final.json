@@ -1,0 +1,105 @@
+[
+    {
+        "name": "auth/login",
+        "method": "POST",
+        "last_request_timestamp": 1793980641.8260403,
+        "start_time": 1793980635.0145595,
+        "num_requests": 8,
+        "num_none_requests": 0,
+        "num_failures": 0,
+        "total_response_time": 31886.99770000494,
+        "max_response_time": 4605.389500000456,
+        "min_response_time": 2330.733600001622,
+        "total_content_length": 1296,
+        "response_times": {
+            "2300": 1,
+            "2400": 1,
+            "4600": 2,
+            "4500": 4
+        },
+        "num_reqs_per_sec": {
+            "1793980635": 2,
+            "1793980637": 2,
+            "1793980639": 2,
+            "1793980641": 2
+        },
+        "num_fail_per_sec": {}
+    },
+    {
+        "name": "auth/me",
+        "method": "GET",
+        "last_request_timestamp": 1793980641.8293786,
+        "start_time": 1793980635.0195582,
+        "num_requests": 8,
+        "num_none_requests": 0,
+        "num_failures": 0,
+        "total_response_time": 30.196999998224783,
+        "max_response_time": 4.696699999840348,
+        "min_response_time": 3.2013000000006286,
+        "total_content_length": 1296,
+        "response_times": {
+            "5": 2,
+            "3": 4,
+            "4": 2
+        },
+        "num_reqs_per_sec": {
+            "1793980635": 2,
+            "1793980637": 2,
+            "1793980639": 2,
+            "1793980641": 2
+        },
+        "num_fail_per_sec": {}
+    },
+    {
+        "name": "auth/logout",
+        "method": "POST",
+        "last_request_timestamp": 1793980641.8384092,
+        "start_time": 1793980635.0523977,
+        "num_requests": 8,
+        "num_none_requests": 0,
+        "num_failures": 0,
+        "total_response_time": 115.99370000294584,
+        "max_response_time": 50.6719000004523,
+        "min_response_time": 7.877200001530582,
+        "total_content_length": 0,
+        "response_times": {
+            "9": 3,
+            "51": 1,
+            "8": 2,
+            "12": 1,
+            "10": 1
+        },
+        "num_reqs_per_sec": {
+            "1793980635": 2,
+            "1793980637": 2,
+            "1793980639": 2,
+            "1793980641": 2
+        },
+        "num_fail_per_sec": {}
+    },
+    {
+        "name": "auth/revoked-old-cookie",
+        "method": "GET",
+        "last_request_timestamp": 1793980641.8414087,
+        "start_time": 1793980635.055922,
+        "num_requests": 8,
+        "num_none_requests": 0,
+        "num_failures": 0,
+        "total_response_time": 28.947599997991347,
+        "max_response_time": 4.562300000543473,
+        "min_response_time": 2.800000000206637,
+        "total_content_length": 288,
+        "response_times": {
+            "3": 4,
+            "4": 3,
+            "5": 1
+        },
+        "num_reqs_per_sec": {
+            "1793980635": 2,
+            "1793980637": 2,
+            "1793980639": 2,
+            "1793980641": 2
+        },
+        "num_fail_per_sec": {}
+    }
+]

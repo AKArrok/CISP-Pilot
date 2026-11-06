@@ -1,0 +1,140 @@
+{
+  "reviewer": "Codex AI review against original-cases English only; not independent human gold",
+  "reviews": [
+    {
+      "id": "ac-8-new-05",
+      "hashes": {
+        "answer_baseline": "dce2903927219d052b29ed6d04ca1d3e3a5c7e08b4c98f084b7b299466986802",
+        "answer_structured": "8f5f3c7f2cfafcb7c9b68223ed52fed88971824c32b5700bbb6817206c3ae5be"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": true,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "原题核心、条件、规范强度及具体示例有原英文支持，未用辅助冒充原句。",
+      "rendered_candidate": "需要，但属于“考虑”而非强制动作。资料在系统使用通知的指南中明确：组织根据组织需求和系统用户的人口统计特征，考虑以多种语言显示系统使用通知消息或横幅。也就是说，多语言显示是组织基于自身需求评估后考虑的事项，资料未将其规定为必须执行的要求，也未给出具体语言种类或数量。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "ac-8-new-06",
+      "hashes": {
+        "answer_baseline": "481c269c27d0c864cb3ecd003b4366c138b7f4bfc564806dc1ba146a2f9b2ae5",
+        "answer_structured": "75cb19f1198d86eb25e7d6a08287cc3e7ff2f84ca86e5f287d026d0748a74a1c"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": true,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "原题核心、条件、规范强度及具体示例有原英文支持，未用辅助冒充原句。",
+      "rendered_candidate": "需要，但这是基于风险评估的考虑事项，不是无条件强制要求。资料明确：系统使用通知仅用于通过具有人类用户的登录界面进行访问，当不存在人类接口时不需要通知；同时“基于风险评估，组织考虑在初始网络登录之后访问应用程序或其他系统资源是否需要二次系统使用通知”。也就是说，初始网络登录后是否在应用层再做一次告知，由组织结合风险评估决定；若决定需要，则按 ac-8 的要求在授予进一步访问前显示相应通知。此外，资料还提到组织可根据需求和用户人口特征考虑多语言显示，并就隐私信息内容咨询隐私办公室、就警告横幅内容的法律审查和批准咨询总法律顾问办公室或同等机构。\n\n记忆点/易混淆点：\n- “二次通知”是风险导向的考虑项，不是所有系统一律必须；\n- 通知只针对有人类用户的登录界面，无人接口不需要；\n- 公开可访问系统另有进一步访问前显示系统使用信息等要求（其中显示条件为待组织确定的参数 ac-08_odp.02）。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ac-8】"
+    },
+    {
+      "id": "at-2-new-02",
+      "hashes": {
+        "answer_baseline": "f8dcf250b2564656d259238c6dc6437c17eee9441f1aa9d732638a7b1dd083a5",
+        "answer_structured": "e253858d9c848db5ab694ae246869b64799bde8cd0ad361f53d372ab0368ae0e"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": true,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "本批两臂breaches均正确转述泄露，非排他性更新事件；仍非充分因果或泛化证据。",
+      "rendered_candidate": "资料未把“远程工作环境变化”规定为必须触发培训内容更新的独立事件，因此不能据此断言存在这样一项强制要求。资料1的[at-2_gdn]说明，组织根据特定组织要求、人员被授权访问的系统以及工作环境（例如远程办公）来确定素养培训和意识培训的内容；也就是说，远程办公属于确定培训内容时考虑的因素之一。但资料1中关于“更新培训与意识内容”的强制动作是：按待组织确定的频率（at-02_odp.06）并在待组织确定的事件（at-02_odp.07）发生后更新内容；可能促使更新的事件包括但不限于评估或审计发现、安全事件或泄露，或适用法律、行政命令、指令、法规、政策、标准和指南的变化。资料没有把“远程工作环境变化”列入这些事件，也没有给出该事项对应的参数定义，因此本次检索到的资料不足以回答“远程工作环境变化是否必须触发内容调整”这一部分。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "at-2-new-03",
+      "hashes": {
+        "answer_baseline": "08027df12eb1c7b22f492708158966c8250c5d75cfa14342f37e1c7b341e35d6",
+        "answer_structured": "8a92295094d65023800bd45005543113d2e6e44fd2af21600b0099a129d3567a"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": true,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "原题核心、条件、规范强度及具体示例有原英文支持，未用辅助冒充原句。",
+      "rendered_candidate": "资料中明确列出的意识提升手段（awareness techniques）包括：展示海报、提供印有安全和隐私提醒的用品、显示登录屏幕消息、生成组织官员的电子邮件建议或通知、开展意识活动。任选其中两种即可，例如：①展示海报；②显示登录屏幕消息。\n\n记忆点：这些手段对应 AT-2b，具体采用哪些技术由组织通过待赋值参数 at-02_odp.05（awareness techniques）确定；参数待定不等于该动作可选。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【at-2】"
+    },
+    {
+      "id": "cp-9-new-07",
+      "hashes": {
+        "answer_baseline": "56e7d1384185943360d3ee7c3af0f7aa387324c89cf11b8c92450c2c90de29b7",
+        "answer_structured": "a2d70132a8696666d3f03886209b0a18586c9fbe316093b53cccf9e833bf2f68"
+      },
+      "baseline_fact_supported": false,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": false,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "自由文本对系统组件范围未绑定用户级信息，沿既有保守歧义标准失败。 结构化臂准确将组件范围限用户级信息，其他三动作和频次保持。",
+      "rendered_candidate": "不是。资料中没有出现任何“只能购买某一家公司备份软件”的限定。CP-9“系统备份”要求的是执行备份动作并保护备份信息，具体包括：对指定系统组件中的用户级信息按待组织确定的频次执行备份；对系统中的系统级信息按待组织确定的频次执行备份；对系统文档（含安全与隐私相关文档）按待组织确定的频次执行备份；并保护备份信息的机密性、完整性和可用性。资料未对备份软件的品牌、供应商或采购来源作任何限制，因此不能据此得出“只能购买某一家公司备份软件”的结论。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "cp-9-new-08",
+      "hashes": {
+        "answer_baseline": "61390bde392309f875688862501f3d0ba8e7b69e76b6882082f0a5393d268520",
+        "answer_structured": "a65144fce515c8a0d0826b6ea4e017076ff0871bcdd012a2f1c784fe5192fe8e"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": false,
+      "baseline_accepted": false,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": false,
+      "structured_contract_valid": true,
+      "structured_accepted": false,
+      "rationale": "自由文本将辅助中文译句当成资料条文语句引用，违反本批原文/辅助分离约束。 结构化正文把辅助中文cp9_smt.c放入要求的引号，未说明是辅助翻译；来源provenance失败。",
+      "rendered_candidate": "不允许。按资料1的CP-9“系统备份”控制，系统文档备份是必须执行的动作，且明确要求备份范围包括与安全和隐私相关的文档，并未设置任何可跳过或豁免隐私文档的例外。具体而言，[cp-9_smt.c]要求“对系统文档执行备份，包括与安全和隐私相关的文档{{ insert: param, cp-09_odp.04 }}”；其中cp-09_odp.04是待组织确定的“frequency（频次）”参数，其含义为按恢复时间与恢复点目标确定备份系统文档的频次，参数值待定并不表示该备份动作可选。资料1的指南还指出，组织可能受法律、行政命令、指令、法规或政策对特定类别信息（如个人健康信息）要求的约束，组织人员应就此与机构高级隐私官和法律顾问协商；这属于合规协商要求，同样不构成跳过隐私相关文档备份的许可。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    },
+    {
+      "id": "ca-8-new-01",
+      "hashes": {
+        "answer_baseline": "ff026af6e2d844be50b2955903e24a5f5f1d18219237010d2ffba44487e1201f",
+        "answer_structured": "cd160537e1c0c33b0cc7291183b29bfb8fca801ec95b7f8448f3e6690fd11ceb"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": true,
+      "baseline_accepted": true,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "原题核心、条件、规范强度及具体示例有原英文支持，未用辅助冒充原句。",
+      "rendered_candidate": "渗透测试与自动漏洞扫描的核心区别在于：渗透测试超越了自动化漏洞扫描，是一种由具备可证明技能和经验的人员或团队执行的专门评估，用于识别可能被对手利用的漏洞。具体而言：渗透测试由在网络、操作系统和/或应用层安全方面具有技术专长的人员实施，试图复制对手的行动，对安全与隐私相关的弱点或缺陷提供更深入的分析；它还可用于验证漏洞，或确定系统在时间、资源、技能等指定约束下对对手的渗透抵抗程度。此外，渗透测试可在系统硬件、软件或固件组件上内部或外部进行，并可检验物理控制和技术控制；标准方法包括基于对系统充分了解进行测试前分析、据此识别潜在漏洞，以及旨在确定漏洞可利用性的测试，且各方须在开始渗透测试场景前同意交战规则。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    },
+    {
+      "id": "ca-8-new-07",
+      "hashes": {
+        "answer_baseline": "5f58d9370bfa1cf3c95644dfbac3d9aa804fb27a3ab53f4228d69023099338ef",
+        "answer_structured": "911cb88efbe9fac9a5e18fcde6fdb72b7e659703d0ab09576e378e4464ebb0df"
+      },
+      "baseline_fact_supported": true,
+      "baseline_original_quote_provenance": false,
+      "baseline_accepted": false,
+      "structured_fact_supported": true,
+      "structured_original_quote_provenance": true,
+      "structured_contract_valid": true,
+      "structured_accepted": true,
+      "rationale": "自由文本将辅助中文译句当成资料条文语句引用，违反本批原文/辅助分离约束。",
+      "rendered_candidate": "没有。资料1对渗透测试只设置了两个待组织确定的参数：ca-08_odp.01 为“frequency（实施渗透测试的频次）”，ca-08_odp.02 为“system(s) or system components（实施渗透测试的系统或系统组件）”；资料中未给出任何参数取值，也没有“每次渗透测试必须持续七天”或任何持续时长要求。资料1中提到的“约束包括时间、资源和技能”只是说明渗透测试受时间等条件约束，并非规定七天。\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【ca-8】"
+    }
+  ],
+  "baseline_accepted": 5,
+  "structured_accepted": 7,
+  "total": 8,
+  "structured_factual_core_supported": 8,
+  "structured_canonical_quote_provenance": 7,
+  "default_promoted": false,
+  "acceptance_not_relaxed": "Auxiliary translation cannot be quoted as original NIST; original source standard retained"
+}

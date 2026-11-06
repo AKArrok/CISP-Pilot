@@ -1,0 +1,29 @@
+{
+  "mode": "answer_contract",
+  "role": "Same8 originalTop2/prompts/temp0.3 with marked unofficial rechecked full4 reading aids; no index/answer/gold added, English original sole evidence",
+  "answer_temperature": 0.3,
+  "frozen_sha256": {
+    "cases.json": "6fb8d042c90ba27418ef08a6a68beea99e9dd50ba8ff6edf0979d06999a851f8",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "prompts.json": "b7f2fc3d46e1604361e809cfb897bc488cda5462db87551b52eba5e8a2f48863",
+    "renderer.py": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+    "selection.json": "f3f9aaab1f40c308b2795da13752a14dea72789f3d2ef0bfaedb04fa98108d8a",
+    "original-cases.json": "d69c0668a6f0be730e1968a44e4a203f927ebd1672575dff33771c429406d12f",
+    "reading-aids.json": "22732f542f77068770970fd20f881e833efc620e0be38ed9631b20cf7dc95abf",
+    "translation-review.json": "d54185b00040c2a2f4edb2a906ced1d70fde4f4b57a514a54418b8d9e6e607ec",
+    "preparation-failure.json": "15c8e392be82fb8d639e212caab4e41f8060b2f1bffb28106b4dfb30ae82922f"
+  },
+  "paid_proposal": {
+    "calls": 16,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0,
+    "scope": "Only pinned public NIST and original questions/prompts; two answer-generation arms, no external judge calls"
+  },
+  "max_estimated_input_tokens": 5500,
+  "executor_sha256": "03b1f9aef07d7cba03cc148c4df9ba2cf720d1f9e9fbd509ff01be5a7ac0e77a",
+  "renderer_sha256": "f71d5dd9dba052ba80781c0e876f06e2d026fe78c0f0be874643e22b3a740c04",
+  "acceptance": "All8 structured answers retain original completeness/source/parameter/quotation criteria and valid source IDs; every baseline failure kept. No default switch before original32 and approvedmixed4 full chain regression."
+}

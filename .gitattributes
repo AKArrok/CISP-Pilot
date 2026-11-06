@@ -41,3 +41,9 @@ docs/engineering-delivery/auth-profile-20261106*/*.json -text whitespace=cr-at-e
 docs/engineering-delivery/auth-profile-20261106*/*.jsonl -text whitespace=cr-at-eol
 docs/engineering-delivery/auth-profile-20261106*/*.log -text -whitespace
 docs/engineering-delivery/auth-profile-20261106*/*.csv -text -whitespace
+
+# New reading-aid packets and November7 raw experiment evidence.
+evaluation/nist-reading-*/*.py -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261107-live/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261107-live/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/*-20261107-live/executor.py -text whitespace=cr-at-eol
