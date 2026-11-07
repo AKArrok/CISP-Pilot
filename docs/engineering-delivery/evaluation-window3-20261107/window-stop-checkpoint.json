@@ -1,0 +1,29 @@
+{
+  "status": "paused_quota_window_used_weekly_display100",
+  "quota": {
+    "observed_utc": "2026-11-07T06:17:38.791624+00:00",
+    "primary_used_percent": 66,
+    "secondary_used_percent": 100,
+    "ordinary_usage_allowed": true,
+    "primary_resets_at": 1794045176,
+    "secondary_resets_at": 1794379313,
+    "reset_credits_used": false
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "model_attempts_this_restored_window": 284,
+  "known_cost_this_restored_window_usd": 0.1534935,
+  "cumulative_attempts": 2013,
+  "cumulative_known_estimate_usd": 1.4353062,
+  "unknown_reserve_usd": 0.0656585,
+  "remaining_model_budget_usd": 1.4990353,
+  "pending_allocations": [],
+  "code_commit": "35dcefd9ed2f029883e0e855207184845153dae4",
+  "code_ci": {
+    "run_id": 42345899660,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "35dcefd9ed2f029883e0e855207184845153dae4",
+    "scope": "Exact scope guard code; later final analysis/docs commit CI must separately verify"
+  },
+  "no_model_process_pending": true
+}

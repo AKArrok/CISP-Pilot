@@ -1,0 +1,35 @@
+{
+  "positive_definition": "The saved answer is acceptable under the original development criterion",
+  "labels_source": "Codex full-source review, not independent human gold",
+  "n": 8,
+  "confusion": {
+    "true_positive": 3,
+    "true_negative": 0,
+    "false_positive": 4,
+    "false_negative": 1
+  },
+  "known_bad_answer_detection": {
+    "detected": 0,
+    "total": 4
+  },
+  "correct_answer_retention": {
+    "retained": 3,
+    "total": 4
+  },
+  "exact_quote_count": 7,
+  "bad_answers_accepted_with_exact_quotes": [
+    "saved-01",
+    "saved-03",
+    "saved-05"
+  ],
+  "interpretation": "All4 known bad answers escaped review; valid verbatim quotes do not imply that the model's conclusion follows from them. Three wrong acceptances even have valid quotes. A same-model second opinion cannot currently guard promotion.",
+  "next_contract_requirements": [
+    "Keep source statement and original question polarity separate",
+    "Check omission of explicit source obligations as well as false assertions",
+    "Check every heading and background claim, not just final conclusion",
+    "Keep original paired labels offline and require all8 before broad40 regression"
+  ],
+  "calibration_subset_generalization_claim": false,
+  "automatic_acceptance_enabled": false,
+  "new_API_calls": 0
+}

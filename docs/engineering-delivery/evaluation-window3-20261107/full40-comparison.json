@@ -1,0 +1,56 @@
+{
+  "scope": "40 paired seen development questions, same original criteria, no human gold; in-process ASGI real provider, serial runs not randomized load/SLA",
+  "v2": {
+    "n": 40,
+    "source_supported": 39,
+    "strict_pass": 40,
+    "joint_pass": 39,
+    "partial_unknown_ids": [
+      "scenario-01"
+    ],
+    "full_abstention_ids": [],
+    "completed_http_requests": 40,
+    "cost_estimate_usd": 0.04252349999999998,
+    "latency_seconds": {
+      "mean": 1.709849999999642,
+      "p50": 1.680000000000291,
+      "p95_nearest_rank": 2.1719999999986612,
+      "max": 2.686999999998079
+    },
+    "answer_characters_mean": 1256.125,
+    "results_sha256": "41832898aa7eb38a6dd324deb0747f604511e911a9f8e0c3b08dc727baa7012a"
+  },
+  "v3": {
+    "n": 40,
+    "source_supported": 38,
+    "strict_pass": 38,
+    "joint_pass": 37,
+    "partial_unknown_ids": [
+      "cp-9-new-08",
+      "scenario-01"
+    ],
+    "full_abstention_ids": [
+      "cp-9-new-08"
+    ],
+    "completed_http_requests": 40,
+    "cost_estimate_usd": 0.042414299999999995,
+    "latency_seconds": {
+      "mean": 1.7800999999997658,
+      "p50": 1.7890000000006694,
+      "p95_nearest_rank": 2.2969999999986612,
+      "max": 2.4689999999973224
+    },
+    "answer_characters_mean": 1113.75,
+    "results_sha256": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19"
+  },
+  "semantic_gains": [
+    "scenario-03"
+  ],
+  "semantic_regressions": [
+    "ac-8-new-03",
+    "cp-9-new-08"
+  ],
+  "latency_or_cost_significance_claim": false,
+  "default_promoted": false,
+  "conclusion": "Grouping repaired training background, but introduced two semantic regressions and one route degradation. Focus4/4 did not generalize to full40; do not choose a best subset or treat 40 repeated questions as unseen evidence."
+}

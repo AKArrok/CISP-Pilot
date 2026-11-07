@@ -1,5 +1,5 @@
 {
-  "status": "in_progress",
+  "status": "paused_quota_window_used_weekly_display100",
   "date": "2026-11-07",
   "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
   "entrypoint": "AGENTS.md",
@@ -9,7 +9,7 @@
   "active_experiment": {
     "packet": "evaluation/nist-public-http-route-json-20261107",
     "output": "docs/engineering-delivery/nist-public-http-route-json-20261107-live",
-    "status": "strict_and_source_review_passed1of1_not_full40",
+    "status": "completed_route1of1_no_running_batch",
     "max_calls": 2,
     "budget_usd": 0.02,
     "controller_pid": 3008,
@@ -363,12 +363,15 @@
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Verify da9ea35 CI and publish outgoing scope guard with exact new CI; then frozen question-polarity/source-fact separation design. Current quality38/40 and calibration3/8 failed; boundary12/private4 remain gated.",
+  "next": "On explicit restore verify final docs commit remote/CI, read next-polarity-contract-design; implement minimal source-fact/question-polarity separation and original8 paired negatives before any new paid frozen batch. Full40 quality gate still failed; boundary12/private4 remain not dispatched.",
   "quota": {
-    "primary_used_percent": 60,
-    "secondary_used_percent": 99,
+    "observed_utc": "2026-11-07T06:17:38.791624+00:00",
+    "primary_used_percent": 66,
+    "secondary_used_percent": 100,
+    "ordinary_usage_allowed": true,
     "primary_resets_at": 1794045176,
-    "policy": "Current explicitly restored window until either window exhausted; do not consume reset credits or auto resume after reset"
+    "secondary_resets_at": 1794379313,
+    "reset_credits_used": false
   },
   "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
@@ -399,15 +402,16 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "Remote c17487b verified, Actions42303761890 completed/success. Previous9670354 Actions42302862004 completed/success. Local stop checkpoint after commit not yet synced.",
-  "latest_commit": "da9ea35ea45c814e4bc9cac13c2d9af1367112a0",
+  "latest_commit": "35dcefd9ed2f029883e0e855207184845153dae4",
   "latest_ci": {
-    "run_id": 42345506582,
+    "run_id": 42345899660,
     "status": "completed",
     "conclusion": "success",
-    "scope": "Exact route fix; later outgoing guard separately validated"
+    "head_sha": "35dcefd9ed2f029883e0e855207184845153dae4",
+    "scope": "Exact scope guard code; later final analysis/docs commit CI must separately verify"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
-  "stop_reason": null,
+  "stop_reason": "Weekly usedPercent displayed100 while five-hour66; ordinaryUsageAllowed still true, no hard rejection claimed. User requested current window until exhausted; checkpoint then stop, no reset credits or automatic next-window resume.",
   "local_checkpoint": "Quota pause/current CI snapshot and delivery-integrity.json are local after245524a; sync on explicit resume without staging unrelated modifications",
   "previous_record": "docs/engineering-delivery/evaluation-window2-20261107/continuation.json",
   "resume_budget_anchor": {
@@ -648,5 +652,28 @@
     "API_calls": 0,
     "private_retest_executed": false,
     "grant_not_expanded": true
-  }
+  },
+  "paired_comparison": {
+    "path": "docs/engineering-delivery/evaluation-window3-20261107/full40-comparison.json",
+    "v2_joint_pass": 39,
+    "v3_joint_pass": 37,
+    "total": 40,
+    "gains": [
+      "scenario-03"
+    ],
+    "regressions": [
+      "ac-8-new-03",
+      "cp-9-new-08"
+    ],
+    "new_API_calls": 0
+  },
+  "judge_confusion": {
+    "path": "docs/engineering-delivery/evaluation-window3-20261107/decision-confusion-analysis.json",
+    "bad_answers_detected": 0,
+    "bad_answers_total": 4,
+    "good_answers_retained": 3,
+    "good_answers_total": 4,
+    "human_gold": false
+  },
+  "source_preparation_note": "Next restricted batch must freeze scripts/outgoing_scope.py plus node/runner source hashes; verify exact original approved question/context fingerprints; private retest not yet executed."
 }
