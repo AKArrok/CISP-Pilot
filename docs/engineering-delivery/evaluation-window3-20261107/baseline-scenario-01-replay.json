@@ -1,0 +1,35 @@
+{
+  "id": "scenario-01",
+  "question_sha256": "9b47e51269ebe8a39446dd8d5bfa8907831cf92509174cf64ad40703669cb234",
+  "question": "新员工准备加入组和角色并创建账号，口头同意是否足够？资料对成员资格条件和创建请求批准分别怎样要求？",
+  "raw_selector": {
+    "unit_ids": [
+      "s1:l4:p1",
+      "s1:l9:p1",
+      "s1:l29:p1"
+    ],
+    "answer_type": "deny"
+  },
+  "selected_units": [
+    {
+      "id": "s1:l4:p1",
+      "text": "[ac-2_smt.c] Require {{ insert: param, ac-02_odp.01 }} for group and role membership;"
+    },
+    {
+      "id": "s1:l9:p1",
+      "text": "[ac-2_smt.e] Require approvals by {{ insert: param, ac-02_odp.03 }} for requests to create accounts;"
+    },
+    {
+      "id": "s1:l29:p1",
+      "text": "[{\"id\": \"ac-02_odp.01\", \"label\": \"prerequisites and criteria\", \"guidelines\": [{\"prose\": \"prerequisites and criteria for group and role membership are defined;\"}]}, {\"id\": \"ac-02_odp.02\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes (as required) for each account are defined;\"}]}, {\"id\": \"ac-02_odp.03\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles required to approve requests to create accounts is/are defined;\"}]}, {\"id\": \"ac-02_odp.04\", \"label\": \"policy, procedures, prerequisites, and criteria\", \"guidelines\": [{\"prose\": \"policy, procedures, prerequisites, and criteria for account creation, enabling, modification, disabling, and removal are defined;\"}]}, {\"id\": \"ac-02_odp.05\", \"label\": \"personnel or roles\", \"guidelines\": [{\"prose\": \"personnel or roles to be notified is/are defined;\"}]}, {\"id\": \"ac-02_odp.06\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when accounts are no longer required is defined;\"}]}, {\"id\": \"ac-02_odp.07\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when users are terminated or transferred is defined; \"}]}, {\"id\": \"ac-02_odp.08\", \"label\": \"time period\", \"guidelines\": [{\"prose\": \"time period within which to notify account managers when system usage or the need to know changes for an individual is defined;\"}]}, {\"id\": \"ac-02_odp.09\", \"label\": \"attributes (as required)\", \"guidelines\": [{\"prose\": \"attributes needed to authorize system access (as required) are defined;\"}]}, {\"id\": \"ac-02_odp.10\", \"label\": \"frequency\", \"guidelines\": [{\"prose\": \"the frequency of account review is defined;\"}]}]"
+    }
+  ],
+  "replay_equals_saved_SSE": true,
+  "default_db_unchanged": true,
+  "hypotheses": {
+    "H2_missing_source_units": "Not supported: selected original contains membership condition, account creation approval, full parameter definitions. Form still not specified in full pinned AC2 Codex source reading.",
+    "H3_display_drop": "Not supported: exact old rendering equals saved SSE, raw contains only one global answer_type and no question-scoped unknown.",
+    "H1_single_scope": "Supported as protocol limitation; new per-part schema tested offline but real model decision unproven."
+  },
+  "new_paid_calls": 0
+}

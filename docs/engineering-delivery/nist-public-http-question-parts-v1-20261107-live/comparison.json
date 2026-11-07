@@ -1,0 +1,23 @@
+{
+  "previous": {
+    "cases": 8,
+    "attempts": 16,
+    "cost_estimate_usd": 0.0071318999999999974,
+    "mean_seconds": 1.8594999999995707,
+    "median_seconds": 1.7970000000022992,
+    "max_seconds": 2.0939999999973224,
+    "mean_answer_codepoints": 1532.5,
+    "mean_answer_chars_not_model_output_tokens": true
+  },
+  "question_parts": {
+    "cases": 8,
+    "attempts": 16,
+    "cost_estimate_usd": 0.0082785,
+    "mean_seconds": 2.2401249999993524,
+    "median_seconds": 2.2259999999987485,
+    "max_seconds": 2.702999999994063,
+    "mean_answer_codepoints": 1887.75,
+    "mean_answer_chars_not_model_output_tokens": true
+  },
+  "scope": "Same8 seen development; sequential ASGI across separate times, output shape differs. AI previous7/8/current8/8 once; no statistical/human/generalization claim."
+}

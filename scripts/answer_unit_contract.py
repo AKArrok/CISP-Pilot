@@ -1,5 +1,6 @@
 """Experimental evidence-first contract; structure never proves semantic support."""
 import hashlib
+import html
 import json
 import re
 
@@ -101,6 +102,67 @@ CARD_LEADS = {
     "explain": "依据资料，可作如下说明。",
     "insufficient": "本次检索到的资料不足以回答这一部分。",
 }
+
+
+QUESTION_DECISIONS = {
+    "affirm": "资料支持这一说法，适用条件见下方原文。",
+    "deny": "资料给出的要求与这一说法不一致，具体依据见下方原文。",
+    "undetermined": "本次检索到的资料不足以对此作出确定判断；不能据此认定允许或禁止。",
+    "explain": "相关要求见下方原文。",
+}
+
+
+def question_parts(question):
+    if not isinstance(question, str) or not question.strip():
+        raise ValueError("Nonempty original question required")
+    parts, offset = [], 0
+    for text in re.split(r"(?<=[，。！？；,!?;\n])", question):
+        if text:
+            parts.append({"id": f"q{len(parts)+1}", "start": offset, "end": offset+len(text), "text": text})
+            offset += len(text)
+    return parts
+
+
+def materialize_question_card(raw, question, catalog, contexts):
+    value = json.loads(raw)
+    parts = question_parts(question)
+    if (not isinstance(value, dict) or set(value) != {"parts"}
+            or not isinstance(value["parts"], list) or len(value["parts"]) != len(parts)):
+        raise ValueError("One source decision per original question part required")
+    indexed, units = {}, []
+    available_parts = {part["id"] for part in parts}
+    for entry in value["parts"]:
+        if (not isinstance(entry, dict) or set(entry) != {"part_id", "decision", "unit_ids"}
+                or not isinstance(entry["part_id"], str) or entry["part_id"] not in available_parts
+                or entry["part_id"] in indexed or not isinstance(entry["decision"], str)
+                or entry["decision"] not in QUESTION_DECISIONS):
+            raise ValueError("Invalid, repeated or invented question decision")
+        keys = _ids(entry["unit_ids"], catalog, entry["decision"] == "undetermined")
+        indexed[entry["part_id"]] = entry
+        units.extend(keys)
+    units = list(dict.fromkeys(units))
+    selected = materialize_card_selection(json.dumps({"unit_ids": units,
+        "answer_type": "explain" if units else "insufficient"}), catalog, contexts)
+    return {**selected, "question_sha256": hashlib.sha256(question.encode()).hexdigest(),
+            "question_decisions": [indexed[part["id"]] for part in parts]}
+
+
+def render_question_card(selected, contexts, translations, *, question):
+    if hashlib.sha256(question.encode()).hexdigest() != selected["question_sha256"]:
+        raise ValueError("Original question binding mismatch")
+    units = {unit["id"]: unit for unit in selected["units"]}
+    pieces = []
+    for part, entry in zip(question_parts(question), selected["question_decisions"], strict=True):
+        # User text is a quoted question, never a source footer or citation.
+        text = html.escape(part["text"], quote=False).replace("[", "&#91;").replace("【", "&#12304;")
+        line = f"问题片段「{text}」：{QUESTION_DECISIONS[entry['decision']]}"
+        refs = [f"[资料{units[key]['source_id']}]第{units[key]['line']}行片段{units[key]['part']}"
+                for key in entry["unit_ids"]]
+        pieces.append(line + (" 依据：" + "；".join(refs) if refs else ""))
+    if not selected["units"]:
+        return "\n\n".join(pieces)
+    evidence = render_card_answer(selected, contexts, translations, question=question).partition("\n\n")[2]
+    return "\n\n".join(pieces) + "\n\n" + evidence
 
 
 def _statement_tag(unit):

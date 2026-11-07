@@ -1,0 +1,27 @@
+{
+  "status": "design_only_not_implemented_not_paid",
+  "actual_failure": "Same scenario-01 actual source lacks approval form. Earlier fallback categorical oral ban, current generic deny still lacks explicit scoped unknown; both7/8 retained.",
+  "hypothesis": "Separate per-question uncertainty from sourced positive obligations, so absence of form information is not rendered as an unsupported prohibition.",
+  "candidate_contract": {
+    "question_span": "exact start/end codepoint offsets into unchanged question; host reconstructs literal span",
+    "status": [
+      "supported",
+      "contradicted",
+      "undetermined"
+    ],
+    "unit_ids": "existing strict original source units, no model quotes or free definitions"
+  },
+  "host_behavior": "Render undetermined as source-limited uncertainty about selected original question span; separately show original prerequisites and approval requirements. Classification is still semantic judgment, not proof.",
+  "offline_checks": [
+    "reject out-of-range/overlapping/invented spans, unknown/duplicate source IDs",
+    "retain parameter definitions/native applicability conditions and strict source metadata",
+    "do not allow unbound prose or invented approval form restrictions"
+  ],
+  "unchanged_acceptance": [
+    "scenario-01 explicit approval form unknown; preserve prerequisites/required approval, no categorical oral ban",
+    "same8 scenarios and all failures retained",
+    "original32, negative8+adjacent4, approvedmixed4 regression; do not relabel to improve score"
+  ],
+  "limits": "New schema may still misclassify semantics; AI development only, no automaticjudge/human-gold claim.",
+  "resume": "Verify current commit CI and quota explicit user restore before new model calls; standing3USD remaining1.6525288 includes oldunknown reserve. Freeze exact new batch cap/config/input before authorization consumption."
+}

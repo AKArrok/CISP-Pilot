@@ -1,0 +1,10 @@
+{
+  "same_cases_sha256": "a0ee6e0b65aea53d352c7288b07790df90fcdc67d8862da026335c5c59153923",
+  "same_acceptance_sha256": "7683c01e0929d7e1c7b5fe1a118bb78b4ab95a51d7aba92a543f71fe50da6511",
+  "same_chunks_sha256": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+  "same_source_units_and_translations": true,
+  "change": "Host question-part IDs plus per-part decisions and host-scoped uncertainty; no model-written prose. Protocol/prompt/renderer bundle, not single-variable prompt comparison.",
+  "old7of8_and_all_failures_retained": true,
+  "default_changed": false,
+  "human_gold": false
+}

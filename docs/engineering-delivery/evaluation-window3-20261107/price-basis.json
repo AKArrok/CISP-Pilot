@@ -1,0 +1,13 @@
+{
+  "checked_client_date": "2026-11-07",
+  "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "model": "deepseek-flash",
+  "current_alias_version": "DeepSeek-V4.1-Flash-1017",
+  "thinking_default": "on; experiments explicitly disabled",
+  "conservative_usd_per_million": {
+    "input_cache_miss": 0.3,
+    "output": 1.2
+  },
+  "discounts_not_used_to_expand_budget": true,
+  "not_provider_invoice": true
+}

@@ -1,0 +1,29 @@
+{
+  "at_utc": "2026-11-07T04:53:47.379721+00:00",
+  "status": "paused_at_quota_window_change_requires_explicit_resume",
+  "previous_window_last_observed_used_percent": 99,
+  "observed100": false,
+  "current_window_used_percent": 0,
+  "current_window_resets_at": 1794045176,
+  "reset_tool_called": false,
+  "latest_remote_sha": "c17487b6843a7116597d9c32e75a4dba686f85e1",
+  "latest_ci": {
+    "id": 42303761890,
+    "head_sha": "c17487b6843a7116597d9c32e75a4dba686f85e1",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42303761890"
+  },
+  "model_tasks_running": false,
+  "pending_paid_allocations": [],
+  "default_db_unchanged": true,
+  "budget": {
+    "dispatch_attempts": 1729,
+    "known_estimate_usd": 1.2818127,
+    "accounted_with_reservations_usd": 1.3474712,
+    "unallocated_authorization_usd": 1.6525288
+  },
+  "next": "next-gap-contract-design.json",
+  "local_checkpoint_after_push": true,
+  "explicit_new_window_resume_required": true
+}

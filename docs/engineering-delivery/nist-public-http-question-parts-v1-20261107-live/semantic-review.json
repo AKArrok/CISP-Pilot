@@ -1,0 +1,62 @@
+{
+  "reviewer": "Codex whole actual answer and complete pinned English comparison; not independent human gold",
+  "source_supported": 8,
+  "total": 8,
+  "strict_audit_passed": true,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "scenario-01",
+      "source_supported": true,
+      "note": "原问题片段口头同意不足以确定，不推导允许或禁止；成员条件/批准主体原参数及动作完整。",
+      "answer_sha256": "a691dc7eafa5adc1330bd5e4c7e0b7987a47fa26e37cc745f8b81092716e5840"
+    },
+    {
+      "id": "scenario-02",
+      "source_supported": true,
+      "note": "公开系统父条件与隐私安排/一般禁止，未扩大一律许可。",
+      "answer_sha256": "738d6e0a127c282ac0f18684b6ed2635f41c021ce11bdd69ed8eb54cdb1400a9"
+    },
+    {
+      "id": "scenario-03",
+      "source_supported": true,
+      "note": "初始和后续/变更事件培训分开，明确未覆盖。",
+      "answer_sha256": "460276932647f8516044bb8d3c72db857029c7aa90a5f0773ce04e21f324933f"
+    },
+    {
+      "id": "scenario-04",
+      "source_supported": true,
+      "note": "用户级/系统级/文档与OS许可证清单，未泛化用户组件。",
+      "answer_sha256": "e96ffa895ece9dff0b6ba5d96d22bad6bc24de65d5beccc362e4337393a8de11"
+    },
+    {
+      "id": "scenario-05",
+      "source_supported": true,
+      "note": "超越扫描、规则开始前；两个局部否定已直接说明整体不一致。",
+      "answer_sha256": "d278d77083a67eb7a40bf6926ae93809b28850a2e436d39dc1b2ae633bf201b5"
+    },
+    {
+      "id": "scenario-06",
+      "source_supported": true,
+      "note": "风险变化级别调整与指南频次范围深度可调整强度保留。",
+      "answer_sha256": "52204a7c8e9a0dd0ed4ae22ecb2977fc01e9b22a8f02aedc1f27137fa2048248"
+    },
+    {
+      "id": "scenario-07",
+      "source_supported": true,
+      "note": "联邦PII及授权用户非授权目的条件完整，非只外部；背景片段affirm措辞偏生硬，整体未表达允许越权。",
+      "answer_sha256": "2823f2147d69032233d8c7bd0663177f212a2e38f0456cb13738d73df5c9e9eb"
+    },
+    {
+      "id": "scenario-08",
+      "source_supported": true,
+      "note": "本地无网络，外部网络是远程，物理位置不决定类别。",
+      "answer_sha256": "0e68337a13764aea829cd5443778cacbf993ee7feede63046e762d8f3e59d657"
+    }
+  ],
+  "limits": [
+    "Some background fragments get affirm although explain would read better; judge whole question/answer, not enum matching.",
+    "Long bilingual source cards and repeated per-part references; usability not production acceptance.",
+    "Protocol/prompt/renderer bundle, not single-variable causal attribution."
+  ]
+}

@@ -163,6 +163,7 @@ def execute(packet, output, manifest):
     if manifest.get("answer_strategy") == "source_cards":
         from scripts.experimental_card_node import card_answer
         answer_node = functools.partial(card_answer, fallback=graph.answer,
+            protocol=manifest.get("answer_card_protocol", "units"),
             sources=json.loads((packet / "source-units.json").read_text(encoding="utf-8"))["sources"],
             translations=json.loads((packet / "translations.json").read_text(encoding="utf-8")),
             selector_prompt=json.loads((packet / "card-selector.json").read_text(encoding="utf-8"))["evidence_select_system"])
@@ -238,6 +239,11 @@ def main():
     strategy = manifest.get("answer_strategy", "default")
     if type(strategy) is not str or strategy not in {"default", "source_cards"}:
         raise ValueError("Unknown frozen answer strategy")
+    protocol = manifest.get("answer_card_protocol", "units")
+    if type(protocol) is not str or protocol not in {"units", "question_parts"}:
+        raise ValueError("Unknown frozen card protocol")
+    if protocol != "units" and strategy != "source_cards":
+        raise ValueError("Question protocol requires source_cards strategy")
     temperature = manifest.get("answer_temperature", .3)
     if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
         raise ValueError("Answer temperature must be a number from 0 to 2")

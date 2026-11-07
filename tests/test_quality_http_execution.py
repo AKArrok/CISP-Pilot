@@ -181,3 +181,14 @@ def test_invalid_answer_strategy_stops_before_creating_output_or_dispatch(tmp_pa
     with pytest.raises(ValueError, match="strategy"):
         runner.main()
     assert not output.exists() and not (packet / "dispatch.lock").exists()
+
+
+@pytest.mark.parametrize("protocol", [True, None, "new-unfrozen-shape", []])
+def test_invalid_card_protocol_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, protocol):
+    packet, output = tmp_path / "packet", tmp_path / "output"
+    packet.mkdir()
+    (packet / "manifest.json").write_text(json.dumps({"answer_strategy": "source_cards", "answer_card_protocol": protocol}), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+    with pytest.raises(ValueError, match="protocol"):
+        runner.main()
+    assert not output.exists() and not (packet / "dispatch.lock").exists()

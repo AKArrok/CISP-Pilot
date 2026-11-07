@@ -6,7 +6,8 @@ import shutil
 import pytest
 
 from agents.sources import source_preview
-from scripts.answer_unit_contract import build_catalog, materialize_card_selection, render_card_answer
+from scripts.answer_unit_contract import (build_catalog, materialize_card_selection, render_card_answer,
+    materialize_question_card, render_question_card)
 from scripts.audit_public_http import audit
 from scripts.compile_nist_source_units import compile_units
 from test_answer_unit_contract import fixture
@@ -20,8 +21,8 @@ def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False), encoding="utf-8")
 
 
-@pytest.fixture
-def card_run(tmp_path):
+@pytest.fixture(params=["units", "question_parts"])
+def card_run(tmp_path, request):
     packet, output = tmp_path / "packet", tmp_path / "output"
     packet.mkdir()
     output.mkdir()
@@ -31,6 +32,10 @@ def card_run(tmp_path):
     translations = translation_map(catalog, contexts)
     raw = '{"unit_ids":["s1:l1:p2"],"answer_type":"affirm"}'
     answer = render_card_answer(materialize_card_selection(raw, catalog, contexts), contexts, translations, question="Q")
+    if request.param == "question_parts":
+        raw = '{"parts":[{"part_id":"q1","decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
+        selected = materialize_question_card(raw, "Q", catalog, contexts)
+        answer = render_question_card(selected, contexts, translations, question="Q")
     for name, data in {"cases.json": [{"id": "c", "question": "Q", "target_locator": "x", "thread_group": "c"}],
                        "chunks.json": contexts, "source-units.json": compile_units(contexts),
                        "translations.json": translations}.items():
@@ -39,7 +44,8 @@ def card_run(tmp_path):
         for name in ("scripts/answer_output_contract.py", "scripts/inline_oscal_parameters.py", "agents/sources.py")}
     write(packet / "runtime-source-hashes.json", dependencies)
     shutil.copyfile(ROOT / "scripts/answer_unit_contract.py", packet / "contract.py")
-    manifest = {"answer_strategy": "source_cards", "executor_sha256": hashlib.sha256(b"synthetic executor").hexdigest(),
+    manifest = {"answer_strategy": "source_cards", "answer_card_protocol": request.param,
+        "executor_sha256": hashlib.sha256(b"synthetic executor").hexdigest(),
         "max_calls": 1, "budget_usd": .08, "max_output_tokens": 1024,
         "frozen_sha256": {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in packet.iterdir()}}
     write(packet / "manifest.json", manifest)

@@ -47,8 +47,13 @@ def expected_answers(packet, rows, receipts, manifest):
                 if not matches or len({hashlib.sha256(chunk["text"].encode()).hexdigest() for chunk in matches}) != 1:
                     raise ValueError("Unknown or ambiguous original source preview")
                 contexts.append(matches[0])
-            selected = contract.materialize_card_selection(raw, contract.build_catalog(contexts, sources), contexts)
-            answer = contract.render_card_answer(selected, contexts, translations, question=row["question"])
+            catalog = contract.build_catalog(contexts, sources)
+            if manifest.get("answer_card_protocol", "units") == "question_parts":
+                selected = contract.materialize_question_card(raw, row["question"], catalog, contexts)
+                answer = contract.render_question_card(selected, contexts, translations, question=row["question"])
+            else:
+                selected = contract.materialize_card_selection(raw, catalog, contexts)
+                answer = contract.render_card_answer(selected, contexts, translations, question=row["question"])
         elif fallback:
             answer = raw
         else:

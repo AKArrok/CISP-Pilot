@@ -47,6 +47,18 @@ def test_card_node_preserves_raw_selector_receipt_and_returns_host_materializati
     assert calls[0]["max_tokens"] == 1024 and calls[0]["max_retries"] == 0
 
 
+def test_question_part_node_sends_host_parts_and_keeps_raw_receipt(monkeypatch):
+    node, state, calls, original = setup(monkeypatch)
+    state["question"] = "预算是多少？资料建议什么？"
+    raw = '{"parts":[{"part_id":"q1","decision":"undetermined","unit_ids":[]},{"part_id":"q2","decision":"explain","unit_ids":["s1:l1:p2"]}]}'
+    original.content = raw
+    result = asyncio.run(node(state, protocol="question_parts"))
+    assert "预算是多少？" in result["answer"] and "确定判断" in result["answer"]
+    assert "Consider languages" in result["answer"] and "风险" not in result["answer"]
+    assert original.content == raw and "part_id" not in result["answer"]
+    assert calls[0]["temperature"] == 0 and calls[0]["disable_streaming"]
+
+
 def test_registered_chinese_page_without_url_runs_selector_and_verbatim_card(monkeypatch):
     import hashlib
     from scripts.compile_nist_source_units import compile_units
@@ -112,7 +124,8 @@ def test_graph_events_do_not_stream_internal_selection_json(monkeypatch):
     assert "辅助译文" in final["answer"] and '"unit_ids"' not in final["answer"]
 
 
-def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_path, monkeypatch):
+@pytest.mark.parametrize("protocol", ["units", "question_parts"])
+def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_path, monkeypatch, protocol):
     import sqlite3
     from sqlalchemy import create_engine
     import config
@@ -122,7 +135,10 @@ def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_p
     from storage import cache
     from storage.models import Base
 
-    node, state, _, _ = setup(monkeypatch)
+    node, state, _, raw_message = setup(monkeypatch)
+    if protocol == "question_parts":
+        raw_message.content = '{"parts":[{"part_id":"q1","decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
+    node = partial(node, protocol=protocol)
     state["contexts"][0]["domain"] = "安全管理"
     monkeypatch.setattr(server, "warmup", lambda: None)
     monkeypatch.setattr(config, "ENABLE_QUERY_VARIANTS", False)
@@ -146,7 +162,7 @@ def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_p
                 events = [json.loads(line[6:]) for line in response.text.splitlines() if line.startswith("data: ")]
                 assert events[-1]["type"] == "done" and not any(event["type"] == "error" for event in events)
                 rendered = "".join(event.get("content", "") for event in events if event["type"] == "token")
-                assert "辅助译文" in rendered and '"unit_ids"' not in rendered
+                assert "辅助译文" in rendered and '"unit_ids"' not in rendered and '"part_id"' not in rendered
                 history = client.get("/api/history", params={"thread_id": thread}).json()
                 assert history[-1]["content"] == rendered
                 trace = client.get("/api/traces/" + response.headers["x-request-id"]).json()

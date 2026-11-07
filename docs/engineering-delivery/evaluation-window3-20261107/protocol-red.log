@@ -1,0 +1,191 @@
+.F.......F......................................FFFF                     [100%]
+================================== FAILURES ===================================
+_______ test_question_part_node_sends_host_parts_and_keeps_raw_receipt ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C9727181D0>
+
+    def test_question_part_node_sends_host_parts_and_keeps_raw_receipt(monkeypatch):
+        node, state, calls, original = setup(monkeypatch)
+        state["question"] = "预算是多少？资料建议什么？"
+        raw = '{"parts":[{"part_id":"q1","decision":"undetermined","unit_ids":[]},{"part_id":"q2","decision":"explain","unit_ids":["s1:l1:p2"]}]}'
+        original.content = raw
+>       result = asyncio.run(node(state, protocol="question_parts"))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: card_answer() got an unexpected keyword argument 'protocol'
+
+tests\test_experimental_card_node.py:55: TypeError
+_ test_transformed_card_requires_pinned_renderer_stream_and_persisted_hash[question_parts] _
+
+card_run = (WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_transformed_card_requires1/packet'), WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_transformed_card_requires1/output'))
+
+    def test_transformed_card_requires_pinned_renderer_stream_and_persisted_hash(card_run):
+>       assert audit(*card_run)["passed"]
+E       assert False
+
+tests\test_card_http_audit.py:70: AssertionError
+__ test_invalid_card_protocol_stops_before_creating_output_or_dispatch[True] __
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_invalid_card_protocol_sto0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C975DDB050>
+protocol = True
+
+    @pytest.mark.parametrize("protocol", [True, None, "new-unfrozen-shape", []])
+    def test_invalid_card_protocol_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, protocol):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": "source_cards", "answer_card_protocol": protocol}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="protocol"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        strategy = manifest.get("answer_strategy", "default")
+        if type(strategy) is not str or strategy not in {"default", "source_cards"}:
+            raise ValueError("Unknown frozen answer strategy")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:244: KeyError
+__ test_invalid_card_protocol_stops_before_creating_output_or_dispatch[None] __
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_invalid_card_protocol_sto1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C975E4FB10>
+protocol = None
+
+    @pytest.mark.parametrize("protocol", [True, None, "new-unfrozen-shape", []])
+    def test_invalid_card_protocol_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, protocol):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": "source_cards", "answer_card_protocol": protocol}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="protocol"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        strategy = manifest.get("answer_strategy", "default")
+        if type(strategy) is not str or strategy not in {"default", "source_cards"}:
+            raise ValueError("Unknown frozen answer strategy")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:244: KeyError
+_ test_invalid_card_protocol_stops_before_creating_output_or_dispatch[new-unfrozen-shape] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_invalid_card_protocol_sto2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C975C2FF50>
+protocol = 'new-unfrozen-shape'
+
+    @pytest.mark.parametrize("protocol", [True, None, "new-unfrozen-shape", []])
+    def test_invalid_card_protocol_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, protocol):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": "source_cards", "answer_card_protocol": protocol}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="protocol"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        strategy = manifest.get("answer_strategy", "default")
+        if type(strategy) is not str or strategy not in {"default", "source_cards"}:
+            raise ValueError("Unknown frozen answer strategy")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:244: KeyError
+_ test_invalid_card_protocol_stops_before_creating_output_or_dispatch[protocol3] _
+
+tmp_path = WindowsPath('C:/Users/ASUS/AppData/Local/Temp/cisp-window3-protocol-red/test_invalid_card_protocol_sto3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C975E3FD90>
+protocol = []
+
+    @pytest.mark.parametrize("protocol", [True, None, "new-unfrozen-shape", []])
+    def test_invalid_card_protocol_stops_before_creating_output_or_dispatch(tmp_path, monkeypatch, protocol):
+        packet, output = tmp_path / "packet", tmp_path / "output"
+        packet.mkdir()
+        (packet / "manifest.json").write_text(json.dumps({"answer_strategy": "source_cards", "answer_card_protocol": protocol}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["runner", "--packet", str(packet), "--output", str(output), "--execute"])
+        with pytest.raises(ValueError, match="protocol"):
+>           runner.main()
+
+tests\test_quality_http_execution.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--packet", type=Path, required=True)
+        parser.add_argument("--output", type=Path, required=True)
+        parser.add_argument("--execute", action="store_true")
+        args = parser.parse_args()
+        manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
+        if type(manifest.get("query_variants", False)) is not bool:
+            raise ValueError("Query variants must be an explicitly frozen boolean")
+        strategy = manifest.get("answer_strategy", "default")
+        if type(strategy) is not str or strategy not in {"default", "source_cards"}:
+            raise ValueError("Unknown frozen answer strategy")
+        temperature = manifest.get("answer_temperature", .3)
+        if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+            raise ValueError("Answer temperature must be a number from 0 to 2")
+>       if hashlib.sha256(Path(__file__).read_bytes()).hexdigest() != manifest["executor_sha256"]:
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'executor_sha256'
+
+scripts\evaluate_public_http.py:244: KeyError
+============================== warnings summary ===============================
+tests/test_experimental_card_node.py::test_real_sse_and_sql_persist_host_card_without_internal_selector_json
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_experimental_card_node.py::test_question_part_node_sends_host_parts_and_keeps_raw_receipt
+FAILED tests/test_card_http_audit.py::test_transformed_card_requires_pinned_renderer_stream_and_persisted_hash[question_parts]
+FAILED tests/test_quality_http_execution.py::test_invalid_card_protocol_stops_before_creating_output_or_dispatch[True]
+FAILED tests/test_quality_http_execution.py::test_invalid_card_protocol_stops_before_creating_output_or_dispatch[None]
+FAILED tests/test_quality_http_execution.py::test_invalid_card_protocol_stops_before_creating_output_or_dispatch[new-unfrozen-shape]
+FAILED tests/test_quality_http_execution.py::test_invalid_card_protocol_stops_before_creating_output_or_dispatch[protocol3]
+6 failed, 46 passed, 1 warning in 14.09s

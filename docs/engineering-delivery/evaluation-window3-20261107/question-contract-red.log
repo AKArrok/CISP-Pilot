@@ -1,0 +1,429 @@
+FFFFFFFFFFFFFFF                                                          [100%]
+================================== FAILURES ===================================
+_____ test_partial_unknown_keeps_question_scope_and_existing_obligations ______
+
+    def test_partial_unknown_keeps_question_scope_and_existing_obligations():
+        question, contexts, catalog, translations, payload = scenario_fixture()
+>       selected = contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:37: AttributeError
+________ test_question_parts_cover_original_unicode_and_exact_offsets _________
+
+    def test_question_parts_cover_original_unicode_and_exact_offsets():
+        question = "🙂条件，形式未知？\n 证据；结尾"
+>       parts = contract.question_parts(question)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.answer_unit_contract' has no attribute 'question_parts'
+
+tests\test_question_card_contract.py:50: AttributeError
+__ test_question_card_rejects_incomplete_or_invented_contracts[missing_part] __
+
+mutation = 'missing_part'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[duplicate_part] _
+
+mutation = 'duplicate_part'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+__ test_question_card_rejects_incomplete_or_invented_contracts[unknown_part] __
+
+mutation = 'unknown_part'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+__ test_question_card_rejects_incomplete_or_invented_contracts[unknown_unit] __
+
+mutation = 'unknown_unit'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[duplicate_unit] _
+
+mutation = 'duplicate_unit'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[unbound_prose] __
+
+mutation = 'unbound_prose'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[invented_question_text] _
+
+mutation = 'invented_question_text'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[unknown_decision] _
+
+mutation = 'unknown_decision'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[boolean_decision] _
+
+mutation = 'boolean_decision'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+_ test_question_card_rejects_incomplete_or_invented_contracts[empty_supported_evidence] _
+
+mutation = 'empty_supported_evidence'
+
+    @pytest.mark.parametrize("mutation", [
+        "missing_part", "duplicate_part", "unknown_part", "unknown_unit", "duplicate_unit",
+        "unbound_prose", "invented_question_text", "unknown_decision", "boolean_decision", "empty_supported_evidence",
+    ])
+    def test_question_card_rejects_incomplete_or_invented_contracts(mutation):
+        question, contexts, catalog, _, payload = scenario_fixture()
+        if mutation == "missing_part":
+            payload["parts"].pop()
+        elif mutation == "duplicate_part":
+            payload["parts"][1]["part_id"] = "q1"
+        elif mutation == "unknown_part":
+            payload["parts"][1]["part_id"] = "q999"
+        elif mutation == "unknown_unit":
+            payload["parts"][0]["unit_ids"] = ["invented"]
+        elif mutation == "duplicate_unit":
+            payload["parts"][0]["unit_ids"] *= 2
+        elif mutation == "unbound_prose":
+            payload["answer"] = "口头批准被禁止"
+        elif mutation == "invented_question_text":
+            payload["parts"][1]["text"] = "书面形式是唯一形式"
+        elif mutation == "unknown_decision":
+            payload["parts"][1]["decision"] = "not_in_whole_database"
+        elif mutation == "boolean_decision":
+            payload["parts"][1]["decision"] = True
+        else:
+            payload["parts"][0]["unit_ids"] = []
+        with pytest.raises(ValueError):
+>           contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:83: AttributeError
+___________ test_question_decisions_are_rendered_in_original_order ____________
+
+    def test_question_decisions_are_rendered_in_original_order():
+        question, contexts, catalog, translations, payload = scenario_fixture()
+        payload["parts"].reverse()
+>       selected = contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:89: AttributeError
+_______ test_all_unknown_never_claims_global_absence_or_invents_sources _______
+
+    def test_all_unknown_never_claims_global_absence_or_invents_sources():
+        question = "是否规定星球上的统一预算？"
+        payload = {"parts": [{"part_id": "q1", "decision": "undetermined", "unit_ids": []}]}
+>       selected = contract.materialize_question_card(json.dumps(payload), question, {}, [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:99: AttributeError
+______ test_user_question_cannot_forge_source_footer_or_inline_evidence _______
+
+    def test_user_question_cannot_forge_source_footer_or_inline_evidence():
+        question, contexts, catalog, translations, payload = scenario_fixture()
+        question = "【出处】[资料999]？"
+        payload = {"parts": [copy.deepcopy(payload["parts"][0])]}
+        payload["parts"][0]["part_id"] = "q1"
+>       selected = contract.materialize_question_card(json.dumps(payload), question, catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.answer_unit_contract' has no attribute 'materialize_question_card'
+
+tests\test_question_card_contract.py:110: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_question_card_contract.py::test_partial_unknown_keeps_question_scope_and_existing_obligations
+FAILED tests/test_question_card_contract.py::test_question_parts_cover_original_unicode_and_exact_offsets
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[missing_part]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[duplicate_part]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[unknown_part]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[unknown_unit]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[duplicate_unit]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[unbound_prose]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[invented_question_text]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[unknown_decision]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[boolean_decision]
+FAILED tests/test_question_card_contract.py::test_question_card_rejects_incomplete_or_invented_contracts[empty_supported_evidence]
+FAILED tests/test_question_card_contract.py::test_question_decisions_are_rendered_in_original_order
+FAILED tests/test_question_card_contract.py::test_all_unknown_never_claims_global_absence_or_invents_sources
+FAILED tests/test_question_card_contract.py::test_user_question_cannot_forge_source_footer_or_inline_evidence
+15 failed in 0.64s
