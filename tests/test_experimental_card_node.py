@@ -124,7 +124,7 @@ def test_graph_events_do_not_stream_internal_selection_json(monkeypatch):
     assert "辅助译文" in final["answer"] and '"unit_ids"' not in final["answer"]
 
 
-@pytest.mark.parametrize("protocol", ["units", "question_parts"])
+@pytest.mark.parametrize("protocol", ["units", "question_parts", "question_groups"])
 def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_path, monkeypatch, protocol):
     import sqlite3
     from sqlalchemy import create_engine
@@ -138,6 +138,8 @@ def test_real_sse_and_sql_persist_host_card_without_internal_selector_json(tmp_p
     node, state, _, raw_message = setup(monkeypatch)
     if protocol == "question_parts":
         raw_message.content = '{"parts":[{"part_id":"q1","decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
+    elif protocol == "question_groups":
+        raw_message.content = '{"parts":[{"part_ids":["q1"],"decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
     node = partial(node, protocol=protocol)
     state["contexts"][0]["domain"] = "安全管理"
     monkeypatch.setattr(server, "warmup", lambda: None)

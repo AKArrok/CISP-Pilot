@@ -4,17 +4,17 @@
   "objective": "持续改善回答质量、检索、评测可信度、认证性能和可靠性，完整记录方向、过程、结果及下一步",
   "entrypoint": "AGENTS.md",
   "roadmap": "EVALUATION_LOOP.md",
-  "previous_turn": "progress: tool fixes, frozen paid experiments and durable docs; paused at user10percent; explicit user resumed",
+  "previous_turn": "Current window explicitly restored; preserve previous exhausted-window stop and all prior failures.",
   "base_commit": "c17487b6843a7116597d9c32e75a4dba686f85e1",
   "active_experiment": {
-    "packet": "evaluation/nist-public-http-question-parts-repeat-v1-20261107",
-    "output": "docs/engineering-delivery/nist-public-http-question-parts-repeat-v1-20261107-live",
-    "status": "http_completed_pending_strict_audit_and_semantics",
-    "max_calls": 16,
-    "budget_usd": 0.12,
-    "controller_pid": 13232,
-    "controller_started_utc": "2026-11-07T05:10:40.225706+00:00",
-    "controller_script_sha256": "ca5f718e1f0ea3814840d25292451347a05cdc22dfdd20e55ae3454c4fcf7250"
+    "packet": "evaluation/nist-public-http-question-groups-regression40-v3-20261107",
+    "output": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live",
+    "status": "running_once_full_application",
+    "max_calls": 80,
+    "budget_usd": 0.4,
+    "controller_pid": 15748,
+    "controller_started_utc": "2026-11-07T05:39:42.713783+00:00",
+    "controller_script_sha256": "84d833e437c6b3de57d9fb65c4b255dfb0da0acf9452e577fe90c2cc08dc5390"
   },
   "budget": {
     "approved_total_usd": 3,
@@ -301,10 +301,34 @@
         "calls": 16,
         "estimated_cost_usd": 0.008336099999999999,
         "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-question-parts-regression32-20261107",
+        "calls": 64,
+        "estimated_cost_usd": 0.033578999999999984,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-question-parts-missing-v2-20261107",
+        "calls": 10,
+        "estimated_cost_usd": 0.0056270999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-question-parts-regression40-v2-20261107",
+        "calls": 80,
+        "estimated_cost_usd": 0.04252349999999998,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-question-groups-focus-v3-20261107",
+        "calls": 8,
+        "estimated_cost_usd": 0.004319099999999999,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1761,
-    "known_estimate_usd": 1.2984273,
+    "dispatch_attempts": 1923,
+    "known_estimate_usd": 1.384476,
     "unknown_current_charge": true,
     "unknown_fee_reservations": [
       {
@@ -316,12 +340,18 @@
         "status": "unknown actual charge, allocation reserved conservatively; not invoice"
       }
     ],
-    "accounted_with_reservations_usd": 1.3640858,
-    "unallocated_authorization_usd": 1.6359142,
-    "pending_allocations": []
+    "accounted_with_reservations_usd": 1.4501345,
+    "unallocated_authorization_usd": 1.5498655,
+    "pending_allocations": [
+      {
+        "batch": "nist-public-http-question-groups-regression40-v3-20261107",
+        "max_calls": 80,
+        "budget_usd": 0.4
+      }
+    ]
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Same frozen8 independent repeat; if passes original32/current boundary12/approvedmixed4 regressions before promotion, keep AI/human distinction.",
+  "next": "Full unchanged40 regression with grouping v3 then boundary12 and approvedmixed4; preserve v2background false support and v1missing-citation failures.",
   "quota": {
     "stop_remaining_percent_lte": 0,
     "override_scope": "user explicitly resumed current new window: use to exhaustion",
@@ -336,7 +366,15 @@
     "automatic_new_window_resume_authorized": false,
     "explicit_current_window_resume": "codex还有额度啊 继续继续; retain prior use-current-window-to-exhaustion direction"
   },
-  "pending_batches": [],
+  "pending_batches": [
+    {
+      "packet": "evaluation/nist-public-http-question-groups-regression40-v3-20261107",
+      "output": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live",
+      "status": "frozen_original40_v3",
+      "max_calls": 80,
+      "budget_usd": 0.4
+    }
+  ],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
   "documentation_ci": {
     "id": 42073073436,
@@ -365,13 +403,13 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "Remote c17487b verified, Actions42303761890 completed/success. Previous9670354 Actions42302862004 completed/success. Local stop checkpoint after commit not yet synced.",
-  "latest_commit": "c17487b6843a7116597d9c32e75a4dba686f85e1",
+  "latest_commit": "27c25f98262d0859c26c867550f6b6bac6c40553",
   "latest_ci": {
-    "id": 42303761890,
-    "head_sha": "c17487b6843a7116597d9c32e75a4dba686f85e1",
+    "id": 42341727466,
+    "head_sha": "27c25f98262d0859c26c867550f6b6bac6c40553",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42303761890"
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42341727466"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -465,8 +503,10 @@
     "source_supported": 4,
     "total": 4,
     "strict_audit": 4,
-    "repeat_pending": true,
-    "human_gold": false
+    "repeat_pending": false,
+    "human_gold": false,
+    "repeat_source_supported": 3,
+    "repeat_summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-bound-repeat-summary.json"
   },
   "mixed_source_ac2": {
     "first_source_supported": 4,
@@ -478,11 +518,10 @@
     "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-ac2-summary.json"
   },
   "current_regression": {
-    "targeted": "132passed1warning before final Chinese node test",
-    "additional_after_last_test": "34passed1warning, includes new no-URL Chinese node path",
+    "targeted": "159passed1existingAnyIOwarning",
+    "evidence": "docs/engineering-delivery/evaluation-window3-20261107/integrated.log",
     "lint": "passed",
-    "offline_replay": "40 saved realselectors render; only banner changed; no new live40 or semantic score",
-    "source_changes_default_promoted": false
+    "scope": "question/source contracts, old/new realSSE+SQL, HTTP audit/receipts/frozenconfig; not full local suite"
   },
   "plan_boundaries": {
     "run": "docs/engineering-delivery/nist-public-http-plan-boundaries-20261107-live",
@@ -513,7 +552,51 @@
     "strict_audit": 8,
     "AI_source_supported": 8,
     "total": 8,
-    "repeat_pending": true,
+    "repeat_pending": false,
+    "default_promoted": false,
+    "repeat_run": "docs/engineering-delivery/nist-public-http-question-parts-repeat-v1-20261107-live",
+    "repeat_strict_audit": 8,
+    "repeat_AI_source_supported": 8,
+    "unique_cases": 8,
+    "observations": 16
+  },
+  "question_parts_regression32_v1": {
+    "run": "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live",
+    "strict_passed": 29,
+    "source_response_accepted": 29,
+    "total": 32,
+    "failed_ids": [
+      "ac-8-new-08",
+      "at-2-new-08",
+      "cp-9-new-07"
+    ],
+    "target_top2": 32,
+    "default_promoted": false
+  },
+  "question_parts_missing_v2": {
+    "run": "docs/engineering-delivery/nist-public-http-question-parts-missing-v2-20261107-live",
+    "source_supported": 5,
+    "total": 5,
+    "strict_audit": 5,
+    "default_promoted": false
+  },
+  "regression40_v2": {
+    "run": "docs/engineering-delivery/nist-public-http-question-parts-regression40-v2-20261107-live",
+    "strict_audit": 40,
+    "source_supported": 39,
+    "total": 40,
+    "original32": 32,
+    "original8": 7,
+    "failed_ids": [
+      "scenario-03"
+    ],
+    "default_promoted": false
+  },
+  "question_groups_v3": {
+    "run": "docs/engineering-delivery/nist-public-http-question-groups-focus-v3-20261107-live",
+    "source_supported": 4,
+    "total": 4,
+    "strict_audit": 4,
     "default_promoted": false
   }
 }

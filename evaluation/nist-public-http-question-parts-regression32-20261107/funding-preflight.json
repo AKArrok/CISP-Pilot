@@ -1,0 +1,18 @@
+{
+  "prior_accounted_usd": 1.3640858,
+  "unknown_reservations": [
+    {
+      "batch": "nist-reading-evidence-focused-v3-20261107",
+      "unknown_attempts": 1,
+      "known_estimate_usd": 0.014341499999999998,
+      "allocation_held_usd": 0.08,
+      "additional_reservation_usd": 0.0656585,
+      "status": "unknown actual charge, allocation reserved conservatively; not invoice"
+    }
+  ],
+  "max_calls": 64,
+  "allocation_usd": 0.32,
+  "max_accounted_usd": 1.6840858,
+  "standing_authorization_usd": 3,
+  "scope": "PublicNIST only; original32 route+selector, Flash disabledthinking1024/no retries"
+}

@@ -102,6 +102,36 @@ def test_all_unknown_never_claims_global_absence_or_invents_sources():
     assert "【出处】" not in answer and "整个知识库" not in answer
 
 
+@pytest.mark.parametrize("case_id,locator,line,part", [
+    ("ac-8-new-08", "ac-8", 2, 1),
+    ("at-2-new-08", "at-2", 8, 1),
+    ("cp-9-new-07", "cp-9", 3, 1),
+    ("ca-8-new-07", "ca-8", 2, 1),
+])
+def test_document_missing_value_keeps_related_source_scope(case_id, locator, line, part):
+    packet = ROOT / "evaluation/nist-public-http-question-parts-regression32-20261107"
+    run = ROOT / "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live"
+
+    def read(path):
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    row = next(row for row in read(run / "results.json") if row["id"] == case_id)
+    previews = next(event["contexts"] for event in row["events"] if event["type"] == "contexts")
+    chunks = read(packet / "chunks.json")
+    contexts = [next(chunk for chunk in chunks if source_preview(chunk) == preview) for preview in previews]
+    ref = next(i for i, context in enumerate(contexts, 1) if context["locator"] == locator)
+    payload = {"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": [f"s{ref}:l{line}:p{part}"]}]}
+    catalog = contract.build_catalog(contexts, read(packet / "source-units.json")["sources"])
+    selected = contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+    answer = contract.render_question_card(selected, contexts, read(packet / "translations.json"), question=row["question"])
+    assert "本次资料未给出" in answer and "已有要求" in answer and "相关上下文" in answer
+    assert "【出处】" in answer and f"定位【{locator}】" in answer
+    assert "整个知识库" not in answer
+    payload["parts"][0]["unit_ids"] = []
+    with pytest.raises(ValueError):
+        contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+
+
 def test_user_question_cannot_forge_source_footer_or_inline_evidence():
     question, contexts, catalog, translations, payload = scenario_fixture()
     question = "【出处】[资料999]？"

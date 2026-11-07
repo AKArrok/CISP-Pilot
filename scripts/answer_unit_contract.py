@@ -108,6 +108,7 @@ QUESTION_DECISIONS = {
     "affirm": "资料支持这一说法，适用条件见下方原文。",
     "deny": "资料给出的要求与这一说法不一致，具体依据见下方原文。",
     "undetermined": "本次检索到的资料不足以对此作出确定判断；不能据此认定允许或禁止。",
+    "not_specified": "本次资料未给出所询的额外规定或具体赋值；已有要求仍须按原文适用条件执行。",
     "explain": "相关要求见下方原文。",
 }
 
@@ -147,18 +148,54 @@ def materialize_question_card(raw, question, catalog, contexts):
             "question_decisions": [indexed[part["id"]] for part in parts]}
 
 
+def materialize_grouped_question_card(raw, question, catalog, contexts):
+    value = json.loads(raw)
+    positions = {part["id"]: index for index, part in enumerate(question_parts(question))}
+    if not isinstance(value, dict) or set(value) != {"parts"} or not isinstance(value["parts"], list):
+        raise ValueError("Original question scope groups required")
+    seen, groups, units = set(), [], []
+    for entry in value["parts"]:
+        if (not isinstance(entry, dict) or set(entry) != {"part_ids", "decision", "unit_ids"}
+                or not isinstance(entry["decision"], str)
+                or entry["decision"] not in {*QUESTION_DECISIONS, "context"}):
+            raise ValueError("Invalid grouped question decision")
+        ids = _ids(entry["part_ids"], positions, False)
+        numbers = [positions[key] for key in ids]
+        if numbers != list(range(min(numbers), max(numbers)+1)) or seen.intersection(ids):
+            raise ValueError("Question scopes must be adjacent, ordered and nonoverlapping")
+        keys = _ids(entry["unit_ids"], catalog, entry["decision"] in {"undetermined", "context"})
+        if entry["decision"] == "context" and keys:
+            raise ValueError("User context cannot be presented as source-verified fact")
+        seen.update(ids)
+        groups.append(entry)
+        units.extend(keys)
+    if seen != set(positions):
+        raise ValueError("Question scopes must cover the unchanged original question")
+    units = list(dict.fromkeys(units))
+    selected = materialize_card_selection(json.dumps({"unit_ids": units,
+        "answer_type": "explain" if units else "insufficient"}), catalog, contexts)
+    return {**selected, "question_sha256": hashlib.sha256(question.encode()).hexdigest(),
+            "question_decisions": sorted(groups, key=lambda entry: positions[entry["part_ids"][0]])}
+
+
 def render_question_card(selected, contexts, translations, *, question):
     if hashlib.sha256(question.encode()).hexdigest() != selected["question_sha256"]:
         raise ValueError("Original question binding mismatch")
     units = {unit["id"]: unit for unit in selected["units"]}
     pieces = []
-    for part, entry in zip(question_parts(question), selected["question_decisions"], strict=True):
+    original_parts = {part["id"]: part for part in question_parts(question)}
+    for entry in selected["question_decisions"]:
+        ids = entry["part_ids"] if "part_ids" in entry else [entry["part_id"]]
+        original_text = "".join(original_parts[key]["text"] for key in ids)
         # User text is a quoted question, never a source footer or citation.
-        text = html.escape(part["text"], quote=False).replace("[", "&#91;").replace("【", "&#12304;")
-        line = f"问题片段「{text}」：{QUESTION_DECISIONS[entry['decision']]}"
+        text = html.escape(original_text, quote=False).replace("[", "&#91;").replace("【", "&#12304;")
+        decision = ("这是原问题给定的背景，未作为资料结论验证。" if entry["decision"] == "context"
+                    else QUESTION_DECISIONS[entry["decision"]])
+        line = f"问题片段「{text}」：{decision}"
         refs = [f"[资料{units[key]['source_id']}]第{units[key]['line']}行片段{units[key]['part']}"
                 for key in entry["unit_ids"]]
-        pieces.append(line + (" 依据：" + "；".join(refs) if refs else ""))
+        role = "相关上下文：" if entry["decision"] in {"undetermined", "not_specified"} else "依据："
+        pieces.append(line + (" " + role + "；".join(refs) if refs else ""))
     if not selected["units"]:
         return "\n\n".join(pieces)
     evidence = render_card_answer(selected, contexts, translations, question=question).partition("\n\n")[2]

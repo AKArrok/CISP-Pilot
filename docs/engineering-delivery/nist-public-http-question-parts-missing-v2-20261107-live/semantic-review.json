@@ -1,0 +1,39 @@
+{
+  "reviewer": "Codex complete source and actual whole answer, not human gold",
+  "source_supported": 5,
+  "total": 5,
+  "strict_audit_passed": true,
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "ac-8-new-08",
+      "source_supported": true,
+      "note": "仅本次未给五分钟额外要求，保留访问前/确认前通知等原要求，无全库不存在断言。",
+      "answer_sha256": "77d804a002a762e439f7d0c8fe851c8eeb0757bdbedcb8862199cdc04183e5cd"
+    },
+    {
+      "id": "at-2-new-08",
+      "source_supported": true,
+      "note": "原文含知识水平测试但未给90分，未编造考试分数参数，培训频次独立显示。",
+      "answer_sha256": "31316db76ebe4c34c8ee9e7fb666a610ac113ab16bd9bd3eb21ba06302fa7503"
+    },
+    {
+      "id": "cp-9-new-07",
+      "source_supported": true,
+      "note": "完整备份控制原文范围，无独家厂商规定，未否定强制备份动作。",
+      "answer_sha256": "cf84012f16b474fbf8df255c5f4869e55f01ab60c4a4b7b6c2ce5872bd38f4cc"
+    },
+    {
+      "id": "ca-8-new-07",
+      "source_supported": true,
+      "note": "未给7天持续时间，原频次/对象参数未赋值且不冒充持续时间参数。",
+      "answer_sha256": "72ecf9a8f21af774cf2bd8ebcc9e3201dd7181cea2ea402d805d4b35ae1c6506"
+    },
+    {
+      "id": "scenario-01",
+      "source_supported": true,
+      "note": "口头形式未知独立显示，条件与指定角色批准保留，未禁止口头。",
+      "answer_sha256": "a691dc7eafa5adc1330bd5e4c7e0b7987a47fa26e37cc745f8b81092716e5840"
+    }
+  ]
+}

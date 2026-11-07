@@ -7,7 +7,7 @@ import pytest
 
 from agents.sources import source_preview
 from scripts.answer_unit_contract import (build_catalog, materialize_card_selection, render_card_answer,
-    materialize_question_card, render_question_card)
+    materialize_question_card, render_question_card, materialize_grouped_question_card)
 from scripts.audit_public_http import audit
 from scripts.compile_nist_source_units import compile_units
 from test_answer_unit_contract import fixture
@@ -21,7 +21,7 @@ def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False), encoding="utf-8")
 
 
-@pytest.fixture(params=["units", "question_parts"])
+@pytest.fixture(params=["units", "question_parts", "question_groups"])
 def card_run(tmp_path, request):
     packet, output = tmp_path / "packet", tmp_path / "output"
     packet.mkdir()
@@ -35,6 +35,10 @@ def card_run(tmp_path, request):
     if request.param == "question_parts":
         raw = '{"parts":[{"part_id":"q1","decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
         selected = materialize_question_card(raw, "Q", catalog, contexts)
+        answer = render_question_card(selected, contexts, translations, question="Q")
+    elif request.param == "question_groups":
+        raw = '{"parts":[{"part_ids":["q1"],"decision":"affirm","unit_ids":["s1:l1:p2"]}]}'
+        selected = materialize_grouped_question_card(raw, "Q", catalog, contexts)
         answer = render_question_card(selected, contexts, translations, question="Q")
     for name, data in {"cases.json": [{"id": "c", "question": "Q", "target_locator": "x", "thread_group": "c"}],
                        "chunks.json": contexts, "source-units.json": compile_units(contexts),

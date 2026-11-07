@@ -11,11 +11,12 @@ from agents.usage import add_receipts, receipt
 from llms import llm_ainvoke_with_retry
 from scripts.answer_unit_contract import build_catalog, materialize_card_selection, render_card_answer
 from scripts.answer_unit_contract import question_parts, materialize_question_card, render_question_card
+from scripts.answer_unit_contract import materialize_grouped_question_card
 from scripts.eval_nist_batch import request_content
 
 
 async def card_answer(state, *, sources, translations, selector_prompt, fallback, protocol="units"):
-    if not isinstance(protocol, str) or protocol not in {"units", "question_parts"}:
+    if not isinstance(protocol, str) or protocol not in {"units", "question_parts", "question_groups"}:
         raise ValueError("Unknown card protocol")
     contexts = state.get("contexts", [])
     if not contexts or graph._below_relevance_floor(contexts):
@@ -35,7 +36,7 @@ async def card_answer(state, *, sources, translations, selector_prompt, fallback
             raise ValueError("Frozen source text changed")
     content = json.loads(request_content("evidence_select", {"question": state["question"], "unit_sources": sources},
         {"contexts": contexts}, "", {"mode": "answer_card_pipeline"}))
-    if protocol == "question_parts":
+    if protocol in {"question_parts", "question_groups"}:
         content["question_parts"] = question_parts(state["question"])
     history = state.get("messages", [])[:-1]
     if history:
@@ -51,7 +52,10 @@ async def card_answer(state, *, sources, translations, selector_prompt, fallback
         extra_body={"thinking": {"type": "disabled"}}, response_format={"type": "json_object"}, disable_streaming=True)
     response = await llm_ainvoke_with_retry(llm, messages, max_retries=1)
     catalog = build_catalog(contexts, sources)
-    if protocol == "question_parts":
+    if protocol == "question_groups":
+        selected = materialize_grouped_question_card(str(response.content), state["question"], catalog, contexts)
+        answer = render_question_card(selected, contexts, translations, question=state["question"])
+    elif protocol == "question_parts":
         selected = materialize_question_card(str(response.content), state["question"], catalog, contexts)
         answer = render_question_card(selected, contexts, translations, question=state["question"])
     else:

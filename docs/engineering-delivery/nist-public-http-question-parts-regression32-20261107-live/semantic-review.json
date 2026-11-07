@@ -1,0 +1,209 @@
+{
+  "reviewer": "Codex actual whole answer/pinned original source review; not human gold",
+  "source_and_answer_acceptance": 29,
+  "total": 32,
+  "strict_audit_passed": false,
+  "strict_checks_passed": 29,
+  "retrieval_target_top2": 32,
+  "hallucination_claim": "Three failures are safe scoped refusals without context citation/complete source-specific response, not asserted fabricated facts.",
+  "failed_ids": [
+    "ac-8-new-08",
+    "at-2-new-08",
+    "cp-9-new-07"
+  ],
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "source_and_answer_accepted": true,
+      "note": "before granting access，包含公开系统进一步访问；开放题肯定导语生硬，正文明确之前。",
+      "answer_sha256": "aaad1e2a34fcb02d0a89bc3b84b89714e1ed7f8d1396064e2961b82d3bdee086"
+    },
+    {
+      "id": "ac-8-new-02",
+      "source_and_answer_accepted": true,
+      "note": "保留直到确认使用条件且采取明确登录/进一步访问操作，两个条件均在。",
+      "answer_sha256": "7fc3fe309ea3d4ab82830a2c5eeccf87398cce59d37a4b54945984eda499339f"
+    },
+    {
+      "id": "ac-8-new-03",
+      "source_and_answer_accepted": true,
+      "note": "无human interface不要求通知，不附加风险或多语言义务。",
+      "answer_sha256": "47e3845083c8fa0cea00002fcf0555d96b4db67a8cb43eb29783f56c55c08059"
+    },
+    {
+      "id": "ac-8-new-04",
+      "source_and_answer_accepted": true,
+      "note": "公开系统父条件与授权用途子条款同时呈现。",
+      "answer_sha256": "7b4e373f8383d9d73e408557cefc572c3a5b020c53c425d34772fc7a76f390c1"
+    },
+    {
+      "id": "ac-8-new-05",
+      "source_and_answer_accepted": true,
+      "note": "多语言根据组织需求和用户人口特征，无二次告知风险串用。",
+      "answer_sha256": "e96addb0179cb02371c7855e09180369369498b1b05e21e95002a282f48c0bdd"
+    },
+    {
+      "id": "ac-8-new-06",
+      "source_and_answer_accepted": true,
+      "note": "二次告知依据风险评估，未变成一律强制。",
+      "answer_sha256": "97fe7e8e0462feaaf03e9ec385c71feeb0e552982e2a9e45f2baa9c3f02dc89b"
+    },
+    {
+      "id": "ac-8-new-07",
+      "source_and_answer_accepted": true,
+      "note": "否定提前隐藏，原文两个持续条件完整。",
+      "answer_sha256": "7afec3ecbe7ab566057a0ccf1c273a665369da686cbe55d326a74ed042ac644d"
+    },
+    {
+      "id": "ac-8-new-08",
+      "source_and_answer_accepted": false,
+      "note": "Target source retrieved, but only generic scoped uncertainty and no selected source unit/footer; does not meet frozen source/response requirement. Preserve as under-answer/citation failure, no unrelated automatic citation.",
+      "answer_sha256": "fe853f3423bb6e03b192cc30967fe651d15831aabd8fc1b132a9112cfd0e8b3c"
+    },
+    {
+      "id": "at-2-new-01",
+      "source_and_answer_accepted": true,
+      "note": "contractors与managers/senior executives在原文，未排除承包商。",
+      "answer_sha256": "43b32b5782ab2629656edaf6b3964b6f8c91b19308c75298046824a8487466de"
+    },
+    {
+      "id": "at-2-new-02",
+      "source_and_answer_accepted": true,
+      "note": "内容取决于组织/系统/远程工作环境；更新事件非穷尽，breaches译为泄露。",
+      "answer_sha256": "c4baa1b8fe9bfc632cd2c8e70994e56083a6cd2d63daf3568c0af7c60e40e36b"
+    },
+    {
+      "id": "at-2-new-03",
+      "source_and_answer_accepted": true,
+      "note": "给出海报、提醒用品、登录消息、邮件与活动，至少两种；未声称只有两种。",
+      "answer_sha256": "9e797ea2a57c14c8984681092d0d1dc6903e2d94c9832a6bd12eb63d3a7f719d"
+    },
+    {
+      "id": "at-2-new-04",
+      "source_and_answer_accepted": true,
+      "note": "后续可一次或多次简短临时课程，保留may和主题范围。",
+      "answer_sha256": "27a7353a74dfa1cf0042e6441abae70cc797159cdd529789a32c1d9f7661c9f6"
+    },
+    {
+      "id": "at-2-new-05",
+      "source_and_answer_accepted": true,
+      "note": "法规变化可触发更新，不声称是全部事件；未给参数具体值。",
+      "answer_sha256": "6ac56e8496b683bac65667efcbc5e64cf2c0a3e31d2cd55b1c0c01189797cc71"
+    },
+    {
+      "id": "at-2-new-06",
+      "source_and_answer_accepted": true,
+      "note": "明确PII处理，未变成敏感信息无边界泛称。",
+      "answer_sha256": "df75e42be2c0da36b30ccb1e3b26503aea5459c5fbe3492dee2cae850fe29949"
+    },
+    {
+      "id": "at-2-new-07",
+      "source_and_answer_accepted": true,
+      "note": "否定只能海报，列举多个机制且原生参数未赋值。",
+      "answer_sha256": "c60c8862903ac2e711f3b63ab9197848a8c3f154967858ca1a9118aa2ac670e7"
+    },
+    {
+      "id": "at-2-new-08",
+      "source_and_answer_accepted": false,
+      "note": "Target source retrieved, but only generic scoped uncertainty and no selected source unit/footer; does not meet frozen source/response requirement. Preserve as under-answer/citation failure, no unrelated automatic citation.",
+      "answer_sha256": "28832e55e1ef1f35dcb3198897a108837aa6f8ee9b194e06cbfe33c6663ea5f6"
+    },
+    {
+      "id": "cp-9-new-01",
+      "source_and_answer_accepted": true,
+      "note": "系统状态、OS、中间件、应用和许可证，软件类别完整。",
+      "answer_sha256": "ca21a6356836c8165f56ab41dee4045834a057e99e6bbd8b26d0d651b917f531"
+    },
+    {
+      "id": "cp-9-new-02",
+      "source_and_answer_accepted": true,
+      "note": "系统级列举与用户级为其他信息的区分，不把组件参数泛化。",
+      "answer_sha256": "f84ede8d3570836ea2f7c266bc2b00f749a31b84214df5a04276855d615f16ba"
+    },
+    {
+      "id": "cp-9-new-03",
+      "source_and_answer_accepted": true,
+      "note": "数字签名与密码学哈希；未混同机密性加密。",
+      "answer_sha256": "e2c147b52e6e7e40ea861c3d7df3d795d75a1f623e76687f2e028d4d02048acc"
+    },
+    {
+      "id": "cp-9-new-04",
+      "source_and_answer_accepted": true,
+      "note": "MP-5和SC-8准确；肯定导语不适合哪两个，正文仍直接回答。",
+      "answer_sha256": "8b78eb356fac1c691586ced7357cb36a152b36b150ad0594aa63a4603ac0c3bc"
+    },
+    {
+      "id": "cp-9-new-05",
+      "source_and_answer_accepted": true,
+      "note": "除应急计划还有组织备份要求，补充特定信息法律义务而非杜撰。",
+      "answer_sha256": "7d818a34371f11a9f6c6339db764fc02c2e56aaa7a4f51cc04f54f6206c1072f"
+    },
+    {
+      "id": "cp-9-new-06",
+      "source_and_answer_accepted": true,
+      "note": "senior agency official for privacy与legal counsel均有。",
+      "answer_sha256": "73130c18a7c2ac6d1a0392d171bd86a32d50456b0387b0762d52faea34c82330"
+    },
+    {
+      "id": "cp-9-new-07",
+      "source_and_answer_accepted": false,
+      "note": "Target source retrieved, but only generic scoped uncertainty and no selected source unit/footer; does not meet frozen source/response requirement. Preserve as under-answer/citation failure, no unrelated automatic citation.",
+      "answer_sha256": "76597de741efda99f1bc7d079bd0ecd3873d731363f5f57567c455477814ba3c"
+    },
+    {
+      "id": "cp-9-new-08",
+      "source_and_answer_accepted": true,
+      "note": "否定跳过系统文档，安全/隐私文档包括在内，频次未赋值。",
+      "answer_sha256": "b30ecfa4d59e1869581fbfacd92e688a8b073b6428bd8dece6db4b6e3c2604ba"
+    },
+    {
+      "id": "ca-8-new-01",
+      "source_and_answer_accepted": true,
+      "note": "超越自动扫描，技能/经验、人为对手动作与深入分析，未称扫描无用。",
+      "answer_sha256": "cb71303e700a1481f8bfc50518f9fbfc88429ffaf1f411b38f634186857ef32a"
+    },
+    {
+      "id": "ca-8-new-02",
+      "source_and_answer_accepted": true,
+      "note": "网络、操作系统和/或应用层技术能力，保留and/or。",
+      "answer_sha256": "c4feab4bd06bf047c4241441303c5e8d6006f96f32335bd8e53af7db408dd0a9"
+    },
+    {
+      "id": "ca-8-new-03",
+      "source_and_answer_accepted": true,
+      "note": "限定time/resources/skills影响约束内抵抗评估，未推断无限覆盖。",
+      "answer_sha256": "fe7fe1f8d78d7486a2325c6fe3f132b93c5e441a8068e61300011c66b9291332"
+    },
+    {
+      "id": "ca-8-new-04",
+      "source_and_answer_accepted": true,
+      "note": "原文明确迁移尤其重要，给识别可利用弱点与模拟对手的上下文；没有捏造IPv6特有原因。仅支持这一来源层面的解释，不能当详细迁移风险机制答案。",
+      "answer_sha256": "1f748a2f640e97e8da7b2c7b1242f32a8729d9f3043e0ec12b4e28e0e7fa0096"
+    },
+    {
+      "id": "ca-8-new-05",
+      "source_and_answer_accepted": true,
+      "note": "漏洞分析可支持测试，保留can而非唯一前提。",
+      "answer_sha256": "b50c07feab97ef36ead2784c18d3a2f290a809049cd4c6573af56c0c7e079eae"
+    },
+    {
+      "id": "ca-8-new-06",
+      "source_and_answer_accepted": true,
+      "note": "风险评估指导所需独立程度，无一律外部独立要求。",
+      "answer_sha256": "27e767bd0c7611c029beaf186bd4e1806daadd21d6099953c08d54667bd64be5"
+    },
+    {
+      "id": "ca-8-new-07",
+      "source_and_answer_accepted": true,
+      "note": "未给七天期限，频次参数与单次持续时间未混为一谈。",
+      "answer_sha256": "9b88aee3d8ea786d1fa9cb85a1dab7c0734bd4bc64ae038657dc38a65797a5e7"
+    },
+    {
+      "id": "ca-8-new-08",
+      "source_and_answer_accepted": true,
+      "note": "内部或外部均可，保留硬件/软件/固件与物理/技术控制。",
+      "answer_sha256": "0e292fbbfbc243af5eaac4f99f3bbc98f5b72f9e1b8db8100ab437db60d4c553"
+    }
+  ]
+}

@@ -240,7 +240,7 @@ def main():
     if type(strategy) is not str or strategy not in {"default", "source_cards"}:
         raise ValueError("Unknown frozen answer strategy")
     protocol = manifest.get("answer_card_protocol", "units")
-    if type(protocol) is not str or protocol not in {"units", "question_parts"}:
+    if type(protocol) is not str or protocol not in {"units", "question_parts", "question_groups"}:
         raise ValueError("Unknown frozen card protocol")
     if protocol != "units" and strategy != "source_cards":
         raise ValueError("Question protocol requires source_cards strategy")

@@ -1,0 +1,211 @@
+{
+  "cases": [
+    {
+      "id": "scenario-01",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 17,
+          "text": "新员工准备加入组和角色并创建账号，"
+        },
+        {
+          "id": "q2",
+          "start": 17,
+          "end": 26,
+          "text": "口头同意是否足够？"
+        },
+        {
+          "id": "q3",
+          "start": 26,
+          "end": 49,
+          "text": "资料对成员资格条件和创建请求批准分别怎样要求？"
+        }
+      ],
+      "selector_input_tokens": 3433,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-02",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 24,
+          "text": "公开访问系统能否因为用户继续使用就无视隐私安排，"
+        },
+        {
+          "id": "q2",
+          "start": 24,
+          "end": 36,
+          "text": "一律加入监控和审计告知？"
+        }
+      ],
+      "selector_input_tokens": 2099,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-03",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 12,
+          "text": "方案只给新员工入职培训，"
+        },
+        {
+          "id": "q2",
+          "start": 12,
+          "end": 34,
+          "text": "不安排后续频次或系统变化、相关事件后的培训，"
+        },
+        {
+          "id": "q3",
+          "start": 34,
+          "end": 47,
+          "text": "这样覆盖了AT-2要求吗？"
+        }
+      ],
+      "selector_input_tokens": 2484,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-04",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 11,
+          "text": "备份方案只有业务文件，"
+        },
+        {
+          "id": "q2",
+          "start": 11,
+          "end": 22,
+          "text": "没有操作系统和许可证，"
+        },
+        {
+          "id": "q3",
+          "start": 22,
+          "end": 37,
+          "text": "也没有安全与隐私相关系统文档，"
+        },
+        {
+          "id": "q4",
+          "start": 37,
+          "end": 56,
+          "text": "能视为覆盖了CP-9列出的备份对象吗？"
+        }
+      ],
+      "selector_input_tokens": 1996,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-05",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 19,
+          "text": "方案把自动漏洞扫描当作渗透测试的替代，"
+        },
+        {
+          "id": "q2",
+          "start": 19,
+          "end": 35,
+          "text": "并计划测试结束后再商定交战规则，"
+        },
+        {
+          "id": "q3",
+          "start": 35,
+          "end": 47,
+          "text": "这与CA-8资料一致吗？"
+        }
+      ],
+      "selector_input_tokens": 2044,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-06",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 14,
+          "text": "可信外部情报显著改变风险后，"
+        },
+        {
+          "id": "q2",
+          "start": 14,
+          "end": 29,
+          "text": "保持原审计分析设置就足够了吗？"
+        },
+        {
+          "id": "q3",
+          "start": 29,
+          "end": 45,
+          "text": "原文对级别、频率或范围怎样描述？"
+        }
+      ],
+      "selector_input_tokens": 2508,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-07",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 6,
+          "text": "在联邦机构，"
+        },
+        {
+          "id": "q2",
+          "start": 6,
+          "end": 28,
+          "text": "授权员工为未获授权的目的访问个人可识别信息，"
+        },
+        {
+          "id": "q3",
+          "start": 28,
+          "end": 38,
+          "text": "是否也可能属于泄露，"
+        },
+        {
+          "id": "q4",
+          "start": 38,
+          "end": 49,
+          "text": "还是只有外部入侵才算？"
+        }
+      ],
+      "selector_input_tokens": 1882,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    },
+    {
+      "id": "scenario-08",
+      "parts": [
+        {
+          "id": "q1",
+          "start": 0,
+          "end": 18,
+          "text": "人在办公室却通过外部网络连接服务器，"
+        },
+        {
+          "id": "q2",
+          "start": 18,
+          "end": 27,
+          "text": "这仍是本地访问吗？"
+        },
+        {
+          "id": "q3",
+          "start": 27,
+          "end": 46,
+          "text": "按IA-2如何区分网络访问与远程访问？"
+        }
+      ],
+      "selector_input_tokens": 1896,
+      "scope": "Old actual retrieval contexts only; new real HTTP still required"
+    }
+  ],
+  "max_selector_input_tokens": 3433
+}

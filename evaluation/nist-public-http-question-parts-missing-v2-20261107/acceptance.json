@@ -1,0 +1,8 @@
+{
+  "scope": "Inherited original32 source/citation criteria and scenario-01 explicit approval-form uncertainty. No question/label/threshold edits.",
+  "original32_acceptance_sha256": "29d187ffe6de9d16a4a7efa0cf921bbd83cb61215e75de9a75a229b1454c3d13",
+  "original8_acceptance_sha256": "7683c01e0929d7e1c7b5fe1a118bb78b4ab95a51d7aba92a543f71fe50da6511",
+  "source_specific_missing_not_global_absence": true,
+  "no_unrelated_auto_citations": true,
+  "human_gold": false
+}

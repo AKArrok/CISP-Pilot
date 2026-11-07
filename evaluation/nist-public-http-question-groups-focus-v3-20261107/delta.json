@@ -1,0 +1,8 @@
+{
+  "change": "Adjacent original-part groups plus explicit user-context role; no standalone background source endorsement required.",
+  "host_guards": "Exact full original part coverage, adjacency/order/nonoverlap, no model prose, no citations for user context",
+  "same_original_case_dicts_source_units_translations": true,
+  "old39of40_and_all_prior_failures_retained": true,
+  "default_promoted": false,
+  "semantic_grouping_still_requires_real_review": true
+}

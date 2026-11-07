@@ -1,0 +1,36 @@
+{
+  "reviewer": "Codex original full source and actual whole answer, not human gold",
+  "source_supported": 4,
+  "total": 4,
+  "strict_audit_passed": true,
+  "default_promoted": false,
+  "limits": [
+    "Affirm on a compound alternative question remains stylistically ambiguous; whole cited definition answers the alternatives. No enum-as-gold grading."
+  ],
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "source_supported": true,
+      "note": "二选一用explain，原文明确授予权限前及确认前保留，无错误全题肯定。",
+      "answer_sha256": "e4304634ff60aedda65614ffed8913ebd86fb0080d4c11c01f2b03a180a28f3e"
+    },
+    {
+      "id": "scenario-01",
+      "source_supported": true,
+      "note": "背景+批准形式问题合组undetermined，另组解释已知条件和批准要求，无口头禁令。",
+      "answer_sha256": "c76fa1b6eab0dac5ffe5d9c15f297d6157d2266d7fb5bc450178094f609d6136"
+    },
+    {
+      "id": "scenario-03",
+      "source_supported": true,
+      "note": "整题合为完整命题deny；未单独肯定只初始培训，后续和变更事件要求完整。",
+      "answer_sha256": "9b5c391fe6ee5aaf7260db2f4d761fca0817e2e8fb23c8ce384c17a779351ad7"
+    },
+    {
+      "id": "scenario-07",
+      "source_supported": true,
+      "note": "正文联邦PII/授权用户非授权目的及非仅外部完整；复合二选一仍用affirm，导语不够自然但未表达仅外部或允许越权，按整份来源支持判定。",
+      "answer_sha256": "c7935a551087441eca039af2f36aa63555ad67e3d47188be76127a1953b68657"
+    }
+  ]
+}

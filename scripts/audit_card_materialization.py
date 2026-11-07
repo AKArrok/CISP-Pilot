@@ -48,7 +48,10 @@ def expected_answers(packet, rows, receipts, manifest):
                     raise ValueError("Unknown or ambiguous original source preview")
                 contexts.append(matches[0])
             catalog = contract.build_catalog(contexts, sources)
-            if manifest.get("answer_card_protocol", "units") == "question_parts":
+            if manifest.get("answer_card_protocol", "units") == "question_groups":
+                selected = contract.materialize_grouped_question_card(raw, row["question"], catalog, contexts)
+                answer = contract.render_question_card(selected, contexts, translations, question=row["question"])
+            elif manifest.get("answer_card_protocol", "units") == "question_parts":
                 selected = contract.materialize_question_card(raw, row["question"], catalog, contexts)
                 answer = contract.render_question_card(selected, contexts, translations, question=row["question"])
             else:

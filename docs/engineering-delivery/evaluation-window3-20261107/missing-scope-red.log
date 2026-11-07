@@ -1,0 +1,216 @@
+..............FFFF.                                                      [100%]
+================================== FAILURES ===================================
+_ test_document_missing_value_keeps_related_source_scope[ac-8-new-08-ac-8-2-1] _
+
+case_id = 'ac-8-new-08', locator = 'ac-8', line = 2, part = 1
+
+    @pytest.mark.parametrize("case_id,locator,line,part", [
+        ("ac-8-new-08", "ac-8", 2, 1),
+        ("at-2-new-08", "at-2", 8, 1),
+        ("cp-9-new-07", "cp-9", 3, 1),
+        ("ca-8-new-07", "ca-8", 2, 1),
+    ])
+    def test_document_missing_value_keeps_related_source_scope(case_id, locator, line, part):
+        packet = ROOT / "evaluation/nist-public-http-question-parts-regression32-20261107"
+        run = ROOT / "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live"
+    
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+    
+        row = next(row for row in read(run / "results.json") if row["id"] == case_id)
+        previews = next(event["contexts"] for event in row["events"] if event["type"] == "contexts")
+        chunks = read(packet / "chunks.json")
+        contexts = [next(chunk for chunk in chunks if source_preview(chunk) == preview) for preview in previews]
+        ref = next(i for i, context in enumerate(contexts, 1) if context["locator"] == locator)
+        payload = {"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": [f"s{ref}:l{line}:p{part}"]}]}
+        catalog = contract.build_catalog(contexts, read(packet / "source-units.json")["sources"])
+>       selected = contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_card_contract.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+raw = '{"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": ["s1:l2:p1"]}]}'
+question = '这份资料是否规定登录告知必须每隔五分钟弹出？'
+catalog = {'s1:l1:p1': {'id': 's1:l1:p1', 'source_id': 1, 'line': 1, 'part': 1, ...}, 's1:l2:p1': {'id': 's1:l2:p1', 'source_id'...rce_id': 1, 'line': 3, 'part': 1, ...}, 's1:l4:p1': {'id': 's1:l4:p1', 'source_id': 1, 'line': 4, 'part': 1, ...}, ...}
+contexts = [{'id': 'nist-supplement-ac-8', 'control_id': 'ac-8', 'source': 'NIST SP 800-53 5.2.0 OSCAL', 'source_url': 'https://r...l-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json', ...}]
+
+    def materialize_question_card(raw, question, catalog, contexts):
+        value = json.loads(raw)
+        parts = question_parts(question)
+        if (not isinstance(value, dict) or set(value) != {"parts"}
+                or not isinstance(value["parts"], list) or len(value["parts"]) != len(parts)):
+            raise ValueError("One source decision per original question part required")
+        indexed, units = {}, []
+        available_parts = {part["id"] for part in parts}
+        for entry in value["parts"]:
+            if (not isinstance(entry, dict) or set(entry) != {"part_id", "decision", "unit_ids"}
+                    or not isinstance(entry["part_id"], str) or entry["part_id"] not in available_parts
+                    or entry["part_id"] in indexed or not isinstance(entry["decision"], str)
+                    or entry["decision"] not in QUESTION_DECISIONS):
+>               raise ValueError("Invalid, repeated or invented question decision")
+E               ValueError: Invalid, repeated or invented question decision
+
+scripts\answer_unit_contract.py:139: ValueError
+_ test_document_missing_value_keeps_related_source_scope[at-2-new-08-at-2-8-1] _
+
+case_id = 'at-2-new-08', locator = 'at-2', line = 8, part = 1
+
+    @pytest.mark.parametrize("case_id,locator,line,part", [
+        ("ac-8-new-08", "ac-8", 2, 1),
+        ("at-2-new-08", "at-2", 8, 1),
+        ("cp-9-new-07", "cp-9", 3, 1),
+        ("ca-8-new-07", "ca-8", 2, 1),
+    ])
+    def test_document_missing_value_keeps_related_source_scope(case_id, locator, line, part):
+        packet = ROOT / "evaluation/nist-public-http-question-parts-regression32-20261107"
+        run = ROOT / "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live"
+    
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+    
+        row = next(row for row in read(run / "results.json") if row["id"] == case_id)
+        previews = next(event["contexts"] for event in row["events"] if event["type"] == "contexts")
+        chunks = read(packet / "chunks.json")
+        contexts = [next(chunk for chunk in chunks if source_preview(chunk) == preview) for preview in previews]
+        ref = next(i for i, context in enumerate(contexts, 1) if context["locator"] == locator)
+        payload = {"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": [f"s{ref}:l{line}:p{part}"]}]}
+        catalog = contract.build_catalog(contexts, read(packet / "source-units.json")["sources"])
+>       selected = contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_card_contract.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+raw = '{"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": ["s2:l8:p1"]}]}'
+question = '这份资料是否要求所有员工培训考试必须取得九十分？'
+catalog = {'s1:l1:p1': {'id': 's1:l1:p1', 'source_id': 1, 'line': 1, 'part': 1, ...}, 's1:l2:p1': {'id': 's1:l2:p1', 'source_id'...rce_id': 1, 'line': 3, 'part': 1, ...}, 's1:l3:p2': {'id': 's1:l3:p2', 'source_id': 1, 'line': 3, 'part': 2, ...}, ...}
+contexts = [{'id': 'new-control-ia-2', 'control_id': 'ia-2', 'source': 'NIST SP 800-53 5.2.0 OSCAL', 'source_url': 'https://raw.g...l-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json', ...}]
+
+    def materialize_question_card(raw, question, catalog, contexts):
+        value = json.loads(raw)
+        parts = question_parts(question)
+        if (not isinstance(value, dict) or set(value) != {"parts"}
+                or not isinstance(value["parts"], list) or len(value["parts"]) != len(parts)):
+            raise ValueError("One source decision per original question part required")
+        indexed, units = {}, []
+        available_parts = {part["id"] for part in parts}
+        for entry in value["parts"]:
+            if (not isinstance(entry, dict) or set(entry) != {"part_id", "decision", "unit_ids"}
+                    or not isinstance(entry["part_id"], str) or entry["part_id"] not in available_parts
+                    or entry["part_id"] in indexed or not isinstance(entry["decision"], str)
+                    or entry["decision"] not in QUESTION_DECISIONS):
+>               raise ValueError("Invalid, repeated or invented question decision")
+E               ValueError: Invalid, repeated or invented question decision
+
+scripts\answer_unit_contract.py:139: ValueError
+_ test_document_missing_value_keeps_related_source_scope[cp-9-new-07-cp-9-3-1] _
+
+case_id = 'cp-9-new-07', locator = 'cp-9', line = 3, part = 1
+
+    @pytest.mark.parametrize("case_id,locator,line,part", [
+        ("ac-8-new-08", "ac-8", 2, 1),
+        ("at-2-new-08", "at-2", 8, 1),
+        ("cp-9-new-07", "cp-9", 3, 1),
+        ("ca-8-new-07", "ca-8", 2, 1),
+    ])
+    def test_document_missing_value_keeps_related_source_scope(case_id, locator, line, part):
+        packet = ROOT / "evaluation/nist-public-http-question-parts-regression32-20261107"
+        run = ROOT / "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live"
+    
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+    
+        row = next(row for row in read(run / "results.json") if row["id"] == case_id)
+        previews = next(event["contexts"] for event in row["events"] if event["type"] == "contexts")
+        chunks = read(packet / "chunks.json")
+        contexts = [next(chunk for chunk in chunks if source_preview(chunk) == preview) for preview in previews]
+        ref = next(i for i, context in enumerate(contexts, 1) if context["locator"] == locator)
+        payload = {"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": [f"s{ref}:l{line}:p{part}"]}]}
+        catalog = contract.build_catalog(contexts, read(packet / "source-units.json")["sources"])
+>       selected = contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_card_contract.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+raw = '{"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": ["s1:l3:p1"]}]}'
+question = '该控制是否指定只能购买某一家公司的备份软件？'
+catalog = {'s1:l1:p1': {'id': 's1:l1:p1', 'source_id': 1, 'line': 1, 'part': 1, ...}, 's1:l2:p1': {'id': 's1:l2:p1', 'source_id'...rce_id': 1, 'line': 3, 'part': 1, ...}, 's1:l4:p1': {'id': 's1:l4:p1', 'source_id': 1, 'line': 4, 'part': 1, ...}, ...}
+contexts = [{'id': 'nist-supplement-cp-9', 'control_id': 'cp-9', 'source': 'NIST SP 800-53 5.2.0 OSCAL', 'source_url': 'https://r...l-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json', ...}]
+
+    def materialize_question_card(raw, question, catalog, contexts):
+        value = json.loads(raw)
+        parts = question_parts(question)
+        if (not isinstance(value, dict) or set(value) != {"parts"}
+                or not isinstance(value["parts"], list) or len(value["parts"]) != len(parts)):
+            raise ValueError("One source decision per original question part required")
+        indexed, units = {}, []
+        available_parts = {part["id"] for part in parts}
+        for entry in value["parts"]:
+            if (not isinstance(entry, dict) or set(entry) != {"part_id", "decision", "unit_ids"}
+                    or not isinstance(entry["part_id"], str) or entry["part_id"] not in available_parts
+                    or entry["part_id"] in indexed or not isinstance(entry["decision"], str)
+                    or entry["decision"] not in QUESTION_DECISIONS):
+>               raise ValueError("Invalid, repeated or invented question decision")
+E               ValueError: Invalid, repeated or invented question decision
+
+scripts\answer_unit_contract.py:139: ValueError
+_ test_document_missing_value_keeps_related_source_scope[ca-8-new-07-ca-8-2-1] _
+
+case_id = 'ca-8-new-07', locator = 'ca-8', line = 2, part = 1
+
+    @pytest.mark.parametrize("case_id,locator,line,part", [
+        ("ac-8-new-08", "ac-8", 2, 1),
+        ("at-2-new-08", "at-2", 8, 1),
+        ("cp-9-new-07", "cp-9", 3, 1),
+        ("ca-8-new-07", "ca-8", 2, 1),
+    ])
+    def test_document_missing_value_keeps_related_source_scope(case_id, locator, line, part):
+        packet = ROOT / "evaluation/nist-public-http-question-parts-regression32-20261107"
+        run = ROOT / "docs/engineering-delivery/nist-public-http-question-parts-regression32-20261107-live"
+    
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+    
+        row = next(row for row in read(run / "results.json") if row["id"] == case_id)
+        previews = next(event["contexts"] for event in row["events"] if event["type"] == "contexts")
+        chunks = read(packet / "chunks.json")
+        contexts = [next(chunk for chunk in chunks if source_preview(chunk) == preview) for preview in previews]
+        ref = next(i for i, context in enumerate(contexts, 1) if context["locator"] == locator)
+        payload = {"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": [f"s{ref}:l{line}:p{part}"]}]}
+        catalog = contract.build_catalog(contexts, read(packet / "source-units.json")["sources"])
+>       selected = contract.materialize_question_card(json.dumps(payload), row["question"], catalog, contexts)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_question_card_contract.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+raw = '{"parts": [{"part_id": "q1", "decision": "not_specified", "unit_ids": ["s1:l2:p1"]}]}'
+question = '这份资料是否规定每次渗透测试必须持续七天？'
+catalog = {'s1:l1:p1': {'id': 's1:l1:p1', 'source_id': 1, 'line': 1, 'part': 1, ...}, 's1:l2:p1': {'id': 's1:l2:p1', 'source_id'...rce_id': 1, 'line': 3, 'part': 1, ...}, 's1:l3:p2': {'id': 's1:l3:p2', 'source_id': 1, 'line': 3, 'part': 2, ...}, ...}
+contexts = [{'id': 'nist-supplement-ca-8', 'control_id': 'ca-8', 'source': 'NIST SP 800-53 5.2.0 OSCAL', 'source_url': 'https://r...l-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json', ...}]
+
+    def materialize_question_card(raw, question, catalog, contexts):
+        value = json.loads(raw)
+        parts = question_parts(question)
+        if (not isinstance(value, dict) or set(value) != {"parts"}
+                or not isinstance(value["parts"], list) or len(value["parts"]) != len(parts)):
+            raise ValueError("One source decision per original question part required")
+        indexed, units = {}, []
+        available_parts = {part["id"] for part in parts}
+        for entry in value["parts"]:
+            if (not isinstance(entry, dict) or set(entry) != {"part_id", "decision", "unit_ids"}
+                    or not isinstance(entry["part_id"], str) or entry["part_id"] not in available_parts
+                    or entry["part_id"] in indexed or not isinstance(entry["decision"], str)
+                    or entry["decision"] not in QUESTION_DECISIONS):
+>               raise ValueError("Invalid, repeated or invented question decision")
+E               ValueError: Invalid, repeated or invented question decision
+
+scripts\answer_unit_contract.py:139: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_question_card_contract.py::test_document_missing_value_keeps_related_source_scope[ac-8-new-08-ac-8-2-1]
+FAILED tests/test_question_card_contract.py::test_document_missing_value_keeps_related_source_scope[at-2-new-08-at-2-8-1]
+FAILED tests/test_question_card_contract.py::test_document_missing_value_keeps_related_source_scope[cp-9-new-07-cp-9-3-1]
+FAILED tests/test_question_card_contract.py::test_document_missing_value_keeps_related_source_scope[ca-8-new-07-ca-8-2-1]
+4 failed, 15 passed in 0.49s

@@ -1,0 +1,7 @@
+{
+  "original32_cases_sha256": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+  "original_corpus_sha256": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+  "protocol_selector_renderer_source_units_translations_unchanged_since_8plus8": true,
+  "no_model_labels_or_answers_indexed": true,
+  "no_default_change_or_human_gold": true
+}

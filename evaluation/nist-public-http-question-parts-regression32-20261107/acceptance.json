@@ -1,0 +1,8 @@
+{
+  "scope": "Original32 source/condition/parameter/citation/refusal criteria unchanged; same cases byte-for-byte",
+  "inherited_manifest_acceptance": "Frozenquestions and primarysource immutable, allrequests done with durabletrace, validcitation, source/support correctness and criteria preserved. Targetmiss remainsfailure even if scopedrefusal is safe. AI development only, no independenthuman gold.",
+  "original_cases_sha256": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+  "baseline_source_review": "docs/engineering-delivery/nist-public-http-default-baseline-20261106-live/source-reviews.json",
+  "semantic_review_required": true,
+  "human_gold": false
+}
