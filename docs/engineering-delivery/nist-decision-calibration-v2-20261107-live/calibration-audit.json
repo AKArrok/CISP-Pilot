@@ -1,0 +1,113 @@
+{
+  "passed": false,
+  "label_matches": 3,
+  "verbatim_evidence": 7,
+  "joint_pass": 3,
+  "total": 8,
+  "calls": 8,
+  "cost_estimate_usd": 0.0071852999999999995,
+  "scope": "Seen matched development answers, Codex labels; no human gold, no production auto-acceptance",
+  "checks": [
+    {
+      "id": "saved-01",
+      "original_case": "ac-8-new-03",
+      "expected": false,
+      "observed": true,
+      "label_match": false,
+      "verbatim_evidence": true,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": false,
+      "reason": "回答准确：资料明确说明无人机界面时不需要通知，引用原文一致。"
+    },
+    {
+      "id": "saved-02",
+      "original_case": "ac-8-new-03",
+      "expected": true,
+      "observed": false,
+      "label_match": false,
+      "verbatim_evidence": true,
+      "extra_fields": [],
+      "passed": false,
+      "reason": "回答称资料与问题说法不一致，但原文明确：不存在人类接口时不需要通知，结论相反。"
+    },
+    {
+      "id": "saved-03",
+      "original_case": "cp-9-new-08",
+      "expected": false,
+      "observed": true,
+      "label_match": false,
+      "verbatim_evidence": true,
+      "extra_fields": [],
+      "passed": false,
+      "reason": "资料未规定可跳过含隐私文档的系统文档备份，回答正确限定为本次资料无法判断，未推断允许或禁止。"
+    },
+    {
+      "id": "saved-04",
+      "original_case": "cp-9-new-08",
+      "expected": true,
+      "observed": true,
+      "label_match": true,
+      "verbatim_evidence": true,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": true,
+      "reason": "原文明确要求备份含安全与隐私文档的系统文档，未允许跳过；参数待定不表示可选，回答结论准确。"
+    },
+    {
+      "id": "saved-05",
+      "original_case": "scenario-03",
+      "expected": false,
+      "observed": true,
+      "label_match": false,
+      "verbatim_evidence": true,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": false,
+      "reason": "回答正确指出仅入职培训不满足AT-2，需后续频次及系统变更/事件后培训；参数待定不等于可省略。"
+    },
+    {
+      "id": "saved-06",
+      "original_case": "scenario-03",
+      "expected": true,
+      "observed": true,
+      "label_match": true,
+      "verbatim_evidence": true,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": true,
+      "reason": "回答正确指出方案不满足AT-2：原文明确要求初始培训后按组织定义频次及系统变更/事件后培训，参数未赋值不等于可省略。"
+    },
+    {
+      "id": "saved-07",
+      "original_case": "scenario-01",
+      "expected": false,
+      "observed": true,
+      "label_match": false,
+      "verbatim_evidence": false,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": false,
+      "reason": "结论与原文一致：成员资格须满足待定义前置条件，建号须经待定义人员/角色批准；未规定口头形式，回答准确且覆盖明确要求。"
+    },
+    {
+      "id": "saved-08",
+      "original_case": "scenario-01",
+      "expected": true,
+      "observed": true,
+      "label_match": true,
+      "verbatim_evidence": true,
+      "extra_fields": [
+        "type"
+      ],
+      "passed": true,
+      "reason": "回答正确指出资料未规定口头同意是否足够，并准确引用成员资格前提准则及创建账号请求须经批准的要求。"
+    }
+  ],
+  "next": "Do not enable this verifier or continue prompt-only tuning: same polarity reversal and source-obligation incompleteness escaped review. Separate source claims from user propositions in next frozen design; keep all original criteria."
+}

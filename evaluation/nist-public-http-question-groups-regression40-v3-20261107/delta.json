@@ -1,0 +1,8 @@
+{
+  "source_protocol_renderer_units_translations_identical_to_focus5": true,
+  "original32_cases_sha256": "e21421c7da731027357a70126251c94c4aa267b140b7125c9f99e2cc492a9314",
+  "original8_cases_sha256": "a0ee6e0b65aea53d352c7288b07790df90fcdc67d8862da026335c5c59153923",
+  "all_case_dicts_preserved": true,
+  "all_old_failures_retained": true,
+  "default_promoted": false
+}

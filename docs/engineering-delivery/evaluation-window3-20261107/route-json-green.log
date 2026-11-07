@@ -1,0 +1,185 @@
+FF...............................................................        [100%]
+================================== FAILURES ===================================
+______________ test_deepseek_route_uses_one_json_attempt[False] _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C828080710>
+malformed_json = False
+
+    @pytest.mark.parametrize("malformed_json", [False, True])
+    def test_deepseek_route_uses_one_json_attempt(monkeypatch, malformed_json):
+        payloads = []
+    
+        def handle(request):
+            payload = json.loads(request.content)
+            payloads.append(payload)
+            if "tools" in payload:
+                message = {"role": "assistant", "content": None, "tool_calls": [{
+                    "id": "recorded-format-failure", "type": "function", "function": {
+                        "name": "RouteOut", "arguments": '{"intent": "knowledge", "domain": 软件安全开发}'}}]}
+            else:
+                message = {"role": "assistant", "content": (
+                    '{"intent": "knowledge", "domain": 软件安全开发}' if malformed_json
+                    else json.dumps({"intent": "knowledge", "domain": "软件安全开发"}, ensure_ascii=False))}
+            return httpx.Response(200, json={"id": "synthetic", "object": "chat.completion", "created": 0,
+                "model": "deepseek-flash", "choices": [{"index": 0, "finish_reason": "stop", "message": message}],
+                "usage": {"prompt_tokens": 10, "completion_tokens": 8, "total_tokens": 18}})
+    
+        trace = RequestTrace("route-json-fixture")
+        trace_token = current_trace.set(trace)
+        budget_token = current_budget.set(RequestBudget(max_attempts_per_call=1, max_output_tokens=256))
+        try:
+            with httpx.Client(transport=httpx.MockTransport(handle)) as client:
+                model = ChatOpenAI(model="deepseek-flash", api_key="synthetic", base_url="https://fixture.invalid/v1",
+                                   http_client=client, max_retries=0, extra_body={"thinking": {"type": "disabled"}})
+                monkeypatch.setattr(graph, "get_simple_llm", lambda: model)
+                result = asyncio.run(graph.route({"question": "多语言使用告知的依据是什么？"}))
+            assert len(payloads) == 1
+            assert payloads[0].get("response_format") == {"type": "json_object"}
+            assert "tools" not in payloads[0]
+            assert payloads[0]["thinking"] == {"type": "disabled"}
+>           assert payloads[0]["max_tokens"] == 256
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'max_tokens'
+
+tests\test_route_json_contract.py:46: KeyError
+------------------------------ Captured log call ------------------------------
+WARNING  langchain_openai.chat_models._client_utils:_client_utils.py:328 langchain-openai injected a custom httpx transport to apply `http_socket_options`, which disables httpx's proxy auto-detection (HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy set in environment). Set `LANGCHAIN_OPENAI_TCP_KEEPALIVE=0` or pass `http_socket_options=()` to restore default proxy behavior, or supply `openai_proxy` / your own `http_client` / `http_async_client` to take full control.
+_______________ test_deepseek_route_uses_one_json_attempt[True] _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C828ADC790>
+malformed_json = True
+
+    @pytest.mark.parametrize("malformed_json", [False, True])
+    def test_deepseek_route_uses_one_json_attempt(monkeypatch, malformed_json):
+        payloads = []
+    
+        def handle(request):
+            payload = json.loads(request.content)
+            payloads.append(payload)
+            if "tools" in payload:
+                message = {"role": "assistant", "content": None, "tool_calls": [{
+                    "id": "recorded-format-failure", "type": "function", "function": {
+                        "name": "RouteOut", "arguments": '{"intent": "knowledge", "domain": 软件安全开发}'}}]}
+            else:
+                message = {"role": "assistant", "content": (
+                    '{"intent": "knowledge", "domain": 软件安全开发}' if malformed_json
+                    else json.dumps({"intent": "knowledge", "domain": "软件安全开发"}, ensure_ascii=False))}
+            return httpx.Response(200, json={"id": "synthetic", "object": "chat.completion", "created": 0,
+                "model": "deepseek-flash", "choices": [{"index": 0, "finish_reason": "stop", "message": message}],
+                "usage": {"prompt_tokens": 10, "completion_tokens": 8, "total_tokens": 18}})
+    
+        trace = RequestTrace("route-json-fixture")
+        trace_token = current_trace.set(trace)
+        budget_token = current_budget.set(RequestBudget(max_attempts_per_call=1, max_output_tokens=256))
+        try:
+            with httpx.Client(transport=httpx.MockTransport(handle)) as client:
+                model = ChatOpenAI(model="deepseek-flash", api_key="synthetic", base_url="https://fixture.invalid/v1",
+                                   http_client=client, max_retries=0, extra_body={"thinking": {"type": "disabled"}})
+                monkeypatch.setattr(graph, "get_simple_llm", lambda: model)
+                result = asyncio.run(graph.route({"question": "多语言使用告知的依据是什么？"}))
+            assert len(payloads) == 1
+            assert payloads[0].get("response_format") == {"type": "json_object"}
+            assert "tools" not in payloads[0]
+            assert payloads[0]["thinking"] == {"type": "disabled"}
+>           assert payloads[0]["max_tokens"] == 256
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'max_tokens'
+
+tests\test_route_json_contract.py:46: KeyError
+------------------------------ Captured log call ------------------------------
+ERROR    agents.graph:graph.py:72 路由失败，默认走知识问答
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\output_parsers\json.py", line 88, in parse_result
+    return parse_json_markdown(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\utils\json.py", line 163, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\utils\json.py", line 191, in _parse_json
+    return parser(json_str)
+           ^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\utils\json.py", line 136, in parse_partial_json
+    return json.loads(s, strict=strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 35 (char 34)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\agents\graph.py", line 64, in route
+    out = await asyncio.to_thread(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\llms.py", line 299, in invoke_structured
+    return _invoke_structured(llm, output_class, messages, max_retries, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\llms.py", line 310, in _invoke_structured
+    return llm_invoke_with_retry(structured_llm, messages, max_retries=max_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\llms.py", line 221, in llm_invoke_with_retry
+    return _call()
+           ^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\tenacity\__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\llms.py", line 220, in _call
+    return _observed_invoke(llm, messages)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\llms.py", line 255, in _observed_invoke
+    result = llm.invoke(messages, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\runnables\base.py", line 3456, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\output_parsers\base.py", line 211, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\runnables\base.py", line 2301, in _call_with_config
+    context.run(
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\output_parsers\base.py", line 212, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\output_parsers\pydantic.py", line 77, in parse_result
+    json_object = super().parse_result(result, partial=partial)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\output_parsers\json.py", line 91, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: {"intent": "knowledge", "domain": 软件安全开发}
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE
+=========================== short test summary info ===========================
+FAILED tests/test_route_json_contract.py::test_deepseek_route_uses_one_json_attempt[False]
+FAILED tests/test_route_json_contract.py::test_deepseek_route_uses_one_json_attempt[True]
+2 failed, 63 passed in 6.12s

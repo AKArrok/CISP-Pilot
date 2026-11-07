@@ -59,9 +59,12 @@ async def route(state: AgentState) -> dict:
     question = state["question"]
     simple = get_simple_llm()
     try:
+        # JSON mode constrains route fields; native tool arguments can contain invalid JSON.
+        options = {"method": "json_mode"} if str(getattr(simple, "model_name", "")).startswith("deepseek-") else {}
         out = await asyncio.to_thread(
             invoke_structured, simple, RouteOut,
             [SystemMessage(content=prompts.ROUTE_SYSTEM), HumanMessage(content=question)],
+            **options,
         )
         intent = out.intent if out.intent in ("knowledge", "quiz", "chitchat") else "knowledge"
     except Exception:

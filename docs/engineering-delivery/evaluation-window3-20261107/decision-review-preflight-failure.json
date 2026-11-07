@@ -1,0 +1,9 @@
+{
+  "stage": "input_token_limit before output.mkdir, authorization, lock, client or dispatch",
+  "calls": 0,
+  "cost_usd": 0,
+  "cause": "manifest 6000 exceeds existing executor max5500; actual input max3480",
+  "console_sha256": "561550dd6d897f5505fd7e701e442c8b618833d8c7e6e9d5e47fd57be01d5974",
+  "original_packet_retained": true,
+  "next": "new v2 packet5500; original cases/answers/labels identical"
+}

@@ -7,14 +7,14 @@
   "previous_turn": "Current window explicitly restored; preserve previous exhausted-window stop and all prior failures.",
   "base_commit": "c17487b6843a7116597d9c32e75a4dba686f85e1",
   "active_experiment": {
-    "packet": "evaluation/nist-public-http-question-groups-regression40-v3-20261107",
-    "output": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live",
-    "status": "running_once_full_application",
-    "max_calls": 80,
-    "budget_usd": 0.4,
-    "controller_pid": 15748,
-    "controller_started_utc": "2026-11-07T05:39:42.713783+00:00",
-    "controller_script_sha256": "84d833e437c6b3de57d9fb65c4b255dfb0da0acf9452e577fe90c2cc08dc5390"
+    "packet": "evaluation/nist-public-http-route-json-20261107",
+    "output": "docs/engineering-delivery/nist-public-http-route-json-20261107-live",
+    "status": "strict_and_source_review_passed1of1_not_full40",
+    "max_calls": 2,
+    "budget_usd": 0.02,
+    "controller_pid": 3008,
+    "controller_started_utc": "2026-11-07T06:02:21.814518+00:00",
+    "controller_script_sha256": "f4b5865112929c33c8fde244d533222b8e5f01fc7cd30e7ab1544fd350a6ecda"
   },
   "budget": {
     "approved_total_usd": 3,
@@ -325,10 +325,28 @@
         "calls": 8,
         "estimated_cost_usd": 0.004319099999999999,
         "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-question-groups-regression40-v3-20261107",
+        "calls": 80,
+        "estimated_cost_usd": 0.042414299999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-decision-calibration-v2-20261107",
+        "calls": 8,
+        "estimated_cost_usd": 0.0071852999999999995,
+        "unknown_charge": false
+      },
+      {
+        "id": "nist-public-http-route-json-20261107",
+        "calls": 2,
+        "estimated_cost_usd": 0.0012306,
+        "unknown_charge": false
       }
     ],
-    "dispatch_attempts": 1923,
-    "known_estimate_usd": 1.384476,
+    "dispatch_attempts": 2013,
+    "known_estimate_usd": 1.4353062,
     "unknown_current_charge": true,
     "unknown_fee_reservations": [
       {
@@ -340,18 +358,12 @@
         "status": "unknown actual charge, allocation reserved conservatively; not invoice"
       }
     ],
-    "accounted_with_reservations_usd": 1.4501345,
-    "unallocated_authorization_usd": 1.5498655,
-    "pending_allocations": [
-      {
-        "batch": "nist-public-http-question-groups-regression40-v3-20261107",
-        "max_calls": 80,
-        "budget_usd": 0.4
-      }
-    ]
+    "accounted_with_reservations_usd": 1.5009647,
+    "unallocated_authorization_usd": 1.4990353,
+    "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Full unchanged40 regression with grouping v3 then boundary12 and approvedmixed4; preserve v2background false support and v1missing-citation failures.",
+  "next": "Publish route fix+all new failed and successful evidence, verify exact commit CI; then source-claim/question-polarity separation contract. Full40 quality failed, boundary12/private4 not yet dispatchable.",
   "quota": {
     "stop_remaining_percent_lte": 0,
     "override_scope": "user explicitly resumed current new window: use to exhaustion",
@@ -366,15 +378,7 @@
     "automatic_new_window_resume_authorized": false,
     "explicit_current_window_resume": "codex还有额度啊 继续继续; retain prior use-current-window-to-exhaustion direction"
   },
-  "pending_batches": [
-    {
-      "packet": "evaluation/nist-public-http-question-groups-regression40-v3-20261107",
-      "output": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live",
-      "status": "frozen_original40_v3",
-      "max_calls": 80,
-      "budget_usd": 0.4
-    }
-  ],
+  "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
   "documentation_ci": {
     "id": 42073073436,
@@ -403,13 +407,11 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "Remote c17487b verified, Actions42303761890 completed/success. Previous9670354 Actions42302862004 completed/success. Local stop checkpoint after commit not yet synced.",
-  "latest_commit": "27c25f98262d0859c26c867550f6b6bac6c40553",
+  "latest_commit": "9e2ded32e18cc881228532f93a96c2ad6d713514",
   "latest_ci": {
-    "id": 42341727466,
-    "head_sha": "27c25f98262d0859c26c867550f6b6bac6c40553",
-    "status": "completed",
+    "run_id": 42343804142,
     "conclusion": "success",
-    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42341727466"
+    "scope": "Exact 9e2ded3; later route change not covered"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -518,10 +520,9 @@
     "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-ac2-summary.json"
   },
   "current_regression": {
-    "targeted": "159passed1existingAnyIOwarning",
-    "evidence": "docs/engineering-delivery/evaluation-window3-20261107/integrated.log",
-    "lint": "passed",
-    "scope": "question/source contracts, old/new realSSE+SQL, HTTP audit/receipts/frozenconfig; not full local suite"
+    "targeted": "183 passed, 1 existing AnyIO warning",
+    "evidence": "docs/engineering-delivery/evaluation-window3-20261107/route-integrated.log",
+    "scope": "route/native-method/budget/three protocols/real SSE SQL/source audit; not full suite"
   },
   "plan_boundaries": {
     "run": "docs/engineering-delivery/nist-public-http-plan-boundaries-20261107-live",
@@ -598,5 +599,53 @@
     "total": 4,
     "strict_audit": 4,
     "default_promoted": false
+  },
+  "question_groups_regression40_v3": {
+    "reviewer": "Codex complete actual answer/pinned-source review, not independent human gold",
+    "source_supported": 38,
+    "total": 40,
+    "strict_audit_passed": false,
+    "strict_audit_count": 38,
+    "joint_pass_count": 37,
+    "failed_ids": [
+      "ac-8-new-03",
+      "cp-9-new-08"
+    ],
+    "strict_failed_ids": [
+      "ac-8-new-05",
+      "cp-9-new-08"
+    ],
+    "cohorts": {
+      "original32": {
+        "supported": 30,
+        "total": 32
+      },
+      "original8": {
+        "supported": 8,
+        "total": 8
+      }
+    },
+    "default_promoted": false,
+    "run": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live"
+  },
+  "decision_calibration": {
+    "passed": false,
+    "label_matches": 3,
+    "verbatim_evidence": 7,
+    "joint_pass": 3,
+    "total": 8,
+    "calls": 8,
+    "cost_estimate_usd": 0.0071852999999999995,
+    "scope": "Seen matched development answers, Codex labels; no human gold, no production auto-acceptance",
+    "next": "Do not enable this verifier or continue prompt-only tuning: same polarity reversal and source-obligation incompleteness escaped review. Separate source claims from user propositions in next frozen design; keep all original criteria.",
+    "run": "docs/engineering-delivery/nist-decision-calibration-v2-20261107-live"
+  },
+  "route_json_fix": {
+    "strict_passed": 1,
+    "source_supported": 1,
+    "total": 1,
+    "run": "docs/engineering-delivery/nist-public-http-route-json-20261107-live",
+    "default_route_changed": true,
+    "default_answer_strategy_promoted": false
   }
 }

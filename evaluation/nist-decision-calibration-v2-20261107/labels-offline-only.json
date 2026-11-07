@@ -1,0 +1,74 @@
+[
+  {
+    "id": "saved-01",
+    "acceptable": false,
+    "original_case": "ac-8-new-03",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live/results.json",
+    "results_sha256": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19",
+    "answer_sha256": "8ca401dd0e5c31cce090de672579dddbfc4ccba3363ad74442bfb072e355d0b3",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-02",
+    "acceptable": true,
+    "original_case": "ac-8-new-03",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-parts-regression40-v2-20261107-live/results.json",
+    "results_sha256": "41832898aa7eb38a6dd324deb0747f604511e911a9f8e0c3b08dc727baa7012a",
+    "answer_sha256": "47e3845083c8fa0cea00002fcf0555d96b4db67a8cb43eb29783f56c55c08059",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-03",
+    "acceptable": false,
+    "original_case": "cp-9-new-08",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live/results.json",
+    "results_sha256": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19",
+    "answer_sha256": "c374ef384a9d03410a617ad944df7a8d33b040bfb0f939d8416b1ac6cc0b74b0",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-04",
+    "acceptable": true,
+    "original_case": "cp-9-new-08",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-parts-regression40-v2-20261107-live/results.json",
+    "results_sha256": "41832898aa7eb38a6dd324deb0747f604511e911a9f8e0c3b08dc727baa7012a",
+    "answer_sha256": "b30ecfa4d59e1869581fbfacd92e688a8b073b6428bd8dece6db4b6e3c2604ba",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-05",
+    "acceptable": false,
+    "original_case": "scenario-03",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-parts-regression40-v2-20261107-live/results.json",
+    "results_sha256": "41832898aa7eb38a6dd324deb0747f604511e911a9f8e0c3b08dc727baa7012a",
+    "answer_sha256": "45682c1a5ba4919c895e0c4d7bbe465c5abb655d90c0ce18180d8ae2946ce219",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-06",
+    "acceptable": true,
+    "original_case": "scenario-03",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live/results.json",
+    "results_sha256": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19",
+    "answer_sha256": "9b5c391fe6ee5aaf7260db2f4d761fca0817e2e8fb23c8ce384c17a779351ad7",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-07",
+    "acceptable": false,
+    "original_case": "scenario-01",
+    "results_path": "docs/engineering-delivery/nist-public-http-scenarios-r2-20261107-live/results.json",
+    "results_sha256": "f2f1735d1862162541de2e008c5531017a6720b08caf727a73b6cc749e3e2f99",
+    "answer_sha256": "a905d1d10c2da88c2fd51b509339e3c04cc0b6edbc582dbf252d65b6bc9c3e93",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  },
+  {
+    "id": "saved-08",
+    "acceptable": true,
+    "original_case": "scenario-01",
+    "results_path": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live/results.json",
+    "results_sha256": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19",
+    "answer_sha256": "c76fa1b6eab0dac5ffe5d9c15f297d6157d2266d7fb5bc450178094f609d6136",
+    "role": "Existing development criterion, Codex source-reviewed; not human gold"
+  }
+]

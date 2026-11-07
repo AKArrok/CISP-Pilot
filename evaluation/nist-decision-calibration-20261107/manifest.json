@@ -1,0 +1,26 @@
+{
+  "mode": "judge_calibration",
+  "judge_arms": [
+    "judge_candidate"
+  ],
+  "role": "Matched saved full answers, narrow semantic decision review; no new answers or human gold",
+  "max_estimated_input_tokens": 6000,
+  "paid_proposal": {
+    "calls": 8,
+    "budget_usd": 0.08,
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "max_output_tokens": 1024,
+    "max_retries": 0
+  },
+  "executor_sha256": "f5efd08773c777dce5c878423e65aac7913c4241773a0747ba8a55805bc2c08c",
+  "acceptance": "All8 original labels AND valid verbatim source evidence; failed/invalid remain failures. Advisory only, no automatic production acceptance.",
+  "frozen_sha256": {
+    "cases.json": "adba004b3ff1161d064e32b1e03af78d49e76230b53c3cd02b671c2e1cb9ce5b",
+    "chunks.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "frozen-executor.py": "f5efd08773c777dce5c878423e65aac7913c4241773a0747ba8a55805bc2c08c",
+    "funding-preflight.json": "b2d69134382aee695a437ec55f9f7c3f0cd450006153a7886218730eb58c8aa9",
+    "labels-offline-only.json": "7e00d516753043bd8dd5762cea0198d08e144e3c4acfcab362e63665b608cd11",
+    "prompts.json": "a7621ddc193790c938460484a620f0af89028f544e9891b85451036ac0bd5248"
+  }
+}

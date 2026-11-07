@@ -1,0 +1,269 @@
+{
+  "reviewer": "Codex complete actual answer/pinned-source review, not independent human gold",
+  "source_supported": 38,
+  "total": 40,
+  "strict_audit_passed": false,
+  "strict_audit_count": 38,
+  "joint_pass_count": 37,
+  "failed_ids": [
+    "ac-8-new-03",
+    "cp-9-new-08"
+  ],
+  "strict_failed_ids": [
+    "ac-8-new-05",
+    "cp-9-new-08"
+  ],
+  "cohorts": {
+    "original32": {
+      "supported": 30,
+      "total": 32
+    },
+    "original8": {
+      "supported": 8,
+      "total": 8
+    }
+  },
+  "default_promoted": false,
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "source_supported": true,
+      "note": "before granting access，包含公开系统进一步访问；开放题肯定导语生硬，正文明确之前。",
+      "answer_sha256": "e4304634ff60aedda65614ffed8913ebd86fb0080d4c11c01f2b03a180a28f3e"
+    },
+    {
+      "id": "ac-8-new-02",
+      "source_supported": true,
+      "note": "保留直到确认使用条件且采取明确登录/进一步访问操作，两个条件均在。",
+      "answer_sha256": "64bf922034c309dca2cca7b8cca206d0f1bb1495c5cf887e04a2c448fda7e286"
+    },
+    {
+      "id": "ac-8-new-03",
+      "source_supported": false,
+      "note": "错误肯定无human interface需要通知；原文明确not required，正文引文不能抵消相反导语。",
+      "answer_sha256": "8ca401dd0e5c31cce090de672579dddbfc4ccba3363ad74442bfb072e355d0b3"
+    },
+    {
+      "id": "ac-8-new-04",
+      "source_supported": true,
+      "note": "公开系统父条件与授权用途子条款同时呈现。",
+      "answer_sha256": "7b4e373f8383d9d73e408557cefc572c3a5b020c53c425d34772fc7a76f390c1"
+    },
+    {
+      "id": "ac-8-new-05",
+      "source_supported": true,
+      "note": "语义正确按用户demographics多语言；路由原生工具参数非合法JSON造成降级，执行门禁失败。",
+      "answer_sha256": "e96addb0179cb02371c7855e09180369369498b1b05e21e95002a282f48c0bdd"
+    },
+    {
+      "id": "ac-8-new-06",
+      "source_supported": true,
+      "note": "二次告知依据风险评估，未变成一律强制。",
+      "answer_sha256": "6b797476bc5c58804cf1f8d5e3d0b34be0ac4b2106ff277aa7e44a457c984292"
+    },
+    {
+      "id": "ac-8-new-07",
+      "source_supported": true,
+      "note": "否定提前隐藏，原文两个持续条件完整。",
+      "answer_sha256": "a7a43a50b24aa7761d4a1f0c5a91653fcf382170be02046652396a58aa4829a4"
+    },
+    {
+      "id": "ac-8-new-08",
+      "source_supported": true,
+      "note": "明确本次未给五分钟额外规定，实际通知时点/持续要求和来源保留。",
+      "answer_sha256": "047442315a88f5c53b774d3a97d6f1be51f2c09564143e250e07c6e6c1a55b11"
+    },
+    {
+      "id": "at-2-new-01",
+      "source_supported": true,
+      "note": "contractors与managers/senior executives在原文，未排除承包商。",
+      "answer_sha256": "43b32b5782ab2629656edaf6b3964b6f8c91b19308c75298046824a8487466de"
+    },
+    {
+      "id": "at-2-new-02",
+      "source_supported": true,
+      "note": "内容取决于组织/系统/远程工作环境；更新事件非穷尽，breaches译为泄露。",
+      "answer_sha256": "66effc2415330505e8d78f839eada7603fd880a5e42efc863ba03c48ef44e80d"
+    },
+    {
+      "id": "at-2-new-03",
+      "source_supported": true,
+      "note": "给出海报、提醒用品、登录消息、邮件与活动，至少两种；未声称只有两种。",
+      "answer_sha256": "9e797ea2a57c14c8984681092d0d1dc6903e2d94c9832a6bd12eb63d3a7f719d"
+    },
+    {
+      "id": "at-2-new-04",
+      "source_supported": true,
+      "note": "后续可一次或多次简短临时课程，保留may和主题范围。",
+      "answer_sha256": "e700e353d8d55b41f760b526005df0717cfcc90201f77385aa62a287ee0ed3c8"
+    },
+    {
+      "id": "at-2-new-05",
+      "source_supported": true,
+      "note": "法规变化可触发更新，不声称是全部事件；未给参数具体值。",
+      "answer_sha256": "6ac56e8496b683bac65667efcbc5e64cf2c0a3e31d2cd55b1c0c01189797cc71"
+    },
+    {
+      "id": "at-2-new-06",
+      "source_supported": true,
+      "note": "明确PII处理，未变成敏感信息无边界泛称。",
+      "answer_sha256": "39443833879ecd3dd764e279250ed1755065eebff29f5b9a77d143650ead7491"
+    },
+    {
+      "id": "at-2-new-07",
+      "source_supported": true,
+      "note": "否定只能海报，列举多个机制且原生参数未赋值。",
+      "answer_sha256": "c60c8862903ac2e711f3b63ab9197848a8c3f154967858ca1a9118aa2ac670e7"
+    },
+    {
+      "id": "at-2-new-08",
+      "source_supported": true,
+      "note": "知识测试存在但九十分未给，不编造分数参数，来源范围保留。",
+      "answer_sha256": "348999f5e69aea242e87f85a2d9dc115af40d9fdf6679a0a5abb4b49451cc048"
+    },
+    {
+      "id": "cp-9-new-01",
+      "source_supported": true,
+      "note": "系统状态、OS、中间件、应用和许可证，软件类别完整。",
+      "answer_sha256": "ca21a6356836c8165f56ab41dee4045834a057e99e6bbd8b26d0d651b917f531"
+    },
+    {
+      "id": "cp-9-new-02",
+      "source_supported": true,
+      "note": "系统级列举与用户级为其他信息的区分，不把组件参数泛化。",
+      "answer_sha256": "f84ede8d3570836ea2f7c266bc2b00f749a31b84214df5a04276855d615f16ba"
+    },
+    {
+      "id": "cp-9-new-03",
+      "source_supported": true,
+      "note": "数字签名与密码学哈希；未混同机密性加密。",
+      "answer_sha256": "738503a1abf3698621f255e58707e09bb2358ca519b673754feb1be84300a3ab"
+    },
+    {
+      "id": "cp-9-new-04",
+      "source_supported": true,
+      "note": "MP-5和SC-8准确；肯定导语不适合哪两个，正文仍直接回答。",
+      "answer_sha256": "8b78eb356fac1c691586ced7357cb36a152b36b150ad0594aa63a4603ac0c3bc"
+    },
+    {
+      "id": "cp-9-new-05",
+      "source_supported": true,
+      "note": "除应急计划还有组织备份要求，补充特定信息法律义务而非杜撰。",
+      "answer_sha256": "7d818a34371f11a9f6c6339db764fc02c2e56aaa7a4f51cc04f54f6206c1072f"
+    },
+    {
+      "id": "cp-9-new-06",
+      "source_supported": true,
+      "note": "senior agency official for privacy与legal counsel均有。",
+      "answer_sha256": "7cdc864035a8e9943ff9864a4e97c2ba38457a0dd9ec7ebd5eaa95a02abc4586"
+    },
+    {
+      "id": "cp-9-new-07",
+      "source_supported": true,
+      "note": "完整控制原文范围无独家厂商，未免除三类备份；全文较长列可用性局限。",
+      "answer_sha256": "cf84012f16b474fbf8df255c5f4869e55f01ab60c4a4b7b6c2ce5872bd38f4cc"
+    },
+    {
+      "id": "cp-9-new-08",
+      "source_supported": false,
+      "note": "错误退为不足判断且无出处；实际检索CP9 smt.c明确包含安全/隐私系统文档备份。",
+      "answer_sha256": "c374ef384a9d03410a617ad944df7a8d33b040bfb0f939d8416b1ac6cc0b74b0"
+    },
+    {
+      "id": "ca-8-new-01",
+      "source_supported": true,
+      "note": "超越自动扫描，技能/经验、人为对手动作与深入分析，未称扫描无用。",
+      "answer_sha256": "cb71303e700a1481f8bfc50518f9fbfc88429ffaf1f411b38f634186857ef32a"
+    },
+    {
+      "id": "ca-8-new-02",
+      "source_supported": true,
+      "note": "网络、操作系统和/或应用层技术能力，保留and/or。",
+      "answer_sha256": "c4feab4bd06bf047c4241441303c5e8d6006f96f32335bd8e53af7db408dd0a9"
+    },
+    {
+      "id": "ca-8-new-03",
+      "source_supported": true,
+      "note": "限定time/resources/skills影响约束内抵抗评估，未推断无限覆盖。",
+      "answer_sha256": "fe7fe1f8d78d7486a2325c6fe3f132b93c5e441a8068e61300011c66b9291332"
+    },
+    {
+      "id": "ca-8-new-04",
+      "source_supported": true,
+      "note": "原文明确迁移尤其重要，给识别可利用弱点与模拟对手的上下文；没有捏造IPv6特有原因。仅支持这一来源层面的解释，不能当详细迁移风险机制答案。",
+      "answer_sha256": "e5c8f090421304cc92f9af848282b7ea37514424dd9ff386006c77def3fcdc23"
+    },
+    {
+      "id": "ca-8-new-05",
+      "source_supported": true,
+      "note": "漏洞分析可支持测试，保留can而非唯一前提。",
+      "answer_sha256": "b50c07feab97ef36ead2784c18d3a2f290a809049cd4c6573af56c0c7e079eae"
+    },
+    {
+      "id": "ca-8-new-06",
+      "source_supported": true,
+      "note": "风险评估指导所需独立程度，无一律外部独立要求。",
+      "answer_sha256": "27e767bd0c7611c029beaf186bd4e1806daadd21d6099953c08d54667bd64be5"
+    },
+    {
+      "id": "ca-8-new-07",
+      "source_supported": true,
+      "note": "明确未给七天持续时间，未把频次参数当单次时长。",
+      "answer_sha256": "0e2df9f340d04f119c88efc72c9364d227a19eb86769f5c7a352a587fd033f49"
+    },
+    {
+      "id": "ca-8-new-08",
+      "source_supported": true,
+      "note": "内部或外部均可，保留硬件/软件/固件与物理/技术控制。",
+      "answer_sha256": "0e292fbbfbc243af5eaac4f99f3bbc98f5b72f9e1b8db8100ab437db60d4c553"
+    },
+    {
+      "id": "scenario-01",
+      "source_supported": true,
+      "note": "原问题片段口头同意不足以确定，不推导允许或禁止；成员条件/批准主体原参数及动作完整。",
+      "answer_sha256": "c76fa1b6eab0dac5ffe5d9c15f297d6157d2266d7fb5bc450178094f609d6136"
+    },
+    {
+      "id": "scenario-02",
+      "source_supported": true,
+      "note": "公开系统父条件与隐私安排/一般禁止，未扩大一律许可。",
+      "answer_sha256": "70c7c82f7fda3af044578a43fe1b2a3ec26338964922769e6525cee093647a5f"
+    },
+    {
+      "id": "scenario-03",
+      "source_supported": true,
+      "note": "完整组deny与后续频次/变更/事件条款一致，不再单独肯定只入职培训。",
+      "answer_sha256": "9b5c391fe6ee5aaf7260db2f4d761fca0817e2e8fb23c8ce384c17a779351ad7"
+    },
+    {
+      "id": "scenario-04",
+      "source_supported": true,
+      "note": "用户级/系统级/文档与OS许可证清单，未泛化用户组件。",
+      "answer_sha256": "095d888173017e1d4eaac86df689240f2136c271a829eea9034d34e91d175ceb"
+    },
+    {
+      "id": "scenario-05",
+      "source_supported": true,
+      "note": "超越扫描、规则开始前；两个局部否定已直接说明整体不一致。",
+      "answer_sha256": "0bb2dc6858ef9b7a944e2e7e55c12e76e912c17188a765df4269a16d7613a0fb"
+    },
+    {
+      "id": "scenario-06",
+      "source_supported": true,
+      "note": "风险变化级别调整与指南频次范围深度可调整强度保留。",
+      "answer_sha256": "b9858f2d5994755734d74d4d4fa4bc98dfaff98e6c6f5f2bce9e25ea98c7d3bf"
+    },
+    {
+      "id": "scenario-07",
+      "source_supported": true,
+      "note": "本轮分成授权员工非授权目的可能泄露的affirm与仅外部入侵的deny，联邦PII前提完整。",
+      "answer_sha256": "ba2de8d99934f7ae565b8e1bc9435c3edd43c9d66dd34b602e5b0a31f0b13dcc"
+    },
+    {
+      "id": "scenario-08",
+      "source_supported": true,
+      "note": "本地无网络，外部网络是远程，物理位置不决定类别。",
+      "answer_sha256": "38343f83f3a874e12d466a1e3b461ab91e18790f78a072fb97f51e6842b0476d"
+    }
+  ]
+}

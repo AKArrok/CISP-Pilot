@@ -90,3 +90,6 @@ docs/engineering-delivery/evaluation-window3-20261107/*.py -text whitespace=cr-a
 docs/engineering-delivery/evaluation-window3-20261107/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/evaluation-window3-20261107/*.log -text -whitespace
 docs/engineering-delivery/evaluation-window3-20261107/*.xml -text -whitespace
+agents/graph.py -text whitespace=cr-at-eol
+llms.py -text whitespace=cr-at-eol
+evaluation/nist-decision-calibration*/*.py -text whitespace=cr-at-eol

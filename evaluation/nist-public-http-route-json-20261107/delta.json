@@ -1,0 +1,16 @@
+{
+  "changed": [
+    "agents/graph.py: DeepSeek route explicitly JSON mode",
+    "llms.py: optional method preserving default callers"
+  ],
+  "unchanged": [
+    "question",
+    "acceptance",
+    "101 corpus",
+    "selector",
+    "contract",
+    "thresholds"
+  ],
+  "not_quality_acceptance": true,
+  "old_route_failure_preserved": true
+}

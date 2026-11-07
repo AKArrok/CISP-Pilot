@@ -293,18 +293,19 @@ async def llm_ainvoke_with_retry(llm: ChatOpenAI, messages: list[BaseMessage],
 
 def invoke_structured(llm: ChatOpenAI, output_class: Type[T],
                       messages: list[BaseMessage],
-                      max_retries: int = 3) -> T:
+                      max_retries: int = 3, *, method: str | None = None) -> T:
     token = _structured_attempts.set({"used": 0}) if current_budget.get() is not None else None
     try:
-        return _invoke_structured(llm, output_class, messages, max_retries)
+        return _invoke_structured(llm, output_class, messages, max_retries, method=method)
     finally:
         if token is not None:
             _structured_attempts.reset(token)
 
 
-def _invoke_structured(llm, output_class, messages, max_retries):
+def _invoke_structured(llm, output_class, messages, max_retries, *, method=None):
     try:
-        options = {"method": "function_calling"} if str(getattr(llm, "model_name", "")).startswith("deepseek-") else {}
+        options = ({"method": method} if method is not None else
+                   {"method": "function_calling"} if str(getattr(llm, "model_name", "")).startswith("deepseek-") else {})
         structured_llm = llm.with_structured_output(output_class, **options)
         return llm_invoke_with_retry(structured_llm, messages, max_retries=max_retries)
     except Exception as e:
