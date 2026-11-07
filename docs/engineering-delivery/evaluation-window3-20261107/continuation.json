@@ -363,20 +363,12 @@
     "pending_allocations": []
   },
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Publish route fix+all new failed and successful evidence, verify exact commit CI; then source-claim/question-polarity separation contract. Full40 quality failed, boundary12/private4 not yet dispatchable.",
+  "next": "Verify da9ea35 CI and publish outgoing scope guard with exact new CI; then frozen question-polarity/source-fact separation design. Current quality38/40 and calibration3/8 failed; boundary12/private4 remain gated.",
   "quota": {
-    "stop_remaining_percent_lte": 0,
-    "override_scope": "user explicitly resumed current new window: use to exhaustion",
-    "last_verified_primary_remaining_percent": 98,
-    "no_reset_credit": true,
-    "no_automatic_resume_next_window": true,
-    "verified_at_utc": "2026-11-07T04:58:04.360944+00:00",
-    "previous_authorized_window_last_used_percent": 99,
-    "previous_window_resets_at": 1794014114,
-    "current_window_resets_at": 1794045176,
-    "new_window_used_percent": 0,
-    "automatic_new_window_resume_authorized": false,
-    "explicit_current_window_resume": "codex还有额度啊 继续继续; retain prior use-current-window-to-exhaustion direction"
+    "primary_used_percent": 60,
+    "secondary_used_percent": 99,
+    "primary_resets_at": 1794045176,
+    "policy": "Current explicitly restored window until either window exhausted; do not consume reset credits or auto resume after reset"
   },
   "pending_batches": [],
   "documentation_commit": "cb8926e7309e55e6acaa188fa4a8cb5df43dc338",
@@ -407,11 +399,12 @@
   },
   "config_fix_commit": "84d8538",
   "git_delivery": "Remote c17487b verified, Actions42303761890 completed/success. Previous9670354 Actions42302862004 completed/success. Local stop checkpoint after commit not yet synced.",
-  "latest_commit": "9e2ded32e18cc881228532f93a96c2ad6d713514",
+  "latest_commit": "da9ea35ea45c814e4bc9cac13c2d9af1367112a0",
   "latest_ci": {
-    "run_id": 42343804142,
+    "run_id": 42345506582,
+    "status": "completed",
     "conclusion": "success",
-    "scope": "Exact 9e2ded3; later route change not covered"
+    "scope": "Exact route fix; later outgoing guard separately validated"
   },
   "remaining_issue_analysis": "docs/engineering-delivery/evaluation-20261106/remaining-semantic-issues.json",
   "stop_reason": null,
@@ -520,9 +513,9 @@
     "summary": "docs/engineering-delivery/evaluation-window2-20261107/mixed-source-ac2-summary.json"
   },
   "current_regression": {
-    "targeted": "183 passed, 1 existing AnyIO warning",
-    "evidence": "docs/engineering-delivery/evaluation-window3-20261107/route-integrated.log",
-    "scope": "route/native-method/budget/three protocols/real SSE SQL/source audit; not full suite"
+    "targeted": "202passed1existingAnyIOwarning",
+    "evidence": "docs/engineering-delivery/evaluation-window3-20261107/outgoing-integrated.log",
+    "scope": "outgoing scope + route/default native contract + three protocols + realSSE/SQL + strict audit, not full local suite"
   },
   "plan_boundaries": {
     "run": "docs/engineering-delivery/nist-public-http-plan-boundaries-20261107-live",
@@ -647,5 +640,13 @@
     "run": "docs/engineering-delivery/nist-public-http-route-json-20261107-live",
     "default_route_changed": true,
     "default_answer_strategy_promoted": false
+  },
+  "outgoing_scope_guard": {
+    "status": "implemented_opt_in_offline_passed",
+    "test_result": "202passed1existingAnyIOwarning",
+    "test_log": "docs/engineering-delivery/evaluation-window3-20261107/outgoing-integrated.log",
+    "API_calls": 0,
+    "private_retest_executed": false,
+    "grant_not_expanded": true
   }
 }

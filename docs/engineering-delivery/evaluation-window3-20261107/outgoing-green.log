@@ -1,0 +1,8 @@
+.............................................................            [100%]
+============================== warnings summary ===============================
+tests/test_experimental_card_node.py::test_real_sse_and_sql_persist_host_card_without_internal_selector_json[units]
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+61 passed, 1 warning in 19.80s

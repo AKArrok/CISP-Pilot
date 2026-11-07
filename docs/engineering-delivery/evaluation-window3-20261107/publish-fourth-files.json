@@ -1,0 +1,19 @@
+{
+  "files": [
+    "EVALUATION_LOOP.md",
+    "scripts/outgoing_scope.py",
+    "scripts/experimental_card_node.py",
+    "scripts/evaluate_public_http.py",
+    "tests/test_outgoing_scope.py",
+    "docs/engineering-delivery/evaluation-window3-20261107/README.md",
+    "docs/engineering-delivery/evaluation-window3-20261107/continuation.json",
+    "docs/engineering-delivery/evaluation-window3-20261107/next-polarity-contract-design.md",
+    "docs/engineering-delivery/evaluation-window3-20261107/outgoing-red.log",
+    "docs/engineering-delivery/evaluation-window3-20261107/outgoing-green.log",
+    "docs/engineering-delivery/evaluation-window3-20261107/outgoing-integrated.log",
+    "docs/engineering-delivery/evaluation-window3-20261107/outgoing-integrated.xml",
+    "docs/engineering-delivery/evaluation-window3-20261107/publish-fourth-files.json"
+  ],
+  "sensitive_matches": 0,
+  "excludes": "preexisting unrelated changes, all real private data, authfiles, locks and rawconsole"
+}

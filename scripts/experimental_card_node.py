@@ -13,12 +13,18 @@ from scripts.answer_unit_contract import build_catalog, materialize_card_selecti
 from scripts.answer_unit_contract import question_parts, materialize_question_card, render_question_card
 from scripts.answer_unit_contract import materialize_grouped_question_card
 from scripts.eval_nist_batch import request_content
+from scripts.outgoing_scope import check_outgoing_scope
 
 
-async def card_answer(state, *, sources, translations, selector_prompt, fallback, protocol="units"):
+async def card_answer(state, *, sources, translations, selector_prompt, fallback, protocol="units", outgoing_scope=None):
     if not isinstance(protocol, str) or protocol not in {"units", "question_parts", "question_groups"}:
         raise ValueError("Unknown card protocol")
     contexts = state.get("contexts", [])
+    if outgoing_scope is not None:
+        check_outgoing_scope(outgoing_scope, state["question"], contexts)
+        if (state.get("messages", [])[:-1]
+                or (state.get("search_query") and state["search_query"] != state["question"])):
+            raise ValueError("Conversation history or rewritten query exceeds outgoing scope")
     if not contexts or graph._below_relevance_floor(contexts):
         return await fallback(state)
     contexts = [{**context, "source_url": context.get("source_url"), "locator": context.get("locator")}
