@@ -1,0 +1,18 @@
+{
+  "scope": "local working-tree bytes used for final verification; Git may normalize line endings",
+  "sha256": {
+    "storage/evaluation_store.py": "d17efe28e4b332b19c4b27080cd12ea7666eb0f117c18d16345a702f352df794",
+    "storage/evaluation_http.py": "158411c782aaab8938b8904478dbbe3e77c3b635d7604a7000b4b0304813a8d1",
+    "scripts/package_evaluation.py": "49c07fd7fa051103505e2d6113dcfe56a16acc5cb65ab9e8e0db7147e85c8e44",
+    "scripts/serve_evaluation.py": "15e520042ec2205d7689d1af8ea767f5cfba0c25eca5a3d744ad05d6943f4c00",
+    "server.py": "e9139305c5d008190edbc1eeed0ef9d76782b4dfb940c09fa32d51415459c86e",
+    "static/evaluation.html": "fba3488f7e190523e7ae09c4e9fa1e62ec5fc002cea6033c7f6f488e4a51814b",
+    "static/evaluation.css": "d796826235e0d37fbf21e9c5986e743918c74a6ab36ab99e24ee4dd955718b9d",
+    "static/evaluation.js": "e2dea638c7e256aa4e10bbc7dd0468f69c9f084e7d29deff3bea43b92dae882d",
+    "static/index.html": "7fb3f67c1791f4e90de31b47e29cb7564c7ae7cf32c234c5c081fee59cc0439f",
+    "tests/test_evaluation_platform.py": "72979872f4c617f429f62c87004621ca67ed28d1abd4ee9ca608bb0b79266aa7",
+    "tests/evaluation_browser.cjs": "ac008d1881ec1bad4bb7f176c198b65d8c49de4c6cfeed1a299b68f8591a495c",
+    "tests/run_evaluation_browser.py": "cd036d5d6a7b2bbfc8135ebdc36ed688f63474895cc27713d552c1bb3fbb3850",
+    ".dockerignore": "2f2d2c040027577037a578d21b02ccbdd758aba2d7bc8f71888883356f072282"
+  }
+}

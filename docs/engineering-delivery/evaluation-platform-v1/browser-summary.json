@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "checks": [
+    "real Cookie login",
+    "two real historical imports / 40 cases each",
+    "idempotent browser import",
+    "real historical failure and bound evidence",
+    "append-only AI-assisted review; original failure retained",
+    "pagination and empty search",
+    "offline check idempotency / zero model calls",
+    "real redacted JSON download",
+    "Markdown download",
+    "40-case version comparison",
+    "frozen dataset view",
+    "mobile layout without page overflow",
+    "persistent review after reload",
+    "untrusted import rendered as text",
+    "anonymous API denied",
+    "server restart preserves runs, reviews and original offline check"
+  ],
+  "browserErrors": [],
+  "left": {
+    "passed": 39,
+    "failed": 1,
+    "unknown": 0
+  },
+  "right": {
+    "passed": 37,
+    "failed": 3,
+    "unknown": 0
+  },
+  "comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36,
+    "incomparable": 0,
+    "insufficient_evidence": 0,
+    "added": 0,
+    "removed": 0
+  },
+  "model_calls": 0,
+  "restart_verified": true
+}

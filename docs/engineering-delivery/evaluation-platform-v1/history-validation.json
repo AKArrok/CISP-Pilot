@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "model_calls": 0,
+  "inputs": [
+    {
+      "packet": "evaluation/nist-public-http-question-parts-regression40-v2-20261107",
+      "run": "docs/engineering-delivery/nist-public-http-question-parts-regression40-v2-20261107-live",
+      "run_id": "8c28fbd6ab5a0de7955c5c756d04c54910c00ed561289c247522a5ca9cfa4d58",
+      "dataset_id": "20e736f27f8f325c8b10e50db1f012abf61748aeb30765e76629fdbebcca815d",
+      "artifacts": {
+        "packet/manifest.json": "a13b403c6900b7db6f4bdb16ef6f0450f731d8285998b5dedfe22c73445991e5",
+        "packet/cases.json": "acaef65adf608ed2fda97572ff39381f2a8474861dddf1ff5bc44b45d30c8b27",
+        "run/results.json": "41832898aa7eb38a6dd324deb0747f604511e911a9f8e0c3b08dc727baa7012a",
+        "run/audit.json": "54baf17115d4bf44b6db6416470b9e8a248ab4e93d6dfb130fd630afc26956d9",
+        "run/summary.json": "aff7744874fe9e19590a12a487bf7a184834b8f113533308a0e6fcce1d56df1d",
+        "run/semantic-review.json": "7c9a9c1a161359322030bab1776d972f048c6e966841fd4f971a496e1d9123aa"
+      },
+      "joint_counts": {
+        "passed": 39,
+        "failed": 1,
+        "unknown": 0
+      },
+      "semantic_supported": 39,
+      "question_count": 40,
+      "all_case_statuses_match_original": true
+    },
+    {
+      "packet": "evaluation/nist-public-http-question-groups-regression40-v3-20261107",
+      "run": "docs/engineering-delivery/nist-public-http-question-groups-regression40-v3-20261107-live",
+      "run_id": "21fa2fa8f1c9a8ceaf01f14deef72c99ab6a09640ccaf18df0ce5f02373dd852",
+      "dataset_id": "20e736f27f8f325c8b10e50db1f012abf61748aeb30765e76629fdbebcca815d",
+      "artifacts": {
+        "packet/manifest.json": "1166dce27893b64b7fd1400cc07179df9da04c30fc6fecf65d7262337862d98e",
+        "packet/cases.json": "acaef65adf608ed2fda97572ff39381f2a8474861dddf1ff5bc44b45d30c8b27",
+        "run/results.json": "fbea9dd4e73e23da9a71c67f0db1ccbad6302ba60dd1e718950e668fa9eebd19",
+        "run/audit.json": "dd20a88d53937125b2b8622dff85252f7d9f7fa7e32d0e36d9a18244930e0383",
+        "run/summary.json": "d8fba2d7d54c8b24aa55fe028230fd5f09b09c3c453f4edcea6bb515b601d80f",
+        "run/semantic-review.json": "a73d46939a0bce7df8a1cea430557c5ceaf34d00362f17db7e1502e9bbb88a2d"
+      },
+      "joint_counts": {
+        "passed": 37,
+        "failed": 3,
+        "unknown": 0
+      },
+      "semantic_supported": 38,
+      "question_count": 40,
+      "all_case_statuses_match_original": true
+    }
+  ],
+  "comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36,
+    "incomparable": 0,
+    "insufficient_evidence": 0,
+    "added": 0,
+    "removed": 0
+  },
+  "independent_comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36
+  },
+  "failed_or_changed_ids": [
+    {
+      "id": "ac-8-new-03",
+      "before": "passed",
+      "after": "failed",
+      "change": "regressed"
+    },
+    {
+      "id": "ac-8-new-05",
+      "before": "passed",
+      "after": "failed",
+      "change": "regressed"
+    },
+    {
+      "id": "cp-9-new-08",
+      "before": "passed",
+      "after": "failed",
+      "change": "regressed"
+    },
+    {
+      "id": "scenario-03",
+      "before": "failed",
+      "after": "passed",
+      "change": "fixed"
+    }
+  ]
+}

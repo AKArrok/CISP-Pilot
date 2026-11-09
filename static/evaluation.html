@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CISP · 测评工作台</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/evaluation.css"></head>
+<body>
+<aside><a class="brand" href="/evaluation.html">CISP<span>QUALITY LAB / 01</span></a>
+<nav aria-label="工作台导航">
+<button data-tab="overview" class="active">01 <span>总览</span></button>
+<button data-tab="datasets">02 <span>数据集</span></button>
+<button data-tab="runs">03 <span>评测批次</span></button>
+<button data-tab="compare">04 <span>版本对比</span></button>
+</nav><div class="aside-bottom">证据优先，保留失败。<br><a href="/">返回学习应用 ↗</a></div></aside>
+<main>
+<header><div><p class="eyebrow">EVALUATION / DEVELOPMENT EVIDENCE</p><h1>测评工作台</h1><p class="muted">把每一次判断，追溯到具体的回答与证据。</p></div><div id="session" hidden><span id="username"></span><button id="logout" class="quiet">退出</button></div></header>
+<div id="notice" role="status" aria-live="polite"></div>
+<section id="login-panel" class="panel"><h2>登录工作台</h2><p class="muted">使用已获测评访问权限的 CISP 账号。</p><form id="login"><label>用户名<input id="login-name" autocomplete="username" required></label><label>密码<input id="login-password" type="password" autocomplete="current-password" required minlength="12"></label><button type="submit">登录</button></form></section>
+<div id="workspace" hidden>
+<section id="overview" class="view"><div class="section-heading"><h2>质量概览</h2><span class="tag">开发评测 · 非独立人工验收</span></div><div id="metrics" class="metrics"></div><div class="panel"><h3>最近批次</h3><p class="muted">统计来自已导入的历史记录；缺少语义审阅的结果记为待证据。</p><div id="recent"></div></div></section>
+<section id="datasets" class="view" hidden><div class="section-heading"><h2>冻结数据集</h2><span class="muted">按题目、判据和角色的内容摘要分组</span></div><div id="dataset-list"></div></section>
+<section id="runs" class="view" hidden><div class="section-heading"><h2>评测批次</h2><label class="import-button">导入 JSON<input id="import-file" type="file" accept="application/json,.json" hidden></label></div><p class="muted">上传规范化评测包，最大 8 MiB。原始产物保持只读，重复导入不会新增批次。</p><div id="run-list"></div>
+<div id="run-workspace" hidden><div class="panel run-heading"><div><p class="eyebrow">SELECTED RUN</p><h3 id="run-title"></h3><div id="run-meta" class="muted"></div></div><div class="actions"><button id="check-run" class="quiet">离线完整性检查</button><button id="export-json" class="quiet">导出 JSON</button><button id="export-md" class="quiet">导出 Markdown</button></div></div>
+<details class="panel"><summary>版本配置、判据与产物摘要</summary><pre id="run-config"></pre></details>
+<div class="panel"><div class="filters"><label>状态<select id="status-filter"><option value="all">全部</option><option value="failed">失败</option><option value="unknown">待证据</option><option value="passed">已通过记录</option></select></label><label class="grow">搜索题目<input id="search" placeholder="输入题号或问题关键词" maxlength="200"></label><button id="search-button" class="quiet">搜索</button></div><div id="case-list"></div><div class="pagination"><button id="previous" class="quiet">上一页</button><span id="page-label"></span><button id="next" class="quiet">下一页</button></div></div>
+<section id="case-detail" class="panel" hidden><p class="eyebrow">EVIDENCE INSPECTOR</p><h3 id="case-title"></h3><div id="case-verdict"></div><div class="evidence-grid"><div><h4>实际回答</h4><pre id="answer"></pre></div><div><h4>分项检查与原始语义审阅</h4><pre id="original-review"></pre><h4>实际检索片段</h4><div id="contexts"></div></div></div><details><summary>冻结题目契约</summary><pre id="case-contract"></pre></details><hr><h4>追加复核意见</h4><p class="muted">复核绑定当前答案哈希，不覆盖原判，不自动晋级版本。</p><form id="review-form"><label>复核类型<select id="review-kind"><option value="human">人工复核</option><option value="ai_assisted">AI 辅助复核</option></select></label><label>结论<select id="review-decision"><option value="needs_evidence">需要更多证据</option><option value="supported">有来源支持</option><option value="unsupported">缺乏来源支持</option></select></label><label class="grow">依据<textarea id="review-reason" required maxlength="4000" placeholder="说明依据、来源位置和判断理由"></textarea></label><button type="submit">保存复核</button></form><div id="review-list"></div></section></div></section>
+<section id="compare" class="view" hidden><div class="section-heading"><h2>版本对比</h2><span class="tag">保留原始判定</span></div><div class="panel"><form id="compare-form"><label class="grow">基线批次<select id="compare-left" required></select></label><label class="grow">候选批次<select id="compare-right" required></select></label><button type="submit">比较版本</button></form><p class="muted">只有题目契约、判据和数据集角色相同的记录才能比较；缺失证据不计算为修复。</p><div id="comparison"></div></div></section>
+</div><footer>CISP QUALITY LAB <span>第一版 · 历史证据与离线完整性检查 · 零模型调用</span></footer>
+</main><script src="/evaluation.js" defer></script></body></html>
