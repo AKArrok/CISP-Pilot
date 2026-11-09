@@ -365,20 +365,29 @@
   "last_verified_prior_code_commit": "35dcefd9ed2f029883e0e855207184845153dae4",
   "local_commit": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0",
   "delivery": {
-    "status": "pushed_via_windows_schannel",
-    "commit": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0",
-    "CI": {
-      "run_id": 42571371545,
-      "status": "in_progress",
-      "head": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0"
-    },
-    "TLS_verification_disabled": false,
-    "global_config_changed": false
+    "status": "latest_test_commit_pushed",
+    "commit": "ccb315eb39cd733573b8c51a2e6095ba76cafd29",
+    "CI": "check latest exact commit; prior1cd2d18 still running, no green claimed",
+    "network_note": "Intermittent TLS failures; bounded retries eventually succeeded with certificate verification enabled"
   },
   "limiter_regression": {
     "tests": 2,
     "passed": 2,
     "log": "limiter-tests.log",
     "scope": "HTTP actual counters, password service admission stub; separate from actual scrypt Locust"
+  },
+  "combined_auth_regression": {
+    "passed": 15,
+    "existing_warning": 1,
+    "log": "auth-combined.log",
+    "junit": "auth-combined.xml"
+  },
+  "auditor_fix": {
+    "actual_gap": "server errors counted but not gated",
+    "baseline_negative_wrongly_passed": "audit-error-negative-before.json",
+    "fixed_negative_rejected": "audit-error-negative-after.json",
+    "original_evidence_v2_passed": "audit-v2.json",
+    "raw_logs_private": true,
+    "new_model_calls": 0
   }
 }

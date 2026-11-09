@@ -11,7 +11,7 @@ def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def audit(run):
+def audit(run, output=None):
     summary, plan = read(run / "summary.json"), read(run / "plan.json")
     traces = [json.loads(line) for line in (run / "scrypt.jsonl").read_text(encoding="utf-8").splitlines()]
     profile = [row for row in traces if row["phase"] == "profile"]
@@ -20,7 +20,10 @@ def audit(run):
     resources = read(run / "resources.json")
     probe, ready = read(run / "cache-probe.json"), read(run / "http-ready.json")
     stages = summary["stages"]
+    log = (run / "server.log").read_bytes()
+    error_markers = log.count(b"Traceback") + log.count(b"ERROR")
     checks = {
+        "server_no_error_markers": error_markers == 0,
         "three_stages_complete": [stage["users"] for stage in stages] == [1, 4, 8],
         "login_session_logout_revocation26": len(stages) == 3 and all(
             {row["Name"] for row in stage["stats"]} == {"auth/login", "auth/me", "auth/logout", "auth/revoked-old-cookie"}
@@ -40,7 +43,6 @@ def audit(run):
         "runtime_code_unchanged": all(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == value for name, value in plan["runtime_sha256"].items()),
         "no_model_calls": summary["model_calls"] == plan["model_calls"] == 0,
     }
-    log = (run / "server.log").read_bytes()
     report = {"passed": all(checks.values()), "checks": checks,
         "latency_scope": "Local synthetic SQLite/TCP/Locust short diagnostics; not production SLA, no cross-run speedup claim",
         "login_success": sum(stage["login_count"] for stage in stages),
@@ -49,16 +51,17 @@ def audit(run):
         "max_health_seconds": max(row["health_elapsed_seconds"] for row in resources),
         "peak_rss_mib": max(row["rss_bytes"] for row in resources) / 1024**2,
         "rejected_request_seconds": summary["negative_logins"][-1]["seconds"],
-        "server_log_sha256": hashlib.sha256(log).hexdigest(), "server_error_markers": log.count(b"Traceback") + log.count(b"ERROR"),
+        "server_log_sha256": hashlib.sha256(log).hexdigest(), "server_error_markers": error_markers,
         "model_calls": 0, "model_cost_usd": 0}
-    (run / "audit.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    (output or run / "audit.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     return report
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("run", type=Path)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    result = audit(args.run)
+    result = audit(args.run, args.output)
     print(json.dumps(result, ensure_ascii=False))
     raise SystemExit(0 if result["passed"] else 1)

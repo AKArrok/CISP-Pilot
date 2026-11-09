@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "checks": {
+    "server_no_error_markers": true,
+    "three_stages_complete": true,
+    "login_session_logout_revocation26": true,
+    "four_invalid_then_limit429": true,
+    "rejection_no_scrypt": true,
+    "all30_admitted_attempts_derived": true,
+    "unchanged_security": true,
+    "health200": true,
+    "cache_probe_before_ready": true,
+    "owned_processes_stopped": true,
+    "default_db_unchanged": true,
+    "frozen_files_unchanged": true,
+    "runtime_code_unchanged": true,
+    "no_model_calls": true
+  },
+  "latency_scope": "Local synthetic SQLite/TCP/Locust short diagnostics; not production SLA, no cross-run speedup claim",
+  "login_success": 26,
+  "negative_attempts": [
+    {
+      "kind": "known-wrong-password-after-startup-probe",
+      "status": 401,
+      "seconds": 2.2735515000000532,
+      "started_monotonic": 534.206367
+    },
+    {
+      "kind": "unknown-account-warm-cache",
+      "status": 401,
+      "seconds": 1.2976390999999694,
+      "started_monotonic": 577.6284862
+    },
+    {
+      "kind": "ip-attempt29-allowed",
+      "status": 401,
+      "seconds": 1.3875597999999627,
+      "started_monotonic": 578.9261708
+    },
+    {
+      "kind": "ip-attempt30-allowed",
+      "status": 401,
+      "seconds": 1.3187004999999772,
+      "started_monotonic": 580.3137743
+    },
+    {
+      "kind": "ip-attempt31-rejected",
+      "status": 429,
+      "seconds": 0.0037153000000671454,
+      "started_monotonic": 581.6375648
+    }
+  ],
+  "max_password_queue_seconds": 4.4826305000000275,
+  "max_health_seconds": 0.027597600000035527,
+  "peak_rss_mib": 476.9921875,
+  "rejected_request_seconds": 0.0037153000000671454,
+  "server_log_sha256": "8407133d8d8555c61c97e6002c50b27614a1dd73ea1ecfba1ee59fe285d6c23a",
+  "server_error_markers": 0,
+  "model_calls": 0,
+  "model_cost_usd": 0
+}
