@@ -1,0 +1,198 @@
+{
+  "accessed_on": "2026-11-09 (Asia/Shanghai)",
+  "method": "Connected GitHub read-only API; Ragas moved repository located via primary GitHub search after redirect endpoint was unsupported",
+  "local_baseline": "a5a07f23ba5ce2f45af4fc0077184111563ce49d",
+  "external_repositories_executed": false,
+  "private_cisp_content_sent": false,
+  "new_model_calls": 0,
+  "sources": [
+    {
+      "repository": "promptfoo/promptfoo",
+      "commit": "6c06c8f14d1e6d4b7439634354da5b4d77fc26c7",
+      "path": "docs/architecture/evaluator-runtime.md",
+      "blob_sha": "5e18f9438e6ed414ce8b890fb0efa721331e7f87",
+      "url": "https://github.com/promptfoo/promptfoo/blob/6c06c8f14d1e6d4b7439634354da5b4d77fc26c7/docs/architecture/evaluator-runtime.md",
+      "purpose": "执行、编排、运行时组合边界",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "promptfoo/promptfoo",
+      "commit": "6c06c8f14d1e6d4b7439634354da5b4d77fc26c7",
+      "path": "src/evaluator/runtime.ts",
+      "blob_sha": "9d041eb8bbd4352d3d1463712a11b4d790e48673",
+      "url": "https://github.com/promptfoo/promptfoo/blob/6c06c8f14d1e6d4b7439634354da5b4d77fc26c7/src/evaluator/runtime.ts",
+      "purpose": "逐题结果及持久化接口",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "promptfoo/promptfoo",
+      "commit": "6c06c8f14d1e6d4b7439634354da5b4d77fc26c7",
+      "path": "src/evaluator/runEval.ts",
+      "blob_sha": "9a7abe1246f3c0c512d5d0b9ba8a5cc19311d584",
+      "url": "https://github.com/promptfoo/promptfoo/blob/6c06c8f14d1e6d4b7439634354da5b4d77fc26c7/src/evaluator/runEval.ts",
+      "purpose": "单题判分、错误类型、评分消耗",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "promptfoo/promptfoo",
+      "commit": "6c06c8f14d1e6d4b7439634354da5b4d77fc26c7",
+      "path": "src/evaluator/engine.ts",
+      "blob_sha": "cbf15802d630ba7d94c9ebccd6d19ab012d0c7c0",
+      "url": "https://github.com/promptfoo/promptfoo/blob/6c06c8f14d1e6d4b7439634354da5b4d77fc26c7/src/evaluator/engine.ts",
+      "purpose": "重复、恢复、持久化失败保留",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "packages/shared/prisma/schema.prisma",
+      "blob_sha": "797f4516c72458cf8220954bced6b01947717915",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/packages/shared/prisma/schema.prisma",
+      "purpose": "数据集项版本、项目作用域、审阅状态",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "packages/shared/src/domain/dataset-run-items.ts",
+      "blob_sha": "c316a4b2d4d7bb4621e96f3830ad3826568893a2",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/packages/shared/src/domain/dataset-run-items.ts",
+      "purpose": "数据集项版本与trace/observation关联",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "web/src/features/datasets/components/DatasetCompareRunsTable.tsx",
+      "blob_sha": "0a002f093547fc7209a79f30975482ab121b930f",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/web/src/features/datasets/components/DatasetCompareRunsTable.tsx",
+      "purpose": "输入/期望输出及各版指标列",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "web/src/features/annotation-queues/README.md",
+      "blob_sha": "df374609c0fab0137d6c75082dc64d337aae1e3e",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/web/src/features/annotation-queues/README.md",
+      "purpose": "审阅队列状态与失败重试说明",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "web/src/features/annotation-queues/state/annotationQueueRun.ts",
+      "blob_sha": "659b61949886c333fca56d41527aa035ae304b2a",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/web/src/features/annotation-queues/state/annotationQueueRun.ts",
+      "purpose": "审阅状态转换与幂等完成",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "path": "packages/shared/src/server/redis/experimentCreateQueue.ts",
+      "blob_sha": "311a21bd969106b75b4144acdeb58b93b861ec7a",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/packages/shared/src/server/redis/experimentCreateQueue.ts",
+      "purpose": "创建实验队列重试配置",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "Arize-ai/phoenix",
+      "commit": "464a60fd3c24aaed780cea3f2e0e437d3c8ba037",
+      "path": "src/phoenix/db/models.py",
+      "blob_sha": "d573a10d9eac2e823537f1b831fd90644861f755",
+      "url": "https://github.com/Arize-ai/phoenix/blob/464a60fd3c24aaed780cea3f2e0e437d3c8ba037/src/phoenix/db/models.py",
+      "purpose": "数据集修订、实验、逐次运行与多来源评分模型",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "Arize-ai/phoenix",
+      "commit": "464a60fd3c24aaed780cea3f2e0e437d3c8ba037",
+      "path": "src/phoenix/server/api/types/ExperimentComparison.py",
+      "blob_sha": "e133328f1df6c1427419261a84c4663431ca8826",
+      "url": "https://github.com/Arize-ai/phoenix/blob/464a60fd3c24aaed780cea3f2e0e437d3c8ba037/src/phoenix/server/api/types/ExperimentComparison.py",
+      "purpose": "按example和重复运行组比较",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "Arize-ai/phoenix",
+      "commit": "464a60fd3c24aaed780cea3f2e0e437d3c8ba037",
+      "path": "src/phoenix/server/api/types/ExperimentRepeatedRunGroup.py",
+      "blob_sha": "a873a8889b34c433da5c97403efc4dc029efffd1",
+      "url": "https://github.com/Arize-ai/phoenix/blob/464a60fd3c24aaed780cea3f2e0e437d3c8ba037/src/phoenix/server/api/types/ExperimentRepeatedRunGroup.py",
+      "purpose": "重复运行的耗时/费用/评分聚合",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "Arize-ai/phoenix",
+      "commit": "464a60fd3c24aaed780cea3f2e0e437d3c8ba037",
+      "path": "js/app/src/pages/experiment/ExperimentCompareTable.tsx",
+      "blob_sha": "ed4bdad6222cfaf3ddf5ff3623d49111e83fe3db",
+      "url": "https://github.com/Arize-ai/phoenix/blob/464a60fd3c24aaed780cea3f2e0e437d3c8ba037/js/app/src/pages/experiment/ExperimentCompareTable.tsx",
+      "purpose": "多版输入输出、trace入口和重复选择",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "vibrantlabsai/ragas",
+      "commit": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "path": "src/ragas/dataset_schema.py",
+      "blob_sha": "b316028c253fb687c14b4e2ebe9095143a6a5733",
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/dataset_schema.py",
+      "purpose": "单轮/多轮输入与评价结果结构",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "vibrantlabsai/ragas",
+      "commit": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "path": "src/ragas/run_config.py",
+      "blob_sha": "124e78e781c9bc270c6531f0ea964b031f4de089",
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/run_config.py",
+      "purpose": "超时、重试与并发默认值",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "vibrantlabsai/ragas",
+      "commit": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "path": "src/ragas/metrics/_faithfulness.py",
+      "blob_sha": "32d474c815869f050a315966adc145dfa23adef2",
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/_faithfulness.py",
+      "purpose": "兼容实现的必要输入与主张核对",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    },
+    {
+      "repository": "vibrantlabsai/ragas",
+      "commit": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "path": "src/ragas/metrics/collections/faithfulness/metric.py",
+      "blob_sha": "6220f0616750aca43565e09a741916629c4d4f20",
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/collections/faithfulness/metric.py",
+      "purpose": "当前collection接口主张判分与空值处理",
+      "inspection_scope": "Relevant source sections inspected; not deployed or executed"
+    }
+  ],
+  "licenses": [
+    {
+      "repository": "promptfoo/promptfoo",
+      "commit": "6c06c8f14d1e6d4b7439634354da5b4d77fc26c7",
+      "blob_sha": "af3fa111d9303b3041d225fb851534e50a4bbec2",
+      "url": "https://github.com/promptfoo/promptfoo/blob/6c06c8f14d1e6d4b7439634354da5b4d77fc26c7/LICENSE"
+    },
+    {
+      "repository": "langfuse/langfuse",
+      "commit": "44993fc5156dafddf7ffcc145c57b7011fa05dab",
+      "blob_sha": "eaa2e5e444c8634f35b2a1137f7ea06e8353f475",
+      "url": "https://github.com/langfuse/langfuse/blob/44993fc5156dafddf7ffcc145c57b7011fa05dab/LICENSE"
+    },
+    {
+      "repository": "Arize-ai/phoenix",
+      "commit": "464a60fd3c24aaed780cea3f2e0e437d3c8ba037",
+      "blob_sha": "23d3aa7c871a4eb153186073e3d2b72d586f64be",
+      "url": "https://github.com/Arize-ai/phoenix/blob/464a60fd3c24aaed780cea3f2e0e437d3c8ba037/LICENSE"
+    },
+    {
+      "repository": "vibrantlabsai/ragas",
+      "commit": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "blob_sha": "8bcca742ae3458aa4e74d0133d51a248df16f23b",
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/LICENSE"
+    }
+  ]
+}

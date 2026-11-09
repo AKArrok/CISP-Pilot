@@ -4,6 +4,8 @@
 
 入口：[使用说明与数据字典](USER_GUIDE.md) · [实现过程与失败留存](IMPLEMENTATION.md) · [历史记录逐题对账](history-validation.json)。最终验收及远端状态见 VALIDATION.md 与 continuation.json（生成后有效）。
 
+后续：[GitHub实现对照与下一轮改进](../evaluation-platform-reference-20261109/README.md)。第一版定位为历史评测证据审阅台；完整实验执行、重复运行分析、分项评分及审阅队列仍需后续实现，调研记录不代表这些功能已完成。
+
 ## 目标
 
 先交付服务 CISP 开发者的 AI 质量测评中台：在本地浏览器中完成“查看冻结题集 → 导入已有评测批次 → 查看逐题证据 → 比较两个版本 → 记录复核结论 → 导出报告”。以现有真实失败案例验证可用性。数据中台及学生考试测评留作后续阶段。
