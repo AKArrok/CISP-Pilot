@@ -24,6 +24,7 @@ def evidence(tmp_path, monkeypatch):
         path = workspace / name
         path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root / name, path)
+        plan["runtime_sha256"][name] = hashlib.sha256(path.read_bytes()).hexdigest()
     (workspace / "data").mkdir()
     database = b"synthetic audit-only database bytes"
     (workspace / "data/cisp_qa.db").write_bytes(database)
