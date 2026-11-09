@@ -1,0 +1,96 @@
+{
+  "id": 42644809334,
+  "head_sha": "d5187302fe178e0b1d115fc9fdd5bea090c6671a",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334",
+  "updated_at": "2026-11-09T15:30:08Z",
+  "jobs": [
+    {
+      "id": 129255088683,
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install locked build tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install offline test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Offline regression",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic answer evaluation gate",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build Linux runtime image",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic Docker runtime smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve Docker failure evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install locked browser test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Chromium for smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic Linux browser smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve browser failure logs",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

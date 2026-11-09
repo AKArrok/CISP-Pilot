@@ -40,7 +40,7 @@
 - 页面已接入逐次选择、分项/trace、比较筛选及双列证据、离线任务、审阅队列。真实浏览器及扩大回归仍待执行。
 - 本轮首轮lint发现两个新增未用import并已移除；所有新增后端文件定向lint通过。没有改历史原始输入或判据。
 
-## 本地核心验收（远端CI待核实）
+## 工程验收结果
 
 - 第二轮组合回归50 passed，覆盖身份/就绪、V1兼容及V2接口，见backend-second.log。
 - 最终定向31 passed，见backend-final.log；新增双账号HTTP裁决、人工声明分歧保留、审计器版本变化拒绝恢复，以及schema2打包契约检查。
@@ -49,4 +49,4 @@
 - 最终适配器补充稳定dataset_key及同组之前的用户问题顺序；原schema1与原判保持不变。浏览器使用的既有schema2包仍合法，最新适配器产物另作逐题对账，源/输入摘要分别记录于source-snapshot.json，不混称同一批输入。
 - 最新公开历史复核见history-validation.json和verify-history.py：两批各40题原判、答案审阅哈希均一致，比较仍1修复/3退化/36总体状态未变。固定离线审计实际处理80项：第一批0检查失败，第二批1检查失败，均0执行错误/缺失；该审计范围不等于完整历史严格审计或语义复判，不改39/40与37/40原判。初步投影报告保留在本机data/evaluation/v2-history-first.json。
 - Git跟踪Python与新增源码lint通过，原始日志见tracked-lint.log；node语法检查通过。没有新增依赖。
-- 全量隔离回归1069 passed、4 skipped、1个既有依赖警告，见isolated-regression.log。推送后另核精确提交CI。使用与API见USER_GUIDE.md，完整验收边界见[VALIDATION.md](VALIDATION.md)。
+- 全量隔离回归1069 passed、4 skipped、1个既有依赖警告，见isolated-regression.log。代码d518730已推送，[精确提交CI42644809334](https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334)全部通过，包括lint、离线回归、镜像、容器与Linux浏览器门禁。使用与API见USER_GUIDE.md，完整验收边界见[VALIDATION.md](VALIDATION.md)。

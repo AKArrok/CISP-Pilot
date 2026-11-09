@@ -2,13 +2,16 @@
 
 ## 范围与结果
 
-逐次/分项数据、双列证据比较、实际离线审计任务和审阅队列均已实现。本轮没有在线模型调用、默认业务库迁移或部署。GitHub精确提交验证将在推送后追加。
+逐次/分项数据、双列证据比较、实际离线审计任务和审阅队列均已实现。本轮没有在线模型调用、默认业务库迁移或部署。
+
+代码提交`d5187302fe178e0b1d115fc9fdd5bea090c6671a`已推送至`codex/nist-evaluation-20261030`。[精确提交CI42644809334](https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334)于2026-11-09 15:30:08 UTC确认success，包含lint、离线回归、合成答案门禁、Linux镜像构建、容器及Linux浏览器冒烟；V2完整界面19项流程由本机浏览器覆盖。远端摘要见[code-ci.json](code-ci.json)。文档收尾提交的CI在最终交付消息另行核实，避免以代码提交绿灯代替最新提交状态。
 
 | 验证 | 实际结果 | 证据 |
 | --- | --- | --- |
 | 全量本机隔离回归 | 1069 passed / 4 skipped / 1依赖弃用警告，803.89秒 | [原始日志](isolated-regression.log) |
 | 组合后端回归 | 50 passed / 1既有警告 | [日志](backend-second.log) |
 | 核心后端最终回归 | 31 passed / 1既有警告 | [日志](backend-final.log) |
+| 最终适配器修改后复测 | 31 passed / 1既有警告，19.80秒 | [日志](backend-release.log) |
 | 浏览器功能及重启 | 19项功能检查、重启持久化通过，无页面异常 | [摘要](browser-summary.json)、[日志](browser-final.log) |
 | 任务取消恢复 | 800项原创合成数据，保存5项后取消，恢复800/800，前5项时间戳不变 | 同上 |
 | 公开历史对账 | 两批各40题，原判39/40和37/40，比较1修复/3退化/36未变 | [逐批摘要](history-validation.json)、[复核脚本](verify-history.py) |

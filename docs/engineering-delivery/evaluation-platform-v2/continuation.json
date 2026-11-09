@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "status": "four_features_local_verified_remote_ci_pending",
+  "status": "four_features_implemented_and_verified_code_pushed",
   "baseline_commit": "8bef41dad8a533bfeb786acb254f1e8da2e903af",
   "objective": "完成逐次/分项模型、并排证据、离线任务、审阅队列并推送和更新文档",
   "roadmap": "EVALUATION_LOOP.md",
@@ -47,11 +47,22 @@
     "primary_used_percent": 55,
     "stop_remaining_percent": 10
   },
-  "next": "Commit task files, push and verify exact commit CI; append remote delivery evidence",
+  "next": "Four requested features complete. Verify final documentation commit CI and report. Online execution and independent human calibration remain outside this delivery.",
   "full_regression": {
     "passed": 1069,
     "skipped": 4,
     "warnings": 1,
     "seconds": 803.89
+  },
+  "code_commit": "d5187302fe178e0b1d115fc9fdd5bea090c6671a",
+  "code_ci": {
+    "id": 42644809334,
+    "conclusion": "success",
+    "url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334"
+  },
+  "backend_release": {
+    "passed": 31,
+    "warnings": 1,
+    "seconds": 19.8
   }
 }
