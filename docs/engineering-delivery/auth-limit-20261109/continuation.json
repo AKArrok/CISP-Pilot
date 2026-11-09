@@ -355,12 +355,30 @@
   "actual_model_calls": 0,
   "code_change": "Load experiment adds IP31 no-password-work boundary; production auth/security constants unchanged",
   "quality_remaining": "Groupingv3 source38/40 strict38/40 joint37/40, review calibration3/8; not promoted",
-  "next": "Verify this exact pushed commit CI, then extend username-limit isolated negative and current-session health under admission queue. Keep answer quality plan and original failures in previous continuation.",
+  "next": "Verify newest commit CI; complete authentication functional regressions alongside real Locust evidence, then return to recorded answer-quality failures without losing original40 and calibration3/8.",
   "quota_observed": {
     "primary_used_percent": 9,
     "secondary_used_percent": 2,
     "ordinary_usage_allowed": true,
     "reset_tool_called_by_agent": false
   },
-  "last_verified_prior_code_commit": "35dcefd9ed2f029883e0e855207184845153dae4"
+  "last_verified_prior_code_commit": "35dcefd9ed2f029883e0e855207184845153dae4",
+  "local_commit": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0",
+  "delivery": {
+    "status": "pushed_via_windows_schannel",
+    "commit": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0",
+    "CI": {
+      "run_id": 42571371545,
+      "status": "in_progress",
+      "head": "1cd2d18581f4c43999a440fc15b7a4fb53cea7a0"
+    },
+    "TLS_verification_disabled": false,
+    "global_config_changed": false
+  },
+  "limiter_regression": {
+    "tests": 2,
+    "passed": 2,
+    "log": "limiter-tests.log",
+    "scope": "HTTP actual counters, password service admission stub; separate from actual scrypt Locust"
+  }
 }
