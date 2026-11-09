@@ -1,0 +1,56 @@
+{
+  "status": "frozen_before_run",
+  "base_head": "63559f976915b1e551fa9a849626491242815fac",
+  "scope": "Current auth replay plus IP attempt31 rejection before scrypt; synthetic isolated SQLite, real TCP/Locust, no model calls",
+  "tool": "existing Locust2.47.0 environment, psutil7.2.2 sampler",
+  "stages_users": [
+    1,
+    4,
+    8
+  ],
+  "login_cycles_per_user": 2,
+  "stage_seconds": 12,
+  "spawn_rate": 100,
+  "expected_login_attempts": 31,
+  "rate_limit": "Original IP30/300s and username10/300s, unchanged; no reset between stages",
+  "password_security": "Original scrypt N131072,r8,p1 and original BoundedSemaphore2 unchanged",
+  "metrics": [
+    "login HTTP/session correctness",
+    "scrypt admission wait vs compute walltime",
+    "exact child PID CPU and RSS samples",
+    "health responses during each load stage"
+  ],
+  "gates": [
+    "26 login/me/logout/revoked-cookie cycles",
+    "4 invalid credential401",
+    "attempt31 returns429 with no new scrypt trace",
+    "all health checks200",
+    "original scrypt parameters and concurrency2",
+    "defaultDB unchanged",
+    "owned children terminated"
+  ],
+  "limitations": "Small short diagnostic samples, no production p95/p99/SLA or multi-instance claim; profiler instrumentation can affect timings; credentials and syntheticDB private local",
+  "default_db_before": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "model_calls": 0,
+  "frozen_sha256": {
+    "driver.py": "f44cd6b0d0621da478e385b44bd20233584630046fd365b07458bff272b2a479",
+    "server-fixture.py": "1018ed1f629e7384a81c85af0c53015dc5810dfe5936129aa738fd8cadee5af0",
+    "locustfile.py": "ed8dce81db8fe0ab91d3b6ebab776a84ef24dd329fe0f72ee851e0259ad99ae1",
+    "application-server.py": "2f60dbe9701fe2ca7c60ac63efca2e3134aec92fa109ab4cdb2c7ea35949a2d6"
+  },
+  "runtime_sha256": {
+    "storage/auth.py": "bf6ad042e510a72e366cd8ccf92a66c9db097670362ea1669535cbf99f63e067",
+    "storage/http_auth.py": "cb8820cf78cb5cee7cc099ed742c78720904740b86ceb19080f6843376a0c766",
+    "storage/cache.py": "256323062766e303477576f92296e6bdf4e0942f6d65f5c1a25b5e12495e24b3",
+    "server.py": "2f60dbe9701fe2ca7c60ac63efca2e3134aec92fa109ab4cdb2c7ea35949a2d6"
+  },
+  "previous_failure": "No new failed run yet; old results preserved, current replay not assumed passed",
+  "negative_cases": [
+    "4 invalid credentials401",
+    "attempt31 IP limit429 without password derivation"
+  ],
+  "candidate": "No production auth change: validate original cost/limits and complete load harness coverage",
+  "prior_baseline": "auth-profile-20261106-r4: first cold known-invalid3.2131078s, subsequent unknown1.2620894s,26 successful cycles and oldcookie401; no logs changed",
+  "expected_probe_order": "cache-probe.finished < http-ready.time < first-invalid.started; no cold cache probe in any user request",
+  "metric_source": "Final native JSON authoritative for completed requests; CSV remains periodic snapshot, not overwritten"
+}
