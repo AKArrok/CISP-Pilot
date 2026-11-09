@@ -41,4 +41,22 @@
 
 ## 待最终核实
 
-扩大离线回归、最终浏览器复测、原始记录逐题对账、默认库后置哈希、精确提交远端与 CI。最终结论以本目录 VALIDATION.md 和 continuation.json 为准。
+最终结论以本目录 VALIDATION.md 和 continuation.json 为准。
+
+## 扩大回归与首次远端失败
+
+- 完整本机隔离回归：1056 passed、3 skipped、2 warnings，817.22秒。跳过和原始输出保留于 isolated-regression.log；该次运行包含工作区原有修改，不能代替干净提交 CI。
+- 两个警告分别是既有 Starlette/anyio 弃用，以及既有 holdout 工作流的 Windows 子进程 stdout 解码。后者以 PYTHONUTF8=1、将 PytestUnhandledThreadExceptionWarning 视为错误重跑原测试，1 passed、无警告，见 encoding-recheck.log。未改动旧测试或产品编码逻辑。
+- 实现提交 de5f21dacb6b4b10a2c62272ba09f10fa24e2616 已推；[CI 42576340660](https://github.com/AKArrok/CISP-Pilot/actions/runs/42576340660) 失败，3 failed、588 passed、13 skipped。三个失败位于旧认证审计合成夹具。原始失败日志保留本机 data/evaluation/implementation-ci-failed.log。
+- 干净 git archive 快照复现同样3失败，见 ci-clean-repro.log。定位：夹具复制当前运行代码，却沿用历史计划中的源码字节哈希；新路由改变 server.py，跨平台换行也令 auth/cache 字节不同。失败项为 runtime_code_unchanged。
+- 最小修复只在夹具复制循环中，把临时计划中的对应哈希绑定到刚复制的文件；不改审计器、历史 plan、原实验判据或冻结证据。干净快照复测3 passed，见 ci-clean-fixed.log；额外篡改临时 server.py 后审计仍失败，见 ci-runtime-negative.log。
+- 工作区已有别人留下的同文件修改，未纳入提交。只用索引补丁暂存本轮这一行并核对差异；首轮上下文补丁因混合换行未应用、没有产生提交，改用LF补丁成功。修正提交 f73b7ce 已推，其精确 CI 42577191076 已 completed/success。
+- Git首次暂存的自动权限审查超时，未执行；按允许方式重试成功。普通沙箱远端读取另遇 Windows 凭证不可用，使用已有账户在授权环境读取后确认远端提交。未改变凭证或配置。
+
+## 代码验收完成
+
+远端 f73b7ceb2755a72c5fd104f126728a9a46b2a169 的干净CI为591 passed、13个预期资产跳过；同一运行的合成回答门禁、Linux运行镜像构建、Docker smoke与Linux浏览器smoke均成功。见 code-ci.json、code-ci-tests.log。第一次失败未隐藏，修正只改变合成测试夹具绑定，没有降低判据。
+
+本机新中台浏览器为15项工作流及1项重启验证；远端浏览器smoke是项目现有工程检查，两者分别报告。默认业务库最终SHA256与初始相同，零新增模型费用。最后阶段实际额度五小时63%已用，未触发10%剩余额度停止阈值。
+
+第一版范围完成：离线证据管理、比较、追加复核及脱敏报告可用；未运行新的付费语义实验，未迁移默认库、未部署。后续文档证据提交不更改应用代码，其精确远端/CI在最终交付回执单独核对。

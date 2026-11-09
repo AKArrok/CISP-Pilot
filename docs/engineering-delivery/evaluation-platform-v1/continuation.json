@@ -1,16 +1,23 @@
 {
   "date": "2026-11-09",
-  "status": "local_core_acceptance_passed_full_regression_and_ci_pending",
+  "status": "completed_v1_local_and_exact_code_ci_verified",
   "objective": "完成测评中台第一版并验证导入、证据、比较、复核、导出与离线检查",
   "roadmap": "EVALUATION_LOOP.md",
   "plan": "docs/engineering-delivery/evaluation-platform-v1/README.md",
   "validation": "docs/engineering-delivery/evaluation-platform-v1/VALIDATION.md",
   "user_guide": "docs/engineering-delivery/evaluation-platform-v1/USER_GUIDE.md",
-  "backend_tests": {"passed": 15, "warnings": 1},
+  "backend_tests": {
+    "passed": 15,
+    "warnings": 1
+  },
   "browser_workflow_checks": 15,
   "server_restart_verified": true,
   "historical_cases_per_run": 40,
-  "historical_comparison": {"fixed": 1, "regressed": 3, "unchanged": 36},
+  "historical_comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36
+  },
   "default_database_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "default_database_unchanged": true,
   "new_model_calls": 0,
@@ -19,7 +26,48 @@
   "independent_human_gold": false,
   "deployed": false,
   "temporary_browser_services_stopped": true,
-  "full_regression": "running via tests/run_isolated_suite.py; retain its log",
-  "next": "Complete isolated regression, push only task files, verify exact remote commit CI, append final evidence",
-  "quota_stop_remaining_percent": 10
+  "full_regression": {
+    "passed": 1056,
+    "skipped": 3,
+    "warnings": 2,
+    "seconds": 817.22,
+    "scope": "local workspace including pre-existing user changes"
+  },
+  "next": "V1 ready for user inspection using USER_GUIDE.md; new online evaluation/data platform work remains outside this delivery",
+  "quota_stop_remaining_percent": 10,
+  "implementation_commit": "de5f21dacb6b4b10a2c62272ba09f10fa24e2616",
+  "ci_fixture_fix_commit": "f73b7ceb2755a72c5fd104f126728a9a46b2a169",
+  "first_ci": {
+    "run_id": 42576340660,
+    "conclusion": "failure",
+    "failed": 3,
+    "passed": 588,
+    "skipped": 13
+  },
+  "code_ci": {
+    "conclusion": "success",
+    "created_at": "2026-11-09T07:06:31Z",
+    "head_sha": "f73b7ceb2755a72c5fd104f126728a9a46b2a169",
+    "html_url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42577191076",
+    "id": 42577191076,
+    "status": "completed",
+    "updated_at": "2026-11-09T07:10:52Z"
+  },
+  "code_ci_tests": {
+    "passed": 591,
+    "expected_asset_skips": 13,
+    "warnings": 2
+  },
+  "code_ci_followup_gates": [
+    "synthetic_answer_evaluation",
+    "linux_runtime_image",
+    "docker_runtime_smoke",
+    "linux_browser_smoke"
+  ],
+  "stop_reason": "First-version functional and code acceptance scope completed; documentation-only delivery CI verified separately in final receipt",
+  "quota_last_observed": {
+    "five_hour_used_percent": 63,
+    "weekly_used_percent": 10,
+    "stop_remaining_percent": 10
+  }
 }

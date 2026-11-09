@@ -1,0 +1,51 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+__________ test_valid_evidence_passes_and_preserves_existing_report ___________
+
+evidence = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/data/evaluation/ci-repro-de5f21d/pytest/test_valid_evidence_passes_and0/run')
+
+    def test_valid_evidence_passes_and_preserves_existing_report(evidence):
+        original = evidence / "audit.json"
+        original.write_text("historical report", encoding="utf-8")
+        result = auditor.audit(evidence, evidence / "new-audit.json")
+>       assert result["passed"] and all(result["checks"].values())
+E       assert (False)
+
+tests\test_auth_profile_audit.py:45: AssertionError
+____ test_server_error_cannot_be_recorded_as_pass[ERROR synthetic failure] ____
+
+evidence = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/data/evaluation/ci-repro-de5f21d/pytest/test_server_error_cannot_be_re0/run')
+marker = b'ERROR synthetic failure'
+
+    @pytest.mark.parametrize("marker", [b"ERROR synthetic failure", b"Traceback synthetic failure"])
+    def test_server_error_cannot_be_recorded_as_pass(evidence, marker):
+        (evidence / "server.log").write_bytes(marker)
+        result = auditor.audit(evidence)
+        assert not result["passed"]
+        assert not result["checks"]["server_no_error_markers"]
+>       assert all(value for key, value in result["checks"].items() if key != "server_no_error_markers")
+E       assert False
+E        +  where False = all(<generator object test_server_error_cannot_be_recorded_as_pass.<locals>.<genexpr> at 0x000002D520FF1000>)
+
+tests\test_auth_profile_audit.py:55: AssertionError
+__ test_server_error_cannot_be_recorded_as_pass[Traceback synthetic failure] __
+
+evidence = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/data/evaluation/ci-repro-de5f21d/pytest/test_server_error_cannot_be_re1/run')
+marker = b'Traceback synthetic failure'
+
+    @pytest.mark.parametrize("marker", [b"ERROR synthetic failure", b"Traceback synthetic failure"])
+    def test_server_error_cannot_be_recorded_as_pass(evidence, marker):
+        (evidence / "server.log").write_bytes(marker)
+        result = auditor.audit(evidence)
+        assert not result["passed"]
+        assert not result["checks"]["server_no_error_markers"]
+>       assert all(value for key, value in result["checks"].items() if key != "server_no_error_markers")
+E       assert False
+E        +  where False = all(<generator object test_server_error_cannot_be_recorded_as_pass.<locals>.<genexpr> at 0x000002D520FF17E0>)
+
+tests\test_auth_profile_audit.py:55: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_auth_profile_audit.py::test_valid_evidence_passes_and_preserves_existing_report
+FAILED tests/test_auth_profile_audit.py::test_server_error_cannot_be_recorded_as_pass[ERROR synthetic failure]
+FAILED tests/test_auth_profile_audit.py::test_server_error_cannot_be_recorded_as_pass[Traceback synthetic failure]
+3 failed in 0.42s

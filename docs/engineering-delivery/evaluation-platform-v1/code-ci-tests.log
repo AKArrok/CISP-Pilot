@@ -1,0 +1,2 @@
+test	Offline regression	2026-11-09T07:08:43.6099426Z 591 passed, 13 skipped, 2 warnings in 79.83s (0:01:19)
+test	Offline regression	2026-11-09T07:08:43.6099838Z CI skip audit passed: 13 expected asset-only skips

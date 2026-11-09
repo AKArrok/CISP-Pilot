@@ -1,10 +1,12 @@
 # 第一版验收
 
-2026-11-09。核心功能本地验收通过；扩大隔离回归与精确提交 CI 仍在执行，最终状态以 continuation.json 及后续追加为准。
+2026-11-09。第一版功能、本地验收与精确代码提交CI均已完成。实现及修正代码为 de5f21d、f73b7ce；[代码CI 42577191076](https://github.com/AKArrok/CISP-Pilot/actions/runs/42577191076) 已 completed/success。后续仅追加本目录交付证据；文档提交的远端状态在最终交付回执核对，不继承代码提交绿灯。
 
 | 检查 | 实际结果 | 证据 |
 |---|---|---|
 | 最终定向后端 | 15 passed，1 个既有弃用警告 | backend-tests-final.log |
+| 完整本机隔离回归 | 1056 passed、3 skipped、2 warnings；含用户既有工作区修改 | isolated-regression.log |
+| Windows编码警告复查 | 显式UTF-8、线程警告作错误，原测试1 passed | encoding-recheck.log |
 | 最终浏览器工作流 | 15 项浏览器检查 + 1 项服务重启检查，通过，无 pageerror | browser-summary.json、browser-final.log |
 | 原始记录对账 | 两批各40题，逐题原判均一致 | history-validation.json |
 | 版本比较 | 修复1、退化3、未变36；另用原审计/语义记录重算一致 | history-validation.json |
@@ -12,6 +14,10 @@
 | 源码 lint | Git 跟踪的 Python + 本轮新增文件通过 | tracked-lint.log |
 | 前端语法 | node --check static/evaluation.js 及 tests/evaluation_browser.cjs 通过 | 本轮命令回执 |
 | 本轮 provider 请求与费用 | 0 次、0 美元新增 | 路由和离线检查无模型调用；浏览器验证记录 |
+| 首次远端CI | de5f21d：3 failed、588 passed、13 skipped；旧夹具源码哈希绑定失配 | Actions 42576340660、IMPLEMENTATION.md |
+| CI最小修复复现 | 干净快照原3失败→3通过；篡改负例仍失败 | ci-clean-repro.log、ci-clean-fixed.log、ci-runtime-negative.log |
+| 精确代码提交CI | f73b7ceb2755a72c5fd104f126728a9a46b2a169，completed/success；591 passed、13个预期资产跳过、2个依赖弃用警告 | code-ci.json、code-ci-tests.log |
+| 同一CI后续门禁 | 合成回答门禁、Linux镜像构建、Docker运行检查、Linux浏览器smoke全部成功 | Actions 42577191076 |
 
 历史开发判定：v2 AI 语义39/40且联合工程审计39/40；v3 AI语义38/40、联合37/40。第一版验证的是导入、呈现与比较的正确性，不是新一轮答案质量提升，也未晋级默认回答。
 
