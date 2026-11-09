@@ -1,0 +1,40 @@
+知识点候选: 580，建议首批审校: 316，题目标签: 813
+审校结果: active=305，rejected=11，candidate=264
+归因状态: confirmed=12，probable=323，unverified=1025
+数据库知识点: 580
+数据库题目标签: 813
+数据库题目归因: 1360
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+........................................................................ [  6%]
+........................................................................ [ 13%]
+........................................................................ [ 20%]
+........................................................................ [ 26%]
+........................................................................ [ 33%]
+........................................................................ [ 40%]
+.....................ss................................................. [ 46%]
+..............................................s......................... [ 53%]
+........................................................................ [ 60%]
+........................................................................ [ 67%]
+........................................................................ [ 73%]
+........................................................................ [ 80%]
+........................................................................ [ 87%]
+..........................................................s............. [ 93%]
+.................................................................        [100%]
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1069 passed, 4 skipped, 1 warning in 803.89s (0:13:23)

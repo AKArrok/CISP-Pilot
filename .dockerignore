@@ -32,10 +32,13 @@
 !static/evaluation.html
 !static/evaluation.css
 !static/evaluation.js
+!static/evaluation-v2.js
 !scripts/
 !scripts/audit_db_readiness.py
 !scripts/build_taxonomy.py
 !scripts/import_to_db.py
 !scripts/prepare_demo.py
+!scripts/audit_flash_answers.py
+!scripts/migrate_evaluation.py
 **/__pycache__/
 **/*.pyc

@@ -1,0 +1,31 @@
+{
+  "scope": "Local working-tree bytes. Browser uses v2-final inputs; final adapter reconciliation uses v2-release inputs. Original imports/judgments preserved. Git may normalize non-frozen file line endings.",
+  "source_sha256": {
+    "storage/evaluation_store.py": "61af9d98eb5fcd139f848d539082a623cc65d2e52a5e1052147a36c368502979",
+    "storage/evaluation_workspace.py": "fa65c83763b6596eed489206dc2b8be250d4a5c1ee97a9a77309fb203b99edf0",
+    "storage/evaluation_jobs.py": "e3065d17e02a8d0d67613542115cdf310838433f3ec2e73586c95d4f5053aded",
+    "storage/evaluation_reviews.py": "24d0365adf07e7742ee251a1d32fc60fd929133d226581c18142843e11fd1596",
+    "storage/evaluation_http.py": "3d8b19f7014499c7aa6cec283b3a353f9085c2fbffaac990fa7f71c1b488d2cc",
+    "scripts/migrate_evaluation.py": "90ee49278cb679df23f252d03e09cfcf984cd8fc1f88a489e18aad9359875221",
+    "scripts/package_evaluation.py": "5d8c9e9328909d559de103c0edf7cb12b7605ee9616082e008ec879022ff67f0",
+    "scripts/serve_evaluation.py": "7684947f05895ccf53b01787af7237326ce35d7f4b717bbe528dd13ed2511856",
+    "server.py": "25e5f7079c3a54707fcdbb542791d6a1bee2c16339bd365f648d71124a64208b",
+    "static/evaluation.html": "3e9061be2c8b9bbc5d9caa2833ffcb91d1013d332f392bef16ffa220f9ecb430",
+    "static/evaluation.js": "077d8eba19c9f70102023e37630c1e53daf881e4f20c9c2e54679ff59e9628a1",
+    "static/evaluation-v2.js": "a723ee3f8fcfd6dfc4bc9698c750a5f218c4651949f4a81e1c6527bdd26351d9",
+    "static/evaluation.css": "8bad7f08f23d6152605b8e959a98fe620b4550813306c35ea4468e6df254bcaa",
+    "tests/test_evaluation_platform.py": "195337b36e55088f987d20f8682c704c86809379f69ddbdea65bd07c528cff29",
+    "tests/test_evaluation_workspace.py": "8ee3c3299e42b4978aca81d118a5d3b190eff881c94e027b6dc00b6485185b98",
+    "tests/evaluation_browser.cjs": "352bef3dfa3bedba8ddc064be1133516856671c730b6029759842b2629aa468e",
+    "tests/evaluation_workspace_browser.cjs": "dac57c4378aec39754a5d9cfcf5eed3063d06d3d3bec8b41383b6d2be2d5cf96",
+    "tests/run_evaluation_browser.py": "e50f8461227261039adba5a409a4d5d0daf09515f1308dfa5b7a6e31f6080fd0",
+    "Dockerfile": "fc98f12c84f3399e79b9f6f9b6f0930437ea8ef3847457d2a3f0b8c0ef7bff0a",
+    ".dockerignore": "6a447e3cdc85bcf60bd7c64a2ecc795d392a40d8c093e64e0086e389f9a6a4f5"
+  },
+  "input_sha256": {
+    "data/evaluation/v2-final-a.json": "748ee47d8581e3c96492a84995d1225e36eae3057a16b9d17a8bd726557b2d22",
+    "data/evaluation/v2-final-b.json": "84ad00b532710f2a6a0fba3610fa8d69b444c30df2904249d4a8299620caad97",
+    "data/evaluation/v2-release-a.json": "e4d547cb729bc46dbefaf743b94c13e365fd93dbb3508714b3d365ce392fede5",
+    "data/evaluation/v2-release-b.json": "0e51790a00797cd233dd87d79b54c68fc277f2295cb443860de2b96471fe5a02"
+  }
+}

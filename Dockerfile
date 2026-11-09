@@ -19,6 +19,7 @@ COPY data_ingest/ ./data_ingest/
 COPY alembic/ ./alembic/
 COPY static/ ./static/
 COPY scripts/audit_db_readiness.py scripts/build_taxonomy.py scripts/import_to_db.py scripts/prepare_demo.py ./scripts/
+COPY scripts/audit_flash_answers.py scripts/migrate_evaluation.py ./scripts/
 
 # Deployment supplies licensed assets and explicitly migrated storage at runtime.
 VOLUME ["/app/data"]

@@ -223,6 +223,10 @@ def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
                                                                                       "answer_sha256": result["answer_sha256"]}]}}.items():
         (run / name).write_text(json.dumps(value), encoding="utf-8")
     assert package(packet, run).results[0].semantic_passed is False
+    enriched = package(packet, run, 2)
+    assert enriched.schema_version == 2 and enriched.results[0].attempt_no == 1
+    assert enriched.dataset_key == "public-nist-http"
+    assert enriched.cases[0].contract["preceding_user_questions"] == []
     review_path = run / "semantic-review.json"
     review = json.loads(review_path.read_text())
     review["cases"][0]["answer_sha256"] = "0" * 64

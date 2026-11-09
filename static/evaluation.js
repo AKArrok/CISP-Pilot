@@ -35,7 +35,7 @@ function table(container, headings, rows) {
 function runButton(run) { const button = node('button',run.name,'row-button'); button.onclick = action(() => openRun(run.id)); return button; }
 function runRows(runs) { return runs.map(run => [runButton(run),run.planned,`${run.counts.failed} / ${run.planned}`,`${run.counts.unknown} / ${run.planned}`,time(run.created_at)]); }
 async function refresh() {
-  const payload = await api('evaluation/runs'); state.runs = payload.items;
+  const payload = await api('evaluation/runs'); state.runs = payload.items; state.user = payload.user;
   $('username').textContent = payload.user.username; $('session').hidden = false; $('login-panel').hidden = true; $('workspace').hidden = false;
   const totals = state.runs.reduce((sum, run) => ({planned:sum.planned+run.planned, failed:sum.failed+run.counts.failed, unknown:sum.unknown+run.counts.unknown}), {planned:0,failed:0,unknown:0});
   $('metrics').replaceChildren();
@@ -52,6 +52,7 @@ async function refresh() {
     if (state.runs.some(run=>run.id===previous)) $(id).value=previous;
   }
   if (state.runs.length > 1 && $('compare-left').value === $('compare-right').value) $('compare-left').selectedIndex = 1;
+  if (window.evaluationV2) await window.evaluationV2.refresh();
 }
 $('login').onsubmit = action(async event => { event.preventDefault(); const data = await api('auth/login',{method:'POST',body:JSON.stringify({username:$('login-name').value,password:$('login-password').value})}); state.csrf = data.csrf_token; $('login-password').value=''; await refresh(); message('已登录。请选择评测批次或导入历史记录。'); });
 $('logout').onclick = action(async () => { await api('auth/logout',{method:'POST'}); location.reload(); });
@@ -70,7 +71,7 @@ async function loadCases() {
   const runId=state.run.id, params=new URLSearchParams({status:$('status-filter').value,query:$('search').value,offset:state.offset,limit:20});
   const data=await api(`evaluation/runs/${runId}/cases?${params}`); if (state.run.id!==runId) return;
   state.total=data.total;
-  table($('case-list'),['题号','问题','原始判定'],data.items.map(item=>{const b=node('button',item.id,'row-button'); b.onclick=action(()=>openCase(item.id)); return [b,item.question,badge(item.status)];}));
+  table($('case-list'),['题号','问题','原始判定','通过次数 / 计划次数'],data.items.map(item=>{const b=node('button',item.id,'row-button'); b.onclick=action(()=>openCase(item.id)); return [b,item.question,badge(item.status),`${item.passed_attempts ?? (item.status==='passed'?1:0)} / ${item.attempts ?? 1}`];}));
   $('page-label').textContent=`${data.total ? state.offset+1 : 0}–${Math.min(state.offset+20,data.total)} / ${data.total}`; $('previous').disabled=state.offset===0; $('next').disabled=state.offset+20>=data.total;
 }
 $('status-filter').onchange=action(async()=>{state.offset=0; await loadCases();});
@@ -78,8 +79,8 @@ $('search-button').onclick=action(async()=>{state.offset=0; await loadCases();})
 $('search').onkeydown=event=>{if(event.key==='Enter') $('search-button').click();};
 $('previous').onclick=action(async()=>{state.offset=Math.max(0,state.offset-20);await loadCases();});
 $('next').onclick=action(async()=>{state.offset+=20;await loadCases();});
-async function openCase(id) {
-  const runId=state.run.id, data=await api(`evaluation/runs/${runId}/cases/${encodeURIComponent(id)}`); if(state.run.id!==runId) return;
+async function openCase(id, attempt=1) {
+  const runId=state.run.id, data=await api(`evaluation/runs/${runId}/cases/${encodeURIComponent(id)}?attempt=${attempt}`); if(state.run.id!==runId) return;
   state.case=data; state.reviewRequest=null; $('case-detail').hidden=false; $('case-title').textContent=`${id} · ${data.case.question}`; $('case-verdict').replaceChildren(badge(data.status));
   $('answer').textContent=data.result ? data.result.answer : '未记录实际回答。';
   $('original-review').textContent=data.result ? text({checks:data.result.checks,semantic_passed:data.result.semantic_passed,reviewer:data.result.semantic_reviewer || '未记录',reason:data.result.semantic_reason || '未记录',answer_sha256:data.result.answer_sha256,independent_human_gold:false}) : '缺少执行结果；不作通过判定。';
@@ -89,6 +90,7 @@ async function openCase(id) {
   $('review-list').replaceChildren();
   for(const review of data.reviews) $('review-list').append(node('div',`${review.payload.kind==='human'?'人工复核':'AI 辅助复核'} · ${review.payload.decision} · ${time(review.created_at)}\n账号 ${review.actor}\n${review.payload.reason}`,'review-entry'));
   $('review-form').hidden=!data.result; $('review-reason').value='';
+  if (window.evaluationV2) window.evaluationV2.inspect(data);
   $('case-detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('review-form').onsubmit=action(async event=>{

@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT))
 from storage.evaluation_store import Bundle  # noqa: E402
 
 
-def package(packet, run):
+def package(packet, run, schema_version=1, dataset_key="public-nist-http"):
     artifacts = {}
 
     def read(directory, name):
@@ -61,7 +61,32 @@ def package(packet, run):
                                               for case in cases],
             "results": results, "known_cost_usd": summary.get("known_cost_estimate_usd"),
             "cost_unknown": summary.get("cost_unknown", True)}
-    return Bundle.model_validate(data)
+    if schema_version == 1:
+        return Bundle.model_validate(data)
+    from storage.evaluation_workspace import parse_bundle
+
+    originals = {row["id"]: row for row in rows}
+    data.update(schema_version=2, dataset_key=dataset_key,
+                version_label=packet.name, repetitions=1)
+    conversations = {}
+    for case in data["cases"]:
+        group = case["contract"].get("thread_group", case["id"])
+        preceding = conversations.setdefault(group, [])
+        case["contract"] = case["contract"] | {"preceding_user_questions": list(preceding)}
+        preceding.append(case["question"])
+    for result in data["results"]:
+        original = originals[result["id"]]
+        trace = original.get("trace", {})
+        result.update(attempt_no=1, trace=trace, events=original["events"], request_id=trace.get("request_id"),
+                      latency_ms=original["elapsed_seconds"] * 1000 if original.get("elapsed_seconds") is not None else None)
+        details = trace.get("trace", {})
+        calls = details.get("model_calls", [])
+        if calls and details.get("dropped_model_calls") == 0 and all(call.get("response_observed") is True for call in calls) and all(
+                type(call.get("usage", {}).get(key)) is int and call["usage"][key] >= 0
+                for call in calls for key in ("prompt_tokens", "completion_tokens")):
+            for key in ("prompt_tokens", "completion_tokens"):
+                result[key] = sum(call["usage"][key] for call in calls)
+    return parse_bundle(data)
 
 
 def main():
@@ -69,10 +94,12 @@ def main():
     parser.add_argument("--packet", type=Path, required=True)
     parser.add_argument("--run", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--schema-version", type=int, choices=(1, 2), default=1)
+    parser.add_argument("--dataset-key", default="public-nist-http", help="Stable logical dataset identity for schema 2")
     parser.add_argument("--confirm-public", action="store_true", required=True,
                         help="Confirm the selected packet/run contain only approved public evidence")
     args = parser.parse_args()
-    bundle = package(args.packet, args.run)
+    bundle = package(args.packet, args.run, args.schema_version, args.dataset_key)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:
         stream.write(bundle.model_dump_json(indent=2))

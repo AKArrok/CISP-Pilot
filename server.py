@@ -59,7 +59,13 @@ def warmup() -> None:
 async def lifespan(_app: FastAPI):
     validate_origin_config()
     warmup()
-    yield
+    from storage.evaluation_jobs import start_worker, stop_worker
+
+    worker = start_worker()
+    try:
+        yield
+    finally:
+        stop_worker(worker)
 
 
 app = FastAPI(title="CISP 备考问答机器人", lifespan=lifespan,

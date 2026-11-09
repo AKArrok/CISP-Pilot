@@ -97,3 +97,4 @@ docs/engineering-delivery/auth-limit-20261109/*.py -text whitespace=cr-at-eol
 docs/engineering-delivery/auth-limit-20261109/*.json -text whitespace=cr-at-eol
 docs/engineering-delivery/auth-limit-20261109/*.csv -text -whitespace
 docs/engineering-delivery/evaluation-platform-v1/*.log -text -whitespace
+docs/engineering-delivery/evaluation-platform-v2/*.log -text -whitespace

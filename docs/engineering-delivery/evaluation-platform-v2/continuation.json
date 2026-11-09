@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-09",
+  "status": "four_features_local_verified_remote_ci_pending",
+  "baseline_commit": "8bef41dad8a533bfeb786acb254f1e8da2e903af",
+  "objective": "完成逐次/分项模型、并排证据、离线任务、审阅队列并推送和更新文档",
+  "roadmap": "EVALUATION_LOOP.md",
+  "guide": "docs/engineering-delivery/evaluation-platform-v2/USER_GUIDE.md",
+  "backend_final": {
+    "passed": 31,
+    "warnings": 1
+  },
+  "backend_combined": {
+    "passed": 50,
+    "warnings": 1
+  },
+  "browser_checks": 19,
+  "server_restart_verified": true,
+  "cancel_resume": {
+    "planned": 800,
+    "completed_before_cancel": 5,
+    "completed_after_resume": 800,
+    "previous_timestamps_unchanged": true,
+    "scope": "original synthetic engineering fixture"
+  },
+  "historical_comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36
+  },
+  "historical_offline_audits": {
+    "processed": 80,
+    "failed_checks_per_run": [
+      0,
+      1
+    ],
+    "execution_errors": 0,
+    "semantic_regraded": false
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "default_database_unchanged": true,
+  "new_model_calls": 0,
+  "new_cost_usd": 0,
+  "independent_human_gold": false,
+  "default_answer_promoted": false,
+  "deployed": false,
+  "quota_last_observed": {
+    "primary_used_percent": 55,
+    "stop_remaining_percent": 10
+  },
+  "next": "Commit task files, push and verify exact commit CI; append remote delivery evidence",
+  "full_regression": {
+    "passed": 1069,
+    "skipped": 4,
+    "warnings": 1,
+    "seconds": 803.89
+  }
+}

@@ -85,6 +85,13 @@ def main():
                     check = client.post(url + "/checks", headers=headers).json()
                     assert check["payload"]["status"] == "completed" and check["payload"]["model_calls"] == 0
                     assert check["created_at"] < runs[0]["created_at"]  # Existing check, preceding the XSS fixture import.
+                    browser_summary = json.loads((output / "browser-summary.json").read_text(encoding="utf-8"))
+                    if browser_summary.get("workspace"):
+                        workflow = browser_summary["workspace"]
+                        saved_job = client.get(f"/api/evaluation/jobs/{workflow['job_id']}").json()
+                        assert saved_job["status"] == "completed" and saved_job["processed"] == 800
+                        saved_queue = client.get("/api/evaluation/review-queue").json()["items"]
+                        assert next(item for item in saved_queue if item["id"] == workflow["queue_id"])["status"] == "needs_adjudication"
                 summary_path = output / "browser-summary.json"
                 summary = json.loads(summary_path.read_text(encoding="utf-8"))
                 summary["checks"].append("server restart preserves runs, reviews and original offline check")

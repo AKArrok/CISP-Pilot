@@ -109,7 +109,10 @@ def database():
     connection.row_factory = sqlite3.Row
     try:
         tables = {row[0] for row in connection.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-        if tables - {"eval_runs", "eval_reviews", "eval_checks"}:
+        allowed = {"eval_runs", "eval_reviews", "eval_checks", "eval_meta", "eval_datasets", "eval_versions",
+                   "eval_case_versions", "eval_experiments", "eval_attempts", "eval_scores", "eval_rubrics",
+                   "eval_jobs", "eval_job_results", "eval_review_queue", "eval_attempt_reviews"}
+        if tables - allowed:
             raise ValueError("Refusing to modify an unrelated SQLite database")
         connection.executescript("""
             CREATE TABLE IF NOT EXISTS eval_runs (
@@ -140,7 +143,14 @@ def import_bundle(bundle, actor):
     with database() as connection:
         cursor = connection.execute("INSERT OR IGNORE INTO eval_runs VALUES (?, ?, ?, ?, ?)",
                                     (identifier, dataset_id(payload), now(), actor, canonical(payload)))
-    return {"id": identifier, "created": cursor.rowcount == 1}
+        created = cursor.rowcount == 1
+        from storage import evaluation_workspace as workspace
+
+        if workspace.ready(connection):
+            workspace.project(connection, identifier, payload)
+        elif payload["schema_version"] == 2:
+            raise ValueError("Explicit evaluation schema upgrade required")
+    return {"id": identifier, "created": created}
 
 
 def get_run(identifier):
@@ -177,11 +187,19 @@ def summary(row):
 
 def list_runs():
     with database() as connection:
+        from storage import evaluation_workspace as workspace
+
+        if workspace.ready(connection):
+            return workspace.summaries(connection)
         rows = connection.execute("SELECT * FROM eval_runs ORDER BY created_at DESC, id").fetchall()
     return [summary({**dict(row), "payload": json.loads(row["payload"])}) for row in rows]
 
 
 def cases(identifier, status="all", query="", offset=0, limit=20):
+    from storage import evaluation_workspace as workspace
+
+    if workspace.ready():
+        return workspace.cases(identifier, status, query, offset, limit)
     bundle = get_run(identifier)["payload"]
     indexed = {row["id"]: row for row in bundle["results"]}
     rows = [{**case, "status": case_status(indexed.get(case["id"]))} for case in bundle["cases"]]
@@ -191,6 +209,10 @@ def cases(identifier, status="all", query="", offset=0, limit=20):
 
 
 def detail(identifier, case_id):
+    from storage import evaluation_workspace as workspace
+
+    if workspace.ready():
+        return workspace.detail(identifier, case_id)
     bundle = get_run(identifier)["payload"]
     case = next((case for case in bundle["cases"] if case["id"] == case_id), None)
     if case is None:
@@ -219,6 +241,10 @@ def add_review(identifier, case_id, review, actor):
 
 
 def compare(left_id, right_id):
+    from storage import evaluation_workspace as workspace
+
+    if workspace.ready():
+        return workspace.compare(left_id, right_id)
     left, right = get_run(left_id)["payload"], get_run(right_id)["payload"]
     a, b = ({case["id"]: case for case in bundle["cases"]} for bundle in (left, right))
     ar, br = ({row["id"]: row for row in bundle["results"]} for bundle in (left, right))
@@ -247,7 +273,9 @@ def compare(left_id, right_id):
 
 def offline_check(identifier, actor):
     row = get_run(identifier)
-    bundle = Bundle.model_validate(row["payload"])
+    from storage.evaluation_workspace import parse_bundle
+
+    bundle = parse_bundle(row["payload"])
     checks = {"bundle_hash": digest(bundle.model_dump()) == identifier,
               "dataset_hash": dataset_id(bundle.model_dump()) == row["dataset_id"],
               "all_results_recorded": len(bundle.results) == len(bundle.cases)}

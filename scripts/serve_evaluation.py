@@ -51,6 +51,10 @@ def main():
             raise ValueError("Existing demo account password does not match")
         public = {"id": user["id"], "username": user["username"]}
     os.environ["CISP_EVAL_USER_IDS"] = str(public["id"])
+    from storage.evaluation_workspace import migrate
+
+    migrate()  # Explicit demo bootstrap upgrades its isolated evaluation store only.
+    os.environ["CISP_EVAL_WORKER_ENABLED"] = "true"
     os.environ.pop("CISP_EVAL_DEMO_PASSWORD", None)
     print(json.dumps({"url": f"http://127.0.0.1:{args.port}/evaluation.html", "user": public,
                       "workspace": str(workspace), "model_calls": 0}), flush=True)
