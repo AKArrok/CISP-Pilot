@@ -25,7 +25,7 @@ function tab(name) { for (const section of document.querySelectorAll('.view')) s
 document.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => tab(button.dataset.tab));
 function table(container, headings, rows) {
   container.replaceChildren();
-  if (!rows.length) { container.append(node('p','暂无记录。可在“评测批次”导入冻结的评测包。','muted')); return; }
+  if (!rows.length) { container.append(node('p','暂无匹配记录。','muted')); return; }
   const wrap = node('div',undefined,'table-wrap'), t = node('table'), head = node('thead'), tr = node('tr');
   headings.forEach(label => tr.append(node('th',label))); head.append(tr); t.append(head);
   const body = node('tbody');
@@ -53,6 +53,7 @@ async function refresh() {
   }
   if (state.runs.length > 1 && $('compare-left').value === $('compare-right').value) $('compare-left').selectedIndex = 1;
   if (window.evaluationV2) await window.evaluationV2.refresh();
+  if (window.dataPlatform) await window.dataPlatform.refresh();
 }
 $('login').onsubmit = action(async event => { event.preventDefault(); const data = await api('auth/login',{method:'POST',body:JSON.stringify({username:$('login-name').value,password:$('login-password').value})}); state.csrf = data.csrf_token; $('login-password').value=''; await refresh(); message('已登录。请选择评测批次或导入历史记录。'); });
 $('logout').onclick = action(async () => { await api('auth/logout',{method:'POST'}); location.reload(); });
@@ -91,6 +92,7 @@ async function openCase(id, attempt=1) {
   for(const review of data.reviews) $('review-list').append(node('div',`${review.payload.kind==='human'?'人工复核':'AI 辅助复核'} · ${review.payload.decision} · ${time(review.created_at)}\n账号 ${review.actor}\n${review.payload.reason}`,'review-entry'));
   $('review-form').hidden=!data.result; $('review-reason').value='';
   if (window.evaluationV2) window.evaluationV2.inspect(data);
+  if (window.dataPlatform) window.dataPlatform.inspect(data);
   $('case-detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('review-form').onsubmit=action(async event=>{

@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checks": [
+    "real Cookie login",
+    "two real historical imports / 40 cases each",
+    "idempotent browser import",
+    "real historical failure and bound evidence",
+    "append-only AI-assisted review; original failure retained",
+    "pagination and empty search",
+    "offline check idempotency / zero model calls",
+    "real redacted JSON download",
+    "Markdown download",
+    "40-case version comparison",
+    "frozen dataset view",
+    "mobile layout without page overflow",
+    "persistent review after reload",
+    "V2 historical regression opens paired answers, source evidence, metrics and actual trace",
+    "V2 repeated attempt selection preserves failure, pass and missing evidence separately",
+    "V2 review queue binds attempt and rubric; AI review remains pending human adjudication",
+    "V2 real offline auditor cancellation and resume retain completed rows without duplicate execution",
+    "Data catalog imports frozen public corpus, paginates and searches without changing source files",
+    "Data lineage uses frozen corpus hash and exposes excerpt candidates with full chunk/source evidence",
+    "Data improvement ledger binds answer/rubric, appends retest outcome and retains three suite regressions",
+    "Data catalog renders hostile metadata as text, denies anonymous reads and preserves evaluation imports",
+    "Data catalog mobile layout has no page overflow",
+    "untrusted import rendered as text",
+    "anonymous API denied",
+    "server restart preserves runs, reviews and original offline check"
+  ],
+  "browserErrors": [],
+  "left": {
+    "passed": 39,
+    "failed": 1,
+    "unknown": 0
+  },
+  "right": {
+    "passed": 37,
+    "failed": 3,
+    "unknown": 0
+  },
+  "comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36,
+    "incomparable": 0,
+    "insufficient_evidence": 0,
+    "added": 0,
+    "removed": 0
+  },
+  "workspace": {
+    "repeated_run_id": "8bbf33dc6d1d8827d408fee21076bb341807dee80ab769a5fae0b3bd4fad8b64",
+    "queue_id": "14dfc064f61d446fbc7bfe42ad20223e",
+    "job_id": "c89a934b41434b2b9a17b265a39438ad",
+    "processed": 800,
+    "processed_before_cancel": 12,
+    "model_calls": 0
+  },
+  "catalog": {
+    "snapshot_id": "096fbfb789775ca875054e58462ef848e5aa9b1c5dfea5571a52706bd0dc25fb",
+    "item_id": "ceae9cee7b166b25badd29fb5efc92df5e73c34bf2182978a4f5c5005f7ba6ab",
+    "version_binding": "hash_bound",
+    "knowledge_chunks": 101,
+    "retained_suite_regressions": 3
+  },
+  "model_calls": 0,
+  "restart_verified": true
+}

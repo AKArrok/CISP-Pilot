@@ -210,7 +210,8 @@ def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
     packet.mkdir()
     run.mkdir()
     data = sample()
-    files = {"cases.json": [{"id": "q1", "question": "Synthetic question?", "role": "synthetic"}]}
+    files = {"cases.json": [{"id": "q1", "question": "Synthetic question?", "role": "synthetic"}],
+             "chunks.json": [{"id": "c1", "source": "synthetic", "text": "Synthetic source"}]}
     for name, value in files.items():
         (packet / name).write_text(json.dumps(value), encoding="utf-8")
     frozen = {name: hashlib.sha256((packet / name).read_bytes()).hexdigest() for name in files}
@@ -226,6 +227,8 @@ def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
     enriched = package(packet, run, 2)
     assert enriched.schema_version == 2 and enriched.results[0].attempt_no == 1
     assert enriched.dataset_key == "public-nist-http"
+    assert enriched.artifacts["knowledge:public-nist-http"] == frozen["chunks.json"]
+    assert "knowledge:public-nist-http" not in package(packet, run).artifacts
     assert enriched.cases[0].contract["preceding_user_questions"] == []
     review_path = run / "semantic-review.json"
     review = json.loads(review_path.read_text())

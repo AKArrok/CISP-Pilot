@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--knowledge", type=Path, help="Optional explicit catalog snapshot for data-platform acceptance")
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -32,6 +33,8 @@ def main():
     origin = f"http://127.0.0.1:{port}"
     env = {**os.environ, "CISP_EVAL_DEMO_PASSWORD": secrets.token_urlsafe(24),
            "CISP_EVAL_TEST_ORIGIN": origin, "CISP_EVAL_TEST_OUTPUT": str(output), "PYTHONUTF8": "1"}
+    if args.knowledge:
+        env["CISP_DATA_TEST_SNAPSHOT"] = str(args.knowledge.resolve())
     with tempfile.TemporaryDirectory(prefix="cisp-evaluation-browser-") as temp:
         command = [sys.executable, "scripts/serve_evaluation.py", "--workspace", str(Path(temp) / "demo"), "--port", str(port)]
         with (output / "server.log").open("w", encoding="utf-8") as log:
@@ -71,7 +74,8 @@ def main():
                                 str(args.candidate.resolve())], cwd=ROOT, env=env, check=True)
                 stop()
                 process = start()
-                with httpx.Client(base_url=origin) as client:
+                # Full local regression can concurrently saturate scrypt; no provider retry or auth policy change.
+                with httpx.Client(base_url=origin, timeout=30) as client:
                     login = client.post("/api/auth/login", headers={"Origin": origin},
                                         json={"username": "eval-reviewer", "password": env["CISP_EVAL_DEMO_PASSWORD"]})
                     login.raise_for_status()
@@ -92,6 +96,11 @@ def main():
                         assert saved_job["status"] == "completed" and saved_job["processed"] == 800
                         saved_queue = client.get("/api/evaluation/review-queue").json()["items"]
                         assert next(item for item in saved_queue if item["id"] == workflow["queue_id"])["status"] == "needs_adjudication"
+                    if browser_summary.get("catalog"):
+                        catalog = browser_summary["catalog"]
+                        saved_item = client.get(f"/api/data/improvements/{catalog['item_id']}").json()
+                        assert saved_item["revision"] == 1 and saved_item["events"][0]["payload"]["result"]["suite_counts"]["regressed"] == 3
+                        assert client.get(f"/api/data/snapshots/{catalog['snapshot_id']}").json()["quality"]["chunks"] == 101
                 summary_path = output / "browser-summary.json"
                 summary = json.loads(summary_path.read_text(encoding="utf-8"))
                 summary["checks"].append("server restart preserves runs, reviews and original offline check")

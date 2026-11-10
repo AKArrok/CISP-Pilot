@@ -1,0 +1,67 @@
+{"passed":true,"checks":24,"left":{"passed":39,"failed":1,"unknown":0},"right":{"passed":37,"failed":3,"unknown":0},"comparison":{"fixed":1,"regressed":3,"unchanged":36,"incomparable":0,"insufficient_evidence":0,"added":0,"removed":0}}
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\http11.py", line 136, in handle_request
+    raise exc
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_backends\sync.py", line 126, in read
+    with map_exceptions(exc_map):
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\tests\run_evaluation_browser.py", line 117, in <module>
+    main()
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\tests\run_evaluation_browser.py", line 78, in main
+    login = client.post("/api/auth/login", headers={"Origin": origin},
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 1144, in post
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: timed out

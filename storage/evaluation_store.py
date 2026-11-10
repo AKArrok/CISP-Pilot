@@ -111,7 +111,8 @@ def database():
         tables = {row[0] for row in connection.execute("SELECT name FROM sqlite_master WHERE type='table'")}
         allowed = {"eval_runs", "eval_reviews", "eval_checks", "eval_meta", "eval_datasets", "eval_versions",
                    "eval_case_versions", "eval_experiments", "eval_attempts", "eval_scores", "eval_rubrics",
-                   "eval_jobs", "eval_job_results", "eval_review_queue", "eval_attempt_reviews"}
+                   "eval_jobs", "eval_job_results", "eval_review_queue", "eval_attempt_reviews",
+                   "catalog_meta", "catalog_snapshots", "catalog_chunks", "catalog_improvements", "catalog_events"}
         if tables - allowed:
             raise ValueError("Refusing to modify an unrelated SQLite database")
         connection.executescript("""

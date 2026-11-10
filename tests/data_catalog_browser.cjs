@@ -1,0 +1,47 @@
+/* Real UI over frozen public knowledge and recorded answers, plus explicit synthetic negative input. */
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+
+module.exports=async function({page,context,origin,output,options,checks,left,right}){
+ const filename=process.env.CISP_DATA_TEST_SNAPSHOT,knowledge=JSON.parse(fs.readFileSync(filename,'utf8'));
+ await page.locator('[data-tab="data-platform"]').click();
+ await page.locator('#data-import').setInputFiles(filename);await page.waitForFunction(()=>document.querySelector('#data-summary').textContent.includes('101个切片'));
+ const snapshot=await page.locator('#data-snapshot').inputValue();
+ assert.equal((await (await context.request.get(origin+`/api/data/snapshots/${snapshot}`)).json()).artifacts.chunks,knowledge.artifacts.chunks);
+ await page.locator('#data-next').click();await page.waitForFunction(()=>document.querySelector('#data-page').textContent.startsWith('21'));
+ await page.locator('#data-query').fill('impossible-catalog-search');await page.locator('#data-search').click();await page.waitForFunction(()=>document.querySelector('#data-page').textContent==='0–0 / 0');
+ await page.locator('#data-query').fill('');await page.locator('#data-search').click();await page.waitForFunction(()=>document.querySelector('#data-page').textContent.includes('/ 101'));
+ checks.push('Data catalog imports frozen public corpus, paginates and searches without changing source files');
+ await page.locator('#data-run').selectOption(left.id);await page.locator('#data-analyze').click();await page.locator('#data-failures button').filter({hasText:'scenario-03'}).click();
+ await page.locator('#data-lineage').waitFor({state:'visible'});await page.waitForFunction(()=>document.querySelector('#data-lineage-binding').textContent.includes('绑定相同'));
+ assert.ok((await page.locator('#data-lineage-matches').innerText()).includes('候选'));
+ await page.locator('#data-lineage-matches button').first().click();await page.waitForFunction(()=>document.querySelector('#data-chunk-evidence').textContent.includes('artifacts'));
+ const lineage=(await (await context.request.get(origin+'/api/data/lineage?'+new URLSearchParams({snapshot,run:left.id,case:'scenario-03',attempt:1}))).json());
+ assert.equal(lineage.version_binding,'hash_bound');assert.ok(lineage.matches.some(m=>m.candidate_count));
+ checks.push('Data lineage uses frozen corpus hash and exposes excerpt candidates with full chunk/source evidence');
+ await page.screenshot({path:path.join(output,'data-lineage.png'),fullPage:false});
+ await page.locator('#data-category').selectOption('generation');
+ await page.locator('#data-evidence').fill('公开历史记录中的scenario-03语义失败仍保留；检索片段与知识快照可追溯。');
+ await page.locator('#data-hypothesis').fill('检查回答是否保留原文条件；这是待验证假设，不认定根因已确认。');
+ await page.locator('#data-acceptance').fill('同题契约和原评分标准复测，并检查整批新增退化。');
+ await page.locator('#data-improvement-form button').click();await page.locator('#data-item-detail').waitFor({state:'visible'});
+ await page.locator('#data-event-action').selectOption('retest');await page.locator('#data-candidate').selectOption(right.id);await page.locator('#data-event-note').fill('关联已有公开历史候选，读取原判变化，不产生新模型调用。');
+ await page.locator('#data-event-form button').click();await page.waitForFunction(()=>document.querySelector('#data-item-events').textContent.includes('suite_counts'));
+ const ledger=(await (await context.request.get(origin+'/api/data/improvements')).json()).items;const item=ledger.find(i=>i.run_id===left.id&&i.case_id==='scenario-03');
+ assert.equal(item.revision,1);assert.equal(item.events[0].payload.result.suite_counts.regressed,3);assert.equal(item.events[0].payload.result.independent_human_gold,false);
+ checks.push('Data improvement ledger binds answer/rubric, appends retest outcome and retains three suite regressions');
+ await page.screenshot({path:path.join(output,'data-improvement.png'),fullPage:false});
+ const original=(await (await context.request.get(origin+`/api/evaluation/runs/${left.id}/cases/scenario-03`)).json());assert.equal(original.status,'failed');
+ const prior=(await (await context.request.get(origin+'/api/evaluation/runs')).json()).items.length;
+ const unsafe={...knowledge,label:'<img src=x onerror="window.catalogXss=true">',namespace:'synthetic-text-render-test',visibility:'synthetic'};
+ const imported=await context.request.post(origin+'/api/data/imports',{...options,data:unsafe});assert.equal(imported.status(),200);await page.reload();await page.waitForLoadState('networkidle');await page.locator('[data-tab="data-platform"]').click();
+ assert.equal(await page.evaluate(()=>!!window.catalogXss),false);assert.equal((await (await context.request.get(origin+'/api/evaluation/runs')).json()).items.length,prior);
+ const anonymous=await context.browser().newContext();assert.equal((await anonymous.request.get(origin+'/api/data/snapshots')).status(),401);await anonymous.close();
+ checks.push('Data catalog renders hostile metadata as text, denies anonymous reads and preserves evaluation imports');
+ await page.locator('#data-snapshot').selectOption(snapshot);await page.waitForFunction(()=>document.querySelector('#data-summary').textContent.includes('public-nist-http'));
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.screenshot({path:path.join(output,'data-mobile.png'),fullPage:true});await page.setViewportSize({width:1440,height:1000});
+ checks.push('Data catalog mobile layout has no page overflow');
+ return {snapshot_id:snapshot,item_id:item.id,version_binding:lineage.version_binding,knowledge_chunks:knowledge.chunks.length,retained_suite_regressions:3};
+};

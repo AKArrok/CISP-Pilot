@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月10日数据中台第一版（实施中）**：用户授权参考成熟案例并结合CISP落地，计划及固定源码参考见[实施记录](docs/engineering-delivery/data-platform-v1/README.md)。本轮连接知识资产快照、来源/切片血缘、失败分项与改进复测；默认库与索引只读、零模型调用。历史版本不明与片段候选不得冒称完整血缘，旧语义失败不覆盖。
+
 - **11月9日测评中台四项升级（代码与工程验收完成）**：逐次/分项数据模型、并排比较与trace、实际离线审计任务取消恢复、审阅认领与分歧裁决均已实现，见 [实施记录](docs/engineering-delivery/evaluation-platform-v2/README.md)、[验证报告](docs/engineering-delivery/evaluation-platform-v2/VALIDATION.md)和[使用说明](docs/engineering-delivery/evaluation-platform-v2/USER_GUIDE.md)。本机1069通过/4跳过，定向31通过，浏览器19项+重启通过；800项任务保存5项后取消、恢复到800且前5项不重跑。代码d518730的[CI42644809334](https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334)成功，包含离线回归、镜像、容器及Linux浏览器门禁。两批历史原判39/40与37/40、1修复/3退化/36未变；新离线审计80项有1项引用检查失败，独立保留。默认业务库哈希不变、零新模型调用，无部署、无独立人工金标、不晋级默认回答。文档收尾提交CI另核。
 
 - **11月9日测评中台GitHub对照（调研完成，改进未实施）**：核读promptfoo、Langfuse、Phoenix、Ragas的相关执行器、数据模型、比较界面及审阅代码，固定提交/文件证据见 [调研记录](docs/engineering-delivery/evaluation-platform-reference-20261109/README.md)。下一轮优先补逐题逐次结果和分项评分、并排比较/trace、离线执行闭环、审阅队列；当前V1仍是历史证据审阅台，不以此前工程测试通过代替完整平台能力。

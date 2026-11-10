@@ -17,6 +17,7 @@ async function main() {
   const page = await context.newPage();
   const errors = [], checks = [];
   let workspaceChecks = null;
+  let catalogChecks = null;
   page.on('pageerror', error=>errors.push(error.message));
   try {
     await page.goto(origin+'/evaluation.html'); await page.waitForLoadState('networkidle');
@@ -69,6 +70,7 @@ async function main() {
     await page.reload();await page.waitForLoadState('networkidle');await page.locator('#workspace').waitFor({state:'visible'});
     const detail=await (await context.request.get(origin+`/api/evaluation/runs/${left.id}/cases/scenario-03`)).json();assert.ok(detail.reviews.length>=1);checks.push('persistent review after reload');
     if(await page.locator('#jobs-nav').isVisible())workspaceChecks=await require('./evaluation_workspace_browser.cjs')({page,context,origin,output,options,checks,left,right});
+    if(process.env.CISP_DATA_TEST_SNAPSHOT)catalogChecks=await require('./data_catalog_browser.cjs')({page,context,origin,output,options,checks,left,right});
     // Exercise untrusted imported text through the actual DOM, never innerHTML.
     const evil=JSON.parse(JSON.stringify(inputs[0]));evil.name='Synthetic XSS contract fixture';evil.role='synthetic';evil.visibility='synthetic';evil.cases=[{id:'xss-fixture',question:'<img src=x onerror="window.evaluationXss=true">',contract:{synthetic:true}}];evil.results=[];
     assert.equal((await context.request.post(origin+'/api/evaluation/imports',{...options,data:evil})).status(),200);
@@ -77,7 +79,7 @@ async function main() {
     assert.ok((await page.locator('#case-title').innerText()).includes('<img'));assert.equal(await page.evaluate(()=>Boolean(window.evaluationXss)),false);checks.push('untrusted import rendered as text');
     const anonymous=await browser.newContext();assert.equal((await anonymous.request.get(origin+'/api/evaluation/runs')).status(),401);await anonymous.close();checks.push('anonymous API denied');
     assert.deepEqual(errors,[]);
-    fs.writeFileSync(path.join(output,'browser-summary.json'),JSON.stringify({passed:true,checks,browserErrors:errors,left:left.counts,right:right.counts,comparison:comparison.counts,workspace:workspaceChecks,model_calls:0},null,2));
+    fs.writeFileSync(path.join(output,'browser-summary.json'),JSON.stringify({passed:true,checks,browserErrors:errors,left:left.counts,right:right.counts,comparison:comparison.counts,workspace:workspaceChecks,catalog:catalogChecks,model_calls:0},null,2));
     console.log(JSON.stringify({passed:true,checks:checks.length,left:left.counts,right:right.counts,comparison:comparison.counts}));
   } catch(error) {fs.writeFileSync(path.join(output,'browser-failure.json'),JSON.stringify({passed:false,checks,errors,error:String(error)},null,2));await page.screenshot({path:path.join(output,'browser-failure.png'),fullPage:true}).catch(()=>{});throw error;}
   finally {await browser.close();}

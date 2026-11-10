@@ -33,6 +33,7 @@
 !static/evaluation.css
 !static/evaluation.js
 !static/evaluation-v2.js
+!static/data-platform.js
 !scripts/
 !scripts/audit_db_readiness.py
 !scripts/build_taxonomy.py
@@ -40,5 +41,6 @@
 !scripts/prepare_demo.py
 !scripts/audit_flash_answers.py
 !scripts/migrate_evaluation.py
+!scripts/migrate_data_catalog.py
 **/__pycache__/
 **/*.pyc

@@ -1,0 +1,2 @@
+{"passed":true,"checks":24,"left":{"passed":39,"failed":1,"unknown":0},"right":{"passed":37,"failed":3,"unknown":0},"comparison":{"fixed":1,"regressed":3,"unchanged":36,"incomparable":0,"insufficient_evidence":0,"added":0,"removed":0}}
+{"passed": true, "restart_verified": true, "protected_assets_unchanged": true, "model_calls": 0}

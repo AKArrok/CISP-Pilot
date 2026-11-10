@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-10",
+  "status": "core_and_browser_verified_full_regression_ci_pending",
+  "baseline_commit": "514e6b42fbd5a6d8a9867f144db62e48bfc921f5",
+  "objective": "参考成熟源码，完成适合CISP的数据资产、血缘诊断和改进复测第一版并更新文档与推送",
+  "backend": {
+    "passed": 49,
+    "warnings": 1
+  },
+  "browser_first": {
+    "checks": 24,
+    "restart": "passed"
+  },
+  "browser_final": {
+    "checks": 24,
+    "restart": "failed_default_5s_login_timeout"
+  },
+  "browser_release": {
+    "checks": 24,
+    "restart": "passed",
+    "browser_errors": [],
+    "protected_assets_unchanged": true
+  },
+  "historical_counts": [
+    {
+      "passed": 39,
+      "failed": 1
+    },
+    {
+      "passed": 37,
+      "failed": 3
+    }
+  ],
+  "comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36
+  },
+  "public_knowledge": {
+    "chunks": 101,
+    "duplicate_text_count": 71,
+    "unique_context_lineage": false
+  },
+  "local_private_observation": {
+    "chunks": 1077,
+    "sources": 30,
+    "original_fingerprints_observed": 0,
+    "content_published": false
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "new_model_calls": 0,
+  "new_cost_usd": 0,
+  "deployed": false,
+  "default_answer_promoted": false,
+  "independent_human_gold": false,
+  "quota_last_observed": {
+    "primary_used_percent": 22,
+    "stop_remaining_percent": 10
+  },
+  "full_regression": "running",
+  "next": "Finish same-input browser restart, isolated full regression, push only task files and verify exact commit CI"
+}

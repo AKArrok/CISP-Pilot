@@ -21,6 +21,7 @@ import config
 from agents.graph import SessionStore
 from storage import cache
 from storage.evaluation_http import router as evaluation_router
+from storage.data_http import router as data_router
 from storage.http_auth import (
     USER_DEPENDENCY, WRITE_DEPENDENCY, require_thread, require_diagnostic,
     router as auth_router, validate_origin_config,
@@ -72,6 +73,7 @@ app = FastAPI(title="CISP 备考问答机器人", lifespan=lifespan,
               docs_url=None, redoc_url=None, openapi_url=None)
 app.include_router(auth_router)
 app.include_router(evaluation_router)
+app.include_router(data_router)
 
 
 @app.middleware("http")

@@ -1,0 +1,128 @@
+{
+  "status": "passed",
+  "model_calls": 0,
+  "snapshot_id": "096fbfb789775ca875054e58462ef848e5aa9b1c5dfea5571a52706bd0dc25fb",
+  "knowledge_file_sha256": "ba30604d2a3a5120c04e847fb38867ac1305b9cf7f5911346c094e03ec30c91c",
+  "quality": {
+    "checks": [
+      {
+        "detail": {
+          "declared": null,
+          "observed": 101
+        },
+        "id": "manifest_chunk_count",
+        "status": "unknown"
+      },
+      {
+        "detail": {
+          "chunks": 101,
+          "includes_order": true,
+          "vector_rows": null
+        },
+        "id": "index_alignment",
+        "status": "unknown"
+      },
+      {
+        "detail": {
+          "declared": null
+        },
+        "id": "manifest_vector_count",
+        "status": "unknown"
+      },
+      {
+        "detail": {
+          "count": 0,
+          "missing_ids": []
+        },
+        "id": "parent_evidence",
+        "status": "passed"
+      },
+      {
+        "detail": {
+          "unknown_sources": [
+            "NIST SP 800-53 5.2.0 OSCAL"
+          ]
+        },
+        "id": "original_source_fingerprints",
+        "status": "unknown"
+      },
+      {
+        "detail": {
+          "duplicate_count": 71
+        },
+        "id": "duplicate_text",
+        "status": "failed"
+      },
+      {
+        "detail": "File observation only; historical parser/index execution not attested",
+        "id": "historical_processing_execution",
+        "status": "unknown"
+      }
+    ],
+    "chunks": 101,
+    "failed": 1,
+    "model_calls": 0,
+    "sources": 1,
+    "unknown": 5
+  },
+  "runs": [
+    {
+      "file": "data-platform-run-a.json",
+      "sha256": "31751c439609058c14c6ffbd4ecae910f846cf5704187a2bf00ed3f0e0b5c967",
+      "run_id": "d653111ba15c659378a94313de4ae421b673d29556cd95d8f48e6398a0eea453",
+      "counts": {
+        "passed": 39,
+        "failed": 1
+      },
+      "version_bindings": {
+        "hash_bound": 40
+      },
+      "contexts_with_candidates": 80,
+      "ambiguous_contexts": 80,
+      "original_import_unchanged": true
+    },
+    {
+      "file": "data-platform-run-b.json",
+      "sha256": "e3d5bb9589a887235b6361f0da677f56dd7ac4b99fb486abb41cd8c1c37669fe",
+      "run_id": "d97e913d513a3dc4d1bc0825d6fa941ed31c5aa46bc5aadd729ed41ff0e93c6c",
+      "counts": {
+        "passed": 37,
+        "failed": 3
+      },
+      "version_bindings": {
+        "hash_bound": 40
+      },
+      "contexts_with_candidates": 80,
+      "ambiguous_contexts": 80,
+      "original_import_unchanged": true
+    }
+  ],
+  "comparison": {
+    "fixed": 1,
+    "regressed": 3,
+    "unchanged": 36,
+    "incomparable": 0,
+    "insufficient_evidence": 0,
+    "added": 0,
+    "removed": 0
+  },
+  "semantic_regraded": false,
+  "local_private_observation": {
+    "snapshot_id": "60ab771a73a2dbdda3c67761c265498025d0f520ffcfa6dcb34e93c57eca8802",
+    "chunks": 1077,
+    "sources": 30,
+    "failed_checks": 0,
+    "unknown_checks": 2,
+    "check_statuses": {
+      "manifest_chunk_count": "passed",
+      "index_alignment": "passed",
+      "manifest_vector_count": "passed",
+      "parent_evidence": "passed",
+      "original_source_fingerprints": "unknown",
+      "duplicate_text": "passed",
+      "historical_processing_execution": "unknown"
+    },
+    "source_fingerprints_observed": 0,
+    "raw_content_published": false
+  }
+}

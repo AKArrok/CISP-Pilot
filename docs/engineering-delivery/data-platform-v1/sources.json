@@ -1,0 +1,90 @@
+[
+  {
+    "repository": "datahub-project/datahub",
+    "commit": "ef1ecced0866ab6f18f5edae5264e9b703bd4ea2",
+    "path": "docs/modeling/metadata-model.md",
+    "blob_sha": "4143154bb57c3dc3be4e4f5287924bb7c0fbaa56",
+    "url": "https://github.com/datahub-project/datahub/blob/ef1ecced0866ab6f18f5edae5264e9b703bd4ea2/docs/modeling/metadata-model.md",
+    "read": true
+  },
+  {
+    "repository": "datahub-project/datahub",
+    "commit": "ef1ecced0866ab6f18f5edae5264e9b703bd4ea2",
+    "path": "metadata-models/src/main/pegasus/com/linkedin/dataset/UpstreamLineage.pdl",
+    "blob_sha": "e1b57265c58ec7692a80687c5ee02db6d05747ad",
+    "url": "https://github.com/datahub-project/datahub/blob/ef1ecced0866ab6f18f5edae5264e9b703bd4ea2/metadata-models/src/main/pegasus/com/linkedin/dataset/UpstreamLineage.pdl",
+    "read": true
+  },
+  {
+    "repository": "datahub-project/datahub",
+    "commit": "ef1ecced0866ab6f18f5edae5264e9b703bd4ea2",
+    "path": "metadata-models/src/main/pegasus/com/linkedin/dataset/Upstream.pdl",
+    "blob_sha": "18b2bb99c87f78d69dfb49638e301a11101ac9ef",
+    "url": "https://github.com/datahub-project/datahub/blob/ef1ecced0866ab6f18f5edae5264e9b703bd4ea2/metadata-models/src/main/pegasus/com/linkedin/dataset/Upstream.pdl",
+    "read": true
+  },
+  {
+    "repository": "datahub-project/datahub",
+    "commit": "ef1ecced0866ab6f18f5edae5264e9b703bd4ea2",
+    "path": "LICENSE",
+    "blob_sha": "5e8a14cef59b4c4bbdc79c65e94625317f27a7a2",
+    "url": "https://github.com/datahub-project/datahub/blob/ef1ecced0866ab6f18f5edae5264e9b703bd4ea2/LICENSE",
+    "read": true
+  },
+  {
+    "repository": "OpenLineage/OpenLineage",
+    "commit": "48a808df81be1c3abd044c3d1579a57b40032302",
+    "path": "spec/OpenLineage.json",
+    "blob_sha": "58167f71407add7734810cda9943b39b83c89aa2",
+    "url": "https://github.com/OpenLineage/OpenLineage/blob/48a808df81be1c3abd044c3d1579a57b40032302/spec/OpenLineage.json",
+    "read": true
+  },
+  {
+    "repository": "OpenLineage/OpenLineage",
+    "commit": "48a808df81be1c3abd044c3d1579a57b40032302",
+    "path": "spec/facets/DatasetVersionDatasetFacet.json",
+    "blob_sha": "c1cb2f5a7dd764203cb99a9992cdc8756564ce6a",
+    "url": "https://github.com/OpenLineage/OpenLineage/blob/48a808df81be1c3abd044c3d1579a57b40032302/spec/facets/DatasetVersionDatasetFacet.json",
+    "read": true
+  },
+  {
+    "repository": "OpenLineage/OpenLineage",
+    "commit": "48a808df81be1c3abd044c3d1579a57b40032302",
+    "path": "spec/facets/DataQualityMetricsInputDatasetFacet.json",
+    "blob_sha": "bbf44b7aede289ed80bfbc764bc565d4d395ef78",
+    "url": "https://github.com/OpenLineage/OpenLineage/blob/48a808df81be1c3abd044c3d1579a57b40032302/spec/facets/DataQualityMetricsInputDatasetFacet.json",
+    "read": true
+  },
+  {
+    "repository": "OpenLineage/OpenLineage",
+    "commit": "48a808df81be1c3abd044c3d1579a57b40032302",
+    "path": "LICENSE",
+    "blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+    "url": "https://github.com/OpenLineage/OpenLineage/blob/48a808df81be1c3abd044c3d1579a57b40032302/LICENSE",
+    "read": true
+  },
+  {
+    "repository": "treeverse/dvc",
+    "commit": "b59add99ee667f2b352cc1be337619f965fe3fea",
+    "path": "dvc/stage/serialize.py",
+    "blob_sha": "169b3e22a95843f5c8947a3147df66698a83cf0f",
+    "url": "https://github.com/treeverse/dvc/blob/b59add99ee667f2b352cc1be337619f965fe3fea/dvc/stage/serialize.py",
+    "read": true
+  },
+  {
+    "repository": "treeverse/dvc",
+    "commit": "b59add99ee667f2b352cc1be337619f965fe3fea",
+    "path": "dvc/dvcfile.py",
+    "blob_sha": "1e0ef6367d477f2d43d646e01914ee6df0582a20",
+    "url": "https://github.com/treeverse/dvc/blob/b59add99ee667f2b352cc1be337619f965fe3fea/dvc/dvcfile.py",
+    "read": true
+  },
+  {
+    "repository": "treeverse/dvc",
+    "commit": "b59add99ee667f2b352cc1be337619f965fe3fea",
+    "path": "LICENSE",
+    "blob_sha": "c8413d4d91986ad37e6b83bbc5a8a3c92070419d",
+    "url": "https://github.com/treeverse/dvc/blob/b59add99ee667f2b352cc1be337619f965fe3fea/LICENSE",
+    "read": true
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "source_byte_sha256": {
+    "storage/data_catalog.py": "90ae3f604d8cbe139526bff38125ad338120fa908ad1284ca52471f65a335090",
+    "storage/data_http.py": "cb42e086daa76236103249106362cadd66e2609d3c020969a55a4b215f28c142",
+    "storage/evaluation_store.py": "148983d644571ac1ecc71f7607188536b933ffb9a7cdc20be9615c40e963fc2b",
+    "scripts/package_data_catalog.py": "f15d6c7a0b2f732cb61b283b7337edaf6d0500095f96755d546bd9a4a99d14d3",
+    "scripts/package_evaluation.py": "f27206c762f7e43f03b016e2c823cce068f4e7c051446304da3a265407519d9a",
+    "scripts/migrate_data_catalog.py": "3353d31a1bde4072d3af8e37009cbab1f1841d051fef51019e5f55da0dd2caae",
+    "scripts/verify_data_catalog.py": "bf20f7a192b8b5b682e960e05d9f6c715b0443f3014a7eec18a09aed61428759",
+    "scripts/serve_evaluation.py": "364318b65b96feaa6e7b1441c9deb043daa34a92c9df1685733ad84e2dde9ba7",
+    "server.py": "d44acc3399e0f95e72342d9955e65d5b3b1a5263b8fa2941c4cb71e10706728f",
+    "static/data-platform.js": "ad91a6bc9c6128f3bf933b2d84f1e843cd702142f4302147132f0f89ca227b77",
+    "static/evaluation.html": "028131228c42c1574e0d23ce2d0d3aa9cf83437a23655c4d6b2173913eac74af",
+    "static/evaluation.js": "6bbb7b1f52a2895413b533725fe52dc1f52463e87781a8403395fcde39711a3a",
+    "static/evaluation.css": "e639e57935d535e716bd835bb38d0b899ba3290b6a6b185629f09226ad71c7f8",
+    "tests/test_data_catalog.py": "43d4b3cbf603e75c836be413bca1a41b1aa192cc71f1d247b26dcc7526cbf9fc",
+    "tests/data_catalog_browser.cjs": "e42a29a88edccbdc6aeeed7428def8d335568684956cb7d7562f0f6593e7e0f9",
+    "tests/run_evaluation_browser.py": "59e88d8cb3c4b400ad09825b2c49d583db54f3ba367933a99fdbcedc063af095",
+    "tests/test_evaluation_platform.py": "042ab43809f65c26e4afb97de088a4e00345fe821623a4b65f0dc0a4a0b34be1"
+  },
+  "public_input_byte_sha256": {
+    "data/evaluation/data-platform-public-a.json": "ba30604d2a3a5120c04e847fb38867ac1305b9cf7f5911346c094e03ec30c91c",
+    "data/evaluation/data-platform-run-a.json": "31751c439609058c14c6ffbd4ecae910f846cf5704187a2bf00ed3f0e0b5c967",
+    "data/evaluation/data-platform-run-b.json": "e3d5bb9589a887235b6361f0da677f56dd7ac4b99fb486abb41cd8c1c37669fe"
+  },
+  "private_data_committed": false,
+  "scope": "Local byte fingerprints; exact Git commit and CI recorded separately"
+}

@@ -54,6 +54,9 @@ def main():
     from storage.evaluation_workspace import migrate
 
     migrate()  # Explicit demo bootstrap upgrades its isolated evaluation store only.
+    from storage.data_catalog import migrate as migrate_catalog
+
+    migrate_catalog()
     os.environ["CISP_EVAL_WORKER_ENABLED"] = "true"
     os.environ.pop("CISP_EVAL_DEMO_PASSWORD", None)
     print(json.dumps({"url": f"http://127.0.0.1:{args.port}/evaluation.html", "user": public,

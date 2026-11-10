@@ -68,6 +68,9 @@ def package(packet, run, schema_version=1, dataset_key="public-nist-http"):
     originals = {row["id"]: row for row in rows}
     data.update(schema_version=2, dataset_key=dataset_key,
                 version_label=packet.name, repetitions=1)
+    if "chunks.json" in manifest["frozen_sha256"]:
+        # This exact file was verified above, unlike an inferred source-name match.
+        data["artifacts"]["knowledge:" + dataset_key] = manifest["frozen_sha256"]["chunks.json"]
     conversations = {}
     for case in data["cases"]:
         group = case["contract"].get("thread_group", case["id"])
