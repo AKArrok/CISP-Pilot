@@ -99,3 +99,4 @@ docs/engineering-delivery/auth-limit-20261109/*.csv -text -whitespace
 docs/engineering-delivery/evaluation-platform-v1/*.log -text -whitespace
 docs/engineering-delivery/evaluation-platform-v2/*.log -text -whitespace
 docs/engineering-delivery/data-platform-v1/*.log -text -whitespace
+docs/engineering-delivery/live-platform-four-20261110/*.log -text -whitespace

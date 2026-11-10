@@ -1,0 +1,21 @@
+{
+  "only_changed": "Answer system appends concise-output contract through existing opt-in fallback override; default prompt unchanged",
+  "baseline_primary_acceptance_unchanged": true,
+  "diagnostic_added_after_baseline": "Response verbosity and unasked expansion; descriptive before/after, not rewriting original semantic labels",
+  "new_target": "At least 40% lower median answer-body characters while preserving all frozen core conditions and citations",
+  "retained": "Same cases/order/independent threads/corpus/k2/BM25/model/thinking/temp1024/no retries",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "prediction": "Explicit scope and output contract reduces unasked expansion without dropping frozen conditions"
+    },
+    {
+      "id": "H2",
+      "prediction": "If retrieval is the cause, top2 target changes or evidence is absent; baseline already has all targets"
+    },
+    {
+      "id": "H3",
+      "prediction": "If only stochastic output change, quality gains may not persist beyond four development cases; no default promotion without broader validation"
+    }
+  ]
+}

@@ -68,6 +68,19 @@ def package(packet, run, schema_version=1, dataset_key="public-nist-http"):
     originals = {row["id"]: row for row in rows}
     data.update(schema_version=2, dataset_key=dataset_key,
                 version_label=packet.name, repetitions=1)
+    override = manifest.get("fallback_system_override", False)
+    if type(override) is not bool:
+        raise ValueError("Frozen prompt override must be boolean")
+    prompt_file = "fallback-system.json" if override else "prompts.json"
+    if prompt_file in manifest["frozen_sha256"]:
+        settings = read(packet, prompt_file)
+        system = settings.get("system" if override else "ANSWER_SYSTEM")
+        if not isinstance(system, str) or not system.strip():
+            raise ValueError("Frozen answer system must be nonempty text")
+        data["config"].update(answer_system_sha256=hashlib.sha256(system.encode()).hexdigest(),
+                              fallback_system_override=override)
+    elif override:
+        raise ValueError("Prompt override must bind a frozen system file")
     if "chunks.json" in manifest["frozen_sha256"]:
         # This exact file was verified above, unlike an inferred source-name match.
         data["artifacts"]["knowledge:" + dataset_key] = manifest["frozen_sha256"]["chunks.json"]

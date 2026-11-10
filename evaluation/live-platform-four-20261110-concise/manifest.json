@@ -1,0 +1,30 @@
+{
+  "role": "Same four seen development cases, opt-in concise candidate, no default promotion",
+  "transport": "ASGI TestClient; real external provider, actual retrieval/SQL/SSE",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_calls": 12,
+  "budget_usd": 0.1,
+  "max_output_tokens": 1024,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "answer_strategy": "default",
+  "answer_temperature": 0.3,
+  "acceptance": "Frozen acceptance.json; separate execution/citation/agent semantic reviews",
+  "base_commit": "3703d6b08727f366f9af8709ea05f1678842debf",
+  "executor_sha256": "b7ea9d342defd00503955c00a5ebf82faa9a9dc1bd063806d9bfad3541aadb2c",
+  "frozen_sha256": {
+    "acceptance.json": "e2881d8bd81740d01a1ec2cd98ac83f9e031748da55e39d7fd46c2e182f41644",
+    "cases.json": "fed89d73a8af6c2520c6e05663c3023d8c62f6fa6ccbfd02821cb647c63f25ef",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "delta.json": "49877222a8b20d310d9dc2087a9530db9e2221962c89970969b75fcac48843c2",
+    "fallback-system.json": "973058f5ce3b534401ae87dea5097ba6f194ba2b892db21f46b40c7cc5af465f",
+    "funding-preflight.json": "3ea49094ad502c14dcf907dfe3cd0a81a01c5cb6b7b16388391c880ebf5d6b07",
+    "prompts.json": "087b924dd68ae80dfba915245d03a28aa44b381115b2d7dc398d3ab9045fcf28",
+    "runtime-source-hashes.json": "7aab2f56490ac1738bebb8427b23c9b68b64970eea81444bfa9ff6b180bb7e7f"
+  },
+  "fallback_system_override": true
+}

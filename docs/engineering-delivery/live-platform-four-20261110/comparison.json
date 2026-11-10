@@ -1,0 +1,86 @@
+{
+  "scope": "Real DeepSeek Flash via in-process ASGI app; public BM25 corpus; seen 4-case agent development review, not human gold or production SLA",
+  "stats": {
+    "baseline": {
+      "calls": 8,
+      "cost_estimate_usd": 0.0052635,
+      "body_chars": [
+        380,
+        260,
+        714,
+        721
+      ],
+      "median_body_chars": 547.0,
+      "median_latency_seconds": 5.147999999999911,
+      "answer_completion_tokens": 1301,
+      "citation_newline_count": 4,
+      "core_source_review_passed": 4,
+      "mechanical_audit_passed": true
+    },
+    "candidate": {
+      "calls": 8,
+      "cost_estimate_usd": 0.004352699999999999,
+      "body_chars": [
+        194,
+        105,
+        101,
+        199
+      ],
+      "median_body_chars": 149.5,
+      "median_latency_seconds": 2.9220000000000255,
+      "answer_completion_tokens": 450,
+      "citation_newline_count": 3,
+      "core_source_review_passed": 4,
+      "mechanical_audit_passed": true
+    }
+  },
+  "body_char_median_reduction": 0.726691042047532,
+  "latency_median_reduction_observed": 0.4324009324009176,
+  "new_calls": 16,
+  "new_cost_estimate_usd": 0.009616199999999998,
+  "cumulative_known_estimate_usd": 1.4449224,
+  "old_unknown_reservation_usd": 0.0656585,
+  "cumulative_accounted_with_unknown_usd": 1.5105809,
+  "default_answer_promoted": false,
+  "independent_human_gold": false,
+  "platform": {
+    "run_ids": {
+      "baseline": "c8e73671742ebdb79754d0e1badd2ce7594749e8042c6aad6fe6b77a9bc1d1db",
+      "candidate": "deae03c4bbc789ce9ae7e624cab8803d7cd422961314e70211606accdd370a92"
+    },
+    "snapshot_id": "73b72def3ab555aa4e7bfae58c647f52a0c782faacc69476a91237e2b0b3569f",
+    "improvement_id": "0f3fa0b6cee6a90e3372b2baaabefe5d515c2b3f5ebf758e8130f322b240fb0a",
+    "version_binding": "hash_bound",
+    "config_diff": [
+      {
+        "key": "answer_system_sha256",
+        "before": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+        "after": "a475ce7242fea4eca80bd9bbb6a3ccd0a4eb85a7c088697f41d96a0ef9647501",
+        "before_present": true,
+        "after_present": true
+      },
+      {
+        "key": "fallback_system_override",
+        "before": false,
+        "after": true,
+        "before_present": true,
+        "after_present": true
+      }
+    ],
+    "comparison_counts": {
+      "fixed": 0,
+      "regressed": 0,
+      "unchanged": 4,
+      "incomparable": 0,
+      "insufficient_evidence": 0,
+      "added": 0,
+      "removed": 0
+    },
+    "ledger_outcome": "unchanged; no fabricated fixed semantic case"
+  },
+  "remaining_issues": [
+    "No-interface answer still includes secondary-notification aside",
+    "Candidate backup citation is inline instead of a new line",
+    "Only four seen cases once each; stability, full40 and multi-turn not verified"
+  ]
+}

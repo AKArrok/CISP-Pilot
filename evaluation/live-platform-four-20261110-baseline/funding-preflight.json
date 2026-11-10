@@ -1,0 +1,21 @@
+{
+  "standing_authorization_usd": 3,
+  "prior_dispatch_attempts": 2013,
+  "prior_known_estimate_usd": 1.4353062,
+  "prior_unknown_reserved_usd": 0.0656585,
+  "prior_accounted_usd": 1.5009647,
+  "new_total_reserved_usd": 0.2,
+  "baseline_allocation_usd": 0.1,
+  "candidate_allocation_reserved_usd": 0.1,
+  "max_accounted_with_new_reservation_usd": 1.7009647,
+  "max_calls_per_batch": 12,
+  "max_calls_both_batches": 24,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "automatic_retries": 0,
+  "pricing_reference": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "conservative_usd_per_1m_input": 0.3,
+  "conservative_usd_per_1m_output": 1.2,
+  "authorization_basis": "Current user asks real questions and optimization; existing 3USD total authorization remains with verified balance",
+  "private_material_outgoing": false
+}

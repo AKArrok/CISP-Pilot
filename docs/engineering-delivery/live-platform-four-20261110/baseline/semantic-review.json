@@ -1,0 +1,29 @@
+{
+  "reviewer": "Codex source-based development review; not independent human gold",
+  "cases": [
+    {
+      "id": "ac-8-new-03",
+      "answer_sha256": "4c9eea0757a623187a77a38d04b8f3fb1d005dd75182ec025fb9228e0ca50d90",
+      "source_supported": true,
+      "note": "Core no-interface exception correct; unsolicited discussion of secondary notifications and consultation; typo 无人机界面 appears. Agent assessment against frozen acceptance/source, not independent human gold."
+    },
+    {
+      "id": "ac-8-new-05",
+      "answer_sha256": "aa49807f65a34110f3341baa43f82742ab12f81912f86da9914ec546b76c6723",
+      "source_supported": true,
+      "note": "Core multilingual consideration grounded in organizational needs/user demographics; unrelated secondary notification paragraph. Agent assessment against frozen acceptance/source, not independent human gold."
+    },
+    {
+      "id": "cp-9-new-08",
+      "answer_sha256": "d0302bb56563da31d12eccca8a14cef6c74234339ab2aa1bf7925d5cdad09c32",
+      "source_supported": true,
+      "note": "Mandatory backup of privacy-related system documentation preserved; parameter ownership correct. Adds hypothetical legal-exemption subquestion not asked. Agent assessment against frozen acceptance/source, not independent human gold."
+    },
+    {
+      "id": "scenario-03",
+      "answer_sha256": "47ae60a2cc94adf0225ee7d66631e2fcb98dbd907bfd00f686a7aa172ed04c92",
+      "source_supported": true,
+      "note": "Initial training insufficient, recurring frequency and changes/events correctly retained; adds full unrelated AT-2 checklist. Agent assessment against frozen acceptance/source, not independent human gold."
+    }
+  ]
+}

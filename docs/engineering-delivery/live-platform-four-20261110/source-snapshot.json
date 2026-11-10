@@ -1,0 +1,18 @@
+{
+  "code_byte_sha256": {
+    "scripts/package_evaluation.py": "ad345a30f43a497c06b691f75a6edbbd392e8c088d5060b9c585b345446d7de0",
+    "tests/test_evaluation_platform.py": "752811770847aab042c0f4fb4bd7b0e267d741a67fffd80b397febb7f9837217",
+    "agents/prompts.py": "287b744a32723f2d986b73f4a8a3bbaf723d572c073e8c729d83eeac8135c7c4",
+    "scripts/evaluate_public_http.py": "b7ea9d342defd00503955c00a5ebf82faa9a9dc1bd063806d9bfad3541aadb2c",
+    "scripts/audit_public_http.py": "967a8c58a37d462a8a67ff8db560b674676874fd3ba248d848fc19b9d8d3c67a"
+  },
+  "actual_executor_matches_frozen": {
+    "baseline": true,
+    "candidate": true
+  },
+  "frozen_cases_equal": true,
+  "frozen_primary_acceptance_equal": true,
+  "default_db_after_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "provider_scope": "official DeepSeek Flash only; no private source input",
+  "raw_business_and_auth_database_published": false
+}

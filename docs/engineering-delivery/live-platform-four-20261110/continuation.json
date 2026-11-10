@@ -1,0 +1,65 @@
+{
+  "status": "real_baseline_and_candidate_completed_validation_push_pending",
+  "packet": "evaluation\\live-platform-four-20261110-baseline",
+  "new_budget_reserved_usd": 0.2,
+  "baseline_sha": "3703d6b08727f366f9af8709ea05f1678842debf",
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "Finish package regression, write QA comparison, push relevant evidence and verify exact commit CI; do not claim full40/default promotion",
+  "baseline_calls": 8,
+  "baseline_estimate_usd": 0.0052635,
+  "candidate_packet": "evaluation\\live-platform-four-20261110-concise",
+  "baseline_primary_semantic_agent_review": "4/4",
+  "new_model_calls": 16,
+  "new_cost_estimate_usd": 0.009616199999999998,
+  "comparison": "comparison.json",
+  "budget": "budget-ledger.json",
+  "platform_database": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\data\\evaluation\\live-platform-four-20261110\\platform.sqlite3",
+  "platform": {
+    "run_ids": {
+      "baseline": "c8e73671742ebdb79754d0e1badd2ce7594749e8042c6aad6fe6b77a9bc1d1db",
+      "candidate": "deae03c4bbc789ce9ae7e624cab8803d7cd422961314e70211606accdd370a92"
+    },
+    "snapshot_id": "73b72def3ab555aa4e7bfae58c647f52a0c782faacc69476a91237e2b0b3569f",
+    "improvement_id": "0f3fa0b6cee6a90e3372b2baaabefe5d515c2b3f5ebf758e8130f322b240fb0a",
+    "version_binding": "hash_bound",
+    "config_diff": [
+      {
+        "key": "answer_system_sha256",
+        "before": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+        "after": "a475ce7242fea4eca80bd9bbb6a3ccd0a4eb85a7c088697f41d96a0ef9647501",
+        "before_present": true,
+        "after_present": true
+      },
+      {
+        "key": "fallback_system_override",
+        "before": false,
+        "after": true,
+        "before_present": true,
+        "after_present": true
+      }
+    ],
+    "comparison_counts": {
+      "fixed": 0,
+      "regressed": 0,
+      "unchanged": 4,
+      "incomparable": 0,
+      "insufficient_evidence": 0,
+      "added": 0,
+      "removed": 0
+    },
+    "ledger_outcome": "unchanged; no fabricated fixed semantic case"
+  },
+  "default_answer_promoted": false,
+  "remaining_issues": [
+    "No-interface answer still includes secondary-notification aside",
+    "Candidate backup citation is inline instead of a new line",
+    "Only four seen cases once each; stability, full40 and multi-turn not verified"
+  ],
+  "viewer_workspace": "D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\.evaluation-live-20261110",
+  "viewer_status": "Prepared with real run records; not launched, user selects password at startup",
+  "targeted_tests": {
+    "passed": 49,
+    "warnings": 1
+  },
+  "default_db_unchanged": true
+}

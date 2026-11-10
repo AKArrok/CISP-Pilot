@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月10日真实问答与优化（两批真实执行完成）**：当前默认应用链路4题与同输入精简候选4题完成，共16次Flash调用/保守估算0.0096162USD，无思考/无自动重试。两批核心源文代理复核4/4、机械审计通过；字符中位数547→149.5，本轮延迟中位数5.148→2.922秒，样本小不作SLA或泛化。候选仍有题外二次通知句、1处出处未换行，不替换默认提示。实际两批/知识快照/改进复测已落入隔离中台，核心原判4项unchanged不冒称修复。真实使用发现schema2缺提示覆盖指纹，反例复现后最小补齐，49项回归通过，精确新提交CI待核。见[本轮记录](docs/engineering-delivery/live-platform-four-20261110/README.md)和[逐题原回答](docs/engineering-delivery/live-platform-four-20261110/QA_COMPARISON.md)。默认业务库哈希不变，未改默认索引或原失败。
+
 - **11月10日数据中台第一版（功能及限定工程验收完成）**：参考固定版本DataHub/OpenLineage/DVC，完成不可变知识快照、资产质量检查、失败分项/来源分析、候选切片血缘和追加改进/复测账本，见[实施记录](docs/engineering-delivery/data-platform-v1/README.md)、[使用说明](docs/engineering-delivery/data-platform-v1/USER_GUIDE.md)、[验证报告](docs/engineering-delivery/data-platform-v1/VALIDATION.md)。后端49通过，浏览器24项+重启通过；代码759a388的[CI42777739163](https://github.com/AKArrok/CISP-Pilot/actions/runs/42777739163)625通过/13预期跳过，镜像/容器/Linux浏览器通过。**本机完整回归1085通过/2失败/4跳过，非全绿**：既有50ms预算测试和恢复测试注册5秒超时，均在上一提交以相同用例复现，保留日志和缺口，未改策略或用例换绿灯。公开101块有71个重复正文、历史预览多候选；本机1077块/30来源索引对齐通过，原文指纹与历史执行未知。默认库及索引只读、零模型调用，不宣称回答质量改善、独立人工验收或部署。可读账本及收尾证据提交CI另核。
 
 - **11月9日测评中台四项升级（代码与工程验收完成）**：逐次/分项数据模型、并排比较与trace、实际离线审计任务取消恢复、审阅认领与分歧裁决均已实现，见 [实施记录](docs/engineering-delivery/evaluation-platform-v2/README.md)、[验证报告](docs/engineering-delivery/evaluation-platform-v2/VALIDATION.md)和[使用说明](docs/engineering-delivery/evaluation-platform-v2/USER_GUIDE.md)。本机1069通过/4跳过，定向31通过，浏览器19项+重启通过；800项任务保存5项后取消、恢复到800且前5项不重跑。代码d518730的[CI42644809334](https://github.com/AKArrok/CISP-Pilot/actions/runs/42644809334)成功，包含离线回归、镜像、容器及Linux浏览器门禁。两批历史原判39/40与37/40、1修复/3退化/36未变；新离线审计80项有1项引用检查失败，独立保留。默认业务库哈希不变、零新模型调用，无部署、无独立人工金标、不晋级默认回答。文档收尾提交CI另核。
@@ -15,7 +17,7 @@
 持续改善 CISP 的检索覆盖、回答正确性、来源及引用支持、合理拒答、评测可信度、认证与服务性能、可靠性和可审计交付。借鉴 OpenJudge 的审阅/校准和 claw-eval 的冻结任务、执行轨迹、失败保留方式；采用这些流程不等于已经完整接入其所有功能。企业级交付需要可复现、可追踪、权限隔离、费用控制和真实质量证据，不能仅靠包装文档或压力测试完成。
 
 - **当前执行状态**：用户11月9日明确恢复，实际额度允许（五小时9%/周2%已用）。认证隔离Locust 1/4/8用户回归通过；新增31次IP限流边界，429在3.72ms返回且无密码计算，生产密码参数/并发/门限未改。回答质量仍未通过、不晋级。
-- **最新续跑记录**：[auth-limit-20261109/continuation.json](docs/engineering-delivery/auth-limit-20261109/continuation.json)，同目录README/audit/冻结plan保存本轮证据。质量历史及剩余38/40与校准3/8见前一轮evaluation-window3-20261107，不重复启动旧实验。新提交CI待核实。
+- **最新质量与费用续跑记录**：[live-platform-four-20261110/continuation.json](docs/engineering-delivery/live-platform-four-20261110/continuation.json)、[账本](docs/engineering-delivery/live-platform-four-20261110/budget-ledger.json)。累计2029次调用、已知保守估算1.4449224USD＋旧未知预留0.0656585USD，合计占用1.5105809/3USD，剩余1.4894191USD，无待执行分配；不是账单。此前认证记录保留于[auth-limit-20261109](docs/engineering-delivery/auth-limit-20261109/continuation.json)。原40题质量与校准3/8未被本轮4题覆盖，不重复启动旧实验。
 - **11月7日新增证据**：原生参数所属动作候选首轮8/8、同输入重复7/8，AC8风险前提错误重现，稳定性未过、不晋级；两轮32次计入原3美元。完整业务TCP223请求零失败后，刷题阶段定位首次检索加载453ms；就绪启动预加载本地索引4行修复，复测232请求零失败、检索最大0.645ms，冷成本398ms转移到启动，默认库哈希不变。详见最新记录操作11—12，不宣称生产SLA或语义闭环。公开交付1abcf69对应CI42274328854已success，后续启动4行变更另需新提交CI。
 - **继续验证**：启动修复06eb7bf对应CI42275376749已success；180秒隔离负载714请求零失败、RSS中位增长1.457MiB，零模型调用。无辅助消融候选首轮8/8、重复6/8（AT2译词/CP9范围），默认不晋级；4个原生参数批64调用/0.088632美元、32份重复候选AI支持29份/逐字来源32份，这不是32道独立测试。最新累计1457次、已知保守估算1.0888029美元，另未知预留0.0656585，含预留1.1544614/3美元；详细实时账本以continuation为准。
 - **上轮详细证据**：[nist-mixed-quality-20261104/continuation.md](docs/engineering-delivery/nist-mixed-quality-20261104/continuation.md)；[账本](docs/engineering-delivery/nist-mixed-quality-20261104/budget-ledger.json)。

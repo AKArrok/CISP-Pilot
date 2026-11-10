@@ -1,0 +1,29 @@
+{
+  "reviewer": "Codex source-based development review; not independent human gold",
+  "cases": [
+    {
+      "id": "ac-8-new-03",
+      "answer_sha256": "853326448254b1585866d10499f5732f6238bd7e8a5ec87e9c41c49c9a346df2",
+      "source_supported": true,
+      "note": "No-interface exception preserved; secondary-notification sentence remains outside scope. Agent source review only, not independent human gold."
+    },
+    {
+      "id": "ac-8-new-05",
+      "answer_sha256": "1b20155fe0799dbc9f2cd9dca3a8e17f63b9ba0d965596451fb25cfad7131545",
+      "source_supported": true,
+      "note": "Consideration based on organizational needs and user demographics preserved without making multilingual display unconditional. Agent source review only, not independent human gold."
+    },
+    {
+      "id": "cp-9-new-08",
+      "answer_sha256": "8596a0e37ce9912b255330576affd98647a72634e99de4e59bdbe1178d6781ee",
+      "source_supported": true,
+      "note": "Mandatory system-documentation backup and organization-defined frequency preserved; hypothetical exemption subquestion removed. Citation exists but is inline, not on its own line. Agent source review only, not independent human gold."
+    },
+    {
+      "id": "scenario-03",
+      "answer_sha256": "bfd5f9afdf030a25f2043174ae3ac54d717fd2c1cebba619ed1b9c01e66060d4",
+      "source_supported": true,
+      "note": "Initial/ongoing frequency and system-change/defined-event triggers preserved; unassigned parameters not guessed. Agent source review only, not independent human gold."
+    }
+  ]
+}

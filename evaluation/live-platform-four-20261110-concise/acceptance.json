@@ -1,0 +1,12 @@
+{
+  "scope": "Seen public NIST development cases; agent source review, not human gold",
+  "checks": {
+    "ac-8-new-03": "No notification required if no human interface; do not transfer conditional secondary notification to this case",
+    "ac-8-new-05": "Consider multilingual messages per organizational needs and user demographics; do not borrow risk condition from secondary notification",
+    "cp-9-new-08": "Backup system documentation including security/privacy-related documentation; no permission to skip it",
+    "scenario-03": "Initial training alone insufficient; subsequent frequency and changes/incidents trigger training, organization-defined frequency not guessed"
+  },
+  "execution": "Actual app route/retrieve/answer/SSE/SQL with real provider; each question independent",
+  "retrieval": "Frozen BM25 corpus; dense/rerank/vector memory disabled; target locator top2",
+  "retests": "Same questions/criteria/config except explicit candidate delta; preserve all failures"
+}

@@ -211,6 +211,7 @@ def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
     run.mkdir()
     data = sample()
     files = {"cases.json": [{"id": "q1", "question": "Synthetic question?", "role": "synthetic"}],
+             "prompts.json": {"ANSWER_SYSTEM": "Synthetic baseline system"},
              "chunks.json": [{"id": "c1", "source": "synthetic", "text": "Synthetic source"}]}
     for name, value in files.items():
         (packet / name).write_text(json.dumps(value), encoding="utf-8")
@@ -230,6 +231,15 @@ def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
     assert enriched.artifacts["knowledge:public-nist-http"] == frozen["chunks.json"]
     assert "knowledge:public-nist-http" not in package(packet, run).artifacts
     assert enriched.cases[0].contract["preceding_user_questions"] == []
+    assert enriched.config["answer_system_sha256"] == hashlib.sha256(b"Synthetic baseline system").hexdigest()
+    override = {"system": "Synthetic concise system"}
+    (packet / "fallback-system.json").write_text(json.dumps(override), encoding="utf-8")
+    frozen["fallback-system.json"] = hashlib.sha256((packet / "fallback-system.json").read_bytes()).hexdigest()
+    (packet / "manifest.json").write_text(json.dumps({"frozen_sha256": frozen, "acceptance": "synthetic", "fallback_system_override": True}), encoding="utf-8")
+    candidate = package(packet, run, 2)
+    assert candidate.config["fallback_system_override"] is True
+    assert candidate.config["answer_system_sha256"] == hashlib.sha256(override["system"].encode()).hexdigest()
+    assert candidate.config["answer_system_sha256"] != enriched.config["answer_system_sha256"]
     review_path = run / "semantic-review.json"
     review = json.loads(review_path.read_text())
     review["cases"][0]["answer_sha256"] = "0" * 64

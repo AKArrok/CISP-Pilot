@@ -1,0 +1,46 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_packager_binds_review_and_rejects_changed_frozen_input _________
+
+tmp_path = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/data/evaluation/live-four-package-red/test_packager_binds_review_and0')
+
+    def test_packager_binds_review_and_rejects_changed_frozen_input(tmp_path):
+        packet, run = tmp_path / "packet", tmp_path / "run"
+        packet.mkdir()
+        run.mkdir()
+        data = sample()
+        files = {"cases.json": [{"id": "q1", "question": "Synthetic question?", "role": "synthetic"}],
+                 "prompts.json": {"ANSWER_SYSTEM": "Synthetic baseline system"},
+                 "chunks.json": [{"id": "c1", "source": "synthetic", "text": "Synthetic source"}]}
+        for name, value in files.items():
+            (packet / name).write_text(json.dumps(value), encoding="utf-8")
+        frozen = {name: hashlib.sha256((packet / name).read_bytes()).hexdigest() for name in files}
+        (packet / "manifest.json").write_text(json.dumps({"frozen_sha256": frozen, "acceptance": "synthetic"}), encoding="utf-8")
+        result = data["results"][0]
+        for name, value in {"results.json": [{"id": "q1", "question": "Synthetic question?", "events": [{"type": "token", "content": result["answer"]}]}],
+                            "audit.json": {"checks": [{"id": "q1", "passed": True, "checks": {"test": True}}]},
+                            "summary.json": {"known_cost_estimate_usd": 0},
+                            "semantic-review.json": {"reviewer": "synthetic", "cases": [{"id": "q1", "source_supported": False,
+                                                                                          "answer_sha256": result["answer_sha256"]}]}}.items():
+            (run / name).write_text(json.dumps(value), encoding="utf-8")
+        assert package(packet, run).results[0].semantic_passed is False
+        enriched = package(packet, run, 2)
+        assert enriched.schema_version == 2 and enriched.results[0].attempt_no == 1
+        assert enriched.dataset_key == "public-nist-http"
+        assert enriched.artifacts["knowledge:public-nist-http"] == frozen["chunks.json"]
+        assert "knowledge:public-nist-http" not in package(packet, run).artifacts
+        assert enriched.cases[0].contract["preceding_user_questions"] == []
+>       assert enriched.config["answer_system_sha256"] == hashlib.sha256(b"Synthetic baseline system").hexdigest()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'answer_system_sha256'
+
+tests\test_evaluation_platform.py:234: KeyError
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_evaluation_platform.py::test_packager_binds_review_and_rejects_changed_frozen_input
+1 failed, 14 deselected, 1 warning in 7.59s
