@@ -1,0 +1,21 @@
+{
+  "id": 42849919473,
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "1926321014e0ebaf3355d15ce95038b7e21a7901",
+  "url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42849919473",
+  "job_id": 129947447470,
+  "offline": {
+    "passed": 637,
+    "skipped": 13,
+    "skip_audit": "13 expected asset-only skips",
+    "warnings": 2
+  },
+  "runtime": {
+    "image_build": true,
+    "synthetic_docker_http_and_restart": true,
+    "synthetic_linux_browser_checks": 6,
+    "full_nine_group_gate": false,
+    "model_quality_verified": false
+  }
+}

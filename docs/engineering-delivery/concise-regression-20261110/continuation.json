@@ -1,11 +1,11 @@
 {
-  "status": "execution_review_platform_complete_push_pending",
+  "status": "completed_code_ci_verified",
   "baseline_commit": "0e7d2b282bcd636e9f037fda1919e68ac5f8ac42",
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "platform_quota_stop_revoked_by_user": true,
   "new_model_calls": 192,
   "budget": "budget-ledger.json",
-  "next": "Commit explicit round files, push, verify remote SHA and exact CI; no new model runs",
+  "next": "Requested experiment complete. Final documentation commit exact CI must also be verified before final response; no new model runs. Quality follow-up not yet started.",
   "default_db_unchanged": true,
   "default_answer_prompt_promoted": false,
   "tests": "targeted-tests.log: 105 passed",
@@ -13,5 +13,30 @@
     "candidate ac-8-new-03 locator",
     "both scenario-01 oral/written overclaim",
     "candidate inline-sentence citations and irrelevant expansions"
-  ]
+  ],
+  "code_commit": "1926321014e0ebaf3355d15ce95038b7e21a7901",
+  "remote_sha_verified": true,
+  "code_ci": {
+    "id": 42849919473,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "1926321014e0ebaf3355d15ce95038b7e21a7901",
+    "url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42849919473",
+    "job_id": 129947447470,
+    "offline": {
+      "passed": 637,
+      "skipped": 13,
+      "skip_audit": "13 expected asset-only skips",
+      "warnings": 2
+    },
+    "runtime": {
+      "image_build": true,
+      "synthetic_docker_http_and_restart": true,
+      "synthetic_linux_browser_checks": 6,
+      "full_nine_group_gate": false,
+      "model_quality_verified": false
+    }
+  },
+  "viewer_workspace": ".evaluation-concise-20261110",
+  "stopped_reason": "Frozen requested experiments and recording complete; candidate not promoted due to remaining failures."
 }
