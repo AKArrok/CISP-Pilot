@@ -1,0 +1,123 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "multi-a1",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "multi-a2",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true,
+        "rewrite_observed": true
+      }
+    },
+    {
+      "id": "multi-a3",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true,
+        "rewrite_observed": true
+      }
+    },
+    {
+      "id": "multi-b1",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true
+      }
+    },
+    {
+      "id": "multi-b2",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true,
+        "rewrite_observed": true
+      }
+    },
+    {
+      "id": "multi-b3",
+      "passed": true,
+      "checks": {
+        "input_matches": true,
+        "intent_matches": true,
+        "sse_done": true,
+        "history_pairs": true,
+        "durable_trace": true,
+        "no_degraded_stage": true,
+        "frozen_source_previews": true,
+        "citation_heading_own_line": true,
+        "stream_equals_saved_hash": true,
+        "layout_protocol_observed": true,
+        "target_retrieved": true,
+        "citation_structure": true,
+        "rewrite_observed": true
+      }
+    }
+  ],
+  "budget_receipts_valid": true,
+  "default_database_unchanged": true,
+  "execution_complete": true,
+  "materialization_error": null,
+  "semantic_source_review": "required separately",
+  "independent_human_gold": false
+}

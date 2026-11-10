@@ -6,6 +6,7 @@ import math
 from pathlib import Path
 
 from agents.sources import source_preview
+from agents.sources import format_citation_lines
 from scripts.audit_flash_answers import citation_checks
 
 
@@ -48,6 +49,12 @@ def audit(packet, run):
                       and trace["trace"]["conversation_commit"] == "confirmed",
                       "no_degraded_stage": not any("degraded" in event["outcome"] for event in observations)}
             detail["frozen_source_previews"] = all(context in frozen_previews for context in contexts)
+            if manifest.get("citation_layout") == "line-v1" and expected_intent == "knowledge" and contexts:
+                positions = [i for i in range(len(answer)) if answer.startswith("【出处】", i)]
+                detail["citation_heading_own_line"] = bool(positions) and all(i == 0 or answer[i-1] == "\n" for i in positions)
+                detail["stream_equals_saved_hash"] = row.get("persisted_answer_sha256") == hashlib.sha256(answer.encode()).hexdigest()
+                detail["layout_protocol_observed"] = any(event["stage"] == "answer_layout" and event["outcome"] == "citation_line_v1"
+                                                         for event in observations)
             if manifest.get("answer_strategy") == "source_cards" and expected_intent == "knowledge" and contexts:
                 expected_path = "rendered" if case.get("expected_card_path", True) else "fallback_unmapped_source"
                 detail["card_strategy_observed"] = any(event["stage"] == "answer_source_cards"
@@ -96,6 +103,9 @@ def audit(packet, run):
         except (ValueError, KeyError, TypeError, IndexError, StopIteration) as error:
             provider_answers = None
             materialization_error = type(error).__name__
+    elif manifest.get("citation_layout") == "line-v1":
+        # Raw provider responses remain immutable; compare their declared deterministic display transform.
+        provider_answers = [format_citation_lines(answer) for answer in provider_answers]
     answers_match = streamed_answers == provider_answers
     budget_ok = (not summary["cost_unknown"] and not summary["stopped"] and bounded_usage
                  and matching_receipts and answers_match

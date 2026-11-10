@@ -1,0 +1,10 @@
+{
+  "protocol": "line-v1",
+  "requirements": [
+    "citation heading begins its own line",
+    "SSE equals persisted answer SHA",
+    "raw receipts retained",
+    "original semantic/source criteria unchanged"
+  ],
+  "candidate_adoption": "No automatic default promotion"
+}

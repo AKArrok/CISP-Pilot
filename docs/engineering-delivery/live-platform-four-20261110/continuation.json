@@ -1,10 +1,10 @@
 {
-  "status": "real_baseline_and_candidate_completed_validation_push_pending",
+  "status": "paused_quota_threshold_after_real_four_case_delivery",
   "packet": "evaluation\\live-platform-four-20261110-baseline",
   "new_budget_reserved_usd": 0.2,
   "baseline_sha": "3703d6b08727f366f9af8709ea05f1678842debf",
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "next": "Finish package regression, write QA comparison, push relevant evidence and verify exact commit CI; do not claim full40/default promotion",
+  "next": "Wait for explicit user resumption; no automatic restart on reset. Final CI receipt and quota stop documentation saved locally but not pushed. Four-case candidate remains opt-in, residual aside/inline citation and broader40/multiturn gates remain.",
   "baseline_calls": 8,
   "baseline_estimate_usd": 0.0052635,
   "candidate_packet": "evaluation\\live-platform-four-20261110-concise",
@@ -61,5 +61,21 @@
     "passed": 49,
     "warnings": 1
   },
-  "default_db_unchanged": true
+  "default_db_unchanged": true,
+  "code_commit": "0e7d2b282bcd636e9f037fda1919e68ac5f8ac42",
+  "code_ci": {
+    "id": 42783800319,
+    "conclusion": "success",
+    "passed": 625,
+    "skipped": 13,
+    "warnings": 2,
+    "url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42783800319"
+  },
+  "quota_observed": {
+    "primary_used_percent": 97,
+    "remaining_percent": 3,
+    "stop_remaining_percent": 10,
+    "reset_credit_used": false
+  },
+  "stop_reason": "User standing rule: save and pause at remaining10%; shared account latest observation97% used. No further experiment or push."
 }

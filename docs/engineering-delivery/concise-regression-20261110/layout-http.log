@@ -1,0 +1,61 @@
+.........F......................................                         [100%]
+================================== FAILURES ===================================
+_____________ test_actual_http_model_stream_and_sql_history_agree _____________
+
+accounts = ([{'id': 'b711e12e-20d1-48c7-9a0a-b9d92779c08c', 'username': 'alice'}, {'id': 'afd57e23-3075-43bd-bff0-2691f8bd9138', ...lient object at 0x00000193E8E4B6D0>], ['03f8eb29-d291-421e-b306-2689152cacad', '0fea5e3a-6fca-4302-8203-7f0436bd43d7'])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000193E8D19690>
+
+    def test_actual_http_model_stream_and_sql_history_agree(accounts, monkeypatch):
+        from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
+        from agents import memory, sources
+        from test_chat_sql_recovery import events
+    
+        raw = saved_inline_answer()
+        expected = raw.replace("【出处】", "\n【出处】")
+    
+        async def route(_):
+            return {"intent": "knowledge", "domain": None}
+    
+        async def rewrite(state):
+            return {"search_query": state["question"], "query_variants": []}
+    
+        async def retrieve(_):
+            return {"contexts": [{"source": "NIST SP 800-53 5.2.0 OSCAL", "locator": "cp-9", "domain": "实验", "text": "Public backup source"}]}
+    
+        async def memories(_):
+            return {"memories": []}
+    
+        fed = []
+        original_feed = sources.CitationLineFormatter.feed
+    
+        def feed(self, content):
+            fed.append(content)
+            return original_feed(self, content)
+    
+        monkeypatch.setattr(sources.CitationLineFormatter, "feed", feed)
+        monkeypatch.setattr(graph, "route", route)
+        monkeypatch.setattr(graph, "rewrite", rewrite)
+        monkeypatch.setattr(graph, "retrieve", retrieve)
+        monkeypatch.setattr(graph, "recall_memory", memories)
+        monkeypatch.setattr(graph, "get_answer_llm", lambda: GenericFakeChatModel(messages=iter([AIMessage(content=raw)])))
+        monkeypatch.setattr(memory, "_save_vector_round", lambda *_: None)
+        _, clients, threads = accounts
+        output = events(clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "系统文档需要备份吗？"}))
+        assert output[-1]["type"] == "done"
+        streamed = "".join(event.get("content", "") for event in output if event["type"] == "token")
+        assert streamed == expected
+>       assert len(fed) > 1  # Graph normalization plus actual model stream, not only final-answer fallback.
+        ^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 1 > 1
+E        +  where 1 = len(['不允许。cp-9 要求对系统文档（包括安全和隐私相关文档）按待赋值的频次参数 cp-09_odp.04 执行备份，资料未给出任何可跳过隐私文档的例外；该频次参数值待组织确定，但备份动作本身是必须执行的。【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】'])
+
+tests\test_citation_layout.py:104: AssertionError
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_citation_layout.py::test_actual_http_model_stream_and_sql_history_agree
+1 failed, 47 passed, 1 warning in 10.30s

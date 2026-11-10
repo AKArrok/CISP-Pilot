@@ -1,0 +1,31 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_saved_inline_answer_is_formatted_in_graph_and_message __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024E907E8890>
+
+    def test_saved_inline_answer_is_formatted_in_graph_and_message(monkeypatch):
+        raw = saved_inline_answer()
+        assert "\n【出处】" not in raw
+    
+        async def invoke(*_):
+            return AIMessage(content=raw)
+    
+        monkeypatch.setattr(graph, "get_answer_llm", lambda: object())
+        monkeypatch.setattr(graph, "llm_ainvoke_retry", invoke)
+        result = asyncio.run(graph.answer({"question": "备份", "contexts": [
+            {"source": "NIST SP 800-53 5.2.0 OSCAL", "locator": "cp-9", "domain": "实验", "text": "Public backup source"}]}))
+        expected = raw.replace("【出处】", "\n【出处】")
+>       assert result["answer"] == expected
+E       AssertionError: assert '不允许。cp-9 要求对...SCAL》定位【cp-9】' == '不允许。cp-9 要求对...SCAL》定位【cp-9】'
+E         
+E         Skipping 91 identical leading characters in diff, use -v to show
+E         - 作本身是必须执行的。
+E         - 【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】
+E         + 作本身是必须执行的。【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】
+E         ? ++++++++++
+
+tests\test_citation_layout.py:31: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_citation_layout.py::test_saved_inline_answer_is_formatted_in_graph_and_message
+1 failed, 8 deselected in 8.84s

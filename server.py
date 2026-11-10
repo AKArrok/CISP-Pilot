@@ -181,6 +181,9 @@ async def chat_stream(req: ChatRequest, user: dict = WRITE_DEPENDENCY):
         stamps = {"route_ms": None, "retrieval_ms": None, "first_token_ms": None}
         intent_seen = None
         sent_tokens = 0
+        from agents.sources import CitationLineFormatter
+
+        citation_lines = CitationLineFormatter()
         if config.ENABLE_EVIDENCE_SUBAGENT:
             yield sse({"type": "progress", "stage": "retrieval", "content": "正在检索资料"})
         messages = [HumanMessage(content=req.query)]
@@ -221,10 +224,17 @@ async def chat_stream(req: ChatRequest, user: dict = WRITE_DEPENDENCY):
             elif kind == "on_chat_model_stream" and node == "answer":
                 chunk = ev["data"]["chunk"]
                 if chunk.content:
+                    content = citation_lines.feed(str(chunk.content))
+                    if not content:
+                        continue
                     if stamps["first_token_ms"] is None:
                         stamps["first_token_ms"] = round((now - t0) * 1000, 1)
                     sent_tokens += 1
-                    yield sse({"type": "token", "content": str(chunk.content)})
+                    yield sse({"type": "token", "content": content})
+        remaining = citation_lines.finish()
+        if remaining:
+            sent_tokens += 1
+            yield sse({"type": "token", "content": remaining})
         # 闲聊/做题引导不走 answer 节点、无 token 流：补发完整回复，避免前端空白气泡
         total_ms = round((time.perf_counter() - t0) * 1000, 1)
         final = await app_graph.aget_state(config_)

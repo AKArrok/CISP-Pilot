@@ -1,0 +1,61 @@
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+2026-11-10 21:30:21,834 INFO 存储后端: sqlite
+2026-11-10 21:30:22,726 INFO   检索层就绪: 101 向量块 / 101 BM25 文档
+2026-11-10 21:30:22,726 INFO 预热完成
+2026-11-10 21:30:25,064 INFO HTTP Request: POST http://127.0.0.1:19629/api/auth/register "HTTP/1.1 201 Created"
+2026-11-10 21:30:27,708 INFO HTTP Request: POST http://127.0.0.1:19629/api/auth/login "HTTP/1.1 200 OK"
+2026-11-10 21:30:27,824 INFO HTTP Request: GET http://127.0.0.1:19629/api/ready "HTTP/1.1 200 OK"
+2026-11-10 21:30:27,856 INFO HTTP Request: POST http://127.0.0.1:19629/api/threads "HTTP/1.1 201 Created"
+2026-11-10 21:30:27,925 INFO langchain-openai detected HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy and no explicit `http_socket_options` / `http_client` / `http_async_client` / `openai_proxy`; skipping the custom `httpx` transport so httpx's env-proxy auto-detection applies. Pass `http_socket_options=[...]` to opt back into kernel-level TCP keepalive tuning on top of the env proxy.
+2026-11-10 21:30:28,456 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:29,455 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:30,473 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:30,480 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/c742ee90-09e3-496d-9751-8e73ab4a9a19 "HTTP/1.1 200 OK"
+2026-11-10 21:30:30,486 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=bf0d1993-d8ba-43bf-8046-63558b9e74b7 "HTTP/1.1 200 OK"
+multi-a1: completed
+2026-11-10 21:30:31,085 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:32,127 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:33,020 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:34,661 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:34,666 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/0c788c90-620f-4e88-87e7-71b07dae4046 "HTTP/1.1 200 OK"
+2026-11-10 21:30:34,673 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=bf0d1993-d8ba-43bf-8046-63558b9e74b7 "HTTP/1.1 200 OK"
+multi-a2: completed
+2026-11-10 21:30:34,845 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:35,750 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:36,825 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:38,078 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:38,083 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/3b44d612-9854-4fb9-8960-2e244e2626c6 "HTTP/1.1 200 OK"
+2026-11-10 21:30:38,088 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=bf0d1993-d8ba-43bf-8046-63558b9e74b7 "HTTP/1.1 200 OK"
+multi-a3: completed
+2026-11-10 21:30:38,119 INFO HTTP Request: POST http://127.0.0.1:19629/api/threads "HTTP/1.1 201 Created"
+2026-11-10 21:30:38,303 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:39,022 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:40,199 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:40,202 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/0a0c9b9d-6b78-4ccf-af7a-dc3351b2ac4f "HTTP/1.1 200 OK"
+2026-11-10 21:30:40,209 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=d651ace7-71c2-409b-beb2-a1c2474ec12c "HTTP/1.1 200 OK"
+multi-b1: completed
+2026-11-10 21:30:41,395 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:42,360 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:43,200 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:44,426 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:44,431 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/d751c901-eaea-4010-bed8-0a5d845a60e8 "HTTP/1.1 200 OK"
+2026-11-10 21:30:44,436 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=d651ace7-71c2-409b-beb2-a1c2474ec12c "HTTP/1.1 200 OK"
+multi-b2: completed
+2026-11-10 21:30:44,657 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:45,532 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:46,508 INFO HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-10 21:30:48,058 INFO HTTP Request: POST http://127.0.0.1:19629/chat/stream "HTTP/1.1 200 OK"
+2026-11-10 21:30:48,064 INFO HTTP Request: GET http://127.0.0.1:19629/api/traces/4435651c-cb3b-48cc-93c4-ac13f53862a4 "HTTP/1.1 200 OK"
+2026-11-10 21:30:48,069 INFO HTTP Request: GET http://127.0.0.1:19629/api/history?thread_id=d651ace7-71c2-409b-beb2-a1c2474ec12c "HTTP/1.1 200 OK"
+multi-b3: completed

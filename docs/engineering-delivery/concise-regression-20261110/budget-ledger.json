@@ -1,0 +1,101 @@
+{
+  "approved_total_usd": 3,
+  "prior_calls": 2029,
+  "prior_known_estimate_usd": 1.4449224,
+  "old_unknown_reservation_usd": 0.0656585,
+  "prior_accounted_usd": 1.5105809,
+  "planned_allocations": [
+    {
+      "id": "concise-40-baseline-20261110",
+      "allocation_usd": 0.3,
+      "max_calls": 80,
+      "status": "completed"
+    },
+    {
+      "id": "concise-40-candidate-20261110",
+      "allocation_usd": 0.3,
+      "max_calls": 80,
+      "status": "completed"
+    },
+    {
+      "id": "concise-multi-baseline-20261110",
+      "allocation_usd": 0.1,
+      "max_calls": 24,
+      "status": "completed"
+    },
+    {
+      "id": "concise-multi-candidate-20261110",
+      "allocation_usd": 0.1,
+      "max_calls": 24,
+      "status": "completed"
+    }
+  ],
+  "conditional_retrieval_allocation_usd": 0,
+  "total_reserved_usd": 0.9,
+  "max_accounted_usd": 2.4105809,
+  "new_batches": [
+    {
+      "id": "concise-40-baseline-20261110",
+      "dispatch_attempts": 80,
+      "known_cost_estimate_usd": 0.044642999999999995,
+      "cost_unknown": false,
+      "stopped": false,
+      "completed_http_requests": 40,
+      "recorded_http_requests": 40,
+      "status": "completed",
+      "client_min_interval_seconds": 3.1,
+      "transport": "in-process ASGI TestClient; real provider",
+      "dense": false,
+      "vector_memory": false
+    },
+    {
+      "id": "concise-40-candidate-20261110",
+      "dispatch_attempts": 80,
+      "known_cost_estimate_usd": 0.037629,
+      "cost_unknown": false,
+      "stopped": false,
+      "completed_http_requests": 40,
+      "recorded_http_requests": 40,
+      "status": "completed",
+      "client_min_interval_seconds": 3.1,
+      "transport": "in-process ASGI TestClient; real provider",
+      "dense": false,
+      "vector_memory": false
+    },
+    {
+      "id": "concise-multi-baseline-20261110",
+      "dispatch_attempts": 16,
+      "known_cost_estimate_usd": 0.0085941,
+      "cost_unknown": false,
+      "stopped": false,
+      "completed_http_requests": 6,
+      "recorded_http_requests": 6,
+      "status": "completed",
+      "client_min_interval_seconds": 3.1,
+      "transport": "in-process ASGI TestClient; real provider",
+      "dense": false,
+      "vector_memory": false
+    },
+    {
+      "id": "concise-multi-candidate-20261110",
+      "dispatch_attempts": 16,
+      "known_cost_estimate_usd": 0.0067446,
+      "cost_unknown": false,
+      "stopped": false,
+      "completed_http_requests": 6,
+      "recorded_http_requests": 6,
+      "status": "completed",
+      "client_min_interval_seconds": 3.1,
+      "transport": "in-process ASGI TestClient; real provider",
+      "dense": false,
+      "vector_memory": false
+    }
+  ],
+  "retrieval_allocation_released_reason": "Current parent fold already removes duplicates; offline public40 and local10 probes have no duplicate finalTop2, no justified paid retrieval arm",
+  "known_estimate_usd": 1.5425331,
+  "accounted_with_old_unknown_usd": 1.6081916,
+  "pending_allocations_usd": 0,
+  "new_calls": 192,
+  "new_cost_estimate_usd": 0.09761070000000001,
+  "remaining_usd": 1.3918084
+}

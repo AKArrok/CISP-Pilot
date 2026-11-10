@@ -1,0 +1,1105 @@
+{
+  "model_calls": 0,
+  "public_corpus_sha256": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+  "physical_chunks": 101,
+  "distinct_parent_evidence": 8,
+  "same_text_groups_share_parent": true,
+  "public_cases": [
+    {
+      "id": "ac-8-new-01",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-02",
+      "raw_pool": 30,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-03",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-04",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-05",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-06",
+      "raw_pool": 46,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-07",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ac-8-new-08",
+      "raw_pool": 22,
+      "raw_pool_unique_parents": 5,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-01",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-02",
+      "raw_pool": 54,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+          "locator": "au-6",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-03",
+      "raw_pool": 52,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 2,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-04",
+      "raw_pool": 54,
+      "raw_pool_unique_parents": 5,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-05",
+      "raw_pool": 55,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-06",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-07",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 2,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "at-2-new-08",
+      "raw_pool": 43,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-01",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-02",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-03",
+      "raw_pool": 56,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-04",
+      "raw_pool": 30,
+      "raw_pool_unique_parents": 5,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-05",
+      "raw_pool": 46,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-06",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-07",
+      "raw_pool": 36,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "cp-9-new-08",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-01",
+      "raw_pool": 29,
+      "raw_pool_unique_parents": 5,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-02",
+      "raw_pool": 41,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-03",
+      "raw_pool": 32,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+          "locator": "au-6",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-04",
+      "raw_pool": 41,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-05",
+      "raw_pool": 48,
+      "raw_pool_unique_parents": 6,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-06",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-07",
+      "raw_pool": 29,
+      "raw_pool_unique_parents": 5,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "ca-8-new-08",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-01",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Account Management\n[ac-2_smt.a] Define and document the types of accounts allowed and specifically prohibited for use wi",
+          "locator": "ac-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-02",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Use Notification\n[ac-8_smt.a] Display {{ insert: param, ac-08_odp.01 }} to users before granting access to the sy",
+          "locator": "ac-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+          "locator": "au-6",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-03",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-04",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "System Backup\n[cp-9_smt.a] Conduct backups of user-level information contained in {{ insert: param, cp-09_odp.01 }} {{ i",
+          "locator": "cp-9",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-05",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Penetration Testing\n[ca-8_smt] Conduct penetration testing {{ insert: param, ca-08_odp.01 }} on {{ insert: param, ca-08_",
+          "locator": "ca-8",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-06",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+          "locator": "au-6",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "实验补充资料",
+          "text": "Literacy Training and Awareness\n[at-2_smt.a] Provide security and privacy literacy training to system users (including m",
+          "locator": "at-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-07",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 8,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Incident Handling\n[ir-4_smt.a] Implement an incident handling capability for incidents that is consistent with the incid",
+          "locator": "ir-4",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    },
+    {
+      "id": "scenario-08",
+      "raw_pool": 60,
+      "raw_pool_unique_parents": 7,
+      "without_fold_unique_evidence": 1,
+      "actual_unique_evidence": 2,
+      "actual_k": 2,
+      "target_hit": true,
+      "actual_previews": [
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Identification and Authentication (Organizational Users)\n[ia-2_smt] Uniquely identify and authenticate organizational us",
+          "locator": "ia-2",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        },
+        {
+          "source": "NIST SP 800-53 5.2.0 OSCAL",
+          "page": null,
+          "domain": "隔离开发资料",
+          "text": "Audit Record Review, Analysis, and Reporting\n[au-6_smt.a] Review and analyze system audit records {{ insert: param, au-0",
+          "locator": "au-6",
+          "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/f0de6d8d8c059d374f15e0ae07508d82e370fc1d/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+        }
+      ]
+    }
+  ],
+  "public_summary": {
+    "cases": 40,
+    "target_hits": 40,
+    "duplicate_final_top2": 0,
+    "raw_top2_duplicate_cases_without_existing_fold": 38
+  },
+  "scope": "Existing parent fold remains unchanged. Removing it is a diagnostic counterfactual, not a deployed arm. Hash duplicate evidence is not proof of semantic redundancy.",
+  "local_private_summary": {
+    "corpus_sha256": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+    "chunks": 1077,
+    "probes": 10,
+    "duplicate_final_top2": 0,
+    "without_existing_fold_duplicate_top2": 0,
+    "raw_private_text_published": false,
+    "semantic_answers_scored": false
+  }
+}

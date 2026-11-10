@@ -1,0 +1,17 @@
+{
+  "status": "execution_review_platform_complete_push_pending",
+  "baseline_commit": "0e7d2b282bcd636e9f037fda1919e68ac5f8ac42",
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "platform_quota_stop_revoked_by_user": true,
+  "new_model_calls": 192,
+  "budget": "budget-ledger.json",
+  "next": "Commit explicit round files, push, verify remote SHA and exact CI; no new model runs",
+  "default_db_unchanged": true,
+  "default_answer_prompt_promoted": false,
+  "tests": "targeted-tests.log: 105 passed",
+  "remaining_quality_failures": [
+    "candidate ac-8-new-03 locator",
+    "both scenario-01 oral/written overclaim",
+    "candidate inline-sentence citations and irrelevant expansions"
+  ]
+}

@@ -100,3 +100,7 @@ docs/engineering-delivery/evaluation-platform-v1/*.log -text -whitespace
 docs/engineering-delivery/evaluation-platform-v2/*.log -text -whitespace
 docs/engineering-delivery/data-platform-v1/*.log -text -whitespace
 docs/engineering-delivery/live-platform-four-20261110/*.log -text -whitespace
+docs/engineering-delivery/concise-regression-20261110/**/executor.py -text whitespace=cr-at-eol
+docs/engineering-delivery/concise-regression-20261110/**/*.json -text whitespace=cr-at-eol
+docs/engineering-delivery/concise-regression-20261110/**/*.jsonl -text whitespace=cr-at-eol
+docs/engineering-delivery/concise-regression-20261110/*.log -text -whitespace

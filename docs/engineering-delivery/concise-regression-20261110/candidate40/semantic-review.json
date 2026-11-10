@@ -1,0 +1,246 @@
+{
+  "reviewer": "Codex source-based development review (AI; not independent human gold)",
+  "policy": "Frozen source/condition/parameter/refusal criteria; inspect extra unsupported claims in both arms. Layout and exact citation scored separately. No labels or thresholds changed.",
+  "cases": [
+    {
+      "id": "ac-8-new-01",
+      "answer_sha256": "f404c90f2692d88b0ded4a096347b7d5aff88c459e8f2c2fbdaa83781fd6a863",
+      "source_supported": true,
+      "note": "访问前通知并保留到确认及明确操作。"
+    },
+    {
+      "id": "ac-8-new-02",
+      "answer_sha256": "88a38814378aa024052f66fa9f0ca7d08f128b2420eef737c43e762719ad72d4",
+      "source_supported": true,
+      "note": "保留到确认及明确操作，未省略双条件。"
+    },
+    {
+      "id": "ac-8-new-03",
+      "answer_sha256": "436674fc5824e5ea0c31cac3c4abe868ddd241d85704ff62e76bce8831c87d8a",
+      "source_supported": true,
+      "note": "人机界面例外及风险考虑正确；另有机械引用定位ac-8_gdn不匹配，不能以语义正确覆盖引用失败。"
+    },
+    {
+      "id": "ac-8-new-04",
+      "answer_sha256": "0bc1a3099e6a1504c741f0deb518f1c31cb94c3c3c273de724c5afdd2ee1a341",
+      "source_supported": true,
+      "note": "公开系统须描述授权用途。"
+    },
+    {
+      "id": "ac-8-new-05",
+      "answer_sha256": "899a4c353b7c1307c22d5927e70db9bbb5e0a4cb60071f9522f2daf1db6d124f",
+      "source_supported": true,
+      "note": "保留需求/用户人口构成及consider条件。"
+    },
+    {
+      "id": "ac-8-new-06",
+      "answer_sha256": "0f47d0a326bd6ddf030ffa4dbb3de9db7383bbba6195a79c2ca1547d84f12715",
+      "source_supported": true,
+      "note": "二次通知以风险评估为考虑条件。"
+    },
+    {
+      "id": "ac-8-new-07",
+      "answer_sha256": "9342a82181aabad1ce0b2c7668f8825ebbd362d70120789eaf66c12835d1506c",
+      "source_supported": true,
+      "note": "确认前不得隐藏，参数内容未编造。"
+    },
+    {
+      "id": "ac-8-new-08",
+      "answer_sha256": "8b3c9984c21aa5f8dab24c0e6ac34038ee67233125ae673a12d7d8f06557c743",
+      "source_supported": true,
+      "note": "否定五分钟要求，不将其他参数充作通知频次。出处虽已换行，仍插在句中且后跟句号/正文，完整末尾出处段未达成，不自动晋级。"
+    },
+    {
+      "id": "at-2-new-01",
+      "answer_sha256": "51a86ea046b32e45a80f8c55ca75ba5ee75faa84a5527e7f92c7bbccc857b6d8",
+      "source_supported": true,
+      "note": "承包商明确包含。"
+    },
+    {
+      "id": "at-2-new-02",
+      "answer_sha256": "a1956e70fc737a15287687178b0044408ca770008e7f769571518250ea7d858e",
+      "source_supported": true,
+      "note": "承认远程办公影响内容确定；区分组织定义更新事件与未明文规定的自动触发。"
+    },
+    {
+      "id": "at-2-new-03",
+      "answer_sha256": "f9d0a875c0fbe9905162ead75ade0d751ec986a180d396282a87ef81efd8e2a9",
+      "source_supported": true,
+      "note": "列举了五种有源示例，超过所问两种，属于精简性问题。"
+    },
+    {
+      "id": "at-2-new-04",
+      "answer_sha256": "12fece03c29808142d09ede44613acd1beac1b744a044c31190b0ae35a0fcd80",
+      "source_supported": true,
+      "note": "允许短临时培训，保留最低频率及组织参数。"
+    },
+    {
+      "id": "at-2-new-05",
+      "answer_sha256": "5b121b08635cdedeb085f5634ff491fea085f03b609fa2e4f13aa4fcd860960c",
+      "source_supported": true,
+      "note": "法律变化为可能触发事件，未变成唯一触发。"
+    },
+    {
+      "id": "at-2-new-06",
+      "answer_sha256": "ac538b67713fe5a5c71b17d2bac88323fb5a6cb0b7fb0b648a530717fc5f1a67",
+      "source_supported": true,
+      "note": "包含PII处理及用户行动。"
+    },
+    {
+      "id": "at-2-new-07",
+      "answer_sha256": "2b188f11e24817dbe972df319a1b6cbc05eeb953e39824f712936651184d6b28",
+      "source_supported": true,
+      "note": "否定海报唯一性，技术参数不等同固定方式；01/02确为培训频次参数。"
+    },
+    {
+      "id": "at-2-new-08",
+      "answer_sha256": "1d132c0468dda8e61cfc2de9f60851def3380e906fb911598622be99d6f5f3d4",
+      "source_supported": true,
+      "note": "未捏造90分；源文虽提知识测试，未要求统一考试分数。"
+    },
+    {
+      "id": "cp-9-new-01",
+      "answer_sha256": "106bc97e97ea33392c5e13ba61cb77ec26bb51d1e3009efaae751191f6e3eed6",
+      "source_supported": true,
+      "note": "系统状态、OS、中间件、应用、许可证。"
+    },
+    {
+      "id": "cp-9-new-02",
+      "answer_sha256": "d9bf57abc5832c17e1a167e11c12e687318987076c0e33199194219bf8a517fd",
+      "source_supported": true,
+      "note": "系统级列举与用户级排除定义准确。"
+    },
+    {
+      "id": "cp-9-new-03",
+      "answer_sha256": "a93294c2c341491510a34dd740ba820827eabc63bfe29a915cd2ea96263d94a9",
+      "source_supported": true,
+      "note": "数字签名与密码哈希为完整性示例。"
+    },
+    {
+      "id": "cp-9-new-04",
+      "answer_sha256": "52e094975ba54aa1ac0d421d1746b7299974e1e6183c1affdf0bf0aad322ec05",
+      "source_supported": true,
+      "note": "传输保护关联MP-5与SC-8。"
+    },
+    {
+      "id": "cp-9-new-05",
+      "answer_sha256": "37c7156c1382572256ad6043facad5bc1c89d77a8f0f07ca6a4422571bacfef6",
+      "source_supported": true,
+      "note": "应急计划之外的组织及外部合规要求。"
+    },
+    {
+      "id": "cp-9-new-06",
+      "answer_sha256": "ceb1ea688ac41807940ca35001a04f23b1a7bfa9062ce3a6c73d2009b8a23924",
+      "source_supported": true,
+      "note": "隐私高级官员及法律顾问；中文首席称谓不作为指定职位证明。"
+    },
+    {
+      "id": "cp-9-new-07",
+      "answer_sha256": "b76a4f5582faf3cbbf9e166b85bf918aa56fca78baecf7932d07a1973682b9ed",
+      "source_supported": true,
+      "note": "未虚构唯一供应商，范围与频次未当采购来源。"
+    },
+    {
+      "id": "cp-9-new-08",
+      "answer_sha256": "718c2f50d0240f2406f4cd2539500cd85d06377f914863102ad1e634e248789d",
+      "source_supported": true,
+      "note": "隐私相关系统文档不可跳过，待定义频次不使动作可选。"
+    },
+    {
+      "id": "ca-8-new-01",
+      "answer_sha256": "9d0fb071423e4dadc49b194e96a8aba12b5a92c5f491787ad55ab6d8bdccef89",
+      "source_supported": true,
+      "note": "超越扫描、验证漏洞/抗渗透，技能与约束需区分。"
+    },
+    {
+      "id": "ca-8-new-02",
+      "answer_sha256": "4ef7f03a170b1db3244e0bd01093daf12c92cd46c3bf73de4cbc4ffabb37ffc4",
+      "source_supported": true,
+      "note": "网络、OS、应用安全技能与经验，独立性不等于技能。"
+    },
+    {
+      "id": "ca-8-new-03",
+      "answer_sha256": "969e1f00c599727d988e83c5d60229d585afe0651afb2eb7cd82175989078f85",
+      "source_supported": true,
+      "note": "约束包含时间资源技能；缺少具体影响机制时限定范围，通用补充须标明。"
+    },
+    {
+      "id": "ca-8-new-04",
+      "answer_sha256": "931ba4f71bc2f5aff127d7762f0f9cdadaf418f0bdae312bd2d71d941732b5f7",
+      "source_supported": true,
+      "note": "IPv4到IPv6是资料中的迁移示例。"
+    },
+    {
+      "id": "ca-8-new-05",
+      "answer_sha256": "ecf9725f61f5572632fc3c8ac6efc39f6a004c6ca9161ae7eba2b3d74e460ba7",
+      "source_supported": true,
+      "note": "漏洞分析结果可支持渗透测试。"
+    },
+    {
+      "id": "ca-8-new-06",
+      "answer_sha256": "d6cc680a05e0513ace7dd25e8e0d43377d2d630e532713971104641cebc70e6a",
+      "source_supported": true,
+      "note": "风险评估指导独立程度，未给等级。"
+    },
+    {
+      "id": "ca-8-new-07",
+      "answer_sha256": "b86ddd382ed6355403df3b591a63aaf3a2d9748ecd1e9791d4cbe00f38725165",
+      "source_supported": true,
+      "note": "未虚构七天，频次与测试对象参数分开。"
+    },
+    {
+      "id": "ca-8-new-08",
+      "answer_sha256": "961cda3c454c79d64bd12af1cb520bbe717bf011528ec40aa5dac37d802cd792",
+      "source_supported": true,
+      "note": "内部和外部均可，独立性与物理实施位置不同。"
+    },
+    {
+      "id": "scenario-01",
+      "answer_sha256": "aa07a968c9516dd9b7dc2ead6b8a78adfda5c0976d7ed37b72f09cdc268abad6",
+      "source_supported": false,
+      "note": "成员条件与批准主体已区分，但主结论把资料未规定的口头/书面形式说成确定性禁止；基线自身后文承认形式未规定，候选进一步称书面批准要求。源支持不足，判失败。"
+    },
+    {
+      "id": "scenario-02",
+      "answer_sha256": "156eaad7c3578086419d461ba3f7202da63995c7621eb40f38c76763f1f4ef12",
+      "source_supported": true,
+      "note": "公开系统隐私一致性条件保留，不一律允许或绝对禁止监控引用。"
+    },
+    {
+      "id": "scenario-03",
+      "answer_sha256": "630a9a084013e2affa31391087e5d979d9ff4ccf4d9d4a2d8da7e863daa5c8e4",
+      "source_supported": true,
+      "note": "初始、后续及变化/组织事件培训均须覆盖，参数未赋值不使动作可选。"
+    },
+    {
+      "id": "scenario-04",
+      "answer_sha256": "25d8f8e4a0f41be63d457d1fee8c544ee1f5ab7abb4176d37fcee2a77b64b323",
+      "source_supported": true,
+      "note": "三类对象区分且许可证属系统级，不编造频次；基线将保护也称第四类对象是表述瑕疵，后文正确区分保护动作。"
+    },
+    {
+      "id": "scenario-05",
+      "answer_sha256": "9ac977d8fb4ac447807f40ee5765d630cca6cddfc037e09baff17756644084e5",
+      "source_supported": true,
+      "note": "扫描不能替代渗透且交战规则在开始前商定。"
+    },
+    {
+      "id": "scenario-06",
+      "answer_sha256": "3d490b295ab08d4d924b5e8d51a01c6a83fd4130c422b8cbe168949e494ffa90",
+      "source_supported": true,
+      "note": "风险变化须调整级别，指南频率/范围/深度可调整，保留两层规范力度。"
+    },
+    {
+      "id": "scenario-07",
+      "answer_sha256": "53fc52de0d391e69d3aac0646d61f5bbbe0853ed8d4c3b4c78feac3b8bc8f63a",
+      "source_supported": true,
+      "note": "联邦机构/PII条件保留，授权用户为未授权目的访问亦包含。"
+    },
+    {
+      "id": "scenario-08",
+      "answer_sha256": "70fe3130de0f5ecb115aa4b3b2d146a73d29a8498070949bc0d778ec43630142",
+      "source_supported": true,
+      "note": "不用网络为本地，经网络为网络访问，经外部网络为远程；物理位置不决定。"
+    }
+  ]
+}

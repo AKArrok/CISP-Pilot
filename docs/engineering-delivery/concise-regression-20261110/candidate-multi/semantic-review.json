@@ -1,0 +1,42 @@
+{
+  "reviewer": "Codex source-based development review (AI; not independent human gold)",
+  "policy": "Frozen source/condition/parameter/refusal criteria; inspect extra unsupported claims in both arms. Layout and exact citation scored separately. No labels or thresholds changed.",
+  "cases": [
+    {
+      "id": "multi-a1",
+      "answer_sha256": "08937494b927d311e6bb2555141de778267b15fc77edf6b3c773eaee71df6319",
+      "source_supported": true,
+      "note": "保留多语言考虑条件。"
+    },
+    {
+      "id": "multi-a2",
+      "answer_sha256": "5db16902974916c6c86c3ed9b20efe559d2cb5c71b2878231decde916cf0c0ef",
+      "source_supported": true,
+      "note": "它正确承接系统通知，未虚构五分钟频次。"
+    },
+    {
+      "id": "multi-a3",
+      "answer_sha256": "da067dbebf566cb80bc16a45c581a777e6bbd733b4888899834e06935a26992c",
+      "source_supported": true,
+      "note": "切到CP-9后正确区分系统与用户信息，无通知话题污染。"
+    },
+    {
+      "id": "multi-b1",
+      "answer_sha256": "40ed2c0a18cf990bff43fdcfae2fdd6dbe43218681763e9dbc9d1fd0374702ec",
+      "source_supported": true,
+      "note": "另一会话从隐私文档备份开始，不受前会话影响。"
+    },
+    {
+      "id": "multi-b2",
+      "answer_sha256": "59c90c55b1d6c91010706915b64ff0891534a7b99cbe04190a6e8a8e9cc23e55",
+      "source_supported": true,
+      "note": "承接备份对象，组织确定频次，不能省略动作。"
+    },
+    {
+      "id": "multi-b3",
+      "answer_sha256": "c1e8fe3eb89d59eaa292adaaac5fcc56f5aa9f8c5431d1a09e89fa295e1804f2",
+      "source_supported": true,
+      "note": "切到AT-2后保留后续/事件培训要求，无备份话题污染。"
+    }
+  ]
+}

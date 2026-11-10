@@ -1,0 +1,13 @@
+{
+  "standing_authorization_usd": 3,
+  "prior_accounted_with_unknown_usd": 1.5105809,
+  "old_unknown_fee_reservation_usd": 0.0656585,
+  "total_round_allocated_usd": 0.9,
+  "max_accounted_with_allocations_usd": 2.4105809,
+  "this_allocation_usd": 0.3,
+  "max_calls": 80,
+  "no_automatic_retry": true,
+  "public_only": true,
+  "input_rate_per_1m_usd": 0.3,
+  "output_rate_per_1m_usd": 1.2
+}

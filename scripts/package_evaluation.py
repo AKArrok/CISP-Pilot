@@ -68,6 +68,8 @@ def package(packet, run, schema_version=1, dataset_key="public-nist-http"):
     originals = {row["id"]: row for row in rows}
     data.update(schema_version=2, dataset_key=dataset_key,
                 version_label=packet.name, repetitions=1)
+    if manifest.get("citation_layout"):
+        data["config"]["citation_layout"] = manifest["citation_layout"]
     override = manifest.get("fallback_system_override", False)
     if type(override) is not bool:
         raise ValueError("Frozen prompt override must be boolean")

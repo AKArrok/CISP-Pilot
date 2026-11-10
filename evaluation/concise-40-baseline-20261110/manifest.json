@@ -1,0 +1,30 @@
+{
+  "role": "Original frozen 40 cohort / baseline; actual ASGI app, public sources, agent review not human gold",
+  "transport": "in-process ASGI TestClient; actual external provider",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "max_calls": 80,
+  "budget_usd": 0.3,
+  "max_output_tokens": 1024,
+  "max_attempts_per_call": 1,
+  "retrieval_k": 2,
+  "dense": false,
+  "query_variants": false,
+  "vector_memory": false,
+  "answer_strategy": "default",
+  "answer_temperature": 0.3,
+  "citation_layout": "line-v1",
+  "acceptance": "Original source/condition/parameter/refusal criteria plus separately frozen layout checks; agent development only",
+  "base_commit": "0e7d2b282bcd636e9f037fda1919e68ac5f8ac42",
+  "fallback_system_override": false,
+  "frozen_sha256": {
+    "acceptance.json": "72ec325e07e99be730c357307b3a1e0b63a38577257c7af9628a16cc0d5a9ee3",
+    "cases.json": "acaef65adf608ed2fda97572ff39381f2a8474861dddf1ff5bc44b45d30c8b27",
+    "chunks.json": "39025aa56a9bd3cc4e1acb548b149d80cbeed74213533d203dde96c084a47693",
+    "funding-preflight.json": "ac5be909933a99ba28fd37e7899289fd9bc4325f1a0d52084ba858faafb97c25",
+    "layout-acceptance.json": "9d5cb345e2a0e06370872e01ed62e7efff7eed8ea525b50b6557c50481171f79",
+    "prompts.json": "087b924dd68ae80dfba915245d03a28aa44b381115b2d7dc398d3ab9045fcf28",
+    "runtime-source-hashes.json": "050e2bd1a44dc0018a261a8a875dcff400d8fb215d9ce68f2b1a79841ce8bd9f"
+  },
+  "executor_sha256": "1daf791da901dc9316fc9920c4191d5f3f9c2bbf57537d0c3883e8d9e6c6d076"
+}

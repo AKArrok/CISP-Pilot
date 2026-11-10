@@ -1,0 +1,1221 @@
+{
+  "model_calls_in_recording": 0,
+  "independent_human_gold": false,
+  "snapshot": {
+    "id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79",
+    "created": true
+  },
+  "runs": {
+    "baseline40": {
+      "id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+      "created": true,
+      "summary": {
+        "id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+        "dataset_id": "267ffd189ff5ca6b0943c9d4eb920b3474d4b421d13bb21928723fd316016aa7",
+        "logical_dataset_id": "1f9c57d6f22e97165093d50e09e4969d8bd469d5f7a4949d79284efa80ac5a06",
+        "version_id": "db573419ddd4c7c7ebf0e82a8530058e5bddf97241edbf19039471b572c43fa1",
+        "created_at": "2026-11-10T15:42:34.248436+00:00",
+        "name": "baseline40",
+        "dataset_name": "NIST public HTTP / 40-case development",
+        "role": "development",
+        "visibility": "public",
+        "planned": 40,
+        "recorded": 40,
+        "planned_attempts": 40,
+        "recorded_attempts": 40,
+        "repetitions": 1,
+        "counts": {
+          "passed": 38,
+          "failed": 2,
+          "unknown": 0
+        },
+        "known_cost_usd": 0.044642999999999995,
+        "cost_unknown": false,
+        "independent_human_gold": false
+      },
+      "source_review_passed": 38,
+      "median_answer_characters": 474.0,
+      "mean_answer_characters": 505.65,
+      "median_elapsed_seconds": 3.319999999999709,
+      "retrieval_replay": [
+        {
+          "id": "ac-8-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-08",
+          "offline_equals_actual_contexts": true
+        }
+      ]
+    },
+    "candidate40": {
+      "id": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+      "created": true,
+      "summary": {
+        "id": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+        "dataset_id": "267ffd189ff5ca6b0943c9d4eb920b3474d4b421d13bb21928723fd316016aa7",
+        "logical_dataset_id": "1f9c57d6f22e97165093d50e09e4969d8bd469d5f7a4949d79284efa80ac5a06",
+        "version_id": "db573419ddd4c7c7ebf0e82a8530058e5bddf97241edbf19039471b572c43fa1",
+        "created_at": "2026-11-10T15:42:34.308022+00:00",
+        "name": "candidate40",
+        "dataset_name": "NIST public HTTP / 40-case development",
+        "role": "development",
+        "visibility": "public",
+        "planned": 40,
+        "recorded": 40,
+        "planned_attempts": 40,
+        "recorded_attempts": 40,
+        "repetitions": 1,
+        "counts": {
+          "passed": 38,
+          "failed": 2,
+          "unknown": 0
+        },
+        "known_cost_usd": 0.037629,
+        "cost_unknown": false,
+        "independent_human_gold": false
+      },
+      "source_review_passed": 39,
+      "median_answer_characters": 189.5,
+      "mean_answer_characters": 194.6,
+      "median_elapsed_seconds": 2.3125,
+      "retrieval_replay": [
+        {
+          "id": "ac-8-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ac-8-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "at-2-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "cp-9-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "ca-8-new-08",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-01",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-02",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-03",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-04",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-05",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-06",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-07",
+          "offline_equals_actual_contexts": true
+        },
+        {
+          "id": "scenario-08",
+          "offline_equals_actual_contexts": true
+        }
+      ]
+    },
+    "baseline-multi": {
+      "id": "219f5739837776986907bac52f55cd9d55433745183bd98f478b7c00040e279a",
+      "created": true,
+      "summary": {
+        "id": "219f5739837776986907bac52f55cd9d55433745183bd98f478b7c00040e279a",
+        "dataset_id": "dd8d1343af78359f1bab02de860f2e18ccbbbb8563d1d79e1a5bcf05effd14ec",
+        "logical_dataset_id": "1f9c57d6f22e97165093d50e09e4969d8bd469d5f7a4949d79284efa80ac5a06",
+        "version_id": "5d604ca3d20c4e9e9c83881845bed3717111bd1801086de4063c9b4b7a0a737d",
+        "created_at": "2026-11-10T15:42:34.344073+00:00",
+        "name": "baseline-multi",
+        "dataset_name": "NIST public HTTP / 40-case development",
+        "role": "development",
+        "visibility": "public",
+        "planned": 6,
+        "recorded": 6,
+        "planned_attempts": 6,
+        "recorded_attempts": 6,
+        "repetitions": 1,
+        "counts": {
+          "passed": 6,
+          "failed": 0,
+          "unknown": 0
+        },
+        "known_cost_usd": 0.0085941,
+        "cost_unknown": false,
+        "independent_human_gold": false
+      },
+      "source_review_passed": 6,
+      "median_answer_characters": 621.0,
+      "mean_answer_characters": 612.5,
+      "median_elapsed_seconds": 4.367499999999836,
+      "retrieval_replay": []
+    },
+    "candidate-multi": {
+      "id": "c0f9fff735cd8934a6d9e044d1faea5ed5dad2f7aa0ea86c1e54e90b26abc62e",
+      "created": true,
+      "summary": {
+        "id": "c0f9fff735cd8934a6d9e044d1faea5ed5dad2f7aa0ea86c1e54e90b26abc62e",
+        "dataset_id": "dd8d1343af78359f1bab02de860f2e18ccbbbb8563d1d79e1a5bcf05effd14ec",
+        "logical_dataset_id": "1f9c57d6f22e97165093d50e09e4969d8bd469d5f7a4949d79284efa80ac5a06",
+        "version_id": "5d604ca3d20c4e9e9c83881845bed3717111bd1801086de4063c9b4b7a0a737d",
+        "created_at": "2026-11-10T15:42:34.366260+00:00",
+        "name": "candidate-multi",
+        "dataset_name": "NIST public HTTP / 40-case development",
+        "role": "development",
+        "visibility": "public",
+        "planned": 6,
+        "recorded": 6,
+        "planned_attempts": 6,
+        "recorded_attempts": 6,
+        "repetitions": 1,
+        "counts": {
+          "passed": 6,
+          "failed": 0,
+          "unknown": 0
+        },
+        "known_cost_usd": 0.0067446,
+        "cost_unknown": false,
+        "independent_human_gold": false
+      },
+      "source_review_passed": 6,
+      "median_answer_characters": 191.0,
+      "mean_answer_characters": 200.16666666666666,
+      "median_elapsed_seconds": 3.3285000000000764,
+      "retrieval_replay": []
+    }
+  },
+  "comparisons": {
+    "original40": {
+      "left": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+      "right": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+      "config_changed": true,
+      "criteria_match": true,
+      "config_diff": [
+        {
+          "key": "answer_system_sha256",
+          "before": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+          "after": "a475ce7242fea4eca80bd9bbb6a3ccd0a4eb85a7c088697f41d96a0ef9647501",
+          "before_present": true,
+          "after_present": true
+        },
+        {
+          "key": "fallback_system_override",
+          "before": false,
+          "after": true,
+          "before_present": true,
+          "after_present": true
+        }
+      ],
+      "counts": {
+        "fixed": 1,
+        "regressed": 1,
+        "unchanged": 38,
+        "incomparable": 0,
+        "insufficient_evidence": 0,
+        "added": 0,
+        "removed": 0
+      },
+      "items": [
+        {
+          "id": "ac-8-new-01",
+          "question": "登录告知应在授予访问权限之前还是之后出现？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-02",
+          "question": "警告横幅在什么情况下可以从屏幕消失？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-03",
+          "question": "不存在人机界面的系统需要使用告知吗？",
+          "before": "passed",
+          "after": "failed",
+          "change": "regressed",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": true
+        },
+        {
+          "id": "ac-8-new-04",
+          "question": "公开访问系统的告知需要说明授权用途吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-05",
+          "question": "告知是否需要考虑多语言用户？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-06",
+          "question": "登录网络以后还需要考虑应用层的二次告知吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-07",
+          "question": "该控制是否允许在用户确认前隐藏警告横幅？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ac-8-new-08",
+          "question": "这份资料是否规定登录告知必须每隔五分钟弹出？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": true
+        },
+        {
+          "id": "at-2-new-01",
+          "question": "安全与隐私培训的用户是否包括承包商？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-02",
+          "question": "培训内容是否应随远程工作环境变化而调整？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-03",
+          "question": "列举资料中两种提升安全意识的具体手段。",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-04",
+          "question": "后续培训是否可以采用简短临时专题形式？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-05",
+          "question": "适用法规变化是否可能触发培训内容更新？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-06",
+          "question": "培训内容是否需要涉及个人身份信息的处理？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-07",
+          "question": "该控制是否规定培训只能使用海报一种方式？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "at-2-new-08",
+          "question": "这份资料是否要求所有员工培训考试必须取得九十分？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-01",
+          "question": "渗透测试与自动漏洞扫描相比有什么区别？",
+          "before": "failed",
+          "after": "passed",
+          "change": "fixed",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": true
+        },
+        {
+          "id": "ca-8-new-02",
+          "question": "渗透测试团队应具备哪些可证明的能力？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-03",
+          "question": "时间资源技能如何影响渗透测试？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-04",
+          "question": "从IPv4迁移IPv6时为什么值得关注渗透测试？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-05",
+          "question": "漏洞分析结果能否支持渗透测试活动？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-06",
+          "question": "测试人员所需独立程度由什么指导？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-07",
+          "question": "这份资料是否规定每次渗透测试必须持续七天？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "ca-8-new-08",
+          "question": "渗透测试是否只能从组织外部进行？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-01",
+          "question": "系统级备份信息包含哪些软件类别？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-02",
+          "question": "用户级信息与系统级信息在指南中如何区分？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-03",
+          "question": "备份完整性可以使用哪两种技术机制保护？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-04",
+          "question": "备份传输保护关联哪两个控制编号？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-05",
+          "question": "备份计划除应急计划还要考虑什么要求？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-06",
+          "question": "涉及个人健康信息的备份要求应向哪些人员咨询？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-07",
+          "question": "该控制是否指定只能购买某一家公司的备份软件？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "cp-9-new-08",
+          "question": "该控制是否允许跳过包含隐私文档的系统文档备份？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-01",
+          "question": "新员工准备加入组和角色并创建账号，口头同意是否足够？资料对成员资格条件和创建请求批准分别怎样要求？",
+          "before": "failed",
+          "after": "failed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-02",
+          "question": "公开访问系统能否因为用户继续使用就无视隐私安排，一律加入监控和审计告知？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-03",
+          "question": "方案只给新员工入职培训，不安排后续频次或系统变化、相关事件后的培训，这样覆盖了AT-2要求吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-04",
+          "question": "备份方案只有业务文件，没有操作系统和许可证，也没有安全与隐私相关系统文档，能视为覆盖了CP-9列出的备份对象吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-05",
+          "question": "方案把自动漏洞扫描当作渗透测试的替代，并计划测试结束后再商定交战规则，这与CA-8资料一致吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-06",
+          "question": "可信外部情报显著改变风险后，保持原审计分析设置就足够了吗？原文对级别、频率或范围怎样描述？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-07",
+          "question": "在联邦机构，授权员工为未获授权的目的访问个人可识别信息，是否也可能属于泄露，还是只有外部入侵才算？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "scenario-08",
+          "question": "人在办公室却通过外部网络连接服务器，这仍是本地访问吗？按IA-2如何区分网络访问与远程访问？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        }
+      ],
+      "scope": "Historical judgments; unchanged means aggregate status only; repeats are not independent cases"
+    },
+    "multi": {
+      "left": "219f5739837776986907bac52f55cd9d55433745183bd98f478b7c00040e279a",
+      "right": "c0f9fff735cd8934a6d9e044d1faea5ed5dad2f7aa0ea86c1e54e90b26abc62e",
+      "config_changed": true,
+      "criteria_match": true,
+      "config_diff": [
+        {
+          "key": "answer_system_sha256",
+          "before": "6a1d009f33d1d75db19d30f228fd4e7b5b4e8576066b9a175074c72114d70e38",
+          "after": "a475ce7242fea4eca80bd9bbb6a3ccd0a4eb85a7c088697f41d96a0ef9647501",
+          "before_present": true,
+          "after_present": true
+        },
+        {
+          "key": "fallback_system_override",
+          "before": false,
+          "after": true,
+          "before_present": true,
+          "after_present": true
+        }
+      ],
+      "counts": {
+        "fixed": 0,
+        "regressed": 0,
+        "unchanged": 6,
+        "incomparable": 0,
+        "insufficient_evidence": 0,
+        "added": 0,
+        "removed": 0
+      },
+      "items": [
+        {
+          "id": "multi-a1",
+          "question": "告知是否需要考虑多语言用户？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "multi-a2",
+          "question": "那它是否必须每隔五分钟弹出？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "multi-a3",
+          "question": "换个话题，系统备份中用户级信息与系统级信息如何区分？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "multi-b1",
+          "question": "系统文档中包含隐私相关文档，也必须备份吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "multi-b2",
+          "question": "那它的备份频次由谁确定？能不能因此省略备份？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        },
+        {
+          "id": "multi-b3",
+          "question": "再换个话题：只做新员工入职培训、不做后续或变化事件培训，覆盖AT-2吗？",
+          "before": "passed",
+          "after": "passed",
+          "change": "unchanged",
+          "left_attempts": 1,
+          "right_attempts": 1,
+          "reason_changed": false
+        }
+      ],
+      "scope": "Historical judgments; unchanged means aggregate status only; repeats are not independent cases"
+    }
+  },
+  "layout_causal_evidence": "layout-red.log, layout-http-final.log, targeted-tests.log; both new paid arms use line-v1",
+  "improvements": [
+    {
+      "id": "07b4794c9dc8621b91b1202d4d453f38f278839e7e066a77537681e0dbdd6838",
+      "actor": "codex-development-source-review",
+      "request_id": "concise-regression-citation",
+      "created_at": "2026-11-10T15:42:34.417750+00:00",
+      "run_id": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+      "case_id": "ac-8-new-03",
+      "attempt": 1,
+      "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79",
+      "payload": {
+        "acceptance": "同冻结输入和标准复测；区分格式、源支持、出处及检索；不把AI开发集当人工验收。",
+        "attempt": 1,
+        "case_id": "ac-8-new-03",
+        "category": "evidence",
+        "chunk_ids": [],
+        "evidence": "candidate40/audit.json: citation_structure=false; ac-8_gdn vs provided ac-8",
+        "frozen": {
+          "answer_sha256": "436674fc5824e5ea0c31cac3c4abe868ddd241d85704ff62e76bce8831c87d8a",
+          "case_version": "41d242d9b955955d1a92cc9c0fbfaffd73936d7d6caccd5677c629523f4f0ddd",
+          "rubric_id": "b5dab165be6d08057d7d5de521e293f555380e342e7b6dabc75d94f0a0281692",
+          "version_binding": "hash_bound"
+        },
+        "hypothesis": "精简提示仍可能虚构出处定位，不能晋级默认。",
+        "request_id": "concise-regression-citation",
+        "run_id": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+        "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79"
+      },
+      "events": [
+        {
+          "item_id": "07b4794c9dc8621b91b1202d4d453f38f278839e7e066a77537681e0dbdd6838",
+          "revision": 1,
+          "actor": "codex-development-source-review",
+          "request_id": "concise-note-citation",
+          "created_at": "2026-11-10T15:42:34.424737+00:00",
+          "payload": {
+            "action": "investigating",
+            "candidate_attempt": 1,
+            "candidate_run": null,
+            "note": "candidate40/audit.json: citation_structure=false; ac-8_gdn vs provided ac-8；结果与局限保留，未部署。",
+            "request_id": "concise-note-citation",
+            "revision": 0
+          }
+        }
+      ],
+      "revision": 1,
+      "status": "investigating"
+    },
+    {
+      "id": "ec545be466510c2eacd8635488add2e72d9b56bdb86b0ed51e1eae555469d3e0",
+      "actor": "codex-development-source-review",
+      "request_id": "concise-regression-oral",
+      "created_at": "2026-11-10T15:42:34.454095+00:00",
+      "run_id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+      "case_id": "scenario-01",
+      "attempt": 1,
+      "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79",
+      "payload": {
+        "acceptance": "同冻结输入和标准复测；区分格式、源支持、出处及检索；不把AI开发集当人工验收。",
+        "attempt": 1,
+        "case_id": "scenario-01",
+        "category": "generation",
+        "chunk_ids": [],
+        "evidence": "两臂source review均失败，见semantic-review.json",
+        "frozen": {
+          "answer_sha256": "3dda4b63daba58e364712f6e357f417f68adf5724096c402aabecd540ca3c589",
+          "case_version": "b6a32a69c74914546b9145cf5bb4a06cb668873cd300333244dd9edc3320d499",
+          "rubric_id": "b5dab165be6d08057d7d5de521e293f555380e342e7b6dabc75d94f0a0281692",
+          "version_binding": "hash_bound"
+        },
+        "hypothesis": "精简不修复规范力度扩展，口头/书面要求需保留资料边界。",
+        "request_id": "concise-regression-oral",
+        "run_id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+        "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79"
+      },
+      "events": [
+        {
+          "item_id": "ec545be466510c2eacd8635488add2e72d9b56bdb86b0ed51e1eae555469d3e0",
+          "revision": 1,
+          "actor": "codex-development-source-review",
+          "request_id": "concise-note-oral",
+          "created_at": "2026-11-10T15:42:34.459621+00:00",
+          "payload": {
+            "action": "investigating",
+            "candidate_attempt": 1,
+            "candidate_run": null,
+            "note": "两臂source review均失败，见semantic-review.json；结果与局限保留，未部署。",
+            "request_id": "concise-note-oral",
+            "revision": 0
+          }
+        },
+        {
+          "item_id": "ec545be466510c2eacd8635488add2e72d9b56bdb86b0ed51e1eae555469d3e0",
+          "revision": 2,
+          "actor": "codex-development-source-review",
+          "request_id": "concise-retest-oral",
+          "created_at": "2026-11-10T15:42:34.479117+00:00",
+          "payload": {
+            "action": "retest",
+            "candidate_attempt": 1,
+            "candidate_run": "b34209bb5db78b4833049dd20586dd3f65b1e1a8ac17af51a9ec682618cdeb78",
+            "note": "两臂仍未解决，不据缩短篇幅标记fixed。",
+            "request_id": "concise-retest-oral",
+            "result": {
+              "candidate_answer_sha256": "aa07a968c9516dd9b7dc2ead6b8a78adfda5c0976d7ed37b72f09cdc268abad6",
+              "criteria_match": true,
+              "deployed": false,
+              "independent_human_gold": false,
+              "outcome": "unchanged",
+              "suite_counts": {
+                "added": 0,
+                "fixed": 1,
+                "incomparable": 0,
+                "insufficient_evidence": 0,
+                "regressed": 1,
+                "removed": 0,
+                "unchanged": 38
+              }
+            },
+            "revision": 1
+          }
+        }
+      ],
+      "revision": 2,
+      "status": "retest"
+    },
+    {
+      "id": "5c6f202e7e1ec759fa51028ffb7e04dd55a561ef76c6dd5d01bf3d03a68a45ec",
+      "actor": "codex-development-source-review",
+      "request_id": "concise-regression-duplicate",
+      "created_at": "2026-11-10T15:42:34.506890+00:00",
+      "run_id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+      "case_id": "ac-8-new-01",
+      "attempt": 1,
+      "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79",
+      "payload": {
+        "acceptance": "同冻结输入和标准复测；区分格式、源支持、出处及检索；不把AI开发集当人工验收。",
+        "attempt": 1,
+        "case_id": "ac-8-new-01",
+        "category": "retrieval",
+        "chunk_ids": [],
+        "evidence": "retrieval-diagnostic.json: finalTop2 duplicates 0/40; without fold 38/40; no retriever changes",
+        "frozen": {
+          "answer_sha256": "755cdb1c9c4bf63876364dcbab4c27c4078b27631ee487b955fcfd0a5ec28584",
+          "case_version": "021ad94af5b244d287188928bb22a074db45bf712c63f61e87a1fc762d9dbe27",
+          "rubric_id": "b5dab165be6d08057d7d5de521e293f555380e342e7b6dabc75d94f0a0281692",
+          "version_binding": "hash_bound"
+        },
+        "hypothesis": "静态重复告警不等于最终上下文重复，保留已有父段折叠。",
+        "request_id": "concise-regression-duplicate",
+        "run_id": "75519f5af7ba70514e50d1d0d4127dae8c4a7bc2c6d76a5f0d4c96ddbe0e4df0",
+        "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79"
+      },
+      "events": [
+        {
+          "item_id": "5c6f202e7e1ec759fa51028ffb7e04dd55a561ef76c6dd5d01bf3d03a68a45ec",
+          "revision": 1,
+          "actor": "codex-development-source-review",
+          "request_id": "concise-note-duplicate",
+          "created_at": "2026-11-10T15:42:34.518404+00:00",
+          "payload": {
+            "action": "note",
+            "candidate_attempt": 1,
+            "candidate_run": null,
+            "note": "retrieval-diagnostic.json: finalTop2 duplicates 0/40; without fold 38/40; no retriever changes；结果与局限保留，未部署。",
+            "request_id": "concise-note-duplicate",
+            "revision": 0
+          }
+        }
+      ],
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "id": "5b6ee5c32b5eea4f8a136e63212933e924bff54c00e1d7d19bf1886b17b967d3",
+      "actor": "codex-development-source-review",
+      "request_id": "concise-regression-layout",
+      "created_at": "2026-11-10T15:42:34.573191+00:00",
+      "run_id": "9ba0671f9620648cf73ca1bf60f5f869890c07c9499c66ea7acc741a3085bc77",
+      "case_id": "cp-9-new-08",
+      "attempt": 1,
+      "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79",
+      "payload": {
+        "acceptance": "全部分片位置及实际HTTP流测试通过；新旧判据不同，不把旧绿灯改成新旧同标准fixed。",
+        "attempt": 1,
+        "case_id": "cp-9-new-08",
+        "category": "generation",
+        "chunk_ids": [],
+        "evidence": "上轮真实行内出处、layout-red.log复现；本轮92/92换行及SSE/SQL一致。",
+        "frozen": {
+          "answer_sha256": "8596a0e37ce9912b255330576affd98647a72634e99de4e59bdbe1178d6781ee",
+          "case_version": "27bb08d01df86fcbb59a1be388a9367bbdc644f0e18b112910abb14f5854ddf4",
+          "rubric_id": "3b642b00cf881101901c6227c5b5fe8f8228220705511bfc1a7132e1d0de6249",
+          "version_binding": "hash_bound"
+        },
+        "hypothesis": "对行内出处做确定性换行，同时转换SSE与SQL；原回执保留。",
+        "request_id": "concise-regression-layout",
+        "run_id": "9ba0671f9620648cf73ca1bf60f5f869890c07c9499c66ea7acc741a3085bc77",
+        "snapshot_id": "daf1c426570ba2a709c1b2011861fa30788482cec937f6e06ebac1d6112afc79"
+      },
+      "events": [
+        {
+          "item_id": "5b6ee5c32b5eea4f8a136e63212933e924bff54c00e1d7d19bf1886b17b967d3",
+          "revision": 1,
+          "actor": "codex-development-source-review",
+          "request_id": "concise-layout-note",
+          "created_at": "2026-11-10T15:42:34.580193+00:00",
+          "payload": {
+            "action": "note",
+            "candidate_attempt": 1,
+            "candidate_run": null,
+            "note": "局部格式修复通过；原40候选有定位失败和句中出处，精简提示不晋级。",
+            "request_id": "concise-layout-note",
+            "revision": 0
+          }
+        }
+      ],
+      "revision": 1,
+      "status": "open"
+    }
+  ],
+  "historical_candidate_run": {
+    "id": "9ba0671f9620648cf73ca1bf60f5f869890c07c9499c66ea7acc741a3085bc77",
+    "created": true
+  },
+  "default_db_sha256_after": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+}

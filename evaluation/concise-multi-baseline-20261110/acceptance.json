@@ -1,0 +1,35 @@
+{
+  "scope": "Frozen six turns/two threads, AI development only",
+  "cases": [
+    {
+      "id": "multi-a1",
+      "expectation": "Consider needs/demographics; not unconditional multilingual mandate"
+    },
+    {
+      "id": "multi-a2",
+      "expectation": "Followup refers to notification; no invented five-minute frequency"
+    },
+    {
+      "id": "multi-a3",
+      "expectation": "Switch to CP9; user=other than system, system=OS/middleware/applications/licenses, no notification carryover"
+    },
+    {
+      "id": "multi-b1",
+      "expectation": "CP9 includes security/privacy system documentation; no leak from the other notification thread"
+    },
+    {
+      "id": "multi-b2",
+      "expectation": "System-documentation frequency organization-defined; no invented value, obligation remains"
+    },
+    {
+      "id": "multi-b3",
+      "expectation": "Switch to AT2; insufficient initial-only plan, recurring and changes/events retained, no backup carryover"
+    }
+  ],
+  "required": [
+    "proper target and conditions",
+    "no invented values or cross-thread/topic carryover",
+    "durable history pairs",
+    "observed rewrite after turn1"
+  ]
+}

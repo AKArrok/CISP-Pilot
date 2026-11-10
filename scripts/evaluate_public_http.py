@@ -207,7 +207,7 @@ def execute(packet, output, manifest):
                        "trace": trace.json(), "history_rows": len(history),
                        "client_case_started_monotonic": previous_start,
                        "elapsed_seconds": time.monotonic() - started}
-                if manifest.get("answer_strategy") == "source_cards":
+                if manifest.get("answer_strategy") == "source_cards" or manifest.get("citation_layout"):
                     saved_answer = next((item.get("content") for item in reversed(history)
                                          if item.get("role") == "assistant"), None)
                     row["persisted_answer_sha256"] = (hashlib.sha256(saved_answer.encode()).hexdigest()
@@ -238,6 +238,8 @@ def main():
     manifest = json.loads((args.packet / "manifest.json").read_text(encoding="utf-8"))
     if type(manifest.get("query_variants", False)) is not bool:
         raise ValueError("Query variants must be an explicitly frozen boolean")
+    if manifest.get("citation_layout") not in (None, "line-v1"):
+        raise ValueError("Unknown frozen citation layout")
     strategy = manifest.get("answer_strategy", "default")
     if type(strategy) is not str or strategy not in {"default", "source_cards"}:
         raise ValueError("Unknown frozen answer strategy")
