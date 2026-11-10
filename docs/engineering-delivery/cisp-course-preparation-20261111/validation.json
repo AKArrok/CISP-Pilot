@@ -1,0 +1,21 @@
+{
+  "status": "prepared_not_executed",
+  "cases": 20,
+  "domains": 10,
+  "distinct_chunks": 10,
+  "evidence_and_payload_exact_match": true,
+  "kb_sha256": "39d37c9e6b0519134d4dab3b01c63476e189e9fed3ec32eead59f5b98fa2e5e4",
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "provider_calls": 0,
+  "input_tokens_sent": 0,
+  "new_cost_usd": 0,
+  "human_gold": false,
+  "new_sealed_holdout_prepared": false,
+  "coverage_and_premise_correctness": "manual and source-version review still required",
+  "private_artifact_sha256": {
+    "REVIEW.md": "fdfd59e9c391282aa94bcdf907ad709777dc4f1f8abfe0397729c77f9bedc267",
+    "cases-and-evidence.json": "eac1b2f0c7ad6d990540bfc06fef8a33f7fbd1d7268b775f58c33d3f224bc68d",
+    "payload-preview.json": "71481841861ea81293d2e3d2107448ad4d2d141f1b9e35e2750b56b5c4274bf3",
+    "proposed-call-config.json": "30454cce29633e89922f4819138b8b4fb85272a69a361cb919ecebaf4de62f61"
+  }
+}

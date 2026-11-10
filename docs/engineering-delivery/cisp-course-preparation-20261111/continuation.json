@@ -1,0 +1,20 @@
+{
+  "status": "completed_fixed_context_precheck",
+  "head": "b2ef0e0a0910c124025ac6e1c1923c4c0f101726",
+  "private_review_path": "data/evaluation/cisp-course-preparation-20261111/REVIEW.md",
+  "payload_preview": "data/evaluation/cisp-course-preparation-20261111/payload-preview.json",
+  "validation": "validation.json",
+  "provider_calls": 60,
+  "default_db_unchanged": true,
+  "user_approved_transmission": true,
+  "budget_approved_for_new_batch": true,
+  "next": "Fix and test citation generation and reviewer checks in an isolated follow-up; actual app retrieval, multi-turn and sealed CISP acceptance remain unexecuted. Preserve private materials and both platform projections.",
+  "case_count": 20,
+  "dual_ai_pass": 20,
+  "citation_incomplete_cases": [
+    "CISP-02-02",
+    "CISP-05-02",
+    "CISP-08-02"
+  ],
+  "platform_data": "local private data/evaluation/cisp-course-preparation-20261111/platform.sqlite3"
+}

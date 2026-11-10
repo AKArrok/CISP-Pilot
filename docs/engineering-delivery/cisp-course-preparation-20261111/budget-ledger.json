@@ -1,0 +1,12 @@
+{
+  "prior_accounted_usd": 1.6081916,
+  "old_unknown_reserved_usd": 0.0656585,
+  "new_calls": 60,
+  "new_known_estimate_usd": 0.018240900000000008,
+  "new_cost_unknown": false,
+  "accounted_total_usd": 1.6264325000000002,
+  "budget_total_usd": 3,
+  "batch_ceiling_usd": 0.289728,
+  "method": "peak USD .30 input / 1.20 output per million tokens; provider invoice not observed",
+  "remaining_usd": 1.3735674999999998
+}
