@@ -1,0 +1,112 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________________ test_timeout_blocks_late_thread_commit ____________________
+
+local_chat = (([{'id': '276db846-10d1-4b6e-be63-9df14b4ddc53', 'username': 'alice'}, {'id': '556923c5-833a-4a3f-9cdd-64a14b147f3d',... object at 0x0000020A2B778B50>], ['bc5f835b-bcb0-436f-9a92-517448d07f12', 'afa6a265-04b5-45e0-a841-724aaa8a833b']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020A2B7A6890>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+>           assert entered.is_set()
+E           assert False
+E            +  where False = is_set()
+E            +    where is_set = <threading.Event at 0x20a2b7a6710: unset>.is_set
+
+tests\test_budget_integration.py:137: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+local_chat = (([{'id': '276db846-10d1-4b6e-be63-9df14b4ddc53', 'username': 'alice'}, {'id': '556923c5-833a-4a3f-9cdd-64a14b147f3d',... object at 0x0000020A2B778B50>], ['bc5f835b-bcb0-436f-9a92-517448d07f12', 'afa6a265-04b5-45e0-a841-724aaa8a833b']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020A2B7A6890>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+            assert entered.is_set()
+            assert events(response)[-1]["type"] == "error"
+            trace = clients[0].get(f"/api/traces/{response.headers['x-request-id']}").json()["trace"]
+            assert trace["budget"]["reason"] == "deadline"
+        finally:
+            release.set()
+>           assert finished.wait(3)
+E           assert False
+E            +  where False = wait(3)
+E            +    where wait = <threading.Event at 0x20a00702a90: unset>.wait
+
+tests\test_budget_integration.py:143: AssertionError
+------------------------------ Captured log call ------------------------------
+ERROR    root:server.py:275 Chat failed; completion withheld
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\data\evaluation\data-platform-baseline\server.py", line 253, in event_gen
+    async for event in chat_events():
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\data\evaluation\data-platform-baseline\server.py", line 191, in chat_events
+    async for ev in app_graph.astream_events(
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\runnables\base.py", line 1670, in _astream_events_v1_v2
+    async for event in event_stream:
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\tracers\event_stream.py", line 1069, in _astream_events_implementation_v2
+    async for event in event_streamer:
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\langchain_core\tracers\memory_stream.py", line 151, in __aiter__
+    item = await self._queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\data\evaluation\data-platform-baseline\server.py", line 252, in event_gen
+    async with asyncio.timeout(budget.remaining_seconds):
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+============================== warnings summary ===============================
+..\..\..\.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests\test_budget_integration.py::test_timeout_blocks_late_thread_commit
+1 failed, 1 warning in 20.72s

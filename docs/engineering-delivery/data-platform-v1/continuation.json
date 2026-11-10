@@ -1,6 +1,6 @@
 {
   "date": "2026-11-10",
-  "status": "core_and_browser_verified_full_regression_ci_pending",
+  "status": "first_version_verified_known_local_baseline_failures_final_push_pending",
   "baseline_commit": "514e6b42fbd5a6d8a9867f144db62e48bfc921f5",
   "objective": "参考成熟源码，完成适合CISP的数据资产、血缘诊断和改进复测第一版并更新文档与推送",
   "backend": {
@@ -54,9 +54,42 @@
   "default_answer_promoted": false,
   "independent_human_gold": false,
   "quota_last_observed": {
-    "primary_used_percent": 22,
+    "primary_used_percent": 42,
     "stop_remaining_percent": 10
   },
-  "full_regression": "running",
-  "next": "Finish same-input browser restart, isolated full regression, push only task files and verify exact commit CI"
+  "full_regression": {
+    "passed": 1085,
+    "failed": 2,
+    "skipped": 4,
+    "warnings": 1,
+    "seconds": 1632.43,
+    "all_green": false
+  },
+  "next": "Requested catalog V1 complete within documented scope. Push readable UI and final evidence; verify exact final CI. Preserve two existing local timing failures, missing original-file fingerprints and ambiguous historical previews as open limitations; no deployment or automatic answer promotion.",
+  "code_commit": "759a388abba5a39f6f76004a2810165b6ecade75",
+  "code_ci": {
+    "id": 42777739163,
+    "conclusion": "success",
+    "passed": 625,
+    "skipped": 13,
+    "warnings": 2
+  },
+  "browser_readable": {
+    "checks": 24,
+    "restart": "passed",
+    "browser_errors": []
+  },
+  "known_local_baseline_failures": [
+    {
+      "nodeid": "tests/test_budget_integration.py::test_timeout_blocks_late_thread_commit",
+      "baseline": "same assertion failure before late writer entered",
+      "evidence": "budget-baseline-comparison.json"
+    },
+    {
+      "nodeid": "tests/test_trace_process_recovery.py::test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit]",
+      "baseline": "failed at register with default 5s ReadTimeout",
+      "evidence": "recovery-baseline-comparison.json"
+    }
+  ],
+  "default_database_unchanged": true
 }

@@ -49,15 +49,15 @@
   },
   "workspace": {
     "repeated_run_id": "8bbf33dc6d1d8827d408fee21076bb341807dee80ab769a5fae0b3bd4fad8b64",
-    "queue_id": "14dfc064f61d446fbc7bfe42ad20223e",
-    "job_id": "c89a934b41434b2b9a17b265a39438ad",
+    "queue_id": "3d87ad20028d4c3596dcf68293beff27",
+    "job_id": "e1bd5c82e731473d8346cf787af620c9",
     "processed": 800,
-    "processed_before_cancel": 12,
+    "processed_before_cancel": 28,
     "model_calls": 0
   },
   "catalog": {
     "snapshot_id": "096fbfb789775ca875054e58462ef848e5aa9b1c5dfea5571a52706bd0dc25fb",
-    "item_id": "ceae9cee7b166b25badd29fb5efc92df5e73c34bf2182978a4f5c5005f7ba6ab",
+    "item_id": "bd733a52a171db3b4288b184a4c7c62790349e6fdcfdb4e6bdc75ff15d042522",
     "version_binding": "hash_bound",
     "knowledge_chunks": 101,
     "retained_suite_regressions": 3

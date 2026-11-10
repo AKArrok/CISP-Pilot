@@ -1,0 +1,102 @@
+{
+  "id": 42777739163,
+  "head_sha": "759a388abba5a39f6f76004a2810165b6ecade75",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/AKArrok/CISP-Pilot/actions/runs/42777739163",
+  "offline_regression": {
+    "passed": 625,
+    "skipped": 13,
+    "warnings": 2,
+    "seconds": 64.09
+  },
+  "scope": "Clean tracked checkout; data-platform UI full workflow validated locally, existing Linux smoke validates runtime.",
+  "jobs": [
+    {
+      "id": 129700108888,
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install locked build tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install offline test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Offline regression",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic answer evaluation gate",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build Linux runtime image",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic Docker runtime smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve Docker failure evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install locked browser test dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Chromium for smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Synthetic Linux browser smoke",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve browser failure logs",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

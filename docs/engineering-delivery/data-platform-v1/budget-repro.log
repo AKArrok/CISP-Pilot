@@ -1,0 +1,123 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________________ test_timeout_blocks_late_thread_commit ____________________
+
+local_chat = (([{'id': '2cfbda40-344a-47c3-9276-5da09eb824e7', 'username': 'alice'}, {'id': '107ef607-ad33-4c0d-92e6-349eb339daec',... object at 0x000002B00E12FED0>], ['4ac2226d-96c9-46f1-8557-0a58622c246a', '03e53212-5d2b-4334-a4e6-e5b8f99a8b51']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002B00E017410>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+>           assert entered.is_set()
+E           assert False
+E            +  where False = is_set()
+E            +    where is_set = <threading.Event at 0x2b07feab910: unset>.is_set
+
+tests\test_budget_integration.py:137: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+local_chat = (([{'id': '2cfbda40-344a-47c3-9276-5da09eb824e7', 'username': 'alice'}, {'id': '107ef607-ad33-4c0d-92e6-349eb339daec',... object at 0x000002B00E12FED0>], ['4ac2226d-96c9-46f1-8557-0a58622c246a', '03e53212-5d2b-4334-a4e6-e5b8f99a8b51']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002B00E017410>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+            assert entered.is_set()
+            assert events(response)[-1]["type"] == "error"
+            trace = clients[0].get(f"/api/traces/{response.headers['x-request-id']}").json()["trace"]
+            assert trace["budget"]["reason"] == "deadline"
+        finally:
+            release.set()
+>           assert finished.wait(3)
+E           assert False
+E            +  where False = wait(3)
+E            +    where wait = <threading.Event at 0x2b062da9950: unset>.wait
+
+tests\test_budget_integration.py:143: AssertionError
+------------------------------ Captured log call ------------------------------
+ERROR    root:server.py:171 Chat history restoration failed
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\server.py", line 159, in chat_stream
+    restored_rows = await run_in_threadpool(memory.load_short_context, req.thread_id,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2670, in run_sync_in_worker_thread
+    async with limiter or cls.current_default_thread_limiter():
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2127, in __aenter__
+    await self.acquire()
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2188, in acquire
+    return await self.acquire_on_behalf_of(current_task())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2208, in acquire_on_behalf_of
+    await AsyncIOBackend.cancel_shielded_checkpoint()
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2588, in cancel_shielded_checkpoint
+    await sleep(0)
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\tasks.py", line 640, in sleep
+    await __sleep0()
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\tasks.py", line 634, in __sleep0
+    yield
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\server.py", line 153, in chat_stream
+    async with asyncio.timeout(budget.remaining_seconds):
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_budget_integration.py::test_timeout_blocks_late_thread_commit
+1 failed, 1 warning in 42.81s

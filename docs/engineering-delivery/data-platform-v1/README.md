@@ -1,6 +1,6 @@
 # CISP 数据中台第一版
 
-2026-11-10，基线514e6b42fbd5a6d8a9867f144db62e48bfc921f5。状态：实施中。此前测评中台文档提交的CI42645529970已重新核实success。
+2026-11-10，基线514e6b42fbd5a6d8a9867f144db62e48bfc921f5。状态：首版功能及定向验收完成；本机全量存在已复现的既有时序限制，见VALIDATION.md。此前测评中台文档提交的CI42645529970已重新核实success。
 
 ## 目标与验收
 
@@ -30,10 +30,14 @@ DataHub首次尝试metadata-model路径404，按其模型文档确认实际为me
 
 ## 过程与验证
 
-实施与测试结果逐项追加，保留失败。当前尚未完成验收，不宣称回答质量已改善。
+实施与测试结果逐项追加，保留失败。首版按下列范围验证，不宣称回答质量已改善或全项目门禁全绿。
 
 - 首轮后端47 passed，最终边界补充后49 passed，均1个既有Starlette依赖警告；见backend-first.log、backend-final.log。后者新增可选元数据类型/路径ID反例；覆盖全文/预览/ID/位置候选、哈希绑定/错配/未知、并发revision、幂等、不同rubric不可比和原判保留。
 - 首轮真实浏览器24项页面流程及重启通过。后续最终界面复测24项页面流程通过，但重启登录遇到httpx默认5秒ReadTimeout，见browser-final.log；当时全量回归和scrypt认证测试并行。保留失败，测试客户端显式设30秒读取上限后另用同输入重跑；没有改密码参数或应用认证策略，也没有自动重试。
 - 同输入复测24项页面流程+重启持久化通过，无页面异常，默认库/知识块/manifest前后哈希相同，见browser-release.log、browser-summary.json、protected-assets.json。截图位于本机data/evaluation/data-platform-browser-release，由代理用图像工具核查桌面血缘页及移动端布局，不作为独立人工验收。
+- 视觉复核后将账本先显示假设、证据、验收条件及整批修复/退化数，绑定原始数据放进折叠区。同输入browser-readable.log的24项流程+重启再次通过；最终browser-summary/protected-assets已同步此轮，截图在data/evaluation/data-platform-browser-readable，代理已用图像工具检查账本截图。
 - 公开101切片的实测血缘：两批各40题均绑定相同冻结知识文件；每批80个上下文均存在多候选。知识质量检查发现71个重复正文（保留为检查失败，可能来自检索辅助表示，需要调查，不能直接当解析错误）；其余缺manifest/向量元数据/原文指纹/历史执行的项目标未知。hash_mismatch和缺绑定等边界由合成测试覆盖，不冒充真实批次现象。历史综合原判39/40与37/40不变，比较仍1修复/3退化/36未变，见history-validation.json。
 - 本机私有1077切片、30来源只读采集：数量、索引ID与顺序、父段、子段重复检查通过；原文指纹和历史处理运行两项未知。30个来源没有在此次明确采集路径中找到原始文件，指纹不补造。公开报告仅含计数和摘要，正文及路径留在本机data/evaluation/。
+- 代码759a388已推送，精确提交[CI42777739163](https://github.com/AKArrok/CISP-Pilot/actions/runs/42777739163)全部success：625 passed/13预期资产跳过/2依赖警告，lint、合成答案门禁、镜像、容器、Linux浏览器均通过，见code-ci.json。
+- 本机全量发现既有未跟踪预算测试test_timeout_blocks_late_thread_commit失败；定向复现亦失败（budget-repro.log）。按diagnose流程在隔离目录解出上一提交514e6b4，复制完全相同测试字节，仍在进入后台写入前耗尽50ms并失败（budget-baseline.log、budget-baseline-comparison.json）。这是当前主机上的前置路径/调度与用例时序假设不匹配观察，不足以判定生产预算实现错误；未改用户既有测试或生产预算。首个基线启动命令的相对解释器路径写错，未启动测试，随后改绝对解释器路径完成对照；该命令错误不算一次测试通过。
+- 本机全量最终1085 passed/2 failed/4 skipped/1 warning，1632.43秒，非全绿，原始证据isolated-regression.log。另一失败为既有进程恢复用例注册阶段5秒ReadTimeout；当前定向亦失败。上一提交初次因缺索引启动失败，单独保留不同错误；补齐完全相同本机资产后复现同一注册超时，测试/fixture和资产字节对照见recovery-baseline-comparison.json。未修改原用例或应用策略，不将基线对照当作故障已修复。两项都属于首版范围以外的既有本机验证限制。

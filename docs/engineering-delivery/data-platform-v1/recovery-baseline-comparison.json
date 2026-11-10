@@ -1,0 +1,27 @@
+{
+  "previous_commit": "514e6b42fbd5a6d8a9867f144db62e48bfc921f5",
+  "current_commit": "759a388abba5a39f6f76004a2810165b6ecade75",
+  "nodeid": "tests/test_trace_process_recovery.py::test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit]",
+  "current_repro": "failed at register with default 5s ReadTimeout",
+  "baseline_initial_probe": "invalid comparison: fixture exited before ready due to missing local index; preserved separately",
+  "baseline_with_matching_assets": "failed at register with default 5s ReadTimeout",
+  "same_test_and_fixture_bytes": {
+    "tests/test_trace_process_recovery.py": true,
+    "tests/local_trace_recovery_server.py": true,
+    "tests/local_chat_recovery_server.py": true
+  },
+  "same_asset_bytes": {
+    "kb_chunks.json": true,
+    "vectors.npz": true,
+    "vectors.npz.meta.json": true,
+    "manifest.json": true,
+    "questions.json": true,
+    "knowledge_taxonomy.json": true,
+    "question_knowledge_tags.json": true,
+    "question_attributions.json": true
+  },
+  "production_auth_or_recovery_modified": false,
+  "private_assets_published": false,
+  "model_calls": 0,
+  "scope": "Baseline reproduction shows this observed timeout predates catalog; exact host scheduling/performance cause not established."
+}

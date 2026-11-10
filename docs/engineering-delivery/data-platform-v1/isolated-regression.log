@@ -1,0 +1,313 @@
+知识点候选: 580，建议首批审校: 316，题目标签: 813
+审校结果: active=305，rejected=11，candidate=264
+归因状态: confirmed=12，probable=323，unverified=1025
+数据库知识点: 580
+数据库题目标签: 813
+数据库题目归因: 1360
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> a1b2c3d4e5f6, initial schema: questions / kb_chunks / attempts / conversations / metrics
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, diagnostic sessions, auditable taxonomy, and learner knowledge state
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> c8d9e0f1a2b3, thread-scoped attempts and review cards
+INFO  [alembic.runtime.migration] Running upgrade c8d9e0f1a2b3 -> d9e0f1a2b3c4, conservative question attribution and thread calibration queue
+INFO  [alembic.runtime.migration] Running upgrade d9e0f1a2b3c4 -> e0f1a2b3c4d5, thread-scoped attribution correction events
+INFO  [alembic.runtime.migration] Running upgrade e0f1a2b3c4d5 -> f1a2b3c4d5e6, record the knowledge point actually applied by each learner attempt
+INFO  [alembic.runtime.migration] Running upgrade f1a2b3c4d5e6 -> a2b3c4d5e6f7, add account identities, web sessions, and owned threads
+INFO  [alembic.runtime.migration] Running upgrade a2b3c4d5e6f7 -> b3c4d5e6f7a8, Durable per-thread ordinary answer receipts.
+INFO  [alembic.runtime.migration] Running upgrade b3c4d5e6f7a8 -> c4d5e6f7a8b9, Atomic diagnostic start/answer receipts and frozen completed reports.
+INFO  [alembic.runtime.migration] Running upgrade c4d5e6f7a8b9 -> d5e6f7a8b9c0, Add request observations without adopting or backfilling legacy requests.
+........................................................................ [  6%]
+........................................................................ [ 13%]
+...................F.................................................... [ 19%]
+........................................................................ [ 26%]
+........................................................................ [ 32%]
+........................................................................ [ 39%]
+.......................................ss............................... [ 46%]
+................................................................s....... [ 52%]
+........................................................................ [ 59%]
+........................................................................ [ 65%]
+........................................................................ [ 72%]
+........................................................................ [ 79%]
+........................................................................ [ 85%]
+........................................................................ [ 92%]
+....s...............................F................................... [ 98%]
+...........                                                              [100%]
+================================== FAILURES ===================================
+___________________ test_timeout_blocks_late_thread_commit ____________________
+
+local_chat = (([{'id': '1bb5fbfe-eef5-4df8-90f0-015a1d0298fa', 'username': 'alice'}, {'id': 'df0505f6-1439-4a28-86a7-c2cfe5b5d6bd',... object at 0x0000020892FF5ED0>], ['3f788b3d-4bed-44e3-8710-83e1ef36e0ba', 'ff2d45dd-bf8d-4d3d-b5b9-d587743d3bc2']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020893156D90>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+>           assert entered.is_set()
+E           assert False
+E            +  where False = is_set()
+E            +    where is_set = <threading.Event at 0x208930c3910: unset>.is_set
+
+tests\test_budget_integration.py:137: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+local_chat = (([{'id': '1bb5fbfe-eef5-4df8-90f0-015a1d0298fa', 'username': 'alice'}, {'id': 'df0505f6-1439-4a28-86a7-c2cfe5b5d6bd',... object at 0x0000020892FF5ED0>], ['3f788b3d-4bed-44e3-8710-83e1ef36e0ba', 'ff2d45dd-bf8d-4d3d-b5b9-d587743d3bc2']), [])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020893156D90>
+
+    def test_timeout_blocks_late_thread_commit(local_chat, monkeypatch):
+        (_, clients, threads), _ = local_chat
+        monkeypatch.setattr(config, "CHAT_TIMEOUT_SECONDS", 0.05)
+        entered, release, finished = threading.Event(), threading.Event(), threading.Event()
+        result = []
+    
+        def late_write(state):
+            entered.set()
+            release.wait(2)
+            try:
+                memory.save_round(threads[0], "late", "late reply", "chitchat")
+            except BudgetExceeded as exc:
+                result.append(exc.reason)
+            finally:
+                finished.set()
+    
+        async def reply(state):
+            await asyncio.to_thread(late_write, state)
+            return {"answer": "late reply"}
+    
+        monkeypatch.setattr(graph, "chitchat", reply)
+        try:
+            response = clients[0].post("/chat/stream", json={"thread_id": threads[0], "query": "test"})
+            assert entered.is_set()
+            assert events(response)[-1]["type"] == "error"
+            trace = clients[0].get(f"/api/traces/{response.headers['x-request-id']}").json()["trace"]
+            assert trace["budget"]["reason"] == "deadline"
+        finally:
+            release.set()
+>           assert finished.wait(3)
+E           assert False
+E            +  where False = wait(3)
+E            +    where wait = <threading.Event at 0x208930d1590: unset>.wait
+
+tests\test_budget_integration.py:143: AssertionError
+------------------------------ Captured log call ------------------------------
+ERROR    root:server.py:171 Chat history restoration failed
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\server.py", line 159, in chat_stream
+    restored_rows = await run_in_threadpool(memory.load_short_context, req.thread_id,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2670, in run_sync_in_worker_thread
+    async with limiter or cls.current_default_thread_limiter():
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2127, in __aenter__
+    await self.acquire()
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2188, in acquire
+    return await self.acquire_on_behalf_of(current_task())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2208, in acquire_on_behalf_of
+    await AsyncIOBackend.cancel_shielded_checkpoint()
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\anyio\_backends\_asyncio.py", line 2588, in cancel_shielded_checkpoint
+    await sleep(0)
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\tasks.py", line 640, in sleep
+    await __sleep0()
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\tasks.py", line 634, in __sleep0
+    yield
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Users\ASUS\Desktop\学习资料\代码\CISP\server.py", line 153, in chat_stream
+    async with asyncio.timeout(budget.remaining_seconds):
+  File "C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+_ test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit] _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-win\Lib\site-packages\httpx\_transports\default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv-win\Lib\site-packages\httpx\_transports\default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpcore\_sync\connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-win\Lib\site-packages\httpcore\_sync\connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-win\Lib\site-packages\httpcore\_sync\connection.py:103: in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpcore\_sync\http11.py:136: in handle_request
+    raise exc
+.venv-win\Lib\site-packages\httpcore\_sync\http11.py:106: in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpcore\_sync\http11.py:177: in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpcore\_sync\http11.py:217: in _receive_event
+    data = self._network_stream.read(
+.venv-win\Lib\site-packages\httpcore\_backends\sync.py:126: in read
+    with map_exceptions(exc_map):
+C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\contextlib.py:158: in __exit__
+    self.gen.throw(typ, value, traceback)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ReadTimeout'>, <class 'OSError'>: <class 'httpcore.ReadError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ReadTimeout: timed out
+
+.venv-win\Lib\site-packages\httpcore\_exceptions.py:14: ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/.cisp-pytest-qptm0yby/pytest/test_force_kill_running_trace_1')
+stage = 'after_commit'
+
+    @pytest.mark.parametrize("stage", ["before_commit", "after_commit"])
+    def test_force_kill_running_trace_preserves_unknown_and_actual_history(tmp_path, stage):
+        root = Path(__file__).resolve().parents[1]
+        database = tmp_path / "service.db"
+        engine = create_engine(f"sqlite:///{database.as_posix()}")
+        Base.metadata.create_all(engine)
+        with engine.begin() as connection:
+            connection.execute(text("CREATE TABLE alembic_version (version_num VARCHAR(32) NOT NULL)"))
+            connection.execute(text("INSERT INTO alembic_version VALUES (:revision)"), {"revision": SCHEMA_HEAD})
+        engine.dispose()
+        with socket.socket() as probe:
+            probe.bind(("127.0.0.1", 0))
+            port = probe.getsockname()[1]
+        origin = f"http://127.0.0.1:{port}"
+        marker = tmp_path / "reached"
+        env = {**os.environ, "CISP_DB_PATH": str(database), "DATABASE_URL": "", "MYSQL_PASSWORD": "",
+               "CISP_PUBLIC_ORIGIN": origin, "EMBEDDING_BACKEND": "dashscope", "ENABLE_DENSE_RETRIEVAL": "false",
+               "ENABLE_RERANKING": "false", "ENABLE_QUERY_VARIANTS": "false", "ENABLE_EVIDENCE_SUBAGENT": "false",
+               "CHAT_TIMEOUT_SECONDS": "12", "CISP_TEST_TRACE_MARKER": str(marker), "PYTHONUTF8": "1"}
+        processes = []
+    
+        def start(log, block_stage):
+            process = subprocess.Popen([sys.executable, "-B", "tests/local_trace_recovery_server.py", str(port)],
+                                       cwd=root, env={**env, "CISP_TEST_TRACE_STAGE": block_stage}, stdout=log, stderr=subprocess.STDOUT)
+            processes.append(process)
+            deadline = time.monotonic() + 40
+            while time.monotonic() < deadline:
+                assert process.poll() is None, "fixture server exited before readiness"
+                try:
+                    if httpx.get(origin + "/api/ready", timeout=1).status_code == 200:
+                        return process
+                except httpx.HTTPError:
+                    pass
+                time.sleep(0.1)
+            raise AssertionError("fixture server did not become ready")
+    
+        def stored(request_id):
+            with sqlite3.connect(database) as connection:
+                return connection.execute("SELECT status,trace_json,created_at,updated_at FROM request_traces WHERE request_id=?",
+                                          (request_id,)).fetchone()
+    
+        with (tmp_path / "service.log").open("w", encoding="utf-8") as log, httpx.Client(base_url=origin) as client:
+            try:
+                first = start(log, stage)
+                client.headers["Origin"] = origin
+                credentials = {"username": "interrupted-user", "password": "correct-horse-battery-staple"}
+>               assert client.post("/api/auth/register", json=credentials).status_code == 201
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_trace_process_recovery.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv-win\Lib\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+.venv-win\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-win\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-win\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-win\Lib\site-packages\httpx\_transports\default.py:249: in handle_request
+    with map_httpcore_exceptions():
+C:\Users\ASUS\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\contextlib.py:158: in __exit__
+    self.gen.throw(typ, value, traceback)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ReadTimeout: timed out
+
+.venv-win\Lib\site-packages\httpx\_transports\default.py:118: ReadTimeout
+============================== warnings summary ===============================
+.venv-win\Lib\site-packages\starlette\testclient.py:53
+  D:\Users\ASUS\Desktop\学习资料\代码\CISP\.venv-win\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_budget_integration.py::test_timeout_blocks_late_thread_commit
+FAILED tests/test_trace_process_recovery.py::test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit]
+2 failed, 1085 passed, 4 skipped, 1 warning in 1632.43s (0:27:12)

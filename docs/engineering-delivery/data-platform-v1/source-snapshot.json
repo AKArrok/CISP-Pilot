@@ -9,8 +9,8 @@
     "scripts/verify_data_catalog.py": "bf20f7a192b8b5b682e960e05d9f6c715b0443f3014a7eec18a09aed61428759",
     "scripts/serve_evaluation.py": "364318b65b96feaa6e7b1441c9deb043daa34a92c9df1685733ad84e2dde9ba7",
     "server.py": "d44acc3399e0f95e72342d9955e65d5b3b1a5263b8fa2941c4cb71e10706728f",
-    "static/data-platform.js": "ad91a6bc9c6128f3bf933b2d84f1e843cd702142f4302147132f0f89ca227b77",
-    "static/evaluation.html": "028131228c42c1574e0d23ce2d0d3aa9cf83437a23655c4d6b2173913eac74af",
+    "static/data-platform.js": "c2637db5c90e235a15e916f70a39174ac6a591014456a2ac7c945b2559ad1b39",
+    "static/evaluation.html": "51dd6dfee49ede7a3cf964ee5a3390797e41658145d4c42917f2c9f3a86da0e9",
     "static/evaluation.js": "6bbb7b1f52a2895413b533725fe52dc1f52463e87781a8403395fcde39711a3a",
     "static/evaluation.css": "e639e57935d535e716bd835bb38d0b899ba3290b6a6b185629f09226ad71c7f8",
     "tests/test_data_catalog.py": "43d4b3cbf603e75c836be413bca1a41b1aa192cc71f1d247b26dcc7526cbf9fc",
@@ -24,5 +24,6 @@
     "data/evaluation/data-platform-run-b.json": "e3d5bb9589a887235b6361f0da677f56dd7ac4b99fb486abb41cd8c1c37669fe"
   },
   "private_data_committed": false,
-  "scope": "Local byte fingerprints; exact Git commit and CI recorded separately"
+  "scope": "Local byte fingerprints; exact Git commit and CI recorded separately",
+  "final_browser_evidence": "data/evaluation/data-platform-browser-readable"
 }

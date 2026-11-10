@@ -1,0 +1,17 @@
+{
+  "previous_commit": "514e6b42fbd5a6d8a9867f144db62e48bfc921f5",
+  "current_commit": "759a388abba5a39f6f76004a2810165b6ecade75",
+  "nodeid": "tests/test_budget_integration.py::test_timeout_blocks_late_thread_commit",
+  "current_repro": "failed: deadline before late writer entered",
+  "previous_commit_repro": "failed: deadline before late writer entered",
+  "same_test_bytes": true,
+  "sha256": {
+    "tests/test_budget_integration.py": "2a85a932111273a575d708225d877cdce6131197ec3aad9772a3ab9a38aef1f0",
+    "data/evaluation/data-platform-baseline/tests/test_budget_integration.py": "2a85a932111273a575d708225d877cdce6131197ec3aad9772a3ab9a38aef1f0",
+    "data/evaluation/data-platform-baseline/server.py": "1b7530e5c0706561b95b379b274307558ccd71dcaefe8d77322ad5f41b91e0a3"
+  },
+  "production_budget_changed": false,
+  "existing_user_test_modified": false,
+  "models_called": 0,
+  "limitation": "50ms end-to-end deadline test does not reach its intended late-write seam on this host; baseline reproduction establishes this observation predates catalog. Scheduling diagnosis remains provisional."
+}

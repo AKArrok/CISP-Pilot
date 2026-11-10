@@ -1,0 +1,75 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit] _
+
+tmp_path = WindowsPath('D:/Users/ASUS/Desktop/学习资料/代码/CISP/data/evaluation/data-platform-recovery-baseline/test_force_kill_running_trace_0')
+stage = 'after_commit'
+
+    @pytest.mark.parametrize("stage", ["before_commit", "after_commit"])
+    def test_force_kill_running_trace_preserves_unknown_and_actual_history(tmp_path, stage):
+        root = Path(__file__).resolve().parents[1]
+        database = tmp_path / "service.db"
+        engine = create_engine(f"sqlite:///{database.as_posix()}")
+        Base.metadata.create_all(engine)
+        with engine.begin() as connection:
+            connection.execute(text("CREATE TABLE alembic_version (version_num VARCHAR(32) NOT NULL)"))
+            connection.execute(text("INSERT INTO alembic_version VALUES (:revision)"), {"revision": SCHEMA_HEAD})
+        engine.dispose()
+        with socket.socket() as probe:
+            probe.bind(("127.0.0.1", 0))
+            port = probe.getsockname()[1]
+        origin = f"http://127.0.0.1:{port}"
+        marker = tmp_path / "reached"
+        env = {**os.environ, "CISP_DB_PATH": str(database), "DATABASE_URL": "", "MYSQL_PASSWORD": "",
+               "CISP_PUBLIC_ORIGIN": origin, "EMBEDDING_BACKEND": "dashscope", "ENABLE_DENSE_RETRIEVAL": "false",
+               "ENABLE_RERANKING": "false", "ENABLE_QUERY_VARIANTS": "false", "ENABLE_EVIDENCE_SUBAGENT": "false",
+               "CHAT_TIMEOUT_SECONDS": "12", "CISP_TEST_TRACE_MARKER": str(marker), "PYTHONUTF8": "1"}
+        processes = []
+    
+        def start(log, block_stage):
+            process = subprocess.Popen([sys.executable, "-B", "tests/local_trace_recovery_server.py", str(port)],
+                                       cwd=root, env={**env, "CISP_TEST_TRACE_STAGE": block_stage}, stdout=log, stderr=subprocess.STDOUT)
+            processes.append(process)
+            deadline = time.monotonic() + 40
+            while time.monotonic() < deadline:
+                assert process.poll() is None, "fixture server exited before readiness"
+                try:
+                    if httpx.get(origin + "/api/ready", timeout=1).status_code == 200:
+                        return process
+                except httpx.HTTPError:
+                    pass
+                time.sleep(0.1)
+            raise AssertionError("fixture server did not become ready")
+    
+        def stored(request_id):
+            with sqlite3.connect(database) as connection:
+                return connection.execute("SELECT status,trace_json,created_at,updated_at FROM request_traces WHERE request_id=?",
+                                          (request_id,)).fetchone()
+    
+        with (tmp_path / "service.log").open("w", encoding="utf-8") as log, httpx.Client(base_url=origin) as client:
+            try:
+>               first = start(log, stage)
+                        ^^^^^^^^^^^^^^^^^
+
+tests\test_trace_process_recovery.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+log = <_io.TextIOWrapper name='D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\data\\evaluation\\data-platform-recovery-baseline\\test_force_kill_running_trace_0\\service.log' mode='w' encoding='utf-8'>
+block_stage = 'after_commit'
+
+    def start(log, block_stage):
+        process = subprocess.Popen([sys.executable, "-B", "tests/local_trace_recovery_server.py", str(port)],
+                                   cwd=root, env={**env, "CISP_TEST_TRACE_STAGE": block_stage}, stdout=log, stderr=subprocess.STDOUT)
+        processes.append(process)
+        deadline = time.monotonic() + 40
+        while time.monotonic() < deadline:
+>           assert process.poll() is None, "fixture server exited before readiness"
+E           AssertionError: fixture server exited before readiness
+E           assert 3 is None
+E            +  where 3 = poll()
+E            +    where poll = <Popen: returncode: 3 args: ['D:\\Users\\ASUS\\Desktop\\学习资料\\代码\\CISP\\.ven...>.poll
+
+tests\test_trace_process_recovery.py:46: AssertionError
+=========================== short test summary info ===========================
+FAILED tests\test_trace_process_recovery.py::test_force_kill_running_trace_preserves_unknown_and_actual_history[after_commit]
+1 failed in 10.89s
