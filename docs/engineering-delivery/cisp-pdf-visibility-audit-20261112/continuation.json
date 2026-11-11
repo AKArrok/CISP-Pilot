@@ -1,0 +1,32 @@
+{
+  "status": "read_only_detector_tested_ci_pending",
+  "base_commit": "c9e9dee3dc7950c8daf34e7b9cafd1d5fac26e11",
+  "base_ci": {
+    "run": 43076148252,
+    "conclusion": "success"
+  },
+  "real_page": {
+    "physical_page": 38,
+    "known_covered_spans": 2,
+    "known_detected": 2,
+    "all_candidates": 23
+  },
+  "other_sample": {
+    "pages": 17,
+    "flagged": 0,
+    "not_proof_of_cleanliness": true
+  },
+  "tests": "18 passed, ruff pass",
+  "model_calls": 0,
+  "new_cost_usd": 0,
+  "accounted_with_reservations_usd": 1.8200708,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "policy": "continue until user quota exhausted, no reset coupons, no unapproved private egress",
+  "limitations": [
+    "vector opaque bounding box heuristic only",
+    "not full visibility detection",
+    "not integrated into ingestion or automatic exclusion",
+    "source and target data not modified"
+  ],
+  "next": "broader synthetic and annotated visibility cases; consider non-invasive pre-ingestion guard only after validating accuracy"
+}

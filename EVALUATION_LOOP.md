@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月12日PDF遮挡文本只读审计（候选检测完成，待本提交CI）**：新增只读矢量遮挡启发式，不删除文字、不重建索引；真实已知遮挡2个span均提示，该页共23个候选，其余未人工确认；17个相关页未报警不等于干净。合成正反例及表格回归18通过、Ruff通过，零新增模型调用。详见[记录](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/README.md)及[续接](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/continuation.json)。
+
 - **11月12日来源评分冲突门禁（实现，待本提交CI）**：合成红灯重现来源维度 `unsupported` 仍获来源满分；最小修复后24项来源审阅/校准测试通过、Ruff通过，零新模型调用。只约束显式来源维度结构化风险，不能替代自由格式AI审阅核验；详见[记录](docs/engineering-delivery/cisp-source-grade-veto-20261112/README.md)与[续接](docs/engineering-delivery/cisp-source-grade-veto-20261112/continuation.json)。用户最新要求持续至额度用完，覆盖旧10%暂停阈值，不使用重置券。
 
 - **11月12日课程来源与条件忠实预检（质量未通过，不晋级）**：核对原10题7个同版原PDF页，3个V4.1原件缺失但V4.2另页可核；发现物理页/印刷页差异、图箭头丢失和PDF隐藏文本与可见页不一致。修订默认回答规则后，历史三题固定资料两轮仍有条件/图示问题和AI审阅矛盾；独立本地Qwen/Llama命题10题固定资料预检，出处身份10/10、AI顶层20次pass，但当前AI逐项核查5初步支持/3失败/2不确定，不是人工金标、真实检索或上线验收。用户授权本轮48次，均有回执，新费用保守估算0.0447747美元，含旧未知预留累计1.8200708/3美元。已测试题不再是未暴露封存集，详见[本轮记录](docs/engineering-delivery/cisp-source-conditions-20261112/README.md)与[续接](docs/engineering-delivery/cisp-source-conditions-20261112/continuation.json)。
