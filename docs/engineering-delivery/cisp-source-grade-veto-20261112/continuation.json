@@ -1,0 +1,22 @@
+{
+  "status": "implemented_local_tests_passed_ci_pending",
+  "baseline": "5f3d33b4004e881910a1377718393a2bc5fd7dcd",
+  "baseline_ci": {
+    "run": 43075080368,
+    "conclusion": "success"
+  },
+  "change": "explicit unsupported source_support risk cannot coexist with full source score",
+  "red": "1 synthetic test failed as expected",
+  "green": "24 passed; ruff passed",
+  "real_provider_calls": 0,
+  "new_cost_usd": 0,
+  "accounted_with_reservations_usd": 1.8200708,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "quota_policy": "user explicitly requests continue until quota exhausted; previous 10 percent threshold superseded; never use reset credits",
+  "limitations": [
+    "does not interpret free-form verdict/issues",
+    "does not infer risk dimension for legacy records",
+    "synthetic contract checks are not evidence of semantic accuracy"
+  ],
+  "next": "investigate free-form review inconsistency with synthetic replay; no private egress without explicit approval"
+}

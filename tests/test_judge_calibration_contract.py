@@ -56,6 +56,22 @@ def test_line_ids_preserve_original_markdown_and_json_bytes():
         materialize_grade(value, item)
 
 
+def test_source_score_cannot_be_full_when_review_identifies_unsupported_claim():
+    item = {"answer": "A is required.", "contexts": [{"text": "A is discussed."}]}
+    grade = {"scores": {"completeness": 2, "source_support": 2, "citation_support": 2},
+             "reason": "test", "deductions": [], "risk_checks": [{"answer_quote": item["answer"],
+             "source_quote": "none_found", "verdict": "unsupported", "dimension": "source_support"}]}
+    with pytest.raises(ValueError, match="risk verdict conflicts"):
+        validate_grade(grade, item)
+    grade["risk_checks"][0]["dimension"] = "citation_support"
+    assert validate_grade(grade, item) == grade
+    grade["risk_checks"][0]["dimension"] = "source_support"
+    grade["scores"]["source_support"] = 1
+    grade["deductions"] = [{"dimension": "source_support", "reason": "unsupported claim",
+                            "answer_quote": item["answer"], "source_quote": "none_found"}]
+    assert validate_grade(grade, item) == grade
+
+
 def test_source_score_cannot_be_full_when_review_identifies_contradiction():
     item = {"answer": "A is required.", "contexts": [{"text": "A is prohibited."}]}
     grade = {"scores": {"completeness": 2, "source_support": 2, "citation_support": 2},
