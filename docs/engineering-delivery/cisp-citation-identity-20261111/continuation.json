@@ -1,9 +1,21 @@
 {
-  "status": "offline_checks_passed_push_pending",
+  "status": "fixed_context_retest_complete",
   "base_commit": "197e7bbaff4d2f29e2016cd4161f405c9fc58852",
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
-  "provider_calls": 0,
+  "provider_calls": 60,
   "prior_accounted_usd": 1.6264325,
   "unresolved": "Three original missing-citation items investigating; current changes not tested against live model with current app citation protocol.",
-  "next": "Push scoped code and public docs; verify exact CI; prepare a concrete fresh private-payload preview before requesting authorization for live retest."
+  "next": "Prepare actual CISP retrieval and multi-turn regression, source validation, and separate unseen holdout; do not equate fixed-context metrics to acceptance.",
+  "code_commit": "71b7355a41565120c4fa825f4453ea3c86e7af6f",
+  "code_ci": {
+    "run": 42971881199,
+    "status": "success",
+    "tests_passed": 649,
+    "expected_skips": 13
+  },
+  "verified_identity": "20/20",
+  "previous_missing": "3/3 names now present",
+  "new_cost_usd": 0.0191481,
+  "accounted_total_usd": 1.6455806,
+  "platform_outcome": "insufficient_evidence, 20 cases; no independent semantic gold"
 }
