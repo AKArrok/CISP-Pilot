@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月12日课程来源与条件忠实预检（质量未通过，不晋级）**：核对原10题7个同版原PDF页，3个V4.1原件缺失但V4.2另页可核；发现物理页/印刷页差异、图箭头丢失和PDF隐藏文本与可见页不一致。修订默认回答规则后，历史三题固定资料两轮仍有条件/图示问题和AI审阅矛盾；独立本地Qwen/Llama命题10题固定资料预检，出处身份10/10、AI顶层20次pass，但当前AI逐项核查5初步支持/3失败/2不确定，不是人工金标、真实检索或上线验收。用户授权本轮48次，均有回执，新费用保守估算0.0447747美元，含旧未知预留累计1.8200708/3美元。已测试题不再是未暴露封存集，详见[本轮记录](docs/engineering-delivery/cisp-source-conditions-20261112/README.md)与[续接](docs/engineering-delivery/cisp-source-conditions-20261112/continuation.json)。
+
 - **11月12日历史审阅补完与命题候选（未完成独立封存）**：用户批准的历史补审8次和课程命题10次已执行，18次都有回执，新增峰值保守估算0.0147429美元；含旧未知预留累计1.7752961/3美元。8份审阅顶层均通过，但5份有不支持或不确定的分项，按严格资料忠实门槛保留疑点及历史分歧。10题同DeepSeek上下文隔离命题候选中4条摘录非逐字连续匹配，且命题与被测模型相同，不构成独立模型命题或已封存验收。两中台私有副本已追加记录；后续新题答案及检索外发须另行确认。详见[本轮记录](docs/engineering-delivery/cisp-independent-holdout-20261111/README.md)与[续接](docs/engineering-delivery/cisp-independent-holdout-20261111/continuation.json)。
 
 - **11月11日追问复测与封存候选**：M-B2 在恢复 TLS 后重新执行，目标课程片段排名第 1，出处身份检查与两次 AI 审阅通过，5 次调用均有回执；这是单题对照，原批次失败保留。10 题本机候选共享已用语料且非独立命题，也尚未获新问题外发授权，不计作独立验收。上次未知费用无法从余额反推，继续预留；累计含预留 1.7605532/3 美元。详见[本轮记录](docs/engineering-delivery/cisp-followup-holdout-20261111/README.md)及[续接](docs/engineering-delivery/cisp-followup-holdout-20261111/continuation.json)。

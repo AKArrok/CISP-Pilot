@@ -1,0 +1,63 @@
+{
+  "status": "fixed_evidence_preflight_completed_quality_gate_failed_real_retrieval_unverified",
+  "source_head": "88740910e6418a6f2bbc32a7f8ea8a319269a167",
+  "source_change": "agents/prompts.py: explicit no inferred mandatory/prohibition/universal conditions; distinguish PDF physical page and missing diagram relations",
+  "original_candidates": {
+    "total": 10,
+    "exact_version_original_found": 7,
+    "missing_v41_originals": 3,
+    "v42_alternative_originals_visually_checked": 3,
+    "page_label_mismatch": true,
+    "diagram_extraction_loss": true,
+    "pdf_hidden_layer_mismatch": true
+  },
+  "independent_authoring": {
+    "local_models": [
+      "qwen2.5:3b",
+      "llama3:latest"
+    ],
+    "source_same_course": true,
+    "independent_human_gold": false,
+    "ai_editor_selected_anchors_and_revisions": true,
+    "preflight_dataset_sha256": "81b236d2a4843f42738a01e11cdc9fd95c7536a201cf3f9a6de21726e730bc63",
+    "preflight_status": "tested_and_exposed_not_fresh_holdout"
+  },
+  "historical": {
+    "first_calls": 9,
+    "first_cost_usd": 0.0117162,
+    "second_calls": 9,
+    "second_cost_usd": 0.0158772,
+    "new_unknown_cost": false,
+    "M-B1": "single-sample improvement, not general acceptance",
+    "RESERVE-04": "review aggregate contradicts issue statuses; exclusivity unsupported",
+    "RESERVE-08": "possible example and condition generalization unresolved",
+    "transport": "direct fixed evidence, not HTTP/retrieval"
+  },
+  "fixed_preflight": {
+    "calls": 30,
+    "receipts": 30,
+    "cost_usd": 0.0171813,
+    "citation_identity": {
+      "pass": 10,
+      "total": 10
+    },
+    "ai_review_verdicts": {
+      "pass": 20
+    },
+    "local_ai_evidence_review": {
+      "provisional_pass": 5,
+      "fail": 3,
+      "uncertain": 2
+    },
+    "not_independent_human": true,
+    "actual_retrieval_not_tested": true,
+    "production_acceptance": false
+  },
+  "new_provider_calls": 48,
+  "new_known_peak_estimate_usd": 0.0447747,
+  "accounted_with_reservations_usd": 1.8200708,
+  "remaining_from_3_usd": 1.1799292,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "tests": "74 passed, 1 warning; ruff pass",
+  "next": "do not tune on exposed preflight set; investigate with fresh development cases, resolve figure/printed-page evidence, build independent fresh holdout and obtain new egress approval before real retrieval"
+}
