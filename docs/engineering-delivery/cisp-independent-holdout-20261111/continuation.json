@@ -1,0 +1,64 @@
+{
+  "status": "approved_groups_completed_holdout_quality_and_independence_pending",
+  "source_head": "34cd14d0cb270e9154b7e2c07f4f05a5628d172a",
+  "user_authorization": "preparation only; no newly proposed egress authorized",
+  "local_authoring": {
+    "domains": 10,
+    "frozen_evidence_sha256": "28b80b181635a032413bf07225125807b96c204499dea1cf5655a4778cc2d0fb",
+    "rounds": 4,
+    "local_generation_calls": 40,
+    "acceptable_rounds": 0,
+    "status": "failed_question_quality_no_independent_holdout",
+    "independence_limits": "same corpus and current organizer; no independent human gold"
+  },
+  "historical": {
+    "cases": 6,
+    "original_truncated": 4,
+    "original_disagreements": 2,
+    "local_gemma_complete": 5,
+    "local_gemma_truncated": 1,
+    "local_review_conflicts": true,
+    "platform_copy": "private local platform-review-20261112.sqlite3"
+  },
+  "external_calls_this_round": 18,
+  "accounted_with_reservations_usd": 1.7752961,
+  "external_proposal": {
+    "author_calls": 10,
+    "author_max_usd": 0.048288,
+    "author_payload_sha256": "a46d01a7df0a7f153c4fff73e6ef53ff84af2f69fe305da61283ada6696d6e69",
+    "review_calls": 8,
+    "review_max_usd": 0.0484608,
+    "review_payload_sha256": "9dc20624f0aa0c03823eb23e04651e8ff7eb6e809bfead07d805f60ff477de73",
+    "total_max_usd": 0.0967488,
+    "if_all_sent_total_with_reservations_usd": 1.857302,
+    "status": "approved by user and executed; does not authorize follow-on answer testing"
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "review 10 candidate questions and original source pages; decide truly independent authoring; prepare separately authorized answer/review scope; address unsupported-condition failures",
+  "remaining_from_3_usd": 1.2247039,
+  "approved_execution": {
+    "historical_review_calls": 8,
+    "historical_review_receipts": 8,
+    "historical_cost_usd": 0.0133557,
+    "author_calls": 10,
+    "author_receipts": 10,
+    "author_cost_usd": 0.0013872,
+    "new_unknown_cost": false,
+    "user_approved_both": true
+  },
+  "holdout_candidates": {
+    "count": 10,
+    "exact_quote_count": 6,
+    "needs_quote_review": 4,
+    "candidate_sha256": "1bc3af680abd20630d096b4e1abff931d45c4b4efe307b4c2fcaf2e81447a12d",
+    "independent_model": false,
+    "status": "candidate_not_sealed_not_approved_for_answer_testing"
+  },
+  "historical_followup": {
+    "complete_new_ai_reviews": 8,
+    "top_level_pass": 8,
+    "reviews_with_unsupported_or_uncertain_claims": 5,
+    "prior_disagreements_preserved": true,
+    "acceptance": "not passed; review claims not just aggregate verdict"
+  }
+}
