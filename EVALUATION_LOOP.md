@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月11日 CISP 出处身份修复（离线验证完成，真实同协议复测未执行）**：模型明确选择有效资料编号时由程序生成来源与页码；缺失、伪造或不匹配时保留回答并提示未核实。流式输出与SQL一致；77项相关测试通过、Ruff通过，零新增模型调用，三个数据中台改进项保持调查中。身份校验不证明语义支持；上轮预检没有使用应用编号协议，不能以离线回放宣称三题已修复。见[本轮记录](docs/engineering-delivery/cisp-citation-identity-20261111/README.md)。
+
 - **11月11日 CISP 课程问答（20题固定证据预检完成，存在出处缺失）**：用户已明确以课程为依据、回答充分、来源可核验、缺口不编造，外部资料和历史回答不可自动成为知识证据；最终验收须CISP各领域、回归/封存隔离及两次AI审阅。已在本机准备10领域20题、10个对应片段和完整请求预览，固定证据单轮预检，准备期间零模型调用，未修改业务库；课程原文、版本权威性尚待核实。用户仅授权清单中的20题和10个固定课程片段发往DeepSeek，已完成60次调用，双AI审阅20/20均通过，但3题未写资料名称、审阅均漏检；保守估算0.0182409美元。私人材料仅保存在忽略的data目录，不推送。见[准备记录](docs/engineering-delivery/cisp-course-preparation-20261111/README.md)和[续接状态](docs/engineering-delivery/cisp-course-preparation-20261111/continuation.json)。真实检索、多轮及独立封存验收尚未准备，勿称已通过。
 
 - **11月10日精简回答扩大回归（实验及双中台记录完成，代码精确CI通过）**：出处标题确定性换行，SSE/SQL一致92/92；原40题两臂综合38/40→38/40（1修复/1退化/38未变），多轮两会话各3轮两臂均6/6。精简字符中位数474→189.5，但仍有虚构定位、句中出处和口头形式扩展，不晋级默认。实际Top2无重复40/40，取消已有父段折叠的诊断38/40出现重复，不新增检索去重或盲删块。4个真实批次192次Flash调用/0.0976107USD保守估算，105项相关回归通过；代码1926321已推送，[CI42849919473](https://github.com/AKArrok/CISP-Pilot/actions/runs/42849919473)637通过/13预期跳过，镜像/容器/6组Linux浏览器检查通过。源文复核为AI开发判读，非独立人工验收。见[本轮报告](docs/engineering-delivery/concise-regression-20261110/README.md)、[逐题原回答](docs/engineering-delivery/concise-regression-20261110/QA_COMPARISON.md)、[双中台记录](docs/engineering-delivery/concise-regression-20261110/platform-records.json)及[最新费用账本](docs/engineering-delivery/concise-regression-20261110/budget-ledger.json)。用户不因平台额度停止的新指令优先于下面历史暂停；默认库及索引只读，不部署。

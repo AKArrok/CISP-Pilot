@@ -19,7 +19,7 @@ from agents.state import AgentState
 from agents import prompts
 from agents.usage import add_receipts, receipt
 from agents.tracing import observe
-from agents.sources import source_location, format_citation_lines
+from agents.sources import CITATION_WARNING, citation_is_verifiable, source_location, format_citation_lines, render_selected_citations
 from domains import DOMAINS
 from llms import get_answer_llm, get_simple_llm, llm_ainvoke_with_retry, invoke_structured
 
@@ -276,6 +276,12 @@ async def answer(state: AgentState) -> dict:
     resp = await llm_ainvoke_retry(llm, messages)
     usage = add_receipts(receipt(resp), agent_usage)
     formatted = format_citation_lines(str(resp.content))
+    formatted = render_selected_citations(formatted, contexts)
+    if not citation_is_verifiable(formatted, contexts):
+        formatted += "\n\n" + CITATION_WARNING
+        observe("answer_citation", "unverified")
+    else:
+        observe("answer_citation", "identity_verified")
     observe("answer_layout", "citation_line_v1")
     return {"messages": [resp.model_copy(update={"content": formatted})], "answer": formatted, "usage": usage}
 

@@ -62,13 +62,20 @@ def test_saved_provider_text_is_unchanged_except_newline_at_every_split():
         assert formatter.feed(raw[:split]) + formatter.feed(raw[split:]) + formatter.finish() == expected
 
 
-def test_actual_http_model_stream_and_sql_history_agree(accounts, monkeypatch):
+@pytest.mark.parametrize("bad_citation", [False, True, "selected"])
+def test_actual_http_model_stream_and_sql_history_agree(accounts, monkeypatch, bad_citation):
     from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
     from agents import memory, sources
     from test_chat_sql_recovery import events
 
     raw = saved_inline_answer()
     expected = raw.replace("【出处】", "\n【出处】")
+    if bad_citation == "selected":
+        raw = "依据[资料1]，需要备份。"
+        expected = raw + "\n\n【出处】[资料1]《NIST SP 800-53 5.2.0 OSCAL》定位【cp-9】"
+    elif bad_citation:
+        raw = "仅依据所给片段，无法确定。"
+        expected = raw + "\n\n" + sources.CITATION_WARNING
 
     async def route(_):
         return {"intent": "knowledge", "domain": None}

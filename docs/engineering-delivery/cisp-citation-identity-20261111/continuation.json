@@ -1,0 +1,9 @@
+{
+  "status": "offline_checks_passed_push_pending",
+  "base_commit": "197e7bbaff4d2f29e2016cd4161f405c9fc58852",
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "provider_calls": 0,
+  "prior_accounted_usd": 1.6264325,
+  "unresolved": "Three original missing-citation items investigating; current changes not tested against live model with current app citation protocol.",
+  "next": "Push scoped code and public docs; verify exact CI; prepare a concrete fresh private-payload preview before requesting authorization for live retest."
+}

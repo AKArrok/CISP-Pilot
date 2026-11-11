@@ -181,6 +181,7 @@ async def chat_stream(req: ChatRequest, user: dict = WRITE_DEPENDENCY):
         stamps = {"route_ms": None, "retrieval_ms": None, "first_token_ms": None}
         intent_seen = None
         sent_tokens = 0
+        streamed_content = ""
         from agents.sources import CitationLineFormatter
 
         citation_lines = CitationLineFormatter()
@@ -230,7 +231,17 @@ async def chat_stream(req: ChatRequest, user: dict = WRITE_DEPENDENCY):
                     if stamps["first_token_ms"] is None:
                         stamps["first_token_ms"] = round((now - t0) * 1000, 1)
                     sent_tokens += 1
+                    streamed_content += content
                     yield sse({"type": "token", "content": content})
+            elif kind == "on_chain_end" and node == "answer" and sent_tokens:
+                output = ev["data"].get("output") or {}
+                answer = output.get("answer", "") if isinstance(output, dict) else ""
+                remaining = citation_lines.finish()
+                if remaining:
+                    streamed_content += remaining
+                    yield sse({"type": "token", "content": remaining})
+                if answer.startswith(streamed_content) and answer != streamed_content:
+                    yield sse({"type": "token", "content": answer[len(streamed_content):]})
         remaining = citation_lines.finish()
         if remaining:
             sent_tokens += 1
