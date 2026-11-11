@@ -1,0 +1,103 @@
+{
+  "status": "baseline_finished_followup_comparison_blocked_unknown_cost",
+  "approved_questions": 36,
+  "approved_unique_chunks": 129,
+  "new_private_chunks": 121,
+  "scope_sha256": "60c5f04dc5e905323c6e1f03e6a464312836a9cba2f88d005bc6d34ca600fffd",
+  "executor_sha256": "01fa65131a759e390504fce0e8558342dcf99875d8690e36fd3630831878d6ca",
+  "manifest_sha256": "f8c75069dd24b8a48448ab9aeff8ea88041722844330fc30e4d5ef4181b955b5",
+  "prior_accounted_usd": 1.6455806,
+  "batch_cap_usd": 0.72432,
+  "budget_total_usd": 3,
+  "provider_calls": 0,
+  "default_db_before_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "next": "Reconcile unknown provider cost; do not automatically retry unchanged connection failure. Preserve original and blocked runs. Prepare new independent CISP holdout and source verification; actual post-fix M-B2 needs a fresh bounded authorized attempt after condition changes.",
+  "first_batch": {
+    "calls": 35,
+    "cases_with_http_response": 9,
+    "fully_reviewed_cases": 8,
+    "failed_case": "CISP-05-01",
+    "failed_stage": "review_1",
+    "reason": "finish_reason_length_at_1024",
+    "known_cost_usd": 0.0243462,
+    "unknown_cost": false
+  },
+  "remaining_cases": 1,
+  "remaining_call_cap": 12,
+  "remaining_batch_cap_usd": 0.0579456,
+  "second_batch": {
+    "calls": 61,
+    "cases_with_http_response": 15,
+    "failed_case": "M-B1",
+    "failed_stage": "review_1",
+    "reason": "finish_reason_length_at_1024",
+    "known_cost_usd": 0.044337,
+    "unknown_cost": false
+  },
+  "aggregate_attempts": 144,
+  "aggregate_known_cost_usd": 0.1080978,
+  "third_batch": {
+    "calls": 16,
+    "cases_with_http_response": 4,
+    "failed_case": "RESERVE-04",
+    "failed_stage": "review_2",
+    "reason": "finish_reason_length_at_1024",
+    "known_cost_usd": 0.0175017,
+    "unknown_cost": false
+  },
+  "fourth_batch": {
+    "calls": 4,
+    "failed_case": "RESERVE-05",
+    "failed_stage": "review_2",
+    "reason": "finish_reason_length_at_1024",
+    "known_cost_usd": 0.0045471,
+    "unknown_cost": false
+  },
+  "review_prompt_change": "compact JSON formatting; preserve substantive issues and evidence; only unattempted cases",
+  "fifth_batch": {
+    "calls": 22,
+    "finished_http": 5,
+    "failed_case": "M-B2",
+    "reason": "retrieved_context_outside_approved_pool_before_answer",
+    "known_cost_usd": 0.0153468,
+    "unknown_cost": false
+  },
+  "baseline_answered": 35,
+  "baseline_blocked": [
+    "M-B2"
+  ],
+  "baseline_dual_ai_pass": 29,
+  "baseline_review_disagreement": [
+    "CISP-06-01",
+    "RESERVE-08"
+  ],
+  "baseline_review_truncated": [
+    "CISP-05-01",
+    "M-B1",
+    "RESERVE-04",
+    "RESERVE-05"
+  ],
+  "known_receipts": 143,
+  "unknown_cost_calls": 1,
+  "unknown_cost_reserve_usd": 0.0048288,
+  "total_accounted_with_reserves_usd": 1.7585072,
+  "review_disagreement": [
+    "CISP-06-01",
+    "RESERVE-08"
+  ],
+  "review_incomplete": [
+    "CISP-05-01",
+    "M-B1",
+    "RESERVE-04",
+    "RESERVE-05"
+  ],
+  "citation_false_warnings_corrected_offline": 11,
+  "followup_retest": {
+    "status": "stopped",
+    "error": "OpenAIConnectionError with no usage receipt; subsequent retrieval blocked before answer",
+    "provider_attempts": 1,
+    "known_cost_usd": 0,
+    "cost_unknown": true,
+    "default_db_unchanged": true
+  }
+}

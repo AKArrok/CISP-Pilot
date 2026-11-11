@@ -1,0 +1,14 @@
+{
+  "previous_accounted_usd_including_old_unknown_reserve": 1.6455806,
+  "initial_batch_attempts": 143,
+  "initial_batch_known_cost_usd": 0.1080978,
+  "initial_batch_unknown": false,
+  "rewrite_retest_attempts": 1,
+  "rewrite_retest_receipts": 0,
+  "rewrite_retest_cost_unknown": true,
+  "rewrite_retest_unknown_reserve_usd": 0.0048288,
+  "accounted_with_reservations_usd": 1.7585072,
+  "remaining_from_3_usd": 1.2414928,
+  "budget_total_usd": 3,
+  "method": "DeepSeek Flash peak: input 0.30 / output 1.20 USD per million tokens; maximum unknown call assumes input 12000/output 1024. Estimates are not invoice."
+}

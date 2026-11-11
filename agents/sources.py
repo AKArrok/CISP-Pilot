@@ -23,7 +23,7 @@ def render_selected_citations(answer: str, contexts: list[dict]) -> str:
 
 def citation_is_verifiable(answer: str, contexts: list[dict]) -> bool:
     """Check citation identities only; this does not establish semantic support."""
-    pattern = r"\[资料(\d+)\]《([^》]+)》(第\d+页|定位【[A-Za-z][A-Za-z0-9_.:-]*】)"
+    pattern = r"\[资料(\d+)\]《(.*?)》(第\d+页|定位【[A-Za-z][A-Za-z0-9_.:-]*】)"
     matches = list(re.finditer(pattern, answer))
     refs = re.findall(r"\[资料(\d+)\]", answer)
     if not matches or not set(refs).issubset({match[1] for match in matches}):

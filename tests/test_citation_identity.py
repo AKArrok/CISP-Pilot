@@ -43,3 +43,11 @@ def test_render_only_explicit_valid_reference():
     assert citation_is_verifiable(result, CONTEXT)
     for raw in ("没有资料编号。", "依据[资料2]。", "【出处】[资料1]《错误来源》第5页"):
         assert render_selected_citations(raw, CONTEXT) == raw
+
+
+def test_source_name_with_nested_book_title_is_verified():
+    contexts = [{"source": "课程《安全》知识点", "page": 6}]
+    answer = "【出处】[资料1]《课程《安全》知识点》第6页"
+    assert citation_is_verifiable(answer, contexts)
+    assert not citation_is_verifiable(answer.replace("第6页", "第7页"), contexts)
+    assert not citation_is_verifiable(answer.replace("《安全》", "《错误》"), contexts)
