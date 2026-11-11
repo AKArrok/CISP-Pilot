@@ -1,0 +1,29 @@
+{
+  "status": "followup_passed_holdout_not_independent_or_authorized",
+  "base_commit": "57acf6f4829b7976e802f8c7469386c8e8c1db21",
+  "initialization_failure": "system Python missing alembic, before provider call",
+  "connectivity": "unauthenticated HTTPS probes returned 401; official authenticated balance HTTP 200",
+  "previous_unknown_cost": "unresolved, reserve 0.0048288 USD",
+  "followup": {
+    "case": "M-B2",
+    "attempts": 5,
+    "receipts": 5,
+    "known_cost_estimate_usd": 0.002046,
+    "target_rank": 1,
+    "citation_identity": "passed",
+    "independent_context_ai_reviews": [
+      "pass",
+      "pass"
+    ]
+  },
+  "holdout": {
+    "status": "candidate_only_not_independent_not_approved_for_egress",
+    "cases": 10,
+    "domains": 10,
+    "sha256": "ca8b05909c5c246a433f70ff0ad567c2bf6c56ccdc446c5a3b181eccb830aa05"
+  },
+  "accounted_with_reservations_usd": 1.7605532,
+  "remaining_from_3_usd": 1.2394468,
+  "default_db_unchanged": true,
+  "next": "prepare independently authored frozen holdout and exact egress for approval; resolve historic review disagreements and truncations"
+}
