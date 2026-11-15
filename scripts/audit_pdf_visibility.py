@@ -17,7 +17,8 @@ def covered_text_spans(page, threshold: float = 0.8) -> list[dict]:
     if not 0 < threshold <= 1:
         raise ValueError("threshold must be in (0, 1]")
     covers = [drawing for drawing in page.get_drawings()
-              if drawing.get("fill") is not None and drawing.get("fill_opacity", 0) >= 0.99]
+              if drawing.get("fill") is not None and drawing.get("fill_opacity", 0) >= 0.99
+              and len(drawing.get("items", [])) == 1 and drawing["items"][0][0] == "re"]
     findings = []
     for span in page.get_texttrace():
         chars = [char for char in span["chars"] if not chr(char[0]).isspace()]
@@ -48,7 +49,7 @@ def main():
         indexes = [args.page - 1] if args.page is not None else range(len(document))
         pages = [{"physical_page": i + 1, "suspected_spans": len(covered_text_spans(document[i]))}
                  for i in indexes]
-    print(json.dumps({"method": "later opaque vector drawing bounding boxes; visual review required",
+    print(json.dumps({"method": "later opaque single-rectangle fills; visual review required",
                       "pages": pages}, ensure_ascii=False, indent=2))
 
 

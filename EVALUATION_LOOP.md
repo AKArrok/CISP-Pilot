@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月16日PDF形状误报修复**：圆形包围盒误报合成红灯已复现，检测收紧至单个不透明矩形；19项回归及Ruff通过，真实已知遮挡2/2仍检出，零新模型调用。见[记录](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/README.md)和[续接](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/continuation.json)。
+
 - **11月12日PDF遮挡文本只读审计（候选检测完成，待本提交CI）**：新增只读矢量遮挡启发式，不删除文字、不重建索引；真实已知遮挡2个span均提示，该页共23个候选，其余未人工确认；17个相关页未报警不等于干净。合成正反例及表格回归18通过、Ruff通过，零新增模型调用。详见[记录](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/README.md)及[续接](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/continuation.json)。
 
 - **11月12日来源评分冲突门禁（实现，待本提交CI）**：合成红灯重现来源维度 `unsupported` 仍获来源满分；最小修复后24项来源审阅/校准测试通过、Ruff通过，零新模型调用。只约束显式来源维度结构化风险，不能替代自由格式AI审阅核验；详见[记录](docs/engineering-delivery/cisp-source-grade-veto-20261112/README.md)与[续接](docs/engineering-delivery/cisp-source-grade-veto-20261112/continuation.json)。用户最新要求持续至额度用完，覆盖旧10%暂停阈值，不使用重置券。

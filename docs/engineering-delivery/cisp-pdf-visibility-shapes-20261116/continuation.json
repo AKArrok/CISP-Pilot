@@ -1,0 +1,11 @@
+{
+  "status": "local_passed_ci_pending",
+  "base_commit": "f0b801e44a1df0b3b5bc4687507a4b87c1d7ac10",
+  "red": "1 failed, 4 passed",
+  "green": "19 passed; ruff passed",
+  "known_real_occluded_spans_detected": 2,
+  "known_real_occluded_spans": 2,
+  "new_model_calls": 0,
+  "accounted_with_reservations_usd": 1.8200708,
+  "next": "verify pushed commit CI; broaden annotated visibility cases without automatic corpus rewriting"
+}

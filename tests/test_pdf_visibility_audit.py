@@ -35,3 +35,11 @@ def test_partial_coverage_below_threshold_is_not_flagged():
     page.insert_text((50, 70), "partially visible example", fontsize=12)
     page.draw_rect(pymupdf.Rect(48, 48, 59, 80), color=None, fill=(1, 1, 1))
     assert covered_text_spans(page) == []
+
+
+def test_nonrectangular_fill_does_not_cover_its_whole_bounding_box():
+    doc = pymupdf.open()
+    page = doc.new_page()
+    page.insert_text((51, 58), "x", fontsize=6)
+    page.draw_circle(pymupdf.Point(100, 100), 50, color=None, fill=(1, 1, 1))
+    assert covered_text_spans(page) == []
