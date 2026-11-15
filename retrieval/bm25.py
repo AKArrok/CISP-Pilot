@@ -109,6 +109,25 @@ class BM25Index:
             tokenize(c.get("embedding_text", c["text"])) for c in chunks
         ], chunks)
 
+    def search_with_titles(self, query: str, top_k: int) -> list[dict]:
+        """Experimental title/content recall; preserve original relevance scores."""
+        base = self.search(query, len(self.metadata))
+        if not hasattr(self, "_title_index"):
+            self._title_index = BM25Index(
+                [tokenize(c.get("title", "")) for c in self.metadata], self.metadata)
+        pool_size = max(30, top_k)
+        titles = self._title_index.search(query, pool_size)
+        if not titles:
+            return base[:top_k]
+        items = {item["id"]: item for item in base}
+        scores = {item["id"]: 1 / (60 + rank)
+                  for rank, item in enumerate(base[:pool_size], 1)}
+        for rank, item in enumerate(titles, 1):
+            if item["id"] in items:
+                scores[item["id"]] = scores.get(item["id"], 0) + 0.25 / (60 + rank)
+        ranked = sorted(scores, key=lambda identifier: -scores[identifier])
+        return [items[identifier] for identifier in ranked[:top_k]]
+
     def _is_degraded(self, q_tokens: list[str]) -> bool:
         """查询含语料外词（≥2 字）视为词法通道退化——错别字的特征信号。"""
         probe = [t for t in set(q_tokens) if len(t) >= 2]

@@ -1,0 +1,46 @@
+{
+  "status": "candidate_offline_validated_egress_pending_user_approval",
+  "baseline": "d3f3a72a247e32674e7460142aa123cddfc36d68",
+  "baseline_ci": {
+    "id": 43744595059,
+    "conclusion": "success"
+  },
+  "new_development_sha256": "640c9ba96fbc489f90b07b89ff82d3fe462012600da2c05cf21ad4ede542c8c1",
+  "candidate": {
+    "title_weight": 0.25,
+    "rrf_k": 60,
+    "pool": 30,
+    "default_changed": false,
+    "relevance_scores_retained": true
+  },
+  "actual_pipeline": {
+    "new_development": {
+      "baseline": 12,
+      "candidate": 17,
+      "total": 20,
+      "regressions": 0
+    },
+    "old20": {
+      "baseline": 13,
+      "candidate": 15,
+      "regressions": 0,
+      "fixed_ids": [
+        "CISP-01-01",
+        "CISP-07-02"
+      ]
+    }
+  },
+  "tests": "45 passed; ruff pass",
+  "egress": {
+    "status": "pending explicit user confirmation",
+    "questions": 20,
+    "unique_course_fragments": 81,
+    "scope_sha256": "40f1d6dde7e9acc0e41dc63200e1b45b29f9037917250a106470ce84f4eb40d5",
+    "max_calls": 80,
+    "max_usd": 0.580608,
+    "max_total_with_reservations_usd": 2.4006788
+  },
+  "new_model_calls": 0,
+  "accounted_with_reservations_usd": 1.8200708,
+  "next": "verify exact pushed CI; await explicit egress confirmation then execute isolated real application QA only within frozen scope"
+}

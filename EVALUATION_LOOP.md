@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月16日七题归因与召回候选（待真实问答确认）**：先冻结新开发20题再选标题/正文融合候选；实际稀疏检索新题12/20到17/20、原20题13/20到15/20，无原命中退化，仍5题未恢复，含两题指代/目标约束风险，标签和阈值未改。候选显式启用，默认不变；45项回归和Ruff通过。本机外发清单含原20题/81段课程资料，最多80次、估算0.580608美元，未经确认未外发。见[记录](docs/engineering-delivery/cisp-recall-20261116/README.md)与[续接](docs/engineering-delivery/cisp-recall-20261116/continuation.json)。
+
 - **11月16日审阅一致性与真实本地检索诊断**：上一提交CI43743990437成功；原课程20题真实稀疏路径有/无特征均13/20目标命中，漏检目标BM25排248，未宣称修复。新增只读AI审阅一致性审计，26份历史审阅检出4份矛盾并保留unknown；32项测试与Ruff通过，零新模型调用。见[记录](docs/engineering-delivery/cisp-review-retrieval-20261116/README.md)和[续接](docs/engineering-delivery/cisp-review-retrieval-20261116/continuation.json)。
 
 - **11月16日PDF形状误报修复**：圆形包围盒误报合成红灯已复现，检测收紧至单个不透明矩形；19项回归及Ruff通过，真实已知遮挡2/2仍检出，零新模型调用。见[记录](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/README.md)和[续接](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/continuation.json)。
