@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月16日审阅一致性与真实本地检索诊断**：上一提交CI43743990437成功；原课程20题真实稀疏路径有/无特征均13/20目标命中，漏检目标BM25排248，未宣称修复。新增只读AI审阅一致性审计，26份历史审阅检出4份矛盾并保留unknown；32项测试与Ruff通过，零新模型调用。见[记录](docs/engineering-delivery/cisp-review-retrieval-20261116/README.md)和[续接](docs/engineering-delivery/cisp-review-retrieval-20261116/continuation.json)。
+
 - **11月16日PDF形状误报修复**：圆形包围盒误报合成红灯已复现，检测收紧至单个不透明矩形；19项回归及Ruff通过，真实已知遮挡2/2仍检出，零新模型调用。见[记录](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/README.md)和[续接](docs/engineering-delivery/cisp-pdf-visibility-shapes-20261116/continuation.json)。
 
 - **11月12日PDF遮挡文本只读审计（候选检测完成，待本提交CI）**：新增只读矢量遮挡启发式，不删除文字、不重建索引；真实已知遮挡2个span均提示，该页共23个候选，其余未人工确认；17个相关页未报警不等于干净。合成正反例及表格回归18通过、Ruff通过，零新增模型调用。详见[记录](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/README.md)及[续接](docs/engineering-delivery/cisp-pdf-visibility-audit-20261112/continuation.json)。

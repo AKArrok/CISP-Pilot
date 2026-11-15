@@ -1,0 +1,29 @@
+{
+  "status": "local_audit_and_retrieval_comparison_complete_ci_pending",
+  "baseline_commit": "3fd785296d0cd9a2143f2fe3edb6d396d7fdcec9",
+  "baseline_ci": {
+    "id": 43743990437,
+    "conclusion": "success"
+  },
+  "retrieval": {
+    "course_development_cases": 20,
+    "target_top5_without_features": 13,
+    "target_top5_with_features": 13,
+    "known_missed_target_bm25_rank": 248,
+    "other_frozen_train_development": {
+      "cases": 20,
+      "without_features": 19,
+      "with_features": 20
+    }
+  },
+  "review_audit": {
+    "saved_reviews": 26,
+    "consistent": 22,
+    "inconsistent_unknown": 4,
+    "semantic_truth_not_proven": true
+  },
+  "tests": "32 passed; ruff pass",
+  "new_provider_calls": 0,
+  "accounted_with_reservations_usd": 1.8200708,
+  "next": "verify exact commit CI; improve recall only with frozen development comparisons, no targeted holdout tuning or unapproved egress"
+}
