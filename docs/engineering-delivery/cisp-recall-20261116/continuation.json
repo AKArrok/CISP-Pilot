@@ -1,5 +1,5 @@
 {
-  "status": "candidate_offline_validated_egress_pending_user_approval",
+  "status": "real_regression_completed_quality_gate_not_passed",
   "baseline": "d3f3a72a247e32674e7460142aa123cddfc36d68",
   "baseline_ci": {
     "id": 43744595059,
@@ -32,7 +32,7 @@
   },
   "tests": "45 passed; ruff pass",
   "egress": {
-    "status": "pending explicit user confirmation",
+    "status": "explicitly approved by user; same scope only",
     "questions": 20,
     "unique_course_fragments": 81,
     "scope_sha256": "40f1d6dde7e9acc0e41dc63200e1b45b29f9037917250a106470ce84f4eb40d5",
@@ -40,7 +40,52 @@
     "max_usd": 0.580608,
     "max_total_with_reservations_usd": 2.4006788
   },
-  "new_model_calls": 0,
-  "accounted_with_reservations_usd": 1.8200708,
-  "next": "verify exact pushed CI; await explicit egress confirmation then execute isolated real application QA only within frozen scope"
+  "new_model_calls": 80,
+  "accounted_with_reservations_usd": 1.8578513,
+  "next": "Verify this documentation commit CI; then new development counterexamples for unsupported inference and remaining recall gaps; any new paid batch requires approval",
+  "initial_execution": {
+    "calls": 9,
+    "receipts": 9,
+    "known_peak_estimate_usd": 0.0051366,
+    "completed_cases": 2,
+    "blocked_case": "CISP-02-01",
+    "reason": "executor used default sparse pool60, offline scope used30; stopped before answer"
+  },
+  "resume": {
+    "sparse_pool": 30,
+    "remaining_cases": 18,
+    "max_new_calls": 71,
+    "max_new_usd": 0.5152896,
+    "route_replay": "CISP-02-01 prior successful route response reused; no new route model call",
+    "status": "completed",
+    "actual_calls": 71,
+    "receipts": 71,
+    "known_peak_estimate_usd": 0.0326439
+  },
+  "report": "REAL_RESULTS.md",
+  "code_commit": "47ebbf3ec4c135053a98527fed607d28e090acdf",
+  "code_ci": {
+    "id": 43746017678,
+    "conclusion": "success"
+  },
+  "real_results": {
+    "completed": 20,
+    "calls": 80,
+    "receipts": 80,
+    "citation_identity": 20,
+    "target_top5": 15,
+    "contexts_match_frozen": 20,
+    "sse_sql_equal": 20,
+    "ai_review_passed": 38,
+    "ai_review_unknown": 2,
+    "ai_review_inconsistent": 2,
+    "unknown_case": "CISP-02-02",
+    "current_ai_found_failure": "CISP-06-02",
+    "human_gold": false,
+    "default_promoted": false,
+    "new_peak_cost_estimate_usd": 0.0377805,
+    "new_cost_unknown": false,
+    "platform_run_id": "0020f464f058ccb71af60f511836073307a2bfb13a5c4da3a9bcf9eb5d2a4b2d",
+    "open_improvements": 6
+  }
 }

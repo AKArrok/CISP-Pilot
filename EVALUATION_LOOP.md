@@ -4,7 +4,7 @@
 
 ## 总目标与本轮入口
 
-- **11月16日七题归因与召回候选（待真实问答确认）**：先冻结新开发20题再选标题/正文融合候选；实际稀疏检索新题12/20到17/20、原20题13/20到15/20，无原命中退化，仍5题未恢复，含两题指代/目标约束风险，标签和阈值未改。候选显式启用，默认不变；45项回归和Ruff通过。本机外发清单含原20题/81段课程资料，最多80次、估算0.580608美元，未经确认未外发。见[记录](docs/engineering-delivery/cisp-recall-20261116/README.md)与[续接](docs/engineering-delivery/cisp-recall-20261116/continuation.json)。
+- **11月16日原20题真实召回问答（完成，质量门槛未过）**：新开发实际召回12→17/20、原题13→15/20；用户明确批准20题/81段后，真实Flash问答完成20题、80次/80回执。出处身份20/20，双AI分项38通过/2不确定，另有当前AI复查发现06-02覆盖率与适用范围混淆；不晋级默认。首批池60配置遗漏触发范围拦截，恢复固定30，保留失败及第三题路由回执复用；实际20题上下文与冻结相同。两中台留存及6个open问题完成，默认库哈希不变。新增保守费用0.0377805美元，累计含旧未知预留1.8578513/3美元。见[真实报告](docs/engineering-delivery/cisp-recall-20261116/REAL_RESULTS.md)、[账本](docs/engineering-delivery/cisp-recall-20261116/budget-ledger.json)与[续接](docs/engineering-delivery/cisp-recall-20261116/continuation.json)。
 
 - **11月16日审阅一致性与真实本地检索诊断**：上一提交CI43743990437成功；原课程20题真实稀疏路径有/无特征均13/20目标命中，漏检目标BM25排248，未宣称修复。新增只读AI审阅一致性审计，26份历史审阅检出4份矛盾并保留unknown；32项测试与Ruff通过，零新模型调用。见[记录](docs/engineering-delivery/cisp-review-retrieval-20261116/README.md)和[续接](docs/engineering-delivery/cisp-review-retrieval-20261116/continuation.json)。
 

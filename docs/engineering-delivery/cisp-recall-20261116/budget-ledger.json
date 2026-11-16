@@ -1,0 +1,18 @@
+{
+  "total_budget_usd": 3,
+  "previous_accounted_including_unknown_reservations_usd": 1.8200708,
+  "initial_calls": 9,
+  "initial_estimate_usd": 0.0051366,
+  "resume_calls": 71,
+  "resume_estimate_usd": 0.0326439,
+  "new_calls": 80,
+  "receipts": 80,
+  "new_peak_estimate_usd": 0.0377805,
+  "new_cost_unknown": false,
+  "old_unknown_reservations_released": false,
+  "accounted_with_reservations_usd": 1.8578513,
+  "remaining_usd": 1.1421487,
+  "next_batch_allocated_usd": 0,
+  "approved_batch_cap_usd": 0.580608,
+  "note": "Conservative peak token-price estimate, not provider bill; per-case costs unallocated in platform"
+}
