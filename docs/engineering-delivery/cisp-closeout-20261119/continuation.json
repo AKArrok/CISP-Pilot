@@ -1,0 +1,23 @@
+{
+  "status": "local_candidate_and_regression_scope_frozen_pending_authorization",
+  "baseline": "c29d49d1c2eb3377243a7e7d91783423a8a43c80",
+  "baseline_ci": 43895347080,
+  "offline_tests": 55,
+  "model_retest_completed": false,
+  "unresolved_retrieval": [
+    "CISP-06-01"
+  ],
+  "new_remote_calls": 0,
+  "egress": {
+    "status": "pending",
+    "turns": 26,
+    "unique_fragments": 96,
+    "new_vs_last_batch": 15,
+    "max_calls": 108,
+    "max_usd": 0.7838208,
+    "scope_sha256": "ebf7aa6752f5738cb23bc04a66ddc0401c67ef1f1d2f02472e04f004de4892a9"
+  },
+  "accounted_with_reservations_usd": 1.8578513,
+  "independent_holdout": "local authoring and source verification in progress",
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+}
