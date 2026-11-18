@@ -1,5 +1,5 @@
 {
-  "status": "local_candidate_and_regression_scope_frozen_pending_authorization",
+  "status": "both_scopes_frozen_pending_explicit_approval",
   "baseline": "c29d49d1c2eb3377243a7e7d91783423a8a43c80",
   "baseline_ci": 43895347080,
   "offline_tests": 55,
@@ -18,6 +18,21 @@
     "scope_sha256": "ebf7aa6752f5738cb23bc04a66ddc0401c67ef1f1d2f02472e04f004de4892a9"
   },
   "accounted_with_reservations_usd": 1.8578513,
-  "independent_holdout": "local authoring and source verification in progress",
-  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+  "independent_holdout": {
+    "status": "frozen_offline_preflight_9_of_10_pending_approval",
+    "domains": 10,
+    "scope_sha256": "5c081f23968c5f087a65a517315643c56d4bffbc003c3a1962c2bdb6ea4bb4dc",
+    "seal_sha256": "7ad1b3a848641912ccca3a194664fe9cc24b416842fb7999905b1e3215c33d7a",
+    "max_calls": 40,
+    "max_usd": 0.290304,
+    "retrieved_fragments": 50,
+    "extra_vs_regression": 46,
+    "evaluation_run": "0df4270372134cc225cf55d7470b17cf1dc6153e82b8da332f3451acf7559743"
+  },
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "candidate_commit": "5415a88d910cc7ceb6e6cc5195ce0a569dc6fce7",
+  "candidate_ci": 44348440918,
+  "multiturn_guard_tests": 4,
+  "total_proposed_max_calls": 148,
+  "total_proposed_max_usd": 1.0741248
 }
