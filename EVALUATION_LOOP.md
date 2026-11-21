@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月21日真实验收已记录，质量门槛未过**。原20题完成20，多轮完成2/6，两个第2轮越界拦截，封存10题完成10且原证据页命中9。02-02仍有无依据分类，06-01及封存监管题缺直接证据，06-02原错误未重现。132份回执对账，新增保守费用0.0806454美元，累计含旧预留1.9384967/3美元。两中台已更新。见[真实验收](docs/engineering-delivery/cisp-closeout-20261119/REAL_ACCEPTANCE.md)和[续接](docs/engineering-delivery/cisp-closeout-20261119/continuation.json)。
+
 - **11月19日收尾验收准备**：历史五题影响已逐题复核并录入双中台。02-02与06-02已补候选回答依据规则，真实复测待授权。06-01缺失直接证据，仍阻塞收尾。55项离线回归通过。原20题和6轮追问的冻结外发范围含96段、最多108次、0.7838208美元，新封存10题覆盖10领域，来源页召回9/10，真实问答和双审阅待批准。两批合计最多148次、1.0741248美元。见[进度](docs/engineering-delivery/cisp-closeout-20261119/README.md)和[续接](docs/engineering-delivery/cisp-closeout-20261119/continuation.json)。
 
 - **11月16日原20题真实召回问答（完成，质量门槛未过）**：新开发实际召回12→17/20、原题13→15/20；用户明确批准20题/81段后，真实Flash问答完成20题、80次/80回执。出处身份20/20，双AI分项38通过/2不确定，另有当前AI复查发现06-02覆盖率与适用范围混淆；不晋级默认。首批池60配置遗漏触发范围拦截，恢复固定30，保留失败及第三题路由回执复用；实际20题上下文与冻结相同。两中台留存及6个open问题完成，默认库哈希不变。新增保守费用0.0377805美元，累计含旧未知预留1.8578513/3美元。见[真实报告](docs/engineering-delivery/cisp-recall-20261116/REAL_RESULTS.md)、[账本](docs/engineering-delivery/cisp-recall-20261116/budget-ledger.json)与[续接](docs/engineering-delivery/cisp-recall-20261116/continuation.json)。
