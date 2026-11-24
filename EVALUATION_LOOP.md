@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **摘录候选本机回放完成**。6道开发题的错误选择均拦截，4道历史题保留原失败并完成程序渲染回放。14项针对性检查及Ruff通过。两中台已更新，外部调用0。四题固定证据和两组完整三轮已冻结，最多40次、0.290304美元，待外发批准。见[本机记录](docs/engineering-delivery/cisp-excerpt-20261125/README.md)和[续接](docs/engineering-delivery/cisp-excerpt-20261125/continuation.json)。
+
 - **五题定向真实复测完成，质量门槛未过**。两组改写均命中目标页，B组保留具体阶段。02-02原错误措辞未重现，但仍有无依据归纳。06-01五项齐全却称六项，监管题核心内容齐全但附带主体分类无原文支持。两中台已更新。17次/17回执，0.0194529美元，累计含旧预留1.9579496/3美元。见[真实结果](docs/engineering-delivery/cisp-followup-20261125/TARGETED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-followup-20261125/continuation.json)。
 
 - **11月25日本机开发与历史回放**。新开发8题简化前后均7/8。A组保留真实改写，B组补回具体阶段后目标命中。06-01、封存监管题候选查询找回直接证据，02-02目标仍漏。两中台已更新，新增外部调用0。五题定向复测清单待批准，最多17次、0.1233792美元。见[本机记录](docs/engineering-delivery/cisp-followup-20261125/README.md)和[续接](docs/engineering-delivery/cisp-followup-20261125/continuation.json)。

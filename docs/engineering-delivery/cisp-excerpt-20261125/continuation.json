@@ -1,0 +1,33 @@
+{
+  "status": "offline_renderer_replay_completed_egress_pending",
+  "baseline": "26def7b8abb46665acfa60bb567211def89c34dd",
+  "baseline_ci": 45510570521,
+  "new_model_calls": 0,
+  "development_cases": 6,
+  "negative_controls_rejected": 6,
+  "historical_cases": 4,
+  "focused_tests": 14,
+  "egress": {
+    "fixed_sha256": "c58052c4ffa3b06551330cdc43db9106e24a921177eeee8e8b419851ea5474ad",
+    "groups": [
+      {
+        "group": "A",
+        "scope": "ce3eeb7428de24d0fda68c0d9c1f4f00919a4c714b84680f7ba170e994779c35",
+        "manifest": "915d18833972e898d0d54f7ed449f79c67e155cdebc7170f274d8a8ed0352f5d",
+        "fragments": 16
+      },
+      {
+        "group": "B",
+        "scope": "d0567de0f09ea44e27e35086cde60b94fa7c9465930641dce77caa6aba07dffd",
+        "manifest": "daf84b1aa4c1f81fe6cc8159a8e64f0c52443476e309df57a6e8c4035e5baf3a",
+        "fragments": 16
+      }
+    ],
+    "fragments": 45,
+    "additional_fragments": 0,
+    "calls": 40,
+    "max_usd": 0.290304
+  },
+  "accounted_with_reservations_usd": 1.9579496,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+}
