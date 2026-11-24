@@ -1,18 +1,30 @@
 {
-  "status": "local_replay_completed_targeted_egress_pending",
+  "status": "targeted_retest_completed_quality_gate_not_passed",
   "baseline": "ab1cefb54895f7e414c83e891bffdc20aefc9bbd",
   "baseline_ci": 44890985771,
   "development_cases": 8,
   "development_baseline_hits": 7,
   "development_minimal_hits": 7,
   "historical_cases": 5,
-  "remote_calls": 0,
-  "accounted_with_reservations_usd": 1.9384967,
-  "remaining_usd": 1.0615033,
+  "remote_calls": 17,
+  "accounted_with_reservations_usd": 1.9579496,
+  "remaining_usd": 1.0420504,
   "scope_sha256": "d84195868478e2fbe6ca52b0284e737362742866ee179b2276a447a36f877ec1",
   "max_calls": 17,
   "max_usd": 0.1233792,
   "unique_fragments": 24,
   "new_vs_last_two_batches": 9,
-  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "receipts": 17,
+  "new_cost_estimate_usd": 0.0194529,
+  "new_unknown_calls": 0,
+  "report": "TARGETED_RESULTS.md",
+  "rewrite_target_hits": 2,
+  "citation_identity_passes": 5,
+  "review": {
+    "passed": 3,
+    "unknown": 3,
+    "failed": 4
+  },
+  "platform_run": "c0655f3668c8b8ca77a3efce9ff55f1b0d4344fc21b74251b230b541a48df0ec"
 }

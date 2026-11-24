@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **五题定向真实复测完成，质量门槛未过**。两组改写均命中目标页，B组保留具体阶段。02-02原错误措辞未重现，但仍有无依据归纳。06-01五项齐全却称六项，监管题核心内容齐全但附带主体分类无原文支持。两中台已更新。17次/17回执，0.0194529美元，累计含旧预留1.9579496/3美元。见[真实结果](docs/engineering-delivery/cisp-followup-20261125/TARGETED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-followup-20261125/continuation.json)。
+
 - **11月25日本机开发与历史回放**。新开发8题简化前后均7/8。A组保留真实改写，B组补回具体阶段后目标命中。06-01、封存监管题候选查询找回直接证据，02-02目标仍漏。两中台已更新，新增外部调用0。五题定向复测清单待批准，最多17次、0.1233792美元。见[本机记录](docs/engineering-delivery/cisp-followup-20261125/README.md)和[续接](docs/engineering-delivery/cisp-followup-20261125/continuation.json)。
 
 - **11月21日真实验收已记录，质量门槛未过**。原20题完成20，多轮完成2/6，两个第2轮越界拦截，封存10题完成10且原证据页命中9。02-02仍有无依据分类，06-01及封存监管题缺直接证据，06-02原错误未重现。132份回执对账，新增保守费用0.0806454美元，累计含旧预留1.9384967/3美元。两中台已更新。见[真实验收](docs/engineering-delivery/cisp-closeout-20261119/REAL_ACCEPTANCE.md)和[续接](docs/engineering-delivery/cisp-closeout-20261119/continuation.json)。
