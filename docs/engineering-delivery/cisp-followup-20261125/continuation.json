@@ -1,0 +1,18 @@
+{
+  "status": "local_replay_completed_targeted_egress_pending",
+  "baseline": "ab1cefb54895f7e414c83e891bffdc20aefc9bbd",
+  "baseline_ci": 44890985771,
+  "development_cases": 8,
+  "development_baseline_hits": 7,
+  "development_minimal_hits": 7,
+  "historical_cases": 5,
+  "remote_calls": 0,
+  "accounted_with_reservations_usd": 1.9384967,
+  "remaining_usd": 1.0615033,
+  "scope_sha256": "d84195868478e2fbe6ca52b0284e737362742866ee179b2276a447a36f877ec1",
+  "max_calls": 17,
+  "max_usd": 0.1233792,
+  "unique_fragments": 24,
+  "new_vs_last_two_batches": 9,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+}
