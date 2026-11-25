@@ -31,3 +31,12 @@ def test_consistent_reports_keep_their_meaning():
     assert review_outcome({"verdict": "pass", "issues": []})["status"] == "passed"
     assert review_outcome({"verdict": "fail", "issues": [{"status": "unsupported"}]})["status"] == "failed"
     assert review_outcome({"verdict": "uncertain", "issues": []})["status"] == "unknown"
+def test_course_scope_can_fail_an_otherwise_supported_answer():
+    from scripts.audit_ai_review import course_review_outcome
+
+    base = {"verdict": "pass", "issues": [{"status": "supported"}]}
+    assert course_review_outcome(base)["status"] == "error"
+    assert course_review_outcome(base | {"scope_status": "pass", "scope_reason": "只答准备事项"})["status"] == "passed"
+    assert course_review_outcome(base | {"scope_status": "uncertain", "scope_reason": "指代不明"})["status"] == "unknown"
+    result = course_review_outcome(base | {"scope_status": "fail", "scope_reason": "附带了后续检查事项"})
+    assert result == {"status": "failed", "inconsistent": True, "reason": "out_of_scope_content"}

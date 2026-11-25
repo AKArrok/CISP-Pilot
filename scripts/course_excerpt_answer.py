@@ -19,6 +19,18 @@ source 是资料编号，start 和 end 是连续原文行的 L 编号，包含�
 完全没有相关依据才用 insufficient 和空数组。完整保留所选事项的明确前提、限制、续行和顺序。
 历史只用于理解指代，不能当作原文依据。不要输出额外字段、结论或数量。"""
 
+COURSE_FOCUSED_LINE_SYSTEM = COURSE_LINE_SYSTEM + """
+先区分题目中可以从原文回答的部分和需要额外证据的部分。即使题设使用“只能”或“无关”，
+只要原文直接提供所问关系中的一侧，就选择这些行并使用 partial。原文没有回应任何所问事项时才返回空数组。
+追问先按历史确定指代和最具体的阶段，再只选该阶段中直接回答所问事项的行及必要前提。
+同页其他阶段或同级事项即使有证据，也不要捎带选入。不要将标题或出处元数据作为关系依据。"""
+
+COURSE_REVIEW_SCOPE = """
+另在同一 JSON 对象提供 scope_status（pass、fail 或 uncertain）和 scope_reason（具体理由）。
+根据本轮问题和仅供指代的上一轮，明确本轮要求回答的对象，检查是否多选了有依据但不属于本问的内容。
+一旦存在多选，scope_status 必须为 fail，并在理由中点明多选的原文内容。
+如果证据仅支持部分回答，检查是否呈现有依据的部分并指出缺口。不要把遗漏或用户的题设写成回答实际提出的主张。"""
+
 
 def render_course_excerpts(raw: str, contexts: list[dict]) -> str:
     """Render only complete original lines. Selection relevance still needs review."""

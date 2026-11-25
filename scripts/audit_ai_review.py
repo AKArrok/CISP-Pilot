@@ -27,6 +27,22 @@ def review_outcome(review: dict) -> dict:
             "inconsistent": False, "reason": "reported_" + verdict}
 
 
+def course_review_outcome(review: dict) -> dict:
+    """Apply the explicit scope decision required by the course experiment."""
+    base = review_outcome(review)
+    if base["status"] == "error":
+        return base
+    scope = review.get("scope_status")
+    reason = review.get("scope_reason")
+    if scope not in ("pass", "fail", "uncertain") or not isinstance(reason, str) or not reason.strip():
+        return {"status": "error", "inconsistent": False, "reason": "missing_scope_assessment"}
+    if scope == "fail":
+        return {"status": "failed", "inconsistent": review["verdict"] == "pass", "reason": "out_of_scope_content"}
+    if scope == "uncertain" and base["status"] == "passed":
+        return {"status": "unknown", "inconsistent": True, "reason": "uncertain_scope"}
+    return base
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("review", type=Path)

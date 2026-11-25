@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月26日部分作答与选段范围回放**。开发3题、历史2题，本机确认范围失败可阻止顶层审阅通过。02-02部分作答与B2最小选段已回放，模型自主选择及双审识别多选仍待验证。两中台已更新，外部调用0。两批最多42次、0.3048192美元，待批准。见[本机记录](docs/engineering-delivery/cisp-focus-20261126/README.md)与[续接](docs/engineering-delivery/cisp-focus-20261126/continuation.json)。
+
 - **11月26日行号真实验收**。A、B完整三轮均完成，6/6命中原目标且原文、SSE和落库一致。B2审阅使用上文并核对了四项准备工作，但未指出多选邻近事项。02-02仍为空选段。31次/31回执，新增估算0.0104415美元，累计含旧预留1.9783490/3美元。两中台已更新。见[真实验收](docs/engineering-delivery/cisp-lines-20261125/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-lines-20261125/continuation.json)。
 
 - **行号候选与多轮审阅本机回放完成**。6道开发题和4道历史题验证原文取回，三次原格式拦截保留并成功回放，02-02本机验证部分作答，B2审阅增加同组上一轮。24项针对性测试通过。两中台已更新，外部调用0。02-02与两组完整三轮清单待批准，合计最多31次、0.2249856美元。见[本机记录](docs/engineering-delivery/cisp-lines-20261125/README.md)和[续接](docs/engineering-delivery/cisp-lines-20261125/continuation.json)。

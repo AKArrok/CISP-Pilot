@@ -1,0 +1,30 @@
+{
+  "status": "local_scope_replay_completed_pending_egress",
+  "baseline": "6d9c821224fddc2eaf727c23a07c889e23c52a99",
+  "baseline_ci": 45660062352,
+  "new_model_calls": 0,
+  "development_cases": 3,
+  "historical_cases": 2,
+  "focused_tests": 32,
+  "accounted_with_reservations_usd": 1.978349,
+  "egress": {
+    "fixed_sha256": "5ba12691af01589d64892b9d067e80803e8c36ca490bfc78b0df53867a99085e",
+    "review_sha256": "6335be83b0e8fa3208dfdddfd26fdef4de16e8d13185fb905111352e235db1f6",
+    "groups": [
+      {
+        "group": "a",
+        "scope": "68d33b0a02589ee8ab4592ffbbd43df8e50f7dd2e99055f0a86b3e210e2612d0",
+        "manifest": "b64902d5bcf963696b6f5315356e5087d5dbfca68418f01055c364b0ac401082"
+      },
+      {
+        "group": "b",
+        "scope": "799d31747d8fa0e5caaade365cb6a39114fb101a8c7c59d949a991a66c98d29d",
+        "manifest": "dfbc9af4668e04827626b2c23b407cca064578d4860302f1587cbeb80f1f6f91"
+      }
+    ],
+    "fragments": 37,
+    "calls": 42,
+    "max_usd": 0.3048192
+  },
+  "development_sha256": "a4caac337c1cdcd2952ecec243dadf315384e894dfb1c1fbef26fd644aeac2c6"
+}
