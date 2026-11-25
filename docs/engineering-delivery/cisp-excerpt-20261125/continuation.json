@@ -1,8 +1,8 @@
 {
-  "status": "offline_renderer_replay_completed_egress_pending",
+  "status": "real_excerpt_acceptance_failed",
   "baseline": "26def7b8abb46665acfa60bb567211def89c34dd",
   "baseline_ci": 45510570521,
-  "new_model_calls": 0,
+  "new_model_calls": 24,
   "development_cases": 6,
   "negative_controls_rejected": 6,
   "historical_cases": 4,
@@ -28,6 +28,25 @@
     "calls": 40,
     "max_usd": 0.290304
   },
-  "accounted_with_reservations_usd": 1.9579496,
-  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+  "accounted_with_reservations_usd": 1.9679075,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "candidate": "50c806d43ff90f4fe04d074d562c1085799d809c",
+  "candidate_ci": 45513008293,
+  "receipts": 24,
+  "unknown_calls": 0,
+  "new_cost_estimate_usd": 0.0099579,
+  "remaining_usd": 1.0320925,
+  "real_report": "REAL_RESULTS.md",
+  "multi_completed": 2,
+  "multi_planned": 6,
+  "scope_blocks": 0,
+  "review": {
+    "passed": 6,
+    "unknown": 1,
+    "failed": 3
+  },
+  "fixed_double_pass": [
+    "CISP-06-01",
+    "SEALED-26-09"
+  ]
 }
