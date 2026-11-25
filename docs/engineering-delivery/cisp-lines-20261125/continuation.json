@@ -1,0 +1,36 @@
+{
+  "status": "line_range_replay_complete_egress_pending",
+  "baseline": "a3b8e28b9cb0932acd2833e8cc7ae57b58e1235e",
+  "baseline_ci": 45516182814,
+  "new_model_calls": 0,
+  "development_cases": 6,
+  "historical_cases": 4,
+  "negative_controls_rejected": 6,
+  "focused_tests": 24,
+  "review_context_replay": "M-B2",
+  "egress": {
+    "fixed_sha256": "06a5b1fb028d0c63dcc944afa050b6793151f7f0ea1a2ec5a791ec23f2d4c4e4",
+    "review_sha256": "1775d6f48f4f889f3284ab640249f39575f8bae05f609dc712aae370655a75a9",
+    "groups": [
+      {
+        "group": "a",
+        "scope": "ab8a916a7925dfd9b860581867a1019b707e6aa7832c3dbe1404a9eef2c0e0f0",
+        "manifest": "2c4e31c3dad3ff50b5451b180826af931b5eb4309614d620b0a69cf784aa0307",
+        "max_calls": 14,
+        "max_usd": 0.1016064
+      },
+      {
+        "group": "b",
+        "scope": "52330f026660ab392ed23657814e1288bdc48ed0532775369dd10756afd369ab",
+        "manifest": "61ca7a5a2420a8168ce421dddb2046e602f3e15b2541780ede40eff045ccdc75",
+        "max_calls": 14,
+        "max_usd": 0.1016064
+      }
+    ],
+    "fragments": 37,
+    "calls": 31,
+    "max_usd": 0.2249856
+  },
+  "accounted_with_reservations_usd": 1.9679075,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+}

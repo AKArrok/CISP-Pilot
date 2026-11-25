@@ -5,7 +5,12 @@ from unittest.mock import AsyncMock
 import pytest
 from langchain_core.messages import AIMessage
 
-from scripts.course_excerpt_answer import render_course_excerpts
+from scripts.course_excerpt_answer import (
+    build_course_review_message,
+    number_course_contexts,
+    render_course_excerpts,
+    render_course_lines,
+)
 
 
 def render(contexts, excerpts):
@@ -43,6 +48,44 @@ def test_explicit_relationship_and_condition_are_visible_verbatim():
 
 def test_empty_selection_reports_insufficient_evidence():
     assert "资料不足" in render([], [])
+
+
+def test_line_selection_preserves_bullets_and_wrapped_conditions():
+    text = "标题\n\uf076仅当设备停机时，\n才检查设备。"
+    contexts = [{"source": "合成课件", "page": 2, "text": text}]
+    raw = '{"coverage":"partial","ranges":[{"source":1,"start":2,"end":3}]}'
+    output = render_course_lines(raw, contexts)
+    assert "\uf076仅当设备停机时，\n才检查设备。" in output
+    assert "其余部分缺少直接依据" in output
+    assert "L2 \uf076仅当设备停机时，\nL3 才检查设备。" in number_course_contexts(contexts)
+
+
+@pytest.mark.parametrize("selection", [
+    {"coverage": "partial", "ranges": []},
+    {"coverage": "insufficient", "ranges": [{"source": 1, "start": 1, "end": 1}]},
+    {"coverage": "supported", "ranges": [{"source": 1, "start": 2, "end": 1}]},
+    {"coverage": "supported", "ranges": [{"source": 1, "start": 1, "end": 4}]},
+    {"coverage": "supported", "ranges": [{"source": 1, "start": True, "end": 1}]},
+    {"coverage": "supported", "ranges": [{"source": 2, "start": 1, "end": 1}]},
+    {"coverage": "supported", "ranges": [
+        {"source": 1, "start": 1, "end": 2}, {"source": 1, "start": 2, "end": 3},
+    ]},
+    {"coverage": "supported", "ranges": [{"source": 1, "start": 1, "end": 1}], "count": 6},
+])
+def test_line_selection_rejects_invalid_ranges_and_extra_claims(selection):
+    with pytest.raises(ValueError):
+        render_course_lines(json.dumps(selection), [{"source": "合成课件", "page": 1, "text": "甲\n乙\n丙"}])
+
+
+def test_review_history_is_bounded_and_not_part_of_source_evidence():
+    user = "上一问" * 100
+    answer = "上一答" * 100
+    result = build_course_review_message("那它呢？", "独立原文", "当前答复", (user, answer))
+    assert user[:200] in result and user not in result
+    assert answer[:200] in result and answer not in result
+    assert "仅用于理解指代，不作为课件依据" in result
+    assert result.endswith("本轮课件证据\n独立原文\n\n待审回答\n当前答复")
+    assert "上一轮" not in build_course_review_message("当前问题", "原文", "当前答复")
 
 
 def test_opt_in_renderer_works_through_graph_answer(monkeypatch):
