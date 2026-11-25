@@ -1,8 +1,8 @@
 {
-  "status": "line_range_replay_complete_egress_pending",
+  "status": "multiturn_completed_partial_answer_gate_failed",
   "baseline": "a3b8e28b9cb0932acd2833e8cc7ae57b58e1235e",
   "baseline_ci": 45516182814,
-  "new_model_calls": 0,
+  "new_model_calls": 31,
   "development_cases": 6,
   "historical_cases": 4,
   "negative_controls_rejected": 6,
@@ -31,6 +31,24 @@
     "calls": 31,
     "max_usd": 0.2249856
   },
-  "accounted_with_reservations_usd": 1.9679075,
-  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62"
+  "accounted_with_reservations_usd": 1.978349,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "candidate": "a151b1008d349569a7a55c9dd32d81874fd8a20e",
+  "candidate_ci": 45655405942,
+  "receipts": 31,
+  "new_unknown_calls": 0,
+  "new_cost_estimate_usd": 0.0104415,
+  "remaining_usd": 1.021651,
+  "report": "REAL_RESULTS.md",
+  "multi_completed": 6,
+  "multi_target_hits": 6,
+  "multi_literal_matches": 6,
+  "scope_blocks": 0,
+  "review": {
+    "passed": 12,
+    "unknown": 1,
+    "failed": 1
+  },
+  "partial_answer_02_02": "failed_empty_selection",
+  "b2_precision": "extra_neighboring_source_lines"
 }

@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月26日行号真实验收**。A、B完整三轮均完成，6/6命中原目标且原文、SSE和落库一致。B2审阅使用上文并核对了四项准备工作，但未指出多选邻近事项。02-02仍为空选段。31次/31回执，新增估算0.0104415美元，累计含旧预留1.9783490/3美元。两中台已更新。见[真实验收](docs/engineering-delivery/cisp-lines-20261125/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-lines-20261125/continuation.json)。
+
 - **行号候选与多轮审阅本机回放完成**。6道开发题和4道历史题验证原文取回，三次原格式拦截保留并成功回放，02-02本机验证部分作答，B2审阅增加同组上一轮。24项针对性测试通过。两中台已更新，外部调用0。02-02与两组完整三轮清单待批准，合计最多31次、0.2249856美元。见[本机记录](docs/engineering-delivery/cisp-lines-20261125/README.md)和[续接](docs/engineering-delivery/cisp-lines-20261125/continuation.json)。
 
 - **摘录候选真实复测完成，完整多轮未过**。06-01和监管题自行选全原文并双审通过，02-02空摘录，固定B2和多轮A1、B3因项目符号或换行不匹配被拦截。两组完成2/6轮，实际召回回合均命中且无外发越界。两中台更新。24次/24回执，保守费用0.0099579美元，累计含旧预留1.9679075/3美元。见[真实结果](docs/engineering-delivery/cisp-excerpt-20261125/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-excerpt-20261125/continuation.json)。
