@@ -122,7 +122,7 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict]) 
         raise ValueError("Expected nonempty question parts")
     rows, has_excerpt = [], False
     offset = 0
-    for part in value["parts"]:
+    for index, part in enumerate(value["parts"], 1):
         if (not isinstance(part, dict) or set(part) != {"ask", "ranges"}
                 or not isinstance(part["ask"], str) or not part["ask"].strip()
                 or not isinstance(part["ranges"], list)):
@@ -132,7 +132,7 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict]) 
         if position < 0 or any(marker in ask for marker in ("[资料", "【出处】", "\n", "\r")):
             raise ValueError("Question anchors must be original and ordered")
         offset = position + len(ask)
-        rows.append(f"{len(rows) + 1}. 本问「{ask}」")
+        rows.append(f"{index}. 本问「{ask}」")
         excerpts = _course_line_excerpts(part["ranges"], contexts)
         if not excerpts:
             rows.append("现有课程资料对这一项缺少直接依据。")

@@ -1,11 +1,12 @@
 {
-  "status": "offline_question_coverage_verified_pending_egress",
+  "status": "approved_batches_completed_followup_ready_pending_egress",
   "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
   "baseline_ci": 46052236566,
   "report": "README.md",
-  "new_model_calls": 0,
-  "new_estimate_usd": 0,
-  "accounted_with_reservations_usd": 1.9944953,
+  "new_model_calls": 34,
+  "new_estimate_usd": 0.0206379,
+  "new_peak_uncached_estimate_cny": 0.137586,
+  "accounted_with_reservations_usd": 2.0151332,
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
   "egress": {
@@ -16,5 +17,29 @@
     "total_calls": 34,
     "max_usd": 0.2467584
   },
+  "real": {
+    "report": "REAL_RESULTS.md",
+    "source_commit": "a46e7b88c9eb50bdcc4fef7dea8e261541f1e0f7",
+    "source_ci": 46053746519,
+    "receipts": 34,
+    "unknown_calls": 0,
+    "development_estimate_usd": 0.0051159,
+    "regression_estimate_usd": 0.015522,
+    "evaluation_runs": 2,
+    "records": 13,
+    "snapshots": 2,
+    "issue_notes": 7,
+    "quality_open": ["M-A1", "M-A2", "M-B2-saved-review"]
+  },
+  "followup": {
+    "status": "pending_approval",
+    "packet_sha256": "1da8866980ff0a52a636a7a31832589b2b4df28cab01c7bfdcf1a57b6da0455f",
+    "review_sha256": "6d2a88823b3a37c7b0f8d09c44f916b9077171609eb4cb22dbbd2440cd2d3c95",
+    "course_fragments": 12,
+    "calls": 14,
+    "max_usd": 0.1016064,
+    "max_cny": 0.677376
+  },
+  "final_inventory": {"original_questions": 20, "complete_multiturn_groups": 2, "previously_exposed_holdout": 10, "fresh_holdout_still_required": true},
   "release_gate": "open"
 }

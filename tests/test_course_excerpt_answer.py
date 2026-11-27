@@ -95,7 +95,7 @@ def test_question_parts_identify_the_specific_gap_and_keep_source_conditions():
              {"ask": "主管何时签字", "ranges": []}]
     answer = render_course_question_parts(json.dumps({"parts": parts}), "何时登记型号？主管何时签字？", contexts)
     assert "设备停机后，\n立即登记型号。 [资料1]" in answer
-    assert "本问「主管何时签字」\n\n现有课程资料对这一项缺少直接依据。" in answer
+    assert "2. 本问「主管何时签字」\n\n现有课程资料对这一项缺少直接依据。" in answer
     assert answer.endswith("【出处】[资料1]《合成规程》第2页")
 
 
