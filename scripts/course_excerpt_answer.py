@@ -31,6 +31,20 @@ COURSE_REVIEW_SCOPE = """
 一旦存在多选，scope_status 必须为 fail，并在理由中点明多选的原文内容。
 如果证据仅支持部分回答，检查是否呈现有依据的部分并指出缺口。不要把遗漏或用户的题设写成回答实际提出的主张。"""
 
+COURSE_QUESTION_PARTS_SYSTEM = """你是 CISP 课程原文选择器。先按提问顺序识别本轮每个独立要求，
+包括分别定义、说明关系和具体限制。不要拆开同一个判断中的限定词，也不要把上轮的问题当作本轮要求。
+只输出 JSON：{"parts":[{"ask":"逐字复制本轮问题中该要求的连续文字","ranges":[{"source":1,"start":2,"end":4}]}]}。
+每个要求都要有一个条目；ask 必须逐字按顺序出现，不能重叠。source 是资料编号，start/end 是包含首尾的原文行号。
+每项只选直接回答该项的完整原文行及必要前提。仅有关联的主题、目录、邻近事项或举例不能证明所问关系。
+部分有依据时按项选行，缺少直接依据的项用空 ranges。完整回答时不要臆造额外缺口。
+当前证据未规定时保留缺口，不能推成允许、禁止或相反结论。历史只用于指代，不作为证据。"""
+
+COURSE_REVIEW_COVERAGE = COURSE_REVIEW_SCOPE + """
+独立按题目逐项核对待审回答，不要直接沿用回答给出的分项。另输出 coverage_status（pass、fail 或 uncertain）
+及 coverage_reason（点明遗漏或缺证的具体要求）。有直接原文却漏答，或缺证但未指出具体是哪一项，判 fail。
+有依据的部分已回答，且其余逐项明确缺证，coverage_status 可为 pass。若仅剩无依据的判断，明确指出缺证也可通过。
+scope_status 为 fail 或 coverage_status 为 fail 时，总评必须为 fail，即使已答观点都有原文。"""
+
 
 def render_course_excerpts(raw: str, contexts: list[dict]) -> str:
     """Render only complete original lines. Selection relevance still needs review."""
@@ -75,6 +89,13 @@ def render_course_lines(raw: str, contexts: list[dict]) -> str:
     if (coverage not in ("supported", "partial", "insufficient") or not isinstance(ranges, list)
             or bool(ranges) != (coverage != "insufficient")):
         raise ValueError("Invalid coverage or selection")
+    answer = render_course_excerpts(json.dumps({"excerpts": _course_line_excerpts(ranges, contexts)}), contexts)
+    if coverage == "partial":
+        answer = "以下资料能支持部分回答，其余部分缺少直接依据。\n\n" + answer
+    return answer
+
+
+def _course_line_excerpts(ranges: list, contexts: list[dict]) -> list[dict]:
     originals = [context["text"].split("\n") for context in contexts]
     used = set()
     excerpts = []
@@ -90,10 +111,39 @@ def render_course_lines(raw: str, contexts: list[dict]) -> str:
             raise ValueError("Overlapping source line ranges")
         used.update(positions)
         excerpts.append({"source": source, "quote": "\n".join(originals[source - 1][start - 1:end])})
-    answer = render_course_excerpts(json.dumps({"excerpts": excerpts}), contexts)
-    if coverage == "partial":
-        answer = "以下资料能支持部分回答，其余部分缺少直接依据。\n\n" + answer
-    return answer
+    return excerpts
+
+
+def render_course_question_parts(raw: str, question: str, contexts: list[dict]) -> str:
+    """Render exact question anchors and exact source lines, or a gap per part."""
+    value = json.loads(raw)
+    if (not isinstance(value, dict) or set(value) != {"parts"}
+            or not isinstance(value["parts"], list) or not value["parts"]):
+        raise ValueError("Expected nonempty question parts")
+    rows, has_excerpt = [], False
+    offset = 0
+    for part in value["parts"]:
+        if (not isinstance(part, dict) or set(part) != {"ask", "ranges"}
+                or not isinstance(part["ask"], str) or not part["ask"].strip()
+                or not isinstance(part["ranges"], list)):
+            raise ValueError("Expected a question anchor and source ranges")
+        ask = part["ask"]
+        position = question.find(ask, offset)
+        if position < 0 or any(marker in ask for marker in ("[资料", "【出处】", "\n", "\r")):
+            raise ValueError("Question anchors must be original and ordered")
+        offset = position + len(ask)
+        rows.append(f"{len(rows) + 1}. 本问「{ask}」")
+        excerpts = _course_line_excerpts(part["ranges"], contexts)
+        if not excerpts:
+            rows.append("现有课程资料对这一项缺少直接依据。")
+        for item in excerpts:
+            source, quote = item["source"], item["quote"]
+            if not quote.strip():
+                raise ValueError("Empty excerpt")
+            has_excerpt = True
+            rows.append(f"{quote} [资料{source}]")
+    answer = "\n\n".join(rows)
+    return render_selected_citations(answer, contexts) if has_excerpt else answer
 
 
 def build_course_review_message(

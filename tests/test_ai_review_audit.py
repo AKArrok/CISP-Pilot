@@ -40,3 +40,18 @@ def test_course_scope_can_fail_an_otherwise_supported_answer():
     assert course_review_outcome(base | {"scope_status": "uncertain", "scope_reason": "指代不明"})["status"] == "unknown"
     result = course_review_outcome(base | {"scope_status": "fail", "scope_reason": "附带了后续检查事项"})
     assert result == {"status": "failed", "inconsistent": True, "reason": "out_of_scope_content"}
+
+
+@pytest.mark.parametrize("scope,coverage,status", [
+    ("pass", "pass", "passed"), ("pass", "fail", "failed"), ("fail", "pass", "failed"),
+    ("uncertain", "fail", "failed"), ("pass", "uncertain", "unknown"), ("pass", None, "error"),
+])
+def test_course_question_coverage_and_scope_can_override_top_level_pass(scope, coverage, status):
+    from scripts.audit_ai_review import course_question_review_outcome
+
+    review = {"verdict": "pass", "issues": [], "scope_status": scope, "scope_reason": "范围评审",
+              "coverage_status": coverage, "coverage_reason": "逐项核对"}
+    result = course_question_review_outcome(review)
+    assert result["status"] == status
+    if status == "failed":
+        assert result["inconsistent"] is True

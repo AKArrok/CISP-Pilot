@@ -43,6 +43,22 @@ def course_review_outcome(review: dict) -> dict:
     return base
 
 
+def course_question_review_outcome(review: dict) -> dict:
+    """Require an explicit coverage decision in addition to the scope check."""
+    base = course_review_outcome(review)
+    if base["status"] == "error":
+        return base
+    coverage = review.get("coverage_status")
+    reason = review.get("coverage_reason")
+    if coverage not in ("pass", "fail", "uncertain") or not isinstance(reason, str) or not reason.strip():
+        return {"status": "error", "inconsistent": False, "reason": "missing_coverage_assessment"}
+    if coverage == "fail" and base["status"] != "failed":
+        return {"status": "failed", "inconsistent": review["verdict"] == "pass", "reason": "missing_question_coverage"}
+    if coverage == "uncertain" and base["status"] == "passed":
+        return {"status": "unknown", "inconsistent": True, "reason": "uncertain_coverage"}
+    return base
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("review", type=Path)

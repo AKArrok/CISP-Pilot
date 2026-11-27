@@ -1,0 +1,20 @@
+{
+  "status": "offline_question_coverage_verified_pending_egress",
+  "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
+  "baseline_ci": 46052236566,
+  "report": "README.md",
+  "new_model_calls": 0,
+  "new_estimate_usd": 0,
+  "accounted_with_reservations_usd": 1.9944953,
+  "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
+  "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
+  "egress": {
+    "review_sha256": "c7ba7107af7a15b610192e16b808556436e46d67c4d2621f150fa1311a377fc5",
+    "course_fragments": 16,
+    "development": {"sha256": "2eb9bd5f0e73698c3b3887bf346feca63cb63261fe9ec406605845b5a1ff97b4", "calls": 16, "max_usd": 0.1161216},
+    "regression": {"sha256": "58ffc3cfa596ce527d8ae110d9d8ebd21ff4faa84b861783facb289277376b46", "calls": 18, "max_usd": 0.1306368},
+    "total_calls": 34,
+    "max_usd": 0.2467584
+  },
+  "release_gate": "open"
+}

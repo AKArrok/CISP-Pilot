@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日逐问项作答及覆盖审阅候选离线通过，等待真实复测授权**。新开发4题，历史候选4题，漏答或多选负例5份。43项针对性测试通过，两个中台已更新。本机外部调用0。两批合计最多34次、0.2467584美元。收尾须在该候选通过定向复测后，再验证原20题、完整多轮及独立封存题。见[本轮与收尾门槛](docs/engineering-delivery/cisp-coverage-20261128/README.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月28日部分作答、原B2双审与完整多轮真实复测完成，质量门槛未过**。42次/42回执，估算新增0.0161463美元，无新增未知费用。开发3题符合预期，02-02选择了原文但范围错配，原B2仅1/2审阅检出多选。A、B共6/6轮完成并命中原证据，新B2正确缩到四项准备工作；A1漏答关系，A2部分作答范围不明。两中台已更新。见[真实结果](docs/engineering-delivery/cisp-focus-20261126/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-focus-20261126/continuation.json)。
 
 - **11月28日两组多轮本机演练完成**。使用冻结执行器和本地课程检索跑通6轮及12次模拟审阅。双审收到同组必要上文，注入的B2范围失败均正确落库。两中台隔离副本已更新，外部调用与费用皆为0。真实复测仍按原两批清单等待批准。见[演练记录](docs/engineering-delivery/cisp-focus-20261126/README.md#11月28日冻结多轮本机演练)和[续接](docs/engineering-delivery/cisp-focus-20261126/continuation.json)。

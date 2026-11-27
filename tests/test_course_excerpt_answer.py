@@ -10,6 +10,7 @@ from scripts.course_excerpt_answer import (
     number_course_contexts,
     render_course_excerpts,
     render_course_lines,
+    render_course_question_parts,
 )
 
 
@@ -86,6 +87,23 @@ def test_review_history_is_bounded_and_not_part_of_source_evidence():
     assert "仅用于理解指代，不作为课件依据" in result
     assert result.endswith("本轮课件证据\n独立原文\n\n待审回答\n当前答复")
     assert "上一轮" not in build_course_review_message("当前问题", "原文", "当前答复")
+
+
+def test_question_parts_identify_the_specific_gap_and_keep_source_conditions():
+    contexts = [{"source": "合成规程", "page": 2, "text": "设备停机后，\n立即登记型号。"}]
+    parts = [{"ask": "何时登记型号", "ranges": [{"source": 1, "start": 1, "end": 2}]},
+             {"ask": "主管何时签字", "ranges": []}]
+    answer = render_course_question_parts(json.dumps({"parts": parts}), "何时登记型号？主管何时签字？", contexts)
+    assert "设备停机后，\n立即登记型号。 [资料1]" in answer
+    assert "本问「主管何时签字」\n\n现有课程资料对这一项缺少直接依据。" in answer
+    assert answer.endswith("【出处】[资料1]《合成规程》第2页")
+
+
+@pytest.mark.parametrize("anchors", [("虚构结论",), ("乙", "甲"), ("甲乙", "乙"), ("[资料1]",)])
+def test_question_parts_reject_invented_overlapping_or_citation_anchors(anchors):
+    parts = [{"ask": anchor, "ranges": []} for anchor in anchors]
+    with pytest.raises(ValueError):
+        render_course_question_parts(json.dumps({"parts": parts}), "甲乙？[资料1]", [])
 
 
 def test_opt_in_renderer_works_through_graph_answer(monkeypatch):
