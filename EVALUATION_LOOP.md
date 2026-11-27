@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日两组多轮本机演练完成**。使用冻结执行器和本地课程检索跑通6轮及12次模拟审阅。双审收到同组必要上文，注入的B2范围失败均正确落库。两中台隔离副本已更新，外部调用与费用皆为0。真实复测仍按原两批清单等待批准。见[演练记录](docs/engineering-delivery/cisp-focus-20261126/README.md#11月28日冻结多轮本机演练)和[续接](docs/engineering-delivery/cisp-focus-20261126/continuation.json)。
+
 - **11月26日部分作答与选段范围回放**。开发3题、历史2题，本机确认范围失败可阻止顶层审阅通过。02-02部分作答与B2最小选段已回放，模型自主选择及双审识别多选仍待验证。两中台已更新，外部调用0。两批最多42次、0.3048192美元，待批准。见[本机记录](docs/engineering-delivery/cisp-focus-20261126/README.md)与[续接](docs/engineering-delivery/cisp-focus-20261126/continuation.json)。
 
 - **11月26日行号真实验收**。A、B完整三轮均完成，6/6命中原目标且原文、SSE和落库一致。B2审阅使用上文并核对了四项准备工作，但未指出多选邻近事项。02-02仍为空选段。31次/31回执，新增估算0.0104415美元，累计含旧预留1.9783490/3美元。两中台已更新。见[真实验收](docs/engineering-delivery/cisp-lines-20261125/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-lines-20261125/continuation.json)。

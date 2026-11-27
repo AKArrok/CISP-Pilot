@@ -1,11 +1,23 @@
 {
-  "status": "local_scope_replay_completed_pending_egress",
+  "status": "mock_multiturn_ready_pending_explicit_egress_approval",
   "baseline": "6d9c821224fddc2eaf727c23a07c889e23c52a99",
   "baseline_ci": 45660062352,
   "new_model_calls": 0,
   "development_cases": 3,
   "historical_cases": 2,
   "focused_tests": 32,
+  "mock_multiturn": {
+    "source_commit": "613845f45b10e96078c8c3d2bf91f64ec15b2e41",
+    "source_ci": 45665118712,
+    "groups": 2,
+    "turns": 6,
+    "simulated_reviews": 12,
+    "injected_b2_scope_failures_recorded": 2,
+    "evaluation_runs": 2,
+    "retrieval_snapshots": 2,
+    "provider_dispatches": 0,
+    "platform_integrity": "ok"
+  },
   "accounted_with_reservations_usd": 1.978349,
   "egress": {
     "fixed_sha256": "5ba12691af01589d64892b9d067e80803e8c36ca490bfc78b0df53867a99085e",
