@@ -1,5 +1,7 @@
 # A1同证据编排双审与最终验收准备
 
+三批现已冻结，详见[最终验收准备](FINAL_ACCEPTANCE_PREPARATION.md)。
+
 2026-11-28。执行基线 `cdd1f420cdaf0b35e07594972ea458b7ede1e2dc`，CI `46120640991`。按用户批准的 `A1_COMPOSITION_EGRESS.md`（SHA256 `075d5df87db90065368821d6f034cfcbb41d13654cadb7c6e480a8f7bfbd27e9`）运行 `composition_executor.py composition --execute`。仅官方 DeepSeek Flash，关闭思考，无自动重试。只对同一固定答复审阅两次。
 
 两次总评、覆盖和范围均通过。两审确认答复说明了持续运行能力和恢复能力管理框架如何关联，并完整保留第3页的中断情境及 BCM 与 DRP 的联合主体。第4页两个定义有准确出处。由本机组织的固定答复通过定向验收。模型首次自主选段已在上一轮验证，模型自主组合仍由最终真实问答验收验证。

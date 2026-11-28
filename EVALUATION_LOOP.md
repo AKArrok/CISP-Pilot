@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日三批CISP最终验收已冻结并通过本机预检**。原20题、A/B完整三轮、十领域新独立封存题均已备齐。候选源码CI成功，两个中台记录36条预检和166段资料快照，新封存前6指定页8/10，保留两条漏检。最终批零派发，最多148次、2.72元。见[最终验收准备](docs/engineering-delivery/cisp-coverage-20261128/FINAL_ACCEPTANCE_PREPARATION.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月28日A1同证据编排的固定答复双审通过，推进最终验收准备**。2次/2回执，估算0.017964元。两审确认关系与联合条件；两个中台已更新。两组无网演练6轮完成，新封存题在本机独立命题。见[结果和准备](docs/engineering-delivery/cisp-coverage-20261128/COMPOSITION_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月28日A1选中第3页联合条件，整题关系表述仍待验收**。3次/3回执，估算0.022556元。第3页原文及BCM与DRP条件均保留，关系问项重复定义且没有讲清联系，两审均判覆盖失败。两中台已更新。本机准备去重后的答案双审及最终输入盘点（26个原问、十领域30页），均未外发。见[本轮报告](docs/engineering-delivery/cisp-coverage-20261128/QUALIFIED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
