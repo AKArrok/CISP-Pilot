@@ -1,12 +1,12 @@
 {
-  "status": "a1_qualified_evidence_passed_composition_quality_open",
+  "status": "a1_composition_passed_final_acceptance_preparation",
   "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
   "baseline_ci": 46052236566,
   "report": "README.md",
-  "new_model_calls": 61,
-  "new_estimate_usd": 0.0383019,
-  "new_peak_uncached_estimate_cny": 0.255346,
-  "accounted_with_reservations_usd": 2.0327972,
+  "new_model_calls": 63,
+  "new_estimate_usd": 0.0409965,
+  "new_peak_uncached_estimate_cny": 0.27331,
+  "accounted_with_reservations_usd": 2.0354918,
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
   "egress": {
@@ -73,7 +73,7 @@
   },
   "a1_recovered": {"status": "completed_quality_gate_open", "report": "RECOVERED_RESULTS.md", "commit": "30e8dd71ef54a00905ac9c0698f91f6295fd0351", "ci": 46118892221, "rank": 6, "original_top5_preserved": 26, "course_fragments": 2, "calls": 3, "receipts": 3, "unknown_calls": 0, "estimate_usd": 0.0019317, "estimate_cny": 0.012878, "max_usd": 0.0217728, "max_cny": 0.145152, "review_sha256": "f107cc8e905705414b92606f6d2870751629333c56e0a77c2cc6e86cf6e50bdb"},
   "a1_qualified_candidate": {"status": "live_evidence_passed_answer_coverage_failed", "report": "QUALIFIED_RESULTS.md", "commit": "4f60fab999d632556b893e90fa53abf05438b451", "ci": 46119857660, "local_fixtures": 3, "focused_tests": 44, "local_model_generation": "blocked_timeout_and_memory", "calls": 3, "receipts": 3, "unknown_calls": 0, "estimate_usd": 0.0033834, "estimate_cny": 0.022556, "max_cny": 0.145152, "page3_original_complete": true, "shared_condition_preserved": true, "review_coverage_fail": 2, "review_sha256": "ae3898e6823ae612f425882018b8bc00adb37c5dccbd9a39e2e00c330c0ca382", "packet_sha256": "afec0c4f782784ccb8fd5d454d14f6efdde38284b3429a1bfc9eb8938ee2ad9f"},
-  "a1_composition": {"status": "local_fixed_answer_preflight_complete", "calls": 2, "max_usd": 0.0145152, "max_cny": 0.096768, "review_sha256": "075d5df87db90065368821d6f034cfcbb41d13654cadb7c6e480a8f7bfbd27e9"},
+  "a1_composition": {"status": "completed_both_reviews_passed", "report": "COMPOSITION_RESULTS.md", "commit": "cdd1f420cdaf0b35e07594972ea458b7ede1e2dc", "ci": 46120640991, "calls": 2, "receipts": 2, "unknown_calls": 0, "estimate_usd": 0.0026946, "estimate_cny": 0.017964, "max_usd": 0.0145152, "max_cny": 0.096768, "review_sha256": "075d5df87db90065368821d6f034cfcbb41d13654cadb7c6e480a8f7bfbd27e9"},
   "final_inventory": {"original_questions": 20, "complete_multiturn_groups": 2, "previously_exposed_holdout": 10, "fresh_holdout_still_required": true, "local_author_candidate_pages": 30, "independent_domains": 10, "candidate_frozen": false},
   "release_gate": "open"
 }

@@ -122,6 +122,25 @@ def test_qualified_question_part_preserves_joint_subject_and_condition():
                                      "两者有什么关系？", contexts, allow_qualified=True)
 
 
+def test_composed_relation_cites_selected_lines_and_does_not_repeat_previous_quote():
+    contexts = [{"source": "合成手册", "page": 2, "text": "监测记录设备状态。\n设备隔离后，监测与巡查共同降低漏报。"}]
+    definition = {"source": 1, "start": 1, "end": 1}
+    relation = {"source": 1, "start": 2, "end": 2}
+    parts = [{"ask": "监测是什么", "ranges": [definition]},
+             {"ask": "两者有什么关系", "ranges": [definition, relation], "qualification": "conditional",
+              "explanation": "设备隔离后，监测记录设备状态，与巡查一起降低漏报。"}]
+    question = "监测是什么？两者有什么关系？"
+    answer = render_course_question_parts(json.dumps({"parts": parts}), question, contexts,
+                                          allow_qualified=True, allow_explanation=True)
+    assert answer.count("监测记录设备状态。 [资料1]") == 1
+    assert "设备隔离后，监测与巡查共同降低漏报。 [资料1]" in answer
+    assert "与巡查一起降低漏报。 [资料1]" in answer
+    for override in ({"ranges": []}, {"explanation": "假冒出处 [资料9]"}):
+        with pytest.raises(ValueError):
+            render_course_question_parts(json.dumps({"parts": [parts[-1] | override]}), question, contexts,
+                                         allow_qualified=True, allow_explanation=True)
+
+
 def test_opt_in_renderer_works_through_graph_answer(monkeypatch):
     from agents import graph
     from scripts.course_excerpt_answer import COURSE_EXCERPT_SYSTEM

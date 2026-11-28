@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日A1同证据编排的固定答复双审通过，推进最终验收准备**。2次/2回执，估算0.017964元。两审确认关系与联合条件；两个中台已更新。两组无网演练6轮完成，新封存题在本机独立命题。见[结果和准备](docs/engineering-delivery/cisp-coverage-20261128/COMPOSITION_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月28日A1选中第3页联合条件，整题关系表述仍待验收**。3次/3回执，估算0.022556元。第3页原文及BCM与DRP条件均保留，关系问项重复定义且没有讲清联系，两审均判覆盖失败。两中台已更新。本机准备去重后的答案双审及最终输入盘点（26个原问、十领域30页），均未外发。见[本轮报告](docs/engineering-delivery/cisp-coverage-20261128/QUALIFIED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月28日A1找回关系页后实测仍未达标**。3次/3回执，估算0.012878元。模型选对第4页两定义，未选已送达的第3页联合条款，双审一过一败。限定关系的隔离渲染补齐，44项离线测试和3条固定回放通过，本机模型对照超时或内存不足。两个中台已更新，最终验收门槛仍开放。见[完整题复测](docs/engineering-delivery/cisp-coverage-20261128/RECOVERED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。

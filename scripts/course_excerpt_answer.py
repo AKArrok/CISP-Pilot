@@ -45,6 +45,12 @@ COURSE_QUALIFIED_PARTS_SYSTEM = COURSE_QUESTION_PARTS_SYSTEM + """
 这类原文是有范围的关系答案，不能扩成单独作用、互相替代、无条件保证。仅有定义并列、关键词共现或无关活动时，仍用空 ranges。
 程序展示限定提示。其余问项结构保持一致，不写推导句。"""
 
+COURSE_COMPOSED_PARTS_SYSTEM = COURSE_QUALIFIED_PARTS_SYSTEM + """
+完整问答的关系或比较问项在选好依据后，还要用 explanation 给出一段清楚的关系说明（最多360字），说明双方如何关联。
+只能综合该问项选中的原文，保留前提、联合主体、范围和原强度。不要把联合效果写成单方保证或把并列定义写成因果关系。
+explanation 不写编号或出处标记，程序会附上相关原文及出处。没有选段的问项不能输出 explanation。
+如果选中的定义在前一问已经完整呈现，仍可作为关系说明的依据，原文只展示一次。"""
+
 COURSE_REVIEW_COVERAGE = COURSE_REVIEW_SCOPE + """
 独立按题目逐项核对待审回答，不要直接沿用回答给出的分项。另输出 coverage_status（pass、fail 或 uncertain）
 及 coverage_reason（点明遗漏或缺证的具体要求）。有直接原文却漏答，或缺证但未指出具体是哪一项，判 fail。
@@ -120,19 +126,23 @@ def _course_line_excerpts(ranges: list, contexts: list[dict]) -> list[dict]:
     return excerpts
 
 
-def render_course_question_parts(raw: str, question: str, contexts: list[dict], *, allow_qualified: bool = False) -> str:
+def render_course_question_parts(raw: str, question: str, contexts: list[dict], *, allow_qualified: bool = False,
+                                 allow_explanation: bool = False) -> str:
     """Render exact question anchors and exact source lines, or a gap per part."""
     value = json.loads(raw)
     if (not isinstance(value, dict) or set(value) != {"parts"}
             or not isinstance(value["parts"], list) or not value["parts"]):
         raise ValueError("Expected nonempty question parts")
     rows, has_excerpt = [], False
+    emitted = set()
     offset = 0
     for index, part in enumerate(value["parts"], 1):
         if not isinstance(part, dict):
             raise ValueError("Expected a question anchor and source ranges")
         qualified = "qualification" in part
         fields = {"ask", "ranges", "qualification"} if allow_qualified and qualified else {"ask", "ranges"}
+        if allow_explanation and "explanation" in part:
+            fields.add("explanation")
         if (set(part) != fields
                 or not isinstance(part["ask"], str) or not part["ask"].strip()
                 or not isinstance(part["ranges"], list)):
@@ -148,14 +158,28 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict], 
         excerpts = _course_line_excerpts(part["ranges"], contexts)
         if qualified:
             rows.append("课件给出了以下有条件的联系，适用范围以原文所列条件为准。")
+        if "explanation" in part:
+            explanation = part["explanation"]
+            if (not excerpts or not isinstance(explanation, str) or not explanation.strip() or len(explanation) > 360
+                    or any(marker in explanation for marker in ("[资料", "【出处】", "\n", "\r"))):
+                raise ValueError("A bounded explanation needs original evidence and no citation markup")
+            refs = "".join(f"[资料{source}]" for source in dict.fromkeys(item["source"] for item in excerpts))
+            rows.append(f"{explanation.strip()} {refs}")
         if not excerpts:
             rows.append("现有课程资料对这一项缺少直接依据。")
+        previous_quotes = set(emitted) if allow_explanation else set()
         for item in excerpts:
             source, quote = item["source"], item["quote"]
             if not quote.strip():
                 raise ValueError("Empty excerpt")
+            if (source, quote) in previous_quotes:
+                continue
+            emitted.add((source, quote))
             has_excerpt = True
             rows.append(f"{quote} [资料{source}]")
+        if excerpts and all((item["source"], item["quote"]) in previous_quotes for item in excerpts) and "explanation" not in part:
+            refs = "".join(f"[资料{source}]" for source in dict.fromkeys(item["source"] for item in excerpts))
+            rows.append(f"相关原文见前面的引文。{refs}")
     answer = "\n\n".join(rows)
     return render_selected_citations(answer, contexts) if has_excerpt else answer
 
