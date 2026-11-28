@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日B2范围正反对照通过，A1找回原PDF关系证据**。7次/7回执，保守估算0.0035217美元。原B2双审判范围失败，新B2双审通过；A1关系单项仍为空。原V4.2课件第3页确有关系依据，本机真实稀疏路径排行第6，旧前5漏页。双中台已更新。完整A1同题复测逐字清单已冻结，最多3次、0.145152元，等待批准。见[对照及原件检查](docs/engineering-delivery/cisp-coverage-20261128/GATE_PROBE_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月28日关系证据与追问范围受控复测完成，定向门槛仍开放**。14次/14回执，保守估算0.0088272美元。02-02、A2、新B2均双审通过；A1所选原文未回答关系，原B2的两次范围审阅均漏报。两个中台已更新。A1关系单项与B2正反范围对照已在本机验证切分，冻结最多7次、0.338688元，等待授权。见[真实定向复测](docs/engineering-delivery/cisp-coverage-20261128/FOLLOWUP_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月28日逐问项真实复测完成，收尾定向门槛未过**。34次/34回执，保守估算新增0.0206379美元，本轮无新增未知费用。开发及负例均符合预期，02-02、新B2通过。A1漏关系依据、A2审阅分歧、原B2仅1/2正确判多选。两个中台已更新。已核对原20题和两组多轮的输入，旧封存题已曝光，最终需新封存。对照复测范围已缩小，最多14次、0.1016064美元，待授权。见[真实结果](docs/engineering-delivery/cisp-coverage-20261128/REAL_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。

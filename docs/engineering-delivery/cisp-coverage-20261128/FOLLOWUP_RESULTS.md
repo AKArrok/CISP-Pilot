@@ -1,5 +1,7 @@
 # 关系证据与追问范围定向复测
 
+后续7次对照已执行，且找回A1原始课件依据，见[最新报告](GATE_PROBE_RESULTS.md)。
+
 2026-11-28。执行源码 `97ae8e7da4d2a5c9494e2fb636292d0edd5322a5`，对应 CI `46055317750`。用户明确批准原冻结清单 `6d2a88823b3a37c7b0f8d09c44f916b9077171609eb4cb22dbbd2440cd2d3c95`。`followup_executor.py followup --execute` 调用官方 DeepSeek Flash，关闭思考，无自动重试。A1、A2使用已冻结的连续原文窗口，02-02和新旧B2沿用前次输入。账本14次/14份回执，无未知费用。重算0.0088272美元，按人民币高峰未缓存价估算0.058848元。当前3元预算下两批已用估算0.196434元，历史美元账本含预留累计2.0239604美元。 [DeepSeek 官方定价](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)
 
 | 输入 | 结果 | 双审 |
