@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月29日关系证据二次核对实测完成，A1仍未达标**。23次/23回执，估算0.089060元。原07-01和B2双审通过。A1的核对只选第4页，漏选第3页联合条件；合成缺证负例仍有覆盖争议。两个中台已更新，当前不能收尾。见[真实复测和剩余条件](docs/engineering-delivery/cisp-coverage-20261128/RELATION_RECHECK_RESULTS.md)与[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月29日关系证据二次核对离线通过**。恢复后复核上一提交CI成功，53项针对性测试、6题隔离回放和23个模拟步骤通过。A1两个入口的共同条件重新核对，B2防退步。两个中台已更新，外部调用0。定向真实清单已冻结，最多23次、1.112832元，待授权。见[二次核对](docs/engineering-delivery/cisp-coverage-20261128/RELATION_RECHECK.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月28日三批CISP最终验收已完成，上线门槛未过**。36题次、148次/148回执，估算0.517352元，无新增未知费用。A1两条入口均取到第3页却漏选联合条件。封存指定块8/10，另两题均有等效原文并双审通过。两中台已更新。五小时额度剩9%，保存交付后暂停新实验。见[真实验收](docs/engineering-delivery/cisp-coverage-20261128/FINAL_ACCEPTANCE_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。

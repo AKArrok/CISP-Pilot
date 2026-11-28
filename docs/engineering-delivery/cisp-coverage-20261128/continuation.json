@@ -1,12 +1,12 @@
 {
-  "status": "relation_recheck_offline_passed_live_pending_authorization",
+  "status": "relation_recheck_completed_a1_quality_gate_failed",
   "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
   "baseline_ci": 46052236566,
   "report": "README.md",
-  "new_model_calls": 211,
-  "new_estimate_usd": 0.1185993,
-  "new_peak_uncached_estimate_cny": 0.790662,
-  "accounted_with_reservations_usd": 2.1130946,
+  "new_model_calls": 234,
+  "new_estimate_usd": 0.1319583,
+  "new_peak_uncached_estimate_cny": 0.879722,
+  "accounted_with_reservations_usd": 2.1264536,
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
   "egress": {
@@ -78,5 +78,5 @@
   "final_acceptance": {"status": "batches_completed_quality_failed", "report": "FINAL_ACCEPTANCE_RESULTS.md", "candidate": "1ba8b3e9ed1d09a8a9773fc495e810951aee9215", "candidate_ci": 46121918801, "original_questions": 20, "multiturn_turns": 6, "independent_holdout": 10, "holdout_exact_hits": 8, "holdout_equivalent_hits": 10, "distinct_course_fragments": 166, "preflight_context_choices": 45, "max_calls": 148, "max_usd": 0.408, "max_cny": 2.72, "dispatched": 148, "receipts": 148, "unknown_calls": 0, "estimate_usd": 0.0776028, "estimate_cny": 0.517352, "failed_reviews": 21, "unknown_reviews": 1, "review_sha256": "d2f59f8d19a204dbcef85ac1c3da8fde72cac270e34ca7af051807af2763cc24"},
   "release_gate": "failed",
   "quota_checkpoint": {"five_hour_remaining_percent_at_pause": 9, "new_experiments_paused": false, "resumed_on": "2026-11-29", "five_hour_used_percent_at_resume": 0},
-  "relation_recheck": {"status": "offline_passed_live_pending_authorization", "report": "RELATION_RECHECK.md", "source_baseline": "51f19c35715174ef8b0631a0ae67a5ee0f7d62be", "baseline_ci": 46125346581, "focused_tests": 53, "local_cases": 6, "a1_endpoints_replayed": 2, "mock_stages": 23, "paid_calls": 0, "course_fragments": 18, "synthetic_fragments": 4, "max_calls": 23, "max_usd": 0.1669248, "max_cny": 1.112832, "cumulative_max_cny": 1.903494, "review_sha256": "bd1791219586eb86aac46d83b818fba16f178c8aee1fe31c7e24a73e50f446f8", "packet_sha256": "378f4a188e81a99c3aaaecaf844354970bb10cc869f89ddec737ca8647360772"}
+  "relation_recheck": {"status": "live_completed_a1_failed", "report": "RELATION_RECHECK_RESULTS.md", "source_baseline": "51f19c35715174ef8b0631a0ae67a5ee0f7d62be", "baseline_ci": 46125346581, "candidate": "c755257964afa9fa626d5933ee3ebcc4bbdefb60", "candidate_ci": 46171602140, "focused_tests": 53, "local_cases": 6, "a1_endpoints_replayed": 2, "mock_stages": 23, "paid_calls": 23, "receipts": 23, "unknown_calls": 0, "estimate_usd": 0.013359, "estimate_cny": 0.08906, "review_pass": 8, "review_fail": 4, "a1_joint_condition_retained": false, "regressions_passed": ["CISP-07-01", "M-B2"], "course_fragments": 18, "synthetic_fragments": 4, "max_calls": 23, "max_usd": 0.1669248, "max_cny": 1.112832, "review_sha256": "bd1791219586eb86aac46d83b818fba16f178c8aee1fe31c7e24a73e50f446f8", "packet_sha256": "378f4a188e81a99c3aaaecaf844354970bb10cc869f89ddec737ca8647360772"}
 }
