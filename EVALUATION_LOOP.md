@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月28日A1选中第3页联合条件，整题关系表述仍待验收**。3次/3回执，估算0.022556元。第3页原文及BCM与DRP条件均保留，关系问项重复定义且没有讲清联系，两审均判覆盖失败。两中台已更新。本机准备去重后的答案双审及最终输入盘点（26个原问、十领域30页），均未外发。见[本轮报告](docs/engineering-delivery/cisp-coverage-20261128/QUALIFIED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月28日A1找回关系页后实测仍未达标**。3次/3回执，估算0.012878元。模型选对第4页两定义，未选已送达的第3页联合条款，双审一过一败。限定关系的隔离渲染补齐，44项离线测试和3条固定回放通过，本机模型对照超时或内存不足。两个中台已更新，最终验收门槛仍开放。见[完整题复测](docs/engineering-delivery/cisp-coverage-20261128/RECOVERED_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月28日B2范围正反对照通过，A1找回原PDF关系证据**。7次/7回执，保守估算0.0035217美元。原B2双审判范围失败，新B2双审通过；A1关系单项仍为空。原V4.2课件第3页确有关系依据，本机真实稀疏路径排行第6，旧前5漏页。双中台已更新。完整A1同题复测逐字清单已冻结，最多3次、0.145152元，等待批准。见[对照及原件检查](docs/engineering-delivery/cisp-coverage-20261128/GATE_PROBE_RESULTS.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
