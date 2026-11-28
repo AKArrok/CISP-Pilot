@@ -1,12 +1,12 @@
 {
-  "status": "approved_batches_completed_followup_ready_pending_egress",
+  "status": "followup_completed_quality_gate_open_relation_scope_probe_pending_egress",
   "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
   "baseline_ci": 46052236566,
   "report": "README.md",
-  "new_model_calls": 34,
-  "new_estimate_usd": 0.0206379,
-  "new_peak_uncached_estimate_cny": 0.137586,
-  "accounted_with_reservations_usd": 2.0151332,
+  "new_model_calls": 48,
+  "new_estimate_usd": 0.0294651,
+  "new_peak_uncached_estimate_cny": 0.196434,
+  "accounted_with_reservations_usd": 2.0239604,
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
   "egress": {
@@ -32,14 +32,29 @@
     "quality_open": ["M-A1", "M-A2", "M-B2-saved-review"]
   },
   "followup": {
-    "status": "pending_approval",
+    "status": "completed_quality_gate_open",
     "packet_sha256": "1da8866980ff0a52a636a7a31832589b2b4df28cab01c7bfdcf1a57b6da0455f",
     "review_sha256": "6d2a88823b3a37c7b0f8d09c44f916b9077171609eb4cb22dbbd2440cd2d3c95",
     "course_fragments": 12,
     "calls": 14,
     "max_usd": 0.1016064,
-    "max_cny": 0.677376
+    "max_cny": 0.677376,
+    "result": {
+      "report": "FOLLOWUP_RESULTS.md",
+      "commit": "97ae8e7da4d2a5c9494e2fb636292d0edd5322a5",
+      "ci": 46055317750,
+      "receipts": 14,
+      "unknown_calls": 0,
+      "estimate_usd": 0.0088272,
+      "estimate_cny": 0.058848,
+      "evaluation_runs": 1,
+      "records": 5,
+      "snapshots": 1,
+      "issue_notes": 5,
+      "open": ["M-A1", "M-B2-saved-review"]
+    }
   },
+  "gate_probe": {"status": "preflight_complete_pending_egress", "calls": 7, "course_fragments": 7, "max_usd": 0.0508032, "max_cny": 0.338688, "review_sha256": "d1056d7916301a489f62cad2b3df4d7443ab20aaeeb788095abd87f1a130e114"},
   "final_inventory": {"original_questions": 20, "complete_multiturn_groups": 2, "previously_exposed_holdout": 10, "fresh_holdout_still_required": true},
   "release_gate": "open"
 }

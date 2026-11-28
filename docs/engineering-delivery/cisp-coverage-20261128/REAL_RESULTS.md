@@ -1,5 +1,7 @@
 # 逐问项作答真实复测
 
+后续14次受控复测已完成，最新状态见[定向复测报告](FOLLOWUP_RESULTS.md)。
+
 2026-11-28。执行源码 `a46e7b88c9eb50bdcc4fef7dea8e261541f1e0f7`（CI `46053746519`），两批均按用户批准的原冻结清单执行。使用官方 DeepSeek Flash，关闭思考和自动重试。问题、历史回答和证据输入未变。运行命令为 `fixed_executor.py development --execute` 和 `fixed_executor.py regression --execute`。
 
 | 批次 | 调用 / 回执 | 保守估算（美元） | 本批未知费用 |
