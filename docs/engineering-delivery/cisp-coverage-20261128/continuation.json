@@ -1,12 +1,12 @@
 {
-  "status": "a1_composition_passed_final_acceptance_frozen_not_dispatched",
+  "status": "final_acceptance_executed_quality_failed_quota_checkpoint",
   "baseline": "acfa9072fe09a979b01a056018dea7fc5f3b82ee",
   "baseline_ci": 46052236566,
   "report": "README.md",
-  "new_model_calls": 63,
-  "new_estimate_usd": 0.0409965,
-  "new_peak_uncached_estimate_cny": 0.27331,
-  "accounted_with_reservations_usd": 2.0354918,
+  "new_model_calls": 211,
+  "new_estimate_usd": 0.1185993,
+  "new_peak_uncached_estimate_cny": 0.790662,
+  "accounted_with_reservations_usd": 2.1130946,
   "default_db_sha256": "3d6d78663b9378d8791f1692afcdd702c9476866d5458c3492f307766e9d5b62",
   "local": {"focused_tests": 43, "development_generation_fixtures": 4, "historical_generation_fixtures": 4, "negative_review_fixtures": 5, "evaluation_runs": 2, "evaluation_rows": 13, "snapshots": 2, "issue_notes": 4},
   "egress": {
@@ -75,6 +75,7 @@
   "a1_qualified_candidate": {"status": "live_evidence_passed_answer_coverage_failed", "report": "QUALIFIED_RESULTS.md", "commit": "4f60fab999d632556b893e90fa53abf05438b451", "ci": 46119857660, "local_fixtures": 3, "focused_tests": 44, "local_model_generation": "blocked_timeout_and_memory", "calls": 3, "receipts": 3, "unknown_calls": 0, "estimate_usd": 0.0033834, "estimate_cny": 0.022556, "max_cny": 0.145152, "page3_original_complete": true, "shared_condition_preserved": true, "review_coverage_fail": 2, "review_sha256": "ae3898e6823ae612f425882018b8bc00adb37c5dccbd9a39e2e00c330c0ca382", "packet_sha256": "afec0c4f782784ccb8fd5d454d14f6efdde38284b3429a1bfc9eb8938ee2ad9f"},
   "a1_composition": {"status": "completed_both_reviews_passed", "report": "COMPOSITION_RESULTS.md", "commit": "cdd1f420cdaf0b35e07594972ea458b7ede1e2dc", "ci": 46120640991, "calls": 2, "receipts": 2, "unknown_calls": 0, "estimate_usd": 0.0026946, "estimate_cny": 0.017964, "max_usd": 0.0145152, "max_cny": 0.096768, "review_sha256": "075d5df87db90065368821d6f034cfcbb41d13654cadb7c6e480a8f7bfbd27e9"},
   "final_inventory": {"original_questions": 20, "complete_multiturn_groups": 2, "previously_exposed_holdout": 10, "fresh_holdout_frozen": 10, "local_author_candidate_pages": 30, "independent_domains": 10, "candidate_frozen": true},
-  "final_acceptance": {"status": "frozen_preflight_passed_no_egress", "report": "FINAL_ACCEPTANCE_PREPARATION.md", "candidate": "1ba8b3e9ed1d09a8a9773fc495e810951aee9215", "candidate_ci": 46121918801, "original_questions": 20, "multiturn_turns": 6, "independent_holdout": 10, "local_holdout_exact_hits": 8, "distinct_course_fragments": 166, "preflight_context_choices": 45, "max_calls": 148, "max_usd": 0.408, "max_cny": 2.72, "cumulative_max_cny": 2.99331, "dispatched": 0, "review_sha256": "d2f59f8d19a204dbcef85ac1c3da8fde72cac270e34ca7af051807af2763cc24"},
-  "release_gate": "open"
+  "final_acceptance": {"status": "batches_completed_quality_failed", "report": "FINAL_ACCEPTANCE_RESULTS.md", "candidate": "1ba8b3e9ed1d09a8a9773fc495e810951aee9215", "candidate_ci": 46121918801, "original_questions": 20, "multiturn_turns": 6, "independent_holdout": 10, "holdout_exact_hits": 8, "holdout_equivalent_hits": 10, "distinct_course_fragments": 166, "preflight_context_choices": 45, "max_calls": 148, "max_usd": 0.408, "max_cny": 2.72, "dispatched": 148, "receipts": 148, "unknown_calls": 0, "estimate_usd": 0.0776028, "estimate_cny": 0.517352, "failed_reviews": 21, "unknown_reviews": 1, "review_sha256": "d2f59f8d19a204dbcef85ac1c3da8fde72cac270e34ca7af051807af2763cc24"},
+  "release_gate": "failed",
+  "quota_checkpoint": {"five_hour_remaining_percent": 9, "new_experiments_paused": true}
 }
