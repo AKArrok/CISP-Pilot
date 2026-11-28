@@ -1,5 +1,7 @@
 # CISP最终验收实测结果
 
+11月29日已恢复本机验证，见[关系证据二次核对](RELATION_RECHECK.md)。此前验收分数均保留。
+
 2026-11-28。冻结候选 `1ba8b3e9ed1d09a8a9773fc495e810951aee9215`，候选 CI `46121918801`。按用户明确批准的总清单 SHA256 `d2f59f8d19a204dbcef85ac1c3da8fde72cac270e34ca7af051807af2763cc24`，顺序通过隔离 ASGI 执行原20题、A/B各三轮与新封存10题。官方 DeepSeek Flash，关闭思考，无重试。完整命令和冻结入口见[准备报告](FINAL_ACCEPTANCE_PREPARATION.md)。
 
 | 批次 | 完成 / 计划 | 调用 / 回执 | 美元估算 | 审阅通过 / 失败 / 不确定 |
