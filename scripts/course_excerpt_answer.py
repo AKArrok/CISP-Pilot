@@ -143,12 +143,17 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict], 
         fields = {"ask", "ranges", "qualification"} if allow_qualified and qualified else {"ask", "ranges"}
         if allow_explanation and "explanation" in part:
             fields.add("explanation")
+        relation_gap = part.get("relation_gap") if allow_explanation else None
+        if relation_gap in ("missing", "unverified"):
+            fields.add("relation_gap")
         if (set(part) != fields
                 or not isinstance(part["ask"], str) or not part["ask"].strip()
                 or not isinstance(part["ranges"], list)):
             raise ValueError("Expected a question anchor and source ranges")
         if qualified and (part["qualification"] != "conditional" or not part["ranges"]):
             raise ValueError("A qualified relationship needs original evidence")
+        if relation_gap and (qualified or "explanation" in part):
+            raise ValueError("A relationship gap cannot assert a relationship")
         ask = part["ask"]
         position = question.find(ask, offset)
         if position < 0 or any(marker in ask for marker in ("[资料", "【出处】", "\n", "\r")):
@@ -165,7 +170,7 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict], 
                 raise ValueError("A bounded explanation needs original evidence and no citation markup")
             refs = "".join(f"[资料{source}]" for source in dict.fromkeys(item["source"] for item in excerpts))
             rows.append(f"{explanation.strip()} {refs}")
-        if not excerpts:
+        if not excerpts and not relation_gap:
             rows.append("现有课程资料对这一项缺少直接依据。")
         previous_quotes = set(emitted) if allow_explanation else set()
         for item in excerpts:
@@ -180,6 +185,10 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict], 
         if excerpts and all((item["source"], item["quote"]) in previous_quotes for item in excerpts) and "explanation" not in part:
             refs = "".join(f"[资料{source}]" for source in dict.fromkeys(item["source"] for item in excerpts))
             rows.append(f"相关原文见前面的引文。{refs}")
+        if relation_gap == "missing":
+            rows.append("现有课件未直接说明本问所求的关系。")
+        elif relation_gap == "unverified":
+            rows.append("本次选段未能提供可核实的关系依据。")
     answer = "\n\n".join(rows)
     return render_selected_citations(answer, contexts) if has_excerpt else answer
 

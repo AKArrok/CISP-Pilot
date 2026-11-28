@@ -61,3 +61,32 @@ def test_relation_coverage_is_fail_closed(check):
     selection = packet({"ask": "设备监测是什么", "ranges": []})
     with pytest.raises(ValueError):
         render_course_answer_with_relation_check(selection, check, QUESTION, CONTEXTS)
+
+
+def test_bound_relation_rejects_definitions_and_partial_condition():
+    selection = packet({"ask": "设备监测是什么", "ranges": [{"source": 1, "start": 1, "end": 1}]})
+    contract = {ASK: {"status": "conditional", "proof": {"source": 2, "start": 1, "end": 2},
+                      "facts": [{"source": 1, "start": 1, "end": 1}], "terms": ["监测", "巡查"]}}
+    for source_range, explanation in (({"source": 1, "start": 1, "end": 1}, "监测必须与巡查一起。"),
+                                        ({"source": 2, "start": 2, "end": 2}, "监测与巡查共同降低漏报。"),
+                                        ({"source": 2, "start": 1, "end": 2}, "单靠监测可减少漏报。")):
+        check = packet({"ask": ASK, "status": "conditional", "ranges": [source_range], "explanation": explanation})
+        output = render_course_answer_with_relation_check(selection, check, QUESTION, CONTEXTS, evidence=contract)
+        assert "本次选段未能提供可核实的关系依据。" in output
+        assert explanation not in output
+    check = packet({"ask": ASK, "status": "conditional", "ranges": [{"source": 2, "start": 1, "end": 2}],
+                    "explanation": "在设备隔离后，监测与巡查共同降低漏报。"})
+    output = render_course_answer_with_relation_check(selection, check, QUESTION, CONTEXTS, evidence=contract)
+    assert "仅当设备完成隔离，监测与人工巡查共同\n降低漏报。 [资料2]" in output
+    assert "可核实的关系依据" not in output
+
+
+def test_bound_relation_places_known_facts_before_the_specific_gap():
+    question = "材料登记和外观检查有什么关系？"
+    contexts = [{"source": "合成规程", "page": 1, "text": "登记记录领用数量。\n外观检查记录划痕。"}]
+    check = packet({"ask": question, "status": "insufficient", "ranges": []})
+    evidence = {question: {"status": "insufficient", "proof": None, "facts": [{"source": 1, "start": 1, "end": 2}]}}
+    answer = render_course_answer_with_relation_check(packet({"ask": question, "ranges": []}), check, question, contexts,
+                                                      evidence=evidence)
+    assert "登记记录领用数量。\n外观检查记录划痕。 [资料1]" in answer
+    assert answer.index("外观检查记录划痕。") < answer.index("现有课件未直接说明本问所求的关系。")

@@ -14,6 +14,11 @@ status 只用 direct、conditional 或 insufficient。先找直接关系的证�
 每个有据问项提供不超过360字的 explanation，禁止自写出处，禁止把共同作用改成单方效果或保证。其他问项不用输出。
 同组上一轮只用于理解指代。已有选段仅供定位遗漏，不能缩小你检查课件的范围。"""
 
+COURSE_BOUND_RELATION_CHECK_SYSTEM = COURSE_RELATION_CHECK_SYSTEM + """
+本批附有逐问项核对过的证据窗口。direct 或 conditional 的 ranges 必须完整覆盖相应关系证据窗口，不能用同页其他段落或定义代替。
+关系证据窗口为空时用 insufficient；程序会先展示已核对的事实，再说明关系缺口。即使关系证据存在，也不能从定义单独推出保证。
+解释所用关系的范围必须与证据窗口一致，联合主体和适用条件均照原文保留。"""
+
 _RELATION = re.compile(r"(?:关系|联系|区别|差异|有何不同|有什么不同)(?:是|在于|呢|[？?！!。]|$)|(?:什么|哪些|何种)(?:关系|联系|区别|差异)|(?:如何|怎样)(?:区分|比较)")
 _CLAUSE = re.compile(r"[^。；;？?！!\r\n]+[。；;？?！!]?")
 
@@ -38,16 +43,19 @@ def build_course_relation_check_message(
 
 def render_course_answer_with_relation_check(
     selection: str, check: str | None, question: str, contexts: list[dict],
+    *, evidence: dict | None = None,
 ) -> str:
     """Replace relationship parts with separately checked line ranges and their limits."""
     asks = course_relation_questions(question)
     baseline = render_course_question_parts(selection, question, contexts)
     if not asks:
-        if check is not None:
+        if check is not None or evidence is not None:
             raise ValueError("Unexpected relationship check")
         return baseline
     if check is None:
         raise ValueError("Missing relationship evidence check")
+    if evidence is not None and set(evidence) != set(asks):
+        raise ValueError("Evidence must cover the original relationship clauses")
     result = json.loads(check)
     if not isinstance(result, dict) or set(result) != {"parts"} or not isinstance(result["parts"], list):
         raise ValueError("Expected relationship check parts")
@@ -62,6 +70,21 @@ def render_course_answer_with_relation_check(
         fields = {"ask", "status", "ranges"} if status == "insufficient" else {"ask", "status", "ranges", "explanation"}
         if set(part) != fields or bool(part["ranges"]) != (status != "insufficient"):
             raise ValueError("Relationship status must agree with selected evidence")
+        if evidence is not None:
+            contract = evidence[part["ask"]]
+            proof = contract["proof"]
+            complete = proof is not None and any(
+                isinstance(r, dict) and all(type(r.get(key)) is int for key in ("source", "start", "end"))
+                and r["source"] == proof["source"] and r["start"] <= proof["start"] <= proof["end"] <= r["end"]
+                for r in part["ranges"]
+            )
+            explanation = part.get("explanation")
+            normalized = re.sub(r"\s+", "", explanation).casefold() if isinstance(explanation, str) else ""
+            missing_terms = any(term.casefold() not in normalized for term in contract.get("terms", ()))
+            if not complete or status != contract["status"] or missing_terms:
+                checked.append({"ask": part["ask"], "ranges": contract["facts"],
+                                "relation_gap": "unverified" if proof is not None else "missing"})
+                continue
         final = {k: v for k, v in part.items() if k != "status"}
         if status == "conditional":
             final["qualification"] = "conditional"

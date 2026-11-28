@@ -4,6 +4,8 @@
 
 ## 总目标与本轮入口
 
+- **11月29日关系说明原文绑定离线通过**。3道新开发题和A1、07-01、B2回放均完成。A1只选定义时阻止泛化，缺证先呈现已知事实，55项测试及23个断网模拟步骤通过。双中台已更新，外部调用0。真实清单已冻结，最多23次、1.112832元，等待确认。见[原文绑定](docs/engineering-delivery/cisp-coverage-20261128/RELATION_BOUND.md)及[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
+
 - **11月29日关系证据二次核对实测完成，A1仍未达标**。23次/23回执，估算0.089060元。原07-01和B2双审通过。A1的核对只选第4页，漏选第3页联合条件；合成缺证负例仍有覆盖争议。两个中台已更新，当前不能收尾。见[真实复测和剩余条件](docs/engineering-delivery/cisp-coverage-20261128/RELATION_RECHECK_RESULTS.md)与[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
 
 - **11月29日关系证据二次核对离线通过**。恢复后复核上一提交CI成功，53项针对性测试、6题隔离回放和23个模拟步骤通过。A1两个入口的共同条件重新核对，B2防退步。两个中台已更新，外部调用0。定向真实清单已冻结，最多23次、1.112832元，待授权。见[二次核对](docs/engineering-delivery/cisp-coverage-20261128/RELATION_RECHECK.md)和[续接](docs/engineering-delivery/cisp-coverage-20261128/continuation.json)。
