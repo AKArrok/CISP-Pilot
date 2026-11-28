@@ -39,6 +39,12 @@ COURSE_QUESTION_PARTS_SYSTEM = """你是 CISP 课程原文选择器。先按提�
 部分有依据时按项选行，缺少直接依据的项用空 ranges。完整回答时不要臆造额外缺口。
 当前证据未规定时保留缺口，不能推成允许、禁止或相反结论。历史只用于指代，不作为证据。"""
 
+COURSE_QUALIFIED_PARTS_SYSTEM = COURSE_QUESTION_PARTS_SYSTEM + """
+关系问项可由明确写出的联合主体、适用条件或共同结果提供限定依据。原文明确说明某主体与另一措施共同影响
+所问结果时，选保留联合主体、前提及完整效果的原文，并在该问项内添加 "qualification":"conditional"。
+这类原文是有范围的关系答案，不能扩成单独作用、互相替代、无条件保证。仅有定义并列、关键词共现或无关活动时，仍用空 ranges。
+程序展示限定提示。其余问项结构保持一致，不写推导句。"""
+
 COURSE_REVIEW_COVERAGE = COURSE_REVIEW_SCOPE + """
 独立按题目逐项核对待审回答，不要直接沿用回答给出的分项。另输出 coverage_status（pass、fail 或 uncertain）
 及 coverage_reason（点明遗漏或缺证的具体要求）。有直接原文却漏答，或缺证但未指出具体是哪一项，判 fail。
@@ -114,7 +120,7 @@ def _course_line_excerpts(ranges: list, contexts: list[dict]) -> list[dict]:
     return excerpts
 
 
-def render_course_question_parts(raw: str, question: str, contexts: list[dict]) -> str:
+def render_course_question_parts(raw: str, question: str, contexts: list[dict], *, allow_qualified: bool = False) -> str:
     """Render exact question anchors and exact source lines, or a gap per part."""
     value = json.loads(raw)
     if (not isinstance(value, dict) or set(value) != {"parts"}
@@ -123,10 +129,16 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict]) 
     rows, has_excerpt = [], False
     offset = 0
     for index, part in enumerate(value["parts"], 1):
-        if (not isinstance(part, dict) or set(part) != {"ask", "ranges"}
+        if not isinstance(part, dict):
+            raise ValueError("Expected a question anchor and source ranges")
+        qualified = "qualification" in part
+        fields = {"ask", "ranges", "qualification"} if allow_qualified and qualified else {"ask", "ranges"}
+        if (set(part) != fields
                 or not isinstance(part["ask"], str) or not part["ask"].strip()
                 or not isinstance(part["ranges"], list)):
             raise ValueError("Expected a question anchor and source ranges")
+        if qualified and (part["qualification"] != "conditional" or not part["ranges"]):
+            raise ValueError("A qualified relationship needs original evidence")
         ask = part["ask"]
         position = question.find(ask, offset)
         if position < 0 or any(marker in ask for marker in ("[资料", "【出处】", "\n", "\r")):
@@ -134,6 +146,8 @@ def render_course_question_parts(raw: str, question: str, contexts: list[dict]) 
         offset = position + len(ask)
         rows.append(f"{index}. 本问「{ask}」")
         excerpts = _course_line_excerpts(part["ranges"], contexts)
+        if qualified:
+            rows.append("课件给出了以下有条件的联系，适用范围以原文所列条件为准。")
         if not excerpts:
             rows.append("现有课程资料对这一项缺少直接依据。")
         for item in excerpts:

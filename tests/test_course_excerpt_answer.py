@@ -106,6 +106,22 @@ def test_question_parts_reject_invented_overlapping_or_citation_anchors(anchors)
         render_course_question_parts(json.dumps({"parts": parts}), "甲乙？[资料1]", [])
 
 
+def test_qualified_question_part_preserves_joint_subject_and_condition():
+    text = "设备停机后，监测与人工巡查共同\n降低漏报。"
+    contexts = [{"source": "合成手册", "page": 2, "text": text}]
+    part = {"ask": "两者有什么关系", "qualification": "conditional",
+            "ranges": [{"source": 1, "start": 1, "end": 2}]}
+    raw = json.dumps({"parts": [part]})
+    with pytest.raises(ValueError):
+        render_course_question_parts(raw, "两者有什么关系？", contexts)
+    answer = render_course_question_parts(raw, "两者有什么关系？", contexts, allow_qualified=True)
+    assert "以下有条件的联系" in answer
+    assert f"{text} [资料1]" in answer
+    with pytest.raises(ValueError):
+        render_course_question_parts(json.dumps({"parts": [part | {"ranges": []}]}),
+                                     "两者有什么关系？", contexts, allow_qualified=True)
+
+
 def test_opt_in_renderer_works_through_graph_answer(monkeypatch):
     from agents import graph
     from scripts.course_excerpt_answer import COURSE_EXCERPT_SYSTEM

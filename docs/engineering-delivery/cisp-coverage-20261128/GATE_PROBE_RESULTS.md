@@ -1,5 +1,7 @@
 # A1关系证据与B2范围双审对照
 
+找回关系页后的3次真实复测已经完成，最新状态见[完整题复测](RECOVERED_RESULTS.md)。
+
 2026-11-28。执行源码 `d8bc63ab8c43b9fa0eeed7306faeb038da3aca40`，对应 CI `46118036893`。用户明确批准逐字清单 `d1056d7916301a489f62cad2b3df4d7443ab20aaeeb788095abd87f1a130e114`。先执行 `gate_probe_executor.py relation --execute`，再执行 `gate_probe_executor.py scope --execute`。仅官方 DeepSeek Flash，关闭思考，无自动重试。问题、证据、上文均按冻结清单执行。
 
 | 检查 | 调用 / 回执 | 保守估算（美元） | 判定 |
